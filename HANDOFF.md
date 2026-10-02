@@ -4,9 +4,15 @@
 
 ## Что это
 
-Отдельный локальный форк jcode с частичной русской локализацией TUI.
+Отдельный форк jcode с частичной русской локализацией TUI.
 Папка: `/home/ilya/Program/jcode-ru`, ветка `dev`, remote `origin` = upstream
-(`https://github.com/1jehuang/jcode.git`), своего GitHub-remote пока нет.
+(`https://github.com/1jehuang/jcode.git`), remote `fork` = `git@github.com:polosinilya/jcode-ru.git`.
+
+Публичный репозиторий: **https://github.com/polosinilya/jcode-ru** (ветка `dev` — default).
+Релиз: **https://github.com/polosinilya/jcode-ru/releases/tag/v0.84.0-ru.0001**
+(ассет `jcode_0.84.0-ru.0001_amd64.deb`).
+
+Пуш изменений: `git push fork dev`.
 
 Upstream-клон для сборки/экспериментов: `/home/ilya/Program/jcode` (та же ветка `dev`,
 тот же коммит локализации, плюс собранный `target/`).
@@ -86,8 +92,10 @@ python3 i18n/tools/apply_v2.py
 2. **CLI-справка** `jcode --help` (clap в крейте `jcode`) — не локализована.
 3. **i18n-слой** (опционально): вынести строки в `t(key)` + крейт + поле
    `display.language` в конфиге, если нужен переключатель языка вместо хардкода.
-4. **Публикация форка**: создать GitHub-репозиторий `polosinilya/jcode-ru` и
-   `git remote add fork git@github.com:polosinilya/jcode-ru.git && git push -u fork dev`.
+4. **Публикация — сделано.** Репозиторий и релиз `v0.84.0-ru.0001` опубликованы
+   (см. выше). Следующий релиз: собрать новый `.deb`, создать тег/релиз
+   (`v0.84.0-ru.0002`) и приложить ассет. Для API-операций нужен токен
+   (`repo` scope) — через device-flow или `gh auth login`.
 5. **Проверка в реальном TUI**: `script`-снимок кадра не даёт текст; для визуальной
    проверки запускать бинарник в настоящем терминале (или через PTY-инструмент).
 

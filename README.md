@@ -20,16 +20,22 @@
 
 ## Скачать
 
-Локальная сборка: `dist/jcode_0.84.0-ru.0001_amd64.deb`
+**Последняя версия: [v0.84.0-ru.0001](https://github.com/polosinilya/jcode-ru/releases/tag/v0.84.0-ru.0001)**
 
-Пакет ставит бинарник в `/usr/bin/jcode`.
+| ОС | Файл |
+|---|---|
+| Linux (deb, amd64) | [`jcode_0.84.0-ru.0001_amd64.deb`](https://github.com/polosinilya/jcode-ru/releases/download/v0.84.0-ru.0001/jcode_0.84.0-ru.0001_amd64.deb) |
+
+Все сборки: [Releases](https://github.com/polosinilya/jcode-ru/releases).
 
 ## Установка
 
 ```bash
-sudo dpkg -i dist/jcode_0.84.0-ru.0001_amd64.deb
+sudo dpkg -i jcode_0.84.0-ru.0001_amd64.deb
 jcode --version
 ```
+
+Пакет ставит бинарник в `/usr/bin/jcode`.
 
 ## Сборка из исходников
 
