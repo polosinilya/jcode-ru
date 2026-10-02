@@ -74,7 +74,7 @@ pub(super) fn account_is_active(item: &AccountPickerItem) -> bool {
 }
 
 fn extract_account_label(title: &str) -> Option<String> {
-    let prefixes = ["Switch account `", "Re-login account `", "Remove account `"];
+    let prefixes = ["Переключить аккаунт `", "Перелогинить аккаунт `", "Удалить аккаунт `"];
     for prefix in prefixes {
         if let Some(rest) = title.strip_prefix(prefix)
             && let Some(label) = rest.strip_suffix('`')
@@ -92,14 +92,14 @@ pub(super) fn compact_item_title(item: &AccountPickerItem) -> String {
         }
         ActionSection::Add => item.title.clone(),
         ActionSection::Login => extract_account_label(&item.title)
-            .map(|label| format!("Refresh {label}"))
-            .unwrap_or_else(|| "Login / refresh".to_string()),
+            .map(|label| format!("Обновить {label}"))
+            .unwrap_or_else(|| "Вход / обновление".to_string()),
         ActionSection::Overview if !item.details.is_empty() || item.title.contains("Usage") => {
             item.title.clone()
         }
-        ActionSection::Overview => "Provider settings".to_string(),
+        ActionSection::Overview => "Настройки провайдера".to_string(),
         ActionSection::Remove => extract_account_label(&item.title)
-            .map(|label| format!("Remove {label}"))
+            .map(|label| format!("Удалить {label}"))
             .unwrap_or_else(|| item.title.clone()),
         ActionSection::Setting | ActionSection::Other => item.title.clone(),
     }
@@ -126,7 +126,7 @@ pub(super) fn action_icon(item: &AccountPickerItem) -> (&'static str, Color) {
 
 pub(super) fn account_count_summary(count: usize) -> String {
     format!(
-        "{} saved account{}",
+        "{} сохраненный аккаунт{}",
         count,
         if count == 1 { "" } else { "s" }
     )
@@ -150,43 +150,43 @@ pub(super) fn action_kind_badge(command: &AccountPickerCommand) -> (&'static str
 pub(super) fn action_kind_help(command: &AccountPickerCommand) -> &'static str {
     match command {
         AccountPickerCommand::OpenAccountCenter { .. } => {
-            "Returns to the main account center with all provider and saved-auth actions."
+            "Возвращает в главный центр аккаунтов со всеми действиями провайдеров и сохраненной аутентификацией."
         }
         AccountPickerCommand::OpenAddReplaceFlow { .. } => {
-            "Opens a focused chooser where you pick whether to add a new Claude/OpenAI account or replace an existing saved one."
+            "Открывает фокусированный выбор, где вы можете добавить новый аккаунт Claude/OpenAI или заменить существующий сохраненный."
         }
         AccountPickerCommand::SubmitInput(input) if input.ends_with(" settings") => {
-            "Opens a detailed text summary for this provider, including the exact commands you can run manually."
+            "Открывает подробное текстовое описание для этого провайдера, включая точные команды, которые вы можете выполнить вручную."
         }
         AccountPickerCommand::SubmitInput(input) if input.contains(" remove ") => {
-            "Removes saved credentials for the selected account. Use this when an account is stale or should no longer be available in jcode."
+            "Удаляет сохраненные учетные данные для выбранного аккаунта. Используйте это, когда аккаунт устарел или больше не должен быть доступен в jcode."
         }
         AccountPickerCommand::SubmitInput(input) if input.contains(" login") => {
-            "Starts or refreshes authentication for this provider so it becomes usable again."
+            "Начинает или обновляет аутентификацию для этого провайдера, чтобы он снова стал пригодным для использования."
         }
         AccountPickerCommand::SubmitInput(input) if input.contains(" add") => {
-            "Starts the flow for adding the next numbered account, so you can keep multiple identities side by side."
+            "Начинает процесс добавления следующего нумерованного аккаунта, чтобы вы могли использовать несколько идентичностей параллельно."
         }
         AccountPickerCommand::SubmitInput(input) if input.contains(" switch ") => {
-            "Makes this account active so future requests use it immediately."
+            "Делает этот аккаунт активным, чтобы будущие запросы использовали его немедленно."
         }
         AccountPickerCommand::PromptValue { .. } => {
-            "Prompts for a new value, then saves the matching provider or global setting."
+            "Запрашивает новое значение, затем сохраняет соответствующую настройку провайдера или глобальную настройку."
         }
         AccountPickerCommand::Switch { .. } => {
-            "Switches the active saved account for this provider."
+            "Переключает активный сохраненный аккаунт для этого провайдера."
         }
         AccountPickerCommand::Login { .. } => {
-            "Refreshes the selected account by starting the provider login flow again."
+            "Обновляет выбранный аккаунт, начиная процесс входа провайдера снова."
         }
         AccountPickerCommand::Remove { .. } => {
-            "Deletes the saved account credentials from local storage."
+            "Удаляет сохраненные учетные данные аккаунта из локального хранилища."
         }
         AccountPickerCommand::PromptNew { .. } => {
-            "Starts login for the next numbered account immediately."
+            "Начинает вход для следующего нумерованного аккаунта немедленно."
         }
         AccountPickerCommand::SubmitInput(_) => {
-            "Runs the selected account-management command immediately."
+            "Выполняет выбранную команду управления аккаунтом немедленно."
         }
     }
 }
@@ -195,12 +195,12 @@ pub(super) fn command_preview(command: &AccountPickerCommand) -> String {
     match command {
         AccountPickerCommand::SubmitInput(input) => input.clone(),
         AccountPickerCommand::OpenAccountCenter { provider_filter } => match provider_filter {
-            Some(provider_id) => format!("Open /account {}", provider_id),
-            None => "Open /account".to_string(),
+            Some(provider_id) => format!("Открыть /account {}", provider_id),
+            None => "Открыть /account".to_string(),
         },
         AccountPickerCommand::OpenAddReplaceFlow { provider_filter } => match provider_filter {
-            Some(provider_id) => format!("Open add/replace flow for {}", provider_id),
-            None => "Open add/replace flow".to_string(),
+            Some(provider_id) => format!("Открыть процесс добавления/замены для {}", provider_id),
+            None => "Открыть процесс добавления/замены".to_string(),
         },
         AccountPickerCommand::PromptValue {
             command_prefix,

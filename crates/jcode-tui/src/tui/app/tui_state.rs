@@ -1766,7 +1766,7 @@ impl crate::tui::TuiState for App {
             .filter(|(_, tool)| tool.name.eq_ignore_ascii_case("swarm"))
             .flat_map(|(message, _)| message.content.lines())
             .filter_map(|line| {
-                line.split_once("Spawned new agent: ")
+                line.split_once("Spawned new agent:")
                     .map(|(_, id)| id.trim())
             })
             .collect();
@@ -1967,7 +1967,7 @@ impl crate::tui::TuiState for App {
 
         // Compute selection metrics without building the full selected string,
         // which previously re-allocated the entire selection on every render
-        // frame and drag move (O(selection) per frame; a "select all" rebuilt
+        // frame and drag move (O(selection) per frame; a "выделить всё" rebuilt
         // the whole transcript text repeatedly).
         let (selected_chars, selected_lines) = self
             .normalized_copy_selection()
@@ -2133,13 +2133,13 @@ impl App {
     pub(crate) fn pop_out_selected_swarm_agent(&mut self) {
         let members = self.inline_swarm_members();
         if members.is_empty() {
-            self.set_status_notice("No swarm agents to open");
+            self.set_status_notice("Нет агентов swarm для открытия");
             return;
         }
         let order = crate::tui::info_widget::swarm_gallery::members_display_order(&members);
         let idx = self.swarm_panel_selected.min(order.len().saturating_sub(1));
         let Some(session_id) = order.get(idx).cloned() else {
-            self.set_status_notice("No swarm agent selected");
+            self.set_status_notice("Не выбран агент swarm");
             return;
         };
         let label = members
@@ -2152,11 +2152,11 @@ impl App {
         let cwd = std::env::current_dir().unwrap_or_else(|_| std::path::PathBuf::from("."));
         match jcode_app_core::session_launch::spawn_resume_in_new_terminal(&exe, &session_id, &cwd)
         {
-            Ok(true) => self.set_status_notice(format!("Opened {label} in a new window")),
+            Ok(true) => self.set_status_notice(format!("Открыт {label} в новом окне")),
             Ok(false) => self.set_status_notice(format!(
-                "Could not open a terminal for {label} (no emulator found)"
+                "Не удалось открыть терминал для {label} (эмулятор не найден)"
             )),
-            Err(e) => self.set_status_notice(format!("Failed to open {label}: {e}")),
+            Err(e) => self.set_status_notice(format!("Не удалось открыть {label}: {e}")),
         }
     }
 }

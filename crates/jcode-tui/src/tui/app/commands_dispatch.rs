@@ -117,7 +117,7 @@ pub(super) fn ssh_local_action_blocked(app: &mut App, action: &str) -> bool {
     if !crate::tui::is_ssh_remote() {
         return false;
     }
-    let host = crate::tui::ssh_remote_host().unwrap_or_else(|| "the remote host".to_string());
+    let host = crate::tui::ssh_remote_host().unwrap_or_else(|| "удаленный хост".to_string());
     let notice = format!(
         "{action} is unavailable in SSH mode. Nothing was changed on this computer. \
          Connect to {host} with SSH and run jcode there for remote setup or file/session operations. \
@@ -205,7 +205,7 @@ pub(super) fn ssh_test_runs_in_child(test_name: &str) -> bool {
         .env("JCODE_SSH_REMOTE", "test-remote")
         .env("JCODE_HOME", home.path())
         .output()
-        .expect("run isolated SSH test");
+        .expect("запустить изолированный SSH тест");
     assert!(
         output.status.success(),
         "{}\n{}",
@@ -267,8 +267,8 @@ mod tests {
 
         app.input.clear();
         app.cursor_pos = 0;
-        input::insert_input_text(&mut app, "ordinary remote prompt");
-        assert_eq!(app.input, "ordinary remote prompt");
+        input::insert_input_text(&mut app, "обычный удаленный запрос");
+        assert_eq!(app.input, "обычный удаленный запрос");
         app.is_processing = true;
         app.input = "/cancel".to_string();
         app.submit_input();

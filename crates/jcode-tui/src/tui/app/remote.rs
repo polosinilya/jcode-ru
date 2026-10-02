@@ -153,7 +153,7 @@ pub(super) async fn handle_tick(app: &mut App, remote: &mut RemoteConnection) ->
                     let show_brief = request.show_brief;
                     app.begin_in_flight_catchup_resume(request);
                     app.set_status_notice(if show_brief {
-                        format!("Catch Up → {}", label)
+                        format!("Наверстать упущенное → {}", label)
                     } else {
                         format!("Back → {}", label)
                     });
@@ -162,7 +162,7 @@ pub(super) async fn handle_tick(app: &mut App, remote: &mut RemoteConnection) ->
                 Err(err) => {
                     app.clear_in_flight_catchup_resume();
                     app.push_display_message(DisplayMessage::error(format!(
-                        "Failed to switch Catch Up session: {}",
+                        "Не удалось переключить сессию наверстывания упущенного: {}",
                         err
                     )));
                     needs_redraw = true;
@@ -176,12 +176,12 @@ pub(super) async fn handle_tick(app: &mut App, remote: &mut RemoteConnection) ->
                     let label = crate::id::extract_session_name(&target_session)
                         .map(|name| name.to_string())
                         .unwrap_or(target_session);
-                    app.set_status_notice(format!("Workspace → {}", label));
+                    app.set_status_notice(format!("Рабочая область → {}", label));
                     return true;
                 }
                 Err(err) => {
                     app.push_display_message(DisplayMessage::error(format!(
-                        "Failed to switch workspace session: {}",
+                        "Не удалось переключить сессию рабочей области: {}",
                         err
                     )));
                     needs_redraw = true;
@@ -345,10 +345,10 @@ async fn forward_pending_reasoning_effort(app: &mut App, remote: &mut RemoteConn
         }
         Err(error) => {
             app.push_display_message(DisplayMessage::error(format!(
-                "Failed to request reasoning effort '{}': {}",
+                "Не удалось запросить усилие рассуждения '{}': {}",
                 effort, error
             )));
-            app.set_status_notice("Effort switch failed");
+            app.set_status_notice("Переключение усилия не удалось");
         }
     }
 }
@@ -430,10 +430,10 @@ async fn apply_terminal_event(
                             // route switch; drop it with the failed request.
                             app.pending_fallback_resend = None;
                             app.push_display_message(DisplayMessage::error(format!(
-                                "Failed to request model switch: {}",
+                                "Не удалось запросить переключение модели: {}",
                                 error
                             )));
-                            app.set_status_notice("Model switch failed");
+                            app.set_status_notice("Переключение модели не удалось");
                         }
                     }
                 } else if let Some(spec) = app.pending_model_switch.take() {
@@ -445,10 +445,10 @@ async fn apply_terminal_event(
                         Err(error) => {
                             app.pending_reasoning_effort = None;
                             app.push_display_message(DisplayMessage::error(format!(
-                                "Failed to request model switch: {}",
+                                "Не удалось запросить переключение модели: {}",
                                 error
                             )));
-                            app.set_status_notice("Model switch failed");
+                            app.set_status_notice("Переключение модели не удалось");
                         }
                     }
                 }
@@ -460,7 +460,7 @@ async fn apply_terminal_event(
                                     if let Err(e) = crate::auth::claude::set_active_account(&label)
                                     {
                                         app.push_display_message(DisplayMessage::error(format!(
-                                            "Failed to switch account: {}",
+                                            "Не удалось переключить аккаунт: {}",
                                             e
                                         )));
                                     } else {
@@ -469,11 +469,11 @@ async fn apply_terminal_event(
                                         app.context_warning_shown = false;
                                         let _ = remote.switch_anthropic_account(&label).await;
                                         app.push_display_message(DisplayMessage::system(format!(
-                                            "Switched to Anthropic account `{}`.",
+                                            "Переключено на аккаунт Anthropic `{}`.",
                                             label
                                         )));
                                         app.set_status_notice(format!(
-                                            "Account: switched to {}",
+                                            "Аккаунт: переключено на {}",
                                             label
                                         ));
                                     }
@@ -481,7 +481,7 @@ async fn apply_terminal_event(
                                 "openai" => {
                                     if let Err(e) = crate::auth::codex::set_active_account(&label) {
                                         app.push_display_message(DisplayMessage::error(format!(
-                                            "Failed to switch OpenAI account: {}",
+                                            "Не удалось переключить аккаунт OpenAI: {}",
                                             e
                                         )));
                                     } else {
@@ -490,17 +490,17 @@ async fn apply_terminal_event(
                                         app.context_warning_shown = false;
                                         let _ = remote.switch_openai_account(&label).await;
                                         app.push_display_message(DisplayMessage::system(format!(
-                                            "Switched to OpenAI account `{}`.",
+                                            "Переключено на аккаунт OpenAI `{}`.",
                                             label
                                         )));
                                         app.set_status_notice(format!(
-                                            "OpenAI account: switched to {}",
+                                            "Аккаунт OpenAI: переключено на {}",
                                             label
                                         ));
                                     }
                                 }
                                 _ => app.push_display_message(DisplayMessage::error(format!(
-                                    "Provider `{}` does not support account switching.",
+                                    "Провайдер `{}` не поддерживает переключение аккаунтов.",
                                     provider_id
                                 ))),
                             }
@@ -573,7 +573,7 @@ async fn dispatch_compacted_history_load(app: &mut App, remote: &mut RemoteConne
         Ok(_) => true,
         Err(error) => {
             app.restore_pending_compacted_history_load(visible_messages);
-            app.set_status_notice(format!("Failed to request older history: {}", error));
+            app.set_status_notice(format!("Не удалось запросить более старую историю: {}", error));
             true
         }
     }
@@ -616,7 +616,7 @@ pub(super) async fn handle_bus_event(
         }
         Ok(BusEvent::LoginCompleted(login)) => {
             if crate::tui::is_ssh_remote() {
-                app.set_status_notice("Local login does not change SSH server credentials");
+                app.set_status_notice("Локальный вход не изменяет учетные данные сервера SSH");
                 return true;
             }
             let success = login.success && login.provider != "copilot_code";
@@ -630,10 +630,10 @@ pub(super) async fn handle_bus_event(
                     .await
             {
                 crate::logging::warn(&format!(
-                    "Failed to notify server about refreshed auth: {error}"
+                    "Не удалось уведомить сервер об обновленной аутентификации: {error}"
                 ));
                 app.finish_auth_catalog_refresh();
-                app.set_status_notice("Model setup will retry after reconnect");
+                app.set_status_notice("Настройка модели повторится после переподключения");
             }
             true
         }
@@ -686,7 +686,7 @@ pub(super) async fn handle_bus_event(
 /// used to only map Azure and OpenAI-compatible logins, so direct logins
 /// (Claude OAuth/API key, OpenAI, OpenRouter, Bedrock, ...) sent no hint. With
 /// no hint the server fell back to the session's currently active provider,
-/// mislabeling the catalog-refresh message ("OpenAI credentials are active"
+/// mislabeling the catalog-refresh message ("Учетные данные OpenAI активны"
 /// after an Anthropic API-key login) and skipping the post-login model switch.
 fn auth_provider_hint_for_login_provider(provider: &str) -> Option<&'static str> {
     let provider = provider.trim();
@@ -842,14 +842,14 @@ pub(super) async fn handle_remote_event<B: Backend>(
             if let RemoteDisconnectReason::Protocol(error) = &reason {
                 let detail = format_disconnect_reason(&reason);
                 crate::logging::error(&format!(
-                    "Remote protocol error is not retryable; stopping reconnect loop: {}",
+                    "Ошибка удаленного протокола не подлежит повторной попытке; остановка цикла переподключения: {}",
                     error
                 ));
                 app.push_display_message(DisplayMessage::error(format!(
                     "Remote protocol error. Stopped reconnecting to avoid replaying a large/corrupt session repeatedly. {}\n\nTry starting a fresh session, or resume after reducing/removing oversized tool output from the session history.",
                     detail
                 )));
-                app.set_status_notice("Remote protocol error");
+                app.set_status_notice("Ошибка удаленного протокола");
                 app.is_processing = false;
                 app.status = ProcessingStatus::Idle;
                 return Ok((RemoteEventOutcome::Quit, true));
@@ -872,7 +872,7 @@ pub(super) async fn handle_remote_event<B: Backend>(
             // immediately read the frame buffer. On the first request the buffer
             // is still empty because no draw has happened since enabling capture.
             // Render once before producing the response so callers always receive
-            // the current TUI state rather than "no frames captured".
+            // the current TUI state rather than "нет захваченных кадров".
             if debug_command_needs_current_frame(&command) {
                 crate::tui::visual_debug::enable();
                 if let Err(error) = terminal.draw(|frame| crate::tui::ui::draw(frame, app)) {
@@ -890,10 +890,10 @@ pub(super) async fn handle_remote_event<B: Backend>(
             let mut needs_redraw = false;
             if let Err(error) = apply_remote_transcript_event(app, remote, text, mode).await {
                 app.push_display_message(DisplayMessage::error(format!(
-                    "Failed to apply transcript: {}",
+                    "Не удалось применить транскрипт: {}",
                     error
                 )));
-                app.set_status_notice("Transcript failed");
+                app.set_status_notice("Транскрипт не удался");
                 needs_redraw = true;
             }
             process_remote_followups(app, remote).await;
@@ -1099,7 +1099,7 @@ async fn recover_stuck_remote_history(app: &mut App, remote: &mut RemoteConnecti
                  This usually clears on its own; if it persists, run /restart to reconnect."
                     .to_string(),
             ));
-            app.set_status_notice("Session history not loading - try /restart");
+            app.set_status_notice("История сессии не загружается - попробуйте /restart");
             // Clear last_attempt so we don't repeat the message every tick, but
             // keep attempts at max so we don't re-enter the retry path.
             app.remote_history_recovery_last_attempt = None;
@@ -1118,7 +1118,7 @@ async fn recover_stuck_remote_history(app: &mut App, remote: &mut RemoteConnecti
     app.remote_history_recovery_attempts += 1;
     app.remote_history_recovery_last_attempt = Some(now);
     crate::logging::warn(&format!(
-        "Remote history still not loaded after {}s; re-requesting session history (attempt {}/{}, session={:?})",
+        "Удаленная история все еще не загружена после {}с; повторный запрос истории сессии (попытка {}/{}, session={:?})",
         waited.as_secs(),
         app.remote_history_recovery_attempts,
         REMOTE_HISTORY_RECOVERY_MAX_ATTEMPTS,
@@ -1126,7 +1126,7 @@ async fn recover_stuck_remote_history(app: &mut App, remote: &mut RemoteConnecti
     ));
     match remote.request_history().await {
         Ok(_) => {
-            app.set_status_notice("Loading session… re-requesting history");
+            app.set_status_notice("Загрузка сессии… повторный запрос истории");
         }
         Err(err) => {
             crate::logging::error(&format!(
@@ -1175,11 +1175,11 @@ async fn dispatch_pending_server_reload(app: &mut App, remote: &mut RemoteConnec
         const MAX_AUTO_SERVER_RELOADS: u32 = 3;
         if app.server_auto_reload_attempts >= MAX_AUTO_SERVER_RELOADS {
             crate::logging::warn(&format!(
-                "Suppressing server auto-reload after {} attempts; server keeps reporting an update (possible reload loop, issue #277)",
+                "Подавление автоматической перезагрузки сервера после {} попыток; сервер продолжает сообщать об обновлении (возможный цикл перезагрузки, проблема #277)",
                 app.server_auto_reload_attempts
             ));
             app.push_display_message(DisplayMessage::system(
-                "ℹ Server keeps reporting a newer binary after repeated reloads; auto-reload paused to avoid a loop. Use `/reload` manually if needed.".to_string(),
+                "ℹ Сервер продолжает сообщать о более новом бинарном файле после повторных перезагрузок; автоматическая перезагрузка приостановлена во избежание цикла. Используйте `/reload` вручную при необходимости.".to_string(),
             ));
             app.set_status_notice("Server auto-reload paused (possible loop)");
         } else {
@@ -1431,7 +1431,7 @@ pub(super) async fn process_remote_followups(app: &mut App, remote: &mut RemoteC
                 error
             )));
             if had_startup || had_prompt {
-                app.set_status_notice(format!("{} launch failed", flow_label));
+                app.set_status_notice(format!("{} запуск не удался", flow_label));
             }
         }
         return;
@@ -1452,7 +1452,7 @@ pub(super) async fn process_remote_followups(app: &mut App, remote: &mut RemoteC
                 label.to_lowercase(),
                 error
             )));
-            app.set_status_notice(format!("{} launch failed", label));
+            app.set_status_notice(format!("{} запуск не удался", label));
         }
         return;
     }
@@ -1722,7 +1722,7 @@ async fn detect_and_cancel_stall(app: &mut App, remote: &mut RemoteConnection) {
             }
             let stall_desc = format_stall_duration(stall_timeout);
             if !app.schedule_pending_remote_retry(&format!(
-                "⚠ Stream stalled (no response for {stall_desc}). Processing cancelled.",
+                "⚠ Поток завис (нет ответа в течение {stall_desc}). Обработка отменена.",
             )) {
                 // Keep a dispatched-but-unfinished queued follow-up on the
                 // queue instead of silently dropping it (issue #391).
@@ -1730,11 +1730,11 @@ async fn detect_and_cancel_stall(app: &mut App, remote: &mut RemoteConnection) {
                 app.clear_pending_remote_retry();
                 if recovered {
                     app.push_display_message(DisplayMessage::system(format!(
-                        "⚠ Stream stalled (no response for {stall_desc}). Processing cancelled. Your queued follow-up stays queued.",
+                        "⚠ Поток завис (нет ответа в течение {stall_desc}). Обработка отменена. Ваш последующий запрос остается в очереди.",
                     )));
                 } else {
                     app.push_display_message(DisplayMessage::system(format!(
-                        "⚠ Stream stalled (no response for {stall_desc}). Processing cancelled. You can resend your message. Raise `[provider] stream_idle_timeout_secs` in config.toml if your model thinks silently for longer.",
+                        "⚠ Поток завис (нет ответа в течение {stall_desc}). Обработка отменена. Вы можете повторно отправить сообщение. Увеличьте `[provider] stream_idle_timeout_secs` в config.toml, если ваша модель думает дольше.",
                     )));
                 }
             }
@@ -1870,7 +1870,7 @@ fn queue_message_for_reconnect(app: &mut App) {
         if handle_disconnected_local_command(app, &trimmed) {
             return;
         }
-        app.set_status_notice("This command requires a live connection");
+        app.set_status_notice("Для этой команды требуется активное соединение");
         return;
     }
 
@@ -1879,7 +1879,7 @@ fn queue_message_for_reconnect(app: &mut App) {
 
     let queued_count = app.queued_messages.len();
     app.set_status_notice(format!(
-        "Queued for send after reconnect ({} message{})",
+        "В очереди на отправку после переподключения ({} сообщени{}",
         queued_count,
         if queued_count == 1 { "" } else { "s" }
     ));

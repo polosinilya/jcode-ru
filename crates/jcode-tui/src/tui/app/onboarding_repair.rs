@@ -36,10 +36,10 @@ impl RepairAgent {
     pub(crate) fn label(self) -> &'static str {
         match self {
             RepairAgent::Codex => "Codex",
-            RepairAgent::ClaudeCode => "Claude Code",
-            RepairAgent::Copilot => "Copilot",
-            RepairAgent::Cursor => "Cursor",
-            RepairAgent::Gemini => "Gemini",
+            RepairAgent::ClaudeCode => "Клауд Код",
+            RepairAgent::Copilot => "Копилот",
+            RepairAgent::Cursor => "Курсор",
+            RepairAgent::Gemini => "Гемини",
             RepairAgent::Pi => "Pi",
             RepairAgent::OpenCode => "OpenCode",
         }
@@ -51,7 +51,7 @@ impl RepairAgent {
         match self {
             RepairAgent::Codex => "codex",
             RepairAgent::ClaudeCode => "claude",
-            RepairAgent::Copilot => "gh copilot",
+            RepairAgent::Copilot => "gh копилот",
             RepairAgent::Cursor => "cursor-agent",
             RepairAgent::Gemini => "gemini",
             RepairAgent::Pi => "pi",
@@ -141,10 +141,10 @@ pub(crate) fn build_repair_brief(
     failure: &str,
     provider_hint: Option<&str>,
 ) -> String {
-    let provider = provider_hint.unwrap_or("<provider>");
+    let provider = provider_hint.unwrap_or("<провайдер>");
     let log_line = jcode_logging::log_path()
         .map(|p| format!("Logs:    {}", p.display()))
-        .unwrap_or_else(|| "Logs:    ~/.jcode/logs/jcode-<date>.log".to_string());
+        .unwrap_or_else(|| "Логи: ~/.jcode/logs/jcode-<дата>.log".to_string());
 
     let mut brief = String::new();
     brief.push_str(
@@ -186,7 +186,7 @@ during first-run onboarding. Please fix the login for the user.\n\n",
 
     if let Some(agent) = agent {
         brief.push_str(&format!(
-            "You appear to be {}; you can run these commands directly. ",
+            "Похоже, вы {}; вы можете запустить эти команды напрямую.",
             agent.label()
         ));
     }
@@ -223,7 +223,7 @@ pub(crate) fn repair_brief_status(agent: Option<RepairAgent>, copied: bool) -> S
     let copied_part = if copied {
         "Repair brief copied to clipboard"
     } else {
-        "Repair brief ready (clipboard unavailable)"
+        "Краткое описание восстановления готово (буфер обмена недоступен)"
     };
     match agent {
         Some(agent) => format!(
@@ -267,7 +267,7 @@ mod tests {
 
     #[test]
     fn brief_without_provider_or_agent_is_still_actionable() {
-        let brief = build_repair_brief(None, "unknown failure", None);
+        let brief = build_repair_brief(None, "неизвестный сбой", None);
         // With no provider hint we point the agent at --all-configured.
         assert!(
             brief.contains("jcode auth-test --all-configured --json"),

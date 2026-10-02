@@ -1086,7 +1086,7 @@ pub(in crate::tui::app) fn handle_server_event(
             // Plain text prefix: U+1F6E1 shield renders poorly in some
             // terminals (kitty shows a narrow monochrome glyph).
             app.push_display_message(DisplayMessage::system(format!("[guardrail] {}", message)));
-            app.set_status_notice(format!("Provider guardrail: {}", label));
+            app.set_status_notice(format!("Ограничение провайдера: {}", label));
             // Guardrail refusals are model-side policy stops: retrying the
             // same model usually refuses again, but a stronger model often
             // handles the same legitimate request. Offer a one-keypress
@@ -1238,7 +1238,7 @@ pub(in crate::tui::app) fn handle_server_event(
                     observed_at: Instant::now(),
                     current_tool_name: None,
                 });
-                app.set_status_notice("Server still busy; follow-up stays queued");
+                app.set_status_notice("Сервер все еще занят; последующий запрос остается в очереди");
                 crate::logging::info(
                     "Server rejected queued continuation because a turn is still running; re-queued it and re-adopted the running turn",
                 );
@@ -1258,9 +1258,9 @@ pub(in crate::tui::app) fn handle_server_event(
                         app.rate_limit_notice_with_nudge(reset_duration.as_secs());
                     app.push_display_message(DisplayMessage::system(rate_limit_line));
                     if is_system {
-                        app.set_status_notice("Rate limited; queued system retry");
+                        app.set_status_notice("Ограничение скорости; системная повторная попытка в очереди");
                     } else {
-                        app.set_status_notice("Rate limited; queued retry");
+                        app.set_status_notice("Ограничение скорости; повторная попытка в очереди");
                     }
                     app.is_processing = false;
                     app.status = ProcessingStatus::Idle;
@@ -1355,7 +1355,7 @@ pub(in crate::tui::app) fn handle_server_event(
                 app.push_display_message(DisplayMessage::system(
                     "🛑 Not retrying: the model is not valid for the configured endpoint (e.g. an Ark coding-plan endpoint rejecting a model without the coding plan feature, or a model-not-found). Check the model name and base URL (the coding endpoint `/api/coding/v3` only accepts coding-plan models; use `/api/v3` otherwise), then send again.".to_string(),
                 ));
-                app.set_status_notice("Stopped: model/endpoint mismatch");
+                app.set_status_notice("Остановлено: несоответствие модели/конечной точки");
                 app.restore_failed_input_to_box();
                 // Switching models is exactly the right fix for a
                 // model/endpoint mismatch: offer the next best route.
@@ -1418,7 +1418,7 @@ pub(in crate::tui::app) fn handle_server_event(
             app.push_display_message(DisplayMessage::system(format!(
                 "Session close requested by coordinator: {reason}"
             )));
-            app.set_status_notice("Session close requested by coordinator".to_string());
+            app.set_status_notice("Закрытие сессии запрошено координатором".to_string());
             app.should_quit = true;
             true
         }
@@ -1447,13 +1447,13 @@ pub(in crate::tui::app) fn handle_server_event(
                         "Renamed session to {}.",
                         display_title
                     )));
-                    app.set_status_notice("Session renamed");
+                    app.set_status_notice("Сессия переименована");
                 } else {
                     app.push_display_message(DisplayMessage::system(format!(
                         "Cleared custom name. Session title is now {}.",
                         display_title
                     )));
-                    app.set_status_notice("Session name cleared");
+                    app.set_status_notice("Имя сессии очищено");
                 }
                 true
             } else {
@@ -1795,7 +1795,7 @@ pub(in crate::tui::app) fn handle_server_event(
                 && !app.pending_server_reload
             {
                 app.pending_server_reload = true;
-                app.set_status_notice("Server update available");
+                app.set_status_notice("Доступно обновление сервера");
             }
             app.remote_server_short_name = server_name;
             if let Some(icon) = server_icon {
@@ -1962,7 +1962,7 @@ pub(in crate::tui::app) fn handle_server_event(
                     app.input.clear();
                     app.cursor_pos = 0;
                     app.pending_images.clear();
-                    app.set_status_notice("Reload complete - prompt preserved");
+                    app.set_status_notice("Перезагрузка завершена - запрос сохранен");
                 }
                 restore_pending_startup_prompt_echo(app);
                 app.note_runtime_memory_event_force("history_loaded", "remote_history_applied");
@@ -2237,7 +2237,7 @@ pub(in crate::tui::app) fn handle_server_event(
             );
             app.push_display_message(DisplayMessage::system(message.clone()));
             persist_replay_display_message(app, "system", None, &message);
-            app.set_status_notice("Plan proposal received");
+            app.set_status_notice("Получено предложение плана");
             false
         }
         ServerEvent::McpStatus { servers } => {
@@ -2279,7 +2279,7 @@ pub(in crate::tui::app) fn handle_server_event(
                 app.push_display_message(DisplayMessage::error(
                     crate::tui::app::model_context::model_switch_failure_message(&err, true),
                 ));
-                app.set_status_notice("Model switch failed");
+                app.set_status_notice("Ошибка переключения модели");
             } else {
                 app.update_context_limit_for_model(&model);
                 app.remote_provider_model = Some(model.clone());
@@ -2294,7 +2294,7 @@ pub(in crate::tui::app) fn handle_server_event(
                         model
                     )));
                 }
-                app.set_status_notice(format!("Model → {}", model));
+                app.set_status_notice(format!("Модель → {}", model));
             }
             false
         }
@@ -2380,7 +2380,7 @@ pub(in crate::tui::app) fn handle_server_event(
                     "✓ Reasoning effort → {}",
                     label
                 )));
-                app.set_status_notice(format!("Effort: {}", label));
+                app.set_status_notice(format!("Усилие: {}", label));
             }
             false
         }
@@ -2427,7 +2427,7 @@ pub(in crate::tui::app) fn handle_server_event(
                     "✓ Transport → {}",
                     label
                 )));
-                app.set_status_notice(format!("Transport: {}", label));
+                app.set_status_notice(format!("Транспорт: {}", label));
             }
             false
         }
@@ -2444,7 +2444,7 @@ pub(in crate::tui::app) fn handle_server_event(
                     "✓ Compaction mode → {}",
                     label
                 )));
-                app.set_status_notice(format!("Compaction: {}", label));
+                app.set_status_notice(format!("Сжатие: {}", label));
             }
             false
         }
@@ -2510,7 +2510,7 @@ pub(in crate::tui::app) fn handle_server_event(
                 });
             }
             if let Some(n) = tools_skipped {
-                app.set_status_notice(format!("⚡ {} tool(s) skipped", n));
+                app.set_status_notice(format!("⚡ Пропущено {} инструментов", n));
             }
             false
         }
@@ -2537,7 +2537,7 @@ pub(in crate::tui::app) fn handle_server_event(
                     format!("🧠 auto-recalled {} memories", count)
                 };
                 app.push_display_message(DisplayMessage::memory(summary, display_prompt));
-                app.set_status_notice(format!("🧠 {} relevant {} injected", count, plural));
+                app.set_status_notice(format!("🧠 Вставлено {} релевантных {}", count, plural));
             }
             false
         }
@@ -2777,7 +2777,7 @@ pub(in crate::tui::app) fn handle_server_event(
                     "Added {} to workspace.",
                     new_session_name,
                 )));
-                app.set_status_notice(format!("Workspace + {}", new_session_name));
+                app.set_status_notice(format!("Рабочая область + {}", new_session_name));
                 return false;
             }
             if crate::tui::is_ssh_remote() {
@@ -2827,13 +2827,13 @@ pub(in crate::tui::app) fn handle_server_event(
                             "🔍 {} launched in {}.",
                             label, new_session_name,
                         )));
-                        app.set_status_notice(format!("{} launched", label));
+                        app.set_status_notice(format!("{} запущен", label));
                     } else {
                         app.push_display_message(DisplayMessage::system(format!(
                             "✂ Split → {} (opened in new pane/window)",
                             new_session_name,
                         )));
-                        app.set_status_notice(format!("Split → {}", new_session_name));
+                        app.set_status_notice(format!("Разделение → {}", new_session_name));
                     }
                 }
                 Ok(false) => {
@@ -2842,7 +2842,7 @@ pub(in crate::tui::app) fn handle_server_event(
                             "🔍 {} session {} created.\n\nNo terminal found. Resume manually:\n  jcode --resume {}",
                             label, new_session_name, new_session_id,
                         )));
-                        app.set_status_notice(format!("{} session created", label));
+                        app.set_status_notice(format!("Создана {} сессия", label));
                     } else {
                         app.push_display_message(DisplayMessage::system(format!(
                             "✂ Split → {}\n\nNo terminal found. Resume manually:\n  jcode --resume {}",
@@ -2856,7 +2856,7 @@ pub(in crate::tui::app) fn handle_server_event(
                             "{} session {} was created but failed to open a window: {}\n\nResume manually: jcode --resume {}",
                             label, new_session_name, e, new_session_id,
                         )));
-                        app.set_status_notice(format!("{} open failed", label));
+                        app.set_status_notice(format!("Ошибка открытия {}", label));
                     } else {
                         app.push_display_message(DisplayMessage::error(format!(
                             "Split created {} but failed to open window: {}\n\nResume manually: jcode --resume {}",
@@ -2872,10 +2872,10 @@ pub(in crate::tui::app) fn handle_server_event(
         } => {
             if success {
                 app.push_display_message(DisplayMessage::system(message));
-                app.set_status_notice("Compacting context");
+                app.set_status_notice("Сжатие контекста");
             } else {
                 app.push_display_message(DisplayMessage::system(message));
-                app.set_status_notice("Compaction failed");
+                app.set_status_notice("Ошибка сжатия");
             }
             false
         }
@@ -2884,16 +2884,16 @@ pub(in crate::tui::app) fn handle_server_event(
         } => {
             app.push_display_message(DisplayMessage::system(message));
             if resumed == 0 {
-                app.set_status_notice("No sessions to resume");
+                app.set_status_notice("Нет сессий для возобновления");
             } else if resumed == 1 {
-                app.set_status_notice("Resuming 1 session");
+                app.set_status_notice("Возобновление 1 сессии");
             } else {
-                app.set_status_notice(format!("Resuming {} sessions", resumed));
+                app.set_status_notice(format!("Возобновление {} сессий", resumed));
             }
             false
         }
         ServerEvent::StdinRequest { .. } => {
-            app.set_status_notice("⌨ Interactive terminal detected (command will timeout)");
+            app.set_status_notice("⌨ Обнаружен интерактивный терминал (команда будет иметь таймаут)");
             false
         }
         _ => false,

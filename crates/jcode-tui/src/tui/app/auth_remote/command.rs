@@ -194,11 +194,11 @@ fn parse_status(value: &serde_json::Value) -> Result<Reply, &'static str> {
             ),
             Some("expired") => (
                 crate::auth::AuthState::Expired,
-                format!("{} (expired)", descriptor.auth_status_method),
+                format!("{} (истек)", descriptor.auth_status_method),
             ),
             Some("not_configured") => (
                 crate::auth::AuthState::NotConfigured,
-                "not configured".to_string(),
+                "не настроен".to_string(),
             ),
             _ => return Err("Unsupported remote auth provider status"),
         };
@@ -559,9 +559,9 @@ mod tests {
             let expected_method = match provider.state {
                 crate::auth::AuthState::Available => catalog[index].auth_status_method.to_string(),
                 crate::auth::AuthState::Expired => {
-                    format!("{} (expired)", catalog[index].auth_status_method)
+                    format!("{} (истек)", catalog[index].auth_status_method)
                 }
-                crate::auth::AuthState::NotConfigured => "not configured".to_string(),
+                crate::auth::AuthState::NotConfigured => "не настроен".to_string(),
             };
             assert_eq!(provider.method_detail, expected_method);
         }

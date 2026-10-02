@@ -49,8 +49,8 @@ fn composer_mode(input: &str, is_remote_mode: bool) -> ComposerMode {
 
 fn shell_mode_hint(mode: ComposerMode) -> Option<&'static str> {
     match mode {
-        ComposerMode::ShellLocal => Some("  shell mode · Enter runs locally"),
-        ComposerMode::ShellRemote => Some("  shell mode · Enter runs on server"),
+        ComposerMode::ShellLocal => Some("  режим shell · Enter выполняется локально"),
+        ComposerMode::ShellRemote => Some("  режим shell · Enter выполняется на сервере"),
         _ => None,
     }
 }
@@ -145,20 +145,20 @@ pub(super) fn draw_prompt_history_search_overlay(
 
     let mut lines: Vec<Line<'static>> = Vec::new();
     lines.push(Line::from(vec![
-        Span::styled("(history search) ", dim),
+        Span::styled("(поиск в истории)", dim),
         Span::styled(view.query.clone(), accent),
         Span::styled("█", accent),
         Span::styled(
-            "  ↑↓ select · ↵ insert · Esc cancel",
+            "  ↑↓ выбрать · ↵ вставить · Esc отмена",
             Style::default().fg(dim_color()),
         ),
     ]));
 
     if view.matches.is_empty() {
         if view.query.trim().is_empty() {
-            lines.push(Line::from(Span::styled("  type to search history", dim)));
+            lines.push(Line::from(Span::styled("  введите для поиска в истории", dim)));
         } else {
-            lines.push(Line::from(Span::styled("  no matches", dim)));
+            lines.push(Line::from(Span::styled("  нет совпадений", dim)));
         }
     } else {
         // Keep the selected row inside the visible window.
@@ -189,7 +189,7 @@ pub(super) fn draw_prompt_history_search_overlay(
             {
                 spans.push(Span::styled(
                     format!(
-                        "  +{} more",
+                        "  +{} ещё",
                         view.matches.len() - (window_start + VISIBLE_LIMIT)
                     ),
                     dim,
@@ -308,7 +308,7 @@ fn command_suggestion_lines(
             }
             if i + 1 == limited.len() && more_count > 0 {
                 spans.push(Span::styled(
-                    format!("  +{} more", more_count),
+                    format!("  +{} ещё", more_count),
                     Style::default().fg(dim_color()),
                 ));
             }
@@ -614,18 +614,18 @@ fn occasional_session_history_warning(
     };
 
     Some(format!(
-        "Session history: {tokens} tokens processed{compactions}; /clear starts fresh context"
+        "История сессии: {tokens} токенов обработано{compactions}; /clear начинает свежий контекст"
     ))
 }
 
 fn connection_phase_label(phase: &ConnectionPhase) -> String {
     match phase {
-        ConnectionPhase::Authenticating => "refreshing auth".to_string(),
+        ConnectionPhase::Authenticating => "обновление аутентификации".to_string(),
         ConnectionPhase::Connecting => "connecting".to_string(),
-        ConnectionPhase::SendingRequest => "sending context".to_string(),
-        ConnectionPhase::WaitingForResponse => "waiting for response".to_string(),
+        ConnectionPhase::SendingRequest => "отправка контекста".to_string(),
+        ConnectionPhase::WaitingForResponse => "ожидание ответа".to_string(),
         ConnectionPhase::Streaming => "streaming".to_string(),
-        ConnectionPhase::Retrying { attempt, max } => format!("retrying {}/{}", attempt, max),
+        ConnectionPhase::Retrying { attempt, max } => format!("повторная попытка {}/{}", attempt, max),
     }
 }
 
@@ -688,7 +688,7 @@ fn collect_transport_context_labels(
         .map(|upstream| upstream.trim().to_string())
         .filter(|upstream| !upstream.is_empty())
     {
-        labels.push(format!("via {}", upstream));
+        labels.push(format!(" · через {}", upstream));
     }
 
     labels
@@ -720,8 +720,8 @@ fn streaming_liveness_label(
         return time_str;
     }
     match stale_secs {
-        Some(s) if s > 10.0 => format!("(stalled {:.0}s) · {}", s, time_str),
-        Some(s) if s > 2.0 => format!("(no tokens {:.0}s) · {}", s, time_str),
+        Some(s) if s > 10.0 => format!(" (застрял {:.0}с) · {}", s, time_str),
+        Some(s) if s > 2.0 => format!(" (нет токенов {:.0}с) · {}", s, time_str),
         _ => time_str,
     }
 }
@@ -751,21 +751,21 @@ fn append_batch_progress_spans(
 
     if total > 0 {
         spans.push(Span::styled(
-            format!(" · {}/{} done", completed, total),
+            format!(" · {}/{} выполнено", completed, total),
             Style::default().fg(anim_color).bold(),
         ));
     }
 
     if let Some(running) = running_summary {
         spans.push(Span::styled(
-            format!(" · running: {}", running),
+            format!(" · выполняется: {}", running),
             Style::default().fg(dim_color()),
         ));
     }
 
     if let Some(tool_name) = last_completed.filter(|_| completed < total) {
         spans.push(Span::styled(
-            format!(" · last done: {}", tool_name),
+            format!(" · последнее выполнено: {}", tool_name),
             Style::default().fg(dim_color()),
         ));
     }
@@ -791,7 +791,7 @@ pub(super) fn draw_status(frame: &mut Frame, app: &dyn TuiState, area: Rect, pen
     );
 
     let queued_suffix = if pending_count > 0 {
-        format!(" · +{} queued", pending_count)
+        format!(" · +{} в очереди", pending_count)
     } else {
         String::new()
     };
@@ -811,19 +811,19 @@ pub(super) fn draw_status(frame: &mut Frame, app: &dyn TuiState, area: Rect, pen
         let time_str = if secs >= 3600 {
             let hours = secs / 3600;
             let mins = (secs % 3600) / 60;
-            format!("{}h {}m", hours, mins)
+            format!("{}ч {}м", hours, mins)
         } else if secs >= 60 {
             let mins = secs / 60;
             let s = secs % 60;
-            format!("{}m {}s", mins, s)
+            format!("{}м {}с", mins, s)
         } else {
-            format!("{}s", secs)
+            format!("{}с", secs)
         };
         Line::from(vec![
             Span::styled(spinner, Style::default().fg(rgb(255, 193, 7))),
             Span::styled(
                 format!(
-                    " Rate limited. Auto-retry in {}...{}",
+                    " Ограничение скорости. Автоповтор через {}...{}",
                     time_str, queued_suffix
                 ),
                 Style::default().fg(rgb(255, 193, 7)),
@@ -838,7 +838,7 @@ pub(super) fn draw_status(frame: &mut Frame, app: &dyn TuiState, area: Rect, pen
                 let mut spans = vec![
                     Span::styled(spinner, Style::default().fg(ai_color())),
                     Span::styled(
-                        format!(" sending… {}", format_elapsed(elapsed)),
+                        format!(" отправка… {}", format_elapsed(elapsed)),
                         Style::default().fg(dim_color()),
                     ),
                 ];
@@ -879,7 +879,7 @@ pub(super) fn draw_status(frame: &mut Frame, app: &dyn TuiState, area: Rect, pen
                 Line::from(spans)
             }
             ProcessingStatus::Thinking(_start) => {
-                let mut label = format!(" thinking… {}", format_elapsed(elapsed));
+                let mut label = format!(" думаю… {}", format_elapsed(elapsed));
                 append_transport_context(&mut label, app);
                 let mut spans = vec![
                     Span::styled(spinner, Style::default().fg(ai_color())),
@@ -895,7 +895,7 @@ pub(super) fn draw_status(frame: &mut Frame, app: &dyn TuiState, area: Rect, pen
                 let mut status_text =
                     streaming_liveness_label(time_str, stale_secs, stream_message_ended);
                 if let Some(tps) = app.output_tps() {
-                    status_text = format!("{} · {:.1} tps", status_text, tps);
+                    status_text = format!("{} · {:.1} ток/с", status_text, tps);
                 }
                 if input_tokens > 0 || output_tokens > 0 {
                     status_text = format!(
@@ -909,13 +909,13 @@ pub(super) fn draw_status(frame: &mut Frame, app: &dyn TuiState, area: Rect, pen
                 if let Some(problem) = kv_cache_problem {
                     let miss_tokens = problem.affected_tokens.unwrap_or(0);
                     let miss_str = if miss_tokens >= 1000 {
-                        format!("{}k", miss_tokens / 1000)
+                        format!("{}к", miss_tokens / 1000)
                     } else if miss_tokens > 0 {
                         format!("{}", miss_tokens)
                     } else {
                         "kv".to_string()
                     };
-                    status_text = format!("⚠ {} cache miss · {}", miss_str, status_text);
+                    status_text = format!("⚠ {} промах кэша · {}", miss_str, status_text);
                 }
                 let spans = streaming_status_spans(
                     spinner,
@@ -931,7 +931,7 @@ pub(super) fn draw_status(frame: &mut Frame, app: &dyn TuiState, area: Rect, pen
                     Span::styled("↻ ", Style::default().fg(rgb(255, 193, 7))),
                     Span::styled(
                         format!(
-                            "network disconnected, waiting to retry · {} · {}",
+                            "сеть отключена, ожидание повтора · {} · {}",
                             listener,
                             format_elapsed(elapsed)
                         ),
@@ -1006,20 +1006,20 @@ pub(super) fn draw_status(frame: &mut Frame, app: &dyn TuiState, area: Rect, pen
                 if let Some(problem) = kv_cache_problem {
                     let miss_tokens = problem.affected_tokens.unwrap_or(0);
                     let miss_str = if miss_tokens >= 1000 {
-                        format!("{}k", miss_tokens / 1000)
+                        format!("{}к", miss_tokens / 1000)
                     } else if miss_tokens > 0 {
                         format!("{}", miss_tokens)
                     } else {
                         "kv".to_string()
                     };
                     spans.push(Span::styled(
-                        format!(" · ⚠ {} cache miss", miss_str),
+                        format!(" · ⚠ {} промах кэша", miss_str),
                         Style::default().fg(rgb(255, 193, 7)),
                     ));
                 }
 
                 spans.push(Span::styled(
-                    format!(" · {} bg", jcode_tui_core::keybind::alt_chord("B")),
+                    format!(" · {} фон", jcode_tui_core::keybind::alt_chord("B")),
                     Style::default().fg(rgb(100, 100, 100)),
                 ));
 
@@ -1086,7 +1086,7 @@ fn running_tool_header_spans(
     let mut spans = vec![
         Span::styled(spinner, Style::default().fg(anim_color)),
         Span::styled(
-            format!(" running {}", name),
+            format!(" выполняется {}", name),
             Style::default().fg(dim_color()),
         ),
     ];
@@ -1563,7 +1563,7 @@ mod tests {
     fn streaming_liveness_label_shows_quiet_stream_warning_before_message_end() {
         assert_eq!(
             streaming_liveness_label("4.2s".to_string(), Some(3.4), false),
-            "(no tokens 3s) · 4.2s"
+            "(нет токенов 3с) · 4.2с"
         );
         assert_eq!(
             streaming_liveness_label("12.0s".to_string(), Some(12.1), false),
@@ -1689,11 +1689,11 @@ mod tests {
     fn shell_mode_hint_reflects_execution_target() {
         assert_eq!(
             shell_mode_hint(ComposerMode::ShellLocal),
-            Some("  shell mode · Enter runs locally")
+            Some("  режим оболочки · Enter выполняет локально")
         );
         assert_eq!(
             shell_mode_hint(ComposerMode::ShellRemote),
-            Some("  shell mode · Enter runs on server")
+            Some("  режим оболочки · Enter выполняет на сервере")
         );
         assert_eq!(shell_mode_hint(ComposerMode::Chat), None);
     }
@@ -1733,22 +1733,22 @@ pub(super) fn build_notification_spans(app: &dyn TuiState) -> Vec<Span<'static>>
         let label = if selection.has_action {
             if selection.selected_lines > 1 {
                 format!(
-                    "{} selection · {} chars · {} lines · Enter/Y copy · Esc exit",
+                    "{} выделено · {} символов · {} строк · Enter/Y копировать · Esc выход",
                     pane_label, selection.selected_chars, selection.selected_lines
                 )
             } else {
                 format!(
-                    "{} selection · {} chars · Enter/Y copy · Esc exit",
+                    "{} выделено · {} символов · Enter/Y копировать · Esc выход",
                     pane_label, selection.selected_chars
                 )
             }
         } else if selection.dragging {
             format!(
-                "{} selection · dragging… · Enter/Y copy · Esc exit",
+                "{} выделено · перетаскивание… · Enter/Y копировать · Esc выход",
                 pane_label
             )
         } else {
-            format!("{} selection · drag to copy", pane_label)
+            format!("{} выделено · перетащите для копирования", pane_label)
         };
         spans.push(Span::styled(label, Style::default().fg(rgb(140, 220, 200))));
     }
@@ -1791,9 +1791,9 @@ pub(super) fn build_notification_spans(app: &dyn TuiState) -> Vec<Span<'static>>
                 Style::default().fg(Color::Red).bold()
             };
             let feedback_text = if success {
-                "✓ Copied! "
+                "✓ Скопировано!"
             } else {
-                "✗ Copy failed "
+                "✗ Копирование не удалось"
             };
             spans.push(Span::styled(feedback_text, feedback_style));
         }
@@ -1856,17 +1856,17 @@ pub(super) fn build_notification_spans(app: &dyn TuiState) -> Vec<Span<'static>>
                     .cached_tokens
                     .map(|t| {
                         if t >= 1_000_000 {
-                            format!(" ({:.1}M tok)", t as f64 / 1_000_000.0)
+                            format!(" ({:.1}М ток)", t as f64 / 1_000_000.0)
                         } else if t >= 1_000 {
-                            format!(" ({}K tok)", t / 1000)
+                            format!(" ({}К ток)", t / 1000)
                         } else {
-                            format!(" ({} tok)", t)
+                            format!(" ({} ток)", t)
                         }
                     })
                     .unwrap_or_default();
                 push_sep(&mut spans);
                 spans.push(Span::styled(
-                    format!("🧊 cache cold{}", tokens_str),
+                    format!("🧊 кэш холодный{}", tokens_str),
                     Style::default().fg(rgb(140, 180, 255)),
                 ));
                 // Small gray "how long ago it went cold" hint, e.g. `1h 1m`.
@@ -1882,7 +1882,7 @@ pub(super) fn build_notification_spans(app: &dyn TuiState) -> Vec<Span<'static>>
                     .cached_tokens
                     .map(|t| {
                         if t >= 1_000 {
-                            format!(" {}K", t / 1000)
+                            format!(" {}К", t / 1000)
                         } else {
                             format!(" {}", t)
                         }
@@ -1892,13 +1892,13 @@ pub(super) fn build_notification_spans(app: &dyn TuiState) -> Vec<Span<'static>>
                 // glance; show minutes granularity instead.
                 let remaining = cache_info.remaining_secs;
                 let time_str = if remaining > 60 {
-                    format!("{}m", remaining.div_ceil(60))
+                    format!("{}м", remaining.div_ceil(60))
                 } else {
-                    format!("{}s", remaining)
+                    format!("{}с", remaining)
                 };
                 push_sep(&mut spans);
                 spans.push(Span::styled(
-                    format!("⏳ cache {}{}", time_str, tokens_str),
+                    format!("⏳ кэш {}{}", time_str, tokens_str),
                     Style::default().fg(rgb(255, 193, 7)),
                 ));
             }
@@ -1908,7 +1908,7 @@ pub(super) fn build_notification_spans(app: &dyn TuiState) -> Vec<Span<'static>>
     if app.has_stashed_input() {
         push_sep(&mut spans);
         spans.push(Span::styled(
-            "📋 stash",
+            "📋 скрыто",
             Style::default().fg(rgb(255, 193, 7)),
         ));
     }
@@ -1947,7 +1947,7 @@ pub(super) fn draw_overscroll_status(frame: &mut Frame, app: &dyn TuiState, area
     // is going away. Build it first so it always gets space on the right edge.
     let countdown: Option<Span> = app.chat_overscroll_remaining().map(|secs| {
         Span::styled(
-            format!("(overscroll {:.1})", secs.max(0.0)),
+            format!("(переполнение {:.1})", secs.max(0.0)),
             Style::default().fg(rgb(150, 150, 165)).italic(),
         )
     });
@@ -1965,7 +1965,7 @@ pub(super) fn draw_overscroll_status(frame: &mut Frame, app: &dyn TuiState, area
             session_facts::pretty_model(&model),
             Style::default().fg(rgb(255, 150, 200)).bold(),
         ));
-        // Reasoning level shown inline next to the model, e.g. " high".
+        // Reasoning level shown inline next to the model, e.g. " высокий".
         if let Some(effort) = data
             .reasoning_effort
             .as_deref()
@@ -2253,11 +2253,11 @@ fn overscroll_context_usage(
 /// Format a token count compactly: 1234 -> "1.2k", 200000 -> "200k", 1_500_000 -> "1.5M".
 fn overscroll_format_tokens(tokens: usize) -> String {
     if tokens >= 1_000_000 {
-        format!("{:.1}M", tokens as f64 / 1_000_000.0)
+        format!("{:.1}М", tokens as f64 / 1_000_000.0)
     } else if tokens >= 10_000 {
-        format!("{}k", tokens / 1000)
+        format!("{}к", tokens / 1000)
     } else if tokens >= 1_000 {
-        format!("{:.1}k", tokens as f64 / 1000.0)
+        format!("{:.1}к", tokens as f64 / 1000.0)
     } else {
         tokens.to_string()
     }
@@ -2651,7 +2651,7 @@ pub(super) fn draw_input(
         )));
     } else if app.next_prompt_new_session_armed() {
         hint_shown = true;
-        let hint = "  ↗ Next prompt opens a new session";
+        let hint = "  ↗ Следующий запрос откроет новую сессию";
         hint_line = Some(hint.trim().to_string());
         lines.push(Line::from(Span::styled(
             hint,
@@ -2660,9 +2660,9 @@ pub(super) fn draw_input(
     } else if app.is_processing() && !input_text.is_empty() {
         hint_shown = true;
         let hint = if app.queue_mode() {
-            "  Ctrl/Cmd+Enter to send now"
+            "  Ctrl/Cmd+Enter для отправки сейчас"
         } else {
-            "  Ctrl/Cmd+Enter to queue"
+            "  Ctrl/Cmd+Enter для постановки в очередь"
         };
         hint_line = Some(hint.trim().to_string());
         lines.push(Line::from(Span::styled(

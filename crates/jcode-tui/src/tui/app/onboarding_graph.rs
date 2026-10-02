@@ -55,7 +55,7 @@ pub enum NodeId {
     CredRejected,
     /// Legacy transient phase, auto-advances.
     ModelSelect,
-    /// "Continue where you left off?" (legacy/replay path).
+    /// "Продолжить с того места, где вы остановились?" (legacy/replay path).
     ContinuePrompt,
     /// Action picker: suggested review, or a blank session.
     StartChoice,
@@ -189,7 +189,7 @@ pub struct NodeProps {
     pub is_terminal: bool,
     /// This node represents something having gone wrong. Failure nodes are held
     /// to a stricter standard: they must have a recovery edge that is not
-    /// "restart jcode".
+    /// "перезапустить jcode".
     pub is_failure: bool,
     /// The user never rests here: it auto-advances before a frame is drawn.
     /// Transient nodes are exempt from the escape-hatch rule because there is
@@ -605,11 +605,11 @@ pub fn check_invariants() -> Vec<Violation> {
         if !props.is_terminal && outs.is_empty() {
             violations.push(Violation {
                 invariant: "no_dead_ends",
-                detail: format!("{} is non-terminal with no outgoing edge", node.label()),
+                detail: format!("{} не является терминальным узлом без исходящих ребер", node.label()),
             });
         }
 
-        // 2. Every failure node recovers. "Restart jcode" is not a recovery, so
+        // 2. Every failure node recovers. "Перезапустить jcode" is not a recovery, so
         //    we require an edge that either retries or hands off to a fix.
         if props.is_failure {
             let recovers = outs.iter().any(|e| {
@@ -621,7 +621,7 @@ pub fn check_invariants() -> Vec<Violation> {
             if !recovers {
                 violations.push(Violation {
                     invariant: "failures_recover",
-                    detail: format!("{} offers no retry or hand-off edge", node.label()),
+                    detail: format!("{} предлагает нет повтора или передачи", node.label()),
                 });
             }
         }
@@ -635,7 +635,7 @@ pub fn check_invariants() -> Vec<Violation> {
         {
             violations.push(Violation {
                 invariant: "escape_hatch",
-                detail: format!("{} has no escape edge", node.label()),
+                detail: format!("{} не имеет выхода", node.label()),
             });
         }
 

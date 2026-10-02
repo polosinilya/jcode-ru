@@ -40,7 +40,7 @@ pub(crate) fn handle_auth_command(app: &mut App, trimmed: &str) -> bool {
                 .collect::<Vec<_>>()
                 .join(", ");
             app.push_display_message(DisplayMessage::error(format!(
-                "Unknown provider '{}'. Use: {}",
+                "Неизвестный провайдер '{}'. Используйте: {}",
                 provider.trim(),
                 valid
             )));
@@ -65,7 +65,7 @@ pub(crate) fn handle_auth_command(app: &mut App, trimmed: &str) -> bool {
                 .collect::<Vec<_>>()
                 .join(", ");
             app.push_display_message(DisplayMessage::error(format!(
-                "Unknown provider '{}'. Use: {}",
+                "Неизвестный провайдер '{}'. Используйте: {}",
                 provider.trim(),
                 valid
             )));
@@ -139,7 +139,7 @@ fn parse_account_command(trimmed: &str) -> Option<Result<AccountCommand, String>
         }
         "switch" | "use" => {
             if remainder.is_empty() {
-                return Some(Err("Usage: /account switch <label>".to_string()));
+                return Some(Err("Использование: /account switch <метка>".to_string()));
             }
             return Some(Ok(AccountCommand::SwitchShorthand {
                 label: remainder.to_string(),
@@ -153,7 +153,7 @@ fn parse_account_command(trimmed: &str) -> Option<Result<AccountCommand, String>
         }
         "remove" | "rm" | "delete" => {
             if remainder.is_empty() {
-                return Some(Err("Usage: /account remove <label>".to_string()));
+                return Some(Err("Использование: /account remove <метка>".to_string()));
             }
             return Some(Ok(AccountCommand::Remove {
                 provider_id: "claude".to_string(),
@@ -163,7 +163,7 @@ fn parse_account_command(trimmed: &str) -> Option<Result<AccountCommand, String>
         "default-provider" => {
             if remainder.is_empty() {
                 return Some(Err(
-                    "Usage: /account default-provider <claude|openai|copilot|gemini|openrouter|auto>"
+                    "Использование: /account default-provider <claude|openai|copilot|gemini|openrouter|auto>"
                         .to_string(),
                 ));
             }
@@ -174,7 +174,7 @@ fn parse_account_command(trimmed: &str) -> Option<Result<AccountCommand, String>
         "default-model" => {
             if remainder.is_empty() {
                 return Some(Err(
-                    "Usage: /account default-model <model|clear>".to_string()
+                    "Использование: /account default-model <модель|clear>".to_string()
                 ));
             }
             return Some(Ok(AccountCommand::SetDefaultModel(
@@ -220,7 +220,7 @@ fn parse_account_command(trimmed: &str) -> Option<Result<AccountCommand, String>
             "switch" | "use" => {
                 if value.is_empty() {
                     return Some(Err(format!(
-                        "Usage: /account {} switch <label>",
+                        "Использование: /account {} switch <метка>",
                         provider.id
                     )));
                 }
@@ -232,7 +232,7 @@ fn parse_account_command(trimmed: &str) -> Option<Result<AccountCommand, String>
             "remove" | "rm" | "delete" => {
                 if value.is_empty() {
                     return Some(Err(format!(
-                        "Usage: /account {} remove <label>",
+                        "Использование: /account {} remove <метка>",
                         provider.id
                     )));
                 }
@@ -244,7 +244,7 @@ fn parse_account_command(trimmed: &str) -> Option<Result<AccountCommand, String>
             "transport" if provider.id == "openai" => {
                 if value.is_empty() {
                     return Some(Err(
-                        "Usage: /account openai transport <auto|https|websocket>".to_string(),
+                        "Использование: /account openai transport <auto|https|websocket>".to_string(),
                     ));
                 }
                 AccountCommand::SetOpenAiTransport(normalize_clearish_value(value))
@@ -252,7 +252,7 @@ fn parse_account_command(trimmed: &str) -> Option<Result<AccountCommand, String>
             "effort" if provider.id == "openai" => {
                 if value.is_empty() {
                     return Some(Err(
-                        "Usage: /account openai effort <none|minimal|low|medium|high|xhigh|max|clear>"
+                        "Использование: /account openai effort <none|minimal|low|medium|high|xhigh|max|clear>"
                             .to_string(),
                     ));
                 }
@@ -262,13 +262,13 @@ fn parse_account_command(trimmed: &str) -> Option<Result<AccountCommand, String>
                 "on" => AccountCommand::SetOpenAiFast(true),
                 "off" => AccountCommand::SetOpenAiFast(false),
                 _ => {
-                    return Some(Err("Usage: /account openai fast <on|off>".to_string()));
+                    return Some(Err("Использование: /account openai fast <on|off>".to_string()));
                 }
             },
             "premium" if provider.id == "copilot" => {
                 if value.is_empty() {
                     return Some(Err(
-                        "Usage: /account copilot premium <normal|one|zero>".to_string()
+                        "Использование: /account copilot premium <normal|one|zero>".to_string()
                     ));
                 }
                 AccountCommand::SetCopilotPremium(normalize_normal_mode_value(value))
@@ -276,7 +276,7 @@ fn parse_account_command(trimmed: &str) -> Option<Result<AccountCommand, String>
             "api-base" if provider.id == "openai-compatible" => {
                 if value.is_empty() {
                     return Some(Err(
-                        "Usage: /account openai-compatible api-base <url|clear>".to_string(),
+                        "Использование: /account openai-compatible api-base <url|clear>".to_string(),
                     ));
                 }
                 AccountCommand::SetOpenAiCompatApiBase(normalize_clearish_value(value))
@@ -284,7 +284,7 @@ fn parse_account_command(trimmed: &str) -> Option<Result<AccountCommand, String>
             "api-key-name" if provider.id == "openai-compatible" => {
                 if value.is_empty() {
                     return Some(Err(
-                        "Usage: /account openai-compatible api-key-name <ENV_VAR|clear>"
+                        "Использование: /account openai-compatible api-key-name <ENV_VAR|clear>"
                             .to_string(),
                     ));
                 }
@@ -293,7 +293,7 @@ fn parse_account_command(trimmed: &str) -> Option<Result<AccountCommand, String>
             "env-file" if provider.id == "openai-compatible" => {
                 if value.is_empty() {
                     return Some(Err(
-                        "Usage: /account openai-compatible env-file <file.env|clear>".to_string(),
+                        "Использование: /account openai-compatible env-file <file.env|clear>".to_string(),
                     ));
                 }
                 AccountCommand::SetOpenAiCompatEnvFile(normalize_clearish_value(value))
@@ -301,7 +301,7 @@ fn parse_account_command(trimmed: &str) -> Option<Result<AccountCommand, String>
             "default-model" if provider.id == "openai-compatible" => {
                 if value.is_empty() {
                     return Some(Err(
-                        "Usage: /account openai-compatible default-model <model|clear>".to_string(),
+                        "Использование: /account openai-compatible default-model <модель|clear>".to_string(),
                     ));
                 }
                 AccountCommand::SetOpenAiCompatDefaultModel(normalize_clearish_value(value))
@@ -314,7 +314,7 @@ fn parse_account_command(trimmed: &str) -> Option<Result<AccountCommand, String>
                     }));
                 }
                 return Some(Err(format!(
-                    "Unknown /account {} subcommand '{}'. Try /account {} settings or /account {} login.",
+                    "Неизвестная подкоманда /account {} '{}'. Попробуйте /account {} settings или /account {} login.",
                     provider.id, other, provider.id, provider.id
                 )));
             }
@@ -387,7 +387,7 @@ pub(crate) fn execute_account_command_local(app: &mut App, command: AccountComma
             match resolve_account_provider_descriptor(&provider_id) {
                 Some(provider) => app.start_login_provider(provider),
                 None => app.push_display_message(DisplayMessage::error(format!(
-                    "Unknown provider {}.",
+                    "Неизвестный провайдер {}.",
                     provider_id
                 ))),
             }
@@ -402,7 +402,7 @@ pub(crate) fn execute_account_command_local(app: &mut App, command: AccountComma
             "claude" => app.switch_account(&label),
             "openai" => app.switch_openai_account(&label),
             _ => app.push_display_message(DisplayMessage::error(format!(
-                "Provider {} does not support account switching.",
+                "Провайдер {} не поддерживает переключение аккаунтов.",
                 provider_id
             ))),
         },
@@ -411,7 +411,7 @@ pub(crate) fn execute_account_command_local(app: &mut App, command: AccountComma
             "claude" => app.remove_account(&label),
             "openai" => app.remove_openai_account(&label),
             _ => app.push_display_message(DisplayMessage::error(format!(
-                "Provider {} does not support account removal.",
+                "Провайдер {} не поддерживает удаление аккаунтов.",
                 provider_id
             ))),
         },
@@ -464,7 +464,7 @@ pub(crate) async fn execute_account_command_remote(
             "claude" => {
                 if let Err(e) = crate::auth::claude::set_active_account(&label) {
                     app.push_display_message(DisplayMessage::error(format!(
-                        "Failed to switch account: {}",
+                        "Не удалось переключить аккаунт: {}",
                         e
                     )));
                     return Ok(());
@@ -474,15 +474,15 @@ pub(crate) async fn execute_account_command_remote(
                 app.context_warning_shown = false;
                 remote.switch_anthropic_account(&label).await?;
                 app.push_display_message(DisplayMessage::system(format!(
-                    "Switched to Anthropic account {}.",
+                    "Переключено на аккаунт Anthropic {}.",
                     label
                 )));
-                app.set_status_notice(format!("Account: switched to {}", label));
+                app.set_status_notice(format!("Аккаунт: переключено на {}", label));
             }
             "openai" => {
                 if let Err(e) = crate::auth::codex::set_active_account(&label) {
                     app.push_display_message(DisplayMessage::error(format!(
-                        "Failed to switch OpenAI account: {}",
+                        "Не удалось переключить аккаунт OpenAI: {}",
                         e
                     )));
                     return Ok(());
@@ -492,10 +492,10 @@ pub(crate) async fn execute_account_command_remote(
                 app.context_warning_shown = false;
                 remote.switch_openai_account(&label).await?;
                 app.push_display_message(DisplayMessage::system(format!(
-                    "Switched to OpenAI account {}.",
+                    "Переключено на аккаунт OpenAI {}.",
                     label
                 )));
-                app.set_status_notice(format!("OpenAI account: switched to {}", label));
+                app.set_status_notice(format!("Аккаунт OpenAI: переключено на {}", label));
             }
             _ => execute_account_command_local(app, AccountCommand::Switch { provider_id, label }),
         },
@@ -512,7 +512,7 @@ pub(crate) async fn execute_account_command_remote(
                 (true, false) => {
                     if let Err(e) = crate::auth::claude::set_active_account(&label) {
                         app.push_display_message(DisplayMessage::error(format!(
-                            "Failed to switch account: {}",
+                            "Не удалось переключить аккаунт: {}",
                             e
                         )));
                         return Ok(());
@@ -522,15 +522,15 @@ pub(crate) async fn execute_account_command_remote(
                     app.context_warning_shown = false;
                     remote.switch_anthropic_account(&label).await?;
                     app.push_display_message(DisplayMessage::system(format!(
-                        "Switched to Anthropic account {}.",
+                        "Переключено на аккаунт Anthropic {}.",
                         label
                     )));
-                    app.set_status_notice(format!("Account: switched to {}", label));
+                    app.set_status_notice(format!("Аккаунт: переключено на {}", label));
                 }
                 (false, true) => {
                     if let Err(e) = crate::auth::codex::set_active_account(&label) {
                         app.push_display_message(DisplayMessage::error(format!(
-                            "Failed to switch OpenAI account: {}",
+                            "Не удалось переключить аккаунт OpenAI: {}",
                             e
                         )));
                         return Ok(());
@@ -540,10 +540,10 @@ pub(crate) async fn execute_account_command_remote(
                     app.context_warning_shown = false;
                     remote.switch_openai_account(&label).await?;
                     app.push_display_message(DisplayMessage::system(format!(
-                        "Switched to OpenAI account {}.",
+                        "Переключено на аккаунт OpenAI {}.",
                         label
                     )));
-                    app.set_status_notice(format!("OpenAI account: switched to {}", label));
+                    app.set_status_notice(format!("Аккаунт OpenAI: переключено на {}", label));
                 }
                 _ => execute_account_command_local(app, AccountCommand::SwitchShorthand { label }),
             }
@@ -580,7 +580,7 @@ fn execute_account_add_local(app: &mut App, provider_id: &str, label: Option<&st
                     Ok(label) => label,
                     Err(e) => {
                         app.push_display_message(DisplayMessage::error(format!(
-                            "Failed to prepare Claude account: {}",
+                            "Не удалось подготовить аккаунт Claude: {}",
                             e
                         )));
                         return;
@@ -596,7 +596,7 @@ fn execute_account_add_local(app: &mut App, provider_id: &str, label: Option<&st
                     Ok(label) => label,
                     Err(e) => {
                         app.push_display_message(DisplayMessage::error(format!(
-                            "Failed to prepare OpenAI account: {}",
+                            "Не удалось подготовить аккаунт OpenAI: {}",
                             e
                         )));
                         return;
@@ -608,7 +608,7 @@ fn execute_account_add_local(app: &mut App, provider_id: &str, label: Option<&st
         other => match resolve_account_provider_descriptor(other) {
             Some(provider) => app.start_login_provider(provider),
             None => app.push_display_message(DisplayMessage::error(format!(
-                "Unknown provider {}.",
+                "Неизвестный провайдер {}.",
                 other
             ))),
         },
@@ -654,7 +654,7 @@ fn save_default_provider_setting(app: &mut App, provider: Option<&str>) {
         Some(other) if jcode_provider_core::AuthRoute::parse(other).is_some() => normalized,
         Some(other) => {
             app.push_display_message(DisplayMessage::error(format!(
-                "Unsupported default provider {}. Use claude, openai, anthropic-api, openai-api, copilot, gemini, openrouter, or auto.",
+                "Неподдерживаемый провайдер по умолчанию {}. Используйте claude, openai, anthropic-api, openai-api, copilot, gemini, openrouter или auto.",
                 other
             )));
             return;
@@ -663,14 +663,14 @@ fn save_default_provider_setting(app: &mut App, provider: Option<&str>) {
     match crate::config::Config::set_default_provider(provider.as_deref()) {
         Ok(()) => {
             let label = provider.as_deref().unwrap_or("auto");
-            app.set_status_notice(format!("Default provider: {}", label));
+            app.set_status_notice(format!("Провайдер по умолчанию: {}", label));
             app.push_display_message(DisplayMessage::system(format!(
-                "Saved default provider: {}. This affects future sessions.",
+                "Сохраненный провайдер по умолчанию: {}. Это повлияет на будущие сессии.",
                 label
             )));
         }
         Err(err) => app.push_display_message(DisplayMessage::error(format!(
-            "Failed to save default provider: {}",
+            "Не удалось сохранить провайдер по умолчанию: {}",
             err
         ))),
     }
@@ -680,14 +680,14 @@ fn save_default_model_setting(app: &mut App, model: Option<&str>) {
     match crate::config::Config::set_default_model_only(model) {
         Ok(()) => {
             let label = model.unwrap_or("(provider default)");
-            app.set_status_notice(format!("Default model: {}", label));
+            app.set_status_notice(format!("Модель по умолчанию: {}", label));
             app.push_display_message(DisplayMessage::system(format!(
-                "Saved default model: {}. This affects future sessions.",
+                "Сохраненная модель по умолчанию: {}. Это повлияет на будущие сессии.",
                 label
             )));
         }
         Err(err) => app.push_display_message(DisplayMessage::error(format!(
-            "Failed to save default model: {}",
+            "Не удалось сохранить модель по умолчанию: {}",
             err
         ))),
     }
@@ -697,21 +697,21 @@ fn save_openai_transport_setting_local(app: &mut App, value: Option<&str>) {
     let value = value.unwrap_or("auto");
     if !matches!(value, "auto" | "https" | "websocket") {
         app.push_display_message(DisplayMessage::error(
-            "OpenAI transport must be auto, https, or websocket.".to_string(),
+            "Транспорт OpenAI должен быть auto, https или websocket.".to_string(),
         ));
         return;
     }
     match crate::config::Config::set_openai_transport(Some(value)) {
         Ok(()) => {
             let _ = app.provider.set_transport(value);
-            app.set_status_notice(format!("Transport: {}", value));
+            app.set_status_notice(format!("Транспорт: {}", value));
             app.push_display_message(DisplayMessage::system(format!(
-                "Saved OpenAI transport preference: {}.",
+                "Сохраненные настройки транспорта OpenAI: {}.",
                 value
             )));
         }
         Err(err) => app.push_display_message(DisplayMessage::error(format!(
-            "Failed to save OpenAI transport: {}",
+            "Не удалось сохранить транспорт OpenAI: {}",
             err
         ))),
     }
@@ -725,7 +725,7 @@ fn save_openai_effort_setting_local(app: &mut App, value: Option<&str>) {
         )
     {
         app.push_display_message(DisplayMessage::error(
-            "OpenAI effort must be one of none, minimal, low, medium, high, xhigh, or max."
+            "Уровень усилий OpenAI должен быть одним из: none, minimal, low, medium, high, xhigh или max."
                 .to_string(),
         ));
         return;
@@ -734,7 +734,7 @@ fn save_openai_effort_setting_local(app: &mut App, value: Option<&str>) {
         && let Err(err) = app.provider.set_reasoning_effort(value)
     {
         app.push_display_message(DisplayMessage::error(format!(
-            "Failed to set OpenAI effort: {}",
+            "Не удалось установить уровень усилий OpenAI: {}",
             err
         )));
         return;
@@ -742,14 +742,14 @@ fn save_openai_effort_setting_local(app: &mut App, value: Option<&str>) {
     match crate::config::Config::set_openai_reasoning_effort(value) {
         Ok(()) => {
             let label = value.unwrap_or("(provider default)");
-            app.set_status_notice(format!("Effort: {}", label));
+            app.set_status_notice(format!("Уровень усилий: {}", label));
             app.push_display_message(DisplayMessage::system(format!(
-                "Saved OpenAI reasoning effort: {}.",
+                "Сохраненный уровень усилий OpenAI: {}.",
                 label
             )));
         }
         Err(err) => app.push_display_message(DisplayMessage::error(format!(
-            "Failed to save OpenAI effort: {}",
+            "Не удалось сохранить уровень усилий OpenAI: {}",
             err
         ))),
     }
@@ -765,14 +765,14 @@ pub(crate) fn save_openai_fast_setting_local(app: &mut App, enabled: bool) {
         Ok(()) => {
             let _ = app.provider.set_service_tier(value);
             let label = if enabled { "on" } else { "off" };
-            app.set_status_notice(format!("Fast mode: {}", label));
+            app.set_status_notice(format!("Быстрый режим: {}", label));
             app.push_display_message(DisplayMessage::system(format!(
-                "Saved OpenAI fast mode: {}.",
+                "Сохраненный быстрый режим OpenAI: {}.",
                 label
             )));
         }
         Err(err) => app.push_display_message(DisplayMessage::error(format!(
-            "Failed to save OpenAI fast mode: {}",
+            "Не удалось сохранить быстрый режим OpenAI: {}",
             err
         ))),
     }
@@ -787,7 +787,7 @@ fn save_copilot_premium_setting(app: &mut App, mode: Option<&str>) {
         "zero" => PremiumMode::Zero,
         other => {
             app.push_display_message(DisplayMessage::error(format!(
-                "Copilot premium mode must be normal, one, or zero (got {}).",
+                "Режим премиум Copilot должен быть normal, one или zero (получено {}).",
                 other
             )));
             return;
@@ -802,17 +802,17 @@ fn save_copilot_premium_setting(app: &mut App, mode: Option<&str>) {
         Ok(()) => {
             let label = match premium_mode {
                 PremiumMode::Normal => "normal",
-                PremiumMode::OnePerSession => "one premium per session",
-                PremiumMode::Zero => "zero premium requests",
+                PremiumMode::OnePerSession => "один премиум на сессию",
+                PremiumMode::Zero => "нулевые премиум запросы",
             };
-            app.set_status_notice(format!("Premium: {}", label));
+            app.set_status_notice(format!("Премиум: {}", label));
             app.push_display_message(DisplayMessage::system(format!(
-                "Saved Copilot premium mode: {}.",
+                "Сохраненный режим премиум Copilot: {}.",
                 label
             )));
         }
         Err(err) => app.push_display_message(DisplayMessage::error(format!(
-            "Failed to save Copilot premium mode: {}",
+            "Не удалось сохранить режим премиум Copilot: {}",
             err
         ))),
     }
@@ -839,7 +839,7 @@ fn save_openai_compat_setting(app: &mut App, setting: OpenAiCompatSetting, value
                     Some(value) => Some(value),
                     None => {
                         app.push_display_message(DisplayMessage::error(
-                            "OpenAI-compatible API base must be https://... or http://localhost."
+                            "Базовый URL API, совместимого с OpenAI, должен быть https://... или http://localhost."
                                 .to_string(),
                         ));
                         return;
@@ -854,7 +854,7 @@ fn save_openai_compat_setting(app: &mut App, setting: OpenAiCompatSetting, value
                 && !crate::provider_catalog::is_safe_env_key_name(value)
             {
                 app.push_display_message(DisplayMessage::error(
-                    "API key variable must be uppercase letters, digits, and underscores only."
+                    "Переменная API-ключа должна содержать только заглавные буквы, цифры и подчеркивания."
                         .to_string(),
                 ));
                 return;
@@ -869,7 +869,7 @@ fn save_openai_compat_setting(app: &mut App, setting: OpenAiCompatSetting, value
                 && !crate::provider_catalog::is_safe_env_file_name(value)
             {
                 app.push_display_message(DisplayMessage::error(
-                    "Env file must be a simple file name like groq.env.".to_string(),
+                    "Файл env должен быть простым именем файла, например groq.env.".to_string(),
                 ));
                 return;
             }
@@ -890,7 +890,7 @@ fn save_openai_compat_setting(app: &mut App, setting: OpenAiCompatSetting, value
         normalized_value.as_deref(),
     ) {
         app.push_display_message(DisplayMessage::error(format!(
-            "Failed to save OpenAI-compatible setting: {}",
+            "Не удалось сохранить настройку OpenAI-compatible: {}",
             err
         )));
         return;
@@ -908,21 +908,21 @@ fn save_openai_compat_setting(app: &mut App, setting: OpenAiCompatSetting, value
         )
         .is_err()
     {
-        crate::logging::warn("Failed to migrate OpenAI-compatible API key to new source");
+        crate::logging::warn("Не удалось перенести API-ключ OpenAI-compatible в новый источник");
     }
     crate::auth::AuthStatus::invalidate_cache();
     let label = match setting {
         OpenAiCompatSetting::ApiBase => format!("API base → {}", new.api_base),
-        OpenAiCompatSetting::ApiKeyName => format!("API key variable → {}", new.api_key_env),
+        OpenAiCompatSetting::ApiKeyName => format!("Переменная API-ключа → {}", new.api_key_env),
         OpenAiCompatSetting::EnvFile => format!("Env file → {}", new.env_file),
         OpenAiCompatSetting::DefaultModel => format!(
-            "Default model hint → {}",
+            "Подсказка модели по умолчанию → {}",
             new.default_model.as_deref().unwrap_or("(unset)")
         ),
     };
     app.set_status_notice(label.clone());
     app.push_display_message(DisplayMessage::system(format!(
-        "Saved OpenAI-compatible setting: {}.",
+        "Сохраненная настройка OpenAI-compatible: {}.",
         label
     )));
 }
@@ -931,34 +931,34 @@ fn render_provider_settings_markdown(app: &App, provider_id: &str) -> String {
     let status = crate::auth::AuthStatus::check();
     let cfg = crate::config::Config::load();
     let Some(provider) = resolve_account_provider_descriptor(provider_id) else {
-        return format!("Unknown provider {}.", provider_id);
+        return format!("Неизвестный провайдер {}.", provider_id);
     };
     let assessment = status.assessment_for_provider(provider);
     let mut lines = vec![format!("{}\n", provider.display_name)];
-    lines.push(format!("  - Status: {:?}", assessment.state));
+    lines.push(format!("  - Статус: {:?}", assessment.state));
     lines.push(format!(
         "  - Auth: {} ({})",
         provider.auth_kind.label(),
         assessment.method_detail.as_str()
     ));
     lines.push(format!(
-        "  - Validation: {}",
+        "  - Проверка: {}",
         assessment
             .last_validation
             .as_ref()
             .map(crate::auth::validation::format_record_label)
-            .unwrap_or_else(|| "not validated".to_string())
+            .unwrap_or_else(|| "не проверено".to_string())
     ));
-    lines.push(format!("  - Login command: /account {} login", provider.id));
+    lines.push(format!("  - Команда входа: /account {} login", provider.id));
     lines.push(format!(
-        "  - Doctor command: /account {} doctor",
+        "  - Команда диагностики: /account {} doctor",
         provider.id
     ));
     lines.push(String::new());
 
     let recommended_actions = crate::auth::doctor::recommended_actions(provider, &assessment, None);
     if !recommended_actions.is_empty() {
-        lines.push("Recommended next steps".to_string());
+        lines.push("Рекомендуемые следующие шаги".to_string());
         for action in recommended_actions {
             lines.push(format!("  - {}", action));
         }
@@ -971,26 +971,26 @@ fn render_provider_settings_markdown(app: &App, provider_id: &str) -> String {
             lines.push(String::new());
             lines.push("Commands:".to_string());
             lines.push("  - /account claude add".to_string());
-            lines.push("  - /account claude switch <label>".to_string());
-            lines.push("  - /account claude remove <label>".to_string());
+            lines.push("  - /account claude switch <метка>".to_string());
+            lines.push("  - /account claude remove <метка>".to_string());
         }
         "openai" => {
             lines.push(app.render_openai_accounts_markdown());
             lines.push(String::new());
-            lines.push("Settings".to_string());
+            lines.push("Настройки".to_string());
             lines.push(format!(
-                "  - Transport: {}",
+                "  - Транспорт: {}",
                 cfg.provider.openai_transport.as_deref().unwrap_or("auto")
             ));
             lines.push(format!(
-                "  - Reasoning effort: {}",
+                "  - Уровень рассуждений: {}",
                 cfg.provider
                     .openai_reasoning_effort
                     .as_deref()
-                    .unwrap_or("(provider default)")
+                    .unwrap_or("(по умолчанию провайдера)")
             ));
             lines.push(format!(
-                "  - Fast mode: {}",
+                "  - Быстрый режим: {}",
                 if cfg.provider.openai_service_tier.as_deref() == Some("priority") {
                     "on"
                 } else {
@@ -1005,9 +1005,9 @@ fn render_provider_settings_markdown(app: &App, provider_id: &str) -> String {
             lines.push("  - /account openai fast <on|off>".to_string());
         }
         "copilot" => {
-            lines.push("Settings".to_string());
+            lines.push("Настройки".to_string());
             lines.push(format!(
-                "  - Premium mode: {}",
+                "  - Премиум режим: {}",
                 cfg.provider.copilot_premium.as_deref().unwrap_or("normal")
             ));
             lines.push("  - /account copilot premium <normal|one|zero>".to_string());
@@ -1016,47 +1016,47 @@ fn render_provider_settings_markdown(app: &App, provider_id: &str) -> String {
             let compat = crate::provider_catalog::resolve_openai_compatible_profile(
                 crate::provider_catalog::OPENAI_COMPAT_PROFILE,
             );
-            lines.push("Settings".to_string());
-            lines.push("Configure custom OpenAI-compatible endpoints in this order: base URL first, then API key variable/key.".to_string());
+            lines.push("Настройки".to_string());
+            lines.push("Настройте пользовательские конечные точки, совместимые с OpenAI, в следующем порядке: сначала базовый URL, затем переменная/ключ API.".to_string());
             lines.push(format!("  - Step 1, API base URL: {}", compat.api_base));
             lines.push(format!(
-                "  - Step 2, API key variable: {}",
+                "  - Шаг 2, переменная API-ключа: {}",
                 compat.api_key_env
             ));
             lines.push(format!("  - Env file: {}", compat.env_file));
             lines.push(format!(
-                "  - Default model hint: {}",
+                "  - Подсказка модели по умолчанию: {}",
                 compat.default_model.as_deref().unwrap_or("(unset)")
             ));
             lines.push("  - /account openai-compatible api-base <url|clear>".to_string());
             lines.push("  - /account openai-compatible api-key-name <ENV_VAR|clear>".to_string());
             lines.push("  - /account openai-compatible env-file <file.env|clear>".to_string());
-            lines.push("  - /account openai-compatible default-model <model|clear>".to_string());
+            lines.push("  - /account openai-compatible default-model <модель|clear>".to_string());
         }
         _ => {
-            lines.push("No provider-specific settings are exposed here yet. Use /login to configure credentials.".to_string());
+            lines.push("Здесь пока не представлены специфические настройки провайдера. Используйте /login для настройки учетных данных.".to_string());
         }
     }
 
     if provider_id != "defaults" {
         lines.push(String::new());
-        lines.push("Global defaults".to_string());
+        lines.push("Глобальные настройки по умолчанию".to_string());
         lines.push(format!(
-            "  - Default provider: {}",
+            "  - Провайдер по умолчанию: {}",
             cfg.provider.default_provider.as_deref().unwrap_or("auto")
         ));
         lines.push(format!(
-            "  - Default model: {}",
+            "  - Модель по умолчанию: {}",
             cfg.provider
                 .default_model
                 .as_deref()
-                .unwrap_or("(provider default)")
+                .unwrap_or("(по умолчанию провайдера)")
         ));
         lines.push(
             "  - /account default-provider <claude|openai|copilot|gemini|openrouter|auto>"
                 .to_string(),
         );
-        lines.push("  - /account default-model <model|clear>".to_string());
+        lines.push("  - /account default-model <модель|clear>".to_string());
     }
 
     lines.join("\n")
@@ -1070,7 +1070,7 @@ fn render_auth_doctor_markdown(provider_filter: Option<&str>) -> String {
             Some(provider) => vec![provider],
             None => {
                 return format!(
-                    "Unknown provider {}. Use /account <provider> doctor with a valid provider id.",
+                    "Неизвестный провайдер {}. Используйте /account <provider> doctor с действительным ID провайдера.",
                     provider_id
                 );
             }
@@ -1101,48 +1101,48 @@ fn render_auth_doctor_markdown(provider_filter: Option<&str>) -> String {
 
         let mut lines = vec![format!("{} ({})", provider.display_name, provider.id)];
         lines.push(format!(
-            "  - Status: {}",
+            "  - Статус: {}",
             match assessment.state {
                 crate::auth::AuthState::Available => "ready",
-                crate::auth::AuthState::Expired => "needs attention",
-                crate::auth::AuthState::NotConfigured => "setup needed",
+                crate::auth::AuthState::Expired => "требует внимания",
+                crate::auth::AuthState::NotConfigured => "требуется настройка",
             }
         ));
         lines.push(format!("  - Method: {}", assessment.method_detail));
-        lines.push(format!("  - Health: {}", assessment.health_summary()));
+        lines.push(format!("- Здоровье: {}", assessment.health_summary()));
         lines.push(format!(
-            "  - Credential source: {} ({})",
+            "- Источник учетных данных: {} ({})",
             assessment.credential_source.label(),
             assessment.credential_source_detail
         ));
         lines.push(format!(
-            "  - Refresh: {}",
+            "- Обновление: {}",
             assessment.refresh_support.label()
         ));
         lines.push(format!(
-            "  - Validation method: {}",
+            "- Метод проверки: {}",
             assessment.validation_method.label()
         ));
         lines.push(format!(
-            "  - Last refresh: {}",
+            "- Последнее обновление: {}",
             assessment
                 .last_refresh
                 .as_ref()
                 .map(crate::auth::refresh_state::format_record_label)
                 .as_deref()
-                .unwrap_or("not recorded")
+                .unwrap_or("не записано")
         ));
         lines.push(format!(
-            "  - Validation: {}",
-            validation_label.as_deref().unwrap_or("not validated")
+            "- Проверка: {}",
+            validation_label.as_deref().unwrap_or("не проверено")
         ));
         lines.push(format!(
-            "  - Needs attention: {}",
+            "- Требует внимания: {}",
             if needs_attention { "yes" } else { "no" }
         ));
         if !diagnostics.is_empty() {
             lines.push(String::new());
-            lines.push("Diagnostics".to_string());
+            lines.push("Диагностика".to_string());
             for diagnostic in diagnostics {
                 lines.push(format!("  - {}", diagnostic));
             }

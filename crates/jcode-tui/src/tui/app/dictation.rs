@@ -60,7 +60,7 @@ impl App {
                 "Dictation is not configured. Set `[dictation].command` in `~/.jcode/config.toml`."
                     .to_string(),
             ));
-            self.set_status_notice("Dictation not configured");
+            self.set_status_notice("Диктовка не настроена");
             return true;
         }
 
@@ -68,7 +68,7 @@ impl App {
             if let Some(active) = self.dictation_session.take() {
                 let dictation_id = self.dictation_request_id.clone().unwrap_or_default();
                 let session_id = self.dictation_target_session_id.clone();
-                self.set_status_notice("🎙 Stopping dictation...");
+                self.set_status_notice("🎙 Остановка диктовки...");
                 tokio::spawn(async move {
                     if let Err(error) = active.request_stop().await {
                         Bus::global().publish(BusEvent::DictationFailed {
@@ -139,7 +139,7 @@ impl App {
         self.dictation_in_flight = true;
         self.dictation_request_id = Some(dictation_id.clone());
         self.dictation_target_session_id = target_session_id.clone();
-        self.set_status_notice("🎙 Dictation running - press again to stop");
+        self.set_status_notice("🎙 Диктант запущен - нажмите еще раз для остановки");
 
         let stdout_buf = Arc::new(Mutex::new(Vec::new()));
         let stderr_buf = Arc::new(Mutex::new(Vec::new()));

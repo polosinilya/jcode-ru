@@ -166,7 +166,7 @@ fn spawn_input_shell_command(session_id: String, command: String, cwd: Option<St
                 result: crate::message::InputShellResult {
                     command,
                     cwd,
-                    output: format!("Failed to run command: {}", error),
+                    output: format!("Не удалось выполнить команду: {}", error),
                     exit_code: None,
                     duration_ms: started.elapsed().as_millis().min(u64::MAX as u128) as u64,
                     truncated: false,
@@ -202,7 +202,7 @@ fn input_exceeds_submit_limit(input: &str) -> Option<String> {
 }
 
 pub(super) fn paste_from_clipboard(app: &mut App) {
-    app.set_status_notice("Reading clipboard...");
+    app.set_status_notice("Чтение буфера обмена...");
     spawn_clipboard_paste(app, ClipboardPasteKind::Smart);
 }
 
@@ -634,7 +634,7 @@ where
     }
 
     if !copy_text(&app.input) {
-        app.set_status_notice("Failed to copy input line");
+        app.set_status_notice("Не удалось скопировать строку ввода");
         return false;
     }
 
@@ -643,7 +643,7 @@ where
     app.cursor_pos = 0;
     app.reset_tab_completion();
     app.sync_model_picker_preview_from_input();
-    app.set_status_notice("✂ Cut input line");
+    app.set_status_notice("✂ Вырезать строку ввода");
     true
 }
 
@@ -662,7 +662,7 @@ pub(super) fn handle_paste(app: &mut App, text: String) {
         // Text paths refer to the remote machine. Do not stat/read laptop
         // files or download image URLs automatically while attached over SSH.
         handle_text_paste(app, text);
-        app.set_status_notice("SSH paste: text only. File paths refer to the remote host; paste image bytes from the clipboard to attach an image.");
+        app.set_status_notice("Вставка по SSH: только текст. Пути к файлам относятся к удаленному хосту; вставьте байты изображения из буфера обмена, чтобы прикрепить изображение.");
         return;
     }
     // Note: clipboard_image() is NOT checked here. Bracketed paste events from the
@@ -709,8 +709,8 @@ pub(super) fn handle_paste(app: &mut App, text: String) {
         };
         app.set_status_notice(notice);
     } else if let Some(url) = super::extract_image_url(&text) {
-        crate::logging::info(&format!("Downloading image from pasted URL: {}", url));
-        app.set_status_notice("Downloading image...");
+        crate::logging::info(&format!("Загрузка изображения по вставленной ссылке: {}", url));
+        app.set_status_notice("Загрузка изображения...");
         let session_id = active_clipboard_session_id(app);
         spawn_blocking_or_thread(move || {
             let content = download_image_url_content(&url).unwrap_or_else(|| {
@@ -769,7 +769,7 @@ pub(super) fn promote_dropped_images(app: &mut App) -> bool {
         );
     }
     app.set_status_notice(format!(
-        "Dropped {count} image{}",
+        "Удалено {count} изображени{}",
         if count == 1 { "" } else { "s" }
     ));
     true
@@ -1444,7 +1444,7 @@ pub(super) fn clear_input_for_escape(app: &mut App) {
     app.reset_tab_completion();
     app.sync_model_picker_preview_from_input();
     if had_input {
-        app.set_status_notice("Input cleared - Ctrl+Z to restore");
+        app.set_status_notice("Ввод очищен - Ctrl+Z для восстановления");
     }
 }
 
@@ -1497,7 +1497,7 @@ pub(super) fn retrieve_pending_message_for_edit(app: &mut App) -> bool {
         app.cursor_pos = app.input.len();
         let count = parts.len();
         app.set_status_notice(format!(
-            "Retrieved {} pending message{} for editing",
+            "Получено {} ожидающих сообщений{} для редактирования",
             count,
             if count == 1 { "" } else { "s" }
         ));
@@ -1571,14 +1571,14 @@ impl App {
         }
         let cleared = super::commands::disable_auto_poke(self);
         crate::logging::warn(&format!(
-            "Stopping auto-poke after {} consecutive provider guardrail stops (cleared {} queued poke message(s), overnight={})",
+            "Остановка авто-пинга после {} последовательных остановок ограничений провайдера (очищено {} сообщений в очереди, ночное время={})",
             self.consecutive_guardrail_stops, cleared, had_overnight
         ));
         self.push_display_message(DisplayMessage::system(format!(
-            "🛑 The provider refused {} turns in a row, so we stopped poking. The same request will keep getting refused. Rephrase or narrow the task, then /poke to resume.",
+            "🛑 Провайдер отклонил запрос {} раз подряд, поэтому мы прекратили пинговать. Один и тот же запрос будет продолжать отклоняться. Переформулируйте или уточните задачу, затем используйте /poke для возобновления.",
             self.consecutive_guardrail_stops
         )));
-        self.set_status_notice("Poke stopped: provider guardrail");
+        self.set_status_notice("Пинг остановлен: ограничения провайдера");
     }
 
     /// Turn-end entry point for automatic continuations. Applies the
@@ -1632,7 +1632,7 @@ impl App {
             observations.len()
         ));
         self.push_display_message(DisplayMessage::system(
-            "🔎 We asked the agent to double-check this turn's weak points.",
+            "🔎 Мы попросили агента дважды проверить слабые места этого хода.",
         ));
         self.queued_messages.push(digest);
         self.pending_queued_dispatch = true;
@@ -1658,7 +1658,7 @@ impl App {
             && crate::todo::take_long_session_review_if_due(&todo_session_id).unwrap_or(false)
         {
             self.push_display_message(DisplayMessage::system(
-                "🔍 Rechecking the plan and assessments after extended work...",
+                "🔍 Перепроверяем план и оценки после продолжительной работы...",
             ));
             self.queued_messages
                 .push(crate::todo::TODO_LONG_SESSION_REVIEW_MESSAGE.to_string());
@@ -1721,7 +1721,7 @@ impl App {
                     self.todo_completion_gate_attempts.saturating_add(1);
                 crate::telemetry::record_todo_gate(crate::telemetry::TodoGateKind::Ownership);
                 self.push_display_message(DisplayMessage::system(
-                    "🔍 Checking end-to-end ownership before finishing...",
+                    "🔍 Проверяем полное владение перед завершением...",
                 ));
                 self.queued_messages
                     .push(crate::todo::build_todo_ownership_continuation_message(
@@ -1773,7 +1773,7 @@ impl App {
                     self.todo_completion_gate_attempts
                 ));
                 self.push_display_message(DisplayMessage::system(
-                    "⚠️ We nudged the agent several times but its validation still isn't holding up. We stopped poking; review the remaining todos yourself.",
+                    "⚠️ Мы несколько раз подталкивали агента, но его проверка все еще не выдерживает. Мы прекратили пинговать; проверьте оставшиеся задачи самостоятельно.",
                 ));
                 self.auto_poke_incomplete_todos = false;
                 self.todo_confidence_spike_challenged = false;
@@ -1793,7 +1793,7 @@ impl App {
             if !self.todo_final_response_requested {
                 self.todo_final_response_requested = true;
                 self.push_display_message(DisplayMessage::system(format!(
-                    "✅ All todos done. Completion confidence: {}.",
+                    "✅ Все задачи выполнены. Уверенность в завершении: {}.",
                     confidence_label
                 )));
                 self.queued_messages
@@ -1823,7 +1823,7 @@ impl App {
         }
 
         self.push_display_message(DisplayMessage::system(format!(
-            "👉 {} incomplete todo{}. We poked it for you. /poke off to stop.",
+            "👉 {} невыполненных задач{}. Мы подтолкнули за вас. Используйте /poke off для остановки.",
             incomplete.len(),
             if incomplete.len() == 1 { "" } else { "s" },
         )));
@@ -1859,9 +1859,9 @@ impl App {
         }
         self.route_next_prompt_to_new_session = !self.route_next_prompt_to_new_session;
         if self.route_next_prompt_to_new_session {
-            self.set_status_notice("Next prompt → new session");
+            self.set_status_notice("Следующий запрос → новая сессия");
         } else {
-            self.set_status_notice("Next-prompt new session canceled");
+            self.set_status_notice("Отменена новая сессия для следующего запроса");
         }
     }
 
@@ -1898,7 +1898,7 @@ impl App {
 
     /// Spawn a brand-new jcode session in a new terminal window.
     pub(crate) fn handle_new_terminal_hotkey(&mut self) {
-        if super::commands_dispatch::ssh_local_action_blocked(self, "Opening a sibling terminal") {
+        if super::commands_dispatch::ssh_local_action_blocked(self, "Открытие дополнительного терминала") {
             return;
         }
         let cwd = commands::active_working_dir(self)
@@ -1906,11 +1906,11 @@ impl App {
             .or_else(|| std::env::current_dir().ok())
             .unwrap_or_else(|| std::path::PathBuf::from("."));
         match super::spawn_fresh_session_in_new_terminal(&cwd) {
-            Ok(true) => self.set_status_notice("↗ New terminal opened"),
+            Ok(true) => self.set_status_notice("↗ Открыт новый терминал"),
             Ok(false) => {
-                self.set_status_notice("No supported terminal found; run `jcode` manually")
+                self.set_status_notice("Не найден поддерживаемый терминал; запустите `jcode` вручную")
             }
-            Err(error) => self.set_status_notice(format!("New terminal failed: {}", error)),
+            Err(error) => self.set_status_notice(format!("Ошибка нового терминала: {}", error)),
         }
     }
 }
@@ -1954,9 +1954,9 @@ fn route_prompt_to_new_session_local(app: &mut App) -> bool {
             app.input = restored_raw;
             app.cursor_pos = app.input.len();
             app.pending_images = restored_images;
-            app.set_status_notice("Prompt launch failed");
+            app.set_status_notice("Ошибка запуска запроса");
             app.push_display_message(DisplayMessage::error(format!(
-                "Failed to launch prompt in a new session: {}",
+                "Не удалось запустить запрос в новой сессии: {}",
                 error
             )));
             true
@@ -2042,7 +2042,7 @@ pub(super) fn handle_control_key(app: &mut App, code: KeyCode) -> bool {
             let mode_str = if app.queue_mode {
                 "Queue mode: messages wait until response completes"
             } else {
-                "Immediate mode: messages send next (no interrupt)"
+                "Режим немедленной отправки: сообщения отправляются сразу (без прерывания)"
             };
             app.set_status_notice(mode_str);
             true
@@ -2244,7 +2244,7 @@ pub(super) fn handle_navigation_shortcuts(
         if !app.diff_pane_visible() {
             app.diff_pane_focus = false;
         }
-        let status = format!("Diffs: {}", app.diff_mode.label());
+        let status = format!("Различия: {}", app.diff_mode.label());
         app.set_status_notice(&status);
         return true;
     }
@@ -2399,7 +2399,7 @@ pub(super) fn handle_pre_control_shortcuts(
         return true;
     }
     if app.dictation_key_matches(code, modifiers) {
-        if super::commands_dispatch::ssh_local_action_blocked(app, "Dictation setup") {
+        if super::commands_dispatch::ssh_local_action_blocked(app, "Настройка диктовки") {
             return true;
         }
         app.handle_dictation_trigger();
@@ -2412,10 +2412,10 @@ pub(super) fn handle_pre_control_shortcuts(
     if app.toggle_keys.swarm_panel_focus.matches(code, modifiers) {
         match app.cycle_swarm_panel_view() {
             super::tui_state::SwarmPanelView::Chat => {
-                app.set_status_notice("Swarm view closed");
+                app.set_status_notice("Представление роя закрыто");
             }
             super::tui_state::SwarmPanelView::Controls => {
-                app.set_status_notice(crate::tui::keybind::swarm_view_hint("full page"));
+                app.set_status_notice(crate::tui::keybind::swarm_view_hint("полностраничный режим"));
             }
             super::tui_state::SwarmPanelView::FullPage => {
                 app.set_status_notice(crate::tui::keybind::swarm_page_hint());
@@ -2529,7 +2529,7 @@ pub(super) fn handle_visible_copy_shortcut(
         if success {
             app.set_status_notice(target.copied_notice);
         } else {
-            app.set_status_notice(format!("Failed to copy {}", target.kind_label));
+            app.set_status_notice(format!("Не удалось скопировать {}", target.kind_label));
         }
         return true;
     }
@@ -2600,7 +2600,7 @@ pub(super) fn handle_expand_edit_badge_shortcut(app: &mut App, key: char) -> boo
         Some(std::time::Instant::now() + std::time::Duration::from_millis(1100));
     app.copy_badge_ui.expand_feedback_line = crate::tui::ui::visible_expand_edit_badge_line();
     app.set_status_notice(format!(
-        "Expanded edit diffs · Diffs: {}",
+        "Расширенные различия редактирования · Различия: {}",
         app.diff_mode.label()
     ));
     true
@@ -2626,7 +2626,7 @@ pub(super) fn handle_modal_key(
     }
 
     if app.login_picker_overlay.is_some() {
-        if super::commands_dispatch::ssh_local_action_blocked(app, "Local login picker") {
+        if super::commands_dispatch::ssh_local_action_blocked(app, "Выбор локального входа") {
             app.login_picker_overlay = None;
             return Ok(true);
         }
@@ -2635,7 +2635,7 @@ pub(super) fn handle_modal_key(
     }
 
     if app.account_picker_overlay.is_some() {
-        if super::commands_dispatch::ssh_local_action_blocked(app, "Local account picker") {
+        if super::commands_dispatch::ssh_local_action_blocked(app, "Выбор локальной учетной записи") {
             app.account_picker_overlay = None;
             return Ok(true);
         }
@@ -2722,9 +2722,9 @@ pub(super) fn handle_global_control_shortcuts(
                 app.pending_soft_interrupts.clear();
                 app.pending_soft_interrupt_requests.clear();
                 if app.cancel_overnight_for_interrupt() {
-                    app.set_status_notice("Interrupting... Overnight cancelled");
+                    app.set_status_notice("Прерывание... Ночное время отменено");
                 } else {
-                    app.set_status_notice("Interrupting...");
+                    app.set_status_notice("Прерывание...");
                 }
             } else {
                 app.handle_quit_request();
@@ -2864,14 +2864,14 @@ pub(super) fn handle_basic_key(app: &mut App, code: KeyCode) -> bool {
                 if disabled_auto_poke {
                     super::commands::disable_auto_poke(app);
                     if cancelled_overnight {
-                        app.set_status_notice("Interrupting... Auto-poke OFF, overnight cancelled");
+                        app.set_status_notice("Прерывание... Автопинг ВЫКЛ, ночное время отменено");
                     } else {
-                        app.set_status_notice("Interrupting... Auto-poke OFF");
+                        app.set_status_notice("Прерывание... Автопинг ВЫКЛ");
                     }
                 } else if cancelled_overnight {
-                    app.set_status_notice("Interrupting... Overnight cancelled");
+                    app.set_status_notice("Прерывание... Ночное время отменено");
                 } else {
-                    app.set_status_notice("Interrupting...");
+                    app.set_status_notice("Прерывание...");
                 }
             } else {
                 app.follow_chat_bottom();
@@ -2905,7 +2905,7 @@ pub(super) fn stage_local_interleave(
 ) {
     app.interleave_message = Some(content);
     app.interleave_images = images;
-    app.set_status_notice("⏭ Sending now (interleave)");
+    app.set_status_notice("⏭ Отправляем сейчас (чередование)");
 }
 
 fn attach_image(app: &mut App, media_type: String, base64_data: String) {
@@ -2916,7 +2916,7 @@ fn attach_image(app: &mut App, media_type: String, base64_data: String) {
     app.input.insert_str(app.cursor_pos, &placeholder);
     app.cursor_pos += placeholder.len();
     app.sync_model_picker_preview_from_input();
-    app.set_status_notice(format!("Pasted {} ({} KB)", media_type, size_kb));
+    app.set_status_notice(format!("Вставлено {} ({} КБ)", media_type, size_kb));
 }
 
 fn paste_placeholder(content: &str) -> String {
@@ -3026,7 +3026,7 @@ impl App {
         }
 
         // Inline hotkey feedback: when a known-but-rarely-used chord is pressed,
-        // show "you just pressed X → does Y". Placed after the modal/overlay
+        // show "вы только что нажали X → выполняет Y". Placed after the modal/overlay
         // handlers so overlay-local keys stay silent. Unknown chords are
         // reported at the fall-through points below.
         self.observe_known_hotkey(code, modifiers, false);
@@ -3047,11 +3047,11 @@ impl App {
 
         if self.pending_provider_failover.is_some() && !self.is_processing {
             if code == KeyCode::Esc {
-                self.cancel_pending_provider_failover("Provider auto-switch canceled");
+                self.cancel_pending_provider_failover("Автопереключение провайдера отменено");
                 return Ok(());
             }
             if !is_scroll_only_key(self, code, modifiers) {
-                self.cancel_pending_provider_failover("Provider auto-switch canceled");
+                self.cancel_pending_provider_failover("Автопереключение провайдера отменено");
             }
         }
 
@@ -3807,22 +3807,22 @@ impl App {
 
             if command.is_empty() {
                 self.push_display_message(DisplayMessage::system(
-                    "Shell command cannot be empty after !.",
+                    "Команда оболочки не может быть пустой после !.",
                 ));
-                self.set_status_notice("Shell command is empty");
+                self.set_status_notice("Команда оболочки пуста");
                 return;
             }
 
             if self.is_remote {
                 self.push_display_message(DisplayMessage::system(
-                    "Input-line ! shell commands are only available in a local jcode TUI session.",
+                    "Команды оболочки с ! доступны только в локальной сессии jcode TUI.",
                 ));
-                self.set_status_notice("Local shell unavailable in remote mode");
+                self.set_status_notice("Локальная оболочка недоступна в удаленном режиме");
                 return;
             }
 
             self.set_status_notice(format!(
-                "Running local shell: {}",
+                "Запуск локальной оболочки: {}",
                 crate::util::truncate_str(command, 48)
             ));
             spawn_input_shell_command(
@@ -3861,7 +3861,7 @@ impl App {
                 self.active_skill = Some(skill_name.clone());
                 self.push_display_message(DisplayMessage {
                     role: "system".to_string(),
-                    content: format!("Activated skill: {} - {}", skill.name, skill.description),
+                    content: format!("Активированный навык: {} - {}", skill.name, skill.description),
                     tool_calls: vec![],
                     duration_secs: None,
                     title: None,
@@ -3881,18 +3881,18 @@ impl App {
                     .find(|endorsed| endorsed.name == skill_name)
                     .map(|endorsed| match endorsed.install {
                         Some(install) => format!(
-                            "Skill /{} is endorsed but not installed. Install it with `{}`, then run /skills or skill_manage reload_all.",
+                            "Навык /{} одобрен, но не установлен. Установите его с помощью `{}`, затем выполните /skills или skill_manage reload_all.",
                             skill_name, install
                         ),
                         None => format!(
-                            "Skill /{} is endorsed but not installed (source: {}). Install it into ~/.jcode/skills/{}/SKILL.md.",
+                            "Навык /{} одобрен, но не установлен (источник: {}). Установите его в ~/.jcode/skills/{}/SKILL.md.",
                             skill_name, endorsed.source, skill_name
                         ),
                     });
                 self.push_display_message(DisplayMessage {
                     role: "error".to_string(),
                     content: endorsed_hint
-                        .unwrap_or_else(|| format!("Unknown skill: /{}", skill_name)),
+                        .unwrap_or_else(|| format!("Неизвестный навык: /{}", skill_name)),
                     tool_calls: vec![],
                     duration_secs: None,
                     title: None,
@@ -4172,7 +4172,7 @@ mod terminal_control_sequence_tests {
             "array[0]",
             "list[1] = list[2]",
             "[TODO] fix this",
-            "see docs[1] and notes[2]",
+            "см. документы[1] и заметки[2]",
             "fn f(v: Vec<u8>) -> [u8; 4]",
             "a[b]c",
             "[]",
@@ -4181,7 +4181,7 @@ mod terminal_control_sequence_tests {
             "[abc]",
             "[1]",
             "[12;40]",
-            "plain text with no brackets",
+            "обычный текст без скобок",
             "emoji 🎉 and accents café",
             "match x { [a, b] => a + b }",
         ] {

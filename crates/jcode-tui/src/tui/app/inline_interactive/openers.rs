@@ -82,7 +82,7 @@ impl App {
     fn open_auth_provider_picker_inline(&mut self, logout: bool) {
         if crate::tui::app::commands_dispatch::ssh_local_action_blocked(
             self,
-            "Local authentication",
+            "Локальная аутентификация",
         ) {
             return;
         }
@@ -149,12 +149,12 @@ impl App {
             models.insert(
                 0,
                 PickerEntry {
-                    name: "All providers".to_string(),
+                    name: "Все провайдеры".to_string(),
                     options: vec![PickerOption {
                         provider: "all".to_string(),
                         api_method: "logout".to_string(),
                         available: true,
-                        detail: "Log out of every provider with a saved session".to_string(),
+                        detail: "Выйти из всех провайдеров с сохраненной сессией".to_string(),
                         estimated_reference_cost_micros: None,
                     }],
                     action: PickerAction::LogoutAll,
@@ -239,10 +239,10 @@ impl App {
                         PickerEntry {
                             name: saved.to_string(),
                             options: vec![PickerOption {
-                                provider: "saved override".to_string(),
+                                provider: "сохраненное переопределение".to_string(),
                                 api_method: agent_model_target_config_path(target).to_string(),
                                 available: true,
-                                detail: "not in current picker catalog".to_string(),
+                                detail: "нет в текущем каталоге выбора".to_string(),
                                 estimated_reference_cost_micros: None,
                             }],
                             action: PickerAction::AgentModelChoice {
@@ -272,7 +272,7 @@ impl App {
                         provider: "default".to_string(),
                         api_method: agent_model_target_config_path(target).to_string(),
                         available: true,
-                        detail: "clear saved override".to_string(),
+                        detail: "очистить сохраненное переопределение".to_string(),
                         estimated_reference_cost_micros: None,
                     }],
                     action: PickerAction::AgentModelChoice {

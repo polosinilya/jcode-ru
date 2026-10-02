@@ -26,19 +26,19 @@ pub(super) async fn handle_workspace_navigation_key(
     };
 
     if app.is_processing {
-        app.set_status_notice("Finish current work before moving workspace focus");
+        app.set_status_notice("Завершите текущую работу перед перемещением фокуса рабочей области");
         return Ok(true);
     }
 
     let Some(target_session_id) = target else {
-        app.set_status_notice("No workspace session in that direction");
+        app.set_status_notice("Нет сессии рабочей области в этом направлении");
         return Ok(true);
     };
     remote.resume_session(&target_session_id).await?;
     let label = crate::id::extract_session_name(&target_session_id)
         .map(|name| name.to_string())
         .unwrap_or(target_session_id);
-    app.set_status_notice(format!("Workspace → {}", label));
+    app.set_status_notice(format!("Рабочая область → {}", label));
     Ok(true)
 }
 
@@ -67,7 +67,7 @@ pub(super) async fn handle_workspace_command(
         "/workspace on" | "/workspace import" => {
             app.workspace_client
                 .enable(current_session, &app.remote_sessions);
-            app.set_status_notice("Workspace mode enabled");
+            app.set_status_notice("Режим рабочей области включен");
             app.push_display_message(DisplayMessage::system(
                 app.workspace_client.status_summary(),
             ));
@@ -75,7 +75,7 @@ pub(super) async fn handle_workspace_command(
         }
         "/workspace off" => {
             app.workspace_client.disable();
-            app.set_status_notice("Workspace mode disabled");
+            app.set_status_notice("Режим рабочей области выключен");
             app.push_display_message(DisplayMessage::system("Workspace mode: off".to_string()));
             return Ok(true);
         }
@@ -101,7 +101,7 @@ pub(super) async fn handle_workspace_command(
             app.push_display_message(DisplayMessage::system(
                 "Workspace add queued - new session will be created when idle.".to_string(),
             ));
-            app.set_status_notice("Workspace add queued");
+            app.set_status_notice("Добавление рабочей области в очередь");
         } else {
             begin_remote_split_launch(app, "Workspace");
             remote.split().await?;

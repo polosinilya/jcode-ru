@@ -316,7 +316,7 @@ impl App {
             self.auto_scroll_paused = false;
             self.input.clear();
             self.cursor_pos = 0;
-            self.set_status_notice("Debug expand badge fixture ready");
+            self.set_status_notice("Фикстура значка расширения отладки готова");
             serde_json::json!({
                 "ok": true,
                 "diff_mode": format!("{:?}", self.diff_mode),
@@ -361,7 +361,7 @@ impl App {
             self.auto_scroll_paused = false;
             self.input.clear();
             self.cursor_pos = 0;
-            self.set_status_notice("Debug Gmail draft fixture ready");
+            self.set_status_notice("Фикстура черновика Gmail отладки готова");
             serde_json::json!({
                 "ok": true,
                 "display_messages": self.display_messages.len(),
@@ -1101,7 +1101,7 @@ impl App {
                 let msg = format!("Failed to save session before migration: {}", e);
                 crate::logging::error(&msg);
                 self.push_display_message(DisplayMessage::error(msg));
-                self.set_status_notice("Migration aborted");
+                self.set_status_notice("Миграция прервана");
                 return false;
             }
 
@@ -1114,7 +1114,7 @@ impl App {
             crate::env::set_var("JCODE_MIGRATE_BINARY", stable_binary);
 
             crate::logging::info(&format!("Migrating to stable version {}...", version));
-            self.set_status_notice(format!("Migrating to stable {}...", version));
+            self.set_status_notice(format!("Миграция в стабильную версию {}...", version));
             self.should_quit = true;
             return true;
         }

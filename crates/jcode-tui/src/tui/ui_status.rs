@@ -103,33 +103,33 @@ pub(super) fn format_status_for_debug(app: &dyn TuiState) -> String {
     match app.status() {
         ProcessingStatus::Idle => {
             if let Some(notice) = app.status_notice() {
-                format!("Idle (notice: {})", notice)
+                format!("Простой (уведомление: {})", notice)
             } else if let Some((input, output)) = app.total_session_tokens() {
                 format!(
-                    "Idle (session: {}k in, {}k out)",
+                    "Простой (сессия: {}k in, {}k out)",
                     input / 1000,
                     output / 1000
                 )
             } else if let Some(tip) =
                 info_widget::occasional_status_tip(120, app.animation_elapsed() as u64)
             {
-                format!("Idle ({})", tip)
+                format!("Простой ({})", tip)
             } else {
-                "Idle".to_string()
+                "Простой".to_string()
             }
         }
-        ProcessingStatus::Sending => "Sending...".to_string(),
+        ProcessingStatus::Sending => "Отправка...".to_string(),
         ProcessingStatus::Connecting(ref phase) => format!("{}...", phase),
         ProcessingStatus::Thinking(_start) => {
             let elapsed = app.elapsed().map(|d| d.as_secs_f32()).unwrap_or(0.0);
-            format!("Thinking... ({:.1}s)", elapsed)
+            format!("Думает... ({:.1}s)", elapsed)
         }
         ProcessingStatus::Streaming => {
             let (input, output) = app.streaming_tokens();
-            format!("Streaming (↑{} ↓{})", input, output)
+            format!("Потоковая передача (↑{} ↓{})", input, output)
         }
         ProcessingStatus::WaitingForNetwork { ref listener } => {
-            format!("Waiting for network to retry ({})", listener)
+            format!("Ожидание сети для повторной попытки ({})", listener)
         }
         ProcessingStatus::RunningTool(ref name) => {
             if name == "batch"
@@ -137,18 +137,18 @@ pub(super) fn format_status_for_debug(app: &dyn TuiState) -> String {
             {
                 let completed = progress.completed;
                 let total = progress.total;
-                let mut status = format!("Running batch: {}/{} done", completed, total);
+                let mut status = format!("Выполнение пакета: {}/{} выполнено", completed, total);
                 if let Some(running) =
                     tools_ui::summarize_batch_running_tools_compact(&progress.running)
                 {
-                    status.push_str(&format!(", running: {}", running));
+                    status.push_str(&format!(", выполняется: {}", running));
                 }
                 if let Some(last) = progress.last_completed.filter(|_| completed < total) {
-                    status.push_str(&format!(", last done: {}", last));
+                    status.push_str(&format!(", последнее выполнено: {}", last));
                 }
                 return status;
             }
-            format!("Running tool: {}", name)
+            format!("Выполнение инструмента: {}", name)
         }
     }
 }

@@ -273,8 +273,8 @@ impl App {
         }
 
         match super::helpers::open_path_or_url_detached(&target) {
-            Ok(()) => self.set_status_notice(format!("Opened link: {}", target)),
-            Err(e) => self.set_status_notice(format!("Failed to open link: {}", e)),
+            Ok(()) => self.set_status_notice(format!("Открыта ссылка: {}", target)),
+            Err(e) => self.set_status_notice(format!("Не удалось открыть ссылку: {}", e)),
         }
         true
     }
@@ -304,18 +304,18 @@ impl App {
             return false;
         };
         let Ok(path) = repository.join(relative).canonicalize() else {
-            self.set_status_notice(format!("Markdown file not found: {}", path_target));
+            self.set_status_notice(format!("Файл Markdown не найден: {}", path_target));
             return true;
         };
         if !path.starts_with(&repository) {
-            self.set_status_notice("Refused to open a Markdown file outside the repository");
+            self.set_status_notice("Отказано в открытии файла Markdown вне репозитория");
             return true;
         }
 
         let content = match std::fs::read_to_string(&path) {
             Ok(content) => content,
             Err(error) => {
-                self.set_status_notice(format!("Failed to read Markdown file: {}", error));
+                self.set_status_notice(format!("Не удалось прочитать файл Markdown: {}", error));
                 return true;
             }
         };
@@ -345,7 +345,7 @@ impl App {
         self.side_panel_user_hidden = false;
         self.apply_side_panel_snapshot(snapshot);
         self.set_diff_pane_focus(true);
-        self.set_status_notice(format!("Opened Markdown: {}", title));
+        self.set_status_notice(format!("Открыт Markdown: {}", title));
         true
     }
 
@@ -365,8 +365,8 @@ impl App {
         };
 
         match open_url(&url) {
-            Ok(()) => self.set_status_notice(format!("Opened link: {}", url)),
-            Err(e) => self.set_status_notice(format!("Failed to open link: {}", e)),
+            Ok(()) => self.set_status_notice(format!("Открыта ссылка: {}", url)),
+            Err(e) => self.set_status_notice(format!("Не удалось открыть ссылку: {}", e)),
         }
         true
     }
@@ -490,9 +490,9 @@ impl App {
         self.diagram_focus = focus;
         self.diff_pane_focus = false;
         if focus {
-            self.set_status_notice("Focus: diagram (hjkl pan, [/] zoom, +/- resize)");
+            self.set_status_notice("Фокус: диаграмма (hjkl перемещение, [/] масштаб, +/- размер)");
         } else {
-            self.set_status_notice("Focus: chat");
+            self.set_status_notice("Фокус: чат");
         }
     }
 
@@ -518,10 +518,10 @@ impl App {
                     "Focus: side pane (j/k scroll, h/l pan diagrams, Esc to return)",
                 );
             } else {
-                self.set_status_notice("Focus: side pane (j/k scroll, Esc to return)");
+                self.set_status_notice("Фокус: боковая панель (j/k прокрутка, Esc для возврата)");
             }
         } else {
-            self.set_status_notice("Focus: chat");
+            self.set_status_notice("Фокус: чат");
         }
     }
 
@@ -547,7 +547,7 @@ impl App {
         self.diff_pane_scroll_x = 0;
         crate::tui::clear_side_panel_render_caches();
         crate::tui::mermaid::clear_image_state();
-        self.set_status_notice(format!("Side image zoom: {}%", next));
+        self.set_status_notice(format!("Масштаб бокового изображения: {}%", next));
     }
 
     pub(super) fn reset_side_panel_image_zoom(&mut self) {
@@ -558,7 +558,7 @@ impl App {
         self.diff_pane_scroll_x = 0;
         crate::tui::clear_side_panel_render_caches();
         crate::tui::mermaid::clear_image_state();
-        self.set_status_notice("Side image zoom: fit".to_string());
+        self.set_status_notice("Масштаб бокового изображения: по размеру".to_string());
     }
 
     pub(super) fn handle_diff_pane_focus_key(
@@ -976,7 +976,7 @@ impl App {
         self.diagram_index = next;
         self.reset_diagram_view_to_fit();
         self.last_visible_diagram_hash = diagrams.get(next).map(|diagram| diagram.hash);
-        self.set_status_notice(format!("Diagram {}/{}", next + 1, count));
+        self.set_status_notice(format!("Диаграмма {}/{}", next + 1, count));
     }
 
     pub(super) fn pan_diagram(&mut self, dx: i32, dy: i32) {
@@ -1020,7 +1020,7 @@ impl App {
         self.handle_diagram_geometry_change();
 
         if announce {
-            self.set_status_notice(format!("Diagram pane: {}%", next));
+            self.set_status_notice(format!("Панель диаграммы: {}%", next));
         }
     }
 
@@ -1049,7 +1049,7 @@ impl App {
 
     pub(super) fn set_side_panel_ratio_preset(&mut self, next: u8) {
         self.set_diagram_pane_ratio(next as i16, false, false);
-        self.set_status_notice(format!("Side panel: {}%", self.diagram_pane_ratio_target));
+        self.set_status_notice(format!("Боковая панель: {}%", self.diagram_pane_ratio_target));
     }
 
     /// Toggle whether inline transcript images render expanded or as
@@ -1105,7 +1105,7 @@ impl App {
             if self.side_panel.pages.is_empty() {
                 if self.side_pane_has_visual_images_ignoring_user_hidden() {
                     self.sync_diagram_fit_context();
-                    self.set_status_notice("Image side panel: ON");
+                    self.set_status_notice("Боковая панель изображений: ВКЛ");
                 } else {
                     self.toggle_diagram_pane();
                 }
@@ -1119,7 +1119,7 @@ impl App {
             self.pinned_images_auto_hide_deadline = None;
             self.set_diff_pane_focus(false);
             self.sync_diagram_fit_context();
-            self.set_status_notice("Image side panel: OFF");
+            self.set_status_notice("Боковая панель изображений: ВЫКЛ");
             return;
         }
 
@@ -1137,7 +1137,7 @@ impl App {
                 self.set_diff_pane_focus(false);
             }
             self.sync_diagram_fit_context();
-            self.set_status_notice("Side panel: OFF");
+            self.set_status_notice("Боковая панель: ВЫКЛ");
             return;
         }
 
@@ -1170,7 +1170,7 @@ impl App {
         let next = (self.diagram_zoom as i16 + delta as i16).clamp(50, 200) as u8;
         if next != self.diagram_zoom {
             self.diagram_zoom = next;
-            self.set_status_notice(format!("Diagram zoom: {}%", next));
+            self.set_status_notice(format!("Масштаб диаграммы: {}%", next));
         }
     }
 
@@ -1207,14 +1207,14 @@ impl App {
             DiagramPanePosition::Side => "side",
             DiagramPanePosition::Top => "top",
         };
-        self.set_status_notice(format!("Diagram pane: {}", label));
+        self.set_status_notice(format!("Панель диаграммы: {}", label));
     }
 
     pub(super) fn pop_out_diagram(&mut self) {
         let diagrams = super::super::mermaid::get_active_diagrams();
         let total = diagrams.len();
         if total == 0 {
-            self.set_status_notice("No diagrams to open");
+            self.set_status_notice("Нет диаграмм для открытия");
             return;
         }
         let index = self.diagram_index.min(total - 1);
@@ -1227,13 +1227,13 @@ impl App {
                         index + 1,
                         total
                     )),
-                    Err(e) => self.set_status_notice(format!("Failed to open: {}", e)),
+                    Err(e) => self.set_status_notice(format!("Не удалось открыть: {}", e)),
                 }
             } else {
-                self.set_status_notice("Diagram image not found on disk");
+                self.set_status_notice("Изображение диаграммы не найдено на диске");
             }
         } else {
-            self.set_status_notice("Diagram not cached");
+            self.set_status_notice("Диаграмма не закэширована");
         }
     }
 
@@ -1724,7 +1724,7 @@ impl App {
             if success {
                 self.set_status_notice(target.copied_notice);
             } else {
-                self.set_status_notice(format!("Failed to copy {}", target.kind_label));
+                self.set_status_notice(format!("Не удалось скопировать {}", target.kind_label));
             }
             finish_mouse_event!(false, "copy_badge_click");
         }

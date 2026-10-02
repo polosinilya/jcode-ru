@@ -94,7 +94,7 @@ impl App {
     ///
     /// Returns without committing the one-shot guard until auth is actually
     /// resolved (the server may still be bootstrapping on the first ticks), so a
-    /// momentary "not yet authenticated" reading doesn't permanently skip the
+    /// momentary "еще не аутентифицирован" reading doesn't permanently skip the
     /// flow. Once we either start the flow or conclude it shouldn't run, the
     /// guard is set and this becomes a no-op for the rest of the session.
     pub(super) fn maybe_begin_onboarding_flow_on_startup(&mut self) {
@@ -238,7 +238,7 @@ impl App {
     /// If we detect importable external logins (Codex/Claude/Cursor/etc.), we
     /// arm a per-candidate yes/no walkthrough so the user can step through each
     /// detected login and choose whether to import it. Otherwise we ask a simple
-    /// "Log in to OpenAI?" Yes/No.
+    /// "Войти в OpenAI?" Yes/No.
     ///
     /// No-op if a flow is already running.
     pub(super) fn begin_onboarding_flow_at_login(&mut self) {
@@ -262,11 +262,11 @@ impl App {
         // (`onboarding_welcome_kind`) so it survives in remote mode.
         if had_imports {
             self.set_status_notice(
-                "Welcome to jcode: review detected logins (arrows/hl to move, Enter to choose)",
+                "Добро пожаловать в jcode: просмотрите обнаруженные логины (стрелки/выделение для перемещения, Enter для выбора)",
             );
         } else {
             self.set_status_notice(
-                "Log in to OpenAI? Yes/No - hl to move, Enter to choose (No skips for now)",
+                "Войти в OpenAI? Да/Нет - выделение для перемещения, Enter для выбора (Нет пропускает на время)",
             );
         }
     }
@@ -278,12 +278,12 @@ impl App {
     pub(super) fn onboarding_start_default_login(&mut self) {
         crate::telemetry::record_setup_step_once("login_picker_opened");
         self.start_login_provider(crate::provider_catalog::OPENAI_LOGIN_PROVIDER);
-        self.set_status_notice("Login: opening OpenAI sign-in (or type /login for others)");
+        self.set_status_notice("Вход: открытие входа в OpenAI (или введите /login для других)");
     }
 
     /// Advance out of a login phase once credentials are available. Prompt and
     /// transcript content sharing stays off unless the user explicitly opted in
-    /// on the "Telemetry settings" page, so we only write the default when no
+    /// on the "Настройки телеметрии" page, so we only write the default when no
     /// choice has been recorded. Advance straight to model selection.
     /// No-op unless the flow is in a login phase.
     pub(super) fn onboarding_after_login(&mut self) {
@@ -314,9 +314,9 @@ impl App {
         self.onboarding_open_start_choice();
     }
 
-    /// Enter the "Continue where you left off?" phase. Highlightable Yes/No
+    /// Enter the "Продолжить с того места, где вы остановились?" phase. Highlightable Yes/No
     /// with a [`DECISION_TIMEOUT`] countdown; the default (and timeout choice)
-    /// is "Yes" so the resume menu opens unless the user declines.
+    /// is "Да" so the resume menu opens unless the user declines.
     ///
     /// Retained for compatibility with replay/test fixtures and the
     /// `ContinuePrompt` rendering/key/tick paths. The live onboarding flow now
@@ -341,7 +341,7 @@ impl App {
             .and_then(OnboardingFlow::decision_seconds_remaining)
             .unwrap_or(0);
         self.set_status_notice(format!(
-            "Continue a session where you left off in {}? Opens the resume menu in {remaining}s (Yes/No)",
+            "Продолжить сессию с того места, где вы остановились в {}? Открывает меню возобновления через {remaining}с (Да/Нет)",
             cli.label()
         ));
     }
@@ -376,7 +376,7 @@ impl App {
         // `Login`/`LoginOpenAi` phase, but the user is now typing into the
         // pending-login prompt rather than driving the welcome-screen Yes/No.
         // If we kept intercepting keys here, Enter would re-open the provider
-        // picker (the reported "pick provider -> enter key -> asks again" loop)
+        // picker (the reported "выбор провайдера -> ввод ключа -> снова спрашивает" loop)
         // and characters like h/l/j/k/y/n would be eaten as navigation. Let the
         // normal input path handle everything until the pending entry resolves.
         if self.pending_login.is_some() || self.pending_account_input.is_some() {
@@ -411,7 +411,7 @@ impl App {
             self.onboarding_finish();
             let login = Self::onboarding_login_suggestion();
             self.set_status_notice(format!(
-                "Onboarding skipped - run {login} when you're ready"
+                "Вход пропущен - выполните {login}, когда будете готовы"
             ));
             return true;
         }
@@ -474,11 +474,11 @@ impl App {
         }
     }
 
-    /// Handle a key while the "continue where you left off?" prompt is up.
-    /// Yes/No sit side by side (default highlight is "Yes"), matching the
+    /// Handle a key while the "продолжить с того места, где вы остановились?" prompt is up.
+    /// Yes/No sit side by side (default highlight is "Да"), matching the
     /// import and telemetry-consent prompts:
-    ///   - Left / h  -> highlight "Yes"
-    ///   - Right / l -> highlight "No"
+    ///   - Left / h  -> highlight "Да"
+    ///   - Right / l -> highlight "Нет"
     ///   - Up / Down / k / j / Tab -> toggle
     ///   - y / Y -> continue;  n / N / Esc -> decline (both commit)
     ///   - Enter / Space -> commit the highlighted choice
@@ -541,10 +541,10 @@ impl App {
     ///     and Telemetry pills. Arrows/Tab move; Enter/Space commits.
     ///   * Choose (checkbox list): per-login Yes/No rows.
     ///     - Up / Down / k / j -> move the cursor between logins
-    ///     - Left / h / y -> choose "Yes" (import) for the highlighted login
-    ///     - Right / l / n -> choose "No" (skip) for the highlighted login
+    ///     - Left / h / y -> choose "Да" (import) for the highlighted login
+    ///     - Right / l / n -> choose "Нет" (skip) for the highlighted login
     ///     - Space -> toggle the highlighted login between Yes and No
-    ///     - Enter -> import every "Yes" login and finish
+    ///     - Enter -> import every "Да" login and finish
     fn handle_onboarding_import_review_key(&mut self, code: KeyCode) -> bool {
         // `finished` means the user committed the import (so we kick it off
         // outside the borrow).
@@ -595,7 +595,7 @@ impl App {
                     KeyCode::Char('c') | KeyCode::Char('C') => review.enter_choose_mode(),
                     // t jumps straight to the telemetry settings page.
                     KeyCode::Char('t') | KeyCode::Char('T') => review.open_telemetry(),
-                    // y = "yes, import everything" regardless of pill focus, so
+                    // y = "да, импортировать всё" regardless of pill focus, so
                     // the timeout is never a forced wait.
                     KeyCode::Char('y') | KeyCode::Char('Y') => finished = true,
                     KeyCode::Enter | KeyCode::Char(' ') => match review.summary_pill {
@@ -637,9 +637,9 @@ impl App {
             self.onboarding_import_error = None;
             let url = crate::subscription_catalog::JCODE_PRICING_URL;
             if super::helpers::open_path_or_url_detached(url).is_ok() {
-                self.set_status_notice(format!("Opened Jcode pricing: {url}"));
+                self.set_status_notice(format!("Открыт тариф Jcode: {url}"));
             } else {
-                self.set_status_notice(format!("Open Jcode pricing: {url}"));
+                self.set_status_notice(format!("Открыть тариф Jcode: {url}"));
             }
             return true;
         }
@@ -651,10 +651,10 @@ impl App {
         true
     }
 
-    /// Handle a key while the "Log in to OpenAI?" prompt is up. Yes/No sit side
-    /// by side (default highlight is "Yes"):
-    ///   - Left / h  -> highlight "Yes"
-    ///   - Right / l -> highlight "No"
+    /// Handle a key while the "Войти в OpenAI?" prompt is up. Yes/No sit side
+    /// by side (default highlight is "Да"):
+    ///   - Left / h  -> highlight "Да"
+    ///   - Right / l -> highlight "Нет"
     ///   - Up / Down / k / j / Tab -> toggle
     ///   - y / Y -> log in to OpenAI;  n / N -> skip and finish onboarding
     ///   - Enter / Space -> commit the highlighted choice
@@ -702,11 +702,11 @@ impl App {
         }
     }
 
-    /// Answer the "Log in to OpenAI?" prompt. Yes starts the OpenAI sign-in;
+    /// Answer the "Войти в OpenAI?" prompt. Yes starts the OpenAI sign-in;
     /// No exits onboarding and drops the user on the normal new-session screen
     /// with a system message telling them to run `/login` when they're ready.
     ///
-    /// We intentionally do NOT open the inline provider picker on "No": that
+    /// We intentionally do NOT open the inline provider picker on "Нет": that
     /// flow has a flaky input widget (typed characters were not echoed), and
     /// finishing onboarding straight to the usual screen is simpler and more
     /// robust. The user can pick any provider via `/login` at their own pace.
@@ -733,11 +733,11 @@ impl App {
                 )
             };
             self.push_display_message(DisplayMessage::system(hint));
-            self.set_status_notice(format!("Run {login} when you're ready"));
+            self.set_status_notice(format!("Выполните {login}, когда будете готовы"));
         }
     }
 
-    /// Refresh the status notice for the "Log in to OpenAI?" prompt.
+    /// Refresh the status notice for the "Войти в OpenAI?" prompt.
     fn update_onboarding_login_openai_status(&mut self) {
         let yes = matches!(
             self.onboarding_phase(),
@@ -745,9 +745,9 @@ impl App {
                 yes_highlighted: true
             })
         );
-        let choice = if yes { "Yes" } else { "No" };
+        let choice = if yes { "Да" } else { "Нет" };
         self.set_status_notice(format!(
-            "Log in to OpenAI? [{choice}] - hl to move, Enter to choose (No skips for now)"
+            "Войти в OpenAI? [{choice}] - выделение для перемещения, Enter для выбора (Нет пропускает на время)"
         ));
     }
 
@@ -781,7 +781,7 @@ impl App {
             let secs = review.seconds_remaining();
             let notice = if !review.choosing {
                 if review.telemetry.is_some() {
-                    "Telemetry settings - arrows move, Enter chooses, Esc goes back".to_string()
+                    "Настройки телеметрии - стрелки перемещают, Enter выбирает, Esc возвращается назад".to_string()
                 } else {
                     format!(
                         "Found {total} login{} - Enter imports all (auto in {secs}s), or pick \"Import less\"",
@@ -790,7 +790,7 @@ impl App {
                 }
             } else {
                 format!(
-                    "Import {checked} of {total} login{} - Space toggles, arrows move, Enter imports (auto in {secs}s)",
+                    "Импорт {checked} из {total} логин{} - Пробел переключает, стрелки перемещают, Enter импортирует (авто через {secs}с)",
                     if total == 1 { "" } else { "s" },
                 )
             };
@@ -817,7 +817,7 @@ impl App {
             // The user declined every detected login. Fall back to manual login
             // so they can still authenticate.
             self.onboarding_import_in_progress = None;
-            self.set_status_notice("No logins imported. Press Enter to choose a provider.");
+            self.set_status_notice("Логины не импортированы. Нажмите Enter, чтобы выбрать провайдера.");
             return;
         }
 
@@ -837,7 +837,7 @@ impl App {
             });
         // Kick off the import on the runtime; the LoginCompleted event advances
         // onboarding and activates the provider.
-        self.set_status_notice("Login: importing selected logins...");
+        self.set_status_notice("Вход: импорт выбранных логинов...");
         // Grab the runtime handle explicitly: this path is reachable straight
         // from a key handler (Enter/y on the summary screen), and a bare
         // `tokio::spawn` would panic if no runtime is running (tests, exotic
@@ -845,7 +845,7 @@ impl App {
         // guarantee: the user lands on the recovery screen, not a crash.
         let Ok(runtime) = tokio::runtime::Handle::try_current() else {
             self.onboarding_handle_login_failed(Some(
-                "The import could not start (no async runtime).".to_string(),
+                "Импорт не может начаться (нет асинхронной среды выполнения).".to_string(),
             ));
             return;
         };
@@ -860,9 +860,9 @@ impl App {
                 Err(err) => {
                     crate::bus::Bus::global().publish(crate::bus::BusEvent::LoginCompleted(
                         crate::bus::LoginCompleted {
-                            provider: "auto-import".to_string(),
+                            provider: "авто-импорт".to_string(),
                             success: false,
-                            message: format!("Auto import failed: {}", err),
+                            message: format!("Авто импорт не удался: {}", err),
                         },
                     ));
                     return;
@@ -884,7 +884,7 @@ impl App {
                 &crate::auth::AuthStatus::check_fast(),
             )
             .or_else(|| outcome.preferred_activation_provider())
-            .unwrap_or("auto-import")
+            .unwrap_or("авто-импорт")
             .to_string();
             crate::bus::Bus::global().publish(crate::bus::BusEvent::LoginCompleted(
                 crate::bus::LoginCompleted {
@@ -907,7 +907,7 @@ impl App {
             shown_at: Instant::now(),
         });
         self.onboarding_prefetch_recent_project();
-        self.set_status_notice("Press any key to switch, Enter to choose");
+        self.set_status_notice("Нажмите любую клавишу для переключения, Enter для выбора");
     }
 
     /// Formatted copy shown above the two first-run actions.
@@ -917,11 +917,11 @@ impl App {
         let accent = crate::tui::color_support::rgb(186, 139, 255);
         vec![
             Line::from(vec![Span::styled(
-                "Welcome to jcode 🎉",
+                "Добро пожаловать в jcode 🎉",
                 Style::default().fg(accent).add_modifier(Modifier::BOLD),
             )]),
             Line::from(vec![Span::styled(
-                "How would you like to begin?",
+                "Как бы вы хотели начать?",
                 Style::default().fg(Color::White),
             )]),
         ]
@@ -1035,7 +1035,7 @@ impl App {
     pub(super) fn onboarding_recent_project_review_prompt(repository: &Path) -> String {
         let repository = format!("{:?}", repository.to_string_lossy());
         format!(
-            "Find the most critical architecture problems in the repository at {repository}. Do not fix them yet, and ask me whether I want them fixed once you find them."
+            "Найдите самые критичные проблемы архитектуры в репозитории {repository}. Пока не исправляйте их, и спросите меня, хочу ли я их исправить, как только найдете."
         )
     }
 
@@ -1043,7 +1043,7 @@ impl App {
         let Some(repository) = self.onboarding_recent_project_path() else {
             self.onboarding_show_suggestions();
             self.set_status_notice(
-                "No active Git repository found. Start jcode inside a project to review it.",
+                "Активный репозиторий Git не найден. Запустите jcode внутри проекта для его проверки.",
             );
             return false;
         };
@@ -1066,13 +1066,13 @@ impl App {
         self.follow_chat_bottom_for_typing();
         if self.is_remote {
             super::input::queue_message(self);
-            self.set_status_notice("Architecture review queued");
+            self.set_status_notice("Проверка архитектуры в очереди");
         } else {
             self.submit_input();
         }
     }
 
-    /// Drop into the suggestion-card state (the "No" / no-OAuth path). Prints
+    /// Drop into the suggestion-card state (the "Нет" / no-OAuth path). Prints
     /// the same starter prompts the empty-screen welcome offers, as an inline
     /// numbered list the user can pick by typing the number or anything else.
     ///
@@ -1086,7 +1086,7 @@ impl App {
         let suggestions = self.suggestion_prompts();
         if suggestions.is_empty() {
             self.onboarding_finish();
-            self.set_status_notice("You're all set, type anything to start");
+            self.set_status_notice("Всё готово, введите что-нибудь для начала");
             self.onboarding_validate_default_model();
             return;
         }
@@ -1095,11 +1095,11 @@ impl App {
             body.push_str(&format!("  [{}] {}\n", i + 1, label));
         }
         body.push_str(&format!(
-            "Press 1-{} to use one, or just type anything to start.",
+            "Нажмите 1-{}, чтобы использовать один, или просто введите что-нибудь для начала.",
             suggestions.len()
         ));
         self.push_display_message(DisplayMessage::system(body));
-        self.set_status_notice("Try a suggestion, or type anything to start");
+        self.set_status_notice("Попробуйте предложение или введите что-нибудь для начала");
         self.onboarding_validate_default_model();
     }
 
@@ -1193,12 +1193,12 @@ impl App {
         // Whether to also run a definitive live Copilot auth check. Copilot is
         // unusual: a local GitHub token can exist while the account is banned or
         // not entitled, so the presence-only probe used by the readiness summary
-        // would otherwise show a banned account as "Ready to use". We skip it
+        // would otherwise show a banned account as "Готов к использованию". We skip it
         // when Copilot is the default provider (the model ping already covers
         // it) or when no Copilot credentials are present locally.
         let verify_copilot = provider_key.as_deref() != Some("copilot")
             && crate::auth::copilot::has_copilot_credentials_fast();
-        self.set_status_notice(format!("Checking {model_label}..."));
+        self.set_status_notice(format!("Проверка {model_label}..."));
         tokio::spawn(async move {
             // Run the definitive Copilot auth check first so its validation
             // record is persisted (and the auth cache invalidated) before the
@@ -1324,7 +1324,7 @@ impl App {
             || lower.contains("invalid api key")
             || lower.contains("invalid x-api-key")
         {
-            return "login expired or invalid".to_string();
+            return "вход истек или недействителен".to_string();
         }
         if lower.contains("timed out") || lower.contains("timeout") {
             return "timed out".to_string();
@@ -1333,12 +1333,12 @@ impl App {
             return "rate limited".to_string();
         }
         if lower.contains("empty response") {
-            return "no response".to_string();
+            return "нет ответа".to_string();
         }
         let first_line = msg.lines().next().unwrap_or(&msg).trim();
         let trimmed: String = first_line.chars().take(100).collect();
         if trimmed.is_empty() {
-            "unknown error".to_string()
+            "неизвестная ошибка".to_string()
         } else {
             trimmed
         }
@@ -1407,7 +1407,7 @@ impl App {
         None
     }
 
-    /// Build the "other providers" rows for the onboarding readiness summary.
+    /// Build the "другие провайдеры" rows for the onboarding readiness summary.
     ///
     /// We already ran a live ping for the default model; for the remaining
     /// configured providers we trust the cached auth probe (Available -> ready,
@@ -1420,7 +1420,7 @@ impl App {
         let providers: [(&str, &str, AuthState); 8] = [
             ("Anthropic (Claude)", "anthropic", status.anthropic.state),
             ("OpenAI", "openai", status.openai),
-            ("Jcode subscription", "jcode", status.jcode),
+            ("Подписка Jcode", "jcode", status.jcode),
             ("Gemini", "gemini", status.gemini),
             ("GitHub Copilot", "copilot", status.copilot),
             ("Cursor", "cursor", status.cursor),
@@ -1457,9 +1457,9 @@ impl App {
     /// Why a provider needs attention, taken from its recorded credential
     /// lifecycle rather than assumed.
     ///
-    /// `AuthState::Expired` is overloaded: it means both "partially configured"
-    /// and "the token is dead". Reporting the wrong one is how the readiness
-    /// summary told a user "GitHub Copilot - login expired" for a provider that
+    /// `AuthState::Expired` is overloaded: it means both "частично настроен"
+    /// and "токен недействителен". Reporting the wrong one is how the readiness
+    /// summary told a user "GitHub Copilot - вход истек" for a provider that
     /// was never configured. `CredState` knows the difference, so ask it.
     fn onboarding_attention_reason(provider_key: &str) -> &'static str {
         use crate::auth::refresh_state::{CredState, cred_state};
@@ -1468,11 +1468,11 @@ impl App {
         match cred_state(provider_key, None) {
             // Nothing was ever recorded for this provider, so there is no
             // evidence of an expiry. Say what we actually know.
-            CredState::Absent => "needs sign-in",
-            CredState::Present => "configured, not verified",
+            CredState::Absent => "требуется вход",
+            CredState::Present => "настроен, не проверен",
             CredState::Verified => "needs a retry",
-            CredState::Stale => "login needs a refresh",
-            CredState::Rejected => "login expired, sign in again",
+            CredState::Stale => "вход требует обновления",
+            CredState::Rejected => "вход истек, войдите снова",
         }
     }
 
@@ -1502,7 +1502,7 @@ impl App {
             ready.insert(0, format!("{} (default)", result.model_label));
         } else {
             let reason = if detail_text.is_empty() {
-                "could not be validated".to_string()
+                "не удалось проверить".to_string()
             } else {
                 detail_text.clone()
             };
@@ -1527,28 +1527,28 @@ impl App {
             }
             let login = Self::onboarding_login_suggestion();
             let fix_hint = if looks_like_auth || !ready.is_empty() {
-                format!("Run {login} to fix a login, or /model to pick another.")
+                format!("Выполните {login} для исправления входа или /model для выбора другого.")
             } else {
-                format!("Run {login} to add a login, or /model to pick another.")
+                format!("Выполните {login} для добавления входа или /model для выбора другого.")
             };
             body.push_str(&format!("\n{fix_hint}"));
         }
         if body.is_empty() {
             // Defensive: should not happen because the default model always
             // lands in one of the lists.
-            body.push_str("Type anything to start.");
+            body.push_str("Введите что-нибудь для начала.");
         }
         self.push_display_message(DisplayMessage::system(body.trim_end().to_string()));
 
         // Status-bar notice: concise, action-oriented.
         if attention.is_empty() {
             self.set_status_notice(format!(
-                "{} ready - type anything to start",
+                "{} готов - введите что-нибудь для начала",
                 result.model_label
             ));
         } else if result.ok {
             self.set_status_notice(format!(
-                "{} ready - type anything to start ({} login{} need attention)",
+                "{} готов - введите что-нибудь для начала ({} логин{} нуждаются во внимании)",
                 result.model_label,
                 attention.len(),
                 if attention.len() == 1 { "" } else { "s" }
@@ -1556,13 +1556,13 @@ impl App {
         } else {
             let hint = if looks_like_auth {
                 format!(
-                    "{} to fix credentials, or /model",
+                    "{} для исправления учетных данных или /model",
                     Self::onboarding_login_suggestion()
                 )
             } else {
-                "type anything to try, or /model".to_string()
+                "введите что-нибудь для попытки или /model".to_string()
             };
-            self.set_status_notice(format!("{} not validated - {hint}", result.model_label));
+            self.set_status_notice(format!("{} не проверен - {hint}", result.model_label));
         }
         true
     }
@@ -1603,10 +1603,10 @@ impl App {
         self.onboarding_import_error = Some(
             reason
                 .map(|r| Self::summarize_import_error(&r))
-                .unwrap_or_else(|| "We couldn't import those logins.".to_string()),
+                .unwrap_or_else(|| "Мы не смогли импортировать эти логины.".to_string()),
         );
         self.set_status_notice(
-            "Import failed. Press Enter to choose a provider and log in manually.",
+            "Импорт не удался. Нажмите Enter, чтобы выбрать провайдера и войти вручную.",
         );
     }
 
@@ -1620,11 +1620,11 @@ impl App {
             .find(|l| {
                 !l.is_empty() && !l.starts_with("**") && !l.eq_ignore_ascii_case("Logins imported")
             })
-            .unwrap_or("We couldn't import those logins.")
+            .unwrap_or("Мы не смогли импортировать эти логины.")
             .trim_start_matches(['✕', '✓', '-', ' '])
             .trim();
         let cleaned = if cleaned.is_empty() {
-            "We couldn't import those logins."
+            "Мы не смогли импортировать эти логины."
         } else {
             cleaned
         };
@@ -1703,7 +1703,7 @@ impl App {
         // only when its `LoginCompleted` event arrives. If that event never
         // lands (a wedged runtime, a dropped bus event, a sandbox with no
         // runtime), the user would otherwise be stranded forever on the
-        // "Importing your logins..." screen. After a hard timeout we recover the
+        // "Импорт ваших логинов..." screen. After a hard timeout we recover the
         // flow into the failure-aware recovery screen so the user always has a
         // way forward (Enter -> provider picker).
         if let Some(started_at) = self.onboarding_import_in_progress {
@@ -1714,7 +1714,7 @@ impl App {
                 )
             {
                 self.onboarding_handle_login_failed(Some(
-                    "The import is taking longer than expected.".to_string(),
+                    "Импорт занимает больше времени, чем ожидалось.".to_string(),
                 ));
                 return true;
             }

@@ -75,8 +75,8 @@ impl LoginPickerItem {
     fn status_label(&self) -> &'static str {
         match self.auth_state {
             AuthState::Available => "configured",
-            AuthState::Expired => "needs attention",
-            AuthState::NotConfigured => "not set up",
+            AuthState::Expired => "требует внимания",
+            AuthState::NotConfigured => "не настроено",
         }
     }
 
@@ -293,16 +293,16 @@ impl LoginPicker {
         let block = Block::default()
             .title(format!(" {} ", self.title))
             .title_bottom(Line::from(vec![
-                hotkey(" Enter "),
-                Span::styled(" login  ", Style::default().fg(MUTED_DARK)),
-                hotkey(" Up/Down "),
-                Span::styled(" navigate  ", Style::default().fg(MUTED_DARK)),
-                hotkey(" Click "),
-                Span::styled(" select  ", Style::default().fg(MUTED_DARK)),
-                hotkey(" type "),
-                Span::styled(" filter  ", Style::default().fg(MUTED_DARK)),
-                hotkey(" Esc "),
-                Span::styled(" clear / close ", Style::default().fg(MUTED_DARK)),
+                hotkey(" Enter"),
+                Span::styled(" login", Style::default().fg(MUTED_DARK)),
+                hotkey(" Up/Down"),
+                Span::styled(" navigate", Style::default().fg(MUTED_DARK)),
+                hotkey(" Click"),
+                Span::styled(" select", Style::default().fg(MUTED_DARK)),
+                hotkey(" type"),
+                Span::styled(" filter", Style::default().fg(MUTED_DARK)),
+                hotkey(" Esc"),
+                Span::styled(" clear / close", Style::default().fg(MUTED_DARK)),
             ]))
             .borders(Borders::ALL)
             .border_style(Style::default().fg(PANEL_BORDER));
@@ -334,9 +334,9 @@ impl LoginPicker {
         self.render_detail_pane(frame, body[1]);
 
         let footer = Paragraph::new(Line::from(vec![
-            Span::styled("Tip ", Style::default().fg(MUTED_DARK)),
+            Span::styled("Tip", Style::default().fg(MUTED_DARK)),
             Span::styled(
-                "Move or click through providers on the left; the focused provider expands on the right with setup and account details.",
+                "Перемещайтесь или кликайте по провайдерам слева; выбранный провайдер раскрывается справа с настройками и деталями аккаунта.",
                 Style::default().fg(MUTED),
             ),
         ]));
@@ -346,7 +346,7 @@ impl LoginPicker {
     fn render_header(&self, frame: &mut Frame, area: Rect) {
         let block = Block::default()
             .title(Span::styled(
-                " Login overview ",
+                " Обзор входа",
                 Style::default().fg(Color::White).bold(),
             ))
             .borders(Borders::ALL)
@@ -357,10 +357,10 @@ impl LoginPicker {
 
         let lines = vec![
             Line::from(vec![
-                Span::styled("Filter ", Style::default().fg(MUTED_DARK)),
+                Span::styled("Filter", Style::default().fg(MUTED_DARK)),
                 Span::styled(
                     if self.filter.is_empty() {
-                        "type provider, status, or auth method".to_string()
+                        "введите провайдера, статус или метод аутентификации".to_string()
                     } else {
                         self.filter.clone()
                     },
@@ -371,7 +371,7 @@ impl LoginPicker {
                     },
                 ),
                 Span::styled(
-                    format!("  ·  {} results", self.filtered.len()),
+                    format!("  ·  {} результатов", self.filtered.len()),
                     Style::default().fg(MUTED_DARK),
                 ),
             ]),
@@ -403,10 +403,10 @@ impl LoginPicker {
 
     fn render_provider_list(&mut self, frame: &mut Frame, area: Rect) {
         let title = if self.filtered.is_empty() {
-            " Providers ".to_string()
+            " Провайдеры".to_string()
         } else {
             format!(
-                " Providers ({}/{}) ",
+                " Провайдеры ({}/{})",
                 self.selected + 1,
                 self.filtered.len()
             )
@@ -430,11 +430,11 @@ impl LoginPicker {
         let mut lines = Vec::new();
         if self.filtered.is_empty() {
             lines.push(Line::from(Span::styled(
-                "No matching providers.",
+                "Нет подходящих провайдеров.",
                 Style::default().fg(Color::Gray).italic(),
             )));
             lines.push(Line::from(Span::styled(
-                "Try `openai`, `oauth`, `configured`, or `setup`.",
+                "Попробуйте `openai`, `oauth`, `configured`, или `setup`.",
                 Style::default().fg(MUTED),
             )));
         } else {
@@ -473,7 +473,7 @@ impl LoginPicker {
         let title = self
             .selected_item()
             .map(|item| format!(" {} ", item.provider.display_name))
-            .unwrap_or_else(|| " Details ".to_string());
+            .unwrap_or_else(|| " Детали".to_string());
         let block = Block::default()
             .title(Span::styled(
                 title,
@@ -487,7 +487,7 @@ impl LoginPicker {
 
         let Some(item) = self.selected_item() else {
             frame.render_widget(
-                Paragraph::new("No provider selected").style(Style::default().fg(Color::DarkGray)),
+                Paragraph::new("Провайдер не выбран").style(Style::default().fg(Color::DarkGray)),
                 inner,
             );
             return;
@@ -510,14 +510,14 @@ impl LoginPicker {
                 ),
             ]),
             Line::from(vec![
-                Span::styled("Provider ", Style::default().fg(MUTED_DARK)),
+                Span::styled("Provider", Style::default().fg(MUTED_DARK)),
                 Span::styled(
                     item.provider.display_name.to_string(),
                     provider_style(item.provider.id),
                 ),
                 if item.provider.recommended {
                     Span::styled(
-                        "  recommended",
+                        "  рекомендуется",
                         Style::default().fg(Color::Rgb(196, 170, 255)),
                     )
                 } else {
@@ -525,14 +525,14 @@ impl LoginPicker {
                 },
             ]),
             Line::from(vec![
-                Span::styled("Login command ", Style::default().fg(MUTED_DARK)),
+                Span::styled("Login command", Style::default().fg(MUTED_DARK)),
                 Span::styled(
                     format!("/login {}", item.provider.id),
                     Style::default().fg(Color::White),
                 ),
             ]),
             Line::from(vec![Span::styled(
-                "Authentication",
+                "Аутентификация",
                 Style::default().fg(MUTED_DARK).bold(),
             )]),
             Line::from(vec![Span::styled(
@@ -543,7 +543,7 @@ impl LoginPicker {
             )]),
             Line::from(""),
             Line::from(vec![Span::styled(
-                "Detected setup",
+                "Обнаруженная настройка",
                 Style::default().fg(MUTED_DARK).bold(),
             )]),
             Line::from(vec![Span::styled(
@@ -552,7 +552,7 @@ impl LoginPicker {
             )]),
             Line::from(""),
             Line::from(vec![Span::styled(
-                "What you need",
+                "Что вам нужно",
                 Style::default().fg(MUTED_DARK).bold(),
             )]),
             Line::from(vec![Span::styled(
@@ -561,16 +561,16 @@ impl LoginPicker {
             )]),
             Line::from(""),
             Line::from(vec![
-                Span::styled("Aliases ", Style::default().fg(MUTED_DARK)),
+                Span::styled("Aliases", Style::default().fg(MUTED_DARK)),
                 Span::styled(aliases, Style::default().fg(MUTED)),
             ]),
             Line::from(vec![
-                Span::styled("Numbered accounts ", Style::default().fg(MUTED_DARK)),
+                Span::styled("Нумерованные аккаунты", Style::default().fg(MUTED_DARK)),
                 Span::styled(
                     if provider_supports_named_accounts(item.provider) {
                         "supported"
                     } else {
-                        "not used for this provider"
+                        "не используется для этого провайдера"
                     },
                     Style::default().fg(MUTED),
                 ),
@@ -585,7 +585,7 @@ impl LoginPicker {
 
         lines.push(Line::from(""));
         lines.push(Line::from(vec![Span::styled(
-            "Press Enter to begin login.",
+            "Нажмите Enter для начала входа.",
             Style::default().fg(Color::Rgb(170, 210, 255)),
         )]));
 
@@ -665,11 +665,11 @@ fn account_detail_lines(provider: LoginProviderDescriptor) -> Vec<Line<'static>>
         crate::provider_catalog::LoginProviderTarget::OpenAi => openai_account_lines(),
         _ => vec![
             Line::from(vec![Span::styled(
-                "Accounts",
+                "Аккаунты",
                 Style::default().fg(MUTED_DARK).bold(),
             )]),
             Line::from(vec![Span::styled(
-                "This provider is usually configured as a single credential or env-based login.",
+                "Этот провайдер обычно настраивается как один учетный данные или вход на основе env.",
                 Style::default().fg(MUTED),
             )]),
         ],
@@ -682,17 +682,17 @@ fn claude_account_lines() -> Vec<Line<'static>> {
     let now_ms = chrono::Utc::now().timestamp_millis();
 
     let mut lines = vec![Line::from(vec![Span::styled(
-        "Accounts",
+        "Аккаунты",
         Style::default().fg(MUTED_DARK).bold(),
     )])];
 
     if accounts.is_empty() {
         lines.push(Line::from(vec![Span::styled(
-            "No saved Claude accounts yet.",
+            "Пока нет сохраненных аккаунтов Claude.",
             Style::default().fg(MUTED),
         )]));
         lines.push(Line::from(vec![
-            Span::styled("Add more later with ", Style::default().fg(MUTED_DARK)),
+            Span::styled("Добавьте позже с", Style::default().fg(MUTED_DARK)),
             Span::styled("/account claude add", Style::default().fg(Color::White)),
         ]));
         return lines;
@@ -700,7 +700,7 @@ fn claude_account_lines() -> Vec<Line<'static>> {
 
     let active = active_label.unwrap_or_else(crate::auth::claude::primary_account_label);
     lines.push(Line::from(vec![Span::styled(
-        format!("{} saved · active: {}", accounts.len(), active),
+        format!("{} сохранено · активно: {}", accounts.len(), active),
         Style::default().fg(MUTED),
     )]));
 
@@ -714,12 +714,12 @@ fn claude_account_lines() -> Vec<Line<'static>> {
         let plan = account
             .subscription_type
             .as_deref()
-            .unwrap_or("subscription unknown");
+            .unwrap_or("подписка неизвестна");
         let email = account
             .email
             .as_deref()
             .map(mask_email)
-            .unwrap_or_else(|| "email unknown".to_string());
+            .unwrap_or_else(|| "электронная почта неизвестна".to_string());
         lines.push(Line::from(vec![
             Span::styled(
                 if is_active { "● " } else { "○ " },
@@ -739,13 +739,13 @@ fn claude_account_lines() -> Vec<Line<'static>> {
 
     if accounts.len() > 6 {
         lines.push(Line::from(vec![Span::styled(
-            format!("+{} more accounts", accounts.len() - 6),
+            format!("+{} больше аккаунтов", accounts.len() - 6),
             Style::default().fg(MUTED_DARK),
         )]));
     }
 
     lines.push(Line::from(vec![
-        Span::styled("Manage with ", Style::default().fg(MUTED_DARK)),
+        Span::styled("Управление с", Style::default().fg(MUTED_DARK)),
         Span::styled("/account claude", Style::default().fg(Color::White)),
     ]));
     lines
@@ -757,17 +757,17 @@ fn openai_account_lines() -> Vec<Line<'static>> {
     let now_ms = chrono::Utc::now().timestamp_millis();
 
     let mut lines = vec![Line::from(vec![Span::styled(
-        "Accounts",
+        "Аккаунты",
         Style::default().fg(MUTED_DARK).bold(),
     )])];
 
     if accounts.is_empty() {
         lines.push(Line::from(vec![Span::styled(
-            "No saved OpenAI accounts yet.",
+            "Пока нет сохраненных аккаунтов OpenAI.",
             Style::default().fg(MUTED),
         )]));
         lines.push(Line::from(vec![
-            Span::styled("Add more later with ", Style::default().fg(MUTED_DARK)),
+            Span::styled("Добавьте позже с", Style::default().fg(MUTED_DARK)),
             Span::styled("/account openai add", Style::default().fg(Color::White)),
         ]));
         return lines;
@@ -775,7 +775,7 @@ fn openai_account_lines() -> Vec<Line<'static>> {
 
     let active = active_label.unwrap_or_else(crate::auth::codex::primary_account_label);
     lines.push(Line::from(vec![Span::styled(
-        format!("{} saved · active: {}", accounts.len(), active),
+        format!("{} сохранено · активно: {}", accounts.len(), active),
         Style::default().fg(MUTED),
     )]));
 
@@ -790,11 +790,11 @@ fn openai_account_lines() -> Vec<Line<'static>> {
             .email
             .as_deref()
             .map(mask_email)
-            .unwrap_or_else(|| "email unknown".to_string());
+            .unwrap_or_else(|| "электронная почта неизвестна".to_string());
         let account_id = account
             .account_id
             .as_deref()
-            .unwrap_or("account id unknown");
+            .unwrap_or("идентификатор аккаунта неизвестен");
         lines.push(Line::from(vec![
             Span::styled(
                 if is_active { "● " } else { "○ " },
@@ -814,13 +814,13 @@ fn openai_account_lines() -> Vec<Line<'static>> {
 
     if accounts.len() > 6 {
         lines.push(Line::from(vec![Span::styled(
-            format!("+{} more accounts", accounts.len() - 6),
+            format!("+{} больше аккаунтов", accounts.len() - 6),
             Style::default().fg(MUTED_DARK),
         )]));
     }
 
     lines.push(Line::from(vec![
-        Span::styled("Manage with ", Style::default().fg(MUTED_DARK)),
+        Span::styled("Управление с", Style::default().fg(MUTED_DARK)),
         Span::styled("/account openai", Style::default().fg(Color::White)),
     ]));
     lines
@@ -899,12 +899,12 @@ mod tests {
     #[test]
     fn test_login_picker_preserves_underlying_background_outside_panels() {
         let mut picker = LoginPicker::with_summary(
-            " Login ",
+            " Вход",
             vec![LoginPickerItem::new(
                 1,
                 crate::provider_catalog::OPENAI_LOGIN_PROVIDER,
                 AuthState::Available,
-                "OAuth credentials configured",
+                "Учетные данные OAuth настроены",
             )],
             LoginPickerSummary {
                 ready_count: 1,
@@ -936,19 +936,19 @@ mod tests {
     #[test]
     fn test_login_picker_mouse_click_selects_visible_provider() {
         let mut picker = LoginPicker::with_summary(
-            " Login ",
+            " Вход",
             vec![
                 LoginPickerItem::new(
                     1,
                     crate::provider_catalog::OPENAI_LOGIN_PROVIDER,
                     AuthState::NotConfigured,
-                    "not configured",
+                    "не настроено",
                 ),
                 LoginPickerItem::new(
                     2,
                     crate::provider_catalog::CLAUDE_LOGIN_PROVIDER,
                     AuthState::Available,
-                    "OAuth configured",
+                    "OAuth настроен",
                 ),
             ],
             LoginPickerSummary::default(),
@@ -981,7 +981,7 @@ mod tests {
         let providers = crate::provider_catalog::login_providers();
         assert!(
             !providers.is_empty(),
-            "login provider catalog should not be empty"
+            "каталог провайдеров входа не должен быть пустым"
         );
 
         for auth_state in [
@@ -991,9 +991,9 @@ mod tests {
         ] {
             for (index, provider) in providers.iter().copied().enumerate() {
                 let method_detail =
-                    format!("state-space detail for {} {auth_state:?}", provider.id);
+                    format!("детали пространства состояний для {} {auth_state:?}", provider.id);
                 let mut picker = LoginPicker::with_summary(
-                    " Login ",
+                    " Вход",
                     vec![LoginPickerItem::new(
                         index + 1,
                         provider,
@@ -1021,7 +1021,7 @@ mod tests {
                     provider.auth_kind.label(),
                     provider.menu_detail,
                     method_detail.as_str(),
-                    "Press Enter to begin login.",
+                    "Нажмите Enter для начала входа.",
                 ] {
                     assert!(
                         text.contains(expected),
@@ -1032,11 +1032,11 @@ mod tests {
 
                 match picker
                     .handle_overlay_key(KeyCode::Enter, KeyModifiers::empty())
-                    .expect("enter should be handled")
+                    .expect("нажатие Enter должно обрабатываться")
                 {
                     OverlayAction::Execute(selected) => assert_eq!(selected.id, provider.id),
                     _ => panic!(
-                        "Enter should execute provider={} state={auth_state:?}",
+                        "Enter должен выполнить provider={} state={auth_state:?}",
                         provider.id
                     ),
                 }

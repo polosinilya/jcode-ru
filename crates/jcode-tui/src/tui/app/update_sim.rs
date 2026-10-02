@@ -20,7 +20,7 @@ impl App {
             started_at: Instant::now(),
             stage: 0,
         });
-        self.set_status_notice("Update simulator · waiting for update signal...");
+        self.set_status_notice("Симулятор обновлений · ожидание сигнала обновления...");
         self.force_full_redraw = true;
     }
 
@@ -92,7 +92,7 @@ impl App {
             7 => self.handle_update_status(UpdateStatus::Installed { version }),
             8 => {
                 self.handle_update_status(UpdateStatus::UpToDate);
-                self.set_status_notice("Update simulator complete · restart successful");
+                self.set_status_notice("Симулятор обновлений завершен · перезапуск успешен");
                 self.push_display_message(DisplayMessage::system(
                     "Update simulator complete. This is the post-restart TUI; no files were changed. Press Alt+_ to replay."
                         .to_string(),

@@ -37,7 +37,7 @@ impl App {
                 "oauth",
                 crate::auth::login_diagnostics::AuthFailureReason::BrowserOpenFailed.label(),
             );
-            notices.push("This machine could not open a browser automatically.".to_string());
+            notices.push("Эта машина не смогла автоматически открыть браузер.".to_string());
         }
         if matches!(callback_available, Some(false)) {
             crate::telemetry::record_auth_surface_blocked_reason(
@@ -47,19 +47,19 @@ impl App {
             );
             if let Some(target) = callback_target {
                 notices.push(format!(
-                    "Local callback target {} is unavailable, so jcode is using manual-safe paste completion instead.",
+                    "Локальная цель обратного вызова {} недоступна, поэтому jcode использует ручное безопасное завершение вместо этого.",
                     target
                 ));
             } else {
                 notices.push(
-                    "The local callback listener is unavailable, so jcode is using manual-safe paste completion instead."
+                    "Локальный слушатель обратного вызова недоступен, поэтому jcode использует ручное безопасное завершение вместо этого."
                         .to_string(),
                 );
             }
         }
         if !notices.is_empty() {
             notices.push(format!(
-                "If login still fails, run jcode auth doctor {} for a guided diagnosis.",
+                "Если вход все еще не удается, выполните jcode auth doctor {} для диагностики с руководством.",
                 provider_id
             ));
         }
@@ -78,7 +78,7 @@ impl App {
             if configured_key {
                 "configured"
             } else {
-                "not configured (/login jcode)"
+                "не настроено (/login jcode)"
             }
         ));
         message.push_str(&format!(
@@ -167,7 +167,7 @@ impl App {
                                             .unwrap_or_default(),
                                         resets
                                     ),
-                                    Some("Hosted usage: account status loaded"),
+                                    Some("Хостинговое использование: статус аккаунта загружен"),
                                 ),
                             ));
                         }
@@ -189,7 +189,7 @@ impl App {
                                 crate::bus::UiActivity::background(
                                     Some(session_id),
                                     message,
-                                    Some("Jcode account status unavailable"),
+                                    Some("Статус аккаунта Jcode недоступен"),
                                 ),
                             ));
                         }
@@ -204,16 +204,16 @@ impl App {
         let validation = crate::auth::validation::load_all();
         let icon = |state: crate::auth::AuthState| match state {
             crate::auth::AuthState::Available => "ok",
-            crate::auth::AuthState::Expired => "needs attention",
-            crate::auth::AuthState::NotConfigured => "not configured",
+            crate::auth::AuthState::Expired => "требует внимания",
+            crate::auth::AuthState::NotConfigured => "не настроено",
         };
         let providers = crate::provider_catalog::auth_status_login_providers();
         let mut rows: Vec<[String; 5]> = vec![[
-            "Provider".to_string(),
-            "Status".to_string(),
+            "Провайдер".to_string(),
+            "Статус".to_string(),
             "Method".to_string(),
-            "Health".to_string(),
-            "Validation".to_string(),
+            "Здоровье".to_string(),
+            "Валидация".to_string(),
         ]];
         for provider in providers {
             let assessment = status.assessment_for_provider(provider);
@@ -225,7 +225,7 @@ impl App {
                 validation
                     .get(provider.id)
                     .map(crate::auth::validation::format_record_label)
-                    .unwrap_or_else(|| "not validated".to_string()),
+                    .unwrap_or_else(|| "не валидировано".to_string()),
             ]);
         }
         let mut widths = [0usize; 5];
@@ -254,12 +254,12 @@ impl App {
     pub(super) fn show_interactive_login(&mut self) {
         crate::telemetry::record_setup_step_once("login_picker_opened");
         self.open_login_picker_inline();
-        self.set_status_notice("Login: choose a provider");
+        self.set_status_notice("Вход: выберите провайдера");
     }
 
     pub(super) fn show_interactive_logout(&mut self) {
         self.open_logout_picker_inline();
-        self.set_status_notice("Logout: choose a provider");
+        self.set_status_notice("Выход: выберите провайдера");
     }
 
     pub(super) fn start_logout_provider(
@@ -277,30 +277,30 @@ impl App {
             LoginProviderTarget::Jcode => unreachable!("handled above"),
             LoginProviderTarget::Claude => {
                 let removed = crate::auth::claude::clear_accounts()?;
-                Ok(format!("Logged out of {} Anthropic account(s).", removed))
+                Ok(format!("Вышли из {} аккаунтов Anthropic.", removed))
             }
             LoginProviderTarget::ClaudeApiKey => {
                 Self::clear_api_key_login("ANTHROPIC_API_KEY", "anthropic.env")?;
-                Ok("Logged out of Anthropic API key.".to_string())
+                Ok("Вышли из Anthropic API ключа.".to_string())
             }
             LoginProviderTarget::OpenAi => {
                 let removed = crate::auth::codex::clear_accounts()?;
-                Ok(format!("Logged out of {} OpenAI account(s).", removed))
+                Ok(format!("Вышли из {} аккаунтов OpenAI.", removed))
             }
             LoginProviderTarget::OpenAiApiKey => {
                 Self::clear_api_key_login("OPENAI_API_KEY", "openai.env")?;
-                Ok("Logged out of OpenAI API key.".to_string())
+                Ok("Вышли из OpenAI API ключа.".to_string())
             }
             LoginProviderTarget::OpenRouter => {
                 Self::clear_api_key_login("OPENROUTER_API_KEY", "openrouter.env")?;
-                Ok("Logged out of OpenRouter API key.".to_string())
+                Ok("Вышли из OpenRouter API ключа.".to_string())
             }
             LoginProviderTarget::Bedrock => {
                 Self::clear_api_key_login(
                     crate::provider::bedrock::API_KEY_ENV,
                     crate::provider::bedrock::ENV_FILE,
                 )?;
-                Ok("Logged out of Bedrock API key.".to_string())
+                Ok("Вышли из Bedrock API ключа.".to_string())
             }
             LoginProviderTarget::Azure => {
                 Self::clear_api_key_login(
@@ -312,7 +312,7 @@ impl App {
                     crate::auth::azure::ENV_FILE,
                     None,
                 )?;
-                Ok("Logged out of Azure OpenAI API key / Entra configuration.".to_string())
+                Ok("Вышли из Azure OpenAI API ключа / Entra конфигурации.".to_string())
             }
             LoginProviderTarget::OpenAiCompatible(profile) => {
                 let resolved = crate::provider_catalog::resolve_openai_compatible_profile(profile);
@@ -322,18 +322,18 @@ impl App {
                     &resolved.env_file,
                     None,
                 )?;
-                Ok(format!("Logged out of {} API key.", resolved.display_name))
+                Ok(format!("Вышли из {} API ключа.", resolved.display_name))
             }
             LoginProviderTarget::Cursor => {
                 crate::auth::cursor::clear_api_key()?;
-                Ok("Logged out of Cursor API key.".to_string())
+                Ok("Вышли из Cursor API ключа.".to_string())
             }
             LoginProviderTarget::Gemini => {
                 crate::auth::gemini::clear_tokens()?;
-                Ok("Logged out of Gemini.".to_string())
+                Ok("Вышли из Gemini.".to_string())
             }
             _ => Ok(format!(
-                "Logout for {} is not automated yet. Remove its saved API key or external CLI session from /account {} settings.",
+                "Выход для {} еще не автоматизирован. Удалите его сохраненный API ключ или внешнюю сессию CLI из настроек /account {}.",
                 provider.display_name, provider.id
             )),
         })();
@@ -342,14 +342,14 @@ impl App {
             Ok(message) => {
                 crate::auth::AuthStatus::invalidate_cache();
                 self.push_display_message(DisplayMessage::system(message));
-                self.set_status_notice(format!("Logout: {}", provider.display_name));
+                self.set_status_notice(format!("Выход: {}", provider.display_name));
             }
             Err(err) => {
                 self.push_display_message(DisplayMessage::error(format!(
-                    "Failed to log out of {}: {}",
+                    "Не удалось выйти из {}: {}",
                     provider.display_name, err
                 )));
-                self.set_status_notice("Logout failed");
+                self.set_status_notice("Выход не удался");
             }
         }
     }
@@ -359,12 +359,12 @@ impl App {
         let mut errors: Vec<String> = Vec::new();
 
         match crate::auth::claude::clear_accounts() {
-            Ok(removed) if removed > 0 => summary.push(format!("{} Anthropic account(s)", removed)),
+            Ok(removed) if removed > 0 => summary.push(format!("{} аккаунтов Anthropic", removed)),
             Ok(_) => {}
             Err(err) => errors.push(format!("Anthropic: {}", err)),
         }
         match crate::auth::codex::clear_accounts() {
-            Ok(removed) if removed > 0 => summary.push(format!("{} OpenAI account(s)", removed)),
+            Ok(removed) if removed > 0 => summary.push(format!("{} аккаунтов OpenAI", removed)),
             Ok(_) => {}
             Err(err) => errors.push(format!("OpenAI: {}", err)),
         }
@@ -372,7 +372,7 @@ impl App {
         Self::clear_api_key_logout_summary(
             &mut summary,
             &mut errors,
-            "jcode subscription API key",
+            "jcode подписка API ключ",
             crate::subscription_catalog::JCODE_API_KEY_ENV,
             crate::subscription_catalog::JCODE_ENV_FILE,
         );
@@ -387,42 +387,42 @@ impl App {
                 crate::subscription_catalog::JCODE_ENV_FILE,
                 None,
             ) {
-                errors.push(format!("jcode subscription {}: {}", env_key, err));
+                errors.push(format!("jcode подписка {}: {}", env_key, err));
             }
         }
 
         Self::clear_api_key_logout_summary(
             &mut summary,
             &mut errors,
-            "Anthropic API key",
+            "Anthropic API ключ",
             "ANTHROPIC_API_KEY",
             "anthropic.env",
         );
         Self::clear_api_key_logout_summary(
             &mut summary,
             &mut errors,
-            "OpenAI API key",
+            "OpenAI API ключ",
             "OPENAI_API_KEY",
             "openai.env",
         );
         Self::clear_api_key_logout_summary(
             &mut summary,
             &mut errors,
-            "OpenRouter API key",
+            "OpenRouter API ключ",
             "OPENROUTER_API_KEY",
             "openrouter.env",
         );
         Self::clear_api_key_logout_summary(
             &mut summary,
             &mut errors,
-            "Bedrock API key",
+            "Bedrock API ключ",
             crate::provider::bedrock::API_KEY_ENV,
             crate::provider::bedrock::ENV_FILE,
         );
         Self::clear_api_key_logout_summary(
             &mut summary,
             &mut errors,
-            "Azure OpenAI API key",
+            "Azure OpenAI API ключ",
             crate::auth::azure::API_KEY_ENV,
             crate::auth::azure::ENV_FILE,
         );
@@ -431,14 +431,14 @@ impl App {
             crate::auth::azure::ENV_FILE,
             None,
         ) {
-            errors.push(format!("Azure OpenAI Entra config: {}", err));
+            errors.push(format!("Azure OpenAI Entra конфиг: {}", err));
         }
         for profile in crate::provider_catalog::openai_compatible_profiles() {
             let resolved = crate::provider_catalog::resolve_openai_compatible_profile(*profile);
             Self::clear_api_key_logout_summary(
                 &mut summary,
                 &mut errors,
-                &format!("{} API key", resolved.display_name),
+                &format!("{} API ключ", resolved.display_name),
                 &resolved.api_key_env,
                 &resolved.env_file,
             );
@@ -455,9 +455,9 @@ impl App {
         }
         let cursor_configured = crate::auth::cursor::load_api_key().is_ok();
         match crate::auth::cursor::clear_api_key() {
-            Ok(()) if cursor_configured => summary.push("Cursor API key".to_string()),
+            Ok(()) if cursor_configured => summary.push("Cursor API ключ".to_string()),
             Ok(()) => {}
-            Err(err) => errors.push(format!("Cursor API key: {}", err)),
+            Err(err) => errors.push(format!("Cursor API ключ: {}", err)),
         }
         match crate::auth::gemini::clear_tokens() {
             Ok(()) => summary.push("Gemini".to_string()),
@@ -467,20 +467,20 @@ impl App {
         crate::auth::AuthStatus::invalidate_cache();
 
         let message = if summary.is_empty() {
-            "No automated logins to clear.".to_string()
+            "Нет автоматических входов для очистки.".to_string()
         } else {
             format!("Logged out of: {}.", summary.join(", "))
         };
         self.push_display_message(DisplayMessage::system(message));
 
         if errors.is_empty() {
-            self.set_status_notice("Logout: all providers");
+            self.set_status_notice("Выход: все провайдеры");
         } else {
             self.push_display_message(DisplayMessage::error(format!(
-                "Some logouts failed: {}",
+                "Некоторые выходы не удалась: {}",
                 errors.join("; ")
             )));
-            self.set_status_notice("Logout: completed with errors");
+            self.set_status_notice("Выход: завершено с ошибками");
         }
     }
 
@@ -521,9 +521,9 @@ impl App {
                 match crate::external_auth::pending_external_auth_review_candidates() {
                     Ok(candidates) if candidates.is_empty() => {
                         self.push_display_message(DisplayMessage::system(
-                            "No importable external logins were found.".to_string(),
+                            "Не найдено импортируемых внешних входов.".to_string(),
                         ));
-                        self.set_status_notice("Login: no external imports found");
+                        self.set_status_notice("Вход: внешние импорты не найдены");
                     }
                     Ok(candidates) => {
                         self.push_display_message(DisplayMessage::system(
@@ -531,15 +531,15 @@ impl App {
                                 &candidates,
                             ),
                         ));
-                        self.set_status_notice("Login: choose sources to import");
+                        self.set_status_notice("Вход: выберите источники для импорта");
                         self.pending_login = Some(PendingLogin::AutoImportSelection { candidates });
                     }
                     Err(err) => {
                         self.push_display_message(DisplayMessage::error(format!(
-                            "Failed to inspect external login sources: {}",
+                            "Не удалось проверить внешние источники входа: {}",
                             err
                         )));
-                        self.set_status_notice("Login: auto import failed");
+                        self.set_status_notice("Вход: авто импорт не удался");
                     }
                 }
             }
@@ -575,7 +575,7 @@ impl App {
                     provider.auth_kind.label(),
                 );
                 self.push_display_message(DisplayMessage::error(
-                    "Google/Gmail login is only available from the CLI right now. Run jcode login --provider google."
+                    "Вход через Google/Gmail доступен только из CLI. Выполните jcode login --provider google."
                         .to_string(),
                 ));
             }
@@ -600,11 +600,11 @@ impl App {
             "Jcode Account Login\n\nRequesting a secure browser approval flow. No email or API key will be requested in the terminal."
                 .to_string(),
         ));
-        self.set_status_notice("Jcode account: requesting browser approval");
+        self.set_status_notice("Аккаунт Jcode: запрос подтверждения в браузере");
         let session_id = self.session.id.clone();
         let Ok(handle) = tokio::runtime::Handle::try_current() else {
             self.push_display_message(DisplayMessage::error(
-                "Jcode account login requires the async runtime.".to_string(),
+                "Вход в аккаунт Jcode требует асинхронного времени выполнения.".to_string(),
             ));
             return;
         };
@@ -639,7 +639,7 @@ impl App {
                             "Jcode Account Login\n\nCould not start browser approval: {}\n\nRetry /account jcode login. No credential was saved.",
                             error
                         ),
-                        "Jcode account login failed",
+                        "Вход в аккаунт Jcode не удался",
                     );
                     return;
                 }
@@ -656,7 +656,7 @@ impl App {
                         "\n\nThe browser could not be opened automatically. Open the public URL above manually."
                     }
                 ),
-                "Jcode account: waiting for browser approval",
+                "Аккаунт Jcode: ожидание подтверждения в браузере",
             );
 
             let approved = {
@@ -666,7 +666,7 @@ impl App {
                 loop {
                     let delay = backoff.delay();
                     if tokio::time::Instant::now() + delay >= deadline {
-                        break Err("Browser approval timed out. No credential was saved.".to_string());
+                        break Err("Тайм-аут подтверждения в браузере. Учетные данные не сохранены.".to_string());
                     }
                     tokio::time::sleep(delay).await;
                     match crate::subscription_api::poll_device_token_once(
@@ -682,11 +682,11 @@ impl App {
                         }
                         Ok(TokenPollOutcome::Approved(key)) => break Ok(key),
                         Ok(TokenPollOutcome::Expired) => break Err(
-                            "The browser approval expired or was already exchanged. Start a new login."
+                            "Подтверждение в браузере истекло или уже было обработано. Начните новый вход."
                                 .to_string(),
                         ),
                         Ok(TokenPollOutcome::Denied) => break Err(
-                            "Jcode account login was canceled or denied in the browser."
+                            "Вход в аккаунт Jcode был отменен или отклонен в браузере."
                                 .to_string(),
                         ),
                         Err(error) if error.is_temporary() => backoff.on_offline_error(),
@@ -699,7 +699,7 @@ impl App {
                 Err(error) => {
                     publish(
                         format!("Jcode Account Login\n\n{error}\n\nRetry /account jcode login."),
-                        "Jcode account login stopped",
+                        "Вход в аккаунт Jcode остановлен",
                     );
                     return;
                 }
@@ -713,7 +713,7 @@ impl App {
             ) {
                 publish(
                     format!("Jcode Account Login\n\nBrowser approval succeeded, but secure credential persistence failed: {error}"),
-                    "Jcode account credential save failed",
+                    "Не удалось сохранить учетные данные аккаунта Jcode",
                 );
                 return;
             }
@@ -723,7 +723,7 @@ impl App {
                     "Jcode Account Approved\n\nSigned in as {}. The API key is stored with owner-only permissions. Finish setting your monthly spending limit in the browser; Jcode is checking /v1/me...",
                     approved.email
                 ),
-                "Jcode account: waiting for spending limit",
+                "Аккаунт Jcode: ожидание лимита расходов",
             );
 
             match crate::subscription_api::poll_for_paid_activation(
@@ -741,7 +741,7 @@ impl App {
                         me.email,
                         me.usage.budget_usd
                     );
-                    publish(message.clone(), "Jcode hosted models ready");
+                    publish(message.clone(), "Хост-модели Jcode готовы");
 
                     // The device flow used to stop after saving the credential and
                     // publishing a status message. Unlike every other login flow it
@@ -760,20 +760,20 @@ impl App {
                 }
                 ActivationOutcome::Canceled(_) => publish(
                     "Jcode Account Login\n\nBilling setup was canceled. The valid account key remains saved, but hosted usage is not enabled.\n\nStatus: /usage\nManage limit: /account jcode manage\nLogout: /account jcode logout".to_string(),
-                    "Jcode hosted billing not active",
+                    "Биллинг хоста Jcode не активен",
                 ),
                 ActivationOutcome::TimedOut { last_error_was_offline } => publish(
                     format!(
                         "Jcode Account Login\n\nA spending limit was not confirmed before timeout{}. The valid account key remains saved.\n\nStatus: /usage\nManage limit: /account jcode manage\nLogout: /account jcode logout",
                         if last_error_was_offline { " because the API remained unreachable" } else { "" }
                     ),
-                    "Jcode hosted billing setup pending",
+                    "Настройка биллинга хоста Jcode в ожидании",
                 ),
                 ActivationOutcome::Revoked | ActivationOutcome::Denied => {
                     let _ = crate::subscription_catalog::clear_account_credentials();
                     publish(
                         "Jcode Account Login\n\nThe issued key was revoked or denied during activation checks. Local credentials were cleared. Retry /account jcode login.".to_string(),
-                        "Jcode account key rejected",
+                        "Ключ аккаунта Jcode отклонен",
                     );
                 }
             }
@@ -792,21 +792,21 @@ impl App {
                 "\n\nThe browser could not be opened automatically. Open the public URL above manually."
             }
         )));
-        self.set_status_notice("Jcode account management");
+        self.set_status_notice("Управление аккаунтом Jcode");
     }
 
     pub(super) fn start_jcode_account_logout(&mut self) {
-        self.set_status_notice("Jcode account: logging out");
+        self.set_status_notice("Аккаунт Jcode: выход");
         let session_id = self.session.id.clone();
         let Ok(handle) = tokio::runtime::Handle::try_current() else {
             let result = crate::subscription_catalog::clear_account_credentials();
             match result {
                 Ok(()) => self.push_display_message(DisplayMessage::system(
-                    "Jcode account credentials and cache were cleared locally. Remote revocation could not be attempted without the async runtime."
+                    "Учетные данные и кэш аккаунта Jcode были очищены локально. Удаленная отмена не может быть выполнена без асинхронного времени выполнения."
                         .to_string(),
                 )),
                 Err(error) => self.push_display_message(DisplayMessage::error(format!(
-                    "Failed to clear local Jcode account credentials: {error}"
+                    "Не удалось очистить локальные учетные данные аккаунта Jcode: {error}"
                 ))),
             }
             return;
@@ -841,7 +841,7 @@ impl App {
                 crate::bus::UiActivity::background(
                     Some(session_id),
                     message,
-                    Some("Jcode account logout complete"),
+                    Some("Выход из аккаунта Jcode завершен"),
                 ),
             ));
         });
@@ -897,7 +897,7 @@ impl App {
         };
         let qr_section = crate::login_qr::markdown_section_for_tui(
             &auth_url,
-            "Scan this on another device if this machine has no browser:",
+            "Отсканируйте это на другом устройстве, если на этом устройстве нет браузера:",
         )
         .map(|section| format!("\n\n{section}"))
         .unwrap_or_default();
@@ -936,7 +936,7 @@ impl App {
                     }
                     Err(e) => {
                         crate::logging::info(&format!(
-                            "Claude automatic callback did not complete: {}",
+                            "Claude автоматический обратный вызов не завершен: {}",
                             e
                         ));
                     }
@@ -973,9 +973,9 @@ impl App {
             qr_section
         )));
         if callback_available {
-            self.set_status_notice(format!("Login [{}]: waiting...", label));
+            self.set_status_notice(format!("Вход [{}]: ожидание...", label));
         } else {
-            self.set_status_notice(format!("Login [{}]: paste code...", label));
+            self.set_status_notice(format!("Вход [{}]: вставьте код...", label));
         }
         self.begin_pending_login(PendingLogin::ClaudeAccount {
             verifier,
@@ -1000,8 +1000,8 @@ impl App {
             crate::auth::oauth::wait_for_callback_async_on_listener(listener, &verifier),
         )
         .await
-        .map_err(|_| "Login timed out after 5 minutes. Please try again.".to_string())?
-        .map_err(|e| format!("Callback failed: {}", e))?;
+        .map_err(|_| "Вход истек по таймеру через 5 минут. Пожалуйста, попробуйте снова.".to_string())?
+        .map_err(|e| format!("Обратный вызов не удался: {}", e))?;
 
         Self::claude_token_exchange(verifier, code, &label, Some(redirect_uri)).await
     }
@@ -1015,13 +1015,13 @@ impl App {
                     tokio::spawn(async move {
                         provider.invalidate_credentials().await;
                         crate::logging::info(&format!(
-                            "Switched to Anthropic account '{}'",
+                            "Переключено на аккаунт Anthropic '{}'",
                             label_owned
                         ));
                     });
                 }
                 self.push_display_message(DisplayMessage::system(format!(
-                    "Switched to Anthropic account {}.",
+                    "Переключено на аккаунт Anthropic {}.",
                     label
                 )));
                 // Keep account-sensitive UI state in sync immediately.
@@ -1031,7 +1031,7 @@ impl App {
             }
             Err(e) => {
                 self.push_display_message(DisplayMessage::error(format!(
-                    "Failed to switch account: {}",
+                    "Не удалось переключить аккаунт: {}",
                     e
                 )));
             }
@@ -1052,11 +1052,11 @@ impl App {
             (true, false) => self.switch_account(label),
             (false, true) => self.switch_openai_account(label),
             (true, true) => self.push_display_message(DisplayMessage::error(format!(
-                "Account label {} exists for both Anthropic and OpenAI. Use /account switch {} or /account openai switch {} explicitly.",
+                "Метка аккаунта {} существует для Anthropic и OpenAI. Используйте /account switch {} или /account openai switch {} явно.",
                 label, label, label
             ))),
             (false, false) => self.push_display_message(DisplayMessage::error(format!(
-                "No Anthropic or OpenAI account with label {} found.",
+                "Аккаунт Anthropic или OpenAI с меткой {} не найден.",
                 label
             ))),
         }
@@ -1066,13 +1066,13 @@ impl App {
         match crate::auth::claude::remove_account(label) {
             Ok(()) => {
                 self.push_display_message(DisplayMessage::system(format!(
-                    "Removed Anthropic account {}.",
+                    "Удален аккаунт Anthropic {}.",
                     label
                 )));
             }
             Err(e) => {
                 self.push_display_message(DisplayMessage::error(format!(
-                    "Failed to remove account: {}",
+                    "Не удалось удалить аккаунт: {}",
                     e
                 )));
             }
@@ -1088,13 +1088,13 @@ impl App {
                     tokio::spawn(async move {
                         provider.invalidate_credentials().await;
                         crate::logging::info(&format!(
-                            "Switched to OpenAI account '{}'",
+                            "Переключено на аккаунт OpenAI '{}'",
                             label_owned
                         ));
                     });
                 }
                 self.push_display_message(DisplayMessage::system(format!(
-                    "Switched to OpenAI account {}.",
+                    "Переключено на аккаунт OpenAI {}.",
                     label
                 )));
                 crate::auth::AuthStatus::invalidate_cache();
@@ -1103,7 +1103,7 @@ impl App {
             }
             Err(e) => {
                 self.push_display_message(DisplayMessage::error(format!(
-                    "Failed to switch OpenAI account: {}",
+                    "Не удалось переключить аккаунт OpenAI: {}",
                     e
                 )));
             }
@@ -1114,13 +1114,13 @@ impl App {
         match crate::auth::codex::remove_account(label) {
             Ok(()) => {
                 self.push_display_message(DisplayMessage::system(format!(
-                    "Removed OpenAI account {}.",
+                    "Удален аккаунт OpenAI {}.",
                     label
                 )));
             }
             Err(e) => {
                 self.push_display_message(DisplayMessage::error(format!(
-                    "Failed to remove OpenAI account: {}",
+                    "Не удалось удалить аккаунт OpenAI: {}",
                     e
                 )));
             }
@@ -1170,7 +1170,7 @@ impl App {
         );
         let qr_section = crate::login_qr::markdown_section_for_tui(
             &auth_url,
-            "Scan this on another device if this machine has no browser, then paste the full callback URL here:",
+            "Отсканируйте это на другом устройстве, если на этом устройстве нет браузера, затем вставьте полный URL обратного вызова здесь:",
         )
         .map(|section| format!("\n\n{section}"))
         .unwrap_or_default();
@@ -1203,7 +1203,7 @@ impl App {
                     }
                     Err(e) => {
                         crate::logging::info(&format!(
-                            "OpenAI automatic callback did not complete: {}",
+                            "OpenAI автоматический обратный вызов не завершен: {}",
                             e
                         ));
                     }
@@ -1252,7 +1252,7 @@ impl App {
             },
             qr_section
         )));
-        self.set_status_notice(format!("Login [{}]: waiting...", label));
+        self.set_status_notice(format!("Вход [{}]: ожидание...", label));
         self.begin_pending_login(PendingLogin::OpenAiAccount {
             verifier,
             label: label.to_string(),
@@ -1274,8 +1274,8 @@ impl App {
             crate::auth::oauth::wait_for_callback_async_on_listener(listener, &expected_state),
         )
         .await
-        .map_err(|_| "Login timed out after 5 minutes. Please try again.".to_string())?
-        .map_err(|e| format!("Callback failed: {}", e))?;
+        .map_err(|_| "Вход истек по таймеру через 5 минут. Пожалуйста, попробуйте снова.".to_string())?
+        .map_err(|e| format!("Обратный вызов не удался: {}", e))?;
 
         Self::openai_token_exchange(verifier, code, label, None, &redirect_uri).await
     }
@@ -1304,10 +1304,10 @@ impl App {
 
         let label = label.unwrap_or_else(crate::auth::codex::primary_account_label);
         crate::auth::oauth::save_openai_tokens_for_account(&oauth_tokens, &label)
-            .map_err(|e| format!("Failed to save tokens: {}", e))?;
+            .map_err(|e| format!("Не удалось сохранить токены: {}", e))?;
 
         Ok(format!(
-            "Successfully logged in to OpenAI! (account: {})",
+            "Успешный вход в OpenAI! (аккаунт: {})",
             label
         ))
     }
@@ -1345,17 +1345,17 @@ impl App {
             Ok(values) => values,
             Err(e) => {
                 self.push_display_message(DisplayMessage::error(format!(
-                    "Gemini login is unavailable: {}",
+                    "Вход в Gemini недоступен: {}",
                     e
                 )));
-                self.set_status_notice("Login: failed");
+                self.set_status_notice("Вход: не удался");
                 return;
             }
         };
 
         let qr_section = crate::login_qr::markdown_section_for_tui(
             &auth_url,
-            "Scan this on another device if this machine has no browser, then paste the callback URL or authorization code here:",
+            "Отсканируйте это на другом устройстве, если на этом устройстве нет браузера, затем вставьте URL обратного вызова или код авторизации здесь:",
         )
         .map(|section| format!("\n\n{section}"))
         .unwrap_or_default();
@@ -1375,8 +1375,8 @@ impl App {
                     ),
                 )
                 .await
-                .map_err(|_| "Login timed out after 5 minutes. Please try again.".to_string())
-                .and_then(|result| result.map_err(|e| format!("Callback failed: {}", e)));
+                .map_err(|_| "Вход истек по таймеру через 5 минут. Пожалуйста, попробуйте снова.".to_string())
+                .and_then(|result| result.map_err(|e| format!("Обратный вызов не удался: {}", e)));
 
                 match code {
                     Ok(code) => {
@@ -1390,11 +1390,11 @@ impl App {
                             Ok(tokens) => {
                                 let msg = if let Some(email) = tokens.email {
                                     format!(
-                                        "Successfully logged in to Gemini! (account: {})",
+                                        "Успешный вход в Gemini! (аккаунт: {})",
                                         email
                                     )
                                 } else {
-                                    "Successfully logged in to Gemini!".to_string()
+                                    "Успешный вход в Gemini!".to_string()
                                 };
                                 Bus::global().publish(BusEvent::LoginCompleted(LoginCompleted {
                                     provider: "gemini".to_string(),
@@ -1403,9 +1403,9 @@ impl App {
                                 }));
                             }
                             Err(e) => {
-                                let message = format!("Gemini login failed: {}", e);
+                                let message = format!("Вход в Gemini не удался: {}", e);
                                 crate::logging::info(&format!(
-                                    "Gemini automatic callback did not complete: {}",
+                                    "Gemini автоматический обратный вызов не завершен: {}",
                                     e
                                 ));
                                 Bus::global().publish(BusEvent::LoginCompleted(LoginCompleted {
@@ -1418,13 +1418,13 @@ impl App {
                     }
                     Err(e) => {
                         crate::logging::info(&format!(
-                            "Gemini automatic callback did not complete: {}",
+                            "Gemini автоматический обратный вызов не завершен: {}",
                             e
                         ));
                         Bus::global().publish(BusEvent::LoginCompleted(LoginCompleted {
                             provider: "gemini".to_string(),
                             success: false,
-                            message: format!("Gemini login failed: {}", e),
+                            message: format!("Вход в Gemini не удался: {}", e),
                         }));
                     }
                 }
@@ -1467,7 +1467,7 @@ impl App {
             },
             qr_section
         )));
-        self.set_status_notice("Login: waiting...");
+        self.set_status_notice("Вход: ожидание...");
         self.begin_pending_login(PendingLogin::Gemini {
             verifier,
             expected_state: pending_state,
@@ -1496,7 +1496,7 @@ impl App {
             crate::provider::bedrock::API_KEY_ENV,
             Some("us.amazon.nova-micro-v1:0"),
             Some(
-                "Region: us-east-2 (default for TUI onboarding; use CLI login for another region)",
+                "Регион: us-east-2 (по умолчанию для TUI онбординга; используйте CLI login для другого региона)",
             ),
             false,
             None,
@@ -1542,7 +1542,7 @@ impl App {
                  Paste the API base below. Press Enter to keep the current value, or type /cancel to abort.",
                 resolved.display_name, resolved.setup_url, resolved.api_base
             )));
-            self.set_status_notice("Login: API base...");
+            self.set_status_notice("Вход: базовый API...");
             self.pending_login = Some(PendingLogin::OpenAiCompatibleApiBase { profile });
             return;
         }
@@ -1589,9 +1589,9 @@ impl App {
             .map(|endpoint| format!("Endpoint: {}\n", endpoint))
             .unwrap_or_default();
         let prompt = if api_key_optional {
-            "Paste your API key below if your endpoint requires one. Press Enter to skip, or type /cancel to abort."
+            "Вставьте ваш API ключ ниже, если ваша конечная точка требует его. Нажмите Enter чтобы пропустить, или введите /cancel чтобы отменить."
         } else {
-            "Paste your API key below (it will be saved securely), or type /cancel to abort."
+            "Вставьте ваш API ключ ниже (он будет сохранен безопасно), или введите /cancel чтобы отменить."
         };
         self.push_display_message(DisplayMessage::system(format!(
             "{} {}\n\n\
@@ -1604,7 +1604,7 @@ impl App {
             if api_key_optional {
                 "Local Endpoint"
             } else {
-                "API Key"
+                "API Ключ"
             },
             docs_url,
             key_name,
@@ -1613,9 +1613,9 @@ impl App {
             prompt,
         )));
         self.set_status_notice(if api_key_optional {
-            "Login: optional key..."
+            "Вход: опциональный ключ..."
         } else {
-            "Login: paste key..."
+            "Вход: вставить ключ..."
         });
         let provider_id = openai_compatible_profile
             .map(|profile| profile.id.to_string())
@@ -1650,7 +1650,7 @@ impl App {
              Enter your Azure OpenAI endpoint, for example https://your-resource.openai.azure.com, or type /cancel to abort."
                 .to_string(),
         ));
-        self.set_status_notice("Login: Azure endpoint...");
+        self.set_status_notice("Вход: Azure конечная точка...");
         self.begin_pending_login(PendingLogin::AzureEndpoint);
     }
 
@@ -1665,12 +1665,12 @@ impl App {
              Paste your API key below, or type /cancel to abort."
                 .to_string(),
         ));
-        self.set_status_notice("Login: paste cursor key...");
+        self.set_status_notice("Вход: вставить ключ курсора...");
         self.begin_pending_login(PendingLogin::CursorApiKey);
     }
 
     fn start_copilot_login(&mut self) {
-        self.set_status_notice("Login: copilot device flow...");
+        self.set_status_notice("Вход: поток устройства copilot...");
         self.begin_pending_login(PendingLogin::Copilot);
 
         tokio::spawn(async move {
@@ -1682,7 +1682,7 @@ impl App {
                     Bus::global().publish(BusEvent::LoginCompleted(LoginCompleted {
                         provider: "copilot".to_string(),
                         success: false,
-                        message: format!("Copilot device flow failed: {}", e),
+                        message: format!("Поток устройства Copilot не удался: {}", e),
                     }));
                     return;
                 }
@@ -1704,7 +1704,7 @@ impl App {
                 message: {
                     let qr_section = crate::login_qr::markdown_section_for_tui(
                         &verification_uri,
-                        "Scan this on another device to open the GitHub verification page:",
+                        "Отсканируйте это на другом устройстве чтобы открыть страницу верификации GitHub:",
                     )
                     .map(|section| format!("\n\n{section}"))
                     .unwrap_or_default();
@@ -1734,7 +1734,7 @@ impl App {
                     Bus::global().publish(BusEvent::LoginCompleted(LoginCompleted {
                         provider: "copilot".to_string(),
                         success: false,
-                        message: format!("Copilot login failed: {}", e),
+                        message: format!("Вход в Copilot не удался: {}", e),
                     }));
                     return;
                 }
@@ -1760,7 +1760,7 @@ impl App {
                     Bus::global().publish(BusEvent::LoginCompleted(LoginCompleted {
                         provider: "copilot".to_string(),
                         success: false,
-                        message: format!("Failed to save Copilot token: {}", e),
+                        message: format!("Не удалось сохранить токен Copilot: {}", e),
                     }));
                 }
             }
@@ -1774,7 +1774,7 @@ impl App {
     }
 
     fn start_grok_build_login(&mut self) {
-        self.set_status_notice("Grok Build: preparing sign-in...");
+        self.set_status_notice("Grok Build: подготовка входа...");
         self.begin_pending_login(PendingLogin::GrokBuild);
         self.push_display_message(DisplayMessage::system(
             "Grok Build Login\n\nJcode is preparing the managed provider backend. The xAI sign-in URL and device code will appear here. You do not need to install the Grok CLI.\n\nType /cancel to dismiss this login."
@@ -1786,7 +1786,7 @@ impl App {
             Bus::global().publish(BusEvent::LoginCompleted(LoginCompleted {
                 provider: "grok-build".to_string(),
                 success: false,
-                message: "Grok Build login requires the async runtime.".to_string(),
+                message: "Вход в Grok Build требует асинхронного времени выполнения.".to_string(),
             }));
             return;
         };
@@ -1806,7 +1806,7 @@ impl App {
                     Bus::global().publish(BusEvent::LoginCompleted(LoginCompleted {
                         provider: "grok-build".to_string(),
                         success: false,
-                        message: format!("Failed to start Grok Build login: {error:#}"),
+                        message: format!("Не удалось начать вход в Grok Build: {error:#}"),
                     }));
                     return;
                 }
@@ -1817,7 +1817,7 @@ impl App {
             publish_progress(format!(
                 "Grok Build Login\n\nOpen: {}\n\nConfirm code: {}\n\nWaiting for authorization...",
                 authorization.verification_uri, authorization.user_code
-            ), "Grok Build: waiting for browser approval");
+            ), "Grok Build: ожидание одобрения браузера");
 
             match crate::auth::grok_build::complete_device_login(&client, &authorization).await {
                 Ok(()) => {
@@ -1828,14 +1828,14 @@ impl App {
                         Bus::global().publish(BusEvent::LoginCompleted(LoginCompleted {
                             provider: "grok-build".to_string(),
                             success: false,
-                            message: format!("Grok Build login succeeded, but its managed runtime could not be prepared: {error:#}"),
+                            message: format!("Вход в Grok Build удался, но управляемое время выполнения не может быть подготовлено: {error:#}"),
                         }));
                         return;
                     }
                     Bus::global().publish(BusEvent::LoginCompleted(LoginCompleted {
                         provider: "grok-build".to_string(),
                         success: true,
-                        message: "Grok Build login complete. Jcode is refreshing the provider and model list."
+                        message: "Вход в Grok Build завершен. Jcode обновляет список провайдеров и моделей."
                             .to_string(),
                     }));
                 }
@@ -1843,7 +1843,7 @@ impl App {
                     Bus::global().publish(BusEvent::LoginCompleted(LoginCompleted {
                         provider: "grok-build".to_string(),
                         success: false,
-                        message: format!("Grok Build login failed: {error}"),
+                        message: format!("Вход в Grok Build не удался: {error}"),
                     }));
                 }
             }
@@ -1864,17 +1864,17 @@ impl App {
             Ok(url) => url,
             Err(e) => {
                 self.push_display_message(DisplayMessage::error(format!(
-                    "Antigravity login is unavailable: {}",
+                    "Вход в Antigravity недоступен: {}",
                     e
                 )));
-                self.set_status_notice("Login: failed");
+                self.set_status_notice("Вход: не удался");
                 return;
             }
         };
 
         let qr_section = crate::login_qr::markdown_section_for_tui(
             &auth_url,
-            "Scan this on another device if this machine has no browser, then paste the full callback URL or query string here:",
+            "Отсканируйте это на другом устройстве если на этой машине нет браузера, затем вставьте полный URL обратного вызова или строку запроса здесь:",
         )
         .map(|section| format!("\n\n{section}"))
         .unwrap_or_default();
@@ -1896,8 +1896,8 @@ impl App {
                     ),
                 )
                 .await
-                .map_err(|_| "Login timed out after 5 minutes. Please try again.".to_string())
-                .and_then(|result| result.map_err(|e| format!("Callback failed: {}", e)));
+                .map_err(|_| "Вход истек по таймеру через 5 минут. Пожалуйста, попробуйте снова.".to_string())
+                .and_then(|result| result.map_err(|e| format!("Обратный вызов не удался: {}", e)));
 
                 match code {
                     Ok(code) => {
@@ -1920,14 +1920,14 @@ impl App {
                                 Bus::global().publish(BusEvent::LoginCompleted(LoginCompleted {
                                     provider: "antigravity".to_string(),
                                     success: false,
-                                    message: format!("Antigravity login failed: {}", e),
+                                    message: format!("Вход в Antigravity не удался: {}", e),
                                 }));
                             }
                         }
                     }
                     Err(e) => {
                         crate::logging::info(&format!(
-                            "Antigravity automatic callback did not complete: {}",
+                            "Автоматический обратный вызов Antigravity не завершен: {}",
                             e
                         ));
                     }
@@ -1975,7 +1975,7 @@ impl App {
             },
             qr_section
         )));
-        self.set_status_notice("Login: antigravity waiting...");
+        self.set_status_notice("Вход: ожидание antigravity...");
         self.begin_pending_login(PendingLogin::Antigravity {
             verifier,
             expected_state,
@@ -2007,11 +2007,11 @@ impl App {
 
         let mut msg = if let Some(email) = tokens.email.as_deref() {
             format!(
-                "Successfully logged in to Antigravity! (account: {})",
+                "Успешный вход в Antigravity! (аккаунт: {})",
                 email
             )
         } else {
-            "Successfully logged in to Antigravity!".to_string()
+            "Успешный вход в Antigravity!".to_string()
         };
         if let Some(project_id) = tokens.project_id.as_deref() {
             msg.push_str(&format!(" (project: {})", project_id));
@@ -2025,16 +2025,16 @@ impl App {
             if let Some((provider, method)) = pending.telemetry_context() {
                 crate::telemetry::record_auth_cancelled(&provider, &method);
             }
-            self.push_display_message(DisplayMessage::system("Login cancelled.".to_string()));
+            self.push_display_message(DisplayMessage::system("Вход отменен.".to_string()));
             return;
         }
 
         if trimmed.is_empty() {
             let help = match &pending {
                 PendingLogin::AutoImportSelection { .. } => {
-                    "Auto import is waiting for your selection. Reply with a to approve all, 1,3 to approve specific sources, or /cancel to abort.".to_string()
+                    "Автоматический импорт ожидает вашего выбора. Ответьте a чтобы одобрить все, 1,3 чтобы одобрить определенные источники, или /cancel чтобы отменить.".to_string()
                 }
-                _ => "Login still in progress. Complete it in your browser, or paste the callback URL / authorization code here. Type /cancel to abort.".to_string(),
+                _ => "Вход все еще в процессе. Завершите его в вашем браузере, или вставьте URL обратного вызова / код авторизации здесь. Введите /cancel чтобы отменить.".to_string(),
             };
             self.push_display_message(DisplayMessage::system(help));
             self.pending_login = Some(pending);
@@ -2044,14 +2044,14 @@ impl App {
         match &pending {
             PendingLogin::OpenAiAccount { .. } if !looks_like_oauth_callback_input(trimmed) => {
                 self.push_display_message(DisplayMessage::system(
-                    "Still waiting for the browser callback. Paste the full callback URL or query string if you want to finish manually, or keep waiting for the automatic redirect.".to_string(),
+                    "Все еще ожидаем обратного вызова браузера. Вставьте полный URL обратного вызова или строку запроса если вы хотите завершить вручную, или продолжайте ожидать автоматическое перенаправление.".to_string(),
                 ));
                 self.pending_login = Some(pending);
                 return;
             }
             PendingLogin::Antigravity { .. } if !looks_like_oauth_callback_input(trimmed) => {
                 self.push_display_message(DisplayMessage::system(
-                    "Still waiting for the browser callback. Paste the full callback URL or query string if you want to finish manually, or keep waiting for the automatic redirect.".to_string(),
+                    "Все ещеожидаем обратного вызова браузера. Вставьте полный URL обратного вызова или строку запроса если вы хотите завершить вручную, или продолжайте ожидать автоматическое перенаправление.".to_string(),
                 ));
                 self.pending_login = Some(pending);
                 return;
@@ -2069,7 +2069,7 @@ impl App {
                 label,
                 redirect_uri,
             } => {
-                self.set_status_notice(format!("Login [{}]: exchanging...", label));
+                self.set_status_notice(format!("Вход [{}]: обмен...", label));
                 let input_owned = input.clone();
                 let label_clone = label.clone();
                 tokio::spawn(async move {
@@ -2092,13 +2092,13 @@ impl App {
                             Bus::global().publish(BusEvent::LoginCompleted(LoginCompleted {
                                 provider: "claude".to_string(),
                                 success: false,
-                                message: format!("Claude login [{}] failed: {}", label_clone, e),
+                                message: format!("Вход в Claude [{}] не удался: {}", label_clone, e),
                             }));
                         }
                     }
                 });
                 self.push_display_message(DisplayMessage::system(format!(
-                    "Exchanging authorization code for account {}...",
+                    "Обмен кода авторизации на аккаунт {}...",
                     label
                 )));
             }
@@ -2108,7 +2108,7 @@ impl App {
                 expected_state,
                 redirect_uri,
             } => {
-                self.set_status_notice(format!("Login [{}]: exchanging...", label));
+                self.set_status_notice(format!("Вход [{}]: обмен...", label));
                 let input_owned = input.clone();
                 let label_clone = label.clone();
                 tokio::spawn(async move {
@@ -2132,13 +2132,13 @@ impl App {
                             Bus::global().publish(BusEvent::LoginCompleted(LoginCompleted {
                                 provider: "openai".to_string(),
                                 success: false,
-                                message: format!("OpenAI login [{}] failed: {}", label_clone, e),
+                                message: format!("Вход в OpenAI [{}] не удался: {}", label_clone, e),
                             }));
                         }
                     }
                 });
                 self.push_display_message(DisplayMessage::system(format!(
-                    "Exchanging OpenAI callback for account {}...",
+                    "Обмен обратного вызова OpenAI на аккаунт {}...",
                     label
                 )));
             }
@@ -2147,7 +2147,7 @@ impl App {
                 expected_state,
                 redirect_uri,
             } => {
-                self.set_status_notice("Login: exchanging...");
+                self.set_status_notice("Вход: обмен...");
                 let input_owned = input.clone();
                 tokio::spawn(async move {
                     match crate::auth::gemini::exchange_callback_input(
@@ -2160,9 +2160,9 @@ impl App {
                     {
                         Ok(tokens) => {
                             let msg = if let Some(email) = tokens.email {
-                                format!("Successfully logged in to Gemini! (account: {})", email)
+                                format!("Успешный вход в Gemini! (аккаунт: {})", email)
                             } else {
-                                "Successfully logged in to Gemini!".to_string()
+                                "Успешный вход в Gemini!".to_string()
                             };
                             Bus::global().publish(BusEvent::LoginCompleted(LoginCompleted {
                                 provider: "gemini".to_string(),
@@ -2174,13 +2174,13 @@ impl App {
                             Bus::global().publish(BusEvent::LoginCompleted(LoginCompleted {
                                 provider: "gemini".to_string(),
                                 success: false,
-                                message: format!("Gemini login failed: {}", e),
+                                message: format!("Вход в Gemini не удался: {}", e),
                             }));
                         }
                     }
                 });
                 self.push_display_message(DisplayMessage::system(
-                    "Exchanging Gemini callback for tokens...".to_string(),
+                    "Обмен обратного вызова Gemini на токены...".to_string(),
                 ));
             }
             PendingLogin::Antigravity {
@@ -2188,7 +2188,7 @@ impl App {
                 expected_state,
                 redirect_uri,
             } => {
-                self.set_status_notice("Login: exchanging...");
+                self.set_status_notice("Вход: обмен...");
                 let input_owned = input.clone();
                 tokio::spawn(async move {
                     match Self::antigravity_token_exchange(
@@ -2210,13 +2210,13 @@ impl App {
                             Bus::global().publish(BusEvent::LoginCompleted(LoginCompleted {
                                 provider: "antigravity".to_string(),
                                 success: false,
-                                message: format!("Antigravity login failed: {}", e),
+                                message: format!("Вход в Antigravity не удался: {}", e),
                             }));
                         }
                     }
                 });
                 self.push_display_message(DisplayMessage::system(
-                    "Exchanging Antigravity callback for tokens...".to_string(),
+                    "Обмен обратного вызова Antigravity на токены...".to_string(),
                 ));
             }
             PendingLogin::ApiKeyProfile {
@@ -2234,7 +2234,7 @@ impl App {
                 let key = input.trim().to_string();
                 if key.is_empty() && !api_key_optional {
                     self.push_display_message(DisplayMessage::error(
-                        "API key cannot be empty.".to_string(),
+                        "API ключ не может быть пустым.".to_string(),
                     ));
                     self.pending_login = Some(PendingLogin::ApiKeyProfile {
                         provider_id,
@@ -2256,7 +2256,7 @@ impl App {
                 // bricks the provider until they log in again (issue #496).
                 if !key.is_empty() && key.len() < 8 && key.chars().all(|c| c.is_ascii_digit()) {
                     self.push_display_message(DisplayMessage::error(format!(
-                        "'{}' looks like a menu selection, not an API key. This prompt is waiting for the {} API key itself. Paste the key (see {}), or type /cancel to abort.",
+                        "'{}' выглядит как выбор меню, а не API ключ. Это приглашение ожидает API ключ {}. Вставьте ключ (см. {}), или введите /cancel чтобы отменить.",
                         key, provider, docs_url
                     )));
                     self.pending_login = Some(PendingLogin::ApiKeyProfile {
@@ -2275,7 +2275,7 @@ impl App {
                 }
                 if key_name == "OPENROUTER_API_KEY" && !key.starts_with("sk-or-") {
                     self.push_display_message(DisplayMessage::system(
-                        "OpenRouter keys typically start with sk-or-. Saving anyway...".to_string(),
+                        "Ключи OpenRouter обычно начинаются с sk-or-. Сохраняем в любом случае...".to_string(),
                     ));
                 }
 
@@ -2419,7 +2419,7 @@ impl App {
                             )
                         } else if let Some(resolved) = resolved_openai_compatible.as_ref() {
                             if resolved.requires_api_key {
-                                "Fetching models now. Jcode will switch to an accessible model returned by the live catalog and show the catalog diff when discovery finishes. If the model list looks stale, run /refresh-model-list.".to_string()
+                                "Получаем модели сейчас. Jcode переключится на доступную модель, возвращенную живым каталогом, и покажет различия каталога когда обнаружение завершится. Если список моделей выглядит устаревшим, выполните /refresh-model-list.".to_string()
                             } else {
                                 format!(
                                     "Local endpoint configured at {}. Fetching models now; Jcode will switch to an accessible model returned by the live catalog and show the catalog diff when discovery finishes. If the model list looks stale, run /refresh-model-list.",
@@ -2427,24 +2427,24 @@ impl App {
                                 )
                             }
                         } else if key_name == crate::provider::bedrock::API_KEY_ENV {
-                            "You can now use /model to switch to Bedrock models. TUI onboarding saved region us-east-2; for a different region, run jcode login --provider bedrock from a terminal.".to_string()
+                            "Теперь вы можете использовать /model чтобы переключиться на модели Bedrock. TUI онбординг сохранил регион us-east-2; для другого региона, выполните jcode login --provider bedrock из терминала.".to_string()
                         } else if key_name == "OPENROUTER_API_KEY" {
-                            "You can now use /model to switch to OpenRouter models. If the model list looks stale, run /refresh-model-list.".to_string()
+                            "Теперь вы можете использовать /model чтобы переключиться на модели OpenRouter. Если список моделей выглядит устаревшим, выполните /refresh-model-list.".to_string()
                         } else {
-                            "API key saved. Run /refresh-model-list to refresh model discovery, then use /model to pick an accessible model.".to_string()
+                            "API ключ сохранен. Выполните /refresh-model-list чтобы обновить обнаружение моделей, затем используйте /model чтобы выбрать доступную модель.".to_string()
                         };
                         let saved_label = if let Some(resolved) =
                             resolved_openai_compatible.as_ref()
                         {
                             if resolved.requires_api_key {
-                                format!("{} API key saved", provider)
+                                format!("{} API ключ сохранен", provider)
                             } else if key.trim().is_empty() {
-                                format!("{} local endpoint saved", provider)
+                                format!("{} локальная конечная точка сохранена", provider)
                             } else {
-                                format!("{} local endpoint and optional API key saved", provider)
+                                format!("{} локальная конечная точка и опциональный API ключ сохранены", provider)
                             }
                         } else {
-                            format!("{} API key saved", provider)
+                            format!("{} API ключ сохранен", provider)
                         };
                         Bus::global().publish(BusEvent::LoginCompleted(LoginCompleted {
                             provider: provider.clone(),
@@ -2484,7 +2484,7 @@ impl App {
                             reason.label(),
                         );
                         self.push_display_message(DisplayMessage::error(format!(
-                            "Failed to save {} key: {}",
+                            "Не удалось сохранить {} ключ: {}",
                             provider, e
                         )));
                         self.pending_login = Some(PendingLogin::ApiKeyProfile {
@@ -2509,7 +2509,7 @@ impl App {
                         Some(value) => value,
                         None => {
                             self.push_display_message(DisplayMessage::error(
-                                "OpenAI-compatible API base must be https://... or http://localhost."
+                                "База OpenAI-совместимого API должна быть https://... или http://localhost."
                                     .to_string(),
                             ));
                             self.pending_login =
@@ -2523,7 +2523,7 @@ impl App {
                         Some(&normalized),
                     ) {
                         self.push_display_message(DisplayMessage::error(format!(
-                            "Failed to save OpenAI-compatible API base: {}",
+                            "Не удалось сохранить базу OpenAI-совместимого API: {}",
                             err
                         )));
                         self.pending_login =
@@ -2537,24 +2537,24 @@ impl App {
                 let endpoint_raw = input.trim();
                 let Some(endpoint) = crate::auth::azure::normalize_endpoint(endpoint_raw) else {
                     self.push_display_message(DisplayMessage::error(
-                        "Invalid Azure OpenAI endpoint. Use https://<resource>.openai.azure.com or the full /openai/v1 URL."
+                        "Неверная конечная точка Azure OpenAI. Используйте https://<resource>.openai.azure.com или полный /openai/v1 URL."
                             .to_string(),
                     ));
                     self.pending_login = Some(PendingLogin::AzureEndpoint);
                     return;
                 };
                 self.push_display_message(DisplayMessage::system(
-                    "Azure endpoint accepted. Now enter the Azure deployment/model name, for example gpt-4.1-nano."
+                    "Конечная точка Azure принята. Теперь введите имя развертывания/модели Azure, например gpt-4.1-nano."
                         .to_string(),
                 ));
-                self.set_status_notice("Login: Azure model...");
+                self.set_status_notice("Вход: модель Azure...");
                 self.pending_login = Some(PendingLogin::AzureModel { endpoint });
             }
             PendingLogin::AzureModel { endpoint } => {
                 let model = input.trim().to_string();
                 if model.is_empty() {
                     self.push_display_message(DisplayMessage::error(
-                        "Azure deployment/model name cannot be empty.".to_string(),
+                        "Имя развертывания/модели Azure не может быть пустым.".to_string(),
                     ));
                     self.pending_login = Some(PendingLogin::AzureModel { endpoint });
                     return;
@@ -2566,7 +2566,7 @@ impl App {
                      Enter 1 or 2 [1]."
                         .to_string(),
                 ));
-                self.set_status_notice("Login: Azure auth method...");
+                self.set_status_notice("Вход: метод аутентификации Azure...");
                 self.pending_login = Some(PendingLogin::AzureAuthChoice { endpoint, model });
             }
             PendingLogin::AzureAuthChoice { endpoint, model } => {
@@ -2588,7 +2588,7 @@ impl App {
                     }
                     _ => {
                         self.push_display_message(DisplayMessage::error(
-                            "Invalid auth choice. Enter 1 for Entra ID or 2 for API key."
+                            "Неверный выбор аутентификации. Введите 1 для Entra ID или 2 для API ключа."
                                 .to_string(),
                         ));
                         self.pending_login =
@@ -2601,7 +2601,7 @@ impl App {
                         Ok(()) => self.finish_azure_login(true),
                         Err(err) => {
                             self.push_display_message(DisplayMessage::error(format!(
-                                "Failed to save Azure OpenAI configuration: {}",
+                                "Не удалось сохранить конфигурацию Azure OpenAI: {}",
                                 err
                             )));
                             self.pending_login =
@@ -2610,9 +2610,9 @@ impl App {
                     }
                 } else {
                     self.push_display_message(DisplayMessage::system(
-                        "Paste your Azure OpenAI API key, or type /cancel to abort.".to_string(),
+                        "Вставьте ваш Azure OpenAI API ключ, или введите /cancel чтобы отменить.".to_string(),
                     ));
-                    self.set_status_notice("Login: Azure API key...");
+                    self.set_status_notice("Вход: API ключ Azure...");
                     self.pending_login = Some(PendingLogin::AzureApiKey { endpoint, model });
                 }
             }
@@ -2620,7 +2620,7 @@ impl App {
                 let key = input.trim().to_string();
                 if key.is_empty() {
                     self.push_display_message(DisplayMessage::error(
-                        "Azure OpenAI API key cannot be empty.".to_string(),
+                        "Azure OpenAI API ключ не может быть пустым.".to_string(),
                     ));
                     self.pending_login = Some(PendingLogin::AzureApiKey { endpoint, model });
                     return;
@@ -2629,7 +2629,7 @@ impl App {
                     Ok(()) => self.finish_azure_login(false),
                     Err(err) => {
                         self.push_display_message(DisplayMessage::error(format!(
-                            "Failed to save Azure OpenAI configuration: {}",
+                            "Не удалось сохранить конфигурацию Azure OpenAI: {}",
                             err
                         )));
                         self.pending_login = Some(PendingLogin::AzureApiKey { endpoint, model });
@@ -2640,7 +2640,7 @@ impl App {
                 let key = input.trim().to_string();
                 if key.is_empty() {
                     self.push_display_message(DisplayMessage::error(
-                        "API key cannot be empty.".to_string(),
+                        "API ключ не может быть пустым.".to_string(),
                     ));
                     self.pending_login = Some(PendingLogin::CursorApiKey);
                     return;
@@ -2673,7 +2673,7 @@ impl App {
                             reason.label(),
                         );
                         self.push_display_message(DisplayMessage::error(format!(
-                            "Failed to save Cursor API key: {}",
+                            "Не удалось сохранить Cursor API ключ: {}",
                             e
                         )));
                         self.pending_login = Some(PendingLogin::CursorApiKey);
@@ -2690,7 +2690,7 @@ impl App {
             }
             PendingLogin::GrokBuild => {
                 self.push_display_message(DisplayMessage::system(
-                    "Grok Build login is waiting for browser authorization. Complete the xAI login in your browser, or type /cancel to dismiss."
+                    "Вход в Grok Build ожидает авторизации браузера. Завершите вход в xAI в вашем браузере, или введите /cancel чтобы закрыть."
                         .to_string(),
                 ));
                 self.pending_login = Some(PendingLogin::GrokBuild);
@@ -2708,7 +2708,7 @@ impl App {
                     }
                 };
 
-                self.set_status_notice("Login: importing approved sources...");
+                self.set_status_notice("Вход: импорт одобренных источников...");
                 tokio::spawn(async move {
                     match crate::external_auth::run_external_auth_auto_import_candidates(
                         &candidates,
@@ -2725,16 +2725,16 @@ impl App {
                                 crate::telemetry::record_auth_success(provider, method);
                             }
                             Bus::global().publish(BusEvent::LoginCompleted(LoginCompleted {
-                                provider: "auto-import".to_string(),
+                                provider: "авто-импорт".to_string(),
                                 success: outcome.imported > 0,
                                 message: outcome.render_markdown(),
                             }));
                         }
                         Err(err) => {
                             Bus::global().publish(BusEvent::LoginCompleted(LoginCompleted {
-                                provider: "auto-import".to_string(),
+                                provider: "авто-импорт".to_string(),
                                 success: false,
-                                message: format!("Auto import failed: {}", err),
+                                message: format!("Авто импорт не удался: {}", err),
                             }));
                         }
                     }
@@ -2782,7 +2782,7 @@ impl App {
             crate::bus::UiActivity::auth(
                 Some(self.session.id.clone()),
                 "",
-                Some("Auth: refreshing model routes..."),
+                Some("Аутентификация: обновление маршрутов моделей..."),
             ),
         ));
         // Remote mode forwards the auth change to the server immediately after
@@ -2878,7 +2878,7 @@ impl App {
                                     model: model.clone(),
                                     provider_key,
                                     message: format!(
-                                        "Login ready. Switched to the strongest available default model: {model}."
+                                        "Вход готов. Переключено на самую сильную доступную модель по умолчанию: {model}."
                                     ),
                                     open_picker: false,
                                 },
@@ -3014,7 +3014,7 @@ impl App {
                     "azure-openai",
                     &[("surface", "tui"), ("provider_session", "reset")],
                 );
-                self.set_status_notice(format!("Login: Azure OpenAI ready ({})", active_model));
+                self.set_status_notice(format!("Вход: Azure OpenAI готов ({})", active_model));
             }
             Err(error) => {
                 let message = error.to_string();
@@ -3048,10 +3048,10 @@ impl App {
                     "{} Model Discovery Started\n\nSaved credentials are active. Jcode is fetching the live model catalog, will only switch to a model returned by that catalog, and will show what changed when discovery finishes.",
                     provider_label
                 ),
-                Some(format!("{}: fetching models...", provider_label)),
+                Some(format!("{}: получение моделей...", provider_label)),
             ),
         ));
-        self.set_status_notice(format!("{}: fetching models...", provider_label));
+        self.set_status_notice(format!("{}: получение моделей...", provider_label));
         self.invalidate_model_picker_cache();
 
         // Make the newly saved OpenAI-compatible credentials usable in this
@@ -3249,7 +3249,7 @@ impl App {
                 .nth(1)
                 .and_then(|s| s.split_whitespace().next())
             {
-                self.set_status_notice(format!("Login: enter {} at GitHub", code));
+                self.set_status_notice(format!("Вход: введите {} на GitHub", code));
             }
             return;
         }
@@ -3286,7 +3286,7 @@ impl App {
             if !suppress_first_run_login_noise {
                 self.push_display_message(DisplayMessage::system(login.message));
             }
-            self.set_status_notice(format!("Login: {} ready", login.provider));
+            self.set_status_notice(format!("Вход: {} готов", login.provider));
             if Self::login_provider_is_azure(&login.provider) {
                 self.activate_azure_runtime_model_after_login();
             } else {
@@ -3331,7 +3331,7 @@ impl App {
                 self.onboarding_handle_login_failed(Some(message));
             } else {
                 self.push_display_message(DisplayMessage::error(message));
-                self.set_status_notice(format!("Login: {} failed", login.provider));
+                self.set_status_notice(format!("Вход: {} не удался", login.provider));
                 self.onboarding_handle_login_failed(None);
             }
         }
@@ -3356,7 +3356,7 @@ impl App {
                 .map_err(|e| e.to_string())?;
 
         crate::auth::oauth::save_claude_tokens_for_account(&oauth_tokens, label)
-            .map_err(|e| format!("Failed to save tokens: {}", e))?;
+            .map_err(|e| format!("Не удалось сохранить токены: {}", e))?;
 
         let profile_suffix = match crate::auth::oauth::update_claude_account_profile(
             label,
@@ -3368,7 +3368,7 @@ impl App {
             Ok(None) => String::new(),
             Err(e) => {
                 crate::logging::warn(&format!(
-                    "Claude login [{}] profile fetch failed: {}",
+                    "Вход в Claude [{}] не удалось получить профиль: {}",
                     label, e
                 ));
                 String::new()
@@ -3376,14 +3376,14 @@ impl App {
         };
 
         Ok(format!(
-            "Successfully logged in to Claude! (account: {}){}",
+            "Успешный вход в Claude! (аккаунт: {}){}",
             label, profile_suffix
         ))
     }
 
     fn save_named_api_key(env_file: &str, key_name: &str, key: &str) -> anyhow::Result<()> {
         if !crate::provider_catalog::is_safe_env_key_name(key_name) {
-            anyhow::bail!("Invalid API key variable name: {}", key_name);
+            anyhow::bail!("Неверное имя переменной API ключа: {}", key_name);
         }
         if !crate::provider_catalog::is_safe_env_file_name(env_file) {
             anyhow::bail!("Invalid env file name: {}", env_file);
@@ -3434,7 +3434,7 @@ impl App {
         crate::auth::AuthStatus::invalidate_cache();
         if let Err(err) = crate::provider::activation::apply_azure_openai_runtime() {
             self.push_display_message(DisplayMessage::error(format!(
-                "Failed to activate Azure OpenAI runtime: {}",
+                "Не удалось активировать время выполнения Azure OpenAI: {}",
                 err
             )));
             return;
@@ -3444,12 +3444,12 @@ impl App {
             if use_entra { "entra_id" } else { "api_key" },
         );
         let auth_note = if use_entra {
-            "Using Microsoft Entra ID through Azure DefaultAzureCredential. If you use Azure CLI auth, run az login and make sure the identity has the Cognitive Services OpenAI User role."
+            "Использование Microsoft Entra ID через Azure DefaultAzureCredential. Если вы используете аутентификацию Azure CLI, выполните az login и убедитесь, что идентифиность имеет роль Cognitive Services OpenAI User."
         } else {
             "Using the saved Azure OpenAI API key."
         };
         Bus::global().publish(BusEvent::LoginCompleted(LoginCompleted {
-            provider: "Azure OpenAI".to_string(),
+            provider: "Провайдер Azure OpenAI".to_string(),
             success: true,
             message: format!(
                 "Azure OpenAI configuration saved.\n\n\
@@ -3473,7 +3473,7 @@ fn save_tui_openai_compatible_api_base(
     let trimmed = api_base.trim();
     if !trimmed.is_empty() {
         let normalized = crate::provider_catalog::normalize_api_base(trimmed).ok_or_else(|| {
-            anyhow::anyhow!("OpenAI-compatible API base must be https://... or http://localhost.")
+            anyhow::anyhow!("Базовый URL API, совместимого с OpenAI, должен быть https://... или http://localhost.")
         })?;
         crate::provider_catalog::save_env_value_to_env_file(
             "JCODE_OPENAI_COMPAT_API_BASE",

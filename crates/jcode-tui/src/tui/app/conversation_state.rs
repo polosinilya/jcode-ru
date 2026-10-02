@@ -340,7 +340,7 @@ impl App {
                             self.push_display_message(DisplayMessage::system(
                                 Self::format_compaction_started_message(&trigger),
                             ));
-                            self.set_status_notice("Compacting context");
+                            self.set_status_notice("Компактификация контекста");
                         }
                         crate::compaction::CompactionAction::HardCompacted(_) => {}
                         crate::compaction::CompactionAction::None => {}
@@ -384,10 +384,10 @@ impl App {
             ));
         }
         let message = if event.messages_dropped.is_some() {
-            self.set_status_notice("Emergency compaction");
+            self.set_status_notice("Экстренная компактификация");
             Self::format_emergency_compaction_message(&event, self.context_limit)
         } else {
-            self.set_status_notice("Context compacted");
+            self.set_status_notice("Контекст скомпактирован");
             Self::format_compaction_complete_message(&event, self.context_limit)
         };
         self.push_display_message(DisplayMessage::system(message));
@@ -635,7 +635,7 @@ impl App {
 
         // First press or timeout expired - show warning
         self.quit_pending = Some(Instant::now());
-        self.set_status_notice("Press Ctrl+C again to quit");
+        self.set_status_notice("Нажмите Ctrl+C еще раз для выхода");
         false
     }
 
@@ -887,7 +887,7 @@ impl App {
             "Recovery complete. New session: {}. Tool calls stripped; context preserved.",
             self.session.id
         )));
-        self.set_status_notice("Recovered session");
+        self.set_status_notice("Сессия восстановлена");
     }
 }
 

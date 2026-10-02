@@ -5,7 +5,7 @@ impl App {
         let topic = topic.trim().trim_start_matches('/').to_lowercase();
         let help = match topic.as_str() {
             "help" | "commands" => {
-                "/help\nShow general command list and keyboard shortcuts.\n\n/help <command>\nShow detailed help for one command."
+                "/help\nПоказать общий список команд и сочетаний клавиш.\n\n/help <command>\nПоказать подробную справку по команде."
             }
             "compact" => {
                 "/compact\nForce context compaction now.\nStarts background summarization and applies it automatically when ready.\n\n/compact mode\nShow current compaction mode for this session.\n\n/compact mode <reactive|proactive|semantic>\nChange compaction mode for this session."
@@ -14,31 +14,31 @@ impl App {
                 "/cache stats\nShow KV cache stats for this session: cache read/write totals, hit ratios, current baseline, and recent miss attributions.\n\n/cache\nToggle Anthropic cache TTL between 5 minutes and 1 hour.\n\n/cache 1h  or  /cache 5m\nSet Anthropic cache TTL explicitly."
             }
             "fix" => {
-                "/fix\nRun recovery actions when the model cannot continue.\nRepairs missing tool outputs, resets provider session state, and starts compaction when possible."
+                "/fix\nВыполнить действия по восстановлению, когда модель не может продолжить работу.\nВосстанавливает отсутствующие выходные данные инструментов, сбрасывает состояние сессии провайдера и запускает сжатие, когда это возможно."
             }
             "rewind" => {
-                "/rewind\nShow numbered conversation history.\n\n/rewind N\nRewind to message N (drops everything after it and resets provider session).\n\n/rewind undo\nUndo the most recent rewind and restore the removed messages."
+                "/rewind\nПоказать пронумерованную историю разговора.\n\n/rewind N\nПеремотать к сообщению N (удаляет все после него и сбрасывает сессию провайдера).\n\n/rewind undo\nОтменить последнюю перемотку и восстановить удаленные сообщения."
             }
             "clear" => {
-                "/clear\nClear current conversation, queue, and display; starts a fresh session."
+                "/clear\nОчистить текущий разговор, очередь и дисплей; начать новую сессию."
             }
             "cls" | "clear-view" => {
-                "/cls\nClear the rendered view only. The model keeps its full context; nothing is sent or forgotten. (Ctrl+L clears the screen but keeps history in scrollback.)"
+                "/cls\nОчистить только отображаемый вид. Модель сохраняет полный контекст; ничего не отправляется и не забывается. (Ctrl+L очищает экран, но сохраняет историю в прокрутке.)"
             }
             "model" => {
-                "/model\nOpen model picker.\n\n/model <name>\nSwitch model.\n\n/model <name>@<provider>\nPin OpenRouter routing (@auto clears pin)."
+                "/model\nОткрыть выбор модели.\n\n/model <name>\nПереключить модель.\n\n/model <name>@<provider>\nЗакрепить маршрутизацию OpenRouter (@auto снимает закрепление)."
             }
-            "provider-test-coverage"
-            | "provider test coverage"
-            | "model-status"
-            | "model status" => {
+            "покрытие-тестов-провайдера"
+            | "покрытие тестов провайдера"
+            | "статус-модели"
+            | "статус модели" => {
                 "/provider-test-coverage\nShow jcode live verification evidence for the current provider/model.\n\n/provider-test-coverage <provider> <model>\nLook up a specific provider/model pair in the live-test coverage ledger.\n\nThe report shows last-tested time, jcode build, passed/missing checkpoints, readiness gaps, and a caveat that missing evidence is not a provider failure."
             }
             "refresh-model-list" => {
-                "/refresh-model-list\nForce-refresh provider model catalogs, update /model, and persist the refreshed cache."
+                "/refresh-model-list\nПринудительно обновить каталоги моделей провайдера, обновить /model и сохранить обновленный кэш."
             }
             "agents" => {
-                "/agents\nOpen the agent-model config picker.\n\n/agents <swarm|review|judge|memory|ambient>\nJump straight to that agent role's saved model override."
+                "/agents\nОткрыть выбор конфигурации агент-модели.\n\n/agents <swarm|review|judge|memory|ambient>\nПерейти сразу к сохраненному переопределению модели для этой роли агента."
             }
             "swarm-prompt" => {
                 "/swarm-prompt\nOpen the active swarm routing prompt in $VISUAL or $EDITOR.\n\nJcode uses a nonblank project override at ./.jcode/swarm-prompt.md when present, then ~/.jcode/swarm-prompt.md, then the built-in default. If no editable override exists, this command creates the global file from the built-in default. Restart or reload Jcode after editing because running agent tool registries cache the prompt."
@@ -59,7 +59,7 @@ impl App {
                 "/btw <question>\nAsk a side question without derailing the current session.\n\nForks (splits) the session into a new window with the full conversation cloned, and the forked session starts by answering the question. The original session keeps working uninterrupted."
             }
             "git" => {
-                "/git\nShow git status --short --branch for the current session working directory.\n\n/git status\nAlias for /git."
+                "/git\nПоказать статус git --short --branch для текущего рабочего каталога сессии.\n\n/git status\nАлиас для /git."
             }
             "commit" => {
                 "/commit\nAsk the agent to inspect current uncommitted changes and create interactive, logical commits.\n\nThe agent should group related files or hunks, preserve unrelated work, validate as appropriate, and report the commits created plus anything left uncommitted."
@@ -83,10 +83,10 @@ impl App {
                 "/catchup\nOpen the Catch Up picker for finished sessions that need attention.\n\n/catchup next\nTeleport to the next session needing attention and open a Catch Up brief in the side panel.\n\n/catchup list\nAlias for opening the picker."
             }
             "back" => {
-                "/back\nReturn to the previous session you came from via Catch Up.\n\nWorks after a /catchup next jump or after selecting a session from the Catch Up picker."
+                "/back\nВернуться к предыдущей сессии, из которой вы перешли через Catch Up.\n\nРаботает после перехода /catchup next или после выбора сессии из выбора Catch Up."
             }
             "subagent-model" => {
-                "/subagent-model\nShow the current subagent model policy for this session.\n\n/subagent-model <name>\nPin a fixed model for future subagents in this session.\n\n/subagent-model inherit\nReset to using the current active model."
+                "/subagent-model\nПоказать текущую политику модели подагента для этой сессии.\n\n/subagent-model <name>\nЗакрепить фиксированную модель для будущих подагентов в этой сессии.\n\n/subagent-model inherit\nСбросить к использованию текущей активной модели."
             }
             "autoreview" => {
                 "/autoreview\nShow autoreview status for this session.\n\n/autoreview on\nEnable end-of-turn autoreview for this session.\n\n/autoreview off\nDisable autoreview for this session.\n\n/autoreview now\nLaunch a headed reviewer immediately in a new window."
@@ -95,10 +95,10 @@ impl App {
                 "/autojudge\nShow autojudge status for this session.\n\n/autojudge on\nEnable end-of-turn autojudge for this session. The autojudge acts like a completion manager: it tells the parent agent either to continue with specific next steps or that it is fine to stop.\n\n/autojudge off\nDisable autojudge for this session.\n\n/autojudge now\nLaunch a headed autojudge immediately in a new window."
             }
             "review" => {
-                "/review\nLaunch a one-shot headed review session immediately.\n\nThe reviewer will DM this session when done. If OpenAI ChatGPT OAuth is available, it prefers gpt-5.5."
+                "/review\nНемедленно запустить одноразовую сессию рецензирования с интерфейсом.\n\nРецензент отправит сообщение в эту сессию по завершении. Если доступна авторизация OpenAI ChatGPT OAuth, предпочтение отдается gpt-5.5."
             }
             "judge" => {
-                "/judge\nLaunch a one-shot headed judge session immediately.\n\nThe judge will DM this session when done. If OpenAI ChatGPT OAuth is available, it prefers gpt-5.5."
+                "/judge\nНемедленно запустить одноразовую сессию судейства с интерфейсом.\n\nСудья отправит сообщение в эту сессию по завершении. Если доступна авторизация OpenAI ChatGPT OAuth, предпочтение отдается gpt-5.5."
             }
             "effort" => {
                 "/effort\nShow current effort.\n\n/effort <level>\nSet effort (none|minimal|low|medium|high|xhigh|max|swarm|swarm-deep). Which levels apply depends on the model. The swarm rungs run at max reasoning and turn on swarm orchestration (light fan-out or the deep task graph).\n\nAlso: {effort_keys} to cycle."
@@ -111,9 +111,9 @@ impl App {
                 "/log mark [note]\nWrite a distinctive JCODE_LOG_MARK line to ~/.jcode/logs/jcode-YYYY-MM-DD.log with the current session, provider, model, working directory, and optional note. Use this to mark a spot for agents to inspect later."
             }
             "goals" => {
-                "/goals\nOpen the goals overview in the side panel.\n\n/goals resume\nResume the most relevant active goal for this session/project.\n\n/goals show <id>\nOpen a specific goal in the side panel."
+                "/goals\nОткрыть обзор целей на боковой панели.\n\n/goals resume\nВозобновить наиболее актуальную активную цель для этой сессии/проекта.\n\n/goals show <id>\nОткрыть определенную цель на боковой панели."
             }
-            "swarm" => "/swarm [on|off|status]\nToggle swarm features for this session.",
+            "swarm" => "/swarm [on|off|status]\nПереключить функции роя для этой сессии.",
             "overnight" => {
                 "/overnight <hours>[h|m] [mission]\nStart one overnight coordinator with a target wake/report time. The coordinator prioritizes verifiable, low-risk work, maintains structured logs, updates review notes, and generates a review HTML page.\n\n/overnight status\nShow the latest overnight run status.\n\n/overnight log\nShow recent overnight events.\n\n/overnight review\nOpen the generated review page.\n\n/overnight cancel\nRequest cancellation after the current coordinator turn reaches a safe boundary."
             }
@@ -144,16 +144,16 @@ impl App {
                 "/refactor [focus]\nStart a refactor loop aimed at moving the repo toward a practical 10/10. The main agent inspects the project, writes a ranked refactor todo list, implements the best safe refactors itself, validates each batch, and asks one independent read-only subagent to review each meaningful batch before continuing.\n\n/refactor plan [focus]\nGenerate a ranked refactor todo list only, without editing files.\n\n/refactor resume\nResume the last saved refactor mode for this session using the current refactor todos.\n\n/refactor status\nShow the inferred status of the current refactor run and todo batch.\n\n/refactor stop\nAsk the model to stop after the next safe point, update todos, and summarize remaining work."
             }
             "reload" => {
-                "/reload\nReload into the newest available binary if one is ready. This is fast and does not rebuild."
+                "/reload\nПерезагрузить в новую доступную версию, если она готова. Это быстро и не требует пересборки."
             }
             "restart" => {
-                "/restart\nRestart jcode with the current binary. Session is preserved.\nUseful after config changes, MCP server updates, or env var changes."
+                "/restart\nПерезапустить jcode с текущей версией. Сессия сохраняется.\nПолезно после изменения конфигурации, обновления MCP-сервера или переменных окружения."
             }
             "rebuild" => {
-                "/rebuild\nRun git pull --ff-only, cargo build --release, and release tests in the background. jcode stays usable and reloads automatically when the build is ready."
+                "/rebuild\nВыполнить git pull --ff-only, cargo build --release и тесты релиза в фоне. jcode остается доступным и автоматически перезагружается по готовности сборки."
             }
             "selfdev" => {
-                "/selfdev\nSpawn a new self-dev jcode session in a separate terminal.\n\n/selfdev <prompt>\nSpawn a new self-dev session and auto-deliver the prompt to it.\n\n/selfdev status\nShow current self-dev/build status."
+                "/selfdev\nЗапустить новую сессию саморазработки jcode в отдельном терминале.\n\n/selfdev <prompt>\nЗапустить новую сессию саморазработки и автоматически передать ей запрос.\n\n/selfdev status\nПоказать текущий статус саморазработки/сборки."
             }
             "fork" | "split" => {
                 "/fork\nFork the current session into a new terminal pane or window. Clones the full conversation history so both sessions continue from the same point. Inside tmux, jcode automatically opens a right-side pane.\n\n/fork <prompt>\nFork the session and start the new pane/window by answering the prompt. The original session keeps working uninterrupted.\n\n/split\nAlias for /fork."
@@ -161,24 +161,24 @@ impl App {
             "resume" | "sessions" => {
                 "/resume\nOpen the interactive session picker. Browse and search all sessions, preview conversation history, and resume the highlighted session. By default, Enter resumes in the current terminal and Ctrl+Enter opens a new terminal; keybindings.session_picker_enter can swap those actions.{resume_shortcut}\n\nPress Esc to return to your current session."
             }
-            "info" => "/info\nShow session metadata and token usage.",
+            "info" => "/info\nПоказать метаданные сессии и использование токенов.",
             "context" => {
-                "/context\nShow the full session context snapshot: prompt/context composition, compaction state, model/provider/runtime details, queued work, todos, and side-panel state."
+                "/context\nПоказать полный снимок контекста сессии: состав запроса/контекста, состояние сжатия, детали модели/провайдера/среды выполнения, очередь задач, задачи и состояние боковой панели."
             }
             "usage" => {
-                "/usage\nFetch and display usage limits for connected providers. This command only reports real connected-provider usage windows and reset times."
+                "/usage\nПолучить и отобразить лимиты использования для подключенных провайдеров. Эта команда показывает только реальные окна использования и время сброса подключенных провайдеров."
             }
             "subscription" => {
-                "/subscription\nCompatibility alias for /hosted status. Shows hosted-model usage, your monthly spending limit, billing status, and router configuration."
+                "/subscription\nСовместимый псевдоним для /hosted status. Показывает использование hosted-моделей, ваш лимит ежемесячных расходов, статус оплаты и конфигурацию маршрутизатора."
             }
             "subscribe" | "hosted" => {
                 "/hosted\nUse Jcode hosted models without a subscription: choose a monthly spending limit, receive milestone warnings without throttling, and pay in progressively larger tranches. Sign in once with /login jcode.\n\n/hosted status\nShow usage and your current spending limit.\n\n/subscribe\nCompatibility alias for /hosted."
             }
-            "version" => "/version\nShow jcode version/build details.",
-            "changelog" => "/changelog\nShow recent changes embedded in this build.",
-            "quit" => "/quit\nExit jcode.",
+            "version" => "/version\nПоказать версию/детали сборки jcode.",
+            "changelog" => "/changelog\nПоказать последние изменения, встроенные в эту сборку.",
+            "quit" => "/quit\nВыйти из jcode.",
             "config" => {
-                "/config\nShow active configuration.\n\n/config init\nCreate default config file.\n\n/config edit\nOpen config in $EDITOR."
+                "/config\nПоказать активную конфигурацию.\n\n/config init\nСоздать файл конфигурации по умолчанию.\n\n/config edit\nОткрыть конфигурацию в $EDITOR."
             }
             "alignment" => {
                 "/alignment\nShow the current alignment and the saved default.\n\n/alignment centered\nSave centered alignment as the default and apply it immediately.\n\n/alignment left\nSave left-aligned mode as the default and apply it immediately.\n\nPress Alt+C anytime to toggle alignment just for the current session."
@@ -202,14 +202,14 @@ impl App {
                 "/save\nBookmark the current session so it appears at the top of /resume.\n\n/save <label>\nBookmark with a custom label for easy identification.\n\nSaved sessions are shown in a dedicated \"Saved\" section in the session picker."
             }
             "rename" => {
-                "/rename <session name>\nSet a custom display title for the current session. This updates the window title and /resume display.\n\n/rename --clear\nClear the custom name and return to the generated session title."
+                "/rename <session name>\nУстановить пользовательский заголовок для текущей сессии. Это обновляет заголовок окна и отображение в /resume.\n\n/rename --clear\nОчистить пользовательское имя и вернуться к сгенерированному заголовку сессии."
             }
             "unsave" => "/unsave\nRemove the bookmark from the current session.",
             "client-reload" if self.is_remote => {
-                "/client-reload\nForce client binary reload in remote mode."
+                "/client-reload\nПринудительная перезагрузка клиентской версии в режиме удаленного доступа."
             }
             "server-reload" if self.is_remote => {
-                "/server-reload\nForce server binary reload in remote mode."
+                "/server-reload\nПринудительная перезагрузка серверной версии в режиме удаленного доступа."
             }
             "continue" | "resumeall" | "resume-all" if self.is_remote => {
                 "/continue\nContinue every interrupted live session that would auto-resume on a reload.\n\nThe server walks all currently-live sessions and, for each idle one that still owes the model a reply (a turn that errored or was interrupted mid-generation), injects the standard \"continue where you left off\" reminder so it picks back up. Sessions that are busy, fresh, or already complete are left untouched.\n\nAlias: /resumeall."
@@ -221,7 +221,7 @@ impl App {
             &crate::tui::keybind::effort_switch_keys_label(),
         );
         let resume_shortcut = match crate::tui::keybind::load_open_resume_key().label {
-            Some(label) => format!(" You can also press {label} to open it directly."),
+            Some(label) => format!(" Вы также можете нажать {label} чтобы открыть его напрямую."),
             None => String::new(),
         };
         let help = help.replace("{resume_shortcut}", &resume_shortcut);

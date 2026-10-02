@@ -53,7 +53,7 @@ pub enum PickerResult {
     /// to Jcode. This is never emitted by ordinary Enter/resume behavior.
     TakeOverClaude(ResumeTarget),
     RestoreCrashedGroup(Vec<String>),
-    /// The onboarding "Start a new session" row was chosen.
+    /// The onboarding "Начать новую сессию" row was chosen.
     StartNewSession,
     /// The onboarding read-only recent-project architecture review was chosen.
     ReviewRecentProject,
@@ -104,42 +104,42 @@ fn format_time_ago(time: chrono::DateTime<chrono::Utc>) -> String {
 
     let seconds = duration.num_seconds();
     if seconds < 60 {
-        return format!("{}s ago", seconds);
+        return format!("{}с назад", seconds);
     }
 
     let minutes = duration.num_minutes();
     if minutes < 60 {
-        return format!("{}m ago", minutes);
+        return format!("{}м назад", minutes);
     }
 
     let hours = duration.num_hours();
     if hours < 24 {
-        return format!("{}h ago", hours);
+        return format!("{}ч назад", hours);
     }
 
     let days = duration.num_days();
     if days < 7 {
-        return format!("{}d ago", days);
+        return format!("{}д назад", days);
     }
 
     if days < 30 {
-        return format!("{}w ago", days / 7);
+        return format!("{}н назад", days / 7);
     }
 
-    format!("{}mo ago", days / 30)
+    format!("{}мес назад", days / 30)
 }
 
-/// Compact duration for the "working Ns" badge in the Active view.
+/// Compact duration for the "работает Ns" badge in the Active view.
 fn format_short_duration(duration: std::time::Duration) -> String {
     let secs = duration.as_secs();
     if secs < 60 {
-        return format!("{}s", secs);
+        return format!("{}с", secs);
     }
     let minutes = secs / 60;
     if minutes < 60 {
-        return format!("{}m", minutes);
+        return format!("{}м", minutes);
     }
-    format!("{}h{}m", minutes / 60, minutes % 60)
+    format!("{}ч{}м", minutes / 60, minutes % 60)
 }
 
 /// Which pane has keyboard focus
@@ -204,7 +204,7 @@ struct PreviewRenderCache {
     /// Wrapped lines at the final (post-scrollbar-decision) width.
     wrapped_lines: Vec<Line<'static>>,
     /// For each pre-wrap source line, the index of its first wrapped line. Used
-    /// to locate user prompts for the sticky "previous prompt" header.
+    /// to locate user prompts for the sticky "предыдущий запрос" header.
     prewrap_to_wrapped: Vec<usize>,
     /// (pre-wrap line index, display number, text) for every user prompt.
     user_prompt_markers: Vec<(usize, usize, String)>,
@@ -376,7 +376,7 @@ impl SessionPicker {
             last_mouse_scroll: None,
             cached_search_query: String::new(),
             cached_search_refs: Vec::new(),
-            loading_message: Some("Loading sessions…".to_string()),
+            loading_message: Some("Загрузка сессий…".to_string()),
             pending_preview_load: None,
             preview_load_failures: HashSet::new(),
             onboarding_banner: None,
@@ -701,7 +701,7 @@ impl SessionPicker {
         self.cached_search_refs.clear();
         // Clear the stale selection/items before rebuilding: the old
         // `visible_sessions` refs index into the just-replaced backing arrays, so
-        // `rebuild_items`' own "preserve selection" lookup would resolve them
+        // `rebuild_items`' own "сохранить выделение" lookup would resolve them
         // against mismatched data (causing index drift when the refreshed list is
         // reordered). We restore the selection explicitly, by id, afterwards.
         self.list_state.select(None);
@@ -739,7 +739,7 @@ impl SessionPicker {
     }
 
     /// Restrict the picker to a single external CLI source (onboarding flow:
-    /// "continue where you left off" in Codex or Claude Code).
+    /// "продолжить с того места, где вы остановились" in Codex or Claude Code).
     pub fn activate_external_cli_filter(&mut self, mode: SessionFilterMode) {
         self.filter_mode = mode;
         self.rebuild_items();
@@ -757,7 +757,7 @@ impl SessionPicker {
         self.onboarding_banner.is_some()
     }
 
-    /// Whether the onboarding "Start a new session" row is currently highlighted.
+    /// Whether the onboarding "Начать новую сессию" row is currently highlighted.
     pub fn onboarding_start_new_highlighted(&self) -> bool {
         self.onboarding_banner.is_some()
             && self.onboarding_action == Some(OnboardingAction::StartNewSession)
@@ -1310,7 +1310,7 @@ impl SessionPicker {
             let block = Block::default()
                 .borders(Borders::ALL)
                 .border_type(BorderType::Rounded)
-                .title(" Preview ")
+                .title(" Preview")
                 .border_style(Style::default().fg(empty_border_color));
             let body = vec![
                 Line::from(vec![
@@ -1324,7 +1324,7 @@ impl SessionPicker {
                 ]),
                 Line::from(""),
                 Line::from(vec![Span::styled(
-                    "The picker will update as soon as the session index is ready.",
+                    "Селектор обновится, как только индекс сессий будет готов.",
                     Style::default().fg(Color::DarkGray),
                 )]),
             ];
@@ -1340,9 +1340,9 @@ impl SessionPicker {
             let block = Block::default()
                 .borders(Borders::ALL)
                 .border_type(BorderType::Rounded)
-                .title(" Preview ")
+                .title(" Просмотр")
                 .border_style(Style::default().fg(empty_border_color));
-            let paragraph = Paragraph::new("No session selected")
+            let paragraph = Paragraph::new("Сессия не выбрана")
                 .block(block)
                 .style(Style::default().fg(Color::DarkGray));
             frame.render_widget(paragraph, area);
@@ -1364,7 +1364,7 @@ impl SessionPicker {
         let block = Block::default()
             .borders(Borders::ALL)
             .border_type(BorderType::Rounded)
-            .title(" Preview ")
+            .title(" Просмотр")
             .border_style(Style::default().fg(preview_border_color));
         let inner = block.inner(area);
         frame.render_widget(block, area);
@@ -1417,11 +1417,11 @@ impl SessionPicker {
         let max_scroll = total_lines.saturating_sub(visible_height) as u16;
         self.preview_max_scroll = max_scroll;
         // The transcript for the selected session may still be loading on a
-        // background thread, in which case this frame only shows a "Loading…"
+        // background thread, in which case this frame only shows a "Загрузка…"
         // placeholder (max_scroll == 0). Keep the auto-scroll armed until the
         // real content lands; otherwise the flag is consumed on the placeholder
         // frame and the populated transcript stays pinned at the top, hiding the
-        // sticky "previous prompt" header that should appear once we snap to the
+        // sticky "предыдущий запрос" header that should appear once we snap to the
         // bottom.
         let preview_still_loading = session.messages_preview.is_empty()
             && self
@@ -1464,7 +1464,7 @@ impl SessionPicker {
         };
         frame.render_widget(Paragraph::new(visible_lines), content_area);
 
-        // Sticky "previous prompt" header: when the view is scrolled past a user
+        // Sticky "предыдущий запрос" header: when the view is scrolled past a user
         // prompt, pin a dimmed `N› …` line at the top of the content area, just
         // like the main TUI's `prompt_preview`.
         if scroll > 0 {
@@ -1515,7 +1515,7 @@ impl SessionPicker {
             SessionStatus::Error { message } => message.hash(&mut h),
             _ => {}
         }
-        // The status line shows a relative "… 5m ago" label derived from real
+        // The status line shows a relative "… 5м назад" label derived from real
         // time, so bucket wall-clock into ~15s windows: fresh enough for the
         // header without rebuilding the cache during a scroll burst.
         session.last_message_time.timestamp().hash(&mut h);
@@ -1588,12 +1588,12 @@ impl SessionPicker {
                     let ago = format_time_ago(session.last_message_time);
                     let label = match &session.status {
                         SessionStatus::Active => "active".to_string(),
-                        SessionStatus::Closed => format!("closed {}", ago),
-                        SessionStatus::Crashed { .. } => format!("crashed {}", ago),
-                        SessionStatus::Reloaded => format!("reloaded {}", ago),
-                        SessionStatus::Compacted => format!("compacted {}", ago),
-                        SessionStatus::RateLimited => format!("rate-limited {}", ago),
-                        SessionStatus::Error { .. } => format!("errored {}", ago),
+                        SessionStatus::Closed => format!("закрыто {}", ago),
+                        SessionStatus::Crashed { .. } => format!("аварийное завершение {}", ago),
+                        SessionStatus::Reloaded => format!("перезагружено {}", ago),
+                        SessionStatus::Compacted => format!("скомпактировано {}", ago),
+                        SessionStatus::RateLimited => format!("ограничение скорости {}", ago),
+                        SessionStatus::Error { .. } => format!("ошибка {}", ago),
                     };
                     Span::styled(format!("  {}", label), Style::default().fg(dim_color))
                 },
@@ -1615,7 +1615,7 @@ impl SessionPicker {
             let saved_label = if let Some(ref label) = session.save_label {
                 format!("📌 Saved as \"{}\"", label)
             } else {
-                "📌 Saved".to_string()
+                "📌 Сохранено".to_string()
             };
             lines.push(
                 Line::from(vec![Span::styled(
@@ -1639,24 +1639,24 @@ impl SessionPicker {
 
         // Status line with details
         let (status_icon, status_text, status_color) = match &session.status {
-            SessionStatus::Active => ("▶", "Active".to_string(), rgb(100, 200, 100)),
-            SessionStatus::Closed => ("✓", "Closed normally".to_string(), Color::DarkGray),
+            SessionStatus::Active => ("▶", "Активно".to_string(), rgb(100, 200, 100)),
+            SessionStatus::Closed => ("✓", "Закрыто нормально".to_string(), Color::DarkGray),
             SessionStatus::Crashed { message } => {
                 let text = match message {
-                    Some(msg) => format!("Crashed: {}", safe_truncate(msg, 80)),
-                    None => "Crashed".to_string(),
+                    Some(msg) => format!("Аварийное завершение: {}", safe_truncate(msg, 80)),
+                    None => "Аварийное завершение".to_string(),
                 };
                 ("💥", text, rgb(220, 100, 100))
             }
-            SessionStatus::Reloaded => ("🔄", "Reloaded".to_string(), rgb(138, 180, 248)),
+            SessionStatus::Reloaded => ("🔄", "Перезагружено".to_string(), rgb(138, 180, 248)),
             SessionStatus::Compacted => (
                 "📦",
-                "Compacted (context too large)".to_string(),
+                "Скомпактировано (контекст слишком большой)".to_string(),
                 rgb(255, 193, 7),
             ),
-            SessionStatus::RateLimited => ("⏳", "Rate limited".to_string(), rgb(186, 139, 255)),
+            SessionStatus::RateLimited => ("⏳", "Ограничение скорости".to_string(), rgb(186, 139, 255)),
             SessionStatus::Error { message } => {
-                let text = format!("Error: {}", safe_truncate(message, 40));
+                let text = format!("Ошибка: {}", safe_truncate(message, 40));
                 ("❌", text, rgb(220, 100, 100))
             }
         };
@@ -1674,7 +1674,7 @@ impl SessionPicker {
         if self.crashed_session_ids.contains(&session.id) {
             lines.push(
                 Line::from(vec![Span::styled(
-                    "Included in batch restore",
+                    "Включено в пакетное восстановление",
                     Style::default()
                         .fg(rgb(255, 140, 140))
                         .add_modifier(Modifier::BOLD),
@@ -1686,7 +1686,7 @@ impl SessionPicker {
         if self.selected_session_ids.contains(&session.id) {
             lines.push(
                 Line::from(vec![Span::styled(
-                    "✓ Selected for multi-resume",
+                    "✓ Выбрано для множественного возобновления",
                     Style::default()
                         .fg(rgb(140, 220, 160))
                         .add_modifier(Modifier::BOLD),
@@ -1709,7 +1709,7 @@ impl SessionPicker {
         let mut prompt_num = 0;
         let mut rendered_messages = 0usize;
         // Track the pre-wrap line index + display number + text of every user
-        // prompt so we can render a sticky "previous prompt" header (matching the
+        // prompt so we can render a sticky "предыдущий запрос" header (matching the
         // main TUI's `prompt_preview`) once it scrolls out of view.
         let mut user_prompt_markers: Vec<(usize, usize, String)> = Vec::new();
         for msg in &session.messages_preview {
@@ -1765,7 +1765,7 @@ impl SessionPicker {
                         {
                             lines.push(
                                 Line::from(vec![Span::styled(
-                                    "[mermaid diagram]",
+                                    "[диаграмма mermaid]",
                                     Style::default().fg(dim_color),
                                 )])
                                 .alignment(align),
@@ -1897,9 +1897,9 @@ impl SessionPicker {
                     .as_ref()
                     .is_some_and(|pending| pending.session_id == session.id);
             let text = if preview_loading {
-                "Loading preview…"
+                "Загрузка предварительного просмотра…"
             } else {
-                "(empty session)"
+                "(пустая сессия)"
             };
             lines.push(
                 Line::from(vec![Span::styled(text, Style::default().fg(dim_color))])
@@ -1993,7 +1993,7 @@ impl SessionPicker {
         first_match
     }
 
-    /// Render the pinned "previous prompt" header for the preview pane. Mirrors
+    /// Render the pinned "предыдущий запрос" header for the preview pane. Mirrors
     /// the main chat viewport's `prompt_preview`: find the last user prompt whose
     /// wrapped start has scrolled above the viewport and draw it dimmed at the top.
     fn render_preview_prompt_header(
@@ -2162,7 +2162,7 @@ impl SessionPicker {
         let review_selected = self.onboarding_review_recent_project_highlighted();
         frame.render_widget(
             Paragraph::new(action_line(
-                "Find bugs in my most active repo",
+                "Найти ошибки в моем самом активном репозитории",
                 review_selected,
             ))
             .alignment(Alignment::Center),
@@ -2177,7 +2177,7 @@ impl SessionPicker {
         let start_selected = self.onboarding_start_new_highlighted();
         frame.render_widget(
             Paragraph::new(action_line(
-                "Start in the current directory",
+                "Начать в текущем каталоге",
                 start_selected,
             ))
             .alignment(Alignment::Right),
@@ -2255,9 +2255,9 @@ impl SessionPicker {
                 ),
                 Span::styled(cursor_char, Style::default().fg(rgb(186, 139, 255))),
                 if self.search_active {
-                    Span::styled("  Esc to clear", Style::default().fg(rgb(60, 60, 60)))
+                    Span::styled("  Esc для очистки", Style::default().fg(rgb(60, 60, 60)))
                 } else {
-                    Span::styled("  / to edit", Style::default().fg(rgb(60, 60, 60)))
+                    Span::styled("  / для редактирования", Style::default().fg(rgb(60, 60, 60)))
                 },
             ]);
             let search_widget =
@@ -2304,7 +2304,7 @@ impl SessionPicker {
         let body = vec![
             Line::from(Span::styled(
                 format!(
-                    "Take over live Claude session {}?",
+                    "Перехватить активную сессию Claude {}?",
                     jcode_core::util::truncate_str(session_id, 12)
                 ),
                 Style::default()
@@ -2313,11 +2313,11 @@ impl SessionPicker {
             )),
             Line::from(""),
             Line::from(Span::styled(
-                "Jcode will prepare the transcript first, then ask Claude to exit.",
+                "Jcode сначала подготовит транскрипт, затем попросит Claude выйти.",
                 Style::default().fg(rgb(190, 190, 200)),
             )),
             Line::from(Span::styled(
-                "Enter/Y confirm · Esc/N cancel",
+                "Enter/Y подтвердить · Esc/N отменить",
                 Style::default()
                     .fg(rgb(255, 193, 7))
                     .add_modifier(Modifier::BOLD),
@@ -2326,7 +2326,7 @@ impl SessionPicker {
         let modal = Paragraph::new(body)
             .block(
                 Block::default()
-                    .title(" Explicit Claude takeover ")
+                    .title(" Явный перехват Claude")
                     .borders(Borders::ALL)
                     .border_type(BorderType::Rounded)
                     .border_style(Style::default().fg(rgb(255, 193, 7))),
@@ -2339,7 +2339,7 @@ impl SessionPicker {
     pub fn run(mut self) -> Result<Option<PickerResult>> {
         if !std::io::stdin().is_terminal() || !std::io::stdout().is_terminal() {
             anyhow::bail!(
-                "session picker requires an interactive terminal (stdin/stdout must be a TTY)"
+                "для селектора сессий требуется интерактивный терминал (stdin/stdout должны быть TTY)"
             );
         }
         // Detect light/dark terminal background before raw mode (OSC 11 query).
@@ -2351,7 +2351,7 @@ impl SessionPicker {
                 } else if let Some(s) = payload.downcast_ref::<String>() {
                     s.clone()
                 } else {
-                    "unknown panic payload".to_string()
+                    "неизвестная паника".to_string()
                 };
                 anyhow::anyhow!("failed to initialize session picker terminal: {}", msg)
             })?;
@@ -2423,7 +2423,7 @@ pub fn pick_session() -> Result<Option<PickerResult>> {
     // Check if we have a TTY
     if !std::io::IsTerminal::is_terminal(&std::io::stdin()) {
         anyhow::bail!(
-            "Session picker requires an interactive terminal. Use --resume <session_id> directly."
+            "Селектор сессий требует интерактивный терминал. Используйте --resume <session_id> напрямую."
         );
     }
 

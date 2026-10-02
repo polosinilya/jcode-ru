@@ -26,7 +26,7 @@ pub(in crate::tui::app) async fn send_interleave_now(
         }
         Ok(request_id) => {
             app.track_pending_soft_interrupt(request_id, msg_clone);
-            app.set_status_notice("⏭ Interleave sent");
+            app.set_status_notice("⏭ Перекрестие отправлено");
         }
     }
 }
@@ -36,7 +36,7 @@ pub(in crate::tui::app) async fn handle_remote_update_command(
     remote: &mut RemoteConnection,
 ) -> Result<()> {
     if crate::tui::is_ssh_remote() {
-        app.set_status_notice("Update the client and SSH server separately, then reconnect");
+        app.set_status_notice("Обновите клиент и SSH-сервер отдельно, затем переподключитесь");
         return Ok(());
     }
     reload_stale_remote_server_before_update(app, remote).await?;
@@ -75,7 +75,7 @@ async fn apply_remote_effort_direction(
     let efforts =
         app_mod::inferred_reasoning_efforts(provider_name.as_deref(), provider_model.as_deref());
     if efforts.is_empty() {
-        app.set_status_notice("Reasoning effort not available for this provider");
+        app.set_status_notice("Уровень рассуждений недоступен для этого провайдера");
         return Ok(());
     }
     let current = app.remote_reasoning_effort_hint();
@@ -163,7 +163,7 @@ async fn handle_remote_rewind_command(
             message_index: None,
             changed_messages: 0,
         });
-        app.set_status_notice("Undoing rewind...");
+        app.set_status_notice("Отмена перемотки...");
         return Ok(true);
     }
 
@@ -187,7 +187,7 @@ async fn handle_remote_rewind_command(
                 message_index: Some(n),
                 changed_messages: message_count - n,
             });
-            app.set_status_notice(format!("Rewinding to message {}...", n));
+            app.set_status_notice(format!("Перемотка к сообщению {}...", n));
         }
         Ok(n) => {
             app.push_display_message(DisplayMessage::error(format!(
@@ -422,7 +422,7 @@ async fn handle_remote_key_internal(
     // sessions surface the same update card as local ones).
     if app.merge_offer_key_matches(code, modifiers) {
         if crate::tui::is_ssh_remote() {
-            app.set_status_notice("Update the SSH server on its host");
+            app.set_status_notice("Обновите SSH-сервер на его хосте");
             return Ok(());
         }
         app.accept_update_merge_offer();
@@ -447,7 +447,7 @@ async fn handle_remote_key_internal(
     if app.toggle_keys.auto_poke.matches(code, modifiers) {
         if app.auto_poke_incomplete_todos {
             let cleared = app_mod::commands::disable_auto_poke(app);
-            app.set_status_notice("Poke: OFF");
+            app.set_status_notice("Проверка: ВЫКЛ");
             app.push_display_message(DisplayMessage::system(
                 app_mod::commands::poke_disabled_message(cleared),
             ));
@@ -507,7 +507,7 @@ async fn handle_remote_key_internal(
     if app.toggle_keys.swarm_panel_focus.matches(code, modifiers) {
         match app.cycle_swarm_panel_view() {
             app_mod::tui_state::SwarmPanelView::Chat => {
-                app.set_status_notice("Swarm view closed");
+                app.set_status_notice("Представление роя закрыто");
             }
             app_mod::tui_state::SwarmPanelView::Controls => {
                 app.set_status_notice(crate::tui::keybind::swarm_view_hint("full page"));
@@ -580,7 +580,7 @@ async fn handle_remote_key_internal(
             KeyCode::Char('b') => {
                 if matches!(app.status, ProcessingStatus::RunningTool(_)) {
                     remote.background_tool().await?;
-                    app.set_status_notice("Moving tool to background...");
+                    app.set_status_notice("Перемещение инструмента в фоновый режим...");
                     return Ok(());
                 }
                 app.cursor_pos = app.find_word_boundary_back();
@@ -726,7 +726,7 @@ async fn handle_remote_key_internal(
             KeyCode::Char('b') => {
                 if matches!(app.status, ProcessingStatus::RunningTool(_)) {
                     remote.background_tool().await?;
-                    app.set_status_notice("Moving tool to background...");
+                    app.set_status_notice("Перемещение инструмента в фоновый режим...");
                     return Ok(());
                 }
                 if app.cursor_pos > 0 {
@@ -740,7 +740,7 @@ async fn handle_remote_key_internal(
             KeyCode::Char('c') | KeyCode::Char('d') => {
                 if app.is_processing {
                     remote.cancel_with_reason("keyboard_ctrl_c_or_d").await?;
-                    app.set_status_notice("Interrupting...");
+                    app.set_status_notice("Прерывание...");
                 } else {
                     app.handle_quit_request();
                 }
@@ -1044,13 +1044,13 @@ async fn handle_remote_key_internal(
                         "Continuing all interrupted sessions...".to_string(),
                     ));
                     match remote.resume_all_sessions().await {
-                        Ok(_) => app.set_status_notice("Continuing interrupted sessions..."),
+                        Ok(_) => app.set_status_notice("Продолжение прерванных сессий..."),
                         Err(error) => {
                             app.push_display_message(DisplayMessage::error(format!(
                                 "Failed to continue sessions: {}",
                                 error
                             )));
-                            app.set_status_notice("Continue all failed");
+                            app.set_status_notice("Не удалось продолжить все");
                         }
                     }
                     return Ok(());
@@ -1098,14 +1098,14 @@ async fn handle_remote_key_internal(
                         ),
                     );
                     match remote.refresh_models().await {
-                        Ok(()) => app.set_status_notice("Refreshing model list..."),
+                        Ok(()) => app.set_status_notice("Обновление списка моделей..."),
                         Err(error) => {
                             app.pending_remote_model_refresh_snapshot = None;
                             app.push_display_message(DisplayMessage::error(format!(
                                 "Failed to refresh model list: {}",
                                 error
                             )));
-                            app.set_status_notice("Model list refresh failed");
+                            app.set_status_notice("Не удалось обновить список моделей");
                         }
                     }
                     return Ok(());
@@ -1159,7 +1159,7 @@ async fn handle_remote_key_internal(
                             "Subagent model reset to inherit the current model ({}).",
                             current_model
                         )));
-                        app.set_status_notice("Subagent model: inherit");
+                        app.set_status_notice("Модель подагента: наследование");
                         return Ok(());
                     }
                     remote.set_subagent_model(Some(rest.to_string())).await?;
@@ -1168,7 +1168,7 @@ async fn handle_remote_key_internal(
                         "Subagent model pinned to {} for this session.",
                         rest
                     )));
-                    app.set_status_notice(format!("Subagent model → {}", rest));
+                    app.set_status_notice(format!("Модель подагента → {}", rest));
                     return Ok(());
                 }
 
@@ -1191,7 +1191,7 @@ async fn handle_remote_key_internal(
                                 )
                                 .await?;
                             app.subagent_status = Some("starting subagent".to_string());
-                            app.set_status_notice("Running subagent");
+                            app.set_status_notice("Запуск подагента");
                         }
                         Err(error) => {
                             app.push_display_message(DisplayMessage::error(format!(
@@ -1437,7 +1437,7 @@ async fn handle_remote_key_internal(
                         .set_feature(crate::protocol::FeatureToggle::Autoreview, true)
                         .await?;
                     app.set_autoreview_feature_enabled(true);
-                    app.set_status_notice("Autoreview: ON");
+                    app.set_status_notice("Автопересмотр: ВКЛ");
                     app.push_display_message(DisplayMessage::system(
                         "Autoreview enabled for this session.".to_string(),
                     ));
@@ -1449,7 +1449,7 @@ async fn handle_remote_key_internal(
                         .set_feature(crate::protocol::FeatureToggle::Autoreview, false)
                         .await?;
                     app.set_autoreview_feature_enabled(false);
-                    app.set_status_notice("Autoreview: OFF");
+                    app.set_status_notice("Автопересмотр: ВЫКЛ");
                     app.push_display_message(DisplayMessage::system(
                         "Autoreview disabled for this session.".to_string(),
                     ));
@@ -1468,7 +1468,7 @@ async fn handle_remote_key_internal(
                         None,
                     );
                     if app.is_processing {
-                        app.set_status_notice("Autoreview queued");
+                        app.set_status_notice("Автопересмотр в очереди");
                     } else {
                         app.pending_split_request = false;
                         begin_remote_split_launch(app, "Autoreview");
@@ -1484,7 +1484,7 @@ async fn handle_remote_key_internal(
                                 "Failed to launch autoreview session: {}",
                                 error
                             )));
-                            app.set_status_notice("Autoreview launch failed");
+                            app.set_status_notice("Не удалось запустить автопересмотр");
                         }
                     }
                     return Ok(());
@@ -1495,7 +1495,7 @@ async fn handle_remote_key_internal(
                         .set_feature(crate::protocol::FeatureToggle::Autojudge, true)
                         .await?;
                     app.set_autojudge_feature_enabled(true);
-                    app.set_status_notice("Autojudge: ON");
+                    app.set_status_notice("Автооценка: ВКЛ");
                     app.push_display_message(DisplayMessage::system(
                         "Autojudge enabled for this session.".to_string(),
                     ));
@@ -1507,7 +1507,7 @@ async fn handle_remote_key_internal(
                         .set_feature(crate::protocol::FeatureToggle::Autojudge, false)
                         .await?;
                     app.set_autojudge_feature_enabled(false);
-                    app.set_status_notice("Autojudge: OFF");
+                    app.set_status_notice("Автооценка: ВЫКЛ");
                     app.push_display_message(DisplayMessage::system(
                         "Autojudge disabled for this session.".to_string(),
                     ));
@@ -1526,7 +1526,7 @@ async fn handle_remote_key_internal(
                         None,
                     );
                     if app.is_processing {
-                        app.set_status_notice("Autojudge queued");
+                        app.set_status_notice("Автооценка в очереди");
                     } else {
                         app.pending_split_request = false;
                         begin_remote_split_launch(app, "Autojudge");
@@ -1542,7 +1542,7 @@ async fn handle_remote_key_internal(
                                 "Failed to launch autojudge session: {}",
                                 error
                             )));
-                            app.set_status_notice("Autojudge launch failed");
+                            app.set_status_notice("Не удалось запустить автооценку");
                         }
                     }
                     return Ok(());
@@ -1566,7 +1566,7 @@ async fn handle_remote_key_internal(
                         provider_key_override,
                     );
                     if app.is_processing {
-                        app.set_status_notice("Review queued");
+                        app.set_status_notice("Пересмотр в очереди");
                     } else {
                         app.pending_split_request = false;
                         begin_remote_split_launch(app, "Review");
@@ -1582,7 +1582,7 @@ async fn handle_remote_key_internal(
                                 "Failed to launch review session: {}",
                                 error
                             )));
-                            app.set_status_notice("Review launch failed");
+                            app.set_status_notice("Не удалось запустить пересмотр");
                         }
                     }
                     return Ok(());
@@ -1606,7 +1606,7 @@ async fn handle_remote_key_internal(
                         provider_key_override,
                     );
                     if app.is_processing {
-                        app.set_status_notice("Judge queued");
+                        app.set_status_notice("Оценка в очереди");
                     } else {
                         app.pending_split_request = false;
                         begin_remote_split_launch(app, "Judge");
@@ -1622,7 +1622,7 @@ async fn handle_remote_key_internal(
                                 "Failed to launch judge session: {}",
                                 error
                             )));
-                            app.set_status_notice("Judge launch failed");
+                            app.set_status_notice("Не удалось запустить оценку");
                         }
                     }
                     return Ok(());
@@ -1677,7 +1677,7 @@ async fn handle_remote_key_internal(
                         .await?;
                     app.set_memory_feature_enabled(new_state);
                     let label = if new_state { "ON" } else { "OFF" };
-                    app.set_status_notice(format!("Memory: {}", label));
+                    app.set_status_notice(format!("Память: {}", label));
                     app.push_display_message(DisplayMessage::system(format!(
                         "Memory feature {} for this session.",
                         if new_state { "enabled" } else { "disabled" }
@@ -1690,7 +1690,7 @@ async fn handle_remote_key_internal(
                         .set_feature(crate::protocol::FeatureToggle::Memory, true)
                         .await?;
                     app.set_memory_feature_enabled(true);
-                    app.set_status_notice("Memory: ON");
+                    app.set_status_notice("Память: ВКЛ");
                     app.push_display_message(DisplayMessage::system(
                         "Memory feature enabled for this session.".to_string(),
                     ));
@@ -1702,7 +1702,7 @@ async fn handle_remote_key_internal(
                         .set_feature(crate::protocol::FeatureToggle::Memory, false)
                         .await?;
                     app.set_memory_feature_enabled(false);
-                    app.set_status_notice("Memory: OFF");
+                    app.set_status_notice("Память: ВЫКЛ");
                     app.push_display_message(DisplayMessage::system(
                         "Memory feature disabled for this session.".to_string(),
                     ));
@@ -1736,7 +1736,7 @@ async fn handle_remote_key_internal(
                     super::super::commands_review::clear_side_panel_for_new_session(app);
                     app.is_processing = false;
                     app.status = ProcessingStatus::Idle;
-                    app.set_status_notice("Session cleared");
+                    app.set_status_notice("Сессия очищена");
                     return Ok(());
                 }
 
@@ -1834,7 +1834,7 @@ async fn handle_remote_key_internal(
                         .set_feature(crate::protocol::FeatureToggle::Swarm, true)
                         .await?;
                     app.set_swarm_feature_enabled(true);
-                    app.set_status_notice("Swarm: ON");
+                    app.set_status_notice("Рой: ВКЛ");
                     app.push_display_message(DisplayMessage::system(
                         "Swarm feature enabled for this session.".to_string(),
                     ));
@@ -1846,7 +1846,7 @@ async fn handle_remote_key_internal(
                         .set_feature(crate::protocol::FeatureToggle::Swarm, false)
                         .await?;
                     app.set_swarm_feature_enabled(false);
-                    app.set_status_notice("Swarm: OFF");
+                    app.set_status_notice("Рой: ВЫКЛ");
                     app.push_display_message(DisplayMessage::system(
                         "Swarm feature disabled for this session.".to_string(),
                     ));
@@ -1911,7 +1911,7 @@ async fn handle_remote_key_internal(
                         )
                     };
                     app.push_display_message(DisplayMessage::system(msg));
-                    app.set_status_notice("Session saved");
+                    app.set_status_notice("Сессия сохранена");
                     return Ok(());
                 }
 
@@ -1931,7 +1931,7 @@ async fn handle_remote_key_internal(
                         "Removed bookmark from session {}.",
                         name,
                     )));
-                    app.set_status_notice("Bookmark removed");
+                    app.set_status_notice("Закладка удалена");
                     return Ok(());
                 }
 
@@ -1946,12 +1946,12 @@ async fn handle_remote_key_internal(
 
                     if title == "--clear" {
                         remote.rename_session(None).await?;
-                        app.set_status_notice("Clearing session name...");
+                        app.set_status_notice("Очистка имени сессии...");
                         return Ok(());
                     }
 
                     remote.rename_session(Some(title.to_string())).await?;
-                    app.set_status_notice("Renaming session...");
+                    app.set_status_notice("Переименование сессии...");
                     return Ok(());
                 }
 
@@ -1960,7 +1960,7 @@ async fn handle_remote_key_internal(
                         app.push_display_message(DisplayMessage::system(
                             "A transfer is already pending.".to_string(),
                         ));
-                        app.set_status_notice("Transfer already pending");
+                        app.set_status_notice("Передача уже в ожидании");
                         return Ok(());
                     }
 
@@ -1979,7 +1979,7 @@ async fn handle_remote_key_internal(
                                     "Queued /transfer. The current session will be asked to pause, then the compacted handoff will open in a new window."
                                         .to_string(),
                                 ));
-                                app.set_status_notice("Transfer queued after current turn");
+                                app.set_status_notice("Передача в очереди после текущего хода");
                             }
                             Err(error) => {
                                 app.pending_split_label = None;
@@ -1987,7 +1987,7 @@ async fn handle_remote_key_internal(
                                     "Failed to queue transfer pause: {}",
                                     error
                                 )));
-                                app.set_status_notice("Transfer queue failed");
+                                app.set_status_notice("Не удалось поставить передачу в очередь");
                             }
                         }
                     } else {
@@ -2002,7 +2002,7 @@ async fn handle_remote_key_internal(
                                 "Failed to launch transfer session: {}",
                                 error
                             )));
-                            app.set_status_notice("Transfer launch failed");
+                            app.set_status_notice("Не удалось запустить передачу");
                         }
                     }
                     return Ok(());
@@ -2082,14 +2082,14 @@ async fn handle_remote_key_internal(
                         {
                             Ok(request_id) => {
                                 app.track_pending_soft_interrupt(request_id, prompt);
-                                app.set_status_notice(format!("Interrupting for {}...", cmd_label));
+                                app.set_status_notice(format!("Прерывание для {}...", cmd_label));
                             }
                             Err(error) => {
                                 app.push_display_message(DisplayMessage::error(format!(
                                     "Failed to start {}: {}",
                                     cmd_label, error
                                 )));
-                                app.set_status_notice(format!("{} failed", cmd_label));
+                                app.set_status_notice(format!("{} не удалось", cmd_label));
                             }
                         }
                     } else {
@@ -2156,7 +2156,7 @@ async fn handle_remote_key_internal(
                         app.provider.set_premium_mode(PremiumMode::Normal);
                         let _ = remote.set_premium_mode(PremiumMode::Normal as u8).await;
                         let _ = crate::config::Config::set_copilot_premium(None);
-                        app.set_status_notice("Premium: normal");
+                        app.set_status_notice("Премиум: нормальный");
                         app.push_display_message(DisplayMessage::system(
                             "Premium request mode reset to normal. (saved to config)".to_string(),
                         ));
@@ -2172,7 +2172,7 @@ async fn handle_remote_key_internal(
                         app.provider.set_premium_mode(PremiumMode::Normal);
                         let _ = remote.set_premium_mode(PremiumMode::Normal as u8).await;
                         let _ = crate::config::Config::set_copilot_premium(None);
-                        app.set_status_notice("Premium: normal");
+                        app.set_status_notice("Премиум: нормальный");
                         app.push_display_message(DisplayMessage::system(
                             "Premium request mode reset to normal. (saved to config)".to_string(),
                         ));
@@ -2190,7 +2190,7 @@ async fn handle_remote_key_internal(
                             PremiumMode::Zero => "zero premium requests",
                             PremiumMode::Normal => "normal",
                         };
-                        app.set_status_notice(format!("Premium: {}", label));
+                        app.set_status_notice(format!("Премиум: {}", label));
                         app.push_display_message(DisplayMessage::system(format!(
                             "Premium mode: {}. Toggle off with /z. (saved to config)",
                             label,
@@ -2209,7 +2209,7 @@ async fn handle_remote_key_internal(
                         }
                         Ok(app_mod::commands::PokeCommand::Off) => {
                             let cleared = app_mod::commands::disable_auto_poke(app);
-                            app.set_status_notice("Poke: OFF");
+                            app.set_status_notice("Проверка: ВЫКЛ");
                             app.push_display_message(DisplayMessage::system(
                                 app_mod::commands::poke_disabled_message(cleared),
                             ));
@@ -2261,7 +2261,7 @@ async fn handle_remote_key_internal(
                     let prompt = app_mod::commands::build_plan_prompt(command.goal.as_deref());
                     if app.is_processing {
                         remote.cancel_with_reason("slash_plan").await?;
-                        app.set_status_notice("Interrupting for /plan...");
+                        app.set_status_notice("Прерывание для /plan...");
                         app.push_display_message(DisplayMessage::system(
                             app_mod::commands::plan_launch_notice(command.goal.as_deref(), true),
                         ));
@@ -2318,7 +2318,7 @@ async fn handle_remote_key_internal(
 
                             if app.is_processing {
                                 remote.cancel_with_reason("slash_improve_resume").await?;
-                                app.set_status_notice("Interrupting for /improve resume...");
+                                app.set_status_notice("Прерывание для /improve resume...");
                                 app.push_display_message(DisplayMessage::system(format!(
                                     "♻️ Interrupting and resuming {}...",
                                     mode.status_label()
@@ -2384,7 +2384,7 @@ async fn handle_remote_key_internal(
                             let stop_prompt = app_mod::commands::improve_stop_prompt();
                             if app.is_processing {
                                 remote.cancel_with_reason("slash_improve_stop").await?;
-                                app.set_status_notice("Interrupting for /improve stop...");
+                                app.set_status_notice("Прерывание для /improve stop...");
                                 app.push_display_message(DisplayMessage::system(
                                     app_mod::commands::improve_stop_notice(true),
                                 ));
@@ -2500,7 +2500,7 @@ async fn handle_remote_key_internal(
 
                             if app.is_processing {
                                 remote.cancel_with_reason("slash_refactor_resume").await?;
-                                app.set_status_notice("Interrupting for /refactor resume...");
+                                app.set_status_notice("Прерывание для /refactor resume...");
                                 app.push_display_message(DisplayMessage::system(format!(
                                     "♻️ Interrupting and resuming {}...",
                                     mode.status_label()
@@ -2566,7 +2566,7 @@ async fn handle_remote_key_internal(
                             let stop_prompt = app_mod::commands::refactor_stop_prompt();
                             if app.is_processing {
                                 remote.cancel_with_reason("slash_refactor_stop").await?;
-                                app.set_status_notice("Interrupting for /refactor stop...");
+                                app.set_status_notice("Прерывание для /refactor stop...");
                                 app.push_display_message(DisplayMessage::system(
                                     app_mod::commands::refactor_stop_notice(true),
                                 ));
@@ -2690,9 +2690,9 @@ async fn handle_remote_key_internal(
                 remote.cancel_with_reason("keyboard_escape").await?;
                 if disabled_auto_poke {
                     app_mod::commands::disable_auto_poke(app);
-                    app.set_status_notice("Interrupting... Auto-poke OFF");
+                    app.set_status_notice("Прерывание... Автопроверка ВЫКЛ");
                 } else {
-                    app.set_status_notice("Interrupting...");
+                    app.set_status_notice("Прерывание...");
                 }
             } else {
                 app.follow_chat_bottom();

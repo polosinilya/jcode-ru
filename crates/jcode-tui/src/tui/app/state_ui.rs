@@ -615,12 +615,12 @@ impl App {
             // We have a bookmark - teleport back to it
             self.scroll_offset = saved;
             self.auto_scroll_paused = saved > 0;
-            self.set_status_notice("📌 Returned to bookmark");
+            self.set_status_notice("📌 Возвращено к закладке");
         } else if self.auto_scroll_paused && self.scroll_offset > 0 {
             // We're scrolled up - save position and jump to bottom
             self.scroll_bookmark = Some(self.scroll_offset);
             self.follow_chat_bottom();
-            self.set_status_notice("📌 Bookmark set - press again to return");
+            self.set_status_notice("📌 Закладка установлена - нажмите снова для возврата");
         }
         // If already at bottom with no bookmark, do nothing
     }
@@ -692,11 +692,11 @@ impl App {
         if focused_changed {
             match (focused_after.as_deref(), focused_title_after.as_deref()) {
                 (Some(super::split_view::SPLIT_VIEW_PAGE_ID), _) => {
-                    self.set_status_notice("Split view")
+                    self.set_status_notice("Разделенный вид")
                 }
-                (Some(super::todos_view::TODOS_VIEW_PAGE_ID), _) => self.set_status_notice("Todos"),
-                (Some(super::observe::OBSERVE_PAGE_ID), _) => self.set_status_notice("Observe"),
-                (Some("goals"), _) => self.set_status_notice("Goals"),
+                (Some(super::todos_view::TODOS_VIEW_PAGE_ID), _) => self.set_status_notice("Задачи"),
+                (Some(super::observe::OBSERVE_PAGE_ID), _) => self.set_status_notice("Наблюдение"),
+                (Some("goals"), _) => self.set_status_notice("Цели"),
                 (Some(id), Some(title)) if id.starts_with("goal.") => self.set_status_notice(title),
                 _ => {}
             }
@@ -767,7 +767,7 @@ impl App {
         } else {
             "Left-aligned"
         };
-        self.set_status_notice(format!("Layout: {}", mode));
+        self.set_status_notice(format!("Макет: {}", mode));
         self.prewarm_focused_side_panel();
     }
 
@@ -1778,7 +1778,7 @@ pub(super) fn handle_info_command(app: &mut App, trimmed: &str) -> bool {
         app.push_display_message(
             DisplayMessage::system(build_skills_report(app)).with_title("Skills"),
         );
-        app.set_status_notice("Skills");
+        app.set_status_notice("Навыки");
         return true;
     }
 
@@ -1829,7 +1829,7 @@ pub(super) fn handle_info_command(app: &mut App, trimmed: &str) -> bool {
 
     if trimmed == "/changelog" {
         app.changelog_scroll = Some(0);
-        app.set_status_notice("Changelog");
+        app.set_status_notice("Журнал изменений");
         return true;
     }
 
@@ -1845,7 +1845,7 @@ pub(super) fn handle_info_command(app: &mut App, trimmed: &str) -> bool {
                     title: Some("KV cache stats".to_string()),
                     tool_data: None,
                 });
-                app.set_status_notice("Cache stats");
+                app.set_status_notice("Статистика кэша");
             }
             "1h" | "1hour" | "extended" => {
                 crate::provider::anthropic::set_cache_ttl_1h(true);

@@ -132,7 +132,7 @@ mod tests {
         let item = AccountPickerItem::action(
             "openai",
             "OpenAI",
-            "Remove account `work`",
+            "Удалить аккаунт `work`",
             "active",
             AccountPickerCommand::Remove {
                 provider: AccountProviderKind::OpenAi,

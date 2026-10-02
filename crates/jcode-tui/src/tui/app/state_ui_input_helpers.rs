@@ -99,128 +99,128 @@ const REGISTERED_COMMANDS: &[RegisteredCommand] = &[
     RegisteredCommand::public("/judge", "Launch a one-shot headed judge session"),
     RegisteredCommand::public("/effort", crate::tui::keybind::EFFORT_HELP),
     RegisteredCommand::public("/fast", "Toggle fast mode"),
-    RegisteredCommand::public("/transport", "Show/change connection transport"),
-    RegisteredCommand::public("/alignment", "Show/change default text alignment"),
+    RegisteredCommand::public("/transport", "Показать/изменить транспорт подключения"),
+    RegisteredCommand::public("/alignment", "Показать/изменить выравнивание текста по умолчанию"),
     RegisteredCommand::public(
         "/compact-notifications",
-        "Show/toggle single-line swarm/file-activity notifications",
+        "Показать/переключить однострочные уведомления активности роя/файлов",
     ),
     RegisteredCommand::public(
         "/show-agentgrep-output",
-        "Show/toggle full agentgrep search output inline in chat",
+        "Показать/переключить полный вывод поиска агента в чате",
     ),
     RegisteredCommand::public(
         "/tool-call-details",
-        "Show/toggle dimmed technical details on tool rows with an intent",
+        "Показать/переключить технические детали вызовов инструментов",
     ),
     RegisteredCommand::public(
         "/thinking-display",
-        "Show/hide the model's thinking text (off/full/current)",
+        "Показать/скрыть текст мышления модели (выкл/полный/текущий)",
     ),
-    RegisteredCommand::hidden("/thinking", "Alias for /thinking-display"),
-    RegisteredCommand::hidden("/reasoning", "Alias for /thinking-display"),
-    RegisteredCommand::public("/cancel", "Cancel the current prompt or operation"),
-    RegisteredCommand::public("/clear", "Clear conversation history"),
-    RegisteredCommand::public("/cls", "Clear the view only, keeping context"),
-    RegisteredCommand::hidden("/clear-view", "Alias for /cls"),
-    RegisteredCommand::public("/rewind", "Rewind conversation to previous message"),
-    RegisteredCommand::public("/poke", "Poke model to resume with incomplete todos"),
-    RegisteredCommand::public("/plan", "Create a plan-only response as a plan card"),
-    RegisteredCommand::public("/improve", "Autonomously improve the repository"),
-    RegisteredCommand::public("/refactor", "Run a safe refactor loop"),
-    RegisteredCommand::public("/compact", "Compact context"),
-    RegisteredCommand::public("/fix", "Recover when the model cannot continue"),
-    RegisteredCommand::public("/dictate", "Run configured external dictation command"),
-    RegisteredCommand::public("/dictation", "Alias for /dictate"),
-    RegisteredCommand::public("/memory", "Toggle memory feature"),
-    RegisteredCommand::public("/test", "Verify a claim/current changes with layered tests"),
+    RegisteredCommand::hidden("/thinking", "Псевдоним для /thinking-display"),
+    RegisteredCommand::hidden("/reasoning", "Псевдоним для /thinking-display"),
+    RegisteredCommand::public("/cancel", "Отменить текущий запрос или операцию"),
+    RegisteredCommand::public("/clear", "Очистить историю разговора"),
+    RegisteredCommand::public("/cls", "Очистить только представление, сохранив контекст"),
+    RegisteredCommand::hidden("/clear-view", "Псевдоним для /cls"),
+    RegisteredCommand::public("/rewind", "Перемотать разговор к предыдущему сообщению"),
+    RegisteredCommand::public("/poke", "Подтолкнуть модель к продолжению с незавершенными задачами"),
+    RegisteredCommand::public("/plan", "Создать ответ только в виде плана как карточку плана"),
+    RegisteredCommand::public("/improve", "Автономно улучшить репозиторий"),
+    RegisteredCommand::public("/refactor", "Запустить безопасный цикл рефакторинга"),
+    RegisteredCommand::public("/compact", "Компактный контекст"),
+    RegisteredCommand::public("/fix", "Восстановиться, когда модель не может продолжить"),
+    RegisteredCommand::public("/dictate", "Запустить настроенную внешнюю команду диктовки"),
+    RegisteredCommand::public("/dictation", "Псевдоним для /dictate"),
+    RegisteredCommand::public("/memory", "Переключить функцию памяти"),
+    RegisteredCommand::public("/test", "Проверить утверждение/текущие изменения с помощью многоуровневых тестов"),
     RegisteredCommand::public(
         "/initiatives",
-        "Open initiatives overview / resume tracked initiatives",
+        "Открыть обзор инициатив / возобновить отслеживаемые инициативы",
     ),
-    RegisteredCommand::public("/goals", "Legacy alias for /initiatives"),
-    RegisteredCommand::public("/swarm", "Toggle swarm feature"),
-    RegisteredCommand::public("/overnight", "Run a supervised overnight coordinator"),
-    RegisteredCommand::public("/context", "Show the full session context snapshot"),
+    RegisteredCommand::public("/goals", "Устаревший псевдоним для /initiatives"),
+    RegisteredCommand::public("/swarm", "Переключить функцию роя"),
+    RegisteredCommand::public("/overnight", "Запустить надзорный ночной координатор"),
+    RegisteredCommand::public("/context", "Показать полный снимок контекста сессии"),
     RegisteredCommand::public(
         "/skills",
-        "Show loaded skills and jcode-endorsed recommendations",
+        "Показать загруженные навыки и рекомендации jcode",
     ),
-    RegisteredCommand::public("/version", "Show current version"),
-    RegisteredCommand::public("/changelog", "Show recent changes in this build"),
-    RegisteredCommand::public("/info", "Show session info and tokens"),
-    RegisteredCommand::public("/usage", "Show connected provider usage limits"),
+    RegisteredCommand::public("/version", "Показать текущую версию"),
+    RegisteredCommand::public("/changelog", "Показать последние изменения в этой сборке"),
+    RegisteredCommand::public("/info", "Показать информацию о сессии и токены"),
+    RegisteredCommand::public("/usage", "Показать лимиты использования подключенного провайдера"),
     RegisteredCommand::public(
         "/productivity",
-        "Generate a shareable usage report + dashboard image",
+        "Создать отчет об использовании + изображение панели управления",
     ),
-    RegisteredCommand::public("/wrapped", "Alias for /productivity"),
-    RegisteredCommand::public("/feedback", "Send feedback about jcode"),
-    RegisteredCommand::public("/telemetry", "Show or change what jcode sends"),
-    RegisteredCommand::public("/support", "Email support with diagnostics prefilled"),
-    RegisteredCommand::public("/subscription", "Show jcode subscription status"),
-    RegisteredCommand::public("/subscribe", "Why and how to subscribe to jcode"),
-    RegisteredCommand::public("/config", "Show or edit configuration"),
-    RegisteredCommand::public("/log", "Mark the current location in the jcode logs"),
+    RegisteredCommand::public("/wrapped", "Псевдоним для /productivity"),
+    RegisteredCommand::public("/feedback", "Отправить отзыв о jcode"),
+    RegisteredCommand::public("/telemetry", "Показать или изменить то, что отправляет jcode"),
+    RegisteredCommand::public("/support", "Написать в поддержку с предзаполненной диагностикой"),
+    RegisteredCommand::public("/subscription", "Показать статус подписки jcode"),
+    RegisteredCommand::public("/subscribe", "Почему и как подписаться на jcode"),
+    RegisteredCommand::public("/config", "Показать или изменить конфигурацию"),
+    RegisteredCommand::public("/log", "Отметить текущее место в журналах jcode"),
     RegisteredCommand::public(
         "/keys",
-        "Show keybinding conflicts with your terminal and OS (/keys refresh to rescan)",
+        "Показать конфликты клавиш с вашим терминалом и ОС (/keys refresh для повторного сканирования)",
     ),
-    RegisteredCommand::hidden("/keybindings", "Alias for /keys"),
+    RegisteredCommand::hidden("/keybindings", "Псевдоним для /keys"),
     RegisteredCommand::public(
         "/diff",
-        "Cycle or set diff display mode (off/inline/full/pinned/file)",
+        "Переключить режим отображения различий (выкл/встроенный/полный/закрепленный/файл)",
     ),
     RegisteredCommand::public(
         "/onboarding-preview",
-        "Preview the first-run onboarding screen",
+        "Предварительный просмотр экрана первого запуска",
     ),
     RegisteredCommand::public(
         "/onboarding-sim",
-        "Walk through every first-run onboarding screen (Alt+5 reset, Cmd+5 toggle)",
+        "Пройти через каждый экран первого запуска (Alt+5 сброс, Cmd+5 переключение)",
     ),
-    RegisteredCommand::public("/reload", "Reload into newest available binary"),
-    RegisteredCommand::public("/restart", "Restart with current binary"),
-    RegisteredCommand::public("/rebuild", "Background rebuild and auto reload"),
-    RegisteredCommand::public("/selfdev", "Open a new self-dev jcode session"),
-    RegisteredCommand::public("/update", "Background update and auto reload"),
-    RegisteredCommand::public("/update-sim", "Preview update UI safely (Alt+_)"),
-    RegisteredCommand::public("/resume", "Open session picker"),
-    RegisteredCommand::public("/sessions", "Alias for /resume"),
-    RegisteredCommand::public("/session", "Alias for /resume"),
-    RegisteredCommand::public("/active", "Manage live sessions (working vs ready)"),
-    RegisteredCommand::public("/catchup", "Open Catch Up picker"),
-    RegisteredCommand::public("/back", "Return to the previous Catch Up session"),
-    RegisteredCommand::public("/save", "Bookmark session for easy access"),
-    RegisteredCommand::public("/unsave", "Remove bookmark from session"),
-    RegisteredCommand::public("/rename", "Rename current session"),
-    RegisteredCommand::public("/fork", "Fork session into a new window (optional prompt)"),
-    RegisteredCommand::hidden("/split", "Alias for /fork"),
-    RegisteredCommand::public("/transfer", "Compact context into a fresh handoff session"),
-    RegisteredCommand::public("/workspace", "Niri-style session workspace"),
-    RegisteredCommand::public("/quit", "Exit jcode"),
-    RegisteredCommand::public("/auth", "Show authentication status"),
-    RegisteredCommand::public("/login", "Login to a provider"),
-    RegisteredCommand::public("/logout", "Log out of a provider"),
-    RegisteredCommand::public("/account", "Open the combined account picker"),
-    RegisteredCommand::public("/accounts", "Alias for /account"),
-    RegisteredCommand::public("/cache", "Show cache stats or set cache TTL"),
-    RegisteredCommand::public("/debug-visual", "Toggle visual debug overlay"),
-    RegisteredCommand::public("/screenshot-mode", "Toggle screenshot capture mode"),
-    RegisteredCommand::public("/screenshot", "Capture a screenshot debug state"),
-    RegisteredCommand::public("/record", "Record a demo capture"),
-    RegisteredCommand::remote("/client-reload", "Force reload client binary"),
-    RegisteredCommand::remote("/server-reload", "Force reload server binary"),
+    RegisteredCommand::public("/reload", "Перезагрузиться в новую доступную сборку"),
+    RegisteredCommand::public("/restart", "Перезапустить с текущей сборкой"),
+    RegisteredCommand::public("/rebuild", "Фоновая пересборка и автоматическая перезагрузка"),
+    RegisteredCommand::public("/selfdev", "Открыть новую сессию саморазработки jcode"),
+    RegisteredCommand::public("/update", "Фоновое обновление и автоматическая перезагрузка"),
+    RegisteredCommand::public("/update-sim", "Предварительный просмотр интерфейса обновления безопасно (Alt+_)"),
+    RegisteredCommand::public("/resume", "Открыть выбор сессии"),
+    RegisteredCommand::public("/sessions", "Псевдоним для /resume"),
+    RegisteredCommand::public("/session", "Псевдоним для /resume"),
+    RegisteredCommand::public("/active", "Управлять активными сессиями (в работе vs готовые)"),
+    RegisteredCommand::public("/catchup", "Открыть выбор Catch Up"),
+    RegisteredCommand::public("/back", "Вернуться к предыдущей сессии Catch Up"),
+    RegisteredCommand::public("/save", "Добавить сессию в закладки для легкого доступа"),
+    RegisteredCommand::public("/unsave", "Удалить закладку из сессии"),
+    RegisteredCommand::public("/rename", "Переименовать текущую сессию"),
+    RegisteredCommand::public("/fork", "Разделить сессию в новом окне (опциональный запрос)"),
+    RegisteredCommand::hidden("/split", "Псевдоним для /fork"),
+    RegisteredCommand::public("/transfer", "Сжать контекст в новую сессию передачи"),
+    RegisteredCommand::public("/workspace", "Рабочее пространство сессии в стиле Niri"),
+    RegisteredCommand::public("/quit", "Выйти из jcode"),
+    RegisteredCommand::public("/auth", "Показать статус аутентификации"),
+    RegisteredCommand::public("/login", "Войти через провайдера"),
+    RegisteredCommand::public("/logout", "Выйти из аккаунта провайдера"),
+    RegisteredCommand::public("/account", "Открыть объединенный выбор аккаунтов"),
+    RegisteredCommand::public("/accounts", "Псевдоним для /account"),
+    RegisteredCommand::public("/cache", "Показать статистику кэша или установить TTL кэша"),
+    RegisteredCommand::public("/debug-visual", "Переключить визуальный отладочный оверлей"),
+    RegisteredCommand::public("/screenshot-mode", "Переключить режим захвата скриншотов"),
+    RegisteredCommand::public("/screenshot", "Захватить состояние отладки скриншота"),
+    RegisteredCommand::public("/record", "Записать демонстрацию"),
+    RegisteredCommand::remote("/client-reload", "Принудительно перезагрузить клиентский бинарный файл"),
+    RegisteredCommand::remote("/server-reload", "Принудительно перезагрузить серверный бинарный файл"),
     RegisteredCommand::remote(
         "/continue",
-        "Continue every interrupted live session that would auto-resume",
+        "Продолжить каждую прерванную живую сессию, которая будет автоматически возобновлена",
     ),
-    RegisteredCommand::remote("/resumeall", "Alias for /continue"),
-    RegisteredCommand::hidden("/resume-all", "Alias for /continue"),
-    RegisteredCommand::hidden("/z", "Secret premium-mode command"),
-    RegisteredCommand::hidden("/zz", "Secret premium-mode command"),
-    RegisteredCommand::hidden("/zzz", "Secret premium-mode command"),
-    RegisteredCommand::hidden("/zstatus", "Secret premium-mode status command"),
+    RegisteredCommand::remote("/resumeall", "Псевдоним для /continue"),
+    RegisteredCommand::hidden("/resume-all", "Псевдоним для /continue"),
+    RegisteredCommand::hidden("/z", "Секретная команда премиум-режима"),
+    RegisteredCommand::hidden("/zz", "Секретная команда премиум-режима"),
+    RegisteredCommand::hidden("/zzz", "Секретная команда премиум-режима"),
+    RegisteredCommand::hidden("/zstatus", "Секретная команда статуса премиум-режима"),
 ];
 
 /// Every non-hidden slash command with its one-line description, in
@@ -355,7 +355,7 @@ impl App {
             for skill in skills.list() {
                 let command = format!("/{}", skill.name);
                 if seen.insert(command.clone()) {
-                    commands.push((command, "Activate skill"));
+                    commands.push((command, "Активировать навык"));
                 }
             }
         }
@@ -377,7 +377,7 @@ impl App {
             for skill in &self.remote_skills {
                 let command = format!("/{skill}");
                 if seen.insert(command.clone()) {
-                    commands.push((command, "Activate skill"));
+                    commands.push((command, "Активировать навык"));
                 }
             }
         }
@@ -433,7 +433,7 @@ impl App {
 
         models
             .into_iter()
-            .map(|model| (format!("/model {}", model), "Switch to model"))
+            .map(|model| (format!("/model {}", model), "Переключиться на модель"))
             .collect()
     }
 
@@ -463,7 +463,7 @@ impl App {
             &mut seen,
             &mut suggestions,
             format!("/model {}@auto", openrouter_model),
-            "Use automatic OpenRouter provider routing",
+            "Использовать автоматическую маршрутизацию провайдера OpenRouter",
         );
 
         if self.is_remote {
@@ -476,9 +476,9 @@ impl App {
             for route in routes {
                 if route.model == model && route.api_method == "openrouter" {
                     let help = if route.provider == "auto" {
-                        "Use automatic OpenRouter provider routing"
+                        "Использовать автоматическую маршрутизацию провайдера OpenRouter"
                     } else {
-                        "Pin OpenRouter provider"
+                        "Закрепить провайдера OpenRouter"
                     };
                     push_unique(
                         &mut seen,
@@ -494,7 +494,7 @@ impl App {
                     &mut seen,
                     &mut suggestions,
                     format!("/model {}@{}", openrouter_model, provider),
-                    "Pin OpenRouter provider",
+                    "Закрепить провайдера OpenRouter",
                 );
             }
         }
@@ -541,7 +541,7 @@ impl App {
 
             let suggestions = self.model_suggestion_candidates();
             if suggestions.is_empty() {
-                return vec![("/model".into(), "Open model picker")];
+                return vec![("/model".into(), "Открыть выбор моделей")];
             }
             return self.rank_suggestions(input, suggestions);
         }
@@ -550,11 +550,11 @@ impl App {
             return self.rank_suggestions(
                 input,
                 vec![
-                    ("/agents swarm".into(), "Configure swarm/subagent model"),
-                    ("/agents review".into(), "Configure code review model"),
-                    ("/agents judge".into(), "Configure judge model"),
-                    ("/agents memory".into(), "Configure memory sidecar model"),
-                    ("/agents ambient".into(), "Configure ambient model"),
+                    ("/agents swarm".into(), "Настроить модель роя/подагента"),
+                    ("/agents review".into(), "Настроить модель код-ревью"),
+                    ("/agents judge".into(), "Настроить модель судьи"),
+                    ("/agents memory".into(), "Настроить модель фоновой памяти"),
+                    ("/agents ambient".into(), "Настроить фоновую модель"),
                 ],
             );
         }
@@ -565,11 +565,11 @@ impl App {
                 vec![
                     (
                         "/subagent-model inherit".into(),
-                        "Use the current active model",
+                        "Использовать текущую активную модель",
                     ),
                     (
                         "/subagent-model show".into(),
-                        "Show the current subagent model policy",
+                        "Показать текущую политику модели подагента",
                     ),
                 ],
             );
@@ -581,11 +581,11 @@ impl App {
                 vec![
                     (
                         "/autoreview status".into(),
-                        "Show current autoreview status",
+                        "Показать текущий статус автoreвью",
                     ),
-                    ("/autoreview on".into(), "Enable end-of-turn autoreview"),
-                    ("/autoreview off".into(), "Disable end-of-turn autoreview"),
-                    ("/autoreview now".into(), "Launch a reviewer immediately"),
+                    ("/autoreview on".into(), "Включить автоматическое ревью в конце хода"),
+                    ("/autoreview off".into(), "Отключить автоматическое ревью в конце хода"),
+                    ("/autoreview now".into(), "Запустить ревьюер немедленно"),
                 ],
             );
         }
@@ -594,11 +594,11 @@ impl App {
             return vec![
                 (
                     "/autoreview status".into(),
-                    "Show current autoreview status",
+                    "Показать текущий статус автoreвью",
                 ),
-                ("/autoreview on".into(), "Enable end-of-turn autoreview"),
-                ("/autoreview off".into(), "Disable end-of-turn autoreview"),
-                ("/autoreview now".into(), "Launch a reviewer immediately"),
+                ("/autoreview on".into(), "Включить автоматическое ревью в конце хода"),
+                ("/autoreview off".into(), "Отключить автоматическое ревью в конце хода"),
+                ("/autoreview now".into(), "Запустить ревьюер немедленно"),
             ];
         }
 
@@ -606,54 +606,54 @@ impl App {
             return self.rank_suggestions(
                 input,
                 vec![
-                    ("/autojudge status".into(), "Show current autojudge status"),
-                    ("/autojudge on".into(), "Enable end-of-turn autojudge"),
-                    ("/autojudge off".into(), "Disable end-of-turn autojudge"),
-                    ("/autojudge now".into(), "Launch a judge immediately"),
+                    ("/autojudge status".into(), "Показать текущий статус автооценки"),
+                    ("/autojudge on".into(), "Включить автоматическую оценку в конце хода"),
+                    ("/autojudge off".into(), "Отключить автоматическую оценку в конце хода"),
+                    ("/autojudge now".into(), "Запустить судью немедленно"),
                 ],
             );
         }
 
         if prefix_trimmed == "/autojudge" {
             return vec![
-                ("/autojudge status".into(), "Show current autojudge status"),
-                ("/autojudge on".into(), "Enable end-of-turn autojudge"),
-                ("/autojudge off".into(), "Disable end-of-turn autojudge"),
-                ("/autojudge now".into(), "Launch a judge immediately"),
+                ("/autojudge status".into(), "Показать текущий статус автооценки"),
+                ("/autojudge on".into(), "Включить автоматическую оценку в конце хода"),
+                ("/autojudge off".into(), "Отключить автоматическую оценку в конце хода"),
+                ("/autojudge now".into(), "Запустить оценку немедленно"),
             ];
         }
 
         if prefix.starts_with("/review ") {
             return self.rank_suggestions(
                 input,
-                vec![("/review".into(), "Launch a one-shot review immediately")],
+                vec![("/review".into(), "Запустить одноразовую оценку немедленно")],
             );
         }
 
         if prefix_trimmed == "/review" {
-            return vec![("/review".into(), "Launch a one-shot review immediately")];
+            return vec![("/review".into(), "Запустить одноразовую оценку немедленно")];
         }
 
         if prefix.starts_with("/judge ") {
             return self.rank_suggestions(
                 input,
-                vec![("/judge".into(), "Launch a one-shot judge immediately")],
+                vec![("/judge".into(), "Запустить одноразовую оценку немедленно")],
             );
         }
 
         if prefix_trimmed == "/judge" {
-            return vec![("/judge".into(), "Launch a one-shot judge immediately")];
+            return vec![("/judge".into(), "Запустить одноразовую оценку немедленно")];
         }
 
         if prefix_trimmed == "/subagent-model" {
             return vec![
                 (
                     "/subagent-model show".into(),
-                    "Show the current subagent model policy",
+                    "Показать текущую политику модели подагента",
                 ),
                 (
                     "/subagent-model inherit".into(),
-                    "Use the current active model",
+                    "Использовать текущую активную модель",
                 ),
             ];
         }
@@ -664,31 +664,31 @@ impl App {
                 vec![
                     (
                         "/subagent --type general ".into(),
-                        "Launch a general-purpose subagent",
+                        "Запустить универсального подагента",
                     ),
                     (
                         "/subagent --model ".into(),
-                        "Launch a subagent with an explicit model",
+                        "Запустить подагента с явной моделью",
                     ),
                     (
                         "/subagent --continue ".into(),
-                        "Resume an existing subagent session",
+                        "Возобновить существующую сессию подагента",
                     ),
                 ],
             );
         }
 
         if prefix_trimmed == "/subagent" {
-            return vec![("/subagent ".into(), "Launch a subagent with a prompt")];
+            return vec![("/subagent ".into(), "Запустить подагента с запросом")];
         }
 
         // /model opens the interactive picker, and `/model <name>` supports direct completion.
         if prefix_trimmed == "/model" || prefix_trimmed == "/models" {
-            return vec![("/model".into(), "Open model picker or type `/model <name>`")];
+            return vec![("Открыть выбор модели или введите `/model <имя>`".into(), "Open model picker or type `/model <name>`")];
         }
 
         if prefix_trimmed == "/agents" {
-            return vec![("/agents".into(), "Open agent model config picker")];
+            return vec![("Открыть выбор конфигурации модели агента".into(), "Open agent model config picker")];
         }
 
         if prefix.starts_with("/help ") || prefix.starts_with("/? ") {
@@ -714,19 +714,19 @@ impl App {
             let mut suggestions: Vec<(String, &'static str)> = vec![
                 (
                     format!("{base} harmony"),
-                    "Score the palette and list fixes",
+                    "Оценить палитру и перечислить исправления",
                 ),
                 (
                     format!("{base} generate #8ab4f8"),
-                    "Build a harmonious palette from one seed color",
+                    "Создать гармоничную палитру из одного цвета",
                 ),
-                (format!("{base} reset"), "Reset every color to its default"),
-                (format!("{base} export"), "Print the palette as config TOML"),
+                (format!("{base} reset"), "Сбросить каждый цвет к значению по умолчанию"),
+                (format!("{base} export"), "Вывести палитру в формате TOML"),
             ];
             suggestions.extend(
                 jcode_tui_style::ALL_ROLES
                     .iter()
-                    .map(|role| (format!("{base} {} #", role.key()), "Set this color role")),
+                    .map(|role| (format!("{base} {} #", role.key()), "Установить эту роль цвета")),
             );
             return self.rank_suggestions(input, suggestions);
         }
@@ -734,12 +734,12 @@ impl App {
         if prefix.starts_with("/git ") {
             return self.rank_suggestions(
                 input,
-                vec![("/git status".into(), "Show branch and working tree status")],
+                vec![("/git status".into(), "Показать статус ветки и рабочего дерева")],
             );
         }
 
         if prefix_trimmed == "/git" {
-            return vec![("/git status".into(), "Show branch and working tree status")];
+            return vec![("/git status".into(), "Показать статус ветки и рабочего дерева")];
         }
 
         if prefix.starts_with("/transcript ") {
@@ -747,7 +747,7 @@ impl App {
                 input,
                 vec![(
                     "/transcript path".into(),
-                    "Print transcript path without opening",
+                    "Вывести путь к транскрипту без открытия",
                 )],
             );
         }
@@ -755,7 +755,7 @@ impl App {
         if prefix_trimmed == "/transcript" {
             return vec![(
                 "/transcript path".into(),
-                "Print transcript path without opening",
+                "Вывести путь к транскрипту без открытия",
             )];
         }
 
@@ -798,14 +798,14 @@ impl App {
 
         if prefix.starts_with("/compact ") {
             let suggestions = vec![
-                ("/compact mode".into(), "Show/change compaction mode"),
+                ("Показать/изменить режим сжатия".into(), "Show/change compaction mode"),
                 (
                     "/compact mode status".into(),
-                    "Show the current compaction mode",
+                    "Показать текущий режим сжатия",
                 ),
-                ("/compact mode reactive".into(), "Use reactive compaction"),
-                ("/compact mode proactive".into(), "Use proactive compaction"),
-                ("/compact mode semantic".into(), "Use semantic compaction"),
+                ("/compact mode reactive".into(), "Использовать реактивное сжатие"),
+                ("/compact mode proactive".into(), "Использовать проактивное сжатие"),
+                ("/compact mode semantic".into(), "Использовать семантическое сжатие"),
             ];
             return self.rank_suggestions(input, suggestions);
         }
@@ -814,7 +814,7 @@ impl App {
             let modes = ["reactive", "proactive", "semantic"];
             let mut suggestions: Vec<(String, &'static str)> = vec![(
                 "/compact mode status".into(),
-                "Show the current compaction mode",
+                "Показать текущий режим сжатия",
             )];
             suggestions.extend(
                 modes
@@ -826,10 +826,10 @@ impl App {
 
         if prefix.starts_with("/cache ") {
             let suggestions = vec![
-                ("/cache stats".into(), "Show KV cache stats"),
-                ("/cache status".into(), "Alias for /cache stats"),
-                ("/cache 1h".into(), "Use 1 hour cache TTL"),
-                ("/cache 5m".into(), "Use 5 minute cache TTL"),
+                ("Показать статистику кэша KV".into(), "Show KV cache stats"),
+                ("Псевдоним для /cache stats".into(), "Alias for /cache stats"),
+                ("Использовать TTL кэша 1 час".into(), "Use 1 hour cache TTL"),
+                ("Использовать TTL кэша 5 минут".into(), "Use 5 minute cache TTL"),
             ];
             return self.rank_suggestions(input, suggestions);
         }
@@ -1113,7 +1113,7 @@ impl App {
             .unwrap_or_default();
             let suggestions = relevant_goals
                 .into_iter()
-                .map(|goal| (format!("/goals show {}", goal.id), "Open this goal"))
+                .map(|goal| (format!("/goals show {}", goal.id), "Открыть эту цель"))
                 .collect();
             return self.rank_suggestions(input, suggestions);
         }
@@ -1122,8 +1122,8 @@ impl App {
             return self.rank_suggestions(
                 input,
                 vec![
-                    ("/goals resume".into(), "Resume the current goal"),
-                    ("/goals show".into(), "Open a specific goal by id"),
+                    ("/goals resume".into(), "Возобновить текущую цель"),
+                    ("/goals show".into(), "Открыть определенную цель по ID"),
                 ],
             );
         }
@@ -1134,12 +1134,12 @@ impl App {
                 vec![
                     (
                         "/selfdev status".into(),
-                        "Show current self-dev/build status",
+                        "Показать текущий статус self-dev/build",
                     ),
-                    ("/selfdev enter".into(), "Open a blank self-dev session"),
+                    ("/selfdev enter".into(), "Открыть пустую сессию self-dev"),
                     (
                         "/selfdev enter ".into(),
-                        "Open a self-dev session with a prompt",
+                        "Открыть сессию self-dev с запросом",
                     ),
                 ],
             );
@@ -1158,13 +1158,13 @@ impl App {
                 if let Ok(n) = arg.parse::<usize>()
                     && (1..=visible_count).contains(&n)
                 {
-                    return vec![(format!("/rewind {}", n), "Rewind to this message")];
+                    return vec![(format!("/rewind {}", n), "Перемотать к этому сообщению")];
                 }
                 return Vec::new();
             }
 
             let suggestions = (1..=visible_count)
-                .map(|n| (format!("/rewind {}", n), "Rewind to this message"))
+                .map(|n| (format!("/rewind {}", n), "Перемотать к этому сообщению"))
                 .collect();
             return self.rank_suggestions(input, suggestions);
         }
@@ -1238,7 +1238,7 @@ impl App {
             let input = self.input.trim_start();
             let typed = input.trim_end();
             if !typed.is_empty() && typed.starts_with('/') && "/cancel".starts_with(typed) {
-                return vec![("/cancel".into(), "Cancel the pending prompt")];
+                return vec![("/cancel".into(), "Отменить ожидающий запрос")];
             }
             return Vec::new();
         }
@@ -1474,7 +1474,7 @@ impl App {
 
         let auth = crate::auth::AuthStatus::check_fast();
         if !auth.has_any_available() {
-            return vec![("Log in to get started".to_string(), "/login".to_string())];
+            return vec![("Войти, чтобы начать".to_string(), "/login".to_string())];
         }
 
         if (!self.display_messages.is_empty() || self.is_processing) && !preview_mode {
@@ -1493,12 +1493,12 @@ impl App {
 
         let mut prompts = vec![
             (
-                "Customize my terminal theme".to_string(),
-                "Find what terminal I'm using, then change its background color to pitch black and make it slightly transparent. Apply the changes for me.".to_string(),
+                "Настроить тему терминала".to_string(),
+                "Определить, какой терминал я использую, затем изменить цвет фона на черный и сделать его немного прозрачным. Применить изменения.".to_string(),
             ),
             (
-                "Review something I've been working on".to_string(),
-                "Find a recent file or project I've been working on, read through it, and give me concrete suggestions on how I could improve it.".to_string(),
+                "Просмотреть то, над чем я работал".to_string(),
+                "Найти недавний файл или проект, над которым я работал, прочитать его и дать конкретные предложения по улучшению.".to_string(),
             ),
         ];
 
@@ -1508,21 +1508,21 @@ impl App {
         // with no sudo and no system files touched.
         if cfg!(target_os = "macos") {
             prompts.push((
-                "Install ScrollWM (scrolling window manager for macOS)".to_string(),
+                "Установить ScrollWM (менеджер окон с прокруткой для macOS)".to_string(),
                 "Install ScrollWM, the scrolling window manager for macOS, by running its official one-line installer: `curl -fsSL https://raw.githubusercontent.com/1jehuang/scrollwm/main/scripts/web-install.sh | bash`. It downloads the latest release, removes the Gatekeeper quarantine, installs to ~/Applications, and launches it (no sudo, no system files touched). Run the command for me and report whether it succeeded.".to_string(),
             ));
         }
 
         prompts.push((
-            "Continue my last Codex CLI / Claude Code session".to_string(),
+            "Продолжить последнюю сессию Codex CLI / Claude Code".to_string(),
             latest_external_cli_continuation_prompt().unwrap_or_else(|| {
-                "Find my recent Codex or Claude Code sessions, identify the latest useful one, summarize what was happening, and continue from there.".to_string()
+                "Найти мои недавние сессии Codex или Claude Code, определить последнюю полезную, кратко изложить, что происходило, и продолжить оттуда.".to_string()
             }),
         ));
 
         prompts.push((
-            "Find my social media and roast me".to_string(),
-            "Find a social media platform I use, look around at my profile and posts, then give me a brutally honest roast based on what you see.".to_string(),
+            "Найти мои социальные сети и устроить мне жесткий трэш".to_string(),
+            "Найти платформу социальных сетей, которую я использую, посмотреть мой профиль и посты, затем дать жестко и честно потрэшить на основе увиденного.".to_string(),
         ));
 
         prompts
@@ -1616,9 +1616,9 @@ impl App {
             self.cursor_pos = cursor_pos.min(self.input.len());
             self.reset_tab_completion();
             self.sync_model_picker_preview_from_input();
-            self.set_status_notice("↶ Input restored");
+            self.set_status_notice("↶ Ввод восстановлен");
         } else {
-            self.set_status_notice("Nothing to undo");
+            self.set_status_notice("Нечего отменять");
         }
     }
 
@@ -1704,7 +1704,7 @@ struct ExternalCliSuggestionCandidate {
 const EXTERNAL_CLI_PROMPT_CACHE_TTL: std::time::Duration = std::time::Duration::from_secs(30);
 
 /// Cached result of the external-CLI continuation-prompt scan, with the time it
-/// was computed. `None` value means "scanned, but nothing found".
+/// was computed. `None` value means "просканировано, но ничего не найдено".
 type ExternalCliPromptCache = std::sync::RwLock<Option<(Option<String>, std::time::Instant)>>;
 static EXTERNAL_CLI_PROMPT_CACHE: std::sync::LazyLock<ExternalCliPromptCache> =
     std::sync::LazyLock::new(|| std::sync::RwLock::new(None));
@@ -1756,17 +1756,17 @@ fn latest_external_cli_continuation_prompt_uncached() -> Option<String> {
                 .and_then(|name| name.to_str())
                 .filter(|name| !name.trim().is_empty())
                 .unwrap_or(dir);
-            format!(" in {label}")
+            format!(" в {label}")
         });
     let cwd = candidate
         .working_dir
         .as_deref()
-        .map(|dir| format!(" cwd `{dir}`"))
+        .map(|dir| format!(" рабочая директория `{dir}`"))
         .unwrap_or_default();
     let session_id = candidate
         .session_id
         .as_deref()
-        .map(|id| format!(" session `{id}`"))
+        .map(|id| format!(" сессия `{id}`"))
         .unwrap_or_default();
     let context = candidate
         .context
@@ -1774,7 +1774,7 @@ fn latest_external_cli_continuation_prompt_uncached() -> Option<String> {
         .map(|context| format!(": {}", compact_suggestion_text(context, 72)))
         .unwrap_or_default();
     Some(format!(
-        "Continue the latest {source} session{location}. Transcript: `{path}`.{session_id}{cwd}{context}. Read that transcript if needed, summarize the current state, then continue from there.",
+        "Продолжить последнюю сессию {source}{location}. Транскрипт: `{path}`.{session_id}{cwd}{context}. При необходимости прочитайте транскрипт, кратко изложите текущее состояние, затем продолжите оттуда.",
         source = candidate.source,
         path = candidate.path.display(),
     ))

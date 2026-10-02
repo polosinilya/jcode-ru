@@ -11,19 +11,19 @@ struct Tip {
 
 fn all_tips() -> Vec<Tip> {
     let mut tips = vec![
-        "Ctrl+J / Ctrl+K to jump between user prompts (Cmd+J / Cmd+K on macOS terminals that forward Command)",
-        "Ctrl+Shift+J / Ctrl+Shift+K to scroll the chat down and up one line",
-        "Ctrl+G to bookmark your scroll position - press again to teleport back",
-        "Swarms form automatically when multiple sessions share a repo - they coordinate plans, share context, and track file conflicts",
-        "Memories are stored in a graph with semantic embeddings - recall finds related facts even if you use different words",
-        "Ambient mode runs background cycles while you're away - maintaining memories, compacting context, and doing proactive work",
-        "Ambient cycles can email you a summary and you can reply with directives for the next run",
-        "Alt+B moves a long-running tool to the background - the agent continues and can check on it later with the `bg` tool",
-        "Most terminals can be configured to copy text on highlight - no Ctrl+C needed. Check your terminal's settings for 'copy on select'",
-        "Alt+G (or /diff) cycles diff mode: Off, Inline, Pinned, File. Shift+Tab cycles favorited models. Pinned shows all diffs in a side pane. File shows the full file with changes highlighted, synced to your scroll position",
+        "Ctrl+J / Ctrl+K для перехода между запросами пользователя (Cmd+J / Cmd+K на macOS терминалах, которые перенаправляют Command)",
+        "Ctrl+Shift+J / Ctrl+Shift+K для прокрутки чата вниз и вверх на одну строку",
+        "Ctrl+G для установки закладки позиции прокрутки - нажмите снова для возврата",
+        "Swarms формируются автоматически, когда несколько сессий используют репозиторий - они координируют планы, делятся контекстом и отслеживают конфликты файлов",
+        "Воспоминания хранятся в графе с семантическими встраиваниями - поиск находит связанные факты, даже если вы используете другие слова",
+        "Режим Ambient запускает фоновые циклы, пока вас нет - поддерживает воспоминания, сжимает контекст и выполняет проактивную работу",
+        "Ambient циклы могут отправить вам сводку по электронной почте, и вы можете ответить директивами для следующего запуска",
+        "Alt+B перемещает долго работающий инструмент в фоновый режим - агент продолжает работу и может проверить его позже с помощью инструмента `bg`",
+        "Большинство терминалов можно настроить на копирование текста при выделении - Ctrl+C не нужен. Проверьте настройки терминала на предмет 'copy on select'",
+        "Alt+G (или /diff) переключает режим diff: Выкл, Встроенный, Закрепленный, Файл. Shift+Tab переключает избранные модели. Закрепленный показывает все различия в боковой панели. Файл показывает полный файл с выделенными изменениями, синхронизированными с позицией прокрутки",
     ];
     if crate::config::config().features.mermaid {
-        tips.insert(3, "```mermaid code blocks render as diagrams");
+        tips.insert(3, "```mermaid кодовые блоки отображаются как диаграммы");
     }
     // Mac keyboards label this modifier ⌥, not Alt, so rewrite hints there.
     let alt = jcode_tui_core::keybind::alt_label();
@@ -119,7 +119,7 @@ pub(super) fn render_tips_widget(inner: Rect) -> Vec<Line<'static>> {
     lines.push(Line::from(vec![
         Span::styled("💡 ", Style::default().fg(rgb(255, 210, 80))),
         Span::styled(
-            "Did you know?",
+            "А вы знали?",
             Style::default()
                 .fg(rgb(200, 200, 210))
                 .add_modifier(Modifier::BOLD),

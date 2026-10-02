@@ -49,7 +49,7 @@ impl ExternalCli {
     }
 }
 
-/// Which telemetry level the "Telemetry settings" page has highlighted.
+/// Which telemetry level the "Настройки телеметрии" page has highlighted.
 ///
 /// The page is a three-way choice rather than a yes/no so the middle ground
 /// (usage stats without prompt content) is reachable without hunting through
@@ -116,8 +116,8 @@ impl TelemetryLevel {
 /// On a fresh install we may detect logins left behind by other tools (Codex,
 /// Claude Code, Copilot, OpenClaw, Hermes, ...). The default screen is a
 /// read-only SUMMARY: it lists everything we detected and lands the user on a
-/// preselected "Continue" pill that imports all of it with one Enter. A second
-/// "Choose what to import" pill switches to the per-login checkbox list
+/// preselected "Продолжить" pill that imports all of it with one Enter. A second
+/// "Выбрать что импортировать" pill switches to the per-login checkbox list
 /// (`choosing = true`) for users who want to opt logins out individually.
 #[derive(Clone, Debug, PartialEq, Eq)]
 pub(crate) struct ImportReview {
@@ -128,21 +128,21 @@ pub(crate) struct ImportReview {
     pub(crate) checked: Vec<bool>,
     /// Index of the row the cursor is currently on (for toggling/highlight).
     pub(crate) cursor: usize,
-    /// Focus flag for the "Continue" pill.
+    /// Focus flag for the "Продолжить" pill.
     ///
     /// On the summary screen (`choosing == false`) this is `true` when the
-    /// "Continue" pill is focused (the default landing spot) and `false` when
-    /// the "Choose what to import" pill is focused.
+    /// "Продолжить" pill is focused (the default landing spot) and `false` when
+    /// the "Выбрать что импортировать" pill is focused.
     ///
     /// On the checkbox list (`choosing == true`) it is `true` while the
-    /// "Continue" pill above/below the rows is focused rather than a login row.
+    /// "Продолжить" pill above/below the rows is focused rather than a login row.
     pub(crate) continue_focused: bool,
     /// `false` = the default summary screen (detected logins listed read-only,
     /// Continue preselected). `true` = the per-login checkbox list.
     pub(crate) choosing: bool,
     /// Which summary pill is focused when `choosing == false`.
     pub(crate) summary_pill: SummaryPill,
-    /// `Some` while the "Telemetry settings" sub-page is open, holding the
+    /// `Some` while the "Настройки телеметрии" sub-page is open, holding the
     /// highlighted level. Committing or pressing Esc returns to the summary.
     pub(crate) telemetry: Option<TelemetryLevel>,
     /// When the screen was first shown, for the single decision countdown.
@@ -225,7 +225,7 @@ impl ImportReview {
     }
 
     /// Close the telemetry sub-page and return to the summary screen with the
-    /// "Telemetry settings" pill still focused.
+    /// "Настройки телеметрии" pill still focused.
     pub(crate) fn close_telemetry(&mut self) {
         self.telemetry = None;
     }
@@ -258,7 +258,7 @@ impl ImportReview {
     }
 
     /// The candidate the cursor is currently on, if any. Returns `None` while
-    /// the "Continue" pill is focused.
+    /// the "Продолжить" pill is focused.
     #[allow(dead_code)] // Accessor kept for the import-review UI; not wired to a caller yet.
     pub(crate) fn current(&self) -> Option<&crate::external_auth::ExternalAuthReviewCandidate> {
         if self.continue_focused {
@@ -278,7 +278,7 @@ impl ImportReview {
         self.candidates.len()
     }
 
-    /// Move focus to the previous item, treating the "Continue" pill as a single
+    /// Move focus to the previous item, treating the "Продолжить" pill as a single
     /// element that sits both above and below the list. The cycle is:
     /// Continue -> last row -> ... -> first row -> Continue.
     pub(crate) fn cursor_up(&mut self) {
@@ -316,7 +316,7 @@ impl ImportReview {
     }
 
     /// Toggle the checked state of the row under the cursor. No-op while the
-    /// "Continue" pill is focused.
+    /// "Продолжить" pill is focused.
     pub(crate) fn toggle_current(&mut self) {
         if self.continue_focused {
             return;
@@ -327,7 +327,7 @@ impl ImportReview {
     }
 
     /// Set the checked state of the row under the cursor. No-op while the
-    /// "Continue" pill is focused.
+    /// "Продолжить" pill is focused.
     pub(crate) fn set_current(&mut self, checked: bool) {
         if self.continue_focused {
             return;
@@ -338,7 +338,7 @@ impl ImportReview {
     }
 
     /// Whether the row under the cursor is currently checked. False while the
-    /// "Continue" pill is focused.
+    /// "Продолжить" pill is focused.
     #[allow(dead_code)] // Accessor kept for the import-review UI; not wired to a caller yet.
     pub(crate) fn current_checked(&self) -> bool {
         if self.continue_focused {
@@ -391,34 +391,34 @@ pub(crate) enum OnboardingPhase {
     Login { import: Option<ImportReview> },
     /// Ask the user whether to log in to OpenAI. Shown on a fresh install when
     /// no importable external logins were detected. A highlightable Yes/No
-    /// selector (default "Yes") matching the import walkthrough: Yes starts the
+    /// selector (default "Да") matching the import walkthrough: Yes starts the
     /// OpenAI sign-in, No exits onboarding to the normal new-session screen with
     /// a system message telling the user to run `/login` when ready (we avoid the
     /// inline provider picker here). Unlike the import/telemetry prompts this one
     /// has no auto-timeout: logging in is a meaningful first step, so we wait for
     /// the user rather than opening a browser on a countdown.
     LoginOpenAi {
-        /// Which option is highlighted (true = "Yes, log in to OpenAI").
+        /// Which option is highlighted (true = "Да, войти в OpenAI").
         yes_highlighted: bool,
     },
     /// Legacy phase kept for compatibility with older replay/test fixtures.
     /// New onboarding skips explicit model selection and uses the default route;
     /// users can still run `/model` later.
     ModelSelect,
-    /// "Continue where you left off in <cli>?" Yes/No with a
+    /// "Продолжить с того места, где вы остановились в <cli>?" Yes/No with a
     /// [`DECISION_TIMEOUT`] countdown. Highlightable Yes/No selector to match
-    /// the import prompt; the default (and timeout choice) is "Yes" so the
+    /// the import prompt; the default (and timeout choice) is "Да" so the
     /// resume menu opens unless the user declines.
     ContinuePrompt {
         cli: ExternalCli,
-        /// Which option is highlighted (true = "Yes, continue").
+        /// Which option is highlighted (true = "Да, продолжить").
         yes_highlighted: bool,
         /// When the prompt was shown, for the countdown.
         shown_at: Instant,
     },
     /// Action-only picker offering the suggested review or a blank new session.
     StartChoice { shown_at: Instant },
-    /// Existing prompt-suggestion cards (resting / "No" state).
+    /// Existing prompt-suggestion cards (resting / "Нет" state).
     Suggestions,
     /// Flow finished; nothing onboarding-specific to render.
     Done,
@@ -501,7 +501,7 @@ impl OnboardingFlow {
     /// Start the flow at the login phase (no working credentials yet).
     /// `import` is the per-candidate import walkthrough when external logins
     /// were detected. When no logins were detected (`import` is `None`) we ask a
-    /// simple "Log in to OpenAI?" Yes/No instead of dropping straight to the
+    /// simple "Войти в OpenAI?" Yes/No instead of dropping straight to the
     /// provider picker.
     pub(crate) fn begin_at_login(import: Option<ImportReview>) -> Self {
         let phase = match import {
@@ -559,7 +559,7 @@ impl OnboardingFlow {
 /// then OpenCode, but callers should not treat that as a preference.
 pub(crate) fn detect_external_cli_oauths() -> Vec<ExternalCli> {
     let mut found = Vec::new();
-    // Detection drives the first-run "continue where you left off" picker, whose
+    // Detection drives the first-run "продолжить с того места, где вы остановились" picker, whose
     // only requirement is that resumable transcripts exist. We therefore treat a
     // CLI as present when EITHER its OAuth login file exists OR it has written
     // transcripts. The transcript fallback matters because some tools store

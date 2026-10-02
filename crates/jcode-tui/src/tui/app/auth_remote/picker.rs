@@ -6,12 +6,12 @@ use crate::tui::{InlineInteractiveState, PickerAction, PickerEntry, PickerKind, 
 fn remote_setup_detail(provider: LoginProviderDescriptor, host: &str) -> String {
     if super::PROVIDERS.contains(&provider.id) {
         let prerequisite = if provider.id == "google" {
-            " Google OAuth client credentials must already be configured on the SSH host."
+            " Учетные данные клиента Google OAuth должны быть уже настроены на хосте SSH."
         } else {
             ""
         };
         format!(
-            "Browser approval opens on this computer, credentials stay on the SSH host.{prerequisite} /login {}",
+            "Подтверждение браузера открывается на этом компьютере, учетные данные остаются на хосте SSH.{prerequisite} /login {}",
             provider.id
         )
     } else if matches!(provider.target, LoginProviderTarget::AutoImport) {
@@ -31,10 +31,10 @@ fn provider_entry(provider: LoginProviderDescriptor, host: &str) -> PickerEntry 
         provider.display_name.into(),
         PickerOption {
             provider: provider.auth_kind.label().into(),
-            api_method: "checking remote".into(),
+            api_method: "проверка удаленного".into(),
             available: true,
             detail: format!(
-                "Destination: {host}. Checking remote login status. {} · {}",
+                "Назначение: {host}. Проверка статуса удаленного входа. {} · {}",
                 provider.menu_detail,
                 remote_setup_detail(provider, host)
             ),
@@ -50,13 +50,13 @@ fn provider_entry(provider: LoginProviderDescriptor, host: &str) -> PickerEntry 
 
 fn import_entry(provider: &'static str, label: &str, host: &str) -> PickerEntry {
     entry(
-        format!("Import local {label} login"),
+        format!("Импортировать локальный логин {label}"),
         PickerOption {
             provider: "Local → SSH".into(),
             api_method: "confirm copy".into(),
             available: true,
             detail: format!(
-                "Destination: {host}. One-time copy of your selected Jcode-managed {provider} account. Confirmation required. No local credentials read yet. Existing remote logins are never overwritten."
+                "Назначение: {host}. Одноразовое копирование выбранного аккаунта {provider}, управляемого Jcode. Требуется подтверждение. Локальные учетные данные еще не прочитаны. Существующие удаленные логины никогда не перезаписываются."
             ),
             estimated_reference_cost_micros: None,
         },
@@ -121,7 +121,7 @@ impl App {
         });
         let host = host.to_string();
         self.set_status_notice(format!(
-            "Login on {host}: choose a provider or Import local login. Some methods require setup directly on the SSH host. Esc cancels."
+            "Вход на {host}: выберите провайдера или Импортируйте локальный логин. Некоторые методы требуют настройки непосредственно на хосте SSH. Esc для отмены."
         ));
         if tokio::runtime::Handle::try_current().is_ok() {
             self.remote_login
@@ -168,7 +168,7 @@ impl App {
                 Some(crate::auth::AuthState::Available) => "configured",
                 Some(crate::auth::AuthState::Expired) => "attention",
                 Some(crate::auth::AuthState::NotConfigured) => "setup",
-                None => "status unknown",
+                None => "статус неизвестен",
             };
             entry.is_current = matches!(
                 status.map(|status| status.state),
@@ -176,10 +176,10 @@ impl App {
             );
             entry.options[0].api_method = label.into();
             entry.options[0].detail = format!(
-                "Destination: {host}. Remote status: {label} ({}). {} · {}",
+                "Назначение: {host}. Удаленный статус: {label} ({}). {} · {}",
                 status
                     .map(|status| status.method_detail.as_str())
-                    .unwrap_or("could not read remote status; reopen /login to retry"),
+                    .unwrap_or("не удалось прочитать удаленный статус; повторно откройте /login для повтора"),
                 descriptor.menu_detail,
                 remote_setup_detail(descriptor, host),
             );

@@ -129,7 +129,7 @@ pub(in crate::tui::app) async fn submit_prepared_remote_input(
             "Deferring manually submitted prompt until remote history loads (avoids first-prompt clobber)",
         );
         app.pending_prompt_before_history = Some(prepared);
-        app.set_status_notice("Loading session...");
+        app.set_status_notice("Загрузка сессии...");
         return Ok(());
     }
 
@@ -281,7 +281,7 @@ pub(in crate::tui::app) async fn route_prepared_input_to_new_remote_session(
 
     app.pending_split_request = false;
     if app.is_processing {
-        app.set_status_notice("Prompt launching in new session");
+        app.set_status_notice("Запрос запускается в новой сессии");
         if let Err(error) = remote.split().await {
             let pending = app
                 .pending_split_prompt
@@ -338,7 +338,7 @@ pub(in crate::tui::app) fn begin_remote_split_launch(app: &mut App, label: &str)
     app.thinking_prefix_emitted = false;
     app.thinking_buffer.clear();
     app.current_message_id = None;
-    app.set_status_notice(format!("{} launching", label));
+    app.set_status_notice(format!("{} запускается", label));
 }
 
 pub(in crate::tui::app) fn finish_remote_split_launch(app: &mut App) {
@@ -408,7 +408,7 @@ async fn submit_remote_transcript_input(
     input::promote_dropped_images(app);
     let trimmed = app.input.trim().to_string();
     if trimmed.is_empty() {
-        app.set_status_notice("Transcript was empty");
+        app.set_status_notice("Транскрипт был пуст");
         return Ok(());
     }
 
@@ -464,7 +464,7 @@ async fn submit_remote_input_shell(
         app.push_display_message(DisplayMessage::system(
             "Shell command cannot be empty after !.",
         ));
-        app.set_status_notice("Shell command is empty");
+        app.set_status_notice("Команда оболочки пуста");
         return Ok(());
     }
 
@@ -496,24 +496,24 @@ pub(in crate::tui::app) fn apply_transcript_event(
     mode: TranscriptMode,
 ) {
     if text.trim().is_empty() {
-        app.set_status_notice("Transcript was empty");
+        app.set_status_notice("Транскрипт был пуст");
         return;
     }
 
     match mode {
         TranscriptMode::Insert => {
             input::insert_input_text(app, &text);
-            app.set_status_notice("Transcript inserted");
+            app.set_status_notice("Транскрипт вставлен");
         }
         TranscriptMode::Append => {
             let mut combined = app.input.clone();
             combined.push_str(&text);
             set_transcript_input(app, combined);
-            app.set_status_notice("Transcript appended");
+            app.set_status_notice("Транскрипт добавлен");
         }
         TranscriptMode::Replace => {
             set_transcript_input(app, text);
-            app.set_status_notice("Transcript replaced input");
+            app.set_status_notice("Транскрипт заменил ввод");
         }
         TranscriptMode::Send => {
             let text = transcript_send_text(&text);
@@ -532,7 +532,7 @@ pub(in crate::tui::app) async fn apply_remote_transcript_event(
     mode: TranscriptMode,
 ) -> Result<()> {
     if text.trim().is_empty() {
-        app.set_status_notice("Transcript was empty");
+        app.set_status_notice("Транскрипт был пуст");
         return Ok(());
     }
 

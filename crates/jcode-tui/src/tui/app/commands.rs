@@ -31,7 +31,7 @@ use std::process::Command;
 use std::time::Instant;
 
 pub(super) const REVIEW_PREFERRED_MODEL: &str = "gpt-5.5";
-const POKE_OFF_UI_HINT: &str = "/poke off to stop.";
+const POKE_OFF_UI_HINT: &str = "/poke откл. для остановки.";
 
 const TODO_COMPLETION_CONTINUATION_MESSAGE: &str =
     crate::todo::TODO_COMPLETION_CONTINUATION_MESSAGE;
@@ -69,7 +69,7 @@ pub(super) fn parse_poke_command(trimmed: &str) -> Option<Result<PokeCommand, St
         "/poke on" => Some(Ok(PokeCommand::On)),
         "/poke off" => Some(Ok(PokeCommand::Off)),
         "/poke status" => Some(Ok(PokeCommand::Status)),
-        _ if trimmed.starts_with("/poke ") => Some(Err("Usage: /poke [on|off|status]".to_string())),
+        _ if trimmed.starts_with("/poke") => Some(Err("Usage: /poke [on|off|status]".to_string())),
         _ => None,
     }
 }
@@ -140,9 +140,9 @@ pub(super) fn is_auto_poke_connectivity_error(error: &str) -> bool {
     let lower = error.to_ascii_lowercase();
 
     let connectivity_markers = [
-        "failed to send openai-compatible chat request",
-        "could not resolve host",
-        "couldn't resolve host",
+        "не удалось отправить запрос чата, совместимый с openai",
+        "не удалось разрешить хост",
+        "не удалось разрешить хост",
     ];
 
     connectivity_markers
@@ -163,15 +163,15 @@ pub(super) fn is_fatal_model_endpoint_error(error: &str) -> bool {
     let lower = error.to_ascii_lowercase();
 
     let model_endpoint_markers = [
-        "unsupportedmodel",
-        "unsupported model",
-        "does not support the coding plan",
-        "coding plan feature",
+        "неподдерживаемаямодель",
+        "неподдерживаемая модель",
+        "не поддерживает план кодирования",
+        "функция плана кодирования",
         "model_not_found",
         "model_not_supported",
-        "invalid model",
-        "the model does not exist",
-        "model does not exist",
+        "недопустимая модель",
+        "модель не существует",
+        "модель не существует",
     ];
 
     model_endpoint_markers
@@ -188,29 +188,29 @@ pub(super) fn stop_auto_poke_for_non_retryable_error(app: &mut App, error: &str)
     app.rate_limit_pending_message = None;
     app.rate_limit_reset = None;
     app.push_display_message(DisplayMessage::system(format!(
-        "🛑 The last request failed in a way that retrying won't fix, so we stopped poking.{} Fix the request or session, then /poke to resume.",
+        "🛑 Последний запрос завершился ошибкой, которую повторные попытки не исправят, поэтому мы прекратили проверку.{} Исправьте запрос или сессию, затем /poke для возобновления.",
         if cleared == 0 {
             String::new()
         } else {
             format!(
-                " Cleared {} queued poke follow-up{}.",
+                " Очищено {} запланированных проверок{}.",
                 cleared,
                 if cleared == 1 { "" } else { "s" }
             )
         }
     )));
-    app.set_status_notice("Poke stopped: this error won't fix itself");
+    app.set_status_notice("Проверка остановлена: эта ошибка не исправится сама по себе");
     true
 }
 
 pub(super) fn poke_disabled_message(cleared: usize) -> String {
     format!(
-        "Auto-poke disabled.{}",
+        "Автопроверка отключена.{}",
         if cleared == 0 {
             String::new()
         } else {
             format!(
-                " Cleared {} queued poke follow-up{}.",
+                " Очищено {} запланированных проверок{}.",
                 cleared,
                 if cleared == 1 { "" } else { "s" }
             )
@@ -219,19 +219,19 @@ pub(super) fn poke_disabled_message(cleared: usize) -> String {
 }
 
 pub(super) fn poke_enabled_without_incomplete_message() -> String {
-    "Auto-poke enabled. Nothing unfinished right now; we'll poke the agent if it stops with todos left.".to_string()
+    "Автопроверка включена. Ничего не завершено прямо сейчас; мы проверим агента, если он остановится с оставшимися задачами.".to_string()
 }
 
 pub(super) fn poke_queued_display_message() -> String {
     format!(
-        "👉 Poke queued. We'll re-check for unfinished todos after this turn. {}",
+        "👉 Проверка в очереди. Мы перепроверим незавершенные задачи после этого хода. {}",
         POKE_OFF_UI_HINT
     )
 }
 
 pub(super) fn poke_triggered_display_message(incomplete_count: usize) -> String {
     format!(
-        "👉 {} incomplete todo{}. We poked the agent. {}",
+        "👉 {} незавершенная задача{}. Мы проверили агента. {}",
         incomplete_count,
         if incomplete_count == 1 { "" } else { "s" },
         POKE_OFF_UI_HINT,
@@ -254,14 +254,14 @@ pub(super) fn activate_auto_poke(app: &mut App) -> PokeActivation {
     // breaker its full budget again (the user likely rephrased the task).
     app.consecutive_guardrail_stops = 0;
     app.turn_guardrail_stopped = false;
-    app.set_status_notice("Poke: ON");
+    app.set_status_notice("Проверка: ВКЛ");
 
     if incomplete.is_empty() {
         return PokeActivation::EnabledNoIncomplete;
     }
 
     if app.is_processing {
-        app.set_status_notice("Poke queued after current turn");
+        app.set_status_notice("Проверка в очереди после текущего хода");
         PokeActivation::Queued
     } else {
         let incomplete_count = incomplete.len();
@@ -333,7 +333,7 @@ pub(super) fn activate_auto_poke_local(app: &mut App) {
 pub(super) fn toggle_auto_poke_hotkey_local(app: &mut App) {
     if app.auto_poke_incomplete_todos {
         let cleared = disable_auto_poke(app);
-        app.set_status_notice("Poke: OFF");
+        app.set_status_notice("Проверка: ОТКЛ");
         app.push_display_message(DisplayMessage::system(poke_disabled_message(cleared)));
     } else {
         activate_auto_poke_local(app);
@@ -341,7 +341,7 @@ pub(super) fn toggle_auto_poke_hotkey_local(app: &mut App) {
 }
 
 pub(super) fn transfer_pause_message() -> String {
-    "Transfer requested. Please pause after the current step, update the todo list if needed, and stop so work can continue in the transferred session."
+    "Запрошен перевод. Пожалуйста, приостановите после текущего шага, при необходимости обновите список задач и остановитесь, чтобы работа могла продолжиться в переданной сессии."
         .to_string()
 }
 
@@ -449,33 +449,33 @@ pub(super) fn poll_local_transfer_prepare(app: &mut App) -> bool {
                     ) {
                         Ok(true) => {
                             app.push_display_message(DisplayMessage::system(format!(
-                                "↗ Transfer launched in {}.",
+                                "↗ Перевод запущен в {}.",
                                 prepared.session_name
                             )));
-                            app.set_status_notice("Transfer launched");
+                            app.set_status_notice("Перевод запущен");
                         }
                         Ok(false) => {
                             app.push_display_message(DisplayMessage::system(format!(
-                                "↗ Transfer session {} created.\n\nNo terminal was opened automatically. Resume manually:\n\n  jcode --resume {}",
+                                "↗ Создана сессия перевода {}.\n\nТерминал не был открыт автоматически. Возобновите вручную:\n\n  jcode --resume {}",
                                 prepared.session_name, prepared.session_id
                             )));
-                            app.set_status_notice("Transfer session created");
+                            app.set_status_notice("Сессия перевода создана");
                         }
                         Err(error) => {
                             app.push_display_message(DisplayMessage::error(format!(
-                                "Transfer session {} was created but failed to open a window: {}\n\nResume manually: jcode --resume {}",
+                                "Сессия перевода {} была создана, но не удалось открыть окно: {}\n\nВозобновите вручную: jcode --resume {}",
                                 prepared.session_name, error, prepared.session_id
                             )));
-                            app.set_status_notice("Transfer open failed");
+                            app.set_status_notice("Не удалось открыть перевод");
                         }
                     }
                 }
                 Err(error) => {
                     app.push_display_message(DisplayMessage::error(format!(
-                        "Failed to prepare transfer session: {}",
+                        "Не удалось подготовить сессию перевода: {}",
                         error
                     )));
-                    app.set_status_notice("Transfer failed");
+                    app.set_status_notice("Перевод не удался");
                 }
             }
             true
@@ -485,9 +485,9 @@ pub(super) fn poll_local_transfer_prepare(app: &mut App) -> bool {
             app.pending_local_transfer = None;
             app.pending_transfer_request = false;
             app.push_display_message(DisplayMessage::error(
-                "Transfer preparation failed before returning a result.".to_string(),
+                "Подготовка перевода не удалась до возврата результата.".to_string(),
             ));
-            app.set_status_notice("Transfer failed");
+            app.set_status_notice("Перевод не удался");
             true
         }
     }
@@ -504,17 +504,17 @@ pub(super) fn maybe_begin_pending_local_transfer(app: &mut App) -> bool {
     match start_local_transfer_prepare(app) {
         Ok(()) => {
             app.push_display_message(DisplayMessage::system(
-                "Preparing transferred session with compacted context...".to_string(),
+                "Подготовка переданной сессии с компактным контекстом...".to_string(),
             ));
-            app.set_status_notice("Preparing transfer");
+            app.set_status_notice("Подготовка перевода");
         }
         Err(error) => {
             app.pending_transfer_request = false;
             app.push_display_message(DisplayMessage::error(format!(
-                "Failed to start transfer preparation: {}",
+                "Не удалось начать подготовку перевода: {}",
                 error
             )));
-            app.set_status_notice("Transfer failed");
+            app.set_status_notice("Перевод не удался");
         }
     }
     true
@@ -523,9 +523,9 @@ pub(super) fn maybe_begin_pending_local_transfer(app: &mut App) -> bool {
 pub(super) fn handle_transfer_command_local(app: &mut App) {
     if app.pending_transfer_request || app.pending_local_transfer.is_some() {
         app.push_display_message(DisplayMessage::system(
-            "A transfer is already pending.".to_string(),
+            "Перевод уже ожидает.".to_string(),
         ));
-        app.set_status_notice("Transfer already pending");
+        app.set_status_notice("Перевод уже ожидает");
         return;
     }
 
@@ -534,10 +534,10 @@ pub(super) fn handle_transfer_command_local(app: &mut App) {
         app.interleave_message = Some(transfer_pause_message());
         app.interleave_images.clear();
         app.push_display_message(DisplayMessage::system(
-            "Queued /transfer. The current session will be asked to pause, then the compacted handoff will open in a new window."
+            "Перевод в очереди. Текущая сессия будет приостановлена, затем компактная передача откроется в новом окне."
                 .to_string(),
         ));
-        app.set_status_notice("Transfer queued after current turn");
+        app.set_status_notice("Перевод в очереди после текущего хода");
     } else {
         let _ = maybe_begin_pending_local_transfer(app);
     }
@@ -554,7 +554,7 @@ pub(super) fn poke_status_message(app: &App) -> String {
             .iter()
             .any(|message| is_todo_confidence_summary_message(message));
     let mut message = format!(
-        "Auto-poke: {}. {} incomplete todo{}.",
+        "Автопроверка: {}. {} незавершенная задача{}.",
         if app.auto_poke_incomplete_todos {
             "ON"
         } else {
@@ -564,25 +564,25 @@ pub(super) fn poke_status_message(app: &App) -> String {
         if incomplete.len() == 1 { "" } else { "s" }
     );
     if queued_followup {
-        message.push_str(" A follow-up poke is queued.");
+        message.push_str(" Запланирована повторная проверка.");
     }
     if app.is_processing {
-        message.push_str(" A turn is currently running.");
+        message.push_str(" Ход в процессе.");
     }
     message
 }
 
 pub(super) fn current_subagent_model_summary(app: &App) -> String {
     match app.session.subagent_model.as_deref() {
-        Some(model) => format!("fixed {}", model),
-        None => format!("inherit current ({})", app.provider.model()),
+        Some(model) => format!("исправлена {}", model),
+        None => format!("унаследовать текущую ({})", app.provider.model()),
     }
 }
 
 fn derive_subagent_description(prompt: &str) -> String {
     let words: Vec<&str> = prompt.split_whitespace().take(4).collect();
     if words.is_empty() {
-        "Manual subagent".to_string()
+        "Ручной субагент".to_string()
     } else {
         words.join(" ")
     }
@@ -590,7 +590,7 @@ fn derive_subagent_description(prompt: &str) -> String {
 
 pub(super) fn parse_manual_subagent_spec(rest: &str) -> Result<ManualSubagentSpec, String> {
     let mut iter = rest.split_whitespace().peekable();
-    let mut subagent_type = "general".to_string();
+    let mut subagent_type = "общий".to_string();
     let mut model = None;
     let mut session_id = None;
     let mut prompt_tokens = Vec::new();
@@ -600,23 +600,23 @@ pub(super) fn parse_manual_subagent_spec(rest: &str) -> Result<ManualSubagentSpe
             "--type" => {
                 let value = iter
                     .next()
-                    .ok_or_else(|| "Missing value for --type.".to_string())?;
+                    .ok_or_else(|| "Отсутствует значение для --type.".to_string())?;
                 subagent_type = value.to_string();
             }
             "--model" => {
                 let value = iter
                     .next()
-                    .ok_or_else(|| "Missing value for --model.".to_string())?;
+                    .ok_or_else(|| "Отсутствует значение для --model.".to_string())?;
                 model = Some(value.to_string());
             }
             "--continue" => {
                 let value = iter
                     .next()
-                    .ok_or_else(|| "Missing value for --continue.".to_string())?;
+                    .ok_or_else(|| "Отсутствует значение для --continue.".to_string())?;
                 session_id = Some(value.to_string());
             }
             flag if flag.starts_with("--") => {
-                return Err(format!("Unknown flag {}.", flag));
+                return Err(format!("Неизвестный флаг {}.", flag));
             }
             prompt_start => {
                 prompt_tokens.push(prompt_start.to_string());
@@ -628,7 +628,7 @@ pub(super) fn parse_manual_subagent_spec(rest: &str) -> Result<ManualSubagentSpe
 
     let prompt = prompt_tokens.join(" ").trim().to_string();
     if prompt.is_empty() {
-        return Err("Missing prompt. Add text after /subagent.".to_string());
+        return Err("Отсутствует подсказка. Добавьте текст после /subagent.".to_string());
     }
 
     Ok(ManualSubagentSpec {
@@ -642,22 +642,22 @@ pub(super) fn parse_manual_subagent_spec(rest: &str) -> Result<ManualSubagentSpe
 fn launch_manual_subagent(app: &mut App, spec: ManualSubagentSpec) {
     let description = derive_subagent_description(&spec.prompt);
     let tool_call = crate::message::ToolCall {
-        id: id::new_id("call"),
-        name: "subagent".to_string(),
+        id: id::new_id("вызов"),
+        name: "субагент".to_string(),
         input: serde_json::json!({
-            "description": description,
-            "prompt": spec.prompt,
+            "описание": description,
+            "подсказка": spec.prompt,
             "subagent_type": spec.subagent_type,
-            "model": spec.model,
+            "модель": spec.model,
             "session_id": spec.session_id,
-            "command": "/subagent",
+            "команда": "/subagent",
         }),
         intent: None,
         thought_signature: None,
     };
 
     app.push_display_message(DisplayMessage {
-        role: "tool".to_string(),
+        role: "инструмент".to_string(),
         content: tool_call.name.clone(),
         tool_calls: vec![],
         duration_secs: None,
@@ -679,8 +679,8 @@ fn launch_manual_subagent(app: &mut App, spec: ManualSubagentSpec) {
     });
     let message_id = app.session.add_message(Role::Assistant, content_blocks);
     let _ = app.session.save();
-    app.subagent_status = Some("starting subagent".to_string());
-    app.set_status_notice("Running subagent");
+    app.subagent_status = Some("запуск субагента".to_string());
+    app.set_status_notice("Запуск субагента");
 
     let registry = app.registry.clone();
     let session_id = app.session.id.clone();
@@ -724,7 +724,7 @@ fn launch_manual_subagent(app: &mut App, spec: ManualSubagentSpec) {
             }
             Err(error) => {
                 crate::telemetry::record_tool_failure();
-                (format!("Error: {}", error), true, None, ToolStatus::Error)
+                (format!("Ошибка: {}", error), true, None, ToolStatus::Error)
             }
         };
 
@@ -756,7 +756,7 @@ fn handle_subagent_model_command(app: &mut App, trimmed: &str) -> bool {
 
     if app.is_remote {
         app.push_display_message(DisplayMessage::error(
-            "/subagent-model requires a live jcode server connection in remote mode.".to_string(),
+            "/subagent-model требует активное соединение с сервером jcode в удаленном режиме.".to_string(),
         ));
         return true;
     }
@@ -768,7 +768,7 @@ fn handle_subagent_model_command(app: &mut App, trimmed: &str) -> bool {
 
     if rest.is_empty() || matches!(rest, "show" | "status") {
         app.push_display_message(DisplayMessage::system(format!(
-            "Subagent model for this session: {}\n\nUse /subagent-model <name> to pin a model, or /subagent-model inherit to use the current model.",
+            "Модель субагента для этой сессии: {}\n\nИспользуйте /subagent-model <имя> для закрепления модели или /subagent-model inherit для использования текущей модели.",
             current_subagent_model_summary(app)
         )));
         return true;
@@ -778,20 +778,20 @@ fn handle_subagent_model_command(app: &mut App, trimmed: &str) -> bool {
         app.session.subagent_model = None;
         let _ = app.session.save();
         app.push_display_message(DisplayMessage::system(format!(
-            "Subagent model reset to inherit the current model ({}).",
+            "Модель субагента сброшена для наследования текущей модели ({}).",
             app.provider.model()
         )));
-        app.set_status_notice("Subagent model: inherit");
+        app.set_status_notice("Модель субагента: унаследовать");
         return true;
     }
 
     app.session.subagent_model = Some(rest.to_string());
     let _ = app.session.save();
     app.push_display_message(DisplayMessage::system(format!(
-        "Subagent model pinned to {} for this session.",
+        "Модель субагента закреплена за {} для этой сессии.",
         rest
     )));
-    app.set_status_notice(format!("Subagent model → {}", rest));
+    app.set_status_notice(format!("Модель субагента → {}", rest));
     true
 }
 
@@ -802,7 +802,7 @@ fn handle_subagent_command(app: &mut App, trimmed: &str) -> bool {
 
     if app.is_remote {
         app.push_display_message(DisplayMessage::error(
-            "/subagent requires a live jcode server connection in remote mode.".to_string(),
+            "/subagent требует активное соединение с сервером jcode в удаленном режиме.".to_string(),
         ));
         return true;
     }
@@ -810,7 +810,7 @@ fn handle_subagent_command(app: &mut App, trimmed: &str) -> bool {
     let rest = trimmed.strip_prefix("/subagent").unwrap_or_default().trim();
     if rest.is_empty() {
         app.push_display_message(DisplayMessage::error(
-            "Usage: /subagent [--type <kind>] [--model <name>] [--continue <session_id>] <prompt>"
+            "Использование: /subagent [--type <тип>] [--model <имя>] [--continue <id_сессии>] <подсказка>"
                 .to_string(),
         ));
         return true;
@@ -820,7 +820,7 @@ fn handle_subagent_command(app: &mut App, trimmed: &str) -> bool {
         Ok(spec) => launch_manual_subagent(app, spec),
         Err(error) => {
             app.push_display_message(DisplayMessage::error(format!(
-                "{}\nUsage: /subagent [--type <kind>] [--model <name>] [--continue <session_id>] <prompt>",
+                "{}\nИспользование: /subagent [--type <тип>] [--model <имя>] [--continue <id_сессии>] <подсказка>",
                 error
             )));
         }
@@ -846,9 +846,9 @@ pub(super) fn handle_cancel_command(app: &mut App, trimmed: &str) -> bool {
         app.pending_soft_interrupts.clear();
         app.pending_soft_interrupt_requests.clear();
         if app.cancel_overnight_for_interrupt() {
-            app.set_status_notice("Interrupting... Overnight cancelled");
+            app.set_status_notice("Прерывание... Overnight отменен");
         } else {
-            app.set_status_notice("Interrupting...");
+            app.set_status_notice("Прерывание...");
         }
     } else if pending_retry {
         app.clear_pending_remote_retry();
@@ -856,10 +856,10 @@ pub(super) fn handle_cancel_command(app: &mut App, trimmed: &str) -> bool {
             app.status = ProcessingStatus::Idle;
             app.status_detail = None;
         }
-        app.set_status_notice("Pending retry cancelled");
+        app.set_status_notice("Отмена ожидания повтора");
     } else {
         app.push_display_message(DisplayMessage::system(
-            "Nothing to cancel: no prompt or operation is in progress.".to_string(),
+            "Нечего отменять: нет активного запроса или операции.".to_string(),
         ));
     }
     true
@@ -867,14 +867,14 @@ pub(super) fn handle_cancel_command(app: &mut App, trimmed: &str) -> bool {
 
 pub(super) fn handle_help_command(app: &mut App, trimmed: &str) -> bool {
     if let Some(topic) = trimmed
-        .strip_prefix("/help ")
+        .strip_prefix("/help")
         .or_else(|| trimmed.strip_prefix("/? "))
     {
         if let Some(help) = app.command_help(topic) {
             app.push_display_message(DisplayMessage::system(help));
         } else {
             app.push_display_message(DisplayMessage::error(format!(
-                "Unknown command '{}'. Use /help to list commands.",
+                "Неизвестная команда '{}'. Используйте /help для списка команд.",
                 topic.trim()
             )));
         }
@@ -916,7 +916,7 @@ pub(super) fn handle_keys_command(app: &mut App, trimmed: &str) -> bool {
     {
         app.set_status_notice(status);
     } else {
-        app.set_status_notice("No keybinding conflicts detected");
+        app.set_status_notice("Конфликты клавиш не обнаружены");
     }
     true
 }
@@ -989,7 +989,7 @@ pub(super) fn handle_diff_command(app: &mut App, trimmed: &str) -> bool {
 
     if arg.eq_ignore_ascii_case("status") {
         app.push_display_message(DisplayMessage::system(format!(
-            "Diff mode: {} (use /diff [off|inline|full|pinned|file] or /diff to cycle)",
+            "Режим diff: {} (используйте /diff [off|inline|full|pinned|file] или /diff для переключения)",
             app.diff_mode.label()
         )));
         return true;
@@ -998,7 +998,7 @@ pub(super) fn handle_diff_command(app: &mut App, trimmed: &str) -> bool {
     match parse_diff_mode_name(arg) {
         Some(mode) => apply_diff_mode(app, mode),
         None => app.push_display_message(DisplayMessage::error(
-            "Usage: /diff [off|inline|full|pinned|file|cycle|status]".to_string(),
+            "Использование: /diff [off|inline|full|pinned|file|cycle|status]".to_string(),
         )),
     }
     true
@@ -1014,7 +1014,7 @@ pub(super) fn handle_log_command(app: &mut App, trimmed: &str) -> bool {
     let note = parts.next().unwrap_or_default().trim();
 
     if subcommand != "mark" {
-        app.push_display_message(DisplayMessage::error("Usage: /log mark [note]".to_string()));
+        app.push_display_message(DisplayMessage::error("Использование: /log mark [note]".to_string()));
         return true;
     }
 
@@ -1038,14 +1038,14 @@ pub(super) fn handle_log_command(app: &mut App, trimmed: &str) -> bool {
     ));
 
     let mut message = format!(
-        "Log mark written: {}\n\nAgents can search ~/.jcode/logs/ for JCODE_LOG_MARK or this marker id.",
+        "Метка журнала записана: {}\n\nАгенты могут искать JCODE_LOG_MARK или этот id маркера в ~/.jcode/logs/.",
         marker_id
     );
     if !note.is_empty() {
-        message.push_str(&format!("\n\nNote: {}", note));
+        message.push_str(&format!("\n\nПримечание: {}", note));
     }
     app.push_display_message(DisplayMessage::system(message));
-    app.set_status_notice(format!("Log mark {}", marker_id));
+    app.set_status_notice(format!("Метка журнала {}", marker_id));
     true
 }
 
@@ -1065,9 +1065,9 @@ fn build_provider_test_coverage_summary() -> String {
         }
         Err(err) => {
             let mut out = String::new();
-            out.push_str("Live provider/model E2E coverage\n");
-            out.push_str("Status: no verification ledger found on this install\n");
-            out.push_str(&format!("Ledger error: {err}\n"));
+            out.push_str("Покрытие E2E провайдера/модели в реальном времени\n");
+            out.push_str("Статус: на этой установке не найден журнал проверки\n");
+            out.push_str(&format!("Ошибка журнала: {err}\n"));
             out
         }
     }
@@ -1101,7 +1101,7 @@ pub(super) fn handle_ssh_command(app: &mut App, trimmed: &str) -> bool {
                 disconnect_ssh_remote(app, name);
             } else {
                 app.push_display_message(DisplayMessage::error(
-                    "Usage: /ssh disconnect <name>".to_string(),
+                    "Использование: /ssh disconnect <name>".to_string(),
                 ));
             }
         }
@@ -1111,7 +1111,7 @@ pub(super) fn handle_ssh_command(app: &mut App, trimmed: &str) -> bool {
                 match crate::ssh_remote::upsert_profile(name, target) {
                     Ok(profile) => connect_ssh_remote(app, profile),
                     Err(error) => app.push_display_message(DisplayMessage::error(format!(
-                        "Failed to save SSH remote {}: {}",
+                        "Не удалось сохранить SSH удаленный доступ {}: {}",
                         name, error
                     ))),
                 }
@@ -1120,7 +1120,7 @@ pub(super) fn handle_ssh_command(app: &mut App, trimmed: &str) -> bool {
                     Ok(Some(profile)) => connect_ssh_remote(app, profile),
                     Ok(None) => begin_ssh_target_prompt(app, name),
                     Err(error) => app.push_display_message(DisplayMessage::error(format!(
-                        "Failed to load SSH remotes: {}",
+                        "Не удалось загрузить SSH удаленные доступы: {}",
                         error
                     ))),
                 }
@@ -1134,15 +1134,15 @@ pub(super) fn handle_pending_ssh_remote_target(app: &mut App, name: String, inpu
     let target = input.trim();
     if target.is_empty() || target.eq_ignore_ascii_case("cancel") {
         app.push_display_message(DisplayMessage::system(
-            "SSH remote setup cancelled.".to_string(),
+            "Настройка SSH удаленного доступа отменена.".to_string(),
         ));
-        app.set_status_notice("SSH setup cancelled");
+        app.set_status_notice("Настройка SSH отменена");
         return;
     }
     match crate::ssh_remote::upsert_profile(&name, target) {
         Ok(profile) => connect_ssh_remote(app, profile),
         Err(error) => app.push_display_message(DisplayMessage::error(format!(
-            "Failed to save SSH remote {}: {}",
+            "Не удалось сохранить SSH удаленный доступ {}: {}",
             name, error
         ))),
     }
@@ -1169,7 +1169,7 @@ Security model
 Type cancel to stop setup.",
         name, name
     )));
-    app.set_status_notice("SSH setup 1/4: enter target");
+    app.set_status_notice("Настройка SSH 1/4: введите цель");
 }
 
 fn show_ssh_remotes(app: &mut App) {
@@ -1189,12 +1189,12 @@ Jcode will ask for the SSH target, then use your system SSH client for authentic
             ));
         }
         Ok(config) => {
-            let mut lines = vec!["SSH remotes".to_string(), "".to_string()];
+            let mut lines = vec!["SSH удаленные доступы".to_string(), "".to_string()];
             for profile in config.hosts {
                 let alive = if crate::ssh_remote::is_control_master_alive(&profile) {
-                    "✓ connected"
+                    "✓ подключено"
                 } else {
-                    "not connected"
+                    "не подключено"
                 };
                 lines.push(format!(
                     "  - {} -> {} ({})",
@@ -1203,15 +1203,15 @@ Jcode will ask for the SSH target, then use your system SSH client for authentic
             }
             lines.push("".to_string());
             lines.push(
-                "Use /ssh <name> to connect, /ssh status to check, or /ssh disconnect <name> to disconnect."
+                "Используйте /ssh <name> для подключения, /ssh status для проверки или /ssh disconnect <name> для отключения."
                     .to_string(),
             );
             lines.push("".to_string());
-            lines.push("Security: Jcode stores targets only, never SSH passwords.".to_string());
+            lines.push("Безопасность: Jcode хранит только цели, никогда пароли SSH.".to_string());
             app.push_display_message(DisplayMessage::system(lines.join("\n")));
         }
         Err(error) => app.push_display_message(DisplayMessage::error(format!(
-            "Failed to load SSH remotes: {}",
+            "Не удалось загрузить SSH удаленные доступы: {}",
             error
         ))),
     }
@@ -1240,7 +1240,7 @@ What this means:
 Next implementation step: start the remote Jcode server over this verified SSH connection.",
             profile.name, profile.ssh_target
         )));
-        app.set_status_notice(format!("SSH {} connected 4/4", profile.name));
+        app.set_status_notice(format!("SSH {} подключен 4/4", profile.name));
         return;
     }
 
@@ -1265,7 +1265,7 @@ Security model
   - Close or disconnect later with /ssh disconnect {}.",
                 profile.name, profile.ssh_target, profile.name
             )));
-            app.set_status_notice("SSH setup 2/4: login terminal opened");
+            app.set_status_notice("Настройка SSH 2/4: открыт терминал входа");
         }
         Ok(false) => app.push_display_message(DisplayMessage::system(format!(
             "SSH remote {}
@@ -1284,7 +1284,7 @@ Type your password into that SSH prompt if asked. Jcode will not see or store it
             profile.ssh_target
         ))),
         Err(error) => app.push_display_message(DisplayMessage::error(format!(
-            "Failed to open SSH login terminal: {}",
+            "Не удалось открыть терминал входа SSH: {}",
             error
         ))),
     }
@@ -1295,26 +1295,26 @@ fn disconnect_ssh_remote(app: &mut App, name: &str) {
         Ok(Some(profile)) => match crate::ssh_remote::disconnect(&profile) {
             Ok(true) => {
                 app.push_display_message(DisplayMessage::system(format!(
-                    "Disconnected SSH remote {}.",
+                    "Отключен SSH удаленный доступ {}.",
                     name
                 )));
-                app.set_status_notice("SSH disconnected");
+                app.set_status_notice("SSH отключен");
             }
             Ok(false) => app.push_display_message(DisplayMessage::system(format!(
-                "SSH remote {} did not have an active ControlMaster connection.",
+                "SSH удаленный доступ {} не имел активного ControlMaster соединения.",
                 name
             ))),
             Err(error) => app.push_display_message(DisplayMessage::error(format!(
-                "Failed to disconnect SSH remote {}: {}",
+                "Не удалось отключить SSH удаленный доступ {}: {}",
                 name, error
             ))),
         },
         Ok(None) => app.push_display_message(DisplayMessage::error(format!(
-            "Unknown SSH remote {}. Use /ssh to list remotes.",
+            "Неизвестный SSH удаленный доступ {}. Используйте /ssh для списка удаленных доступов.",
             name
         ))),
         Err(error) => app.push_display_message(DisplayMessage::error(format!(
-            "Failed to load SSH remote {}: {}",
+            "Не удалось загрузить SSH удаленный доступ {}: {}",
             name, error
         ))),
     }
@@ -1327,7 +1327,7 @@ fn handle_btw_command(app: &mut App, trimmed: &str) -> bool {
 
     let question = trimmed.strip_prefix("/btw").unwrap_or_default().trim();
     if question.is_empty() {
-        app.push_display_message(DisplayMessage::error("Usage: /btw <question>".to_string()));
+        app.push_display_message(DisplayMessage::error("Использование: /btw <question>".to_string()));
         return true;
     }
 
@@ -1368,10 +1368,10 @@ pub(super) fn fork_session_with_prompt_local(app: &mut App, prompt: Option<&str>
             app.pending_images = images;
         }
         app.push_display_message(DisplayMessage::error(format!(
-            "Failed to fork session: {}",
+            "Не удалось разделить сессию: {}",
             error
         )));
-        app.set_status_notice("Fork failed");
+        app.set_status_notice("Разделение не удалось");
     }
 }
 
@@ -1390,7 +1390,7 @@ fn handle_catchup_command(app: &mut App, trimmed: &str) -> bool {
     }
     if !app.is_remote {
         app.push_display_message(DisplayMessage::error(
-            "/catchup currently requires a connected shared server session.".to_string(),
+            "/catchup в настоящее время требует подключения к общей серверной сессии.".to_string(),
         ));
         return true;
     }
@@ -1403,16 +1403,16 @@ fn handle_catchup_command(app: &mut App, trimmed: &str) -> bool {
         }
         "next" => {
             if app.is_processing {
-                app.set_status_notice("Finish current work before Catch Up");
+                app.set_status_notice("Завершите текущую работу перед Catch Up");
                 return true;
             }
             let candidates = load_catchup_candidates(app);
             let total = candidates.len();
             let Some(target) = candidates.first() else {
                 app.push_display_message(DisplayMessage::system(
-                    "No sessions currently need catch up.".to_string(),
+                    "Нет сессий, требующих catch up.".to_string(),
                 ));
-                app.set_status_notice("Catch Up: none waiting");
+                app.set_status_notice("Catch Up: нет ожидающих");
                 return true;
             };
 
@@ -1427,7 +1427,7 @@ fn handle_catchup_command(app: &mut App, trimmed: &str) -> bool {
                 true,
             );
             app.push_display_message(DisplayMessage::system(format!(
-                "Queued Catch Up for {}.",
+                "В очереди Catch Up для {}.",
                 target_name,
             )));
             app.set_status_notice(format!("Catch Up → {}", target_name));
@@ -1435,7 +1435,7 @@ fn handle_catchup_command(app: &mut App, trimmed: &str) -> bool {
         }
         _ => {
             app.push_display_message(DisplayMessage::error(
-                "Usage: /catchup [next|list]".to_string(),
+                "Использование: /catchup [next|list]".to_string(),
             ));
             true
         }
@@ -1448,19 +1448,19 @@ fn handle_back_command(app: &mut App, trimmed: &str) -> bool {
     }
     if !app.is_remote {
         app.push_display_message(DisplayMessage::error(
-            "/back currently requires a connected shared server session.".to_string(),
+            "/back в настоящее время требует подключения к общей серверной сессии.".to_string(),
         ));
         return true;
     }
     if app.is_processing {
-        app.set_status_notice("Finish current work before going back");
+        app.set_status_notice("Завершите текущую работу перед возвратом");
         return true;
     }
     let Some(target) = app.pop_catchup_return_target() else {
         app.push_display_message(DisplayMessage::system(
-            "No previous Catch Up session is available.".to_string(),
+            "Нет предыдущей сессии Catch Up.".to_string(),
         ));
-        app.set_status_notice("Back: empty");
+        app.set_status_notice("Back: пусто");
         return true;
     };
 
@@ -1469,7 +1469,7 @@ fn handle_back_command(app: &mut App, trimmed: &str) -> bool {
         .unwrap_or_else(|| target.clone());
     app.queue_catchup_resume(target, None, None, false);
     app.push_display_message(DisplayMessage::system(format!(
-        "Queued return to {}.",
+        "В очереди возврат к {}.",
         target_name,
     )));
     app.set_status_notice(format!("Back → {}", target_name));
@@ -1483,19 +1483,19 @@ fn git_command_repo_dir(app: &App) -> Result<PathBuf, String> {
         }
 
         return Err(format!(
-            "Unable to run /git: session working directory {} is not accessible from this jcode client.",
+            "Невозможно запустить /git: рабочая директория сессии {} недоступна из этого клиента jcode.",
             path.display()
         ));
     }
 
     if app.is_remote {
         return Err(
-            "Unable to run /git: the remote session does not have a working directory.".to_string(),
+            "Невозможно запустить /git: удаленная сессия не имеет рабочей директории.".to_string(),
         );
     }
 
     std::env::current_dir()
-        .map_err(|_| "Unable to determine a working directory for /git.".to_string())
+        .map_err(|_| "Невозможно определить рабочую директорию для /git.".to_string())
 }
 
 fn run_git_command(repo_dir: &std::path::Path, args: &[&str]) -> Result<String, String> {
@@ -1503,13 +1503,13 @@ fn run_git_command(repo_dir: &std::path::Path, args: &[&str]) -> Result<String, 
         .args(args)
         .current_dir(repo_dir)
         .output()
-        .map_err(|error| format!("Failed to run git {}: {}", args.join(" "), error))?;
+        .map_err(|error| format!("Не удалось запустить git {}: {}", args.join(" "), error))?;
 
     if !output.status.success() {
         let stderr = String::from_utf8_lossy(&output.stderr).trim().to_string();
         let failure = if stderr.is_empty() {
             format!(
-                "git {} exited with status {}",
+                "git {} завершился со статусом {}",
                 args.join(" "),
                 output.status
             )
@@ -1528,7 +1528,7 @@ fn build_git_status_message_for_dir(repo_dir: PathBuf) -> Result<String, String>
     let repo_root =
         run_git_command(&repo_dir, &["rev-parse", "--show-toplevel"]).map_err(|error| {
             format!(
-                "No git repository found for {}: {}",
+                "Не найден репозиторий git для {}: {}",
                 repo_dir.display(),
                 error
             )
@@ -1549,9 +1549,9 @@ fn build_git_status_message_for_dir(repo_dir: PathBuf) -> Result<String, String>
         .unwrap_or_else(|| ".".to_string());
 
     let heading = if relative_dir == "." {
-        format!("/git in {}", repo_root)
+        format!("/git в {}", repo_root)
     } else {
-        format!("/git in {} ({})", repo_root, relative_dir)
+        format!("/git в {} ({})", repo_root, relative_dir)
     };
 
     let status_block = status
@@ -1566,7 +1566,7 @@ fn handle_git_command(app: &mut App, trimmed: &str) -> bool {
     if trimmed != "/git" && trimmed != "/git status" {
         if trimmed.starts_with("/git ") {
             app.push_display_message(DisplayMessage::error(
-                "Usage: /git or /git status".to_string(),
+                "Использование: /git или /git status".to_string(),
             ));
             return true;
         }
@@ -1576,7 +1576,7 @@ fn handle_git_command(app: &mut App, trimmed: &str) -> bool {
     let session_id = active_session_id(app);
     match git_command_repo_dir(app) {
         Ok(repo_dir) => {
-            app.set_status_notice("Git status loading...");
+            app.set_status_notice("Загрузка статуса Git...");
             std::thread::spawn(move || {
                 let result = build_git_status_message_for_dir(repo_dir);
                 Bus::global().publish(BusEvent::GitStatusCompleted(GitStatusCompleted {
@@ -1591,18 +1591,18 @@ fn handle_git_command(app: &mut App, trimmed: &str) -> bool {
 }
 
 fn transcript_opened_message(path: &std::path::Path) -> String {
-    format!("Opened transcript file:\n\n  {}", path.display())
+    format!("Открыт файл транскрипта:\n\n  {}", path.display())
 }
 
 fn transcript_path_message(path: &std::path::Path) -> String {
-    format!("Transcript file:\n\n  {}", path.display())
+    format!("Файл транскрипта:\n\n  {}", path.display())
 }
 
 fn handle_transcript_command(app: &mut App, trimmed: &str) -> bool {
     if trimmed != "/transcript" && trimmed != "/transcript path" {
         if trimmed.starts_with("/transcript ") {
             app.push_display_message(DisplayMessage::error(
-                "Usage: /transcript or /transcript path".to_string(),
+                "Использование: /transcript или /transcript path".to_string(),
             ));
             return true;
         }
@@ -1614,7 +1614,7 @@ fn handle_transcript_command(app: &mut App, trimmed: &str) -> bool {
         Ok(path) => path,
         Err(error) => {
             app.push_display_message(DisplayMessage::error(format!(
-                "Failed to resolve transcript path: {}",
+                "Не удалось определить путь к транскрипту: {}",
                 error
             )));
             return true;
@@ -1627,17 +1627,17 @@ fn handle_transcript_command(app: &mut App, trimmed: &str) -> bool {
 
     if trimmed == "/transcript path" {
         app.push_display_message(DisplayMessage::system(transcript_path_message(&path)));
-        app.set_status_notice("Transcript path");
+        app.set_status_notice("Путь к транскрипту");
         return true;
     }
 
     match super::helpers::open_path_or_url_detached(&path) {
         Ok(()) => {
             app.push_display_message(DisplayMessage::system(transcript_opened_message(&path)));
-            app.set_status_notice("Transcript opened");
+            app.set_status_notice("Транскрипт открыт");
         }
         Err(error) => app.push_display_message(DisplayMessage::error(format!(
-            "Failed to open transcript file {}: {}",
+            "Не удалось открыть файл транскрипта {}: {}",
             path.display(),
             error
         ))),
@@ -1654,7 +1654,7 @@ pub(super) fn handle_git_status_completed(app: &mut App, completed: GitStatusCom
     match completed.result {
         Ok(message) => {
             app.push_display_message(DisplayMessage::system(message));
-            app.set_status_notice("Git status");
+            app.set_status_notice("Статус Git");
         }
         Err(error) => app.push_display_message(DisplayMessage::error(error)),
     }
@@ -1717,7 +1717,7 @@ pub(super) fn handle_session_command(app: &mut App, trimmed: &str) -> bool {
         return true;
     }
 
-    if trimmed == "/triage" || trimmed.starts_with("/triage ") {
+    if trimmed == "/triage" || trimmed.starts_with("/triage") {
         let rest = trimmed.strip_prefix("/triage").unwrap_or_default();
         handle_triage_command_local(app, rest);
         return true;
@@ -1765,7 +1765,7 @@ pub(super) fn handle_session_command(app: &mut App, trimmed: &str) -> bool {
         return true;
     }
 
-    if trimmed == "/save" || trimmed.starts_with("/save ") {
+    if trimmed == "/save" || trimmed.starts_with("/save") {
         let label = trimmed.strip_prefix("/save").unwrap_or_default().trim();
         let label = if label.is_empty() {
             None
@@ -1775,7 +1775,7 @@ pub(super) fn handle_session_command(app: &mut App, trimmed: &str) -> bool {
         app.session.mark_saved(label.clone());
         if let Err(e) = app.session.save() {
             app.push_display_message(DisplayMessage::error(format!(
-                "Failed to save session: {}",
+                "Не удалось сохранить сессию: {}",
                 e
             )));
             return true;
@@ -1790,12 +1790,12 @@ pub(super) fn handle_session_command(app: &mut App, trimmed: &str) -> bool {
             )
         } else {
             format!(
-                "📌 Session {} saved. It will appear at the top of /resume.",
+                "📌 Сессия {} сохранена. Она появится вверху /resume.",
                 name,
             )
         };
         app.push_display_message(DisplayMessage::system(msg));
-        app.set_status_notice("Session saved");
+        app.set_status_notice("Сессия сохранена");
         return true;
     }
 
@@ -1803,7 +1803,7 @@ pub(super) fn handle_session_command(app: &mut App, trimmed: &str) -> bool {
         app.session.unmark_saved();
         if let Err(e) = app.session.save() {
             app.push_display_message(DisplayMessage::error(format!(
-                "Failed to save session: {}",
+                "Не удалось сохранить сессию: {}",
                 e
             )));
             return true;
@@ -1811,18 +1811,18 @@ pub(super) fn handle_session_command(app: &mut App, trimmed: &str) -> bool {
         crate::tui::session_picker::invalidate_session_list_cache();
         let name = app.session.display_name().to_string();
         app.push_display_message(DisplayMessage::system(format!(
-            "Removed bookmark from session {}.",
+            "Удалена закладка из сессии {}.",
             name,
         )));
-        app.set_status_notice("Bookmark removed");
+        app.set_status_notice("Закладка удалена");
         return true;
     }
 
-    if trimmed == "/rename" || trimmed.starts_with("/rename ") {
+    if trimmed == "/rename" || trimmed.starts_with("/rename") {
         let title = trimmed.strip_prefix("/rename").unwrap_or_default().trim();
         if title.is_empty() {
             app.push_display_message(DisplayMessage::error(
-                "Usage: /rename <session name> or /rename --clear".to_string(),
+                "Использование: /rename <имя сессии> или /rename --clear".to_string(),
             ));
             return true;
         }
@@ -1831,7 +1831,7 @@ pub(super) fn handle_session_command(app: &mut App, trimmed: &str) -> bool {
             app.session.rename_title(None);
             if let Err(e) = app.session.save() {
                 app.push_display_message(DisplayMessage::error(format!(
-                    "Failed to clear session name: {}",
+                    "Не удалось очистить имя сессии: {}",
                     e
                 )));
                 return true;
@@ -1840,17 +1840,17 @@ pub(super) fn handle_session_command(app: &mut App, trimmed: &str) -> bool {
             app.update_terminal_title();
             let name = app.session.display_title_or_name().to_string();
             app.push_display_message(DisplayMessage::system(format!(
-                "Cleared custom name. Session title is now {}.",
+                "Очищено пользовательское имя. Заголовок сессии теперь {}.",
                 name,
             )));
-            app.set_status_notice("Session name cleared");
+            app.set_status_notice("Имя сессии очищено");
             return true;
         }
 
         app.session.rename_title(Some(title.to_string()));
         if let Err(e) = app.session.save() {
             app.push_display_message(DisplayMessage::error(format!(
-                "Failed to rename session: {}",
+                "Не удалось переименовать сессию: {}",
                 e
             )));
             return true;
@@ -1858,26 +1858,26 @@ pub(super) fn handle_session_command(app: &mut App, trimmed: &str) -> bool {
         crate::tui::session_picker::invalidate_session_list_cache();
         app.update_terminal_title();
         app.push_display_message(DisplayMessage::system(format!(
-            "Renamed session to {}.",
+            "Сессия переименована в {}.",
             title,
         )));
-        app.set_status_notice("Session renamed");
+        app.set_status_notice("Сессия переименована");
         return true;
     }
 
     if trimmed == "/memory status" {
         let default_enabled = crate::config::config().features.memory;
         app.push_display_message(DisplayMessage::system(format!(
-            "Memory feature: {} (config default: {})",
+            "Функция памяти: {} (по умолчанию в конфиге: {})",
             if app.memory_enabled {
-                "enabled"
+                "включена"
             } else {
-                "disabled"
+                "отключена"
             },
             if default_enabled {
-                "enabled"
+                "включена"
             } else {
-                "disabled"
+                "отключена"
             }
         )));
         return true;
@@ -1887,35 +1887,35 @@ pub(super) fn handle_session_command(app: &mut App, trimmed: &str) -> bool {
         let new_state = !app.memory_enabled;
         app.set_memory_feature_enabled(new_state);
         let label = if new_state { "ON" } else { "OFF" };
-        app.set_status_notice(format!("Memory: {}", label));
+        app.set_status_notice(format!("Память: {}", label));
         app.push_display_message(DisplayMessage::system(format!(
-            "Memory feature {} for this session.",
-            if new_state { "enabled" } else { "disabled" }
+            "Функция памяти {} для этой сессии.",
+            if new_state { "включена" } else { "отключена" }
         )));
         return true;
     }
 
     if trimmed == "/memory on" {
         app.set_memory_feature_enabled(true);
-        app.set_status_notice("Memory: ON");
+        app.set_status_notice("Память: ВКЛ");
         app.push_display_message(DisplayMessage::system(
-            "Memory feature enabled for this session.".to_string(),
+            "Функция памяти включена для этой сессии.".to_string(),
         ));
         return true;
     }
 
     if trimmed == "/memory off" {
         app.set_memory_feature_enabled(false);
-        app.set_status_notice("Memory: OFF");
+        app.set_status_notice("Память: ВЫКЛ");
         app.push_display_message(DisplayMessage::system(
-            "Memory feature disabled for this session.".to_string(),
+            "Функция памяти отключена для этой сессии.".to_string(),
         ));
         return true;
     }
 
-    if trimmed.starts_with("/memory ") {
+    if trimmed.starts_with("/memory") {
         app.push_display_message(DisplayMessage::error(
-            "Usage: /memory [on|off|status]".to_string(),
+            "Использование: /memory [on|off|status]".to_string(),
         ));
         return true;
     }
@@ -1935,16 +1935,16 @@ pub(super) fn handle_session_command(app: &mut App, trimmed: &str) -> bool {
     if trimmed == "/swarm" || trimmed == "/swarm status" {
         let default_enabled = crate::config::config().features.swarm;
         app.push_display_message(DisplayMessage::system(format!(
-            "Swarm feature: {} (config default: {})",
+            "Функция роя: {} (по умолчанию в конфиге: {})",
             if app.swarm_enabled {
-                "enabled"
+                "включена"
             } else {
-                "disabled"
+                "отключена"
             },
             if default_enabled {
-                "enabled"
+                "включена"
             } else {
-                "disabled"
+                "отключена"
             }
         )));
         return true;
@@ -1952,32 +1952,32 @@ pub(super) fn handle_session_command(app: &mut App, trimmed: &str) -> bool {
 
     if trimmed == "/swarm on" {
         app.set_swarm_feature_enabled(true);
-        app.set_status_notice("Swarm: ON");
+        app.set_status_notice("Рой: ВКЛ");
         app.push_display_message(DisplayMessage::system(
-            "Swarm feature enabled for this session.".to_string(),
+            "Функция роя включена для этой сессии.".to_string(),
         ));
         return true;
     }
 
     if trimmed == "/swarm off" {
         app.set_swarm_feature_enabled(false);
-        app.set_status_notice("Swarm: OFF");
+        app.set_status_notice("Рой: ВЫКЛ");
         app.push_display_message(DisplayMessage::system(
-            "Swarm feature disabled for this session.".to_string(),
+            "Функция роя отключена для этой сессии.".to_string(),
         ));
         return true;
     }
 
-    if trimmed.starts_with("/swarm ") {
+    if trimmed.starts_with("/swarm") {
         app.push_display_message(DisplayMessage::error(
-            "Usage: /swarm [on|off|status]".to_string(),
+            "Использование: /swarm [on|off|status]".to_string(),
         ));
         return true;
     }
 
     if trimmed == "/rewind undo" {
         let Some(snapshot) = app.rewind_undo_snapshot.take() else {
-            app.push_display_message(DisplayMessage::system("No rewind to undo.".to_string()));
+            app.push_display_message(DisplayMessage::system("Нет перемотки для отмены.".to_string()));
             return true;
         };
 
@@ -2012,9 +2012,9 @@ pub(super) fn handle_session_command(app: &mut App, trimmed: &str) -> bool {
 
         let _ = app.session.save();
         app.push_display_message(DisplayMessage::system(format!(
-            "✓ Undid rewind. Restored {} message{}.",
+            "✓ Отменена перемотка. Восстановлено {} сообщени{}.",
             restored,
-            if restored == 1 { "" } else { "s" }
+            if restored == 1 { "" } else { "е" }
         )));
         return true;
     }
@@ -2029,29 +2029,29 @@ pub(super) fn handle_session_command(app: &mut App, trimmed: &str) -> bool {
             .collect();
         if rendered_targets.is_empty() {
             app.push_display_message(DisplayMessage::system(
-                "No messages in conversation.".to_string(),
+                "Нет сообщений в разговоре.".to_string(),
             ));
             return true;
         }
 
-        let mut history = String::from("Conversation history:\n\n");
+        let mut history = String::from("История разговора:\n\n");
         for (i, msg) in rendered_targets.iter().enumerate() {
             let role_str = match msg.role.as_str() {
-                "user" => "👤 User",
-                "assistant" => "🤖 Assistant",
-                _ => "💬 Message",
+                "user" => "👤 Пользователь",
+                "assistant" => "🤖 Ассистент",
+                _ => "💬 Сообщение",
             };
             let content = msg.content.replace('\n', " ");
             let preview = crate::util::truncate_str(content.trim(), 80);
             history.push_str(&format!("  {} {} - {}\n", i + 1, role_str, preview));
         }
-        history.push_str("\nUse /rewind N to rewind to message N (removes all messages after). After rewinding, use /rewind undo to restore the removed messages.");
+        history.push_str("\nИспользуйте /rewind N для перемотки к сообщению N (удаляет все сообщения после). После перемотки используйте /rewind undo для восстановления удаленных сообщений.");
 
         app.push_display_message(DisplayMessage::system(history));
         return true;
     }
 
-    if let Some(num_str) = trimmed.strip_prefix("/rewind ") {
+    if let Some(num_str) = trimmed.strip_prefix("/rewind") {
         let num_str = num_str.trim();
         let targets = app.session.rewind_target_stored_indices();
         let visible_count = targets.len();
@@ -2096,21 +2096,21 @@ pub(super) fn handle_session_command(app: &mut App, trimmed: &str) -> bool {
                 let _ = app.session.save();
 
                 app.push_display_message(DisplayMessage::system(format!(
-                    "✓ Rewound to message {}. Removed {} message{}. Undo anytime with /rewind undo.",
+                    "✓ Перемотано к сообщению {}. Удалено {} сообщени{}. Отменить в любое время с помощью /rewind undo.",
                     n,
                     removed,
-                    if removed == 1 { "" } else { "s" }
+                    if removed == 1 { "" } else { "й" }
                 )));
             }
             Ok(n) => {
                 app.push_display_message(DisplayMessage::error(format!(
-                    "Invalid message number: {}. Valid range: 1-{}",
+                    "Неверный номер сообщения: {}. Допустимый диапазон: 1-{}",
                     n, visible_count
                 )));
             }
             Err(_) => {
                 app.push_display_message(DisplayMessage::error(format!(
-                    "Usage: /rewind N where N is a message number (1-{})",
+                    "Использование: /rewind N, где N - номер сообщения (1-{})",
                     visible_count
                 )));
             }
@@ -2126,7 +2126,7 @@ pub(super) fn handle_session_command(app: &mut App, trimmed: &str) -> bool {
             }
             Ok(PokeCommand::Off) => {
                 let cleared = disable_auto_poke(app);
-                app.set_status_notice("Poke: OFF");
+                app.set_status_notice("Поке: ВЫКЛ");
                 app.push_display_message(DisplayMessage::system(poke_disabled_message(cleared)));
             }
             Ok(PokeCommand::Trigger | PokeCommand::On) => {
@@ -2140,7 +2140,7 @@ pub(super) fn handle_session_command(app: &mut App, trimmed: &str) -> bool {
     if trimmed == "/transfer" {
         if app.is_remote {
             app.push_display_message(DisplayMessage::error(
-                "/transfer requires an active connected session in remote mode.".to_string(),
+                "/transfer требует активной подключенной сессии в удаленном режиме.".to_string(),
             ));
         } else {
             handle_transfer_command_local(app);
@@ -2148,8 +2148,8 @@ pub(super) fn handle_session_command(app: &mut App, trimmed: &str) -> bool {
         return true;
     }
 
-    if trimmed.starts_with("/transfer ") {
-        app.push_display_message(DisplayMessage::error("Usage: /transfer".to_string()));
+    if trimmed.starts_with("/transfer") {
+        app.push_display_message(DisplayMessage::error("Использование: /transfer".to_string()));
         return true;
     }
 
@@ -2227,9 +2227,9 @@ pub(super) fn build_triage_prompt(focus: &str) -> String {
 
 pub(super) fn triage_launch_notice(interrupted: bool) -> String {
     if interrupted {
-        "👉 Interrupting and starting GitHub issue triage...".to_string()
+        "👉 Прерывание и начало триажа проблем GitHub...".to_string()
     } else {
-        "🚀 Starting GitHub issue triage...".to_string()
+        "🚀 Начало триажа проблем GitHub...".to_string()
     }
 }
 
@@ -2239,7 +2239,7 @@ fn handle_triage_command_local(app: &mut App, rest: &str) {
         super::commands_improve::interrupt_and_queue_synthetic_message(
             app,
             prompt,
-            "Interrupting for /triage...",
+            "Прерывание для /triage...",
             triage_launch_notice(true),
         );
     } else {
@@ -2250,41 +2250,41 @@ fn handle_triage_command_local(app: &mut App, rest: &str) {
 
 pub(super) fn commit_launch_notice(interrupted: bool) -> String {
     if interrupted {
-        "👉 Interrupting and starting logical commits...".to_string()
+        "👉 Прерывание и начало логических коммитов...".to_string()
     } else {
-        "🚀 Starting logical commits...".to_string()
+        "🚀 Начало логических коммитов...".to_string()
     }
 }
 
 pub(super) fn commit_push_launch_notice(interrupted: bool) -> String {
     if interrupted {
-        "👉 Interrupting and starting logical commits + push...".to_string()
+        "👉 Прерывание и начало логических коммитов + push...".to_string()
     } else {
-        "🚀 Starting logical commits + push...".to_string()
+        "🚀 Начало логических коммитов + push...".to_string()
     }
 }
 
 pub(super) fn fast_release_launch_notice(interrupted: bool) -> String {
     if interrupted {
-        "👉 Interrupting and starting logical commits + push + fast local release...".to_string()
+        "👉 Прерывание и начало логических коммитов + push + быстрый локальный релиз...".to_string()
     } else {
-        "🚀 Starting logical commits + push + fast local release...".to_string()
+        "🚀 Начало логических коммитов + push + быстрый локальный релиз...".to_string()
     }
 }
 
 pub(super) fn fast_macos_release_launch_notice(interrupted: bool) -> String {
     if interrupted {
-        "👉 Interrupting and starting logical commits + push + fast macOS release...".to_string()
+        "👉 Прерывание и начало логических коммитов + push + быстрый macOS релиз...".to_string()
     } else {
-        "🚀 Starting logical commits + push + fast macOS release...".to_string()
+        "🚀 Начало логических коммитов + push + быстрый macOS релиз...".to_string()
     }
 }
 
 pub(super) fn remote_release_launch_notice(interrupted: bool) -> String {
     if interrupted {
-        "👉 Interrupting and starting logical commits + push + remote release...".to_string()
+        "👉 Прерывание и начало логических коммитов + push + удаленный релиз...".to_string()
     } else {
-        "🚀 Starting logical commits + push + remote release...".to_string()
+        "🚀 Начало логических коммитов + push + удаленный релиз...".to_string()
     }
 }
 
@@ -2294,7 +2294,7 @@ fn handle_commit_command_local(app: &mut App) {
         super::commands_improve::interrupt_and_queue_synthetic_message(
             app,
             prompt,
-            "Interrupting for /commit...",
+            "Прерывание для /commit...",
             commit_launch_notice(true),
         );
     } else {
@@ -2309,7 +2309,7 @@ fn handle_commit_push_command_local(app: &mut App) {
         super::commands_improve::interrupt_and_queue_synthetic_message(
             app,
             prompt,
-            "Interrupting for /commit-push...",
+            "Прерывание для /commit-push...",
             commit_push_launch_notice(true),
         );
     } else {
@@ -2324,7 +2324,7 @@ fn handle_fast_release_command_local(app: &mut App) {
         super::commands_improve::interrupt_and_queue_synthetic_message(
             app,
             prompt,
-            "Interrupting for /fast-release...",
+            "Прерывание для /fast-release...",
             fast_release_launch_notice(true),
         );
     } else {
@@ -2785,9 +2785,9 @@ fn alignment_label(centered: bool) -> &'static str {
 
 fn alignment_status_notice(centered: bool) -> &'static str {
     if centered {
-        "Layout: Centered"
+        "Расположение: По центру"
     } else {
-        "Layout: Left-aligned"
+        "Расположение: Слева"
     }
 }
 
@@ -2834,16 +2834,16 @@ fn handle_compact_notifications_command(app: &mut App, trimmed: &str) -> bool {
     };
 
     app.set_status_notice(format!(
-        "Compact notifications: {}",
+        "Компактные уведомления: {}",
         if enabled { "on" } else { "off" }
     ));
     match crate::config::Config::set_compact_notifications(enabled) {
         Ok(()) => app.push_display_message(DisplayMessage::system(format!(
-            "Saved compact notifications: {}. Applied to this session immediately.",
+            "Сохранены компактные уведомления: {}. Применены к этой сессии немедленно.",
             if enabled { "on" } else { "off" }
         ))),
         Err(error) => app.push_display_message(DisplayMessage::error(format!(
-            "Applied compact notifications {} for this session, but failed to save it as the default: {}",
+            "Применены компактные уведомления {} для этой сессии, но не удалось сохранить как стандартные: {}",
             if enabled { "on" } else { "off" },
             error
         ))),
@@ -2880,17 +2880,17 @@ fn handle_tool_call_details_command(app: &mut App, trimmed: &str) -> bool {
     };
 
     app.set_status_notice(format!(
-        "Tool call details: {}",
+        "Детали вызова инструментов: {}",
         if enabled { "on" } else { "off" }
     ));
     match crate::config::Config::set_tool_call_details(enabled) {
         Ok(()) => app.push_display_message(DisplayMessage::system(format!(
-            "Saved tool call details: {}. Applied to this session immediately.",
+            "Сохранены детали вызова инструментов: {}. Применены к этой сессии немедленно.",
             if enabled { "on" } else { "off" }
         ))),
         Err(error) => app.push_display_message(DisplayMessage::error(format!(
             "Applied tool call details {} for this session, but failed to save it as the default: {}",
-            if enabled { "on" } else { "off" },
+            if enabled { "включено" } else { "выключено" },
             error
         ))),
     }
@@ -2912,30 +2912,30 @@ fn handle_show_agentgrep_output_command(app: &mut App, trimmed: &str) -> bool {
         let current = crate::config::config().display.show_agentgrep_output;
         app.push_display_message(DisplayMessage::system(format!(
             "Show agentgrep output is currently {}.\n\nWhen on, the full agentgrep search results render inline in the transcript instead of just the one-line summary.\n\nUse /show-agentgrep-output on or /show-agentgrep-output off to change it.",
-            if current { "on" } else { "off" }
+            if current { "включено" } else { "выключено" }
         )));
         return true;
     }
 
     let Some(enabled) = parse_on_off_value(rest) else {
         app.push_display_message(DisplayMessage::error(
-            "Usage: /show-agentgrep-output (show), /show-agentgrep-output on, or /show-agentgrep-output off".to_string(),
+            "Использование: /show-agentgrep-output (show), /show-agentgrep-output on или /show-agentgrep-output off".to_string(),
         ));
         return true;
     };
 
     app.set_status_notice(format!(
-        "Show agentgrep output: {}",
-        if enabled { "on" } else { "off" }
+        "Показать вывод agentgrep: {}",
+        if enabled { "включено" } else { "выключено" }
     ));
     match crate::config::Config::set_show_agentgrep_output(enabled) {
         Ok(()) => app.push_display_message(DisplayMessage::system(format!(
-            "Saved show agentgrep output: {}. Applied to this session immediately.",
-            if enabled { "on" } else { "off" }
+            "Сохранено отображение вывода agentgrep: {}. Применено к текущей сессии немедленно.",
+            if enabled { "включено" } else { "выключено" }
         ))),
         Err(error) => app.push_display_message(DisplayMessage::error(format!(
-            "Applied show agentgrep output {} for this session, but failed to save it as the default: {}",
-            if enabled { "on" } else { "off" },
+            "Применено отображение вывода agentgrep {} для этой сессии, но не удалось сохранить как значение по умолчанию: {}",
+            if enabled { "включено" } else { "выключено" },
             error
         ))),
     }
@@ -2996,7 +2996,7 @@ pub(super) fn handle_swarm_prompt_command(app: &mut App, trimmed: &str) -> bool 
         && trimmed != "/swarm-prompt open"
     {
         if trimmed.starts_with("/swarm-prompt ") {
-            app.push_display_message(DisplayMessage::error("Usage: /swarm-prompt".to_string()));
+            app.push_display_message(DisplayMessage::error("Использование: /swarm-prompt".to_string()));
             return true;
         }
         return false;
@@ -3006,7 +3006,7 @@ pub(super) fn handle_swarm_prompt_command(app: &mut App, trimmed: &str) -> bool 
         Ok(path) => path,
         Err(error) => {
             app.push_display_message(DisplayMessage::error(format!(
-                "Failed to locate the Jcode config directory: {}",
+                "Не удалось найти каталог конфигурации Jcode: {}",
                 error
             )));
             return true;
@@ -3016,7 +3016,7 @@ pub(super) fn handle_swarm_prompt_command(app: &mut App, trimmed: &str) -> bool 
         Ok(path) => path,
         Err(error) => {
             app.push_display_message(DisplayMessage::error(format!(
-                "Failed to prepare the swarm prompt file: {}",
+                "Не удалось подготовить файл подсказки роя: {}",
                 error
             )));
             return true;
@@ -3029,7 +3029,7 @@ pub(super) fn handle_swarm_prompt_command(app: &mut App, trimmed: &str) -> bool 
     let mut parts = editor.split_whitespace();
     let Some(bin) = parts.next() else {
         app.push_display_message(DisplayMessage::error(
-            "$VISUAL/$EDITOR is empty; cannot open the swarm prompt.".to_string(),
+            "$VISUAL/$EDITOR пуст; невозможно открыть подсказку роя.".to_string(),
         ));
         return true;
     };
@@ -3039,20 +3039,20 @@ pub(super) fn handle_swarm_prompt_command(app: &mut App, trimmed: &str) -> bool 
     match run_interactive_editor(&mut command) {
         Ok(status) if status.success() => {
             app.push_display_message(DisplayMessage::system(format!(
-                "Edited the active swarm routing prompt in {}:\n{}\n\nNew agents will use this prompt immediately. Existing agents retain their current prompt to preserve their context cache.",
+                "Отредактирована активная подсказка маршрутизации роя в {}:\n{}\n\nНовые агенты будут использовать эту подсказку немедленно. Существующие агенты сохраняют свою текущую подсказку для сохранения кэша контекста.",
                 editor,
                 path.display()
             )));
-            app.set_status_notice("Edited swarm prompt");
+            app.set_status_notice("Отредактирована подсказка роя");
         }
         Ok(status) => app.push_display_message(DisplayMessage::error(format!(
-            "Editor '{}' exited with status {} while editing {}",
+            "Редактор '{}' завершил работу со статусом {} при редактировании {}",
             editor,
             status,
             path.display()
         ))),
         Err(error) => app.push_display_message(DisplayMessage::error(format!(
-            "Failed to launch editor '{}' for {}: {}",
+            "Не удалось запустить редактор '{}' для {}: {}",
             editor,
             path.display(),
             error
@@ -3139,20 +3139,20 @@ mod interactive_editor_tests {
             &mut command,
             {
                 let events = Rc::clone(&events);
-                move || events.borrow_mut().push("suspend")
+                move || events.borrow_mut().push("приостановить")
             },
             move || {
                 assert!(
                     started.elapsed() >= std::time::Duration::from_millis(40),
-                    "terminal resumed before the editor process exited"
+                    "терминал возобновлен до завершения процесса редактора"
                 );
-                child_events.borrow_mut().push("resume");
+                child_events.borrow_mut().push("возобновить");
             },
         )
-        .expect("editor command should run");
+        .expect("команда редактора должна выполниться");
 
         assert!(status.success());
-        assert_eq!(&*events.borrow(), &["suspend", "resume"]);
+        assert_eq!(&*events.borrow(), &["приостановить", "возобновить"]);
     }
 
     #[test]
@@ -3169,7 +3169,7 @@ mod interactive_editor_tests {
                 *resumed_after.borrow_mut() = true;
             },
         )
-        .expect("shell should launch");
+        .expect("оболочка должна запуститься");
 
         assert_eq!(status.code(), Some(7));
         assert!(*resumed.borrow());
@@ -3189,7 +3189,7 @@ pub(super) fn handle_agents_command(app: &mut App, trimmed: &str) -> bool {
 
     let Some(target) = parse_agents_target(rest) else {
         app.push_display_message(DisplayMessage::error(
-            "Usage: /agents or /agents <swarm|review|judge|memory|ambient>".to_string(),
+            "Использование: /agents или /agents <swarm|review|judge|memory|ambient>".to_string(),
         ));
         return true;
     };
@@ -3211,7 +3211,7 @@ fn handle_alignment_command(app: &mut App, trimmed: &str) -> bool {
     if rest.is_empty() || matches!(rest, "show" | "status") {
         let saved = crate::config::Config::load().display.centered;
         app.push_display_message(DisplayMessage::system(format!(
-            "Alignment is currently {}.\nSaved default: {}.\n\nUse /alignment centered or /alignment left to change it permanently, or press {} to toggle it for the current session.",
+            "Выравнивание сейчас {}.\nСохраненное значение по умолчанию: {}.\n\nИспользуйте /alignment centered или /alignment left для постоянного изменения, или нажмите {}, чтобы переключить для текущей сессии.",
             alignment_label(app.centered),
             alignment_label(saved), jcode_tui_core::keybind::alt_chord("C")
         )));
@@ -3220,7 +3220,7 @@ fn handle_alignment_command(app: &mut App, trimmed: &str) -> bool {
 
     let Some(centered) = parse_alignment_value(rest) else {
         app.push_display_message(DisplayMessage::error(
-            "Usage: /alignment (show), /alignment centered, or /alignment left".to_string(),
+            "Использование: /alignment (show), /alignment centered или /alignment left".to_string(),
         ));
         return true;
     };
@@ -3231,11 +3231,11 @@ fn handle_alignment_command(app: &mut App, trimmed: &str) -> bool {
 
     match crate::config::Config::set_display_centered(centered) {
         Ok(()) => app.push_display_message(DisplayMessage::system(format!(
-            "Saved default alignment: {}. Applied to this session immediately.",
+            "Сохранено выравнивание по умолчанию: {}. Применено к текущей сессии немедленно.",
             alignment_label(centered)
         ))),
         Err(error) => app.push_display_message(DisplayMessage::error(format!(
-            "Applied {} alignment for this session, but failed to save it as the default: {}",
+            "Применено выравнивание {} для этой сессии, но не удалось сохранить как значение по умолчанию: {}",
             alignment_label(centered),
             error
         ))),
@@ -3278,19 +3278,19 @@ fn handle_reasoning_display_command(app: &mut App, trimmed: &str) -> bool {
 
     let Some(mode) = crate::config::ReasoningDisplayMode::parse(rest) else {
         app.push_display_message(DisplayMessage::error(
-            "Usage: /thinking-display (show), then off, full, or current".to_string(),
+            "Использование: /thinking-display (show), затем off, full или current".to_string(),
         ));
         return true;
     };
 
-    app.set_status_notice(format!("Thinking display: {}", mode.label()));
+    app.set_status_notice(format!("Отображение мышления: {}", mode.label()));
     match crate::config::Config::set_reasoning_display(mode) {
         Ok(()) => app.push_display_message(DisplayMessage::system(format!(
-            "Saved thinking display: {}. Applied to this session immediately.",
+            "Сохранено отображение мышления: {}. Применено к текущей сессии немедленно.",
             mode.label()
         ))),
         Err(error) => app.push_display_message(DisplayMessage::error(format!(
-            "Applied thinking display {} for this session, but failed to save it as the default: {}",
+            "Применено отображение мышления {} для этой сессии, но не удалось сохранить как значение по умолчанию: {}",
             mode.label(),
             error
         ))),
@@ -3336,7 +3336,7 @@ pub(super) fn handle_config_command(app: &mut App, trimmed: &str) -> bool {
             .map(|manager| manager.mode())
             .unwrap_or_default();
         app.push_display_message(DisplayMessage::system(format!(
-            "Compaction mode: {}\nAvailable: reactive, proactive, semantic\nUse /compact mode <mode> to change it for this session.",
+            "Режим компактности: {}\nДоступные: reactive, proactive, semantic\nИспользуйте /compact mode <mode> для изменения в этой сессии.",
             mode.as_str()
         )));
         return true;
@@ -3346,7 +3346,7 @@ pub(super) fn handle_config_command(app: &mut App, trimmed: &str) -> bool {
         let mode_str = mode_str.trim();
         let Some(mode) = crate::config::CompactionMode::parse(mode_str) else {
             app.push_display_message(DisplayMessage::error(
-                "Usage: /compact mode <reactive|proactive|semantic>".to_string(),
+                "Использование: /compact mode <reactive|proactive|semantic>".to_string(),
             ));
             return true;
         };
@@ -3356,14 +3356,14 @@ pub(super) fn handle_config_command(app: &mut App, trimmed: &str) -> bool {
                 manager.set_mode(mode.clone());
                 let label = mode.as_str();
                 app.push_display_message(DisplayMessage::system(format!(
-                    "✓ Compaction mode → {}",
+                    "✓ Режим компактности → {}",
                     label
                 )));
-                app.set_status_notice(format!("Compaction: {}", label));
+                app.set_status_notice(format!("Компактность: {}", label));
             }
             Err(_) => {
                 app.push_display_message(DisplayMessage::error(
-                    "Cannot access compaction manager (lock held)".to_string(),
+                    "Невозможно получить доступ к менеджеру компактности (блокировка занята)".to_string(),
                 ));
             }
         }
@@ -3373,7 +3373,7 @@ pub(super) fn handle_config_command(app: &mut App, trimmed: &str) -> bool {
     if trimmed == "/compact" {
         if !app.provider.supports_compaction() {
             app.push_display_message(DisplayMessage::system(
-                "Manual compaction is not available for this provider.".to_string(),
+                "Ручная компактность недоступна для этого провайдера.".to_string(),
             ));
             return true;
         }
@@ -3394,11 +3394,11 @@ pub(super) fn handle_config_command(app: &mut App, trimmed: &str) -> bool {
                     stats.token_estimate / 1000,
                     manager.token_budget() / 1000,
                     stats.context_usage * 100.0,
-                    if stats.has_summary { "yes" } else { "no" },
+                    if stats.has_summary { "да" } else { "нет" },
                     if stats.is_compacting {
-                        "in progress..."
+                        "в процессе..."
                     } else {
-                        "no"
+                        "нет"
                     }
                 );
 
@@ -3414,7 +3414,7 @@ pub(super) fn handle_config_command(app: &mut App, trimmed: &str) -> bool {
                                 The summary will be applied automatically when ready.\n\
                                 Use /help compact for details.",
                                 status_msg,
-                                App::format_compaction_started_message("manual")
+                                App::format_compaction_started_message("ручной")
                             ),
                             tool_calls: vec![],
                             duration_secs: None,
@@ -3486,7 +3486,7 @@ pub(super) fn handle_config_command(app: &mut App, trimmed: &str) -> bool {
                 app.push_display_message(DisplayMessage {
                     role: "system".to_string(),
                     content: format!(
-                        "Created default config file at:\n{}\n\nEdit this file to customize your keybindings and settings.",
+                        "Создан файл конфигурации по умолчанию в:\n{}\n\nОтредактируйте этот файл для настройки клавиатурных сокращений и параметров.",
                         path.display()
                     ),
                     tool_calls: vec![],
@@ -3540,25 +3540,25 @@ pub(super) fn handle_config_command(app: &mut App, trimmed: &str) -> bool {
                     match run_interactive_editor(&mut command) {
                         Ok(status) if status.success() => {
                             app.push_display_message(DisplayMessage::system(format!(
-                                "Edited config in {}:\n{}\n\n*Restart jcode after editing for changes to take effect.*",
+                                "Отредактирован конфиг в {}:\n{}\n\n*Перезапустите jcode после редактирования, чтобы изменения вступили в силу.*",
                                 editor,
                                 path.display()
                             )));
-                            app.set_status_notice("Edited config");
+                            app.set_status_notice("Конфиг отредактирован");
                         }
                         Ok(status) => app.push_display_message(DisplayMessage::error(format!(
-                            "Editor '{}' exited with status {}",
+                            "Редактор '{}' завершил работу со статусом {}",
                             editor, status
                         ))),
                         Err(e) => app.push_display_message(DisplayMessage::error(format!(
-                            "Failed to launch editor '{}': {}",
+                            "Не удалось запустить редактор '{}': {}",
                             editor, e
                         ))),
                     }
                 }
                 None => {
                     app.push_display_message(DisplayMessage::error(
-                        "$EDITOR is set to an empty value; cannot open config.".to_string(),
+                        "$EDITOR установлен в пустое значение; невозможно открыть конфиг.".to_string(),
                     ));
                 }
             }
@@ -3566,9 +3566,9 @@ pub(super) fn handle_config_command(app: &mut App, trimmed: &str) -> bool {
         return true;
     }
 
-    if trimmed.starts_with("/config ") {
+    if trimmed.starts_with("/config") {
         app.push_display_message(DisplayMessage::error(
-            "Usage: /config (show), /config init (create), /config edit (open in editor)"
+            "Использование: /config (показать), /config init (создать), /config edit (открыть в редакторе)"
                 .to_string(),
         ));
         return true;
@@ -3605,16 +3605,16 @@ pub(super) fn handle_feedback_command(app: &mut App, trimmed: &str) -> bool {
     let feedback = rest.trim();
     if feedback.is_empty() {
         app.push_display_message(DisplayMessage::error(
-            "Usage: /feedback <your feedback>".to_string(),
+            "Использование: /feedback <ваш отзыв>".to_string(),
         ));
         return true;
     }
 
     crate::telemetry::record_feedback(feedback);
     app.push_display_message(DisplayMessage::system(
-        "Thanks, recorded your feedback.".to_string(),
+        "Спасибо, ваш отзыв записан.".to_string(),
     ));
-    app.set_status_notice("Feedback recorded");
+    app.set_status_notice("Отзыв записан");
     true
 }
 
@@ -3642,15 +3642,15 @@ pub(super) fn handle_telemetry_command(app: &mut App, trimmed: &str) -> bool {
             let current = TelemetryLevel::current();
             let detail = match current {
                 TelemetryLevel::Everything => {
-                    "Sending everything, including prompts and transcripts. Thank you."
+                    "Отправка всего, включая подсказки и транскрипты. Спасибо."
                 }
                 TelemetryLevel::NoContent => {
-                    "Sending usage stats and crash reports only. No prompts or transcripts."
+                    "Отправка только статистики использования и отчетов о сбоях. Без подсказок и транскриптов."
                 }
-                TelemetryLevel::Nothing => "Sending nothing.",
+                TelemetryLevel::Nothing => "Ничего не отправляется.",
             };
             app.push_display_message(DisplayMessage::system(format!(
-                "{detail}\nChange it with /telemetry everything | no-prompts | nothing."
+                "{detail}\nИзмените это с помощью /telemetry everything | no-prompts | nothing."
             )));
             app.set_status_notice(current.status_label());
             return true;

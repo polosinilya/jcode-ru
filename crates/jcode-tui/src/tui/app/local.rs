@@ -247,7 +247,7 @@ pub(super) fn handle_bus_event(
             if !app.auth_catalog_refresh_pending {
                 app.push_display_message(crate::tui::DisplayMessage::system(message));
             }
-            app.set_status_notice(format!("Model → {}", model));
+            app.set_status_notice(format!("Модель → {}", model));
             if open_picker {
                 app.open_model_picker();
             }
@@ -385,7 +385,7 @@ fn handle_manual_tool_completed(app: &mut App, result: ManualToolCompleted) {
     if result.tool_call.name == "subagent" {
         app.subagent_status = None;
         app.set_status_notice(if result.is_error {
-            "Subagent failed"
+            "Субагент не удался"
         } else {
             "Subagent completed"
         });
@@ -507,7 +507,7 @@ fn handle_background_task_stalled(app: &mut App, task: crate::bus::BackgroundTas
         percent,
     );
     app.set_status_notice(format!(
-        "Background task stalled · {} · no output for {}s",
+        "Фоновая задача зависла · {} · нет вывода в течение {}с",
         crate::message::background_task_display_label(
             &task.tool_name,
             task.display_name.as_deref()

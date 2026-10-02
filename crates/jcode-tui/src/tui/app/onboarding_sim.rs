@@ -66,7 +66,7 @@ impl App {
     pub(super) fn start_onboarding_simulator(&mut self) {
         // Don't fight a genuinely-running live guided flow.
         if self.onboarding_flow_active() && self.onboarding_sim.is_none() {
-            self.set_status_notice("Onboarding flow already active; can't start the simulator now");
+            self.set_status_notice("Процесс адаптации уже активен; нельзя запустить симулятор сейчас");
             return;
         }
 
@@ -124,7 +124,7 @@ impl App {
         self.session_picker_mode = SessionPickerMode::Resume;
         self.onboarding_preview_mode = false;
         self.force_full_redraw = true;
-        self.set_status_notice("Onboarding simulator: off");
+        self.set_status_notice("Симулятор адаптации: выключен");
     }
 
     /// The catalog of simulated screens, rebuilt fresh each call (fixtures carry
@@ -132,13 +132,13 @@ impl App {
     fn onboarding_sim_screens() -> Vec<SimScreen> {
         vec![
             SimScreen {
-                title: "Log in to OpenAI (nothing detected)",
+                title: "Войти в OpenAI (ничего не обнаружено)",
                 phase: OnboardingPhase::LoginOpenAi {
                     yes_highlighted: true,
                 },
             },
             SimScreen {
-                title: "Import summary (detected logins, Continue preselected)",
+                title: "Импорт сводки (обнаруженные логины, продолжить предварительно выбранное)",
                 phase: OnboardingPhase::Login {
                     import: ImportReview::new(vec![
                         crate::external_auth::ExternalAuthReviewCandidate::fixture(
@@ -146,18 +146,18 @@ impl App {
                             "Codex auth.json",
                         ),
                         crate::external_auth::ExternalAuthReviewCandidate::fixture(
-                            "Claude",
-                            "Claude Code",
+                            "Клод",
+                            "Клауд Код",
                         ),
                         crate::external_auth::ExternalAuthReviewCandidate::fixture(
-                            "GitHub Copilot",
+                            "GitHub Копилот",
                             "github-copilot/hosts.json",
                         ),
                     ]),
                 },
             },
             SimScreen {
-                title: "Import detected logins (multiple, checkbox list)",
+                title: "Импорт обнаруженных логинов (несколько, список с флажками)",
                 phase: OnboardingPhase::Login {
                     import: ImportReview::new(vec![
                         crate::external_auth::ExternalAuthReviewCandidate::fixture(
@@ -165,11 +165,11 @@ impl App {
                             "Codex auth.json",
                         ),
                         crate::external_auth::ExternalAuthReviewCandidate::fixture(
-                            "Claude",
-                            "Claude Code",
+                            "Клод",
+                            "Клауд Код",
                         ),
                         crate::external_auth::ExternalAuthReviewCandidate::fixture(
-                            "GitHub Copilot",
+                            "GitHub Копилот",
                             "github-copilot/hosts.json",
                         ),
                     ])
@@ -180,7 +180,7 @@ impl App {
                 },
             },
             SimScreen {
-                title: "Telemetry settings (from the summary's third pill)",
+                title: "Настройки телеметрии (из третьей кнопки сводки)",
                 phase: OnboardingPhase::Login {
                     import: ImportReview::new(vec![
                         crate::external_auth::ExternalAuthReviewCandidate::fixture(
@@ -188,8 +188,8 @@ impl App {
                             "Codex auth.json",
                         ),
                         crate::external_auth::ExternalAuthReviewCandidate::fixture(
-                            "Claude",
-                            "Claude Code",
+                            "Клод",
+                            "Клауд Код",
                         ),
                     ])
                     .map(|mut review| {
@@ -200,11 +200,11 @@ impl App {
                 },
             },
             SimScreen {
-                title: "Import detected logins (single)",
+                title: "Импорт обнаруженных логинов (один)",
                 phase: OnboardingPhase::Login {
                     import: ImportReview::new(vec![
                         crate::external_auth::ExternalAuthReviewCandidate::fixture(
-                            "Cursor", "Cursor",
+                            "Курсор", "Cursor",
                         ),
                     ])
                     .map(|mut review| {
@@ -214,11 +214,11 @@ impl App {
                 },
             },
             SimScreen {
-                title: "Login recovery (import declined / failed)",
+                title: "Восстановление логина (импорт отклонен / не удался)",
                 phase: OnboardingPhase::Login { import: None },
             },
             SimScreen {
-                title: "Choose a suggested review or blank session",
+                title: "Выберите предложенную проверку или пустую сессию",
                 phase: OnboardingPhase::StartChoice {
                     shown_at: Instant::now(),
                 },
@@ -264,9 +264,9 @@ impl App {
         };
         let screens = Self::onboarding_sim_screens();
         let total = screens.len();
-        let title = screens.get(index).map(|s| s.title).unwrap_or("Onboarding");
+        let title = screens.get(index).map(|s| s.title).unwrap_or("Адаптация");
         self.set_status_notice(format!(
-            "Onboarding sim {}/{}: {} — Tab/→ next, Shift+Tab/← prev, h/l highlight, Alt+5 restart, Esc exit",
+            "Симуляция адаптации {}/{}: {} — Tab/→ далее, Shift+Tab/← назад, h/l выделение, Alt+5 перезапуск, Esc выход",
             index + 1,
             total,
             title,

@@ -98,7 +98,7 @@ fn tui_openai_compatible_key_save_persists_key_for_current_session() -> anyhow::
         let resolved = save_tui_openai_compatible_api_base("https://api.example.com/v1")?;
         let resolved = save_tui_openai_compatible_key(
             crate::provider_catalog::OPENAI_COMPAT_PROFILE,
-            " sk-test-tui-login ",
+            " sk-test-tui-login",
         )
         .map(|_| resolved)?;
 

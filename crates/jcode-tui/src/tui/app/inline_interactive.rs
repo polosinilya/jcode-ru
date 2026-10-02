@@ -939,7 +939,7 @@ impl App {
         };
         if let Err(error) = crate::storage::write_json(&path, &cache) {
             crate::logging::warn(&format!(
-                "Failed to persist remote model catalog cache {}: {}",
+                "Ошибка сохранения кэша каталога удаленных моделей {}: {}",
                 path.display(),
                 error
             ));
@@ -959,7 +959,7 @@ impl App {
             .is_some_and(|metadata| metadata.len() > REMOTE_MODEL_CATALOG_CACHE_MAX_BYTES)
         {
             crate::logging::warn(&format!(
-                "Ignoring oversized remote model catalog cache {}",
+                "Игнорирование слишком большого кэша каталога удаленных моделей {}",
                 path.display()
             ));
             return false;
@@ -1242,7 +1242,7 @@ impl App {
                 false,
             );
             if self.inline_interactive_state.is_some() {
-                self.set_status_notice("Updating model routes…");
+                self.set_status_notice("Обновление маршрутов моделей…");
             } else {
                 self.open_loading_model_picker(&current_model);
             }
@@ -1366,7 +1366,7 @@ impl App {
             filter: String::new(),
             preview: false,
         });
-        self.set_status_notice("Updating model list…");
+        self.set_status_notice("Обновление списка моделей…");
     }
 
     fn start_model_picker_route_load(
@@ -1422,7 +1422,7 @@ impl App {
             Err(std::sync::mpsc::TryRecvError::Empty) => return false,
             Err(std::sync::mpsc::TryRecvError::Disconnected) => {
                 self.pending_model_picker_load = None;
-                self.set_status_notice("Model list update failed");
+                self.set_status_notice("Ошибка обновления списка моделей");
                 return true;
             }
         };
@@ -1485,12 +1485,12 @@ impl App {
                     true,
                 );
                 if self.inline_interactive_state.is_some() {
-                    self.set_status_notice("Model list updated");
+                    self.set_status_notice("Список моделей обновлен");
                 }
                 true
             }
             Err(error) => {
-                self.set_status_notice(format!("Model list update failed: {}", error));
+                self.set_status_notice(format!("Ошибка обновления списка моделей: {}", error));
                 true
             }
         }
@@ -1609,7 +1609,7 @@ impl App {
             self.push_display_message(DisplayMessage::system(
                 crate::tui::app::model_context::no_models_available_message(self.is_remote),
             ));
-            self.set_status_notice("No models available");
+            self.set_status_notice("Нет доступных моделей");
             return routes;
         }
 
@@ -1709,9 +1709,9 @@ impl App {
                         && !route.detail.contains("recently added")
                     {
                         route.detail = if route.detail.trim().is_empty() {
-                            "recently added".to_string()
+                            "недавно добавленные".to_string()
                         } else {
-                            format!("recently added · {}", route.detail)
+                            format!("недавно добавленные · {}", route.detail)
                         };
                     }
                 }
@@ -2376,7 +2376,7 @@ impl App {
     }
 
     fn handle_account_picker_selection(&mut self, action: AccountPickerAction) {
-        if super::commands_dispatch::ssh_local_action_blocked(self, "Local account selection") {
+        if super::commands_dispatch::ssh_local_action_blocked(self, "Выбор локального аккаунта") {
             return;
         }
         match action {
@@ -2386,7 +2386,7 @@ impl App {
                         provider_id: provider_id.clone(),
                         label: label.clone(),
                     });
-                    self.set_status_notice(format!("Account → {} ({})", label, provider_id));
+                    self.set_status_notice(format!("Аккаунт → {} ({})", label, provider_id));
                     return;
                 }
 
@@ -2394,7 +2394,7 @@ impl App {
                     "claude" => self.switch_account(&label),
                     "openai" => self.switch_openai_account(&label),
                     _ => self.push_display_message(DisplayMessage::error(format!(
-                        "Provider `{}` does not support account switching.",
+                        "Провайдер `{}` не поддерживает переключение аккаунтов.",
                         provider_id
                     ))),
                 }
@@ -2403,19 +2403,19 @@ impl App {
                 "claude" => match crate::auth::claude::next_account_label() {
                     Ok(label) => self.start_claude_login_for_account(&label),
                     Err(e) => self.push_display_message(DisplayMessage::error(format!(
-                        "Failed to prepare Claude account: {}",
+                        "Ошибка подготовки аккаунта Claude: {}",
                         e
                     ))),
                 },
                 "openai" => match crate::auth::codex::next_account_label() {
                     Ok(label) => self.start_openai_login_for_account(&label),
                     Err(e) => self.push_display_message(DisplayMessage::error(format!(
-                        "Failed to prepare OpenAI account: {}",
+                        "Ошибка подготовки аккаунта OpenAI: {}",
                         e
                     ))),
                 },
                 _ => self.push_display_message(DisplayMessage::error(format!(
-                    "Provider `{}` does not support multiple accounts.",
+                    "Провайдер `{}` не поддерживает несколько аккаунтов.",
                     provider_id
                 ))),
             },
@@ -2423,7 +2423,7 @@ impl App {
                 "claude" => self.start_claude_login_for_account(&label),
                 "openai" => self.start_openai_login_for_account(&label),
                 _ => self.push_display_message(DisplayMessage::error(format!(
-                    "Provider `{}` does not support account replacement.",
+                    "Провайдер `{}` не поддерживает замену аккаунтов.",
                     provider_id
                 ))),
             },
@@ -2443,7 +2443,7 @@ impl App {
         {
             (
                 SessionPicker::new_grouped(server_groups, orphan_sessions),
-                "Refreshing sessions...",
+                "Обновление сессий...",
             )
         } else {
             (SessionPicker::loading(), "Loading sessions...")
@@ -2470,7 +2470,7 @@ impl App {
         {
             (
                 SessionPicker::new_grouped(server_groups, orphan_sessions),
-                "Refreshing active sessions...",
+                "Обновление активных сессий...",
             )
         } else {
             (SessionPicker::loading(), "Loading active sessions...")
@@ -2575,7 +2575,7 @@ impl App {
                 picker.set_current_dir(self.session.working_dir.clone());
                 picker.set_current_session_id(Some(super::commands::active_session_id(self)));
                 self.session_picker_overlay = Some(RefCell::new(picker));
-                self.set_status_notice("Sessions loaded");
+                self.set_status_notice("Сессии загружены");
                 true
             }
             SessionPickerMode::CatchUp => {
@@ -2583,7 +2583,7 @@ impl App {
                 picker.activate_catchup_filter();
                 picker.set_current_dir(self.session.working_dir.clone());
                 self.session_picker_overlay = Some(RefCell::new(picker));
-                self.set_status_notice("Catch Up sessions loaded");
+                self.set_status_notice("Сессии Catch Up загружены");
                 true
             }
             SessionPickerMode::ActiveSessions => {
@@ -2592,7 +2592,7 @@ impl App {
                 picker.set_current_session_id(Some(super::commands::active_session_id(self)));
                 picker.activate_active_filter();
                 self.session_picker_overlay = Some(RefCell::new(picker));
-                self.set_status_notice("Active sessions loaded");
+                self.set_status_notice("Активные сессии загружены");
                 true
             }
             // Onboarding constructs its action-only picker synchronously, so it
@@ -2630,10 +2630,10 @@ impl App {
                 if picker_active {
                     self.session_picker_overlay = None;
                     self.push_display_message(DisplayMessage::error(format!(
-                        "Failed to load sessions: {}",
+                        "Ошибка загрузки сессий: {}",
                         e
                     )));
-                    self.set_status_notice("Session load failed");
+                    self.set_status_notice("Ошибка загрузки сессий");
                     return true;
                 }
                 false
@@ -2644,9 +2644,9 @@ impl App {
                 if picker_active {
                     self.session_picker_overlay = None;
                     self.push_display_message(DisplayMessage::error(
-                        "Session loading stopped before returning a result.".to_string(),
+                        "Загрузка сессий остановлена до получения результата.".to_string(),
                     ));
-                    self.set_status_notice("Session load failed");
+                    self.set_status_notice("Ошибка загрузки сессий");
                     return true;
                 }
                 false
@@ -2661,9 +2661,9 @@ impl App {
         let current_session_id = super::commands::active_session_id(self);
         if catchup_candidates(&current_session_id).is_empty() {
             self.push_display_message(DisplayMessage::system(
-                "No sessions currently need catch up.".to_string(),
+                "Нет сессий, требующих Catch Up.".to_string(),
             ));
-            self.set_status_notice("Catch Up: none waiting");
+            self.set_status_notice("Catch Up: нет ожидающих");
             return;
         }
 
@@ -2685,7 +2685,7 @@ impl App {
         picker.activate_catchup_filter();
         self.session_picker_overlay = Some(RefCell::new(picker));
         self.session_picker_mode = SessionPickerMode::CatchUp;
-        self.set_status_notice("Loading Catch Up sessions...");
+        self.set_status_notice("Загрузка сессий Catch Up...");
         self.start_session_picker_load();
     }
 
@@ -2723,17 +2723,17 @@ impl App {
 
             if names.len() == 1 {
                 self.push_display_message(DisplayMessage::system(format!(
-                    "Queued Catch Up for {}.",
+                    "Запланирован Catch Up для {}.",
                     names[0],
                 )));
                 self.set_status_notice(format!("Catch Up → {}", names[0]));
             } else {
                 self.push_display_message(DisplayMessage::system(format!(
-                    "Queued Catch Up for {} sessions: {}.",
+                    "Запланирован Catch Up для {} сессий: {}.",
                     names.len(),
                     names.join(", "),
                 )));
-                self.set_status_notice(format!("Catch Up → {} sessions", names.len()));
+                self.set_status_notice(format!("Catch Up → {} сессий", names.len()));
             }
             return;
         }
@@ -2786,7 +2786,7 @@ impl App {
             let resolved_target = match crate::import::resolve_resume_target_to_jcode(target) {
                 Ok(target) => target,
                 Err(err) => {
-                    failed.push(format!("failed to import {}: {}", name, err));
+                    failed.push(format!("ошибка импорта {}: {}", name, err));
                     continue;
                 }
             };
@@ -2820,17 +2820,17 @@ impl App {
         if spawned > 0 && failed.is_empty() {
             if names.len() == 1 {
                 self.push_display_message(DisplayMessage::system(format!(
-                    "Resumed {} in new window.",
+                    "Возобновлено {} в новом окне.",
                     names[0],
                 )));
-                self.set_status_notice(format!("Resumed {}", names[0]));
+                self.set_status_notice(format!("Возобновлено {}", names[0]));
             } else {
                 self.push_display_message(DisplayMessage::system(format!(
-                    "Resumed {} sessions in new windows: {}.",
+                    "Возобновлено {} сессий в новых окнах: {}.",
                     names.len(),
                     names.join(", "),
                 )));
-                self.set_status_notice(format!("Resumed {} sessions", names.len()));
+                self.set_status_notice(format!("Возобновлено {} сессий", names.len()));
             }
             return;
         }
@@ -2844,7 +2844,7 @@ impl App {
                 failed.len(),
                 manual.join("\n")
             )));
-            self.set_status_notice(format!("Resumed {} session(s)", spawned));
+            self.set_status_notice(format!("Возобновлено {} сессий(й)", spawned));
         } else {
             self.push_display_message(DisplayMessage::system(format!(
                 "No terminal found. Resume manually:\n{}",
@@ -2857,7 +2857,7 @@ impl App {
         &mut self,
         targets: &[ResumeTarget],
     ) {
-        if super::commands_dispatch::ssh_local_action_blocked(self, "Importing local sessions") {
+        if super::commands_dispatch::ssh_local_action_blocked(self, "Импорт локальных сессий") {
             return;
         }
         let Some(target) = targets.first() else {
@@ -2896,7 +2896,7 @@ impl App {
             Ok(target) => target,
             Err(err) => {
                 self.push_display_message(DisplayMessage::error(format!(
-                    "Failed to import {}: {}",
+                    "Ошибка импорта {}: {}",
                     name, err
                 )));
                 return;
@@ -2905,7 +2905,7 @@ impl App {
 
         let ResumeTarget::JcodeSession { session_id } = resolved_target else {
             self.push_display_message(DisplayMessage::error(format!(
-                "Cannot resume {} in the current terminal.",
+                "Невозможно возобновить {} в текущем терминале.",
                 name
             )));
             return;
@@ -2916,13 +2916,13 @@ impl App {
         if session_id == super::commands::active_session_id(self) {
             self.session_picker_overlay = None;
             self.session_picker_mode = SessionPickerMode::Resume;
-            self.set_status_notice("Already in this session");
+            self.set_status_notice("Уже в этой сессии");
             return;
         }
 
         if targets.len() > 1 {
             self.push_display_message(DisplayMessage::system(format!(
-                "Selected {} sessions; resuming {} in this terminal.",
+                "Выбрано {} сессий; возобновление {} в этом терминале.",
                 targets.len(),
                 name
             )));
@@ -2930,46 +2930,46 @@ impl App {
         self.workspace_client.queue_resume_session(session_id);
         self.session_picker_overlay = None;
         self.session_picker_mode = SessionPickerMode::Resume;
-        self.set_status_notice(format!("Switching → {}", name));
+        self.set_status_notice(format!("Переключение → {}", name));
     }
 
     fn handle_live_claude_takeover(&mut self, target: &ResumeTarget) -> bool {
-        if super::commands_dispatch::ssh_local_action_blocked(self, "Local Claude takeover") {
+        if super::commands_dispatch::ssh_local_action_blocked(self, "Локальный захват Claude") {
             return false;
         }
         let ResumeTarget::ClaudeCodeSession { session_id, .. } = target else {
             self.push_display_message(DisplayMessage::error(
-                "Live takeover is only available for Claude Code sessions.",
+                "Живой захват доступен только для сессий Claude Code.",
             ));
             return false;
         };
         let display_id = jcode_core::util::truncate_str(session_id, 8);
-        self.set_status_notice(format!("Preparing Claude takeover → {display_id}"));
+        self.set_status_notice(format!("Подготовка захвата Claude → {display_id}"));
 
         let resolved = match crate::import::take_over_live_claude_session(target) {
             Ok(target) => target,
             Err(err) => {
                 self.push_display_message(DisplayMessage::error(format!(
-                    "Claude takeover failed: {err}"
+                    "Ошибка захвата Claude: {err}"
                 )));
-                self.set_status_notice("Claude takeover did not complete");
+                self.set_status_notice("Захват Claude не завершен");
                 return false;
             }
         };
         let ResumeTarget::JcodeSession { session_id } = resolved else {
             self.push_display_message(DisplayMessage::error(
-                "Claude takeover did not produce a Jcode session.",
+                "Захват Claude не создал сессию Jcode.",
             ));
             return false;
         };
 
         self.push_display_message(DisplayMessage::system(format!(
-            "Claude Code exited and its transcript was prepared as {session_id}."
+            "Claude Code завершился и его транскрипт подготовлен как {session_id}."
         )));
         self.workspace_client.queue_resume_session(session_id);
         self.session_picker_overlay = None;
         self.session_picker_mode = SessionPickerMode::Resume;
-        self.set_status_notice(format!("Taking over Claude → {display_id}"));
+        self.set_status_notice(format!("Захват Claude → {display_id}"));
         true
     }
 
@@ -2981,7 +2981,7 @@ impl App {
             Ok(ids) => ids,
             Err(e) => {
                 self.push_display_message(DisplayMessage::error(format!(
-                    "Failed to recover crashed sessions: {}",
+                    "Ошибка восстановления упавших сессий: {}",
                     e
                 )));
                 return;
@@ -2990,7 +2990,7 @@ impl App {
 
         if recovered.is_empty() {
             self.push_display_message(DisplayMessage::system(
-                "No crashed sessions found in the selected restore group.".to_string(),
+                "Нет упавших сессий в выбранной группе восстановления.".to_string(),
             ));
             return;
         }
@@ -3033,10 +3033,10 @@ impl App {
         }
         if spawned > 0 && failed.is_empty() {
             self.push_display_message(DisplayMessage::system(format!(
-                "Restored {} crashed session(s) in new windows.",
+                "Восстановлено {} упавших сессий(й) в новых окнах.",
                 spawned
             )));
-            self.set_status_notice(format!("Restored {} session(s)", spawned));
+            self.set_status_notice(format!("Восстановлено {} сессий(й)", spawned));
         } else if spawned > 0 {
             let manual: Vec<String> = failed
                 .iter()
@@ -3235,9 +3235,9 @@ impl App {
             None
         })();
         if let Some(entry_name) = selected_name {
-            self.set_status_notice(format!("Favorite → {}", entry_name));
+            self.set_status_notice(format!("Избранное → {}", entry_name));
         } else {
-            self.set_status_notice("No favorited models yet. Use Ctrl+N to favorite one.");
+            self.set_status_notice("Нет избранных моделей. Используйте Ctrl+N для добавления.");
         }
     }
 
@@ -3257,10 +3257,10 @@ impl App {
                 .map(|entry| entry.name.clone())
         })();
         if let Some(entry_name) = selected_name {
-            self.set_status_notice(format!("Favorite → {}", entry_name));
+            self.set_status_notice(format!("Избранное → {}", entry_name));
             true
         } else {
-            self.set_status_notice("No favorited models yet. Use Ctrl+N to favorite one.");
+            self.set_status_notice("Нет избранных моделей. Используйте Ctrl+N для добавления.");
             false
         }
     }
@@ -3283,7 +3283,7 @@ impl App {
             .map(picker_is_runtime_model_picker)
             .unwrap_or(false)
         {
-            self.set_status_notice("Model favorites unavailable until model routes finish loading");
+            self.set_status_notice("Избранные модели недоступны до завершения загрузки маршрутов моделей");
             return;
         }
         if self.cycle_model_favorite_after_current() {
@@ -3421,7 +3421,7 @@ impl App {
             {
                 if super::commands_dispatch::ssh_local_action_blocked(
                     self,
-                    "Saving a default model",
+                    "Сохранение модели по умолчанию",
                 ) {
                     return Ok(());
                 }
@@ -3485,7 +3485,7 @@ impl App {
                                 };
                                 if let Some(Err(e)) = save_result {
                                     self.push_display_message(DisplayMessage::error(format!(
-                                        "Saved default model, but failed to save effort: {}",
+                                        "Сохранена модель по умолчанию, но не удалось сохранить усилие: {}",
                                         e
                                     )));
                                 }
@@ -3500,13 +3500,13 @@ impl App {
                                 }
                             }
                             self.push_display_message(DisplayMessage::system(format!(
-                                "Saved default model: {} via {}. This affects future sessions.",
+                                "Сохранена модель по умолчанию: {} через {}. Это повлияет на будущие сессии.",
                                 model_spec,
                                 provider_key.as_deref().unwrap_or("auto")
                             )));
                             self.set_status_notice(notice)
                         }
-                        Err(e) => self.set_status_notice(format!("Failed to save default: {}", e)),
+                        Err(e) => self.set_status_notice(format!("Не удалось сохранить по умолчанию: {}", e)),
                     }
                 }
             }
@@ -3537,7 +3537,7 @@ impl App {
                     self.inline_interactive_state = None;
                     super::commands_dispatch::ssh_local_action_blocked(
                         self,
-                        "Local account or agent-model picker",
+                        "Локальный аккаунт или выбор модели агента",
                     );
                     return Ok(());
                 }
@@ -3557,7 +3557,7 @@ impl App {
 
                 if !route.available {
                     let detail = if route.detail.is_empty() {
-                        "not available".to_string()
+                        "недоступно".to_string()
                     } else {
                         route.detail.clone()
                     };
@@ -3599,10 +3599,10 @@ impl App {
                     } => {
                         self.inline_interactive_state = None;
                         let mut content = vec![format!("# {}", title), subtitle];
-                        content.push(format!("status: {}", status.label_for_display()));
+                        content.push(format!("статус: {}", status.label_for_display()));
                         content.extend(detail_lines);
                         self.push_display_message(DisplayMessage::usage(content.join("\n")));
-                        self.set_status_notice(format!("Usage → {}", title));
+                        self.set_status_notice(format!("Использование → {}", title));
                     }
                     PickerAction::AgentTarget(target) => {
                         self.open_agent_model_picker(target);
@@ -3623,27 +3623,27 @@ impl App {
                                 let label = agent_model_target_label(target);
                                 if clear_override {
                                     self.push_display_message(DisplayMessage::system(format!(
-                                        "{} model override cleared. It now inherits `{}`.",
+                                        "{} переопределение модели очищено. Теперь наследуется `{}`.",
                                         label,
                                         agent_model_default_summary(target, self)
                                     )));
-                                    self.set_status_notice(format!("{} model: inherit", label));
+                                    self.set_status_notice(format!("{} модель: наследовать", label));
                                 } else {
                                     let spec = model_entry_saved_spec(&entry);
                                     self.push_display_message(DisplayMessage::system(format!(
-                                        "Saved {} model override: `{}`.",
+                                        "Сохранено {} переопределение модели: `{}`.",
                                         label, spec
                                     )));
-                                    self.set_status_notice(format!("{} model → {}", label, spec));
+                                    self.set_status_notice(format!("{} модель → {}", label, spec));
                                 }
                             }
                             Err(error) => {
                                 self.push_display_message(DisplayMessage::error(format!(
-                                    "Failed to save {} model override: {}",
+                                    "Не удалось сохранить {} переопределение модели: {}",
                                     agent_model_target_label(target),
                                     error
                                 )));
-                                self.set_status_notice("Agent model save failed");
+                                self.set_status_notice("Не удалось сохранить модель агента");
                             }
                         }
                     }
@@ -3651,17 +3651,17 @@ impl App {
                         self.inline_interactive_state = None;
                         if inherit {
                             self.session.subagent_model = None;
-                            self.set_status_notice("Subagent model: inherit");
+                            self.set_status_notice("Модель подагента: наследовать");
                             self.push_display_message(DisplayMessage::system(format!(
-                                "Subagent model reset to inherit the current model ({}).",
+                                "Модель подагента сброшена для наследования текущей модели ({}).",
                                 self.provider.model()
                             )));
                         } else {
                             let spec = model_entry_saved_spec(&entry);
                             self.session.subagent_model = Some(spec.clone());
-                            self.set_status_notice(format!("Subagent model → {}", spec));
+                            self.set_status_notice(format!("Модель подагента → {}", spec));
                             self.push_display_message(DisplayMessage::system(format!(
-                                "Subagent model pinned to {} for this session.",
+                                "Модель подагента закреплена за {} для этой сессии.",
                                 spec
                             )));
                         }
@@ -3677,7 +3677,7 @@ impl App {
                                     self.is_remote,
                                 ),
                             ));
-                            self.set_status_notice("Model unavailable");
+                            self.set_status_notice("Модель недоступна");
                             return Ok(());
                         }
 

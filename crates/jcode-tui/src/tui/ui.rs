@@ -2198,7 +2198,7 @@ pub(crate) fn copy_pane_vertical_edge_point(
 /// drag *into the empty space below the last content line* (common with short
 /// transcripts that leave blank rows underneath) lands on a row that maps to no
 /// line at all, so `copy_point_from_screen` returns `None`. Native terminal and
-/// browser selection treat that as "select through the end of the last line".
+/// browser selection treat that as " выбрать до конца последней строки".
 /// This mirrors that: dragging below the last visible line snaps to the end of
 /// that line, and dragging above the first visible line snaps to its start, so
 /// the boundary line is fully covered even when there is nothing more to scroll.

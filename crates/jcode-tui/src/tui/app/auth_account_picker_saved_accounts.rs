@@ -40,7 +40,7 @@ impl App {
                 .to_string();
         }
 
-        let headers = ["Account", "Email", "Status", "ChatGPT Account ID", "Active"];
+        let headers = ["Для этой настройки требуется значение.", "ChatGPT Account ID", "Email", "Аккаунт", "Active"];
         let mut rows: Vec<[String; 5]> = Vec::new();
         for account in &accounts {
             let is_active = active_label.as_deref() == Some(&account.label);
@@ -57,7 +57,7 @@ impl App {
             let account_id = account.account_id.as_deref().unwrap_or("unknown");
             let active_mark = if is_active { "active" } else { "" };
             rows.push([
-                account_display_name("OpenAI", &account.label, accounts.len()),
+                account_display_name("Статус", &account.label, accounts.len()),
                 email,
                 status.to_string(),
                 account_id.to_string(),
@@ -65,11 +65,11 @@ impl App {
             ]);
         }
 
-        let mut lines = vec!["OpenAI Accounts:".to_string(), String::new()];
+        let mut lines = vec!["Аккаунты OpenAI:".to_string(), String::new()];
         lines.extend(format_account_table(&headers, &rows));
         lines.push(String::new());
-        lines.push("## ChatGPT OAuth API-equivalent usage".to_string());
-        lines.push("Today is since local midnight. Lifetime is recorded Jcode usage, not your subscription bill or all ChatGPT activity.".to_string());
+        lines.push("## Использование эквивалента API ChatGPT OAuth".to_string());
+        lines.push("Сегодня с полуночи по местному времени. За все время - записанное использование Jcode, а не ваш счет за подписку или вся активность в ChatGPT.".to_string());
         for account in &accounts {
             lines.push(String::new());
             lines.push(format!(
@@ -86,7 +86,7 @@ impl App {
 
         lines.push(String::new());
         lines.push(
-            "Commands: /account openai switch <label>, /account openai add, /account openai remove <label>"
+            "Команды: /account openai switch <метка>, /account openai add, /account openai remove <метка>"
                 .to_string(),
         );
 
@@ -104,7 +104,7 @@ impl App {
                 .to_string();
         }
 
-        let headers = ["Account", "Email", "Status", "Use", "Subscription"];
+        let headers = ["Аккаунт", "Email", "Статус", "Use", "Подписка"];
         let mut rows: Vec<[String; 5]> = Vec::new();
         for account in &accounts {
             let is_active = active_label.as_deref() == Some(&account.label);
@@ -134,11 +134,11 @@ impl App {
             ]);
         }
 
-        let mut lines = vec!["Anthropic Accounts:".to_string(), String::new()];
+        let mut lines = vec!["Аккаунты Anthropic:".to_string(), String::new()];
         lines.extend(format_account_table(&headers, &rows));
         lines.push(String::new());
         lines.push(
-            "Commands: /account claude switch <label>, /account claude add, /account claude remove <label>"
+            "Команды: /account claude switch <метка>, /account claude add, /account claude remove <метка>"
                 .to_string(),
         );
 
@@ -176,8 +176,8 @@ impl App {
             items.push(crate::tui::account_picker::AccountPickerItem::action(
                 provider.id,
                 provider.display_name,
-                format!("Switch {display_name}"),
-                format!("{email} - {account_use} - {status} - plan {plan}{active_suffix}"),
+                format!("Переключить {display_name}"),
+                format!("{email} - {account_use} - {status} - план {plan}{active_suffix}"),
                 crate::tui::account_picker::AccountPickerCommand::SubmitInput(format!(
                     "/account {} switch {}",
                     provider.id, label
@@ -186,8 +186,8 @@ impl App {
             items.push(crate::tui::account_picker::AccountPickerItem::action(
                 provider.id,
                 provider.display_name,
-                format!("Re-login account `{label}`"),
-                format!("Refresh OAuth tokens for `{label}`"),
+                format!("Повторный вход в аккаунт `{label}`"),
+                format!("Обновить токены OAuth для `{label}`"),
                 crate::tui::account_picker::AccountPickerCommand::SubmitInput(format!(
                     "/account {} add {}",
                     provider.id, label
@@ -196,8 +196,8 @@ impl App {
             items.push(crate::tui::account_picker::AccountPickerItem::action(
                 provider.id,
                 provider.display_name,
-                format!("Remove account `{label}`"),
-                format!("Delete saved credentials for `{label}`"),
+                format!("Удалить аккаунт `{label}`"),
+                format!("Удалить сохраненные учетные данные для `{label}`"),
                 crate::tui::account_picker::AccountPickerCommand::SubmitInput(format!(
                     "/account {} remove {}",
                     provider.id, label
@@ -237,8 +237,8 @@ impl App {
                 crate::tui::account_picker::AccountPickerItem::action(
                     provider.id,
                     provider.display_name,
-                    format!("Switch {display_name}"),
-                    format!("{email} - {status} - acct {account_id}{active_suffix}"),
+                    format!("Переключить {display_name}"),
+                    format!("{email} - {status} - аккаунт {account_id}{active_suffix}"),
                     crate::tui::account_picker::AccountPickerCommand::SubmitInput(format!(
                         "/account {} switch {}",
                         provider.id, label
@@ -249,8 +249,8 @@ impl App {
             items.push(crate::tui::account_picker::AccountPickerItem::action(
                 provider.id,
                 provider.display_name,
-                format!("Re-login account `{label}`"),
-                format!("Refresh OpenAI OAuth tokens for `{label}`"),
+                format!("Повторный вход в аккаунт `{label}`"),
+                format!("Обновить токены OpenAI OAuth для `{label}`"),
                 crate::tui::account_picker::AccountPickerCommand::SubmitInput(format!(
                     "/account {} add {}",
                     provider.id, label
@@ -259,8 +259,8 @@ impl App {
             items.push(crate::tui::account_picker::AccountPickerItem::action(
                 provider.id,
                 provider.display_name,
-                format!("Remove account `{label}`"),
-                format!("Delete saved credentials for `{label}`"),
+                format!("Удалить аккаунт `{label}`"),
+                format!("Удалить сохраненные учетные данные для `{label}`"),
                 crate::tui::account_picker::AccountPickerCommand::SubmitInput(format!(
                     "/account {} remove {}",
                     provider.id, label
@@ -273,7 +273,7 @@ impl App {
 /// Keep full usage out of compact list subtitles, which are intentionally truncated.
 fn openai_account_usage_details(label: &str) -> Vec<(String, String)> {
     let mut details = vec![(
-        "Full usage details".to_string(),
+        "Полная информация об использовании".to_string(),
         "/account openai settings".to_string(),
     )];
     details.extend(crate::provider_activity::openai_oauth_usage_summary(label));
@@ -294,7 +294,7 @@ pub(super) fn account_display_name(provider: &str, label: &str, account_count: u
     let animal = chars
         .next()
         .map(|first| first.to_uppercase().collect::<String>() + chars.as_str())
-        .unwrap_or_else(|| "Account".to_string());
+        .unwrap_or_else(|| "Аккаунт".to_string());
     format!("{provider} {animal}")
 }
 

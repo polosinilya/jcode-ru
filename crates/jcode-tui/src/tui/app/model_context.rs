@@ -16,7 +16,7 @@ impl App {
 
     fn format_failover_input_summary(prompt: &crate::provider::ProviderFailoverPrompt) -> String {
         format!(
-            "about {} input tokens (~{} chars)",
+            "около {} входных токенов (~{} символов)",
             Self::format_failover_count(prompt.estimated_input_tokens),
             Self::format_failover_count(prompt.estimated_input_chars),
         )
@@ -89,7 +89,7 @@ impl App {
         if now < pending.deadline {
             let remaining = pending.deadline.saturating_duration_since(now).as_secs() + 1;
             self.set_status_notice(format!(
-                "Provider auto-switch → {} in {}s (Esc to cancel)",
+                "Автопереключение провайдера → {} через {}с (Esc для отмены)",
                 pending.prompt.to_label, remaining
             ));
             return true;
@@ -107,7 +107,7 @@ impl App {
                     Self::failover_config_hint(),
                 )));
                 self.set_status_notice(format!(
-                    "Provider → {} (retrying)",
+                    "Провайдер → {} (повторная попытка)",
                     pending.prompt.to_label
                 ));
                 self.pending_turn = true;
@@ -115,10 +115,10 @@ impl App {
             }
             Err(error) => {
                 self.push_display_message(DisplayMessage::error(format!(
-                    "Failed to switch provider to {}: {}",
+                    "Не удалось переключить провайдера на {}: {}",
                     pending.prompt.to_label, error
                 )));
-                self.set_status_notice("Provider switch failed");
+                self.set_status_notice("Ошибка переключения провайдера");
                 true
             }
         }
@@ -143,7 +143,7 @@ impl App {
             crate::config::CrossProviderFailoverMode::Manual if !self.is_remote => {
                 self.push_display_message(DisplayMessage::system(manual_message));
                 self.set_status_notice(format!(
-                    "{} unavailable; switch manually if desired",
+                    "{} недоступен; переключите вручную при необходимости",
                     prompt.from_label
                 ));
             }
@@ -161,7 +161,7 @@ impl App {
                     Self::failover_config_hint(),
                 )));
                 self.set_status_notice(format!(
-                    "Provider auto-switch → {} in 3s (Esc to cancel)",
+                    "Автопереключение провайдера → {} через 3с (Esc для отмены)",
                     prompt.to_label
                 ));
             }
@@ -171,7 +171,7 @@ impl App {
                     manual_message,
                 )));
                 self.set_status_notice(format!(
-                    "{} unavailable; manual switch suggested",
+                    "{} недоступен; рекомендуется ручное переключение",
                     prompt.from_label
                 ));
             }
@@ -248,7 +248,7 @@ impl App {
     /// Short label for a route, e.g. "claude-sonnet-4 via OAuth (Anthropic)".
     fn describe_route(route: &crate::provider::ModelRoute) -> String {
         let method = crate::provider::ModelRouteApiMethod::parse(&route.api_method).display_label();
-        format!("{} via {} ({})", route.model, method, route.provider)
+        format!("{} через {} ({})", route.model, method, route.provider)
     }
 
     /// After a provider turn error, compute the next best available route and, if
@@ -325,7 +325,7 @@ impl App {
         let from_label = if current_api_method.is_empty() {
             current_provider.clone()
         } else {
-            format!("{} via {}", current_provider, from_method.display_label())
+            format!("{} через {}", current_provider, from_method.display_label())
         };
 
         let remote_resend = if self.is_remote { remote_resend } else { None };
@@ -335,10 +335,10 @@ impl App {
         // a second time.
         let key_label = crate::tui::keybind::fallback_switch_key_label();
         self.push_display_message(DisplayMessage::system(format!(
-            "↪ {} failed. Fallback available: press {} to switch to {} and resend.",
+            "↪ {} не удался. Доступна замена: нажмите {} чтобы переключиться на {} и повторно отправить.",
             from_label, key_label, target_label,
         )));
-        self.set_status_notice(format!("Press {} to switch to {}", key_label, route.model));
+        self.set_status_notice(format!("Нажмите {} чтобы переключиться на {}", key_label, route.model));
         self.pending_fallback_offer = Some(super::PendingFallbackOffer {
             selection: crate::provider::RouteSelection::from_model_route(&route),
             target_label,
@@ -443,7 +443,7 @@ impl App {
             "↪ Reroute available: press {} to switch to {} and resend this request.\n\nGuardrail refusals are model-side; a stronger model often handles the same request (was {}).",
             key_label, target_label, from_label,
         )));
-        self.set_status_notice(format!("Press {} to reroute to {}", key_label, route.model));
+        self.set_status_notice(format!("Нажмите {} чтобы перенаправить на {}", key_label, route.model));
         self.pending_fallback_offer = Some(super::PendingFallbackOffer {
             selection: crate::provider::RouteSelection::from_model_route(&route),
             target_label,
@@ -475,10 +475,10 @@ impl App {
             self.pending_route_selection = Some(offer.selection);
             self.pending_fallback_resend = offer.remote_resend;
             self.push_display_message(DisplayMessage::system(format!(
-                "↪ Switching to {} and resending (was {}).",
+                "↪ Переключение на {} и повторная отправка (было {}).",
                 offer.target_label, offer.from_label,
             )));
-            self.set_status_notice(format!("Switching → {} (will retry)", offer.target_label));
+            self.set_status_notice(format!("Переключение → {} (будет повторная попытка)", offer.target_label));
             return true;
         }
 
@@ -502,19 +502,19 @@ impl App {
                 self.session.route_api_method = Some(offer.selection.api_method.clone());
                 let _ = self.session.save();
                 self.push_display_message(DisplayMessage::system(format!(
-                    "↪ Switched to {} and resending (was {}).",
+                    "↪ Переключено на {} и повторная отправка (было {}).",
                     offer.target_label, offer.from_label,
                 )));
-                self.set_status_notice(format!("Switched → {} (retrying)", active_model));
+                self.set_status_notice(format!("Переключено → {} (повторная попытка)", active_model));
                 self.pending_turn = true;
                 true
             }
             Err(error) => {
                 self.push_display_message(DisplayMessage::error(format!(
-                    "Failed to switch to {}: {}",
+                    "Не удалось переключиться на {}: {}",
                     offer.target_label, error
                 )));
-                self.set_status_notice("Fallback switch failed");
+                self.set_status_notice("Ошибка резервного переключения");
                 true
             }
         }
@@ -524,9 +524,9 @@ impl App {
         let models = self.provider.available_models_for_switching();
         if models.is_empty() {
             self.push_display_message(DisplayMessage::error(
-                "Model switching is not available for this provider.",
+                "Переключение модели недоступно для этого провайдера.",
             ));
-            self.set_status_notice("Model switching not available");
+            self.set_status_notice("Переключение модели недоступно");
             return;
         }
 
@@ -550,17 +550,17 @@ impl App {
                     .map(|method| format!(" (via {})", method))
                     .unwrap_or_default();
                 self.push_display_message(DisplayMessage::system(format!(
-                    "✓ Switched to model: {}{}",
+                    "✓ Переключено на модель: {}{}",
                     next_model, auth_suffix
                 )));
-                self.set_status_notice(format!("Model → {}", next_model));
+                self.set_status_notice(format!("Модель → {}", next_model));
             }
             Err(e) => {
                 self.push_display_message(DisplayMessage::error(format!(
-                    "Failed to switch model: {}",
+                    "Не удалось переключить модель: {}",
                     e
                 )));
-                self.set_status_notice("Model switch failed");
+                self.set_status_notice("Ошибка переключения модели");
             }
         }
     }
@@ -577,7 +577,7 @@ impl App {
             self.provider.available_efforts()
         };
         if efforts.is_empty() {
-            self.set_status_notice("Reasoning effort not available for this provider");
+            self.set_status_notice("Усилие рассуждения недоступно для этого провайдера");
             return;
         }
 
@@ -608,7 +608,7 @@ impl App {
         if Some(next_effort.to_string()) == current {
             let label = effort_display_label(next_effort);
             self.set_status_notice(format!(
-                "Effort: {} (already at {})",
+                "Усилие: {} (уже на {})",
                 label,
                 if direction > 0 { "max" } else { "min" }
             ));
@@ -619,10 +619,10 @@ impl App {
             Ok(()) => {
                 let label = effort_display_label(next_effort);
                 let bar = effort_bar(next_index, len);
-                self.set_status_notice(format!("Effort: {} {}", label, bar));
+                self.set_status_notice(format!("Усилие: {} {}", label, bar));
             }
             Err(e) => {
-                self.set_status_notice(format!("Effort switch failed: {}", e));
+                self.set_status_notice(format!("Ошибка переключения усилия: {}", e));
             }
         }
     }
@@ -774,7 +774,7 @@ impl App {
         self.cursor_pos = self.input.len();
         self.reset_tab_completion();
         self.sync_model_picker_preview_from_input();
-        self.set_status_notice("Prompt restored to input after error");
+        self.set_status_notice("Запрос восстановлен в поле ввода после ошибки");
     }
 
     pub(super) fn handle_turn_error(&mut self, error: impl Into<String>) {
@@ -798,12 +798,12 @@ impl App {
                 self.messages.clear();
                 self.reseed_compaction_from_provider_messages();
                 self.push_display_message(DisplayMessage::error(format!(
-                    "Error: {} Dropped {} oversized image(s); you can retry.",
+                    "Ошибка: {} Отброшено {} слишком больших изображений; вы можете повторить попытку.",
                     error, stripped
                 )));
             } else {
                 self.push_display_message(DisplayMessage::error(format!(
-                    "Error: {} Request body was too large but no inline images could be dropped. Run /fix to try manual recovery.",
+                    "Ошибка: {} Тело запроса было слишком большим, но не удалось отбросить встроенные изображения. Выполните /fix для ручного восстановления.",
                     error
                 )));
                 super::commands::stop_auto_poke_for_non_retryable_error(self, &error);
@@ -817,9 +817,9 @@ impl App {
             let should_stop_auto_poke = recovery.is_none();
             let hint = match recovery {
                 Some(msg) => format!(" {}", msg),
-                None => " Context limit exceeded but auto-recovery failed. Run /fix to try manual recovery.".to_string(),
+                None => " Превышен лимит контекста, но автоматическое восстановление не удалось. Выполните /fix для ручного восстановления.".to_string(),
             };
-            self.push_display_message(DisplayMessage::error(format!("Error: {}{}", error, hint)));
+            self.push_display_message(DisplayMessage::error(format!("Ошибка: {}{}", error, hint)));
             if should_stop_auto_poke {
                 super::commands::stop_auto_poke_for_non_retryable_error(self, &error);
                 self.stop_overnight_auto_poke_for_non_retryable_error(&error);
@@ -831,10 +831,10 @@ impl App {
             // does not silently keep retrying a path that needs a human decision.
             let offered = self.offer_fallback_after_error(&error);
             if offered {
-                self.push_display_message(DisplayMessage::error(format!("Error: {}", error)));
+                self.push_display_message(DisplayMessage::error(format!("Ошибка: {}", error)));
             } else {
                 self.push_display_message(DisplayMessage::error(format!(
-                    "Error: {} Run /fix to attempt recovery.",
+                    "Ошибка: {} Выполните /fix для попытки восстановления.",
                     error
                 )));
             }
@@ -858,7 +858,7 @@ impl App {
                 self.messages = provider_messages.clone();
                 self.sync_session_compaction_state_from_manager(&manager);
                 return Some(format!(
-                    "{} You can continue.",
+                    "{} Вы можете продолжить.",
                     recovery.summary_line(usage)
                 ));
             }
@@ -883,7 +883,7 @@ impl App {
                     Ok(dropped) => {
                         self.sync_session_compaction_state_from_manager(&manager);
                         Some(format!(
-                            "⚡ Emergency compaction: dropped {} old messages. You can continue.",
+                            "⚡ Аварийное сжатие: отброшено {} старых сообщений. Вы можете продолжить.",
                             dropped
                         ))
                     }
@@ -892,7 +892,7 @@ impl App {
                         if truncated > 0 {
                             self.messages = provider_messages;
                             Some(format!(
-                                "⚡ Emergency truncation: shortened {} large tool result(s) to fit context. You can continue.",
+                                "⚡ Аварийная обрезка: сокращено {} больших результатов инструментов для соответствия контексту. Вы можете продолжить.",
                                 truncated
                             ))
                         } else {
@@ -935,7 +935,7 @@ impl App {
         self.reseed_compaction_from_provider_messages();
 
         self.push_display_message(DisplayMessage::system(format!(
-            "⚡ Request was too large; dropped {} oversized image(s) and retrying...",
+            "⚡ Запрос был слишком большим; отброшено {} слишком больших изображений и повторная попытка...",
             stripped
         )));
 
@@ -1004,7 +1004,7 @@ impl App {
         }
 
         self.push_display_message(DisplayMessage::system(
-            "⚠️ Context limit exceeded - auto-compacting and retrying...".to_string(),
+            "⚠️ Превышен лимит контекста - автоматическое сжатие и повторная попытка...".to_string(),
         ));
 
         // Force the compaction manager to think we're at the limit
@@ -1023,7 +1023,7 @@ impl App {
                         self.reset_state_for_compaction_retry();
 
                         self.push_display_message(DisplayMessage::system(format!(
-                            "{} Retrying...",
+                            "{} Повторная попытка...",
                             recovery.summary_line(usage)
                         )));
                         return self.run_compaction_retry_turn(terminal, event_stream).await;
@@ -1120,9 +1120,9 @@ impl App {
             false,
         ));
         if results.is_empty() {
-            self.set_status_notice("Usage → no connected providers");
+            self.set_status_notice("Использование → нет подключенных провайдеров");
         } else {
-            self.set_status_notice("Usage → updated");
+            self.set_status_notice("Использование → обновлено");
         }
     }
 
@@ -1142,20 +1142,20 @@ impl App {
 
         if progress.done {
             if progress.results.is_empty() {
-                self.set_status_notice("Usage → no connected providers");
+                self.set_status_notice("Использование → нет подключенных провайдеров");
             } else {
-                self.set_status_notice("Usage → updated");
+                self.set_status_notice("Использование → обновлено");
             }
         } else if progress.from_cache && progress.total == 0 {
-            self.set_status_notice("Usage → showing cached data, refreshing");
+            self.set_status_notice("Использование → показ кэшированных данных, обновление");
         } else if progress.total > 0 {
             self.set_status_notice(format!(
-                "Usage → refreshing {}/{}",
+                "Использование → обновление {}/{}",
                 progress.completed.min(progress.total),
                 progress.total
             ));
         } else {
-            self.set_status_notice("Usage → refreshing");
+            self.set_status_notice("Использование → обновление");
         }
     }
 
@@ -1206,23 +1206,23 @@ impl App {
         if refreshing {
             if total > 0 {
                 lines.push(format!(
-                    "# Refreshing usage ({}/{})",
+                    "# Обновление использования ({}/{})",
                     completed.min(total),
                     total
                 ));
             } else if from_cache {
-                lines.push("# Showing cached usage while refreshing".to_string());
+                lines.push("# Показ кэшированного использования во время обновления".to_string());
             } else {
-                lines.push("# Refreshing usage".to_string());
+                lines.push("# Обновление использования".to_string());
             }
-            lines.push("Checking connected provider limits...".to_string());
+            lines.push("Проверка лимитов подключенных провайдеров...".to_string());
             if !reports.is_empty() {
                 lines.push(String::new());
             }
         } else if reports.is_empty() {
-            lines.push("# No connected providers".to_string());
+            lines.push("# Нет подключенных провайдеров".to_string());
             lines.push(
-                "Use `/login claude` or `/login openai`, then run `/usage` again.".to_string(),
+                "Используйте `/login claude` или `/login openai`, затем запустите `/usage` снова.".to_string(),
             );
             return lines.join("\n");
         } else {
@@ -1246,7 +1246,7 @@ impl App {
             }
 
             if provider.limits.is_empty() && provider.extra_info.is_empty() {
-                lines.push("  no usage data available".to_string());
+                lines.push("  нет доступных данных об использовании".to_string());
                 continue;
             }
 
@@ -1275,10 +1275,10 @@ impl App {
 
     fn format_usage_provider_summary(provider: &crate::usage::ProviderUsage) -> String {
         if provider.error.is_some() {
-            return format!("! {} - error", provider.provider_name);
+            return format!("! {} - ошибка", provider.provider_name);
         }
         if provider.hard_limit_reached {
-            return format!("! {} - hard limit", provider.provider_name);
+            return format!("! {} - жесткий лимит", provider.provider_name);
         }
 
         let max_percent = provider
@@ -1287,9 +1287,9 @@ impl App {
             .map(|limit| limit.usage_percent)
             .fold(0.0_f32, f32::max);
         if max_percent >= 90.0 {
-            format!("! {} - {:.0}% used", provider.provider_name, max_percent)
+            format!("! {} - {:.0}% использовано", provider.provider_name, max_percent)
         } else if max_percent >= 70.0 {
-            format!("~ {} - {:.0}% used", provider.provider_name, max_percent)
+            format!("! {} - {:.0}% использовано", provider.provider_name, max_percent)
         } else if provider.limits.is_empty() && provider.extra_info.is_empty() {
             format!("{} - no data", provider.provider_name)
         } else if max_percent > 0.0 {
@@ -1369,13 +1369,13 @@ impl App {
                                 Ok(dropped) => {
                                     self.sync_session_compaction_state_from_manager(&manager);
                                     actions.push(format!(
-                                            "Emergency compaction: dropped {} old messages (normal compaction failed: {}).",
+                                            "Аварийная компрессия: удалено {} старых сообщений (обычная компрессия не удалась: {}).",
                                             dropped, reason
                                         ));
                                 }
                                 Err(hard_reason) => {
                                     notes.push(format!(
-                                        "Compaction not started: {}. Emergency fallback: {}",
+                                        "Компрессия не начата: {}. Аварийный запасной вариант: {}",
                                         reason, hard_reason
                                     ));
                                 }
@@ -1383,15 +1383,15 @@ impl App {
                         }
                     }
                 }
-                Err(_) => notes.push("Could not access compaction manager (busy).".to_string()),
+                Err(_) => notes.push("Не удалось получить доступ к менеджеру компрессии (занят).".to_string()),
             };
         } else {
-            notes.push("Compaction is unavailable for this provider.".to_string());
+            notes.push("Компрессия недоступна для этого провайдера.".to_string());
         }
 
         self.context_warning_shown = false;
         self.last_stream_error = None;
-        self.set_status_notice("Fix applied");
+        self.set_status_notice("Исправление применено");
 
         let mut content = String::from("Fix Results:\n");
         if actions.is_empty() {
@@ -1424,13 +1424,13 @@ pub(super) fn handle_model_command(app: &mut App, trimmed: &str) -> bool {
             crate::bus::UiActivity::catalog(
                 Some(session_id.clone()),
                 crate::message::format_model_refresh_progress_markdown(
-                    "Starting provider model catalog refresh",
+                    "Начало обновления каталога моделей провайдера",
                     Some(5),
                 ),
-                Some("Refreshing model list..."),
+                Some("Обновление списка моделей..."),
             ),
         ));
-        app.set_status_notice("Refreshing model list...");
+        app.set_status_notice("Обновление списка моделей...");
         let provider = app.provider.clone();
 
         if let Ok(handle) = tokio::runtime::Handle::try_current() {
@@ -1480,20 +1480,20 @@ pub(super) fn handle_model_command(app: &mut App, trimmed: &str) -> bool {
                     .unwrap_or_default();
                 app.push_display_message(DisplayMessage {
                     role: "system".to_string(),
-                    content: format!("✓ Switched to model: {}{}", active_model, auth_suffix),
+                    content: format!("✓ Переключено на модель: {}{}", active_model, auth_suffix),
                     tool_calls: vec![],
                     duration_secs: None,
                     title: None,
                     tool_data: None,
                 });
-                app.set_status_notice(format!("Model → {}", model_name));
+                app.set_status_notice(format!("Модель → {}", model_name));
             }
             Err(e) => {
                 app.push_display_message(DisplayMessage::error(model_switch_failure_message(
                     &e.to_string(),
                     app.is_remote,
                 )));
-                app.set_status_notice("Model switch failed");
+                app.set_status_notice("Ошибка переключения модели");
             }
         }
         return true;
@@ -1505,7 +1505,7 @@ pub(super) fn handle_model_command(app: &mut App, trimmed: &str) -> bool {
         let efforts = app.provider.available_efforts();
         if efforts.is_empty() {
             app.push_display_message(DisplayMessage::system(
-                "Reasoning effort not available for this provider.".to_string(),
+                "Усилие рассуждения недоступно для этого провайдера.".to_string(),
             ));
         } else {
             let current_label = current
@@ -1543,7 +1543,7 @@ pub(super) fn handle_model_command(app: &mut App, trimmed: &str) -> bool {
                     .map(effort_display_label)
                     .unwrap_or("default");
                 app.push_display_message(DisplayMessage::system(format!(
-                    "✓ Reasoning effort → {}",
+                    "✓ Усилие рассуждения → {}",
                     label
                 )));
                 let efforts = app.provider.available_efforts();
@@ -1552,11 +1552,11 @@ pub(super) fn handle_model_command(app: &mut App, trimmed: &str) -> bool {
                     .and_then(|e| efforts.iter().position(|x| *x == e.as_str()))
                     .unwrap_or(0);
                 let bar = effort_bar(idx, efforts.len());
-                app.set_status_notice(format!("Effort: {} {}", label, bar));
+                app.set_status_notice(format!("Усилие: {} {}", label, bar));
             }
             Err(e) => {
                 app.push_display_message(DisplayMessage::error(format!(
-                    "Failed to set effort: {}",
+                    "Не удалось установить усилие: {}",
                     e
                 )));
             }
@@ -1570,7 +1570,7 @@ pub(super) fn handle_model_command(app: &mut App, trimmed: &str) -> bool {
         let default_label = default_tier
             .as_deref()
             .map(service_tier_display_label)
-            .unwrap_or("Standard");
+            .unwrap_or("Стандартный");
         app.push_display_message(DisplayMessage::system(fast_mode_default_message(
             default_enabled,
             default_label,
@@ -1589,7 +1589,7 @@ pub(super) fn handle_model_command(app: &mut App, trimmed: &str) -> bool {
                 let default_label = default_tier
                     .as_deref()
                     .map(service_tier_display_label)
-                    .unwrap_or("Standard");
+                    .unwrap_or("Стандартный");
                 app.push_display_message(DisplayMessage::system(fast_mode_default_message(
                     default_enabled,
                     default_label,
@@ -1597,7 +1597,7 @@ pub(super) fn handle_model_command(app: &mut App, trimmed: &str) -> bool {
             }
             _ => {
                 app.push_display_message(DisplayMessage::error(
-                    "Usage: /fast default [on|off|status]".to_string(),
+                    "Использование: /fast default [on|off|status]".to_string(),
                 ));
             }
         }
@@ -1620,7 +1620,7 @@ pub(super) fn handle_model_command(app: &mut App, trimmed: &str) -> bool {
         let default_label = default_tier
             .as_deref()
             .map(service_tier_display_label)
-            .unwrap_or("Standard");
+            .unwrap_or("Стандартный");
         app.push_display_message(DisplayMessage::system(fast_mode_overview_message(
             status == "on",
             current_label,
@@ -1647,7 +1647,7 @@ pub(super) fn handle_model_command(app: &mut App, trimmed: &str) -> bool {
                 let default_label = default_tier
                     .as_deref()
                     .map(service_tier_display_label)
-                    .unwrap_or("Standard");
+                    .unwrap_or("Стандартный");
                 app.push_display_message(DisplayMessage::system(fast_mode_overview_message(
                     enabled,
                     current_label,
@@ -1658,7 +1658,7 @@ pub(super) fn handle_model_command(app: &mut App, trimmed: &str) -> bool {
             }
             _ => {
                 app.push_display_message(DisplayMessage::error(
-                    "Usage: /fast [on|off|status|default ...]".to_string(),
+                    "Использование: /fast [on|off|status|default ...]".to_string(),
                 ));
                 return true;
             }
@@ -1682,7 +1682,7 @@ pub(super) fn handle_model_command(app: &mut App, trimmed: &str) -> bool {
             }
             Err(e) => {
                 app.push_display_message(DisplayMessage::error(format!(
-                    "Failed to set fast mode: {}",
+                    "Не удалось установить быстрый режим: {}",
                     e
                 )));
             }
@@ -1695,7 +1695,7 @@ pub(super) fn handle_model_command(app: &mut App, trimmed: &str) -> bool {
         let transports = app.provider.available_transports();
         if transports.is_empty() {
             app.push_display_message(DisplayMessage::system(
-                "Transport switching is not available for this provider.".to_string(),
+                "Переключение транспорта недоступно для этого провайдера.".to_string(),
             ));
         } else {
             let current_label = current.as_deref().unwrap_or("unknown");
@@ -1724,14 +1724,14 @@ pub(super) fn handle_model_command(app: &mut App, trimmed: &str) -> bool {
             Ok(()) => {
                 let new_transport = app.provider.transport().unwrap_or_else(|| mode.to_string());
                 app.push_display_message(DisplayMessage::system(format!(
-                    "✓ Transport → {}",
+                    "✓ Транспорт → {}",
                     new_transport
                 )));
-                app.set_status_notice(format!("Transport → {}", new_transport));
+                app.set_status_notice(format!("Транспорт → {}", new_transport));
             }
             Err(e) => {
                 app.push_display_message(DisplayMessage::error(format!(
-                    "Failed to set transport: {}",
+                    "Не удалось установить транспорт: {}",
                     e
                 )));
             }
@@ -1765,10 +1765,10 @@ async fn refresh_model_catalog_with_progress(
                         crate::bus::UiActivity::catalog(
                             Some(session_id.clone()),
                             crate::message::format_model_refresh_progress_markdown(
-                                &format!("Waiting on provider APIs ({elapsed_secs}s elapsed)"),
+                                &format!("Ожидание API провайдеров (прошло {elapsed_secs}с)"),
                                 Some(percent),
                             ),
-                            Some("Refreshing model list..."),
+                            Some("Обновление списка моделей..."),
                         ),
                     ));
                 }
@@ -1792,29 +1792,29 @@ impl App {
             Ok(summary) => {
                 self.invalidate_model_picker_cache();
                 self.finish_background_task(
-                    "refresh-model-list".to_string(),
-                    "Model list refresh".to_string(),
+                    "обновление-списка-моделей".to_string(),
+                    "Обновление списка моделей".to_string(),
                     crate::tui::BackgroundTaskRowStatus::Completed,
                 );
                 self.push_display_message(DisplayMessage::system(format_model_refresh_summary(
                     &summary,
                 )));
                 self.set_status_notice(format!(
-                    "Model list refreshed: +{} models, +{} routes, ~{} changed",
+                    "Список моделей обновлен: +{} моделей, +{} маршрутов, ~{} изменено",
                     summary.models_added, summary.routes_added, summary.routes_changed
                 ));
             }
             Err(error) => {
                 self.finish_background_task(
-                    "refresh-model-list".to_string(),
-                    "Model list refresh".to_string(),
+                    "обновление-списка-моделей".to_string(),
+                    "Обновление списка моделей".to_string(),
                     crate::tui::BackgroundTaskRowStatus::Failed,
                 );
                 self.push_display_message(DisplayMessage::error(format!(
-                    "Failed to refresh model list: {}",
+                    "Не удалось обновить список моделей: {}",
                     error
                 )));
-                self.set_status_notice("Model list refresh failed");
+                self.set_status_notice("Ошибка обновления списка моделей");
             }
         }
     }
@@ -1873,17 +1873,17 @@ pub(super) fn format_model_name_list(models: &[String], limit: usize) -> String 
 
 pub(super) fn no_models_available_message(is_remote: bool) -> String {
     let mut lines = vec![
-        "No models are available right now.".to_string(),
+        "Модели сейчас недоступны.".to_string(),
         String::new(),
         "Next steps:".to_string(),
-        "  - Run /login to connect or refresh a provider".to_string(),
-        "  - Run /account to inspect or switch credentials".to_string(),
+        "  - Запустите /login для подключения или обновления провайдера".to_string(),
+        "  - Запустите /account для проверки или смены учетных данных".to_string(),
         "  - If you just logged in, wait a moment and try /model again".to_string(),
     ];
 
     if is_remote {
         lines.push(
-            "  - If this is a remote session, reconnect if the server model list looks stale"
+            "  - Если это удаленная сессия, переподключитесь если список моделей устарел"
                 .to_string(),
         );
     }
@@ -1893,17 +1893,17 @@ pub(super) fn no_models_available_message(is_remote: bool) -> String {
 
 pub(super) fn model_switch_failure_message(error: &str, is_remote: bool) -> String {
     let mut lines = vec![
-        format!("Failed to switch model: {}", error),
+        format!("Не удалось переключить модель: {}", error),
         String::new(),
         "Next steps:".to_string(),
-        "  - Use /model to choose another available route".to_string(),
-        "  - Run /login to add or refresh credentials".to_string(),
-        "  - Run /account to inspect or switch accounts".to_string(),
+        "  - Используйте /model для выбора другого доступного маршрута".to_string(),
+        "  - Запустите /login для добавления или обновления учетных данных".to_string(),
+        "  - Запустите /account для проверки или смены аккаунтов".to_string(),
     ];
 
     if is_remote {
         lines.push(
-            "  - If this is a remote session and the list looks stale, reconnect and try again"
+            "  - Если это удаленная сессия и список выглядит устаревшим, переподключитесь и попробуйте снова"
                 .to_string(),
         );
     }
@@ -1918,25 +1918,25 @@ pub(super) fn unavailable_model_route_message(
     is_remote: bool,
 ) -> String {
     let reason = if detail.trim().is_empty() {
-        "This route is not currently available.".to_string()
+        "Этот маршрут сейчас недоступен.".to_string()
     } else {
-        format!("This route is not currently available: {}", detail.trim())
+        format!("Этот маршрут сейчас недоступен: {}", detail.trim())
     };
 
     let mut lines = vec![
-        format!("Cannot use {} via {} right now.", model, provider),
+        format!("Невозможно использовать {} через {} прямо сейчас.", model, provider),
         String::new(),
         reason,
         String::new(),
         "Next steps:".to_string(),
-        "  - Pick another available row in /model".to_string(),
-        "  - Run /login to add or refresh credentials".to_string(),
-        "  - Run /account to inspect or switch accounts".to_string(),
+        "  - Выберите другой доступный ряд в /model".to_string(),
+        "  - Запустите /login для добавления или обновления учетных данных".to_string(),
+        "  - Запустите /account для проверки или смены аккаунтов".to_string(),
     ];
 
     if is_remote {
         lines.push(
-            "  - If this is a remote session, wait a moment or reconnect if the catalog looks stale"
+            "  - Если это удаленная сессия, подождите немного или переподключитесь если каталог выглядит устаревшим"
                 .to_string(),
         );
     }

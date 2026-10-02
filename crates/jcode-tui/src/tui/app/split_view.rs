@@ -158,13 +158,13 @@ pub(super) fn handle_split_view_command(app: &mut App, trimmed: &str) -> bool {
             let enabled = !app.split_view_enabled();
             app.set_split_view_enabled(enabled, true);
             if enabled {
-                app.set_status_notice("Split view: ON");
+                app.set_status_notice("Разделенный вид: ВКЛ");
                 app.push_display_message(crate::tui::DisplayMessage::system(
                     "Split view enabled. The side panel now mirrors this chat with its own scroll position."
                         .to_string(),
                 ));
             } else {
-                app.set_status_notice("Split view: OFF");
+                app.set_status_notice("Разделенный вид: ВЫКЛ");
                 app.push_display_message(crate::tui::DisplayMessage::system(
                     "Split view disabled.".to_string(),
                 ));
@@ -172,7 +172,7 @@ pub(super) fn handle_split_view_command(app: &mut App, trimmed: &str) -> bool {
         }
         "on" => {
             app.set_split_view_enabled(true, true);
-            app.set_status_notice("Split view: ON");
+            app.set_status_notice("Разделенный вид: ВКЛ");
             app.push_display_message(crate::tui::DisplayMessage::system(
                 "Split view enabled. The side panel now mirrors this chat with its own scroll position."
                     .to_string(),
@@ -180,7 +180,7 @@ pub(super) fn handle_split_view_command(app: &mut App, trimmed: &str) -> bool {
         }
         "off" => {
             app.set_split_view_enabled(false, false);
-            app.set_status_notice("Split view: OFF");
+            app.set_status_notice("Разделенный вид: ВЫКЛ");
             app.push_display_message(crate::tui::DisplayMessage::system(
                 "Split view disabled.".to_string(),
             ));

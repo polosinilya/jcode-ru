@@ -80,7 +80,7 @@ impl App {
         }
         if self.remote_login.is_some() {
             self.set_status_notice(
-                "SSH login already in progress. Press Esc or type /cancel first.",
+                "SSH-вход уже выполняется. Сначала нажмите Esc или введите /cancel.",
             );
             return true;
         }
@@ -92,7 +92,7 @@ impl App {
         if importing
             && (words.len() > 3 || provider.is_some_and(|p| !matches!(p, "openai" | "claude")))
         {
-            self.push_display_message(DisplayMessage::system("Use /login --import-local openai or /login --import-local claude for a one-time import of the selected local account. Confirmation is required before local credentials are read. No local credentials were accessed."));
+            self.push_display_message(DisplayMessage::system("Используйте /login --import-local openai или /login --import-local claude для однократного импорта выбранного локального аккаунта. Перед чтением локальных учетных данных требуется подтверждение. Локальные учетные данные не были доступны."));
             return true;
         }
         if !importing
@@ -110,7 +110,7 @@ impl App {
             Ok(target) => target,
             Err(message) => {
                 self.push_display_message(DisplayMessage::error(format!(
-                    "SSH login failed: {message}"
+                    "SSH-вход не удался: {message}"
                 )));
                 return true;
             }
@@ -194,7 +194,7 @@ impl App {
         if tokio::runtime::Handle::try_current().is_err() {
             self.finish_ssh_login_ui();
             self.push_display_message(DisplayMessage::error(
-                "SSH login failed: async runtime unavailable",
+                "SSH-вход не удался: асинхронная среда выполнения недоступна",
             ));
             return;
         }
@@ -207,7 +207,7 @@ impl App {
         login.run(Operation::Begin, None);
         self.input.clear();
         self.cursor_pos = 0;
-        self.set_status_notice(format!("SSH login: {provider} starting. Esc cancels."));
+        self.set_status_notice(format!("SSH-вход: {provider} запускается. Esc отменяет."));
     }
 
     fn finish_ssh_login_ui(&mut self) {
@@ -236,11 +236,11 @@ impl App {
             self.finish_ssh_login_ui();
             self.should_quit |= quit;
             self.push_display_message(DisplayMessage::system(if importing {
-                "SSH credential import cancelled. No local credentials were read or copied."
+                "Импорт учетных данных SSH отменен. Локальные учетные данные не были прочитаны или скопированы."
             } else {
-                "SSH login cancelled. No authorization was started."
+                "SSH-вход отменен. Авторизация не была начата."
             }));
-            self.set_status_notice("SSH login cancelled");
+            self.set_status_notice("SSH-вход отменен");
             return;
         }
         if login.phase == Phase::Cancelling {
@@ -255,8 +255,8 @@ impl App {
             let quit = login.quit_after_cancel;
             self.finish_ssh_login_ui();
             self.should_quit |= quit;
-            self.push_display_message(DisplayMessage::system("SSH credential import stopped locally. No transfer is running. Check remote login state before trying again."));
-            self.set_status_notice("SSH credential import stopped");
+            self.push_display_message(DisplayMessage::system("Импорт учетных данных SSH остановлен локально. Передача не запущена. Проверьте состояние удаленного входа перед повторной попыткой."));
+            self.set_status_notice("Импорт учетных данных SSH остановлен");
             return;
         } else {
             login.run(Operation::Cancel, None);
@@ -264,9 +264,9 @@ impl App {
         self.input.clear();
         self.cursor_pos = 0;
         self.set_status_notice(if importing {
-            "SSH credential import: stopping transfer. Credentials already saved cannot be undone."
+            "Импорт учетных данных SSH: остановка передачи. Учетные данные, уже сохраненные, нельзя отменить."
         } else {
-            "SSH login cancelling on remote host..."
+            "SSH-вход отменяется на удаленном хосте..."
         });
     }
 
@@ -292,13 +292,13 @@ impl App {
                     .extend(text.chars().filter(|c| !c.is_control()));
                 Self::apply_inline_interactive_filter(picker);
             } else {
-                self.set_status_notice("Remote login filter too long. Esc clears the filter.");
+                self.set_status_notice("Фильтр удаленного входа слишком длинный. Esc очищает фильтр.");
             }
             return true;
         }
         if login.input.len().saturating_add(text.len()) > command::INPUT_LIMIT {
             self.set_status_notice(
-                "SSH login input too long. Press Ctrl+U to clear or Esc to cancel.",
+                "SSH-вход: слишком длинный ввод. Нажмите Ctrl+U для очистки или Esc для отмены.",
             );
             return true;
         }
@@ -321,7 +321,7 @@ impl App {
         } else if login.input.is_empty() {
             String::new()
         } else {
-            "[hidden login input]".into()
+            "[скрытый ввод для входа]".into()
         };
         self.cursor_pos = self.input.len();
     }
@@ -387,7 +387,7 @@ impl App {
                 return true;
             }
             if self.handle_inline_interactive_key(code, modifiers).is_err() {
-                self.set_status_notice("Remote login picker could not handle that key.");
+                self.set_status_notice("Средство выбора удаленного входа не может обработать эту клавишу.");
             }
             if self.inline_interactive_state.is_none()
                 && self
@@ -459,7 +459,7 @@ impl App {
                 return;
             }
             if !matches!(input, "yes" | "y" | "Yes" | "Y" | "confirm") {
-                self.set_status_notice("Choose Yes or No with arrows and Enter, or type yes/no. No local credentials were accessed.");
+                self.set_status_notice("Выберите Да или Нет стрелками и Enter, или введите да/нет. Локальные учетные данные не были доступны.");
                 return;
             }
             if login.phase == Phase::ImportOffer {
@@ -469,28 +469,28 @@ impl App {
             if tokio::runtime::Handle::try_current().is_err() {
                 self.finish_ssh_login_ui();
                 self.push_display_message(DisplayMessage::error(
-                    "SSH credential import failed: async runtime unavailable. No local credentials were accessed.",
+                    "Импорт учетных данных SSH не удался: асинхронная среда выполнения недоступна. Локальные учетные данные не были доступны.",
                 ));
                 return;
             }
             login.phase = Phase::Completing;
             login.run(Operation::Import, None);
             self.inline_interactive_state = None;
-            self.set_status_notice("SSH credential import: copying to remote host. Esc stops the transfer but cannot undo an import already saved.");
+            self.set_status_notice("Импорт учетных данных SSH: копирование на удаленный хост. Esc останавливает передачу, но нельзя отменить уже сохраненный импорт.");
             return;
         }
         if login.phase == Phase::Choosing {
             self.set_status_notice(
-                "Choose a login or import row with arrows/filter and Enter. Esc cancels.",
+                "Выберите строку входа или импорта стрелками/фильтром и Enter. Esc отменяет.",
             );
             return;
         }
         if login.phase != Phase::Input {
-            self.set_status_notice("SSH login is working. Esc cancels.");
+            self.set_status_notice("SSH-вход выполняется. Esc отменяет.");
             return;
         }
         if input.is_empty() && login.input_kind != "complete" {
-            self.set_status_notice("Paste the browser callback URL or authorization code, then press Enter. Esc cancels.");
+            self.set_status_notice("Вставьте URL обратного вызова браузера или код авторизации, затем нажмите Enter. Esc отменяет.");
             return;
         }
         let operation = match login.input_kind.as_str() {
@@ -508,7 +508,7 @@ impl App {
             operation,
             (operation != Operation::Complete).then(|| input.to_string()),
         );
-        self.set_status_notice("SSH login: completing on remote host. Esc cancels.");
+        self.set_status_notice("SSH-вход: завершение на удаленном хосте. Esc отменяет.");
     }
 
     pub(super) async fn poll_ssh_login(
@@ -524,7 +524,7 @@ impl App {
         let reply = match task.reply.try_recv() {
             Ok(reply) => reply,
             Err(tokio::sync::oneshot::error::TryRecvError::Empty) => return false,
-            Err(_) => Err("Remote login task stopped"),
+            Err(_) => Err("Задача удаленного входа остановлена"),
         };
         login.task = None;
         let provider = login.provider.clone();
@@ -543,7 +543,7 @@ impl App {
             // A status reply cannot complete an OAuth flow or an import.
             Ok(Reply::Status { .. }) => {
                 self.set_status_notice(
-                    "Unexpected remote login response. Cancel and retry /login.",
+                    "Неожиданный ответ удаленного входа. Отмените и повторите попытку /login.",
                 );
             }
             Ok(Reply::Pending {
@@ -558,21 +558,21 @@ impl App {
                 login.phase = Phase::Input;
                 login.input_kind = input_kind.clone();
                 let opened = Self::open_auth_browser(&auth_url);
-                let host = crate::tui::ssh_remote_host().unwrap_or_else(|| "remote host".into());
+                let host = crate::tui::ssh_remote_host().unwrap_or_else(|| "удаленный хост".into());
                 let instructions = if input_kind == "complete" {
                     format!(
-                        "Enter code {} in your browser, then press Enter here to continue.",
-                        user_code.as_deref().unwrap_or("shown by your provider")
+                        "Введите код {} в вашем браузере, затем нажмите Enter здесь для продолжения.",
+                        user_code.as_deref().unwrap_or("показанный вашим провайдером")
                     )
                 } else {
-                    "After approval, paste the full callback URL or authorization code here and press Enter. If localhost refuses the browser connection, copy that URL from the address bar. Input is hidden and never sent to chat.".into()
+                    "После одобрения вставьте полный URL обратного вызова или код авторизации здесь и нажмите Enter. Если localhost отказывает в соединении браузера, скопируйте этот URL из адресной строки. Ввод скрыт и никогда не отправляется в чат.".into()
                 };
                 self.push_display_message(DisplayMessage::system(format!(
                     "SSH login: {provider} on {host}\n\n{auth_url}\n\n{}\n{instructions}\nEsc or /cancel cancels. Credentials stay on {host}.",
-                    if opened { "Opened authorization in your browser." } else { "Open the URL above in your browser." },
+                    if opened { "Авторизация открыта в вашем браузере." } else { "Открыть URL выше в вашем браузере." },
                 )));
                 self.set_status_notice(
-                    "SSH login: waiting for browser approval. Paste completion here. Esc cancels.",
+                    "SSH-вход: ожидание одобрения браузера. Вставьте завершение здесь. Esc отменяет.",
                 );
             }
             Ok(Reply::Authenticated { .. } | Reply::Imported) => {
@@ -596,20 +596,20 @@ impl App {
                     .is_ok();
                 let catalog_requested = remote.request_model_catalog().await.is_ok();
                 self.push_display_message(DisplayMessage::system(format!(
-                    "SSH login: {provider} {} on the remote host.{}",
+                    "SSH-вход: {provider} {} на удаленном хосте.{}",
                     if importing {
                         "imported"
                     } else {
                         "authenticated"
                     },
                     if refreshed && catalog_requested {
-                        " Refreshing remote provider and model state."
+                        " Обновление состояния удаленного провайдера и модели."
                     } else {
-                        " Reconnect to refresh remote provider and model state."
+                        " Переподключитесь для обновления состояния удаленного провайдера и модели."
                     }
                 )));
                 self.set_status_notice(format!(
-                    "SSH login: {provider} {}",
+                    "SSH-вход: {provider} {}",
                     if importing {
                         "imported"
                     } else {
@@ -617,14 +617,14 @@ impl App {
                     }
                 ));
                 if validation_warning {
-                    self.push_display_message(DisplayMessage::system("Remote credentials were saved, but post-login validation did not complete successfully. Use /model to choose a remote model and retry. Do not paste the authorization code again."));
+                    self.push_display_message(DisplayMessage::system("Удаленные учетные данные были сохранены, но пост-логин проверка не завершена успешно. Используйте /model для выбора удаленной модели и повторите попытку. Не вставляйте код авторизации снова."));
                 }
             }
             Ok(Reply::Cancelled) => {
                 self.finish_ssh_login_ui();
                 self.should_quit |= quit_after_cancel;
                 self.push_display_message(DisplayMessage::system(
-                    "SSH login cancelled. Pending authorization was removed on the remote host. Previously issued credentials are not revoked, and an already-running token exchange may still finish.",
+                    "SSH-вход отменен. Ожидаемая авторизация была удалена на удаленном хосте. Ранее выданные учетные данные не отозваны, и уже запущенный обмен токенами может все еще завершиться.",
                 ));
                 self.set_status_notice("SSH login cancelled");
             }
@@ -634,14 +634,14 @@ impl App {
                     self.finish_ssh_login_ui();
                     self.should_quit |= quit_after_cancel;
                     self.push_display_message(DisplayMessage::error(if cancelled {
-                        "SSH credential import stopped locally. The remote host may already have saved the credentials. Cancellation does not remove imported credentials. Check remote login state before trying again.".to_string()
+                        "SSH импорт учетных данных остановлен локально. Удаленный хост мог уже сохранить учетные данные. Отмена не удаляет импортированные учетные данные. Проверьте состояние удаленного входа перед повторной попыткой.".to_string()
                     } else {
                         format!("SSH credential import failed: {message}\nThe remote outcome may be unconfirmed. Check remote login state before trying again. No automatic retry or sync is performed.")
                     }));
                     self.set_status_notice(if cancelled {
-                        "SSH credential import stopped"
+                        "SSH импорт учетных данных остановлен"
                     } else {
-                        "SSH credential import failed"
+                        "SSH импорт учетных данных не удался"
                     });
                     return true;
                 }
@@ -660,7 +660,7 @@ impl App {
                     login.phase = Phase::Input;
                     self.push_display_message(DisplayMessage::error(format!("SSH login failed: {message}\nPaste a fresh completion to retry, or /cancel and /login to restart.")));
                 }
-                self.set_status_notice("SSH login failed");
+                self.set_status_notice("SSH вход не удался");
             }
         }
         true

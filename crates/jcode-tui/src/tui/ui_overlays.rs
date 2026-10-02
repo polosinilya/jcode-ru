@@ -25,7 +25,7 @@ pub(super) fn draw_changelog_overlay(
 
     if groups.is_empty() {
         lines.push(Line::from(Span::styled(
-            "No changelog entries available.",
+            "Нет доступных записей журнала изменений.",
             Style::default().fg(dim_color()),
         )));
     } else {
@@ -67,7 +67,7 @@ pub(super) fn draw_changelog_overlay(
         String::new()
     };
 
-    let title = format!(" Changelog {} ", scroll_info);
+    let title = format!(" Журнал изменений {}", scroll_info);
     let block = Block::default()
         .title(Span::styled(
             title,
@@ -76,7 +76,7 @@ pub(super) fn draw_changelog_overlay(
                 .add_modifier(Modifier::BOLD),
         ))
         .title_bottom(Line::from(Span::styled(
-            " Esc to close · drag to select, release to copy · wheel/j/k scroll ",
+            " Esc для закрытия · перетащите для выбора, отпустите для копирования · прокрутка колесом/j/k",
             Style::default().fg(dim_color()),
         )))
         .borders(Borders::ALL)
@@ -175,239 +175,239 @@ pub(super) fn draw_help_overlay(frame: &mut Frame, area: Rect, scroll: usize, ap
 
     lines.push(Line::from(""));
 
-    lines.push(Line::from(Span::styled("  Commands", section_style)));
+    lines.push(Line::from(Span::styled(" Команды", section_style)));
     lines.push(Line::from(""));
-    lines.push(help_entry("/help", "Show this help overlay"));
+    lines.push(help_entry("/help", "Показать это окно справки"));
     lines.push(help_entry(
         "/help <command>",
-        "Show details for one command",
+        "Показать детали для одной команды",
     ));
-    lines.push(help_entry("/model", "List or switch models"));
-    lines.push(help_entry("/model <name>", "Switch to a different model"));
+    lines.push(help_entry("/model", "Список или переключение моделей"));
+    lines.push(help_entry("/model <name>", "Переключиться на другую модель"));
     lines.push(help_entry(
         "/provider-test-coverage",
-        "Show live-test evidence for the current provider/model",
+        "Показать доказательства живого тестирования для текущего провайдера/модели",
     ));
-    lines.push(help_entry("/agents", "Configure models for agent roles"));
+    lines.push(help_entry("/agents", "Настроить модели для ролей агентов"));
     lines.push(help_entry(
         "/swarm-prompt",
-        "Open the active swarm routing prompt in your editor",
+        "Открыть активный запрос маршрутизации роя в вашем редакторе",
     ));
     lines.push(help_entry(
         "/effort <level>",
-        "Set effort (none|minimal|low|medium|high|xhigh|max|swarm|swarm-deep)",
+        "Установить усилие (none|minimal|low|medium|high|xhigh|max|swarm|swarm-deep)",
     ));
     lines.push(help_entry(
         "/fast [on|off|status|default ...]",
-        "Toggle fast mode",
+        "Переключить быстрый режим",
     ));
     lines.push(help_entry(
         "/transport <mode>",
-        "Set connection transport (auto|https|websocket)",
+        "Установить транспорт соединения (auto|https|websocket)",
     ));
     lines.push(help_entry(
         "/alignment [status|centered|left]",
-        "Show or persist text alignment preference",
+        "Показать или сохранить предпочтение выравнивания текста",
     ));
     lines.push(help_entry(
         "/compact-notifications [status|on|off]",
-        "Collapse swarm/file-activity notifications to one line",
+        "Свернуть уведомления роя/файлов в одну строку",
     ));
     lines.push(help_entry(
         "/show-agentgrep-output [status|on|off]",
-        "Render full agentgrep search output inline in chat",
+        "Отображать полный вывод поиска agentgrep в чате",
     ));
-    lines.push(help_entry("/config", "Show active configuration"));
-    lines.push(help_entry("/config init", "Create default config file"));
-    lines.push(help_entry("/config edit", "Open config in $EDITOR"));
-    lines.push(help_entry("/dictate", "Run configured external dictation"));
+    lines.push(help_entry("/config", "Показать активную конфигурацию"));
+    lines.push(help_entry("/config init", "Создать файл конфигурации по умолчанию"));
+    lines.push(help_entry("/config edit", "Открыть конфигурацию в $EDITOR"));
+    lines.push(help_entry("/dictate", "Запустить настроенное внешнее диктование"));
     lines.push(help_entry(
         "/git [status]",
-        "Show branch and working tree status for the repo",
+        "Показать статус ветки и рабочего дерева для репозитория",
     ));
     lines.push(help_entry(
         "/context",
-        "Show the full session context snapshot",
+        "Показать полный снимок контекста сессии",
     ));
     lines.push(help_entry(
         "/skills",
-        "Show loaded skills and jcode-endorsed recommendations",
+        "Показать загруженные навыки и рекомендации от jcode",
     ));
-    lines.push(help_entry("/info", "Show session info and token usage"));
+    lines.push(help_entry("/info", "Показать информацию о сессии и использование токенов"));
     lines.push(help_entry(
         "/keys",
-        "Show keybinding conflicts with your terminal/OS",
+        "Показать конфликты клавиш с вашим терминалом/ОС",
     ));
-    lines.push(help_entry("/usage", "Show connected provider usage limits"));
+    lines.push(help_entry("/usage", "Показать лимиты использования подключенного провайдера"));
     lines.push(help_entry(
         "/support",
-        "Email support with diagnostics prefilled",
+        "Отправить электронное письмо в службу поддержки с предзаполненной диагностикой",
     ));
-    lines.push(help_entry("/version", "Show version and build details"));
+    lines.push(help_entry("/version", "Показать версию и детали сборки"));
     lines.push(help_entry(
         "/changelog",
-        "Show recent changes in this build",
+        "Показать последние изменения в этой сборке",
     ));
 
     lines.push(Line::from(""));
     lines.push(separator());
     lines.push(Line::from(""));
 
-    lines.push(Line::from(Span::styled("  Session", section_style)));
+    lines.push(Line::from(Span::styled(" Сессия", section_style)));
     lines.push(Line::from(""));
-    lines.push(help_entry("/clear", "Clear conversation and start fresh"));
+    lines.push(help_entry("/clear", "Очистить разговор и начать заново"));
     lines.push(help_entry(
         "/compact",
-        "Summarize old messages to free context",
+        "Обобщить старые сообщения для освобождения контекста",
     ));
     lines.push(help_entry(
         "/rewind",
-        "Show numbered history, /rewind N to rewind",
+        "Показать историю с номерами, /rewind N для перемотки",
     ));
     lines.push(help_entry(
         "/fix",
-        "Attempt recovery when model cannot continue",
+        "Попытаться восстановить работу, когда модель не может продолжить",
     ));
     lines.push(help_entry(
         "/poke",
-        "Poke model to resume with incomplete todos (on/off/status)",
+        "Стимулировать модель к возобновлению с незавершенными задачами (on/off/status)",
     ));
     lines.push(help_entry(
         "/plan [goal]",
-        "Draft a plan-only proposal as a plan card (no edits)",
+        "Создать план-карточку только с предложением (без правок)",
     ));
     lines.push(help_entry(
         "/improve",
-        "Autonomously improve the repo until returns diminish",
+        "Автономно улучшать репозиторий до снижения отдачи",
     ));
     lines.push(help_entry(
         "/improve resume",
-        "Resume the last saved improve loop/plan",
+        "Возобновить последний сохраненный цикл/план улучшения",
     ));
     lines.push(help_entry(
         "/refactor",
-        "Run a safe refactor loop with independent review",
+        "Запустить безопасный цикл рефакторинга с независимым обзором",
     ));
     lines.push(help_entry(
         "/refactor resume",
-        "Resume the last saved refactor loop/plan",
+        "Возобновить последний сохраненный цикл/план рефакторинга",
     ));
     lines.push(help_entry(
         "/splitview [on|off|status]",
-        "Mirror the current chat in the side panel",
+        "Отразить текущий чат в боковой панели",
     ));
     lines.push(help_entry(
         "/fork [prompt]",
-        "Fork session into a new window (alias: /split)",
+        "Разделить сессию в новое окно (псевдоним: /split)",
     ));
     lines.push(help_entry(
         "/transfer",
-        "Open a fresh session with only compacted context + copied todos",
+        "Открыть новую сессию только с обобщенным контекстом + скопированными задачами",
     ));
     lines.push(help_entry(
         "/workspace [status|on|off|add]",
-        "Enable and manage the Niri-style session workspace",
+        "Включить и управлять рабочей областью сессии в стиле Niri",
     ));
     lines.push(help_entry(
         "/catchup [next|list]",
-        "Jump to finished sessions and open a Catch Up brief",
+        "Перейти к завершенным сессиям и открыть краткий обзор",
     ));
     lines.push(help_entry(
         "/back",
-        "Return to the previous Catch Up source session",
+        "Вернуться к предыдущей исходной сессии обзора",
     ));
-    lines.push(help_entry("/resume", "Browse and resume previous sessions"));
+    lines.push(help_entry("/resume", "Просмотреть и возобновить предыдущие сессии"));
     lines.push(help_entry(
         "/active",
-        "Manage live sessions: see which are working vs ready",
+        "Управление активными сессиями: просмотр работающих и готовых",
     ));
     lines.push(help_entry(
         "/catchup [next]",
-        "Jump into finished sessions with a side-panel brief",
+        "Переход к завершенным сессиям с кратким описанием",
     ));
     lines.push(help_entry(
         "/back",
-        "Return to the previous Catch Up session",
+        "Возврат к предыдущей сессии Catch Up",
     ));
-    lines.push(help_entry("/save [label]", "Bookmark session for /resume"));
+    lines.push(help_entry("/save [метка]", "Сохранить сессию для /resume"));
     lines.push(help_entry(
-        "/rename <name>|--clear",
-        "Set or clear current session name",
+        "/rename <имя>|--clear",
+        "Установить или очистить имя текущей сессии",
     ));
     lines.push(help_entry(
         "/unsave",
-        "Remove bookmark from current session",
+        "Удалить закладку из текущей сессии",
     ));
 
     lines.push(Line::from(""));
     lines.push(separator());
     lines.push(Line::from(""));
 
-    lines.push(Line::from(Span::styled("  Memory & Swarm", section_style)));
+    lines.push(Line::from(Span::styled("  Память и Рой", section_style)));
     lines.push(Line::from(""));
-    lines.push(help_entry("/memory [on|off]", "Toggle memory features"));
+    lines.push(help_entry("/memory [on|off]", "Переключить функции памяти"));
     lines.push(help_entry(
-        "/test [claim]",
-        "Run layered verification and produce proof",
+        "/test [утверждение]",
+        "Выполнить многоуровневую проверку и создать доказательство",
     ));
     lines.push(help_entry(
         "/initiatives",
-        "Open initiatives overview / resume an initiative",
+        "Открыть обзор инициатив / возобновить инициативу",
     ));
-    lines.push(help_entry("/swarm [on|off]", "Toggle swarm features"));
+    lines.push(help_entry("/swarm [on|off]", "Переключить функции роя"));
 
     lines.push(Line::from(""));
     lines.push(separator());
     lines.push(Line::from(""));
 
-    lines.push(Line::from(Span::styled("  Auth & Accounts", section_style)));
+    lines.push(Line::from(Span::styled("  Аутентификация и Аккаунты", section_style)));
     lines.push(Line::from(""));
-    lines.push(help_entry("/auth", "Show authentication status"));
+    lines.push(help_entry("/auth", "Показать статус аутентификации"));
     lines.push(help_entry(
-        "/login [provider]",
-        "Interactive or direct login",
+        "/login [провайдер]",
+        "Интерактивный или прямой вход",
     ));
     lines.push(help_entry(
         "/account",
-        "Open combined Claude/OpenAI account picker",
+        "Открыть выбор аккаунтов Claude/OpenAI",
     ));
     lines.push(help_entry(
         "/subscription",
-        "Inspect jcode subscription scaffold",
+        "Проверить каркас подписки jcode",
     ));
     lines.push(help_entry(
         "/subscribe",
-        "Why and how to subscribe to jcode",
+        "Зачем и как подписаться на jcode",
     ));
 
     lines.push(Line::from(""));
     lines.push(separator());
     lines.push(Line::from(""));
 
-    lines.push(Line::from(Span::styled("  System", section_style)));
+    lines.push(Line::from(Span::styled("  Система", section_style)));
     lines.push(Line::from(""));
-    lines.push(help_entry("/reload", "Reload to newer binary if available"));
+    lines.push(help_entry("/reload", "Перезагрузить в более новую версию если доступна"));
     lines.push(help_entry(
         "/restart",
-        "Restart with current binary (no build)",
+        "Перезапустить с текущей версией (без сборки)",
     ));
     lines.push(help_entry(
         "/rebuild",
-        "Full update (git pull + build + tests)",
+        "Полное обновление (git pull + сборка + тесты)",
     ));
     if app.is_remote_mode() {
-        lines.push(help_entry("/client-reload", "Force reload client binary"));
-        lines.push(help_entry("/server-reload", "Force reload server binary"));
+        lines.push(help_entry("/client-reload", "Принудительно перезагрузить клиентскую версию"));
+        lines.push(help_entry("/server-reload", "Принудительно перезагрузить серверную версию"));
         lines.push(help_entry(
             "/continue",
-            "Continue every interrupted live session that would auto-resume",
+            "Продолжить каждую прерванную активную сессию которая бы возобновилась автоматически",
         ));
     }
     lines.push(help_entry(
         "/debug-visual",
-        "Enable visual debugging for TUI issues",
+        "Включить визуальную отладку для проблем TUI",
     ));
-    lines.push(help_entry("/quit", "Exit jcode"));
+    lines.push(help_entry("/quit", "Выйти из jcode"));
 
     // The sections above are hand-curated for ordering, but they drift as
     // commands are added. Anything registered and not already shown gets listed
@@ -429,7 +429,7 @@ pub(super) fn draw_help_overlay(frame: &mut Frame, area: Rect, scroll: usize, ap
         lines.push(Line::from(""));
         lines.push(separator());
         lines.push(Line::from(""));
-        lines.push(Line::from(Span::styled("  More commands", section_style)));
+        lines.push(Line::from(Span::styled("  Другие команды", section_style)));
         lines.push(Line::from(""));
         for (name, desc) in uncovered {
             lines.push(help_entry(name, desc));
@@ -442,10 +442,10 @@ pub(super) fn draw_help_overlay(frame: &mut Frame, area: Rect, scroll: usize, ap
         lines.push(separator());
         lines.push(Line::from(""));
 
-        lines.push(Line::from(Span::styled("  Skills", section_style)));
+        lines.push(Line::from(Span::styled("  Навыки", section_style)));
         lines.push(Line::from(""));
         for skill in &skills {
-            lines.push(help_entry(&format!("/{}", skill), "Activate skill"));
+            lines.push(help_entry(&format!("/{}", skill), "Активировать навык"));
         }
     }
 
@@ -453,26 +453,26 @@ pub(super) fn draw_help_overlay(frame: &mut Frame, area: Rect, scroll: usize, ap
     lines.push(separator());
     lines.push(Line::from(""));
 
-    lines.push(Line::from(Span::styled("  Navigation", section_style)));
+    lines.push(Line::from(Span::styled("  Навигация", section_style)));
     lines.push(Line::from(""));
-    lines.push(key_entry("PageUp / PageDown", "Scroll history"));
-    lines.push(key_entry("Up / Down", "Scroll history (when input empty)"));
+    lines.push(key_entry("PageUp / PageDown", "Прокрутка истории"));
+    lines.push(key_entry("Вверх / Вниз", "Прокрутка истории (когда поле ввода пустое)"));
     lines.push(key_entry(
         "Ctrl+J / Ctrl+K",
-        "Jump to next / previous user prompt (also Ctrl+] / Ctrl+[)",
+        "Переход к следующему / предыдущему запросу пользователя (также Ctrl+] / Ctrl+[)",
     ));
     lines.push(key_entry(
         "Ctrl+Shift+J / Ctrl+Shift+K",
-        "Scroll history down / up one line",
+        "Прокрутить историю вниз / вверх на одну строку",
     ));
     lines.push(key_entry(
         "Cmd/Super+K / J",
-        "Jump to previous / next user prompt (macOS, if forwarded)",
+        "Переход к предыдущему / следующему запросу пользователя (macOS, если перенаправлено)",
     ));
-    lines.push(key_entry("Ctrl+1..4", "Resize side panel to 25/50/75/100%"));
+    lines.push(key_entry("Ctrl+1..4", "Изменить размер боковой панели до 25/50/75/100%"));
     lines.push(key_entry(
         "Ctrl+5..9",
-        "Jump by recency (5 = 5th most recent)",
+        "Переход по давности (5 = 5-я по свежести)",
     ));
 
     lines.push(Line::from(""));
@@ -480,133 +480,133 @@ pub(super) fn draw_help_overlay(frame: &mut Frame, area: Rect, scroll: usize, ap
     lines.push(Line::from(""));
 
     lines.push(Line::from(Span::styled(
-        "  Diagrams & Diffs",
+        "  Диаграммы и Сравнения",
         section_style,
     )));
     lines.push(Line::from(""));
     lines.push(key_entry(
         &crate::tui::keybind::side_panel_toggle_key_label(),
-        "Toggle side panel (or diagram pane if empty)",
+        "Переключить боковую панель (или панель диаграмм если пусто)",
     ));
-    lines.push(key_entry(&alt("T"), "Toggle diagram position (side/top)"));
+    lines.push(key_entry(&alt("T"), "Переключить положение диаграммы (сбоку/сверху)"));
     lines.push(key_entry(
         &alt("Shift+I"),
-        "Show/hide inline images (persists)",
+        "Показать/скрыть встроенные изображения (сохраняется)",
     ));
-    lines.push(key_entry("Ctrl+H / Ctrl+L", "Focus chat / diagram / diffs"));
+    lines.push(key_entry("Ctrl+H / Ctrl+L", "Фокус на чат / диаграмму / сравнения"));
     lines.push(key_entry(
         "Ctrl+L / Cmd+L",
-        "Clear screen, history stays above (no pane focused)",
+        "Очистить экран, история остается выше (никакая панель не в фокусе)",
     ));
     lines.push(key_entry(
         "Ctrl+Left / Right",
-        "Cycle diagrams (when diagram focused)",
+        "Циклический переход между диаграммами (когда диаграмма в фокусе)",
     ));
-    lines.push(key_entry("h/j/k/l / arrows", "Pan diagram (when focused)"));
-    lines.push(key_entry("[ / ]", "Zoom diagram (when focused)"));
-    lines.push(key_entry("+ / -", "Resize diagram pane"));
+    lines.push(key_entry("h/j/k/l / стрелки", "Панорамирование диаграммы (когда в фокусе)"));
+    lines.push(key_entry("[ / ]", "Масштабирование диаграммы (когда в фокусе)"));
+    lines.push(key_entry("+ / -", "Изменить размер панели диаграммы"));
     lines.push(key_entry(
         &format!("{} / /diff", alt("G")),
-        "Cycle diff mode (Off/Inline/Pinned/File)",
+        "Циклический режим сравнения (Выкл/Встроенный/Закрепленный/Файл)",
     ));
-    lines.push(key_entry("Shift+Tab", "Cycle favorited models"));
-    lines.push(key_entry("Ctrl+O", "Set default model (in /model picker)"));
+    lines.push(key_entry("Shift+Tab", "Циклический переход между избранными моделями"));
+    lines.push(key_entry("Ctrl+O", "Установить модель по умолчанию (в выборе /model)"));
     lines.push(key_entry(
         "Ctrl+N",
-        "Toggle favorite model (in /model picker)",
+        "Добавить/убрать модель из избранного (в выборе /model)",
     ));
 
     lines.push(Line::from(""));
     lines.push(separator());
     lines.push(Line::from(""));
 
-    lines.push(Line::from(Span::styled("  Input & Editing", section_style)));
+    lines.push(Line::from(Span::styled("  Ввод и Редактирование", section_style)));
     lines.push(Line::from(""));
     lines.push(key_entry(
         "Ctrl+C / Ctrl+D",
-        "Quit (press twice to confirm)",
+        "Выход (нажмите дважды для подтверждения)",
     ));
-    lines.push(key_entry("Ctrl+X", "Cut entire input line to clipboard"));
+    lines.push(key_entry("Ctrl+X", "Вырезать всю строку ввода в буфер обмена"));
     lines.push(key_entry(
         "Ctrl+A",
-        "Copy visible chat viewport plus nearby context",
+        "Копировать видимую область чата плюс контекст поблизости",
     ));
-    lines.push(key_entry("Ctrl+U", "Clear input line"));
-    lines.push(key_entry("Ctrl+K", "Delete to end of input"));
+    lines.push(key_entry("Очистить строку ввода", "Ctrl+U"));
+    lines.push(key_entry("Ctrl+K", "Удалить до конца строки ввода"));
     lines.push(key_entry(
         &format!("{} / {}", alt("Backspace"), alt("Delete")),
-        "Delete previous word in input",
+        "Удалить предыдущее слово во вводе",
     ));
     lines.push(key_entry(
         "Cmd/Super+Backspace / Delete",
-        "Delete previous word in input",
+        "Удалить предыдущее слово во вводе",
     ));
     if cfg!(target_os = "macos") {
         // On macOS, Cmd+Left/Right default to effort cycling; Home/End and
         // Cmd+A/E still jump to the start/end of the input.
-        lines.push(key_entry("Home / End", "Move to start / end of input"));
+        lines.push(key_entry("Home / End", "Перейти к началу / концу строки ввода"));
     } else {
         lines.push(key_entry(
             "Cmd/Super+Left / Right",
-            "Move to start / end of input",
+            "Перейти к началу / концу строки ввода",
         ));
     }
-    lines.push(key_entry("Cmd/Super+Z", "Undo input edit"));
-    lines.push(key_entry("Cmd/Super+X / V", "Cut input / paste clipboard"));
-    lines.push(key_entry("Ctrl+S", "Stash / pop input (save for later)"));
-    lines.push(key_entry("Ctrl+Backspace", "Delete previous word in input"));
-    lines.push(key_entry("Ctrl+B / Ctrl+F", "Move by word left / right"));
-    lines.push(key_entry("Ctrl+Left / Right", "Move by word left / right"));
+    lines.push(key_entry("Cmd/Super+Z", "Отменить редактирование ввода"));
+    lines.push(key_entry("Cmd/Super+X / V", "Вырезать ввод / вставить из буфера обмена"));
+    lines.push(key_entry("Ctrl+S", "Спрятать / вернуть ввод (сохранить на потом)"));
+    lines.push(key_entry("Ctrl+Backspace", "Удалить предыдущее слово во вводе"));
+    lines.push(key_entry("Ctrl+B / Ctrl+F", "Перемещение по словам влево / вправо"));
+    lines.push(key_entry("Ctrl+Left / Right", "Перемещение по словам влево / вправо"));
     lines.push(key_entry(
         &format!("Shift+Enter / {}", alt("Enter")),
-        "Insert newline in input",
+        "Вставить новую строку во входные данные",
     ));
     lines.push(key_entry(
         "Trailing \\ then Enter",
-        "Insert newline (fallback; run /terminal-setup to fix Shift+Enter)",
+        "Вставить новую строку (резервный вариант; запустите /terminal-setup для исправления Shift+Enter)",
     ));
     lines.push(key_entry(
         "Ctrl+Enter / Cmd+Enter",
-        "Use opposite send mode while processing",
+        "Использовать противоположный режим отправки во время обработки",
     ));
-    lines.push(key_entry("Ctrl+Up", "Retrieve pending message for editing"));
-    lines.push(key_entry("Ctrl+Tab / Ctrl+T", "Toggle queue mode"));
+    lines.push(key_entry("Ctrl+Up", "Получить ожидающее сообщение для редактирования"));
+    lines.push(key_entry("Ctrl+Tab / Ctrl+T", "Переключить режим очереди"));
     lines.push(key_entry(
         "Ctrl+R",
-        "Search prompt history (across sessions)",
+        "Поиск в истории запросов (между сессиями)",
     ));
     lines.push(key_entry(
         &format!("Ctrl+V / {}", alt("V")),
-        "Paste clipboard (text or image)",
+        "Вставить из буфера обмена (текст или изображение)",
     ));
     lines.push(key_entry(
         &alt("A"),
-        "Quick-copy visible chat viewport plus nearby context",
+        "Быстрое копирование видимой области чата плюс контекст поблизости",
     ));
-    lines.push(key_entry(&alt("Y"), "Toggle chat selection/copy mode"));
-    lines.push(key_entry(&alt("S"), "Toggle typing scroll lock"));
-    lines.push(key_entry("Ctrl+P", "Toggle auto-poke for incomplete todos"));
-    lines.push(key_entry(&alt("X"), "Show/dismiss todo list card in chat"));
+    lines.push(key_entry(&alt("Y"), "Переключить режим выбора/копирования чата"));
+    lines.push(key_entry(&alt("S"), "Переключить блокировку прокрутки при наборе"));
+    lines.push(key_entry("Ctrl+P", "Переключить автоматическое уведомление о неполных задачах"));
+    lines.push(key_entry(&alt("X"), "Показать/скрыть карточку списка задач в чате"));
     lines.push(key_entry(
         &crate::tui::keybind::effort_switch_keys_label(),
-        "Cycle effort (reasoning + swarm)",
+        "Цикл усилия (рассуждение + рой)",
     ));
     if cfg!(target_os = "macos") {
         lines.push(key_entry(
             &alt("Left / Right"),
-            &format!("Move by word in input (also {} / {})", alt("B"), alt("F")),
+            &format!("Перемещение по словам во входных данных (также {} / {})", alt("B"), alt("F")),
         ));
     }
     if let Some(label) = app.dictation_key_label() {
-        lines.push(key_entry(&label, "Run configured dictation"));
+        lines.push(key_entry(&label, "Запустить настроенное диктование"));
     }
     if let Some(label) = crate::tui::keybind::load_open_resume_key().label {
-        lines.push(key_entry(&label, "Open the /resume session picker"));
+        lines.push(key_entry(&label, "Открыть выбор сессии /resume"));
     }
     if let Some(label) = crate::tui::keybind::load_new_terminal_key().label {
         lines.push(key_entry(
             &label,
-            "Spawn new jcode session in a new terminal",
+            "Создать новую сессию jcode в новом терминале",
         ));
     }
 
@@ -628,7 +628,7 @@ pub(super) fn draw_help_overlay(frame: &mut Frame, area: Rect, scroll: usize, ap
         String::new()
     };
 
-    let title = format!(" Help {} ", scroll_info);
+    let title = format!(" Help {}", scroll_info);
     let block = Block::default()
         .title(Span::styled(
             title,
@@ -637,7 +637,7 @@ pub(super) fn draw_help_overlay(frame: &mut Frame, area: Rect, scroll: usize, ap
                 .add_modifier(Modifier::BOLD),
         ))
         .title_bottom(Line::from(Span::styled(
-            " Esc to close · mouse wheel/j/k scroll · Space/PageUp page · /help <cmd> for details ",
+            " Esc для закрытия · колесо мыши/j/k для прокрутки · Пробел/PageUp страница · /help <cmd> для деталей",
             Style::default().fg(dim_color()),
         )))
         .borders(Borders::ALL)
@@ -665,9 +665,9 @@ pub(super) fn draw_model_status_overlay(
     let dim_style = Style::default().fg(dim_color());
 
     let mut lines: Vec<Line<'static>> = Vec::new();
-    lines.push(Line::from(Span::styled("  Model Status", title_style)));
+    lines.push(Line::from(Span::styled("  Статус модели", title_style)));
     lines.push(Line::from(Span::styled(
-        "  Live verification evidence for provider/model behavior in jcode",
+        "  Доказательства проверки работы провайдера/модели в jcode",
         dim_style,
     )));
     lines.push(Line::from(""));
@@ -689,7 +689,7 @@ pub(super) fn draw_model_status_overlay(
 
     lines.push(Line::from(""));
     lines.push(Line::from(Span::styled(
-        "  ↑/↓ scroll, PgUp/PgDn page, c copy report, q/Esc close",
+        "  ↑/↓ прокрутка, PgUp/PgDn страница, c копировать отчет, q/Esc закрыть",
         dim_style,
     )));
 
@@ -697,7 +697,7 @@ pub(super) fn draw_model_status_overlay(
         .block(
             Block::default()
                 .borders(Borders::ALL)
-                .title(" /provider-test-coverage "),
+                .title(" /provider-test-coverage"),
         )
         .scroll((scroll.min(u16::MAX as usize) as u16, 0));
     frame.render_widget(paragraph, area);

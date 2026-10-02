@@ -31,7 +31,7 @@ pub(super) fn handle_remote_command(app: &mut App, trimmed: &str) -> bool {
         Err(message) => app.push_display_message(DisplayMessage::error(message)),
         Ok(RemoteCommand::Help) => {
             app.push_display_message(DisplayMessage::system(REMOTE_HELP.to_string()));
-            app.set_status_notice("Remote help");
+            app.set_status_notice("Помощь по удаленному доступу");
         }
         Ok(RemoteCommand::Cloud) => activate_cloud(app),
         Ok(RemoteCommand::Status) => show_status(app),
@@ -50,18 +50,18 @@ fn activate_cloud(app: &mut App) {
     let account_line = if signed_in {
         match tier {
             Some(tier) => format!("Signed in on the **{}** plan.", tier.display_name()),
-            None => "Signed in to your Jcode account.".to_string(),
+            None => "Вы вошли в свой аккаунт Jcode.".to_string(),
         }
     } else {
-        "Not signed in yet. The account page will guide you through passwordless sign-in and subscription setup."
+        "Вы еще не вошли. Страница аккаунта проведет вас через процесс входа без пароля и настройку подписки."
             .to_string()
     };
 
     let opened = super::helpers::open_path_or_url_detached(CLOUD_ACCOUNT_URL).is_ok();
     let open_line = if opened {
-        "Opened your secure Jcode account page in the browser."
+        "Открыта страница вашего безопасного аккаунта Jcode в браузере."
     } else {
-        "Open your secure Jcode account page:"
+        "Откройте страницу вашего безопасного аккаунта Jcode:"
     };
     app.push_display_message(DisplayMessage::system(format!(
         "**Jcode Cloud early access**\n\n{account_line}\n\n{open_line}\n\n{CLOUD_ACCOUNT_URL}\n\n\
@@ -70,9 +70,9 @@ fn activate_cloud(app: &mut App) {
          `/remote on`, restart the server, then `/remote pair`."
     )));
     app.set_status_notice(if opened {
-        "Jcode Cloud account opened"
+        "Аккаунт Jcode Cloud открыт"
     } else {
-        "Jcode Cloud account link ready"
+        "Ссылка на аккаунт Jcode Cloud готова"
     });
 }
 
@@ -80,9 +80,9 @@ fn show_status(app: &mut App) {
     let status = RemoteStatus::load();
     app.push_display_message(DisplayMessage::system(status.to_markdown()));
     app.set_status_notice(if status.enabled {
-        "Remote access on"
+        "Удаленный доступ включен"
     } else {
-        "Remote access off"
+        "Удаленный доступ выключен"
     });
 }
 
@@ -90,7 +90,7 @@ fn toggle(app: &mut App, enabled: bool) {
     match set_gateway_enabled(enabled) {
         Ok(ToggleOutcome::Unchanged { .. }) => {
             app.push_display_message(DisplayMessage::system(format!(
-                "Remote access is already **{}**.",
+                "Удаленный доступ уже **{}**.",
                 if enabled { "on" } else { "off" }
             )));
         }
@@ -117,13 +117,13 @@ fn toggle(app: &mut App, enabled: bool) {
             };
             app.push_display_message(DisplayMessage::system(body));
             app.set_status_notice(if enabled {
-                "Remote enabled (restart required)"
+                "Удаленный доступ включен (требуется перезапуск)"
             } else {
-                "Remote disabled (restart required)"
+                "Удаленный доступ выключен (требуется перезапуск)"
             });
         }
         Err(error) => app.push_display_message(DisplayMessage::error(format!(
-            "Failed to update remote access: {}",
+            "Не удалось обновить удаленный доступ: {}",
             crate::util::format_error_chain(&error)
         ))),
     }
@@ -154,10 +154,10 @@ fn show_pairing_invite(app: &mut App) {
             }
 
             app.push_display_message(DisplayMessage::system(body));
-            app.set_status_notice("Pairing code ready");
+            app.set_status_notice("Код сопряжения готов");
         }
         Err(error) => app.push_display_message(DisplayMessage::error(format!(
-            "Failed to create pairing code: {}",
+            "Не удалось создать код сопряжения: {}",
             crate::util::format_error_chain(&error)
         ))),
     }
@@ -167,22 +167,22 @@ fn revoke(app: &mut App, target: &str) {
     match revoke_device(target) {
         Ok(removed) if removed.is_empty() => {
             app.push_display_message(DisplayMessage::error(format!(
-                "No paired device matching `{target}`. Run `/remote status` to list devices."
+                "Нет сопряженного устройства, соответствующего `{target}`. Выполните `/remote status` для списка устройств."
             )));
         }
         Ok(removed) => {
             app.push_display_message(DisplayMessage::system(format!(
-                "Revoked {}. That device must pair again to reconnect.",
+                "Отозвано {}. Это устройство должно снова выполнить сопряжение для повторного подключения.",
                 removed
                     .iter()
                     .map(|name| format!("`{name}`"))
                     .collect::<Vec<_>>()
                     .join(", ")
             )));
-            app.set_status_notice("Device revoked");
+            app.set_status_notice("Устройство отозвано");
         }
         Err(error) => app.push_display_message(DisplayMessage::error(format!(
-            "Failed to revoke device: {}",
+            "Не удалось отозвать устройство: {}",
             crate::util::format_error_chain(&error)
         ))),
     }
@@ -211,11 +211,11 @@ mod tests {
         for sub in ["cloud", "status", "on", "off", "pair", "revoke"] {
             assert!(
                 REMOTE_HELP.contains(sub),
-                "help should document /remote {sub}"
+                "помощь должна документировать /remote {sub}"
             );
             assert!(
                 parse_remote_command(&format!("/remote {sub} x")).is_some(),
-                "parser should recognize /remote {sub}"
+                "парсер должен распознавать /remote {sub}"
             );
         }
     }

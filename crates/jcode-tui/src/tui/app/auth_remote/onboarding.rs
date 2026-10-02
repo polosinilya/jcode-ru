@@ -23,7 +23,7 @@ mod tests {
             .map(|p| ProviderStatus {
                 id: p.id.into(),
                 state: crate::auth::AuthState::NotConfigured,
-                method_detail: "not configured".into(),
+                method_detail: "не настроен".into(),
             })
             .collect()
     }
@@ -71,7 +71,7 @@ mod tests {
                     .contains("No logins are configured on test-remote")
             );
             let picker = app.inline_interactive_state.as_ref().unwrap();
-            assert_eq!(picker.entries[picker.selected].name, "No");
+            assert_eq!(picker.entries[picker.selected].name, "Нет");
             app.handle_ssh_login_key(KeyCode::Enter, KeyModifiers::NONE, None);
             assert!(app.remote_login.as_ref().unwrap().phase == Phase::Choosing);
             assert!(app.inline_interactive_state.as_ref().unwrap().entries.len() > 2);
@@ -280,16 +280,16 @@ impl App {
         };
         let host = login.target.host();
         let entries = [true, false].into_iter().map(|accept| PickerEntry {
-            name: if accept { "Yes" } else { "No" }.into(),
+            name: if accept { "Да" } else { "Нет" }.into(),
             options: vec![PickerOption {
                 provider: host.into(),
-                api_method: if offer { "import local login?" } else { "copy this login?" }.into(),
+                api_method: if offer { "копировать этот логин?" } else { "импортировать локальный логин?" }.into(),
                 available: true,
                 detail: match (offer, accept) {
-                    (true, true) => "Choose a local OpenAI or Claude login. No credentials read or copied yet.",
-                    (true, false) => "Use the normal login options on the remote host instead.",
-                    (false, true) => "Copy this selected login automatically to the trusted host above. No tokens to paste.",
-                    (false, false) => "Cancel without reading or copying local credentials.",
+                    (true, true) => "Выберите локальный логин OpenAI или Claude. Учетные данные еще не прочитаны или скопированы.",
+                    (true, false) => "Вместо этого используйте обычные параметры входа на удаленном хосте.",
+                    (false, true) => "Автоматически скопируйте выбранный логин на доверенный хост выше. Нет токенов для вставки.",
+                    (false, false) => "Отмена без чтения или копирования локальных учетных данных.",
                 }.into(),
                 estimated_reference_cost_micros: None,
             }],
@@ -315,7 +315,7 @@ impl App {
             filter: String::new(),
             preview: false,
         });
-        self.set_status_notice("Choose Yes or No with arrows (or Y/N), then Enter. Esc cancels.");
+        self.set_status_notice("Выберите Да или Нет стрелками (или Y/N), затем Enter. Esc для отмены.");
     }
 
     pub(in crate::tui::app) fn select_ssh_import_decision(&mut self, accept: bool) {

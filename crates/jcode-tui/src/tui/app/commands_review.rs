@@ -343,13 +343,13 @@ pub(super) fn handle_observe_command(app: &mut App, trimmed: &str) -> bool {
             let enabled = !app.observe_mode_enabled();
             app.set_observe_mode_enabled(enabled, true);
             if enabled {
-                app.set_status_notice("Observe: ON");
+                app.set_status_notice("Наблюдение: ВКЛ");
                 app.push_display_message(DisplayMessage::system(
                     "Observe mode enabled - the side panel now tracks the latest useful tool call/result added to context."
                         .to_string(),
                 ));
             } else {
-                app.set_status_notice("Observe: OFF");
+                app.set_status_notice("Наблюдение: ВЫКЛ");
                 app.push_display_message(DisplayMessage::system(
                     "Observe mode disabled.".to_string(),
                 ));
@@ -357,7 +357,7 @@ pub(super) fn handle_observe_command(app: &mut App, trimmed: &str) -> bool {
         }
         "on" => {
             app.set_observe_mode_enabled(true, true);
-            app.set_status_notice("Observe: ON");
+            app.set_status_notice("Наблюдение: ВКЛ");
             app.push_display_message(DisplayMessage::system(
                 "Observe mode enabled - the side panel now tracks the latest useful tool call/result added to context."
                     .to_string(),
@@ -365,7 +365,7 @@ pub(super) fn handle_observe_command(app: &mut App, trimmed: &str) -> bool {
         }
         "off" => {
             app.set_observe_mode_enabled(false, false);
-            app.set_status_notice("Observe: OFF");
+            app.set_status_notice("Наблюдение: ВЫКЛ");
             app.push_display_message(DisplayMessage::system("Observe mode disabled.".to_string()));
         }
         "status" => {
@@ -735,28 +735,28 @@ pub(super) fn launch_forked_session_local(
                 "↗ Next prompt launched in {}.",
                 session_name
             )));
-            app.set_status_notice("Prompt launched in new session");
+            app.set_status_notice("Подсказка запущена в новой сессии");
         }
         (true, false) => {
             app.push_display_message(DisplayMessage::system(format!(
                 "✂ Fork → {} (opened in new pane/window)",
                 session_name
             )));
-            app.set_status_notice(format!("Fork → {}", session_name));
+            app.set_status_notice(format!("Форк → {}", session_name));
         }
         (false, true) => {
             app.push_display_message(DisplayMessage::system(format!(
                 "↗ New session {} created for the next prompt.\n\nNo terminal was opened automatically. Resume manually:\n\n  jcode --resume {}",
                 session_name, session_id
             )));
-            app.set_status_notice("Prompt session created");
+            app.set_status_notice("Сессия подсказки создана");
         }
         (false, false) => {
             app.push_display_message(DisplayMessage::system(format!(
                 "✂ Fork → {}\n\nNo terminal was opened automatically. Resume manually:\n\n  jcode --resume {}",
                 session_name, session_id
             )));
-            app.set_status_notice("Forked session created");
+            app.set_status_notice("Форк сессии создан");
         }
     }
     Ok(opened)
@@ -799,13 +799,13 @@ fn launch_review_window_local(
             "🔍 {} launched in {}.",
             label, session_name
         )));
-        app.set_status_notice(format!("{} launched", label));
+        app.set_status_notice(format!("{} запущен", label));
     } else {
         app.push_display_message(DisplayMessage::system(format!(
             "🔍 {} session {} created.\n\nNo terminal was opened automatically. Resume manually:\n\n  jcode --resume {}",
             label, session_name, session_id
         )));
-        app.set_status_notice(format!("{} session created", label));
+        app.set_status_notice(format!("{} сессия создана", label));
     }
     Ok(opened)
 }
@@ -875,7 +875,7 @@ pub(super) fn queue_review_spawn_remote(
     app.pending_split_label = Some(label.to_string());
     app.pending_split_started_at = Some(Instant::now());
     app.pending_split_request = true;
-    app.set_status_notice(format!("{} queued", label));
+    app.set_status_notice(format!("{} в очереди", label));
 }
 
 #[cfg(test)]
@@ -906,7 +906,7 @@ pub(super) fn maybe_trigger_autoreview_local(app: &mut App) {
             "Failed to launch autoreview: {}",
             error
         )));
-        app.set_status_notice("Autoreview launch failed");
+        app.set_status_notice("Не удалось запустить автосмотр");
     }
 }
 
@@ -919,7 +919,7 @@ pub(super) fn maybe_trigger_autojudge_local(app: &mut App) {
             "Failed to launch autojudge: {}",
             error
         )));
-        app.set_status_notice("Autojudge launch failed");
+        app.set_status_notice("Не удалось запустить автооценку");
     }
 }
 
@@ -936,7 +936,7 @@ pub(super) fn handle_review_command_local(app: &mut App, trimmed: &str) -> bool 
                 "Failed to launch review: {}",
                 error
             )));
-            app.set_status_notice("Review launch failed");
+            app.set_status_notice("Не удалось запустить просмотр");
         }
         return true;
     }
@@ -967,7 +967,7 @@ pub(super) fn handle_autoreview_command_local(app: &mut App, trimmed: &str) -> b
             app.push_display_message(DisplayMessage::system(
                 "Autoreview enabled for this session.".to_string(),
             ));
-            app.set_status_notice("Autoreview: ON");
+            app.set_status_notice("Автосмотр: ВКЛ");
             true
         }
         "off" => {
@@ -976,7 +976,7 @@ pub(super) fn handle_autoreview_command_local(app: &mut App, trimmed: &str) -> b
             app.push_display_message(DisplayMessage::system(
                 "Autoreview disabled for this session.".to_string(),
             ));
-            app.set_status_notice("Autoreview: OFF");
+            app.set_status_notice("Автосмотр: ВЫКЛ");
             true
         }
         "now" => {
@@ -985,7 +985,7 @@ pub(super) fn handle_autoreview_command_local(app: &mut App, trimmed: &str) -> b
                     "Failed to launch autoreview: {}",
                     error
                 )));
-                app.set_status_notice("Autoreview launch failed");
+                app.set_status_notice("Не удалось запустить автосмотр");
             }
             true
         }
@@ -1011,7 +1011,7 @@ pub(super) fn handle_judge_command_local(app: &mut App, trimmed: &str) -> bool {
                 "Failed to launch judge: {}",
                 error
             )));
-            app.set_status_notice("Judge launch failed");
+            app.set_status_notice("Не удалось запустить оценку");
         }
         return true;
     }
@@ -1042,7 +1042,7 @@ pub(super) fn handle_autojudge_command_local(app: &mut App, trimmed: &str) -> bo
             app.push_display_message(DisplayMessage::system(
                 "Autojudge enabled for this session.".to_string(),
             ));
-            app.set_status_notice("Autojudge: ON");
+            app.set_status_notice("Автооценка: ВКЛ");
             true
         }
         "off" => {
@@ -1051,7 +1051,7 @@ pub(super) fn handle_autojudge_command_local(app: &mut App, trimmed: &str) -> bo
             app.push_display_message(DisplayMessage::system(
                 "Autojudge disabled for this session.".to_string(),
             ));
-            app.set_status_notice("Autojudge: OFF");
+            app.set_status_notice("Автооценка: ВЫКЛ");
             true
         }
         "now" => {
@@ -1060,7 +1060,7 @@ pub(super) fn handle_autojudge_command_local(app: &mut App, trimmed: &str) -> bo
                     "Failed to launch autojudge: {}",
                     error
                 )));
-                app.set_status_notice("Autojudge launch failed");
+                app.set_status_notice("Не удалось запустить автооценку");
             }
             true
         }

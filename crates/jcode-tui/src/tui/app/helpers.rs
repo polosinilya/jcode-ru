@@ -575,7 +575,7 @@ pub(super) fn fast_mode_success_message(
             status, label
         )
     } else {
-        format!("✓ Fast mode {} ({})", status, label)
+        format!("✓ Быстрый режим {} ({})", status, label)
     }
 }
 
@@ -759,7 +759,7 @@ fn build_fresh_session_command(socket: Option<&str>) -> crate::terminal_launch::
         args.push(socket.to_string());
     }
     crate::terminal_launch::TerminalCommand::new(&exe, args)
-        .title("jcode · new session".to_string())
+        .title("jcode · новая сессия".to_string())
         .kind("new-terminal")
         .fresh_spawn()
 }
@@ -801,7 +801,7 @@ fn resumed_window_title(session_id: &str) -> String {
 ///
 /// Routes through `terminal_launch` on every platform. This used to be a
 /// hardcoded `Ok(false)` off Unix, which made `/judge`, `/fork`, `/review`,
-/// `/transfer` and crash-restore silently print "No terminal found" on Windows
+/// `/transfer` and crash-restore silently print "Терминал не найден" on Windows
 /// even though the launcher already had Windows Terminal / Alacritty / WezTerm
 /// detection plus a `cmd /C start` fallback (see #715).
 pub(super) fn spawn_in_new_terminal(

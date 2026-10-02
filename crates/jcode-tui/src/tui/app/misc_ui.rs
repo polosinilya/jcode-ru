@@ -136,7 +136,7 @@ impl App {
         self.inline_view_state = None;
         self.input.clear();
         self.cursor_pos = 0;
-        self.set_status_notice("Usage → refreshing");
+        self.set_status_notice("Использование → обновление");
     }
 
     pub(super) fn request_usage_report(&mut self) {
@@ -550,10 +550,10 @@ impl App {
             KeyCode::Char('c') => {
                 let success = super::helpers::copy_to_clipboard(&self.model_status_content);
                 if success {
-                    self.set_status_notice("Copied provider test coverage report".to_string());
+                    self.set_status_notice("Скопирован отчет о покрытии тестами провайдера".to_string());
                 } else {
                     self.set_status_notice(
-                        "Failed to copy provider test coverage report".to_string(),
+                        "Не удалось скопировать отчет о покрытии тестами провайдера".to_string(),
                     );
                 }
             }
@@ -577,7 +577,7 @@ mod tests {
         for provider_name in ["LM Studio", "Ollama"] {
             assert!(
                 !remote_provider_is_inherently_billed(provider_name),
-                "{provider_name} should not be billed per token"
+                "{provider_name} не должен оплачиваться за токен"
             );
         }
     }

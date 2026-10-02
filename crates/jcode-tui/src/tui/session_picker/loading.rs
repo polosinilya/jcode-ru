@@ -906,7 +906,7 @@ fn extract_block_text_from_value(value: &serde_json::Value) -> String {
 fn truncate_title_text(text: &str, max_chars: usize) -> String {
     let trimmed = text.trim();
     if trimmed.is_empty() {
-        return "Untitled".to_string();
+        return "Без названия".to_string();
     }
     if trimmed.chars().count() <= max_chars {
         return trimmed.to_string();

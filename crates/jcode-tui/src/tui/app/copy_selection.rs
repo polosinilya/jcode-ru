@@ -344,23 +344,23 @@ impl App {
         F: FnOnce(&str) -> bool,
     {
         if !self.select_chat_viewport_context() {
-            self.set_status_notice("Nothing visible to copy");
+            self.set_status_notice("Нечего копировать");
             self.exit_copy_selection_mode();
             return false;
         }
 
         let text = self.current_copy_selection_text().unwrap_or_default();
         if text.is_empty() {
-            self.set_status_notice("Nothing visible to copy");
+            self.set_status_notice("Нечего копировать");
             self.exit_copy_selection_mode();
             return false;
         }
 
         let success = copy_text(&text);
         if success {
-            self.set_status_notice("Copied viewport context");
+            self.set_status_notice("Контекст области просмотра скопирован");
         } else {
-            self.set_status_notice("Failed to copy viewport context");
+            self.set_status_notice("Не удалось скопировать контекст области просмотра");
         }
         self.exit_copy_selection_mode();
         success
@@ -376,15 +376,15 @@ impl App {
     {
         let text = self.current_copy_selection_text().unwrap_or_default();
         if text.is_empty() {
-            self.set_status_notice("Selection is empty");
+            self.set_status_notice("Выделение пустое");
             return false;
         }
         let success = copy_text(&text);
         if success {
-            self.set_status_notice("Copied selection");
+            self.set_status_notice("Выделение скопировано");
             self.exit_copy_selection_mode();
         } else {
-            self.set_status_notice("Failed to copy selection");
+            self.set_status_notice("Не удалось скопировать выделение");
         }
         success
     }
@@ -401,7 +401,7 @@ impl App {
     {
         let text = self.current_copy_selection_text().unwrap_or_default();
         if text.is_empty() {
-            self.set_status_notice("Selection is empty");
+            self.set_status_notice("Выделение пустое");
             return false;
         }
 
@@ -411,9 +411,9 @@ impl App {
         self.copy_selection_pending_anchor = None;
         self.copy_selection_edge_autoscroll = None;
         self.set_status_notice(if success {
-            "Copied selection · highlight remains visible"
+            "Выделение скопировано · выделение остается видимым"
         } else {
-            "Failed to copy selection"
+            "Не удалось скопировать выделение"
         });
         success
     }

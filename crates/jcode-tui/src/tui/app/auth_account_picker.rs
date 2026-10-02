@@ -15,10 +15,10 @@ impl App {
                 Some(provider) => vec![provider],
                 None => {
                     self.push_display_message(DisplayMessage::error(format!(
-                        "Unknown provider {}.",
+                        "Неизвестный провайдер {}.",
                         provider_id
                     )));
-                    self.set_status_notice("Account center unavailable");
+                    self.set_status_notice("Центр аккаунтов недоступен");
                     return;
                 }
             },
@@ -49,18 +49,18 @@ impl App {
                 _ => claude_accounts.len() + openai_accounts.len(),
             };
             let detail = if scoped_saved_accounts == 0 {
-                "choose provider, add a new account, or replace an existing saved one".to_string()
+                "выбрать провайдера, добавить новый аккаунт или заменить существующий сохраненный".to_string()
             } else {
                 format!(
-                    "choose provider; {} Claude and {} OpenAI account(s) available",
+                    "выбрать провайдера; доступно {} аккаунтов Claude и {} OpenAI",
                     claude_accounts.len(),
                     openai_accounts.len()
                 )
             };
             items.push(AccountPickerItem::action(
                 "account-flow",
-                "Add / Replace",
-                "Add or replace account",
+                "Добавить / Заменить",
+                "Добавить или заменить аккаунт",
                 detail,
                 AccountPickerCommand::OpenAddReplaceFlow {
                     provider_filter: provider_scope.clone(),
@@ -72,13 +72,13 @@ impl App {
             provider_scope.as_deref().unwrap_or("auth-doctor"),
             provider_scope
                 .as_deref()
-                .unwrap_or("Authentication")
+                .unwrap_or("Аутентификация")
                 .to_string(),
-            "Diagnose login",
+            "Диагностировать вход",
             if provider_scope.is_some() {
-                "review status, validation, and recommended next steps".to_string()
+                "просмотреть статус, проверку и рекомендуемые следующие шаги".to_string()
             } else {
-                "review all configured providers and recovery steps".to_string()
+                "просмотреть все настроенные провайдеры и шаги восстановления".to_string()
             },
             AccountPickerCommand::SubmitInput(match provider_scope.as_deref() {
                 Some(provider_id) => format!("/account {} doctor", provider_id),
@@ -93,7 +93,7 @@ impl App {
             let validation_detail = validation
                 .get(provider.id)
                 .map(crate::auth::validation::format_record_label)
-                .unwrap_or_else(|| "not validated".to_string());
+                .unwrap_or_else(|| "не проверено".to_string());
             match auth_state {
                 crate::auth::AuthState::Available => summary.ready_count += 1,
                 crate::auth::AuthState::Expired => summary.attention_count += 1,
@@ -111,15 +111,15 @@ impl App {
 
             let state_label = match auth_state {
                 crate::auth::AuthState::Available => "ready",
-                crate::auth::AuthState::Expired => "needs attention",
-                crate::auth::AuthState::NotConfigured => "setup needed",
+                crate::auth::AuthState::Expired => "требует внимания",
+                crate::auth::AuthState::NotConfigured => "требуется настройка",
             };
 
             if !matches!(auth_state, crate::auth::AuthState::NotConfigured) {
                 items.push(AccountPickerItem::action(
                     provider.id,
                     provider.display_name,
-                    "Saved auth entry",
+                    "Сохраненная запись авторизации",
                     format!(
                         "{} - {} - {}",
                         state_label, method_detail, validation_detail
@@ -132,9 +132,9 @@ impl App {
                 provider.id,
                 provider.display_name,
                 if provider.id == "openai" {
-                    "Usage & provider settings"
+                    "Использование и настройки провайдера"
                 } else {
-                    "Provider settings"
+                    "Настройки провайдера"
                 },
                 format!(
                     "{} - {} - {}",
@@ -145,14 +145,14 @@ impl App {
             items.push(AccountPickerItem::action(
                 provider.id,
                 provider.display_name,
-                "Login / refresh",
+                "Вход / обновление",
                 provider.menu_detail,
                 AccountPickerCommand::SubmitInput(format!("/account {} login", provider.id)),
             ));
             items.push(AccountPickerItem::action(
                 provider.id,
                 provider.display_name,
-                "Diagnose login",
+                "Диагностировать вход",
                 format!("{} - {}", state_label, validation_detail),
                 AccountPickerCommand::SubmitInput(format!("/account {} doctor", provider.id)),
             ));
@@ -164,35 +164,35 @@ impl App {
                     items.push(AccountPickerItem::action(
                         provider.id,
                         provider.display_name,
-                        "Transport",
+                        "Транспорт",
                         cfg.provider.openai_transport.as_deref().unwrap_or("auto"),
                         AccountPickerCommand::PromptValue {
-                            prompt: "Enter OpenAI transport: auto, https, or websocket."
+                            prompt: "Введите транспорт OpenAI: auto, https или websocket."
                                 .to_string(),
                             command_prefix: "/account openai transport".to_string(),
                             empty_value: Some("auto".to_string()),
-                            status_notice: "Account: editing OpenAI transport...".to_string(),
+                            status_notice: "Аккаунт: редактирование транспорта OpenAI...".to_string(),
                         },
                     ));
                     items.push(AccountPickerItem::action(
                         provider.id,
                         provider.display_name,
-                        "Reasoning effort",
+                        "Усилия на рассуждение",
                         cfg.provider
                             .openai_reasoning_effort
                             .as_deref()
-                            .unwrap_or("(provider default)"),
+                            .unwrap_or("(по умолчанию провайдера)"),
                         AccountPickerCommand::PromptValue {
-                            prompt: "Enter OpenAI reasoning effort: none, minimal, low, medium, high, xhigh, max, or clear.".to_string(),
+                            prompt: "Введите усилия на рассуждение OpenAI: none, minimal, low, medium, high, xhigh, max или clear.".to_string(),
                             command_prefix: "/account openai effort".to_string(),
                             empty_value: Some("clear".to_string()),
-                            status_notice: "Account: editing OpenAI effort...".to_string(),
+                            status_notice: "Аккаунт: редактирование усилий OpenAI...".to_string(),
                         },
                     ));
                     items.push(AccountPickerItem::action(
                         provider.id,
                         provider.display_name,
-                        "Fast mode",
+                        "Быстрый режим",
                         if cfg.provider.openai_service_tier.as_deref() == Some("priority") {
                             "on"
                         } else {
@@ -218,22 +218,22 @@ impl App {
                         "Step 1: API base URL",
                         compat.api_base,
                         AccountPickerCommand::PromptValue {
-                            prompt: "Step 1/2: enter the OpenAI-compatible API base URL, for example https://llm.example.com/v1.".to_string(),
+                            prompt: "Шаг 1/2: введите базовый URL API, совместимый с OpenAI, например https://llm.example.com/v1.".to_string(),
                             command_prefix: "/account openai-compatible api-base".to_string(),
                             empty_value: Some("clear".to_string()),
-                            status_notice: "Account: editing OpenAI-compatible API base URL (step 1/2)...".to_string(),
+                            status_notice: "Аккаунт: редактирование базового URL API, совместимого с OpenAI (шаг 1/2)...".to_string(),
                         },
                     ));
                     items.push(AccountPickerItem::action(
                         provider.id,
                         provider.display_name,
-                        "Step 2: API key variable",
+                        "Шаг 2: переменная ключа API",
                         compat.api_key_env,
                         AccountPickerCommand::PromptValue {
-                            prompt: "Step 2/2: enter the env var name that stores the API key, for example OPENAI_API_KEY.".to_string(),
+                            prompt: "Шаг 2/2: введите имя переменной окружения, в которой хранится ключ API, например OPENAI_API_KEY.".to_string(),
                             command_prefix: "/account openai-compatible api-key-name".to_string(),
                             empty_value: Some("clear".to_string()),
-                            status_notice: "Account: editing OpenAI-compatible API key variable (step 2/2)...".to_string(),
+                            status_notice: "Аккаунт: редактирование переменной ключа API, совместимого с OpenAI (шаг 2/2)...".to_string(),
                         },
                     ));
                     items.push(AccountPickerItem::action(
@@ -242,24 +242,24 @@ impl App {
                         "Env file",
                         compat.env_file,
                         AccountPickerCommand::PromptValue {
-                            prompt: "Enter the env file name for this profile.".to_string(),
+                            prompt: "Введите имя файла окружения для этого профиля.".to_string(),
                             command_prefix: "/account openai-compatible env-file".to_string(),
                             empty_value: Some("clear".to_string()),
-                            status_notice: "Account: editing env file...".to_string(),
+                            status_notice: "Аккаунт: редактирование файла окружения...".to_string(),
                         },
                     ));
                     items.push(AccountPickerItem::action(
                         provider.id,
                         provider.display_name,
-                        "Default model hint",
+                        "Подсказка модели по умолчанию",
                         compat
                             .default_model
                             .unwrap_or_else(|| "(unset)".to_string()),
                         AccountPickerCommand::PromptValue {
-                            prompt: "Enter the default model hint for this profile.".to_string(),
+                            prompt: "Введите подсказку модели по умолчанию для этого профиля.".to_string(),
                             command_prefix: "/account openai-compatible default-model".to_string(),
                             empty_value: Some("clear".to_string()),
-                            status_notice: "Account: editing default model hint...".to_string(),
+                            status_notice: "Аккаунт: редактирование подсказки модели по умолчанию...".to_string(),
                         },
                     ));
                 }
@@ -267,13 +267,13 @@ impl App {
                     items.push(AccountPickerItem::action(
                         provider.id,
                         provider.display_name,
-                        "Premium requests",
+                        "Премиум запросы",
                         cfg.provider.copilot_premium.as_deref().unwrap_or("normal"),
                         AccountPickerCommand::PromptValue {
-                            prompt: "Enter Copilot premium mode: normal, one, or zero.".to_string(),
+                            prompt: "Введите премиум-режим Copilot: normal, one или zero.".to_string(),
                             command_prefix: "/account copilot premium".to_string(),
                             empty_value: Some("normal".to_string()),
-                            status_notice: "Account: editing Copilot premium mode...".to_string(),
+                            status_notice: "Аккаунт: редактирование премиум-режима Copilot...".to_string(),
                         },
                     ));
                 }
@@ -283,35 +283,35 @@ impl App {
 
         items.push(AccountPickerItem::action(
             "defaults",
-            "Global defaults",
-            "Default provider",
+            "Глобальные значения по умолчанию",
+            "Провайдер по умолчанию",
             cfg.provider.default_provider.as_deref().unwrap_or("auto"),
             AccountPickerCommand::PromptValue {
-                prompt: "Enter the default provider: claude, openai, copilot, gemini, openrouter, or auto.".to_string(),
+                prompt: "Введите провайдер по умолчанию: claude, openai, copilot, gemini, openrouter или auto.".to_string(),
                 command_prefix: "/account default-provider".to_string(),
                 empty_value: Some("auto".to_string()),
-                status_notice: "Account: editing default provider...".to_string(),
+                status_notice: "Аккаунт: редактирование провайдера по умолчанию...".to_string(),
             },
         ));
         items.push(AccountPickerItem::action(
             "defaults",
-            "Global defaults",
-            "Default model",
+            "Глобальные значения по умолчанию",
+            "Модель по умолчанию",
             cfg.provider
                 .default_model
                 .as_deref()
-                .unwrap_or("(provider default)"),
+                .unwrap_or("(по умолчанию провайдера)"),
             AccountPickerCommand::PromptValue {
-                prompt: "Enter the default model, or clear to unset it.".to_string(),
+                prompt: "Введите модель по умолчанию или очистите, чтобы отменить установку.".to_string(),
                 command_prefix: "/account default-model".to_string(),
                 empty_value: Some("clear".to_string()),
-                status_notice: "Account: editing default model...".to_string(),
+                status_notice: "Аккаунт: редактирование модели по умолчанию...".to_string(),
             },
         ));
 
         let title = match provider_filter {
-            Some(provider_id) => format!(" {} account center ", provider_id),
-            None => " Accounts ".to_string(),
+            Some(provider_id) => format!("центр аккаунтов {}", provider_id),
+            None => "Аккаунты".to_string(),
         };
         self.account_picker_overlay = Some(std::cell::RefCell::new(AccountPicker::with_summary(
             title, items, summary,
@@ -319,7 +319,7 @@ impl App {
         self.inline_interactive_state = None;
         self.input.clear();
         self.cursor_pos = 0;
-        self.set_status_notice("Account center: choose an action");
+        self.set_status_notice("Центр аккаунтов: выберите действие");
     }
 
     pub(crate) fn open_account_add_replace_flow(&mut self, provider_filter: Option<&str>) {
@@ -327,9 +327,9 @@ impl App {
 
         let mut items = vec![AccountPickerItem::action(
             "account-flow",
-            "Add / Replace",
-            "Back to account center",
-            "Return to the full provider/auth account center",
+            "Добавить / Заменить",
+            "Назад в центр аккаунтов",
+            "Вернуться к полному центру провайдера/аккаунта",
             AccountPickerCommand::OpenAccountCenter {
                 provider_filter: provider_filter.map(|value| value.to_string()),
             },
@@ -343,8 +343,8 @@ impl App {
             items.push(AccountPickerItem::action(
                 "claude",
                 "Claude",
-                "Add new account",
-                "Create the next numbered Claude account",
+                "Добавить новый аккаунт",
+                "Создать следующий пронумерованный аккаунт Claude",
                 AccountPickerCommand::SubmitInput("/account claude add".to_string()),
             ));
             for account in crate::auth::claude::list_accounts().unwrap_or_default() {
@@ -352,8 +352,8 @@ impl App {
                 items.push(AccountPickerItem::action(
                     "claude",
                     "Claude",
-                    format!("Replace account {label}"),
-                    "Refresh this saved Claude account in place",
+                    format!("Заменить аккаунт {label}"),
+                    "Обновить этот сохраненный аккаунт Claude на месте",
                     AccountPickerCommand::SubmitInput(format!("/account claude add {}", label)),
                 ));
             }
@@ -363,8 +363,8 @@ impl App {
             items.push(AccountPickerItem::action(
                 "openai",
                 "OpenAI",
-                "Add new account",
-                "Create the next numbered OpenAI account",
+                "Добавить новый аккаунт",
+                "Создать следующий пронумерованный аккаунт OpenAI",
                 AccountPickerCommand::SubmitInput("/account openai add".to_string()),
             ));
             for account in crate::auth::codex::list_accounts().unwrap_or_default() {
@@ -372,36 +372,36 @@ impl App {
                 items.push(AccountPickerItem::action(
                     "openai",
                     "OpenAI",
-                    format!("Replace account {label}"),
-                    "Refresh this saved OpenAI account in place",
+                    format!("Заменить аккаунт {label}"),
+                    "Обновить этот сохраненный аккаунт OpenAI на месте",
                     AccountPickerCommand::SubmitInput(format!("/account openai add {}", label)),
                 ));
             }
         }
 
         self.account_picker_overlay = Some(std::cell::RefCell::new(AccountPicker::new(
-            " Add / Replace Account ",
+            "Добавить / Заменить Аккаунт",
             items,
         )));
         self.inline_interactive_state = None;
         self.input.clear();
         self.cursor_pos = 0;
-        self.set_status_notice("Account center: choose add/replace target");
+        self.set_status_notice("Центр аккаунтов: выберите цель добавления/замены");
     }
 
     pub(crate) fn open_account_picker(&mut self, provider_filter: Option<&str>) {
         let Some(scope_key) = self.inline_account_picker_scope_key(provider_filter) else {
             if let Some(provider_id) = provider_filter {
                 self.push_display_message(DisplayMessage::system(format!(
-                    "Inline /account picker is only available for Claude and OpenAI accounts. Use /account {} settings for provider details.",
+                    "Встроенный выбор /account доступен только для аккаунтов Claude и OpenAI. Используйте /account {} настройки для деталей провайдера.",
                     provider_id
                 )));
             } else {
                 self.push_display_message(DisplayMessage::system(
-                    "Inline /account picker is available for Claude and OpenAI accounts. Use /account claude or /account openai to choose explicitly.".to_string(),
+                    "Встроенный выбор /account доступен для аккаунтов Claude и OpenAI. Используйте /account claude или /account openai для явного выбора.".to_string(),
                 ));
             }
-            self.set_status_notice("Account picker unavailable");
+            self.set_status_notice("Выбор аккаунта недоступен");
             return;
         };
 
@@ -432,7 +432,7 @@ impl App {
         self.input.clear();
         self.cursor_pos = 0;
         self.set_status_notice(format!(
-            "Account → {} (↑↓ or j/k, Enter to select)",
+            "Аккаунт → {} (↑↓ или j/k, Enter для выбора)",
             provider_label
         ));
     }
@@ -580,7 +580,7 @@ impl App {
                         "saved".to_string()
                     },
                     available: true,
-                    detail: format!("{} - {} - acct {}", email, status, account_id),
+                    detail: format!("{} - {} - аккаунт {}", email, status, account_id),
                     estimated_reference_cost_micros: None,
                 }],
                 action: crate::tui::PickerAction::Account(
@@ -603,7 +603,7 @@ impl App {
         }
 
         models.push(crate::tui::PickerEntry {
-            name: "new Claude account".to_string(),
+            name: "новый аккаунт Claude".to_string(),
             options: vec![crate::tui::PickerOption {
                 provider: "Claude".to_string(),
                 api_method: "new".to_string(),
@@ -627,7 +627,7 @@ impl App {
         });
 
         models.push(crate::tui::PickerEntry {
-            name: "new OpenAI account".to_string(),
+            name: "новый аккаунт OpenAI".to_string(),
             options: vec![crate::tui::PickerOption {
                 provider: "OpenAI".to_string(),
                 api_method: "new".to_string(),
@@ -657,15 +657,15 @@ impl App {
             .or_else(|| claude_accounts.first().map(|account| account.label.clone()))
             .unwrap_or_else(crate::auth::claude::primary_account_label);
         models.push(crate::tui::PickerEntry {
-            name: "replace Claude account".to_string(),
+            name: "заменить аккаунт Claude".to_string(),
             options: vec![crate::tui::PickerOption {
                 provider: "Claude".to_string(),
                 api_method: "replace".to_string(),
                 available: !claude_accounts.is_empty(),
                 detail: if claude_accounts.is_empty() {
-                    "no saved accounts yet".to_string()
+                    "пока нет сохраненных аккаунтов".to_string()
                 } else {
-                    format!("refresh {}", replace_claude)
+                    format!("обновить {}", replace_claude)
                 },
                 estimated_reference_cost_micros: None,
             }],
@@ -692,15 +692,15 @@ impl App {
             .or_else(|| openai_accounts.first().map(|account| account.label.clone()))
             .unwrap_or_else(crate::auth::codex::primary_account_label);
         models.push(crate::tui::PickerEntry {
-            name: "replace OpenAI account".to_string(),
+            name: "заменить аккаунт OpenAI".to_string(),
             options: vec![crate::tui::PickerOption {
                 provider: "OpenAI".to_string(),
                 api_method: "replace".to_string(),
                 available: !openai_accounts.is_empty(),
                 detail: if openai_accounts.is_empty() {
-                    "no saved accounts yet".to_string()
+                    "пока нет сохраненных аккаунтов".to_string()
                 } else {
-                    format!("refresh {}", replace_openai)
+                    format!("обновить {}", replace_openai)
                 },
                 estimated_reference_cost_micros: None,
             }],
@@ -721,12 +721,12 @@ impl App {
         });
 
         models.push(crate::tui::PickerEntry {
-            name: "account center".to_string(),
+            name: "центр аккаунтов".to_string(),
             options: vec![crate::tui::PickerOption {
-                provider: "Accounts".to_string(),
+                provider: "Аккаунты".to_string(),
                 api_method: "manage".to_string(),
                 available: true,
-                detail: "settings, defaults, and other providers".to_string(),
+                detail: "настройки, значения по умолчанию и другие провайдеры".to_string(),
                 estimated_reference_cost_micros: None,
             }],
             action: crate::tui::PickerAction::Account(
@@ -750,15 +750,15 @@ impl App {
             selected = 0;
         }
         if !openai_accounts.is_empty() {
-            let mut usage_entry = models.last().expect("account center entry").clone();
-            usage_entry.name = "OpenAI usage details".to_string();
+            let mut usage_entry = models.last().expect("запись центра аккаунтов").clone();
+            usage_entry.name = "Детали использования OpenAI".to_string();
             usage_entry.options[0].detail =
-                "Today / lifetime API-equivalent cost and tokens by account".to_string();
+                "Стоимость и токены сегодня / за все время по эквиваленту API по аккаунтам".to_string();
             usage_entry.options[0].provider = "OpenAI".to_string();
             usage_entry.action = crate::tui::PickerAction::Usage {
                 id: "openai-oauth-accounts".to_string(),
-                title: "ChatGPT OAuth account usage".to_string(),
-                subtitle: "Today / lifetime API-equivalent estimates, not a bill".to_string(),
+                title: "Использование аккаунта ChatGPT OAuth".to_string(),
+                subtitle: "Оценки сегодня / за все время по эквиваленту API, а не счет".to_string(),
                 status: crate::tui::usage_overlay::UsageOverlayStatus::Info,
                 detail_lines: self
                     .render_openai_accounts_markdown()
@@ -837,7 +837,7 @@ impl App {
         }
 
         models.push(crate::tui::PickerEntry {
-            name: "new account".to_string(),
+            name: "новый аккаунт".to_string(),
             options: vec![crate::tui::PickerOption {
                 provider: "Claude".to_string(),
                 api_method: "new".to_string(),
@@ -867,15 +867,15 @@ impl App {
             .or_else(|| accounts.first().map(|account| account.label.clone()))
             .unwrap_or_else(crate::auth::claude::primary_account_label);
         models.push(crate::tui::PickerEntry {
-            name: "replace account".to_string(),
+            name: "заменить аккаунт".to_string(),
             options: vec![crate::tui::PickerOption {
                 provider: "Claude".to_string(),
                 api_method: "replace".to_string(),
                 available: !accounts.is_empty(),
                 detail: if accounts.is_empty() {
-                    "no saved accounts yet".to_string()
+                    "пока нет сохраненных аккаунтов".to_string()
                 } else {
-                    format!("refresh {}", replace_target)
+                    format!("обновить {}", replace_target)
                 },
                 estimated_reference_cost_micros: None,
             }],
@@ -896,12 +896,12 @@ impl App {
         });
 
         models.push(crate::tui::PickerEntry {
-            name: "account center".to_string(),
+            name: "центр аккаунтов".to_string(),
             options: vec![crate::tui::PickerOption {
                 provider: "Claude".to_string(),
                 api_method: "manage".to_string(),
                 available: true,
-                detail: "full Claude account center and settings".to_string(),
+                detail: "полный центр аккаунтов Claude и настройки".to_string(),
                 estimated_reference_cost_micros: None,
             }],
             action: crate::tui::PickerAction::Account(
@@ -964,7 +964,7 @@ impl App {
                         "saved".to_string()
                     },
                     available: true,
-                    detail: format!("{} - {} - acct {}", email, status, account_id),
+                    detail: format!("{} - {} - аккаунт {}", email, status, account_id),
                     estimated_reference_cost_micros: None,
                 }],
                 action: crate::tui::PickerAction::Account(
@@ -987,7 +987,7 @@ impl App {
         }
 
         models.push(crate::tui::PickerEntry {
-            name: "new account".to_string(),
+            name: "новый аккаунт".to_string(),
             options: vec![crate::tui::PickerOption {
                 provider: "OpenAI".to_string(),
                 api_method: "new".to_string(),
@@ -1017,15 +1017,15 @@ impl App {
             .or_else(|| accounts.first().map(|account| account.label.clone()))
             .unwrap_or_else(crate::auth::codex::primary_account_label);
         models.push(crate::tui::PickerEntry {
-            name: "replace account".to_string(),
+            name: "заменить аккаунт".to_string(),
             options: vec![crate::tui::PickerOption {
                 provider: "OpenAI".to_string(),
                 api_method: "replace".to_string(),
                 available: !accounts.is_empty(),
                 detail: if accounts.is_empty() {
-                    "no saved accounts yet".to_string()
+                    "пока нет сохраненных аккаунтов".to_string()
                 } else {
-                    format!("refresh {}", replace_target)
+                    format!("обновить {}", replace_target)
                 },
                 estimated_reference_cost_micros: None,
             }],
@@ -1046,12 +1046,12 @@ impl App {
         });
 
         models.push(crate::tui::PickerEntry {
-            name: "account center".to_string(),
+            name: "центр аккаунтов".to_string(),
             options: vec![crate::tui::PickerOption {
                 provider: "OpenAI".to_string(),
                 api_method: "manage".to_string(),
                 available: true,
-                detail: "full OpenAI account center and settings".to_string(),
+                detail: "полный центр аккаунтов OpenAI и настройки".to_string(),
                 estimated_reference_cost_micros: None,
             }],
             action: crate::tui::PickerAction::Account(
@@ -1076,14 +1076,14 @@ impl App {
         }
         if !accounts.is_empty() {
             let mut usage_entry = models.last().expect("account center entry").clone();
-            usage_entry.name = "OpenAI usage details".to_string();
+            usage_entry.name = "детали использования OpenAI".to_string();
             usage_entry.options[0].detail =
-                "Today / lifetime API-equivalent cost and tokens by account".to_string();
+                "Сегодня / за все время эквивалент API-стоимости и токенов по аккаунтам".to_string();
             usage_entry.options[0].provider = "OpenAI".to_string();
             usage_entry.action = crate::tui::PickerAction::Usage {
                 id: "openai-oauth-accounts".to_string(),
-                title: "ChatGPT OAuth account usage".to_string(),
-                subtitle: "Today / lifetime API-equivalent estimates, not a bill".to_string(),
+                title: "ID чатов OAuth OpenAI".to_string(),
+                subtitle: "Использование аккаунта ChatGPT OAuth".to_string(),
                 status: crate::tui::usage_overlay::UsageOverlayStatus::Info,
                 detail_lines: self
                     .render_openai_accounts_markdown()
@@ -1146,15 +1146,15 @@ impl App {
     ) {
         let (provider_id, display_name) = match provider {
             crate::tui::account_picker::AccountProviderKind::Anthropic => {
-                ("claude", "Anthropic/Claude")
+                ("claude", "Сегодня / за все время эквивалент оценок API, а не счет")
             }
-            crate::tui::account_picker::AccountProviderKind::OpenAi => ("openai", "OpenAI"),
+            crate::tui::account_picker::AccountProviderKind::OpenAi => ("openai", "Anthropic/Claude"),
         };
         self.push_display_message(DisplayMessage::system(format!(
             "Enter a label for the new {} account, then press Enter. Use /cancel to abort.",
             display_name
         )));
-        self.set_status_notice(format!("Account: new {} label...", display_name));
+        self.set_status_notice(format!("Введите метку для нового аккаунта {}, затем нажмите Enter. Используйте /cancel для отмены.", display_name));
         self.pending_account_input = Some(PendingAccountInput::NewAccountLabel {
             provider_id: provider_id.to_string(),
             display_name: display_name.to_string(),
@@ -1169,7 +1169,7 @@ impl App {
         status_notice: String,
     ) {
         self.push_display_message(DisplayMessage::system(format!(
-            "{} Use /cancel to abort.",
+            "Аккаунт: новая метка {}...",
             prompt
         )));
         self.set_status_notice(status_notice.clone());
@@ -1191,7 +1191,7 @@ impl App {
             self.push_display_message(DisplayMessage::system(
                 "Account action cancelled.".to_string(),
             ));
-            self.set_status_notice("Account: cancelled");
+            self.set_status_notice("Действие с аккаунтом отменено.");
             return;
         }
 
@@ -1202,7 +1202,7 @@ impl App {
             } => {
                 if trimmed.is_empty() {
                     self.push_display_message(DisplayMessage::error(
-                        "Account label cannot be empty.".to_string(),
+                        "Аккаунт: отменено".to_string(),
                     ));
                     self.pending_account_input = Some(PendingAccountInput::NewAccountLabel {
                         provider_id,
@@ -1225,7 +1225,7 @@ impl App {
                         value
                     } else {
                         self.push_display_message(DisplayMessage::error(
-                            "A value is required for this setting.".to_string(),
+                            "Метка аккаунта не может быть пустой.".to_string(),
                         ));
                         self.pending_account_input = Some(PendingAccountInput::CommandValue {
                             prompt,

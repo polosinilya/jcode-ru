@@ -16,7 +16,7 @@ impl SessionPicker {
         let reason = match &session.status {
             SessionStatus::Crashed { message } => message
                 .as_deref()
-                .unwrap_or("Unexpected termination (no additional details)"),
+                .unwrap_or("Неожиданное завершение (нет дополнительных деталей)"),
             _ => return None,
         };
 
@@ -29,7 +29,7 @@ impl SessionPicker {
         Some(Line::from(vec![
             Span::styled("     ", Style::default()),
             Span::styled(
-                format!("reason: {}", reason_display),
+                format!("причина: {}", reason_display),
                 Style::default().fg(rgb(220, 120, 120)),
             ),
         ]))
@@ -37,7 +37,7 @@ impl SessionPicker {
 
     pub(super) fn format_estimated_tokens(tokens: usize) -> String {
         if tokens < 1_000 {
-            return format!("~{} tok", tokens);
+            return format!("~{} ток", tokens);
         }
 
         const UNITS: &[(f64, &str)] = &[
@@ -75,7 +75,7 @@ impl SessionPicker {
             } else {
                 format!("{rounded:.0}")
             };
-            return format!("~{}{} tok", value_display, UNITS[unit_idx].1);
+            return format!("~{}{} ток", value_display, UNITS[unit_idx].1);
         }
     }
 
@@ -89,7 +89,7 @@ impl SessionPicker {
     /// Split `text` into spans, applying `base` to non-matching segments and a
     /// distinct highlight style to case-insensitive occurrences of any of the
     /// `tokens`. Tokens are matched independently (logical OR for highlighting),
-    /// matching the AND-token filter's notion of "this word matched". Overlapping
+    /// matching the AND-token filter's notion of "это слово совпало". Overlapping
     /// or adjacent matches are merged via a per-character highlight mask.
     pub(super) fn highlight_spans(
         text: &str,
@@ -220,10 +220,10 @@ impl SessionPicker {
         let is_current = self.session_is_current(session);
         let live_badge = if self.session_is_live(session) {
             if session.source == SessionSource::ClaudeCode {
-                Some(("●", rgb(120, 210, 255), "live Claude".to_string()))
+                Some(("●", rgb(120, 210, 255), "активный Claude".to_string()))
             } else if self.session_is_streaming(session) {
                 let label = match self.session_streaming_duration(session) {
-                    Some(elapsed) => format!("working {}", format_short_duration(elapsed)),
+                    Some(elapsed) => format!("работает {}", format_short_duration(elapsed)),
                     None => "working".to_string(),
                 };
                 Some((
@@ -242,17 +242,17 @@ impl SessionPicker {
             Some(badge) => badge,
             None => match &session.status {
                 SessionStatus::Active => ("▶", rgb(100, 200, 100), "active".to_string()),
-                SessionStatus::Closed => ("✓", dim, format!("closed {}", time_ago)),
+                SessionStatus::Closed => ("✓", dim, format!("закрыто {}", time_ago)),
                 SessionStatus::Crashed { .. } => {
-                    ("💥", rgb(220, 100, 100), format!("crashed {}", time_ago))
+                    ("💥", rgb(220, 100, 100), format!("аварийное завершение {}", time_ago))
                 }
-                SessionStatus::Reloaded => ("🔄", user_clr, format!("reloaded {}", time_ago)),
+                SessionStatus::Reloaded => ("🔄", user_clr, format!("перезагружено {}", time_ago)),
                 SessionStatus::Compacted => {
-                    ("📦", rgb(255, 193, 7), format!("compacted {}", time_ago))
+                    ("📦", rgb(255, 193, 7), format!("скомпактировано {}", time_ago))
                 }
-                SessionStatus::RateLimited => ("⏳", accent, format!("rate-limited {}", time_ago)),
+                SessionStatus::RateLimited => ("⏳", accent, format!("ограничение скорости {}", time_ago)),
                 SessionStatus::Error { .. } => {
-                    ("❌", rgb(220, 100, 100), format!("errored {}", time_ago))
+                    ("❌", rgb(220, 100, 100), format!("ошибка {}", time_ago))
                 }
             },
         };
@@ -296,7 +296,7 @@ impl SessionPicker {
         }
         if in_batch_restore {
             line1_spans.push(Span::styled(
-                "  [BATCH]",
+                "  [ПАКЕТ]",
                 Style::default()
                     .fg(batch_restore)
                     .add_modifier(Modifier::BOLD),
@@ -304,7 +304,7 @@ impl SessionPicker {
         }
         if is_current {
             line1_spans.push(Span::styled(
-                "  ◀ current",
+                "  ◀ текущий",
                 Style::default()
                     .fg(rgb(110, 210, 255))
                     .add_modifier(Modifier::BOLD),
@@ -312,7 +312,7 @@ impl SessionPicker {
         }
         if same_dir {
             line1_spans.push(Span::styled(
-                "  ▸ here",
+                "  ▸ здесь",
                 Style::default()
                     .fg(same_dir_clr)
                     .add_modifier(Modifier::BOLD),
@@ -331,7 +331,7 @@ impl SessionPicker {
                     format!("{}", session.message_count),
                     Style::default().fg(user_clr),
                 ),
-                Span::styled(" messages", Style::default().fg(dimmer)),
+                Span::styled(" сообщений", Style::default().fg(dimmer)),
                 Span::styled(" · ", Style::default().fg(dimmer)),
                 Span::styled(tokens_display, Style::default().fg(dimmer)),
             ])
@@ -342,13 +342,13 @@ impl SessionPicker {
                     format!("{}", session.user_message_count),
                     Style::default().fg(user_clr),
                 ),
-                Span::styled(" user", Style::default().fg(dimmer)),
+                Span::styled(" пользователь", Style::default().fg(dimmer)),
                 Span::styled(" · ", Style::default().fg(dimmer)),
                 Span::styled(
                     format!("{}", session.assistant_message_count),
                     Style::default().fg(rgb(129, 199, 132)),
                 ),
-                Span::styled(" assistant", Style::default().fg(dimmer)),
+                Span::styled(" ассистент", Style::default().fg(dimmer)),
                 Span::styled(" · ", Style::default().fg(dimmer)),
                 Span::styled(tokens_display, Style::default().fg(dimmer)),
             ])
@@ -377,7 +377,7 @@ impl SessionPicker {
         let mut line3_spans = vec![
             Span::styled("     ", Style::default()),
             Span::styled(
-                format!("created: {}", created_ago),
+                format!("создано: {}", created_ago),
                 Style::default().fg(dimmer),
             ),
         ];
@@ -402,7 +402,7 @@ impl SessionPicker {
             };
             let mut prompt_spans = vec![
                 Span::styled("     ", Style::default()),
-                Span::styled("prompt: ", Style::default().fg(dimmer)),
+                Span::styled("запрос:", Style::default().fg(dimmer)),
             ];
             prompt_spans.extend(Self::highlight_spans(
                 &prompt_display,
@@ -455,7 +455,7 @@ impl SessionPicker {
                     ),
                 ])),
                 ListItem::new(Line::from(vec![Span::styled(
-                    "     Scanning local, imported, and running sessions…",
+                    "     Сканирование локальных, импортированных и активных сессий…",
                     Style::default().fg(dim),
                 )])),
             ]
@@ -464,13 +464,13 @@ impl SessionPicker {
         {
             vec![
                 ListItem::new(Line::from(vec![Span::styled(
-                    "  No other active sessions",
+                    "  Нет других активных сессий",
                     Style::default()
                         .fg(rgb(220, 220, 220))
                         .add_modifier(Modifier::BOLD),
                 )])),
                 ListItem::new(Line::from(vec![Span::styled(
-                    "     s cycles to all sessions · Esc closes",
+                    "     s переключает все сессии · Esc закрывает",
                     Style::default().fg(dim),
                 )])),
             ]
@@ -500,7 +500,7 @@ impl SessionPicker {
                                         .add_modifier(Modifier::BOLD),
                                 ),
                                 Span::styled(
-                                    format!("  {} · {} sessions", version, session_count),
+                                    format!("  {} · {} сессий", version, session_count),
                                     Style::default().fg(dim),
                                 ),
                             ]);
@@ -510,11 +510,11 @@ impl SessionPicker {
                             let line1 = Line::from(vec![
                                 Span::styled("📦 ", Style::default().fg(dim)),
                                 Span::styled(
-                                    "Other sessions",
+                                    "Другие сессии",
                                     Style::default().fg(dim).add_modifier(Modifier::BOLD),
                                 ),
                                 Span::styled(
-                                    format!("  {} sessions", session_count),
+                                    format!("  {} сессий", session_count),
                                     Style::default().fg(dim),
                                 ),
                             ]);
@@ -525,7 +525,7 @@ impl SessionPicker {
                             let line1 = Line::from(vec![
                                 Span::styled("📌 ", Style::default().fg(saved_color)),
                                 Span::styled(
-                                    "Saved",
+                                    "Сохранено",
                                     Style::default()
                                         .fg(saved_color)
                                         .add_modifier(Modifier::BOLD),
@@ -557,14 +557,14 @@ impl SessionPicker {
         let mut title_parts: Vec<Span> = Vec::new();
         if self.loading_message.is_some() {
             title_parts.push(Span::styled(
-                " loading sessions ",
+                " загрузка сессий",
                 Style::default()
                     .fg(rgb(255, 200, 100))
                     .add_modifier(Modifier::BOLD),
             ));
         } else if self.filter_mode == jcode_tui_session_picker::SessionFilterMode::Active {
-            // The Active view breaks the count down into "still working" vs
-            // "ready for input" so the user can triage at a glance. Counts are
+            // The Active view breaks the count down into "все еще работает" vs
+            // "готов к вводу" so the user can triage at a glance. Counts are
             // derived from the visible rows so search/debug filters stay honest.
             let (working, ready) =
                 self.visible_session_iter()
@@ -576,18 +576,18 @@ impl SessionPicker {
                         }
                     });
             title_parts.push(Span::styled(
-                format!(" {} active ", working + ready),
+                format!(" {} активно", working + ready),
                 Style::default()
                     .fg(rgb(200, 200, 200))
                     .add_modifier(Modifier::BOLD),
             ));
             title_parts.push(Span::styled(
-                format!("{}{} working", spinner, working),
+                format!("{}{} работает", spinner, working),
                 Style::default().fg(rgb(255, 193, 7)),
             ));
             title_parts.push(Span::styled(" · ", Style::default().fg(rgb(80, 80, 80))));
             title_parts.push(Span::styled(
-                format!("●{} ready", ready),
+                format!("●{} готово", ready),
                 Style::default().fg(rgb(100, 220, 130)),
             ));
         } else {
@@ -609,13 +609,13 @@ impl SessionPicker {
             Style::default().fg(rgb(255, 180, 100)),
         ));
         title_parts.push(Span::styled(
-            " (s/S filter)",
+            " (фильтр s/S)",
             Style::default().fg(rgb(80, 80, 80)),
         ));
 
         if self.hidden_test_count > 0 {
             title_parts.push(Span::styled(
-                format!(" (+{} hidden)", self.hidden_test_count),
+                format!(" (+{} скрыто)", self.hidden_test_count),
                 Style::default().fg(rgb(80, 80, 80)),
             ));
         }
@@ -629,7 +629,7 @@ impl SessionPicker {
 
         if self.selection_count() > 0 {
             title_parts.push(Span::styled(
-                format!("  ✓ {} selected", self.selection_count()),
+                format!("  ✓ {} выбрано", self.selection_count()),
                 Style::default().fg(rgb(140, 220, 160)),
             ));
         }
@@ -637,21 +637,21 @@ impl SessionPicker {
         title_parts.push(Span::styled(" ", Style::default()));
 
         let mut help = if self.loading_message.is_some() {
-            " Esc cancel ".to_string()
+            " Esc отмена".to_string()
         } else if self.search_active {
-            " type to filter · Ctrl+J/K or ↑↓ nav · Ctrl+W word-del · Esc cancel ".to_string()
+            " введите для фильтра · Ctrl+J/K или ↑↓ навигация · Ctrl+W удалить слово · Esc отмена".to_string()
         } else {
             match crate::config::config().keybindings.session_picker_enter {
                 crate::config::SessionPickerResumeAction::CurrentTerminal => {
-                    " Space select · Enter in place · Ctrl+Enter new terminal · d debug · / search · h/l focus · ↑↓ · q ".to_string()
+                    " Пробел выбрать · Enter на месте · Ctrl+Enter новый терминал · d отладка · / поиск · h/l фокус · ↑↓ · q".to_string()
                 }
                 crate::config::SessionPickerResumeAction::NewTerminal => {
-                    " Space select · Enter new terminal · Ctrl+Enter in place · d debug · / search · h/l focus · ↑↓ · q ".to_string()
+                    " Пробел выбрать · Enter новый терминал · Ctrl+Enter на месте · d отладка · / поиск · h/l фокус · ↑↓ · q".to_string()
                 }
             }
         };
         if self.selected_live_claude_target().is_some() && !self.search_active {
-            help = format!(" T take over live Claude ·{}", help);
+            help = format!(" T перехватить активный Claude ·{}", help);
         }
 
         let border_dim: Color = rgb(70, 70, 70);
@@ -686,7 +686,7 @@ impl SessionPicker {
                     .border_style(Style::default().fg(border_color)),
             )
             .highlight_style(if self.onboarding_start_new_highlighted() {
-                // Focus is on the onboarding "Start a new session" row; dim the
+                // Focus is on the onboarding " Начать новую сессию" row; dim the
                 // list selection so only one row reads as active.
                 Style::default().fg(rgb(150, 150, 160))
             } else {
@@ -726,12 +726,12 @@ impl SessionPicker {
         };
 
         let omitted = if info.omitted_crashed_count > 0 {
-            format!(" · {} older skipped", info.omitted_crashed_count)
+            format!(" · {} старых пропущено", info.omitted_crashed_count)
         } else {
             String::new()
         };
         let title = format!(
-            " R restore shown group · {} relevant crashed session(s) detected{} ",
+            " R восстановить показанную группу · {} актуальных аварийных сессий обнаружено{}",
             info.session_ids.len(),
             omitted
         );
@@ -742,7 +742,7 @@ impl SessionPicker {
                 Span::styled(names, Style::default().fg(Color::White)),
             ]),
             Line::from(vec![Span::styled(
-                "Press R (or B) to restore only this guessed recent group.",
+                "Нажмите R (или B), чтобы восстановить только эту предполагаемую недавнюю группу.",
                 Style::default().fg(rgb(180, 180, 180)),
             )]),
         ];

@@ -773,7 +773,7 @@ fn build_persistent_header_with_auth(
     // wraps when the render area subtracts side margins.
     let fit_width = w.saturating_sub(4);
     if !model_is_placeholder && !nice_model.is_empty() {
-        let hint = "/model to switch · ";
+        let hint = "/model для переключения ·";
         if model_line_len + hint.chars().count() <= fit_width {
             model_line_len += hint.chars().count();
             model_spans.push(Span::styled(
@@ -850,10 +850,10 @@ fn build_header_lines_with_auth(
         // The native protocol reports the active route, not a complete remote
         // credential inventory. Do not render the laptop's (or an empty)
         // inventory as if it described providers configured on the server.
-        (format!("/login to authenticate on {host}"), Vec::new())
+        (format!("/login для аутентификации на {host}"), Vec::new())
     } else {
         (
-            "/login to add provider".to_string(),
+            "/login для добавления провайдера".to_string(),
             build_auth_status_lines(auth, active),
         )
     };
@@ -884,7 +884,7 @@ fn build_header_lines_with_auth(
             .collect();
         let mut mcp_text = format!("mcp: {}", shown.join(", "));
         if mcps.len() > MAX_MCPS {
-            mcp_text.push_str(&format!(" +{} more", mcps.len() - MAX_MCPS));
+            mcp_text.push_str(&format!(" +{} ещё", mcps.len() - MAX_MCPS));
         }
         if mcp_text.chars().count() > w {
             mcp_text = format!("mcp: {} servers", mcps.len());
@@ -904,7 +904,7 @@ fn build_header_lines_with_auth(
             .collect();
         let mut skills_text = format!("skills: {}", shown.join(" "));
         if skills.len() > MAX_SKILLS {
-            skills_text.push_str(&format!(" +{} more", skills.len() - MAX_SKILLS));
+            skills_text.push_str(&format!(" +{} ещё", skills.len() - MAX_SKILLS));
         }
         if skills_text.chars().count() > w {
             skills_text = format!("skills: {} loaded", skills.len());
@@ -933,7 +933,7 @@ fn build_header_lines_with_auth(
     lines
 }
 
-/// Build the "Updates" rounded box (unseen release notes) so it can be
+/// Build the "Обновления" rounded box (unseen release notes) so it can be
 /// rendered inside the top padding above the header. `max_lines` bounds the
 /// total height including the box borders; entries beyond the budget are
 /// collapsed into a "…N more" line. Returns an empty vec when there are no
@@ -967,7 +967,7 @@ pub(super) fn build_updates_box_lines(width: u16, max_lines: usize) -> Vec<Line<
     if has_more {
         content.push(Line::from(Span::styled(
             format!(
-                "  …{} more · /changelog to see all",
+                "  …{} ещё · /changelog чтобы увидеть все",
                 new_entries.len() - display_count
             ),
             Style::default().fg(dim_color()),
@@ -978,7 +978,7 @@ pub(super) fn build_updates_box_lines(width: u16, max_lines: usize) -> Vec<Line<
     }
 
     render_rounded_box(
-        "Updates",
+        "Обновления",
         content,
         w.saturating_sub(2),
         Style::default().fg(dim_color()),
@@ -1300,7 +1300,7 @@ mod tests {
         assert_eq!(prettify_model_id("kimi_k2"), "Kimi K2");
         assert_eq!(
             prettify_model_id("gemini-3-pro-preview"),
-            "Gemini 3 Pro Preview"
+            "Гемини 3 Про Превью"
         );
         assert_eq!(prettify_model_id("deepseek-chat"), "Deepseek Chat");
         assert_eq!(
@@ -1317,7 +1317,7 @@ mod tests {
         // Long digit runs (snapshot dates) are dropped.
         assert_eq!(
             prettify_model_id("claude-fable-5-20260101"),
-            "Claude Fable 5"
+            "Клод Фейбл 5"
         );
         // Placeholders and slashed ids pass through untouched.
         assert_eq!(prettify_model_id("loading session…"), "loading session…");
@@ -1336,14 +1336,14 @@ mod tests {
         // prettify_model_id, over the model ids jcode actually routes.
         let cases = [
             // Anthropic
-            ("claude-opus-4-5-20251101", "Claude 4.5 Opus"),
-            ("claude-opus-4.6", "Claude 4.6 Opus"),
-            ("claude-opus-4-8", "Claude 4.8 Opus"),
-            ("claude-sonnet-4-5", "Claude 4.5 Sonnet"),
-            ("claude-sonnet-4", "Claude 4 Sonnet"),
-            ("claude-3-5-sonnet-latest", "Claude 3.5 Sonnet"),
-            ("claude-haiku-4-5", "Claude 4.5 Haiku"),
-            ("claude-fable-5", "Claude Fable 5"),
+            ("claude-opus-4-5-20251101", "Клод 4.5 Опус"),
+            ("claude-opus-4.6", "Клод 4.6 Опус"),
+            ("claude-opus-4-8", "Клод 4.8 Опус"),
+            ("claude-sonnet-4-5", "Клод 4.5 Соннет"),
+            ("claude-sonnet-4", "Клод 4 Соннет"),
+            ("claude-3-5-sonnet-latest", "Клод 3.5 Соннет"),
+            ("claude-haiku-4-5", "Клод 4.5 Хайку"),
+            ("claude-fable-5", "Клод Фейбл 5"),
             // OpenAI
             ("gpt-5.2-codex", "GPT-5.2 Codex"),
             ("gpt-5.1-codex-max", "GPT-5.1 Codex Max"),
@@ -1356,8 +1356,8 @@ mod tests {
             ("o3-mini", "O3 Mini"),
             ("o4-mini", "O4 Mini"),
             // Google
-            ("gemini-3-pro-preview", "Gemini 3 Pro Preview"),
-            ("gemini-2.5-flash", "Gemini 2.5 Flash"),
+            ("gemini-3-pro-preview", "Гемини 3 Про Превью"),
+            ("gemini-2.5-flash", "Гемини 2.5 Флэш"),
             // xAI / Moonshot / Zhipu / DeepSeek / Minimax
             ("grok-code-fast-1", "Grok Code Fast 1"),
             ("kimi-k2.5", "Kimi K2.5"),
@@ -1456,7 +1456,7 @@ mod tests {
             anthropic: ProviderAuth {
                 // `state` must be set alongside the credential booleans:
                 // `build_auth_status_lines` filters `NotConfigured` providers out
-                // and falls back to the full "no credentials" list (issue #654).
+                // and falls back to the full "нет учетных данных" list (issue #654).
                 state: AuthState::Available,
                 has_oauth: true,
                 oauth_state: AuthState::Available,
@@ -1761,7 +1761,7 @@ mod tests {
         // Non-slashed models are unaffected by the provider label.
         assert_eq!(
             format_model_name("claude-opus-4-6", "OpenRouter"),
-            "Claude Opus"
+            "Клод Опус"
         );
     }
 }

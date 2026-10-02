@@ -271,7 +271,7 @@ impl AccountPicker {
             }
         }
 
-        let mut spans = vec![Span::styled("Providers ", Style::default().fg(MUTED_DARK))];
+        let mut spans = vec![Span::styled("Провайдеры", Style::default().fg(MUTED_DARK))];
         let mut first = true;
         for provider_id in seen {
             let Some((label, accounts, actions)) = stats.get(&provider_id) else {
@@ -295,7 +295,7 @@ impl AccountPicker {
         }
         if first {
             spans.push(Span::styled(
-                "No providers available",
+                "Нет доступных провайдеров",
                 Style::default().fg(MUTED),
             ));
         }
@@ -405,16 +405,16 @@ impl AccountPicker {
         let block = Block::default()
             .title(format!(" {} ", self.title))
             .title_bottom(Line::from(vec![
-                hotkey(" Enter "),
+                hotkey(" Enter"),
                 Span::styled(" run  ", Style::default().fg(MUTED_DARK)),
-                hotkey(" Up/Down "),
+                hotkey(" Вверх/Вниз"),
                 Span::styled(" navigate  ", Style::default().fg(MUTED_DARK)),
-                hotkey(" Click "),
+                hotkey(" Клик"),
                 Span::styled(" select  ", Style::default().fg(MUTED_DARK)),
                 hotkey(" type "),
                 Span::styled(" filter  ", Style::default().fg(MUTED_DARK)),
-                hotkey(" Esc "),
-                Span::styled(" clear / close ", Style::default().fg(MUTED_DARK)),
+                hotkey(" Esc"),
+                Span::styled(" очистить / закрыть", Style::default().fg(MUTED_DARK)),
             ]))
             .borders(Borders::ALL)
             .border_style(Style::default().fg(PANEL_BORDER));
@@ -446,9 +446,9 @@ impl AccountPicker {
         self.render_detail_pane(frame, body[1]);
 
         let footer = Paragraph::new(Line::from(vec![
-            Span::styled("Focus ", Style::default().fg(MUTED_DARK)),
+            Span::styled("Фокус", Style::default().fg(MUTED_DARK)),
             Span::styled(
-                "saved accounts stay surfaced here; click actions to focus them, use Left/Right to jump provider groups, or use `/account <provider> settings` for the full text view.",
+                "сохраненные аккаунты отображаются здесь; кликните действия, чтобы сфокусировать их, используйте Влево/Вправо для перехода между группами провайдеров, или используйте `/account <provider> settings` для полного текстового вида.",
                 Style::default().fg(MUTED),
             ),
         ]));
@@ -458,7 +458,7 @@ impl AccountPicker {
     fn render_header(&self, frame: &mut Frame, area: Rect) {
         let block = Block::default()
             .title(Span::styled(
-                " Overview ",
+                " Обзор",
                 Style::default().fg(Color::White).bold(),
             ))
             .borders(Borders::ALL)
@@ -469,10 +469,10 @@ impl AccountPicker {
 
         let lines = vec![
             Line::from(vec![
-                Span::styled("Filter ", Style::default().fg(MUTED_DARK)),
+                Span::styled("Фильтр", Style::default().fg(MUTED_DARK)),
                 Span::styled(
                     if self.filter.is_empty() {
-                        "type provider or account name".to_string()
+                        "введите провайдера или имя аккаунта".to_string()
                     } else {
                         self.filter.clone()
                     },
@@ -483,7 +483,7 @@ impl AccountPicker {
                     },
                 ),
                 Span::styled(
-                    format!("  -  {} results", self.filtered.len()),
+                    format!("  -  {} результатов", self.filtered.len()),
                     Style::default().fg(MUTED_DARK),
                 ),
             ]),
@@ -497,10 +497,10 @@ impl AccountPicker {
 
     fn render_action_list(&mut self, frame: &mut Frame, area: Rect) {
         let title = if self.filtered.is_empty() {
-            " Providers & Quick Actions ".to_string()
+            " Провайдеры и Быстрые Действия".to_string()
         } else {
             format!(
-                " Providers & Quick Actions ({}/{}) ",
+                " Провайдеры и Быстрые Действия ({}/{})",
                 self.selected + 1,
                 self.filtered.len()
             )
@@ -524,11 +524,11 @@ impl AccountPicker {
         let mut lines = Vec::new();
         if self.filtered.is_empty() {
             lines.push(Line::from(Span::styled(
-                "No matching account or provider actions.",
+                "Нет подходящих аккаунтов или действий провайдера.",
                 Style::default().fg(Color::Gray).italic(),
             )));
             lines.push(Line::from(Span::styled(
-                "Try `openai`, `claude`, an account label, `login`, or `default`.",
+                "Попробуйте `openai`, `claude`, метку аккаунта, `login`, или `default`.",
                 Style::default().fg(MUTED),
             )));
         } else {
@@ -594,7 +594,7 @@ impl AccountPicker {
 
         let Some(item) = self.selected_item() else {
             frame.render_widget(
-                Paragraph::new("No action selected").style(Style::default().fg(Color::DarkGray)),
+                Paragraph::new("Действие не выбрано").style(Style::default().fg(Color::DarkGray)),
                 inner,
             );
             return;
@@ -605,7 +605,7 @@ impl AccountPicker {
         if !item.details.is_empty() {
             let mut lines = vec![
                 Line::styled(item.title.clone(), Style::default().fg(Color::White).bold()),
-                Line::from("Enter: run action."),
+                Line::from("Enter: выполнить действие."),
                 Line::from(""),
             ];
             for (label, value) in &item.details {
@@ -655,14 +655,14 @@ impl AccountPicker {
 
         let mut lines = vec![
             Line::from(vec![
-                Span::styled("Provider ", Style::default().fg(MUTED_DARK)),
+                Span::styled("Провайдер", Style::default().fg(MUTED_DARK)),
                 Span::styled(
                     item.provider_label.clone(),
                     provider_style(&item.provider_id),
                 ),
             ]),
             Line::from(vec![
-                Span::styled("Saved accounts ", Style::default().fg(MUTED_DARK)),
+                Span::styled("Сохраненные аккаунты", Style::default().fg(MUTED_DARK)),
                 Span::styled(
                     account_count_summary(account_items.len()),
                     Style::default().fg(Color::White).bold(),
@@ -670,21 +670,21 @@ impl AccountPicker {
             ]),
             Line::from(""),
             Line::from(vec![Span::styled(
-                "Quick switch",
+                "Быстрое переключение",
                 Style::default().fg(MUTED_DARK).bold(),
             )]),
         ];
 
         if account_items.is_empty() {
             lines.push(Line::from(vec![Span::styled(
-                "No saved accounts for this provider yet.",
+                "Нет сохраненных аккаунтов для этого провайдера.",
                 Style::default().fg(MUTED),
             )]));
         } else {
             for account in &account_items {
                 let is_selected = account.title == item.title;
                 let bullet = if account_is_active(account) { "*" } else { "o" };
-                let note = if is_selected { "  [selected]" } else { "" };
+                let note = if is_selected { "  [выбран]" } else { "" };
                 lines.push(Line::from(vec![
                     Span::styled(
                         format!("{} ", bullet),
@@ -718,7 +718,7 @@ impl AccountPicker {
 
         lines.push(Line::from(""));
         lines.push(Line::from(vec![Span::styled(
-            "Selected action",
+            "Выбранное действие",
             Style::default().fg(MUTED_DARK).bold(),
         )]));
         lines.push(Line::from(vec![
@@ -732,7 +732,7 @@ impl AccountPicker {
         )]));
         lines.push(Line::from(""));
         lines.push(Line::from(vec![Span::styled(
-            "Runs",
+            "Выполняется",
             Style::default().fg(MUTED_DARK).bold(),
         )]));
         lines.push(Line::from(vec![Span::styled(
@@ -747,7 +747,7 @@ impl AccountPicker {
         if !secondary_items.is_empty() {
             lines.push(Line::from(""));
             lines.push(Line::from(vec![Span::styled(
-                "Other controls",
+                "Другие элементы управления",
                 Style::default().fg(MUTED_DARK).bold(),
             )]));
             for related in secondary_items {
@@ -763,7 +763,7 @@ impl AccountPicker {
 
         lines.push(Line::from(""));
         lines.push(Line::from(vec![Span::styled(
-            "Press Enter to run this action.",
+            "Нажмите Enter для выполнения этого действия.",
             Style::default().fg(Color::Rgb(170, 210, 255)),
         )]));
 
@@ -801,7 +801,7 @@ impl AccountPicker {
         }
 
         Line::from(vec![Span::styled(
-            format!("{} actions available", self.filtered.len()),
+            format!("{} действий доступно", self.filtered.len()),
             Style::default().fg(MUTED),
         )])
     }
@@ -809,7 +809,7 @@ impl AccountPicker {
     fn defaults_line(&self) -> Line<'static> {
         let Some(summary) = &self.summary else {
             return Line::from(vec![Span::styled(
-                "Type to narrow actions by provider, account label, or setting.",
+                "Введите текст для фильтрации действий по провайдеру, метке аккаунта или настройке.",
                 Style::default().fg(MUTED),
             )]);
         };
@@ -818,13 +818,13 @@ impl AccountPicker {
         let model = summary
             .default_model
             .as_deref()
-            .unwrap_or("provider default");
+            .unwrap_or("по умолчанию провайдера");
 
         Line::from(vec![
-            Span::styled("Defaults ", Style::default().fg(MUTED_DARK)),
+            Span::styled("По умолчанию", Style::default().fg(MUTED_DARK)),
             Span::styled("provider ", Style::default().fg(MUTED_DARK)),
             Span::styled(provider.to_string(), Style::default().fg(Color::White)),
-            Span::styled("  -  model ", Style::default().fg(MUTED_DARK)),
+            Span::styled("  -  модель", Style::default().fg(MUTED_DARK)),
             Span::styled(model.to_string(), Style::default().fg(Color::White)),
         ])
     }
@@ -886,18 +886,18 @@ mod tests {
     #[test]
     fn account_usage_details_wrap_without_changing_switch_action() {
         let mut picker = AccountPicker::new(
-            "Accounts",
+            "Аккаунты",
             vec![
                 AccountPickerItem::action(
                     "openai",
                     "OpenAI",
-                    "Switch OpenAI Otter",
+                    "Переключить OpenAI Otter",
                     "saved",
                     AccountPickerCommand::SubmitInput("/account openai switch openai-otter".into()),
                 )
                 .with_details(vec![
                     (
-                        "Full usage details".into(),
+                        "Полная информация об использовании".into(),
                         "/account openai settings".into(),
                     ),
                     (
@@ -912,7 +912,7 @@ mod tests {
                     ),
                     (
                         "Estimate".into(),
-                        "Not your subscription bill. Recorded Jcode usage only.".into(),
+                        "Не является счетом подписки. Только записанное использование Jcode.".into(),
                     ),
                 ]),
             ],
@@ -939,7 +939,7 @@ mod tests {
             "$12.50",
             "1234567890 input",
             "600000 cached input",
-            "Not your subscription bill.",
+            "Не является счетом подписки.",
             "/account openai settings",
         ] {
             assert!(
@@ -969,12 +969,12 @@ mod tests {
     #[test]
     fn test_account_picker_preserves_underlying_background_outside_panels() {
         let mut picker = AccountPicker::new(
-            " Accounts ",
+            " Аккаунты",
             vec![AccountPickerItem::action(
                 "openai",
                 "OpenAI",
-                "Add account",
-                "Start login flow",
+                "Добавить аккаунт",
+                "Начать процесс входа",
                 AccountPickerCommand::SubmitInput("/account openai add default".to_string()),
             )],
         );
@@ -1003,19 +1003,19 @@ mod tests {
     #[test]
     fn test_account_picker_mouse_click_selects_visible_action_after_group_header() {
         let mut picker = AccountPicker::new(
-            " Accounts ",
+            " Аккаунты",
             vec![
                 AccountPickerItem::action(
                     "openai",
                     "OpenAI",
-                    "Provider settings",
+                    "Настройки провайдера",
                     "configured",
                     AccountPickerCommand::SubmitInput("/account openai settings".to_string()),
                 ),
                 AccountPickerItem::action(
                     "openai",
                     "OpenAI",
-                    "Login / refresh",
+                    "Вход / обновление",
                     "OAuth",
                     AccountPickerCommand::SubmitInput("/account openai login".to_string()),
                 ),
@@ -1062,7 +1062,7 @@ mod tests {
     #[test]
     fn test_prompt_value_command_preview_shows_placeholder() {
         let preview = command_preview(&AccountPickerCommand::PromptValue {
-            prompt: "Enter default model".to_string(),
+            prompt: "Введите модель по умолчанию".to_string(),
             command_prefix: "/account default-model".to_string(),
             empty_value: Some("clear".to_string()),
             status_notice: "editing".to_string(),
@@ -1075,26 +1075,26 @@ mod tests {
     #[test]
     fn test_account_picker_sorts_switches_before_settings() {
         let picker = AccountPicker::new(
-            " Accounts ",
+            " Аккаунты",
             vec![
                 AccountPickerItem::action(
                     "openai",
                     "OpenAI",
-                    "Provider settings",
+                    "Настройки провайдера",
                     "configured",
                     AccountPickerCommand::SubmitInput("/account openai settings".to_string()),
                 ),
                 AccountPickerItem::action(
                     "openai",
                     "OpenAI",
-                    "Switch account `work`",
+                    "Переключить аккаунт `work`",
                     "user@example.com - valid - active",
                     AccountPickerCommand::SubmitInput("/account openai switch work".to_string()),
                 ),
                 AccountPickerItem::action(
                     "defaults",
                     "Global",
-                    "Default provider",
+                    "Провайдер по умолчанию",
                     "Current: auto",
                     AccountPickerCommand::PromptValue {
                         prompt: "provider".to_string(),
@@ -1120,26 +1120,26 @@ mod tests {
     #[test]
     fn test_account_picker_left_right_jump_by_provider_group() {
         let mut picker = AccountPicker::new(
-            " Accounts ",
+            " Аккаунты",
             vec![
                 AccountPickerItem::action(
                     "claude",
                     "Claude",
-                    "Switch account `work`",
+                    "Переключить аккаунт `work`",
                     "a@example.com - valid - active",
                     AccountPickerCommand::SubmitInput("/account claude switch work".to_string()),
                 ),
                 AccountPickerItem::action(
                     "claude",
                     "Claude",
-                    "Provider settings",
+                    "Настройки провайдера",
                     "configured",
                     AccountPickerCommand::SubmitInput("/account claude settings".to_string()),
                 ),
                 AccountPickerItem::action(
                     "openai",
                     "OpenAI",
-                    "Switch account `default`",
+                    "Переключить аккаунт `default`",
                     "b@example.com - valid - active",
                     AccountPickerCommand::SubmitInput("/account openai switch default".to_string()),
                 ),

@@ -204,7 +204,7 @@ pub(super) async fn recover_stranded_soft_interrupts(
             "Failed to recover queued interleave message: {}",
             err
         )));
-        app.set_status_notice("Queued interleave recovery failed");
+        app.set_status_notice("Не удалось восстановить перекрестие из очереди");
         return false;
     }
 
@@ -217,6 +217,6 @@ pub(super) async fn recover_stranded_soft_interrupts(
     let mut recovered_queue = recovered_interrupts;
     recovered_queue.append(&mut app.queued_messages);
     app.queued_messages = recovered_queue;
-    app.set_status_notice("Recovered queued interleave after turn finished");
+    app.set_status_notice("Восстановленное перекрестие из очереди после завершения хода");
     true
 }
