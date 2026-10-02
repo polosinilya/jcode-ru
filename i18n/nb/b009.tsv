@@ -1,0 +1,120 @@
+1	crates/jcode-tui/src/tui/app/commands.rs	925	/provider-test-coverage	let Some(rest) = slash_command_rest(trimmed, "/provider-test-coverage")
+2	crates/jcode-tui/src/tui/app/commands.rs	926	/model-status	.or_else(|| slash_command_rest(trimmed, "/model-status"))
+3	crates/jcode-tui/src/tui/app/commands.rs	959	hidden	"off" | "none" | "hide" | "hidden" => Some(DiffDisplayMode::Off),
+4	crates/jcode-tui/src/tui/app/commands.rs	959	hide	"off" | "none" | "hide" | "hidden" => Some(DiffDisplayMode::Off),
+5	crates/jcode-tui/src/tui/app/commands.rs	959	none	"off" | "none" | "hide" | "hidden" => Some(DiffDisplayMode::Off),
+6	crates/jcode-tui/src/tui/app/commands.rs	959	off	"off" | "none" | "hide" | "hidden" => Some(DiffDisplayMode::Off),
+7	crates/jcode-tui/src/tui/app/commands.rs	960	inline	"inline" | "on" => Some(DiffDisplayMode::Inline),
+8	crates/jcode-tui/src/tui/app/commands.rs	960	on	"inline" | "on" => Some(DiffDisplayMode::Inline),
+9	crates/jcode-tui/src/tui/app/commands.rs	961	full	"full" | "full-inline" | "full_inline" | "fullinline" | "inline-full" => {
+10	crates/jcode-tui/src/tui/app/commands.rs	961	full-inline	"full" | "full-inline" | "full_inline" | "fullinline" | "inline-full" => {
+11	crates/jcode-tui/src/tui/app/commands.rs	961	fullinline	"full" | "full-inline" | "full_inline" | "fullinline" | "inline-full" => {
+12	crates/jcode-tui/src/tui/app/commands.rs	961	inline-full	"full" | "full-inline" | "full_inline" | "fullinline" | "inline-full" => {
+13	crates/jcode-tui/src/tui/app/commands.rs	964	pane	"pinned" | "pin" | "pane" => Some(DiffDisplayMode::Pinned),
+14	crates/jcode-tui/src/tui/app/commands.rs	964	pin	"pinned" | "pin" | "pane" => Some(DiffDisplayMode::Pinned),
+15	crates/jcode-tui/src/tui/app/commands.rs	964	pinned	"pinned" | "pin" | "pane" => Some(DiffDisplayMode::Pinned),
+16	crates/jcode-tui/src/tui/app/commands.rs	965	file	"file" | "fullfile" | "full-file" => Some(DiffDisplayMode::File),
+17	crates/jcode-tui/src/tui/app/commands.rs	965	full-file	"file" | "fullfile" | "full-file" => Some(DiffDisplayMode::File),
+18	crates/jcode-tui/src/tui/app/commands.rs	965	fullfile	"file" | "fullfile" | "full-file" => Some(DiffDisplayMode::File),
+19	crates/jcode-tui/src/tui/app/commands.rs	975	Diffs: {}	app.set_status_notice(format!("Diffs: {}", app.diff_mode.label()));
+20	crates/jcode-tui/src/tui/app/commands.rs	979	/diff	let Some(rest) = slash_command_rest(trimmed, "/diff") else {
+21	crates/jcode-tui/src/tui/app/commands.rs	984	cycle	if arg.is_empty() || arg.eq_ignore_ascii_case("cycle") || arg.eq_ignore_ascii_case("next") {
+22	crates/jcode-tui/src/tui/app/commands.rs	984	next	if arg.is_empty() || arg.eq_ignore_ascii_case("cycle") || arg.eq_ignore_ascii_case("next") {
+23	crates/jcode-tui/src/tui/app/commands.rs	990	status	if arg.eq_ignore_ascii_case("status") {
+24	crates/jcode-tui/src/tui/app/commands.rs	992	Diff mode: {} (use /diff [off|inline|full|pinned|file] or /diff to cycle)	"Diff mode: {} (use /diff [off|inline|full|pinned|file] or /diff to cycle)",
+25	crates/jcode-tui/src/tui/app/commands.rs	1001	Usage: /diff [off|inline|full|pinned|file|cycle|status]	"Usage: /diff [off|inline|full|pinned|file|cycle|status]".to_string(),
+26	crates/jcode-tui/src/tui/app/commands.rs	1008	/log	let Some(rest) = slash_command_rest(trimmed, "/log") else {
+27	crates/jcode-tui/src/tui/app/commands.rs	1016	mark	if subcommand != "mark" {
+28	crates/jcode-tui/src/tui/app/commands.rs	1017	Usage: /log mark [note]	app.push_display_message(DisplayMessage::error("Usage: /log mark [note]".to_string()));
+29	crates/jcode-tui/src/tui/app/commands.rs	1022	logmark-{}	"logmark-{}",
+30	crates/jcode-tui/src/tui/app/commands.rs	1023	%Y%m%d-%H%M%S%.3f	chrono::Local::now().format("%Y%m%d-%H%M%S%.3f")
+31	crates/jcode-tui/src/tui/app/commands.rs	1027	unknown	.unwrap_or_else(|| "unknown".to_string());
+32	crates/jcode-tui/src/tui/app/commands.rs	1028	(none)	let note_for_log = if note.is_empty() { "(none)" } else { note };
+33	crates/jcode-tui/src/tui/app/commands.rs	1031	JCODE_LOG_MARK id={} session={} provider={} model={} cwd={} note={}	"JCODE_LOG_MARK id={} session={} provider={} model={} cwd={} note={}",
+34	crates/jcode-tui/src/tui/app/commands.rs	1041	Log mark written: {}\n\nAgents can search ~/.jcode/logs/ for JCODE_LOG_MARK or this marker id.	"Log mark written: {}\n\nAgents can search ~/.jcode/logs/ for JCODE_LOG_MARK or this marker id.",
+35	crates/jcode-tui/src/tui/app/commands.rs	1045	\n\nNote: {}	message.push_str(&format!("\n\nNote: {}", note));
+36	crates/jcode-tui/src/tui/app/commands.rs	1048	Log mark {}	app.set_status_notice(format!("Log mark {}", marker_id));
+37	crates/jcode-tui/src/tui/app/commands.rs	1068	Live provider/model E2E coverage\n	out.push_str("Live provider/model E2E coverage\n");
+38	crates/jcode-tui/src/tui/app/commands.rs	1069	Status: no verification ledger found on this install\n	out.push_str("Status: no verification ledger found on this install\n");
+39	crates/jcode-tui/src/tui/app/commands.rs	1070	Ledger error: {err}\n	out.push_str(&format!("Ledger error: {err}\n"));
+40	crates/jcode-tui/src/tui/app/commands.rs	1077	/ssh	let Some(rest) = trimmed.strip_prefix("/ssh") else {
+41	crates/jcode-tui/src/tui/app/commands.rs	1094	add	Some("add") => {
+42	crates/jcode-tui/src/tui/app/commands.rs	1095	school	let name = parts.next().unwrap_or("school");
+43	crates/jcode-tui/src/tui/app/commands.rs	1098	status	Some("status") => show_ssh_status(app),
+44	crates/jcode-tui/src/tui/app/commands.rs	1099	disconnect	Some("disconnect") => {
+45	crates/jcode-tui/src/tui/app/commands.rs	1104	Usage: /ssh disconnect <name>	"Usage: /ssh disconnect <name>".to_string(),
+46	crates/jcode-tui/src/tui/app/commands.rs	1114	Failed to save SSH remote {}: {}	"Failed to save SSH remote {}: {}",
+47	crates/jcode-tui/src/tui/app/commands.rs	1123	Failed to load SSH remotes: {}	"Failed to load SSH remotes: {}",
+48	crates/jcode-tui/src/tui/app/commands.rs	1135	cancel	if target.is_empty() || target.eq_ignore_ascii_case("cancel") {
+49	crates/jcode-tui/src/tui/app/commands.rs	1137	SSH remote setup cancelled.	"SSH remote setup cancelled.".to_string(),
+50	crates/jcode-tui/src/tui/app/commands.rs	1139	SSH setup cancelled	app.set_status_notice("SSH setup cancelled");
+51	crates/jcode-tui/src/tui/app/commands.rs	1145	Failed to save SSH remote {}: {}	"Failed to save SSH remote {}: {}",
+52	crates/jcode-tui/src/tui/app/commands.rs	1172	SSH setup 1/4: enter target	app.set_status_notice("SSH setup 1/4: enter target");
+53	crates/jcode-tui/src/tui/app/commands.rs	1192	SSH remotes	let mut lines = vec!["SSH remotes".to_string(), "".to_string()];
+54	crates/jcode-tui/src/tui/app/commands.rs	1195	✓ connected	"✓ connected"
+55	crates/jcode-tui/src/tui/app/commands.rs	1197	not connected	"not connected"
+56	crates/jcode-tui/src/tui/app/commands.rs	1206	Use /ssh <name> to connect, /ssh status to check, or /ssh disconnect <name> to disconnect.	"Use /ssh <name> to connect, /ssh status to check, or /ssh disconnect <name> to disconnect."
+57	crates/jcode-tui/src/tui/app/commands.rs	1210	Security: Jcode stores targets only, never SSH passwords.	lines.push("Security: Jcode stores targets only, never SSH passwords.".to_string());
+58	crates/jcode-tui/src/tui/app/commands.rs	1214	Failed to load SSH remotes: {}	"Failed to load SSH remotes: {}",
+59	crates/jcode-tui/src/tui/app/commands.rs	1243	SSH {} connected 4/4	app.set_status_notice(format!("SSH {} connected 4/4", profile.name));
+60	crates/jcode-tui/src/tui/app/commands.rs	1268	SSH setup 2/4: login terminal opened	app.set_status_notice("SSH setup 2/4: login terminal opened");
+61	crates/jcode-tui/src/tui/app/commands.rs	1283	~/.jcode/ssh-control/remote.sock	.unwrap_or_else(|_| "~/.jcode/ssh-control/remote.sock".to_string()),
+62	crates/jcode-tui/src/tui/app/commands.rs	1287	Failed to open SSH login terminal: {}	"Failed to open SSH login terminal: {}",
+63	crates/jcode-tui/src/tui/app/commands.rs	1298	Disconnected SSH remote {}.	"Disconnected SSH remote {}.",
+64	crates/jcode-tui/src/tui/app/commands.rs	1301	SSH disconnected	app.set_status_notice("SSH disconnected");
+65	crates/jcode-tui/src/tui/app/commands.rs	1304	SSH remote {} did not have an active ControlMaster connection.	"SSH remote {} did not have an active ControlMaster connection.",
+66	crates/jcode-tui/src/tui/app/commands.rs	1308	Failed to disconnect SSH remote {}: {}	"Failed to disconnect SSH remote {}: {}",
+67	crates/jcode-tui/src/tui/app/commands.rs	1313	Unknown SSH remote {}. Use /ssh to list remotes.	"Unknown SSH remote {}. Use /ssh to list remotes.",
+68	crates/jcode-tui/src/tui/app/commands.rs	1317	Failed to load SSH remote {}: {}	"Failed to load SSH remote {}: {}",
+69	crates/jcode-tui/src/tui/app/commands.rs	1324	/btw	if trimmed != "/btw" && !trimmed.starts_with("/btw ") {
+70	crates/jcode-tui/src/tui/app/commands.rs	1324	/btw 	if trimmed != "/btw" && !trimmed.starts_with("/btw ") {
+71	crates/jcode-tui/src/tui/app/commands.rs	1328	/btw	let question = trimmed.strip_prefix("/btw").unwrap_or_default().trim();
+72	crates/jcode-tui/src/tui/app/commands.rs	1330	Usage: /btw <question>	app.push_display_message(DisplayMessage::error("Usage: /btw <question>".to_string()));
+73	crates/jcode-tui/src/tui/app/commands.rs	1341	/fork	let rest = if trimmed == "/fork" || trimmed == "/split" {
+74	crates/jcode-tui/src/tui/app/commands.rs	1341	/split	let rest = if trimmed == "/fork" || trimmed == "/split" {
+75	crates/jcode-tui/src/tui/app/commands.rs	1343	/fork 	} else if let Some(rest) = trimmed.strip_prefix("/fork ") {
+76	crates/jcode-tui/src/tui/app/commands.rs	1371	Failed to fork session: {}	"Failed to fork session: {}",
+77	crates/jcode-tui/src/tui/app/commands.rs	1374	Fork failed	app.set_status_notice("Fork failed");
+78	crates/jcode-tui/src/tui/app/commands.rs	1388	/catchup	if !trimmed.starts_with("/catchup") {
+79	crates/jcode-tui/src/tui/app/commands.rs	1393	/catchup currently requires a connected shared server session.	"/catchup currently requires a connected shared server session.".to_string(),
+80	crates/jcode-tui/src/tui/app/commands.rs	1398	/catchup	let rest = trimmed.strip_prefix("/catchup").unwrap_or_default().trim();
+81	crates/jcode-tui/src/tui/app/commands.rs	1400	list	"" | "list" | "show" => {
+82	crates/jcode-tui/src/tui/app/commands.rs	1400	show	"" | "list" | "show" => {
+83	crates/jcode-tui/src/tui/app/commands.rs	1404	next	"next" => {
+84	crates/jcode-tui/src/tui/app/commands.rs	1406	Finish current work before Catch Up	app.set_status_notice("Finish current work before Catch Up");
+85	crates/jcode-tui/src/tui/app/commands.rs	1413	No sessions currently need catch up.	"No sessions currently need catch up.".to_string(),
+86	crates/jcode-tui/src/tui/app/commands.rs	1415	Catch Up: none waiting	app.set_status_notice("Catch Up: none waiting");
+87	crates/jcode-tui/src/tui/app/commands.rs	1430	Queued Catch Up for {}.	"Queued Catch Up for {}.",
+88	crates/jcode-tui/src/tui/app/commands.rs	1433	Catch Up → {}	app.set_status_notice(format!("Catch Up → {}", target_name));
+89	crates/jcode-tui/src/tui/app/commands.rs	1438	Usage: /catchup [next|list]	"Usage: /catchup [next|list]".to_string(),
+90	crates/jcode-tui/src/tui/app/commands.rs	1446	/back	if trimmed != "/back" {
+91	crates/jcode-tui/src/tui/app/commands.rs	1451	/back currently requires a connected shared server session.	"/back currently requires a connected shared server session.".to_string(),
+92	crates/jcode-tui/src/tui/app/commands.rs	1456	Finish current work before going back	app.set_status_notice("Finish current work before going back");
+93	crates/jcode-tui/src/tui/app/commands.rs	1461	No previous Catch Up session is available.	"No previous Catch Up session is available.".to_string(),
+94	crates/jcode-tui/src/tui/app/commands.rs	1463	Back: empty	app.set_status_notice("Back: empty");
+95	crates/jcode-tui/src/tui/app/commands.rs	1472	Queued return to {}.	"Queued return to {}.",
+96	crates/jcode-tui/src/tui/app/commands.rs	1475	Back → {}	app.set_status_notice(format!("Back → {}", target_name));
+97	crates/jcode-tui/src/tui/app/commands.rs	1486	Unable to run /git: session working directory {} is not accessible from this jcode client.	"Unable to run /git: session working directory {} is not accessible from this jcode client.",
+98	crates/jcode-tui/src/tui/app/commands.rs	1493	Unable to run /git: the remote session does not have a working directory.	"Unable to run /git: the remote session does not have a working directory.".to_string(),
+99	crates/jcode-tui/src/tui/app/commands.rs	1498	Unable to determine a working directory for /git.	.map_err(|_| "Unable to determine a working directory for /git.".to_string())
+100	crates/jcode-tui/src/tui/app/commands.rs	1502	git	let output = Command::new("git")
+101	crates/jcode-tui/src/tui/app/commands.rs	1506	Failed to run git {}: {}	.map_err(|error| format!("Failed to run git {}: {}", args.join(" "), error))?;
+102	crates/jcode-tui/src/tui/app/commands.rs	1512	git {} exited with status {}	"git {} exited with status {}",
+103	crates/jcode-tui/src/tui/app/commands.rs	1529	rev-parse	run_git_command(&repo_dir, &["rev-parse", "--show-toplevel"]).map_err(|error| {
+104	crates/jcode-tui/src/tui/app/commands.rs	1531	No git repository found for {}: {}	"No git repository found for {}: {}",
+105	crates/jcode-tui/src/tui/app/commands.rs	1536	status	let status = run_git_command(&repo_dir, &["status", "--short", "--branch"])?;
+106	crates/jcode-tui/src/tui/app/commands.rs	1552	/git in {}	format!("/git in {}", repo_root)
+107	crates/jcode-tui/src/tui/app/commands.rs	1554	/git in {} ({})	format!("/git in {} ({})", repo_root, relative_dir)
+108	crates/jcode-tui/src/tui/app/commands.rs	1566	/git	if trimmed != "/git" && trimmed != "/git status" {
+109	crates/jcode-tui/src/tui/app/commands.rs	1566	/git status	if trimmed != "/git" && trimmed != "/git status" {
+110	crates/jcode-tui/src/tui/app/commands.rs	1567	/git 	if trimmed.starts_with("/git ") {
+111	crates/jcode-tui/src/tui/app/commands.rs	1569	Usage: /git or /git status	"Usage: /git or /git status".to_string(),
+112	crates/jcode-tui/src/tui/app/commands.rs	1579	Git status loading...	app.set_status_notice("Git status loading...");
+113	crates/jcode-tui/src/tui/app/commands.rs	1594	Opened transcript file:\n\n  {}	format!("Opened transcript file:\n\n  {}", path.display())
+114	crates/jcode-tui/src/tui/app/commands.rs	1598	Transcript file:\n\n  {}	format!("Transcript file:\n\n  {}", path.display())
+115	crates/jcode-tui/src/tui/app/commands.rs	1602	/transcript	if trimmed != "/transcript" && trimmed != "/transcript path" {
+116	crates/jcode-tui/src/tui/app/commands.rs	1602	/transcript path	if trimmed != "/transcript" && trimmed != "/transcript path" {
+117	crates/jcode-tui/src/tui/app/commands.rs	1603	/transcript 	if trimmed.starts_with("/transcript ") {
+118	crates/jcode-tui/src/tui/app/commands.rs	1605	Usage: /transcript or /transcript path	"Usage: /transcript or /transcript path".to_string(),
+119	crates/jcode-tui/src/tui/app/commands.rs	1617	Failed to resolve transcript path: {}	"Failed to resolve transcript path: {}",
+120	crates/jcode-tui/src/tui/app/commands.rs	1628	/transcript path	if trimmed == "/transcript path" {

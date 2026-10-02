@@ -1,0 +1,120 @@
+1	crates/jcode-tui/src/tui/ui_input.rs	635	websocket/persistent-fresh	"websocket/persistent-fresh" => "websocket".to_string(),
+2	crates/jcode-tui/src/tui/ui_input.rs	636	existing websocket	"websocket/persistent-reuse" => "existing websocket".to_string(),
+3	crates/jcode-tui/src/tui/ui_input.rs	636	websocket/persistent-reuse	"websocket/persistent-reuse" => "existing websocket".to_string(),
+4	crates/jcode-tui/src/tui/ui_input.rs	649	fresh websocket	"fresh websocket" => "opening websocket",
+5	crates/jcode-tui/src/tui/ui_input.rs	649	opening websocket	"fresh websocket" => "opening websocket",
+6	crates/jcode-tui/src/tui/ui_input.rs	650	reusing websocket	"reusing websocket" => "using existing websocket",
+7	crates/jcode-tui/src/tui/ui_input.rs	650	using existing websocket	"reusing websocket" => "using existing websocket",
+8	crates/jcode-tui/src/tui/ui_input.rs	651	verifying websocket	"websocket healthcheck" => "verifying websocket",
+9	crates/jcode-tui/src/tui/ui_input.rs	651	websocket healthcheck	"websocket healthcheck" => "verifying websocket",
+10	crates/jcode-tui/src/tui/ui_input.rs	652	https fallback	"https fallback" => "using https fallback",
+11	crates/jcode-tui/src/tui/ui_input.rs	652	using https fallback	"https fallback" => "using https fallback",
+12	crates/jcode-tui/src/tui/ui_input.rs	691	via {}	labels.push(format!("via {}", upstream));
+13	crates/jcode-tui/src/tui/ui_input.rs	723	(stalled {:.0}s) · {}	Some(s) if s > 10.0 => format!("(stalled {:.0}s) · {}", s, time_str),
+14	crates/jcode-tui/src/tui/ui_input.rs	724	(no tokens {:.0}s) · {}	Some(s) if s > 2.0 => format!("(no tokens {:.0}s) · {}", s, time_str),
+15	crates/jcode-tui/src/tui/ui_input.rs	754	 · {}/{} done	format!(" · {}/{} done", completed, total),
+16	crates/jcode-tui/src/tui/ui_input.rs	761	 · running: {}	format!(" · running: {}", running),
+17	crates/jcode-tui/src/tui/ui_input.rs	768	 · last done: {}	format!(" · last done: {}", tool_name),
+18	crates/jcode-tui/src/tui/ui_input.rs	794	 · +{} queued	format!(" · +{} queued", pending_count)
+19	crates/jcode-tui/src/tui/ui_input.rs	814	{}h {}m	format!("{}h {}m", hours, mins)
+20	crates/jcode-tui/src/tui/ui_input.rs	818	{}m {}s	format!("{}m {}s", mins, s)
+21	crates/jcode-tui/src/tui/ui_input.rs	820	{}s	format!("{}s", secs)
+22	crates/jcode-tui/src/tui/ui_input.rs	826	 Rate limited. Auto-retry in {}...{}	" Rate limited. Auto-retry in {}...{}",
+23	crates/jcode-tui/src/tui/ui_input.rs	841	 sending… {}	format!(" sending… {}", format_elapsed(elapsed)),
+24	crates/jcode-tui/src/tui/ui_input.rs	855	Suspiciously long	// "Suspiciously long" is measured per connection attempt, not
+25	crates/jcode-tui/src/tui/ui_input.rs	882	 thinking… {}	let mut label = format!(" thinking… {}", format_elapsed(elapsed));
+26	crates/jcode-tui/src/tui/ui_input.rs	898	{} · {:.1} tps	status_text = format!("{} · {:.1} tps", status_text, tps);
+27	crates/jcode-tui/src/tui/ui_input.rs	912	{}k	format!("{}k", miss_tokens / 1000)
+28	crates/jcode-tui/src/tui/ui_input.rs	918	⚠ {} cache miss · {}	status_text = format!("⚠ {} cache miss · {}", miss_str, status_text);
+29	crates/jcode-tui/src/tui/ui_input.rs	934	network disconnected, waiting to retry · {} · {}	"network disconnected, waiting to retry · {} · {}",
+30	crates/jcode-tui/src/tui/ui_input.rs	972	completed/total · last_tool	// For batch tool: show "completed/total · last_tool" progress
+31	crates/jcode-tui/src/tui/ui_input.rs	1009	{}k	format!("{}k", miss_tokens / 1000)
+32	crates/jcode-tui/src/tui/ui_input.rs	1016	 · ⚠ {} cache miss	format!(" · ⚠ {} cache miss", miss_str),
+33	crates/jcode-tui/src/tui/ui_input.rs	1022	 · {} bg	format!(" · {} bg", jcode_tui_core::keybind::alt_chord("B")),
+34	crates/jcode-tui/src/tui/ui_input.rs	1089	 running {}	format!(" running {}", name),
+35	crates/jcode-tui/src/tui/ui_input.rs	1102	+N queued	/// Append the "+N queued" suffix span (in the queued accent color) when there
+36	crates/jcode-tui/src/tui/ui_input.rs	1353	Claude OAuth · API key	// credential or the two can contradict (e.g. "Claude OAuth · API key").
+37	crates/jcode-tui/src/tui/ui_input.rs	1354	Claude	assert_eq!(overscroll_provider_display("claude"), "Claude");
+38	crates/jcode-tui/src/tui/ui_input.rs	1355	Anthropic	assert_eq!(overscroll_provider_display("anthropic"), "Anthropic");
+39	crates/jcode-tui/src/tui/ui_input.rs	1356	OAuth	assert!(!overscroll_provider_display("claude").contains("OAuth"));
+40	crates/jcode-tui/src/tui/ui_input.rs	1371	Session history: 2.5M tokens processed and 4 compacts	assert!(warning.contains("Session history: 2.5M tokens processed and 4 compacts"));
+41	crates/jcode-tui/src/tui/ui_input.rs	1494	cargo test -p jcode	input: serde_json::json!({"command": "cargo test -p jcode"}),
+42	crates/jcode-tui/src/tui/ui_input.rs	1566	(no tokens 3s) · 4.2s	"(no tokens 3s) · 4.2s"
+43	crates/jcode-tui/src/tui/ui_input.rs	1609	empty suffix should add no span	assert!(spans.is_empty(), "empty suffix should add no span");
+44	crates/jcode-tui/src/tui/ui_input.rs	1641	websocket healthcheck	normalize_status_detail("websocket healthcheck").as_deref(),
+45	crates/jcode-tui/src/tui/ui_input.rs	1656	OpenRouter	Some("OpenRouter".to_string())
+46	crates/jcode-tui/src/tui/ui_input.rs	1660	via OpenRouter	"via OpenRouter".to_string()
+47	crates/jcode-tui/src/tui/ui_input.rs	1692	  shell mode · Enter runs locally	Some("  shell mode · Enter runs locally")
+48	crates/jcode-tui/src/tui/ui_input.rs	1696	  shell mode · Enter runs on server	Some("  shell mode · Enter runs on server")
+49	crates/jcode-tui/src/tui/ui_input.rs	1736	{} selection · {} chars · {} lines · Enter/Y copy · Esc exit	"{} selection · {} chars · {} lines · Enter/Y copy · Esc exit",
+50	crates/jcode-tui/src/tui/ui_input.rs	1741	{} selection · {} chars · Enter/Y copy · Esc exit	"{} selection · {} chars · Enter/Y copy · Esc exit",
+51	crates/jcode-tui/src/tui/ui_input.rs	1747	{} selection · dragging… · Enter/Y copy · Esc exit	"{} selection · dragging… · Enter/Y copy · Esc exit",
+52	crates/jcode-tui/src/tui/ui_input.rs	1751	{} selection · drag to copy	format!("{} selection · drag to copy", pane_label)
+53	crates/jcode-tui/src/tui/ui_input.rs	1794	✓ Copied! 	"✓ Copied! "
+54	crates/jcode-tui/src/tui/ui_input.rs	1796	✗ Copy failed 	"✗ Copy failed "
+55	crates/jcode-tui/src/tui/ui_input.rs	1822	the system noticed I'm not using a shortcut	// it as "the system noticed I'm not using a shortcut", not a normal status.
+56	crates/jcode-tui/src/tui/ui_input.rs	1859	 ({:.1}M tok)	format!(" ({:.1}M tok)", t as f64 / 1_000_000.0)
+57	crates/jcode-tui/src/tui/ui_input.rs	1861	 ({}K tok)	format!(" ({}K tok)", t / 1000)
+58	crates/jcode-tui/src/tui/ui_input.rs	1863	 ({} tok)	format!(" ({} tok)", t)
+59	crates/jcode-tui/src/tui/ui_input.rs	1869	🧊 cache cold{}	format!("🧊 cache cold{}", tokens_str),
+60	crates/jcode-tui/src/tui/ui_input.rs	1872	how long ago it went cold	// Small gray "how long ago it went cold" hint, e.g. `1h 1m`.
+61	crates/jcode-tui/src/tui/ui_input.rs	1885	 {}K	format!(" {}K", t / 1000)
+62	crates/jcode-tui/src/tui/ui_input.rs	1895	{}m	format!("{}m", remaining.div_ceil(60))
+63	crates/jcode-tui/src/tui/ui_input.rs	1897	{}s	format!("{}s", remaining)
+64	crates/jcode-tui/src/tui/ui_input.rs	1901	⏳ cache {}{}	format!("⏳ cache {}{}", time_str, tokens_str),
+65	crates/jcode-tui/src/tui/ui_input.rs	1911	📋 stash	"📋 stash",
+66	crates/jcode-tui/src/tui/ui_input.rs	1950	(overscroll {:.1})	format!("(overscroll {:.1})", secs.max(0.0)),
+67	crates/jcode-tui/src/tui/ui_input.rs	1968	 high	// Reasoning level shown inline next to the model, e.g. " high".
+68	crates/jcode-tui/src/tui/ui_input.rs	2183	Claude OAuth · API key	// used to produce contradictions like "Claude OAuth · API key" when
+69	crates/jcode-tui/src/tui/ui_input.rs	2185	Claude	"claude" => "Claude".to_string(),
+70	crates/jcode-tui/src/tui/ui_input.rs	2186	Anthropic	"anthropic" => "Anthropic".to_string(),
+71	crates/jcode-tui/src/tui/ui_input.rs	2187	OpenAI	"openai" => "OpenAI".to_string(),
+72	crates/jcode-tui/src/tui/ui_input.rs	2188	OpenRouter	"openrouter" => "OpenRouter".to_string(),
+73	crates/jcode-tui/src/tui/ui_input.rs	2189	OpenCode	"opencode" => "OpenCode".to_string(),
+74	crates/jcode-tui/src/tui/ui_input.rs	2190	Gemini	"gemini" => "Gemini".to_string(),
+75	crates/jcode-tui/src/tui/ui_input.rs	2191	GitHub Copilot	"copilot" => "GitHub Copilot".to_string(),
+76	crates/jcode-tui/src/tui/ui_input.rs	2192	Cursor	"cursor" => "Cursor".to_string(),
+77	crates/jcode-tui/src/tui/ui_input.rs	2193	AWS Bedrock	"bedrock" => "AWS Bedrock".to_string(),
+78	crates/jcode-tui/src/tui/ui_input.rs	2194	Antigravity	"antigravity" => "Antigravity".to_string(),
+79	crates/jcode-tui/src/tui/ui_input.rs	2206	API key	Some(("API key", rgb(180, 180, 190)))
+80	crates/jcode-tui/src/tui/ui_input.rs	2209	API key	Some(("API key", rgb(140, 180, 255)))
+81	crates/jcode-tui/src/tui/ui_input.rs	2211	OAuth	AuthMethod::AnthropicOAuth => Some(("OAuth", rgb(255, 160, 100))),
+82	crates/jcode-tui/src/tui/ui_input.rs	2212	OAuth	AuthMethod::OpenAIOAuth => Some(("OAuth", rgb(100, 200, 180))),
+83	crates/jcode-tui/src/tui/ui_input.rs	2213	OAuth	AuthMethod::CopilotOAuth => Some(("OAuth", rgb(110, 200, 140))),
+84	crates/jcode-tui/src/tui/ui_input.rs	2214	OAuth	AuthMethod::GeminiOAuth => Some(("OAuth", rgb(120, 190, 255))),
+85	crates/jcode-tui/src/tui/ui_input.rs	2253	1.2k	/// Format a token count compactly: 1234 -> "1.2k", 200000 -> "200k", 1_500_000 -> "1.5M".
+86	crates/jcode-tui/src/tui/ui_input.rs	2253	1.5M	/// Format a token count compactly: 1234 -> "1.2k", 200000 -> "200k", 1_500_000 -> "1.5M".
+87	crates/jcode-tui/src/tui/ui_input.rs	2253	200k	/// Format a token count compactly: 1234 -> "1.2k", 200000 -> "200k", 1_500_000 -> "1.5M".
+88	crates/jcode-tui/src/tui/ui_input.rs	2256	{:.1}M	format!("{:.1}M", tokens as f64 / 1_000_000.0)
+89	crates/jcode-tui/src/tui/ui_input.rs	2258	{}k	format!("{}k", tokens / 1000)
+90	crates/jcode-tui/src/tui/ui_input.rs	2260	{:.1}k	format!("{:.1}k", tokens as f64 / 1000.0)
+91	crates/jcode-tui/src/tui/ui_input.rs	2654	  ↗ Next prompt opens a new session	let hint = "  ↗ Next prompt opens a new session";
+92	crates/jcode-tui/src/tui/ui_input.rs	2663	  Ctrl/Cmd+Enter to send now	"  Ctrl/Cmd+Enter to send now"
+93	crates/jcode-tui/src/tui/ui_input.rs	2665	  Ctrl/Cmd+Enter to queue	"  Ctrl/Cmd+Enter to queue"
+94	crates/jcode-tui/src/tui/ui_onboarding.rs	9	Welcome to jcode onboarding	//!   2. "Welcome to jcode onboarding" title.
+95	crates/jcode-tui/src/tui/ui_onboarding.rs	25	Esc to skip	/// Append the universal "Esc to skip" hint shown on every guided onboarding
+96	crates/jcode-tui/src/tui/ui_onboarding.rs	34	Esc to skip onboarding (log in later with /login).	"Esc to skip onboarding (log in later with /login).",
+97	crates/jcode-tui/src/tui/ui_onboarding.rs	124	Yes	spans.extend(lozenge_pill_spans("Yes", yes_highlighted));
+98	crates/jcode-tui/src/tui/ui_onboarding.rs	126	No	spans.extend(lozenge_pill_spans("No", !yes_highlighted));
+99	crates/jcode-tui/src/tui/ui_onboarding.rs	130	Continue	/// A rounded "Continue" pill button. Rendered above the import list so the user
+100	crates/jcode-tui/src/tui/ui_onboarding.rs	132	Press Enter	/// read a "Press Enter" instruction). Uses the same lozenge style as the Yes/No
+101	crates/jcode-tui/src/tui/ui_onboarding.rs	135	Continue	Line::from(lozenge_pill_spans("Continue", focused)).alignment(align)
+102	crates/jcode-tui/src/tui/ui_onboarding.rs	147	Import	spans.extend(lozenge_pill_spans("Import", focused == Pill::Continue));
+103	crates/jcode-tui/src/tui/ui_onboarding.rs	150	Jcode subscription	"Jcode subscription",
+104	crates/jcode-tui/src/tui/ui_onboarding.rs	155	Import less	"Import less",
+105	crates/jcode-tui/src/tui/ui_onboarding.rs	159	Telemetry	spans.extend(lozenge_pill_spans("Telemetry", focused == Pill::Telemetry));
+106	crates/jcode-tui/src/tui/ui_onboarding.rs	176	Telemetry settings	"Telemetry settings",
+107	crates/jcode-tui/src/tui/ui_onboarding.rs	188	Share full transcripts (30-day retention)	"Share full transcripts (30-day retention)",
+108	crates/jcode-tui/src/tui/ui_onboarding.rs	189	Includes prompts, model responses, reasoning, code, and tool input/output	"Includes prompts, model responses, reasoning, code, and tool input/output",
+109	crates/jcode-tui/src/tui/ui_onboarding.rs	193	No prompts or transcripts	"No prompts or transcripts",
+110	crates/jcode-tui/src/tui/ui_onboarding.rs	194	Usage stats and crash reports only	"Usage stats and crash reports only",
+111	crates/jcode-tui/src/tui/ui_onboarding.rs	198	Send nothing	"Send nothing",
+112	crates/jcode-tui/src/tui/ui_onboarding.rs	199	We stop seeing crashes and can't fix them	"We stop seeing crashes and can't fix them",
+113	crates/jcode-tui/src/tui/ui_onboarding.rs	211	Your environment already disables telemetry (JCODE_NO_TELEMETRY).	"Your environment already disables telemetry (JCODE_NO_TELEMETRY).",
+114	crates/jcode-tui/src/tui/ui_onboarding.rs	219	Esc goes back. Change this later with /telemetry.	"Esc goes back. Change this later with /telemetry.",
+115	crates/jcode-tui/src/tui/ui_onboarding.rs	254	Yes / No	/// Render the import screen body: a "Yes / No" header row, then one row per
+116	crates/jcode-tui/src/tui/ui_onboarding.rs	257	Yes	/// defaults to "Yes" (import), so the pre-selected state is obvious: the Yes
+117	crates/jcode-tui/src/tui/ui_onboarding.rs	267	<cursor>Provider (source)	// Left column width: the widest "<cursor>Provider (source)" entry, so the
+118	crates/jcode-tui/src/tui/ui_onboarding.rs	298	No	// Header row: blank under the provider column, then "Yes" and "No" labels
+119	crates/jcode-tui/src/tui/ui_onboarding.rs	298	Yes	// Header row: blank under the provider column, then "Yes" and "No" labels
+120	crates/jcode-tui/src/tui/ui_onboarding.rs	303	Yes	Span::styled(center_cell("Yes"), header_style),

@@ -1,0 +1,120 @@
+1	crates/jcode-tui/src/tui/app/remote.rs	1184	Server auto-reload paused (possible loop)	app.set_status_notice("Server auto-reload paused (possible loop)");
+2	crates/jcode-tui/src/tui/app/remote.rs	1190	Failed to auto-reload server: {}. Use `/reload` to retry.	"Failed to auto-reload server: {}. Use `/reload` to retry.",
+3	crates/jcode-tui/src/tui/app/remote.rs	1193	Server update available - auto reload failed	app.set_status_notice("Server update available - auto reload failed");
+4	crates/jcode-tui/src/tui/app/remote.rs	1198	ℹ Newer server binary detected. Auto-reload is disabled by `display.auto_server_reload = false`. Use `/reload` manually when you're ready.	"ℹ Newer server binary detected. Auto-reload is disabled by `display.auto_server_reload = false`. Use `/reload` manually when you're ready.".to_string(),
+5	crates/jcode-tui/src/tui/app/remote.rs	1200	Server update available - manual /reload recommended	app.set_status_notice("Server update available - manual /reload recommended");
+6	crates/jcode-tui/src/tui/app/remote.rs	1243	Startup auto-submit sent behind ordered Subscribe: input_chars={} pending_images={}	"Startup auto-submit sent behind ordered Subscribe: input_chars={} pending_images={}",
+7	crates/jcode-tui/src/tui/app/remote.rs	1259	Early startup auto-submit failed: {error}	crate::logging::warn(&format!("Early startup auto-submit failed: {error}"));
+8	crates/jcode-tui/src/tui/app/remote.rs	1261	Failed to submit startup prompt: {}	"Failed to submit startup prompt: {}",
+9	crates/jcode-tui/src/tui/app/remote.rs	1264	Startup prompt failed	app.set_status_notice("Startup prompt failed");
+10	crates/jcode-tui/src/tui/app/remote.rs	1270	remote history not loaded yet	note_startup_submit_deferred(app, "remote history not loaded yet");
+11	crates/jcode-tui/src/tui/app/remote.rs	1297	Resending failed turn after accepted fallback route switch	crate::logging::info("Resending failed turn after accepted fallback route switch");
+12	crates/jcode-tui/src/tui/app/remote.rs	1311	Failed to resend after fallback switch: {}	"Failed to resend after fallback switch: {}",
+13	crates/jcode-tui/src/tui/app/remote.rs	1314	Fallback resend failed	app.set_status_notice("Fallback resend failed");
+14	crates/jcode-tui/src/tui/app/remote.rs	1326	Failed to submit prompt after model switch: {}	"Failed to submit prompt after model switch: {}",
+15	crates/jcode-tui/src/tui/app/remote.rs	1329	Queued prompt failed	app.set_status_notice("Queued prompt failed");
+16	crates/jcode-tui/src/tui/app/remote.rs	1343	Dispatching prompt that was held until remote history finished loading	"Dispatching prompt that was held until remote history finished loading",
+17	crates/jcode-tui/src/tui/app/remote.rs	1347	Failed to submit prompt after session load: {}	"Failed to submit prompt after session load: {}",
+18	crates/jcode-tui/src/tui/app/remote.rs	1350	Prompt failed	app.set_status_notice("Prompt failed");
+19	crates/jcode-tui/src/tui/app/remote.rs	1369	Dispatching restored startup/queued followup without active remote message id	"Dispatching restored startup/queued followup without active remote message id",
+20	crates/jcode-tui/src/tui/app/remote.rs	1390	Startup auto-submit failed: {error}	crate::logging::warn(&format!("Startup auto-submit failed: {error}"));
+21	crates/jcode-tui/src/tui/app/remote.rs	1392	Failed to submit startup prompt: {}	"Failed to submit startup prompt: {}",
+22	crates/jcode-tui/src/tui/app/remote.rs	1395	Startup prompt failed	app.set_status_notice("Startup prompt failed");
+23	crates/jcode-tui/src/tui/app/remote.rs	1429	Failed to launch {} session: {}	"Failed to launch {} session: {}",
+24	crates/jcode-tui/src/tui/app/remote.rs	1434	{} launch failed	app.set_status_notice(format!("{} launch failed", flow_label));
+25	crates/jcode-tui/src/tui/app/remote.rs	1451	Failed to launch {} session: {}	"Failed to launch {} session: {}",
+26	crates/jcode-tui/src/tui/app/remote.rs	1455	{} launch failed	app.set_status_notice(format!("{} launch failed", label));
+27	crates/jcode-tui/src/tui/app/remote.rs	1472	Failed to queue soft interrupt: {}	"Failed to queue soft interrupt: {}",
+28	crates/jcode-tui/src/tui/app/remote.rs	1511	Failed to send message: {}	"Failed to send message: {}",
+29	crates/jcode-tui/src/tui/app/remote.rs	1683	Protocol stall guard: resumed session {} is still marked processing by history snapshot (tool={:?}, snapshot_age={:?}) but no corroborating live events arrived after {:?}; deferring client-side cancel	"Protocol stall guard: resumed session {} is still marked processing by history snapshot (tool={:?}, snapshot_age={:?}) but no corroborating live events arrived after {:?}; deferring client-side cancel",
+30	crates/jcode-tui/src/tui/app/remote.rs	1697	Stream stall detected: no server events for {:?}, cancelling	"Stream stall detected: no server events for {:?}, cancelling",
+31	crates/jcode-tui/src/tui/app/remote.rs	1725	⚠ Stream stalled (no response for {stall_desc}). Processing cancelled.	"⚠ Stream stalled (no response for {stall_desc}). Processing cancelled.",
+32	crates/jcode-tui/src/tui/app/remote.rs	1733	⚠ Stream stalled (no response for {stall_desc}). Processing cancelled. Your queued follow-up stays queued.	"⚠ Stream stalled (no response for {stall_desc}). Processing cancelled. Your queued follow-up stays queued.",
+33	crates/jcode-tui/src/tui/app/remote.rs	1737	⚠ Stream stalled (no response for {stall_desc}). Processing cancelled. You can resend your message. Raise `[provider] stream_idle_timeout_secs` in config.toml if your model thinks silently for longer.	"⚠ Stream stalled (no response for {stall_desc}). Processing cancelled. You can resend your message. Raise `[provider] stream_idle_timeout_secs` in config.toml if your model thinks silently for longer.",
+34	crates/jcode-tui/src/tui/app/remote.rs	1802	keys:	if cmd.starts_with("keys:") {
+35	crates/jcode-tui/src/tui/app/remote.rs	1803	keys:	let keys_str = cmd.strip_prefix("keys:").unwrap_or("");
+36	crates/jcode-tui/src/tui/app/remote.rs	1828	ERR: script/run not supported in remote debug mode	return "ERR: script/run not supported in remote debug mode".to_string();
+37	crates/jcode-tui/src/tui/app/remote.rs	1873	This command requires a live connection	app.set_status_notice("This command requires a live connection");
+38	crates/jcode-tui/src/tui/app/remote.rs	1882	Queued for send after reconnect ({} message{})	"Queued for send after reconnect ({} message{})",
+39	crates/jcode-tui/src/tui/app/remote.rs	2103	stall timeout {timeout:?} must exceed provider idle timeout {provider_idle:?}	"stall timeout {timeout:?} must exceed provider idle timeout {provider_idle:?}"
+40	crates/jcode-tui/src/tui/app/remote.rs	2149	watchdog must not drop the queued continuation	"watchdog must not drop the queued continuation"
+41	crates/jcode-tui/src/tui/app/remote.rs	2170	timer must reset once the state is healthy again	"timer must reset once the state is healthy again"
+42	crates/jcode-tui/src/tui/app/remote/input_dispatch.rs	132	Loading session...	app.set_status_notice("Loading session...");
+43	crates/jcode-tui/src/tui/app/remote/input_dispatch.rs	284	Prompt launching in new session	app.set_status_notice("Prompt launching in new session");
+44	crates/jcode-tui/src/tui/app/remote/input_dispatch.rs	341	{} launching	app.set_status_notice(format!("{} launching", label));
+45	crates/jcode-tui/src/tui/app/remote/input_dispatch.rs	411	Transcript was empty	app.set_status_notice("Transcript was empty");
+46	crates/jcode-tui/src/tui/app/remote/input_dispatch.rs	467	Shell command is empty	app.set_status_notice("Shell command is empty");
+47	crates/jcode-tui/src/tui/app/remote/input_dispatch.rs	499	Transcript was empty	app.set_status_notice("Transcript was empty");
+48	crates/jcode-tui/src/tui/app/remote/input_dispatch.rs	506	Transcript inserted	app.set_status_notice("Transcript inserted");
+49	crates/jcode-tui/src/tui/app/remote/input_dispatch.rs	512	Transcript appended	app.set_status_notice("Transcript appended");
+50	crates/jcode-tui/src/tui/app/remote/input_dispatch.rs	516	Transcript replaced input	app.set_status_notice("Transcript replaced input");
+51	crates/jcode-tui/src/tui/app/remote/input_dispatch.rs	535	Transcript was empty	app.set_status_notice("Transcript was empty");
+52	crates/jcode-tui/src/tui/app/remote/key_handling.rs	29	⏭ Interleave sent	app.set_status_notice("⏭ Interleave sent");
+53	crates/jcode-tui/src/tui/app/remote/key_handling.rs	39	Update the client and SSH server separately, then reconnect	app.set_status_notice("Update the client and SSH server separately, then reconnect");
+54	crates/jcode-tui/src/tui/app/remote/key_handling.rs	78	Reasoning effort not available for this provider	app.set_status_notice("Reasoning effort not available for this provider");
+55	crates/jcode-tui/src/tui/app/remote/key_handling.rs	166	Undoing rewind...	app.set_status_notice("Undoing rewind...");
+56	crates/jcode-tui/src/tui/app/remote/key_handling.rs	190	Rewinding to message {}...	app.set_status_notice(format!("Rewinding to message {}...", n));
+57	crates/jcode-tui/src/tui/app/remote/key_handling.rs	425	Update the SSH server on its host	app.set_status_notice("Update the SSH server on its host");
+58	crates/jcode-tui/src/tui/app/remote/key_handling.rs	450	Poke: OFF	app.set_status_notice("Poke: OFF");
+59	crates/jcode-tui/src/tui/app/remote/key_handling.rs	510	Swarm view closed	app.set_status_notice("Swarm view closed");
+60	crates/jcode-tui/src/tui/app/remote/key_handling.rs	583	Moving tool to background...	app.set_status_notice("Moving tool to background...");
+61	crates/jcode-tui/src/tui/app/remote/key_handling.rs	729	Moving tool to background...	app.set_status_notice("Moving tool to background...");
+62	crates/jcode-tui/src/tui/app/remote/key_handling.rs	743	Interrupting...	app.set_status_notice("Interrupting...");
+63	crates/jcode-tui/src/tui/app/remote/key_handling.rs	1047	Continuing interrupted sessions...	Ok(_) => app.set_status_notice("Continuing interrupted sessions..."),
+64	crates/jcode-tui/src/tui/app/remote/key_handling.rs	1053	Continue all failed	app.set_status_notice("Continue all failed");
+65	crates/jcode-tui/src/tui/app/remote/key_handling.rs	1101	Refreshing model list...	Ok(()) => app.set_status_notice("Refreshing model list..."),
+66	crates/jcode-tui/src/tui/app/remote/key_handling.rs	1108	Model list refresh failed	app.set_status_notice("Model list refresh failed");
+67	crates/jcode-tui/src/tui/app/remote/key_handling.rs	1162	Subagent model: inherit	app.set_status_notice("Subagent model: inherit");
+68	crates/jcode-tui/src/tui/app/remote/key_handling.rs	1171	Subagent model → {}	app.set_status_notice(format!("Subagent model → {}", rest));
+69	crates/jcode-tui/src/tui/app/remote/key_handling.rs	1194	Running subagent	app.set_status_notice("Running subagent");
+70	crates/jcode-tui/src/tui/app/remote/key_handling.rs	1440	Autoreview: ON	app.set_status_notice("Autoreview: ON");
+71	crates/jcode-tui/src/tui/app/remote/key_handling.rs	1452	Autoreview: OFF	app.set_status_notice("Autoreview: OFF");
+72	crates/jcode-tui/src/tui/app/remote/key_handling.rs	1471	Autoreview queued	app.set_status_notice("Autoreview queued");
+73	crates/jcode-tui/src/tui/app/remote/key_handling.rs	1487	Autoreview launch failed	app.set_status_notice("Autoreview launch failed");
+74	crates/jcode-tui/src/tui/app/remote/key_handling.rs	1498	Autojudge: ON	app.set_status_notice("Autojudge: ON");
+75	crates/jcode-tui/src/tui/app/remote/key_handling.rs	1510	Autojudge: OFF	app.set_status_notice("Autojudge: OFF");
+76	crates/jcode-tui/src/tui/app/remote/key_handling.rs	1529	Autojudge queued	app.set_status_notice("Autojudge queued");
+77	crates/jcode-tui/src/tui/app/remote/key_handling.rs	1545	Autojudge launch failed	app.set_status_notice("Autojudge launch failed");
+78	crates/jcode-tui/src/tui/app/remote/key_handling.rs	1569	Review queued	app.set_status_notice("Review queued");
+79	crates/jcode-tui/src/tui/app/remote/key_handling.rs	1585	Review launch failed	app.set_status_notice("Review launch failed");
+80	crates/jcode-tui/src/tui/app/remote/key_handling.rs	1609	Judge queued	app.set_status_notice("Judge queued");
+81	crates/jcode-tui/src/tui/app/remote/key_handling.rs	1625	Judge launch failed	app.set_status_notice("Judge launch failed");
+82	crates/jcode-tui/src/tui/app/remote/key_handling.rs	1680	Memory: {}	app.set_status_notice(format!("Memory: {}", label));
+83	crates/jcode-tui/src/tui/app/remote/key_handling.rs	1693	Memory: ON	app.set_status_notice("Memory: ON");
+84	crates/jcode-tui/src/tui/app/remote/key_handling.rs	1705	Memory: OFF	app.set_status_notice("Memory: OFF");
+85	crates/jcode-tui/src/tui/app/remote/key_handling.rs	1739	Session cleared	app.set_status_notice("Session cleared");
+86	crates/jcode-tui/src/tui/app/remote/key_handling.rs	1837	Swarm: ON	app.set_status_notice("Swarm: ON");
+87	crates/jcode-tui/src/tui/app/remote/key_handling.rs	1849	Swarm: OFF	app.set_status_notice("Swarm: OFF");
+88	crates/jcode-tui/src/tui/app/remote/key_handling.rs	1914	Session saved	app.set_status_notice("Session saved");
+89	crates/jcode-tui/src/tui/app/remote/key_handling.rs	1934	Bookmark removed	app.set_status_notice("Bookmark removed");
+90	crates/jcode-tui/src/tui/app/remote/key_handling.rs	1949	Clearing session name...	app.set_status_notice("Clearing session name...");
+91	crates/jcode-tui/src/tui/app/remote/key_handling.rs	1954	Renaming session...	app.set_status_notice("Renaming session...");
+92	crates/jcode-tui/src/tui/app/remote/key_handling.rs	1963	Transfer already pending	app.set_status_notice("Transfer already pending");
+93	crates/jcode-tui/src/tui/app/remote/key_handling.rs	1982	Transfer queued after current turn	app.set_status_notice("Transfer queued after current turn");
+94	crates/jcode-tui/src/tui/app/remote/key_handling.rs	1990	Transfer queue failed	app.set_status_notice("Transfer queue failed");
+95	crates/jcode-tui/src/tui/app/remote/key_handling.rs	2005	Transfer launch failed	app.set_status_notice("Transfer launch failed");
+96	crates/jcode-tui/src/tui/app/remote/key_handling.rs	2085	Interrupting for {}...	app.set_status_notice(format!("Interrupting for {}...", cmd_label));
+97	crates/jcode-tui/src/tui/app/remote/key_handling.rs	2092	{} failed	app.set_status_notice(format!("{} failed", cmd_label));
+98	crates/jcode-tui/src/tui/app/remote/key_handling.rs	2159	Premium: normal	app.set_status_notice("Premium: normal");
+99	crates/jcode-tui/src/tui/app/remote/key_handling.rs	2175	Premium: normal	app.set_status_notice("Premium: normal");
+100	crates/jcode-tui/src/tui/app/remote/key_handling.rs	2193	Premium: {}	app.set_status_notice(format!("Premium: {}", label));
+101	crates/jcode-tui/src/tui/app/remote/key_handling.rs	2212	Poke: OFF	app.set_status_notice("Poke: OFF");
+102	crates/jcode-tui/src/tui/app/remote/key_handling.rs	2264	Interrupting for /plan...	app.set_status_notice("Interrupting for /plan...");
+103	crates/jcode-tui/src/tui/app/remote/key_handling.rs	2321	Interrupting for /improve resume...	app.set_status_notice("Interrupting for /improve resume...");
+104	crates/jcode-tui/src/tui/app/remote/key_handling.rs	2387	Interrupting for /improve stop...	app.set_status_notice("Interrupting for /improve stop...");
+105	crates/jcode-tui/src/tui/app/remote/key_handling.rs	2503	Interrupting for /refactor resume...	app.set_status_notice("Interrupting for /refactor resume...");
+106	crates/jcode-tui/src/tui/app/remote/key_handling.rs	2569	Interrupting for /refactor stop...	app.set_status_notice("Interrupting for /refactor stop...");
+107	crates/jcode-tui/src/tui/app/remote/key_handling.rs	2693	Interrupting... Auto-poke OFF	app.set_status_notice("Interrupting... Auto-poke OFF");
+108	crates/jcode-tui/src/tui/app/remote/key_handling.rs	2695	Interrupting...	app.set_status_notice("Interrupting...");
+109	crates/jcode-tui/src/tui/app/remote/queue_recovery.rs	207	Queued interleave recovery failed	app.set_status_notice("Queued interleave recovery failed");
+110	crates/jcode-tui/src/tui/app/remote/queue_recovery.rs	220	Recovered queued interleave after turn finished	app.set_status_notice("Recovered queued interleave after turn finished");
+111	crates/jcode-tui/src/tui/app/remote/reconnect.rs	235	Waiting for reload handoff...	app.set_status_notice("Waiting for reload handoff...");
+112	crates/jcode-tui/src/tui/app/remote/server_events.rs	1089	Provider guardrail: {}	app.set_status_notice(format!("Provider guardrail: {}", label));
+113	crates/jcode-tui/src/tui/app/remote/server_events.rs	1241	Server still busy; follow-up stays queued	app.set_status_notice("Server still busy; follow-up stays queued");
+114	crates/jcode-tui/src/tui/app/remote/server_events.rs	1261	Rate limited; queued system retry	app.set_status_notice("Rate limited; queued system retry");
+115	crates/jcode-tui/src/tui/app/remote/server_events.rs	1263	Rate limited; queued retry	app.set_status_notice("Rate limited; queued retry");
+116	crates/jcode-tui/src/tui/app/remote/server_events.rs	1358	Stopped: model/endpoint mismatch	app.set_status_notice("Stopped: model/endpoint mismatch");
+117	crates/jcode-tui/src/tui/app/remote/server_events.rs	1421	Session close requested by coordinator	app.set_status_notice("Session close requested by coordinator".to_string());
+118	crates/jcode-tui/src/tui/app/remote/server_events.rs	1450	Session renamed	app.set_status_notice("Session renamed");
+119	crates/jcode-tui/src/tui/app/remote/server_events.rs	1456	Session name cleared	app.set_status_notice("Session name cleared");
+120	crates/jcode-tui/src/tui/app/remote/server_events.rs	1798	Server update available	app.set_status_notice("Server update available");

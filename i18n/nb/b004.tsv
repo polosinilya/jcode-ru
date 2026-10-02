@@ -1,0 +1,120 @@
+1	crates/jcode-tui/src/tui/app/auth.rs	3449	Using the saved Azure OpenAI API key.	"Using the saved Azure OpenAI API key."
+2	crates/jcode-tui/src/tui/app/auth.rs	3452	Azure OpenAI	provider: "Azure OpenAI".to_string(),
+3	crates/jcode-tui/src/tui/app/auth.rs	3476	OpenAI-compatible API base must be https://... or http://localhost.	anyhow::anyhow!("OpenAI-compatible API base must be https://... or http://localhost.")
+4	crates/jcode-tui/src/tui/app/auth_account_commands.rs	43	Unknown provider '{}'. Use: {}	"Unknown provider '{}'. Use: {}",
+5	crates/jcode-tui/src/tui/app/auth_account_commands.rs	68	Unknown provider '{}'. Use: {}	"Unknown provider '{}'. Use: {}",
+6	crates/jcode-tui/src/tui/app/auth_account_commands.rs	142	Usage: /account switch <label>	return Some(Err("Usage: /account switch <label>".to_string()));
+7	crates/jcode-tui/src/tui/app/auth_account_commands.rs	156	Usage: /account remove <label>	return Some(Err("Usage: /account remove <label>".to_string()));
+8	crates/jcode-tui/src/tui/app/auth_account_commands.rs	163	default-provider	"default-provider" => {
+9	crates/jcode-tui/src/tui/app/auth_account_commands.rs	166	Usage: /account default-provider <claude|openai|copilot|gemini|openrouter|auto>	"Usage: /account default-provider <claude|openai|copilot|gemini|openrouter|auto>"
+10	crates/jcode-tui/src/tui/app/auth_account_commands.rs	177	Usage: /account default-model <model|clear>	"Usage: /account default-model <model|clear>".to_string()
+11	crates/jcode-tui/src/tui/app/auth_account_commands.rs	223	Usage: /account {} switch <label>	"Usage: /account {} switch <label>",
+12	crates/jcode-tui/src/tui/app/auth_account_commands.rs	235	Usage: /account {} remove <label>	"Usage: /account {} remove <label>",
+13	crates/jcode-tui/src/tui/app/auth_account_commands.rs	247	Usage: /account openai transport <auto|https|websocket>	"Usage: /account openai transport <auto|https|websocket>".to_string(),
+14	crates/jcode-tui/src/tui/app/auth_account_commands.rs	255	Usage: /account openai effort <none|minimal|low|medium|high|xhigh|max|clear>	"Usage: /account openai effort <none|minimal|low|medium|high|xhigh|max|clear>"
+15	crates/jcode-tui/src/tui/app/auth_account_commands.rs	265	Usage: /account openai fast <on|off>	return Some(Err("Usage: /account openai fast <on|off>".to_string()));
+16	crates/jcode-tui/src/tui/app/auth_account_commands.rs	271	Usage: /account copilot premium <normal|one|zero>	"Usage: /account copilot premium <normal|one|zero>".to_string()
+17	crates/jcode-tui/src/tui/app/auth_account_commands.rs	276	openai-compatible	"api-base" if provider.id == "openai-compatible" => {
+18	crates/jcode-tui/src/tui/app/auth_account_commands.rs	279	Usage: /account openai-compatible api-base <url|clear>	"Usage: /account openai-compatible api-base <url|clear>".to_string(),
+19	crates/jcode-tui/src/tui/app/auth_account_commands.rs	284	api-key-name	"api-key-name" if provider.id == "openai-compatible" => {
+20	crates/jcode-tui/src/tui/app/auth_account_commands.rs	284	openai-compatible	"api-key-name" if provider.id == "openai-compatible" => {
+21	crates/jcode-tui/src/tui/app/auth_account_commands.rs	287	Usage: /account openai-compatible api-key-name <ENV_VAR|clear>	"Usage: /account openai-compatible api-key-name <ENV_VAR|clear>"
+22	crates/jcode-tui/src/tui/app/auth_account_commands.rs	293	openai-compatible	"env-file" if provider.id == "openai-compatible" => {
+23	crates/jcode-tui/src/tui/app/auth_account_commands.rs	296	Usage: /account openai-compatible env-file <file.env|clear>	"Usage: /account openai-compatible env-file <file.env|clear>".to_string(),
+24	crates/jcode-tui/src/tui/app/auth_account_commands.rs	301	openai-compatible	"default-model" if provider.id == "openai-compatible" => {
+25	crates/jcode-tui/src/tui/app/auth_account_commands.rs	304	Usage: /account openai-compatible default-model <model|clear>	"Usage: /account openai-compatible default-model <model|clear>".to_string(),
+26	crates/jcode-tui/src/tui/app/auth_account_commands.rs	317	Unknown /account {} subcommand '{}'. Try /account {} settings or /account {} login.	"Unknown /account {} subcommand '{}'. Try /account {} settings or /account {} login.",
+27	crates/jcode-tui/src/tui/app/auth_account_commands.rs	390	Unknown provider {}.	"Unknown provider {}.",
+28	crates/jcode-tui/src/tui/app/auth_account_commands.rs	405	Provider {} does not support account switching.	"Provider {} does not support account switching.",
+29	crates/jcode-tui/src/tui/app/auth_account_commands.rs	414	Provider {} does not support account removal.	"Provider {} does not support account removal.",
+30	crates/jcode-tui/src/tui/app/auth_account_commands.rs	467	Failed to switch account: {}	"Failed to switch account: {}",
+31	crates/jcode-tui/src/tui/app/auth_account_commands.rs	477	Switched to Anthropic account {}.	"Switched to Anthropic account {}.",
+32	crates/jcode-tui/src/tui/app/auth_account_commands.rs	480	Account: switched to {}	app.set_status_notice(format!("Account: switched to {}", label));
+33	crates/jcode-tui/src/tui/app/auth_account_commands.rs	485	Failed to switch OpenAI account: {}	"Failed to switch OpenAI account: {}",
+34	crates/jcode-tui/src/tui/app/auth_account_commands.rs	495	Switched to OpenAI account {}.	"Switched to OpenAI account {}.",
+35	crates/jcode-tui/src/tui/app/auth_account_commands.rs	498	OpenAI account: switched to {}	app.set_status_notice(format!("OpenAI account: switched to {}", label));
+36	crates/jcode-tui/src/tui/app/auth_account_commands.rs	515	Failed to switch account: {}	"Failed to switch account: {}",
+37	crates/jcode-tui/src/tui/app/auth_account_commands.rs	525	Switched to Anthropic account {}.	"Switched to Anthropic account {}.",
+38	crates/jcode-tui/src/tui/app/auth_account_commands.rs	528	Account: switched to {}	app.set_status_notice(format!("Account: switched to {}", label));
+39	crates/jcode-tui/src/tui/app/auth_account_commands.rs	533	Failed to switch OpenAI account: {}	"Failed to switch OpenAI account: {}",
+40	crates/jcode-tui/src/tui/app/auth_account_commands.rs	543	Switched to OpenAI account {}.	"Switched to OpenAI account {}.",
+41	crates/jcode-tui/src/tui/app/auth_account_commands.rs	546	OpenAI account: switched to {}	app.set_status_notice(format!("OpenAI account: switched to {}", label));
+42	crates/jcode-tui/src/tui/app/auth_account_commands.rs	583	Failed to prepare Claude account: {}	"Failed to prepare Claude account: {}",
+43	crates/jcode-tui/src/tui/app/auth_account_commands.rs	599	Failed to prepare OpenAI account: {}	"Failed to prepare OpenAI account: {}",
+44	crates/jcode-tui/src/tui/app/auth_account_commands.rs	611	Unknown provider {}.	"Unknown provider {}.",
+45	crates/jcode-tui/src/tui/app/auth_account_commands.rs	657	Unsupported default provider {}. Use claude, openai, anthropic-api, openai-api, copilot, gemini, openrouter, or auto.	"Unsupported default provider {}. Use claude, openai, anthropic-api, openai-api, copilot, gemini, openrouter, or auto.",
+46	crates/jcode-tui/src/tui/app/auth_account_commands.rs	666	Default provider: {}	app.set_status_notice(format!("Default provider: {}", label));
+47	crates/jcode-tui/src/tui/app/auth_account_commands.rs	668	Saved default provider: {}. This affects future sessions.	"Saved default provider: {}. This affects future sessions.",
+48	crates/jcode-tui/src/tui/app/auth_account_commands.rs	673	Failed to save default provider: {}	"Failed to save default provider: {}",
+49	crates/jcode-tui/src/tui/app/auth_account_commands.rs	682	(provider default)	let label = model.unwrap_or("(provider default)");
+50	crates/jcode-tui/src/tui/app/auth_account_commands.rs	683	Default model: {}	app.set_status_notice(format!("Default model: {}", label));
+51	crates/jcode-tui/src/tui/app/auth_account_commands.rs	685	Saved default model: {}. This affects future sessions.	"Saved default model: {}. This affects future sessions.",
+52	crates/jcode-tui/src/tui/app/auth_account_commands.rs	690	Failed to save default model: {}	"Failed to save default model: {}",
+53	crates/jcode-tui/src/tui/app/auth_account_commands.rs	700	OpenAI transport must be auto, https, or websocket.	"OpenAI transport must be auto, https, or websocket.".to_string(),
+54	crates/jcode-tui/src/tui/app/auth_account_commands.rs	707	Transport: {}	app.set_status_notice(format!("Transport: {}", value));
+55	crates/jcode-tui/src/tui/app/auth_account_commands.rs	709	Saved OpenAI transport preference: {}.	"Saved OpenAI transport preference: {}.",
+56	crates/jcode-tui/src/tui/app/auth_account_commands.rs	714	Failed to save OpenAI transport: {}	"Failed to save OpenAI transport: {}",
+57	crates/jcode-tui/src/tui/app/auth_account_commands.rs	728	OpenAI effort must be one of none, minimal, low, medium, high, xhigh, or max.	"OpenAI effort must be one of none, minimal, low, medium, high, xhigh, or max."
+58	crates/jcode-tui/src/tui/app/auth_account_commands.rs	737	Failed to set OpenAI effort: {}	"Failed to set OpenAI effort: {}",
+59	crates/jcode-tui/src/tui/app/auth_account_commands.rs	744	(provider default)	let label = value.unwrap_or("(provider default)");
+60	crates/jcode-tui/src/tui/app/auth_account_commands.rs	745	Effort: {}	app.set_status_notice(format!("Effort: {}", label));
+61	crates/jcode-tui/src/tui/app/auth_account_commands.rs	747	Saved OpenAI reasoning effort: {}.	"Saved OpenAI reasoning effort: {}.",
+62	crates/jcode-tui/src/tui/app/auth_account_commands.rs	752	Failed to save OpenAI effort: {}	"Failed to save OpenAI effort: {}",
+63	crates/jcode-tui/src/tui/app/auth_account_commands.rs	768	Fast mode: {}	app.set_status_notice(format!("Fast mode: {}", label));
+64	crates/jcode-tui/src/tui/app/auth_account_commands.rs	770	Saved OpenAI fast mode: {}.	"Saved OpenAI fast mode: {}.",
+65	crates/jcode-tui/src/tui/app/auth_account_commands.rs	775	Failed to save OpenAI fast mode: {}	"Failed to save OpenAI fast mode: {}",
+66	crates/jcode-tui/src/tui/app/auth_account_commands.rs	790	Copilot premium mode must be normal, one, or zero (got {}).	"Copilot premium mode must be normal, one, or zero (got {}).",
+67	crates/jcode-tui/src/tui/app/auth_account_commands.rs	805	one premium per session	PremiumMode::OnePerSession => "one premium per session",
+68	crates/jcode-tui/src/tui/app/auth_account_commands.rs	806	zero premium requests	PremiumMode::Zero => "zero premium requests",
+69	crates/jcode-tui/src/tui/app/auth_account_commands.rs	808	Premium: {}	app.set_status_notice(format!("Premium: {}", label));
+70	crates/jcode-tui/src/tui/app/auth_account_commands.rs	810	Saved Copilot premium mode: {}.	"Saved Copilot premium mode: {}.",
+71	crates/jcode-tui/src/tui/app/auth_account_commands.rs	815	Failed to save Copilot premium mode: {}	"Failed to save Copilot premium mode: {}",
+72	crates/jcode-tui/src/tui/app/auth_account_commands.rs	842	OpenAI-compatible API base must be https://... or http://localhost.	"OpenAI-compatible API base must be https://... or http://localhost."
+73	crates/jcode-tui/src/tui/app/auth_account_commands.rs	857	API key variable must be uppercase letters, digits, and underscores only.	"API key variable must be uppercase letters, digits, and underscores only."
+74	crates/jcode-tui/src/tui/app/auth_account_commands.rs	872	Env file must be a simple file name like groq.env.	"Env file must be a simple file name like groq.env.".to_string(),
+75	crates/jcode-tui/src/tui/app/auth_account_commands.rs	893	Failed to save OpenAI-compatible setting: {}	"Failed to save OpenAI-compatible setting: {}",
+76	crates/jcode-tui/src/tui/app/auth_account_commands.rs	911	Failed to migrate OpenAI-compatible API key to new source	crate::logging::warn("Failed to migrate OpenAI-compatible API key to new source");
+77	crates/jcode-tui/src/tui/app/auth_account_commands.rs	916	API key variable → {}	OpenAiCompatSetting::ApiKeyName => format!("API key variable → {}", new.api_key_env),
+78	crates/jcode-tui/src/tui/app/auth_account_commands.rs	919	Default model hint → {}	"Default model hint → {}",
+79	crates/jcode-tui/src/tui/app/auth_account_commands.rs	925	Saved OpenAI-compatible setting: {}.	"Saved OpenAI-compatible setting: {}.",
+80	crates/jcode-tui/src/tui/app/auth_account_commands.rs	934	Unknown provider {}.	return format!("Unknown provider {}.", provider_id);
+81	crates/jcode-tui/src/tui/app/auth_account_commands.rs	938	  - Status: {:?}	lines.push(format!("  - Status: {:?}", assessment.state));
+82	crates/jcode-tui/src/tui/app/auth_account_commands.rs	945	  - Validation: {}	"  - Validation: {}",
+83	crates/jcode-tui/src/tui/app/auth_account_commands.rs	950	not validated	.unwrap_or_else(|| "not validated".to_string())
+84	crates/jcode-tui/src/tui/app/auth_account_commands.rs	952	  - Login command: /account {} login	lines.push(format!("  - Login command: /account {} login", provider.id));
+85	crates/jcode-tui/src/tui/app/auth_account_commands.rs	954	  - Doctor command: /account {} doctor	"  - Doctor command: /account {} doctor",
+86	crates/jcode-tui/src/tui/app/auth_account_commands.rs	961	Recommended next steps	lines.push("Recommended next steps".to_string());
+87	crates/jcode-tui/src/tui/app/auth_account_commands.rs	973	  - /account claude add	lines.push("  - /account claude add".to_string());
+88	crates/jcode-tui/src/tui/app/auth_account_commands.rs	974	  - /account claude switch <label>	lines.push("  - /account claude switch <label>".to_string());
+89	crates/jcode-tui/src/tui/app/auth_account_commands.rs	975	  - /account claude remove <label>	lines.push("  - /account claude remove <label>".to_string());
+90	crates/jcode-tui/src/tui/app/auth_account_commands.rs	980	Settings	lines.push("Settings".to_string());
+91	crates/jcode-tui/src/tui/app/auth_account_commands.rs	982	  - Transport: {}	"  - Transport: {}",
+92	crates/jcode-tui/src/tui/app/auth_account_commands.rs	986	  - Reasoning effort: {}	"  - Reasoning effort: {}",
+93	crates/jcode-tui/src/tui/app/auth_account_commands.rs	990	(provider default)	.unwrap_or("(provider default)")
+94	crates/jcode-tui/src/tui/app/auth_account_commands.rs	993	  - Fast mode: {}	"  - Fast mode: {}",
+95	crates/jcode-tui/src/tui/app/auth_account_commands.rs	1000	  - /account openai transport <auto|https|websocket>	lines.push("  - /account openai transport <auto|https|websocket>".to_string());
+96	crates/jcode-tui/src/tui/app/auth_account_commands.rs	1002	  - /account openai effort <none|minimal|low|medium|high|xhigh|max|clear>	"  - /account openai effort <none|minimal|low|medium|high|xhigh|max|clear>"
+97	crates/jcode-tui/src/tui/app/auth_account_commands.rs	1005	  - /account openai fast <on|off>	lines.push("  - /account openai fast <on|off>".to_string());
+98	crates/jcode-tui/src/tui/app/auth_account_commands.rs	1008	Settings	lines.push("Settings".to_string());
+99	crates/jcode-tui/src/tui/app/auth_account_commands.rs	1010	  - Premium mode: {}	"  - Premium mode: {}",
+100	crates/jcode-tui/src/tui/app/auth_account_commands.rs	1013	  - /account copilot premium <normal|one|zero>	lines.push("  - /account copilot premium <normal|one|zero>".to_string());
+101	crates/jcode-tui/src/tui/app/auth_account_commands.rs	1015	openai-compatible	"openai-compatible" => {
+102	crates/jcode-tui/src/tui/app/auth_account_commands.rs	1019	Settings	lines.push("Settings".to_string());
+103	crates/jcode-tui/src/tui/app/auth_account_commands.rs	1020	Configure custom OpenAI-compatible endpoints in this order: base URL first, then API key variable/key.	lines.push("Configure custom OpenAI-compatible endpoints in this order: base URL first, then API key variable/key.".to_string());
+104	crates/jcode-tui/src/tui/app/auth_account_commands.rs	1023	  - Step 2, API key variable: {}	"  - Step 2, API key variable: {}",
+105	crates/jcode-tui/src/tui/app/auth_account_commands.rs	1028	  - Default model hint: {}	"  - Default model hint: {}",
+106	crates/jcode-tui/src/tui/app/auth_account_commands.rs	1031	  - /account openai-compatible api-base <url|clear>	lines.push("  - /account openai-compatible api-base <url|clear>".to_string());
+107	crates/jcode-tui/src/tui/app/auth_account_commands.rs	1032	  - /account openai-compatible api-key-name <ENV_VAR|clear>	lines.push("  - /account openai-compatible api-key-name <ENV_VAR|clear>".to_string());
+108	crates/jcode-tui/src/tui/app/auth_account_commands.rs	1033	  - /account openai-compatible env-file <file.env|clear>	lines.push("  - /account openai-compatible env-file <file.env|clear>".to_string());
+109	crates/jcode-tui/src/tui/app/auth_account_commands.rs	1034	  - /account openai-compatible default-model <model|clear>	lines.push("  - /account openai-compatible default-model <model|clear>".to_string());
+110	crates/jcode-tui/src/tui/app/auth_account_commands.rs	1037	No provider-specific settings are exposed here yet. Use /login to configure credentials.	lines.push("No provider-specific settings are exposed here yet. Use /login to configure credentials.".to_string());
+111	crates/jcode-tui/src/tui/app/auth_account_commands.rs	1043	Global defaults	lines.push("Global defaults".to_string());
+112	crates/jcode-tui/src/tui/app/auth_account_commands.rs	1045	  - Default provider: {}	"  - Default provider: {}",
+113	crates/jcode-tui/src/tui/app/auth_account_commands.rs	1049	  - Default model: {}	"  - Default model: {}",
+114	crates/jcode-tui/src/tui/app/auth_account_commands.rs	1053	(provider default)	.unwrap_or("(provider default)")
+115	crates/jcode-tui/src/tui/app/auth_account_commands.rs	1056	  - /account default-provider <claude|openai|copilot|gemini|openrouter|auto>	"  - /account default-provider <claude|openai|copilot|gemini|openrouter|auto>"
+116	crates/jcode-tui/src/tui/app/auth_account_commands.rs	1059	  - /account default-model <model|clear>	lines.push("  - /account default-model <model|clear>".to_string());
+117	crates/jcode-tui/src/tui/app/auth_account_commands.rs	1073	Unknown provider {}. Use /account <provider> doctor with a valid provider id.	"Unknown provider {}. Use /account <provider> doctor with a valid provider id.",
+118	crates/jcode-tui/src/tui/app/auth_account_commands.rs	1104	  - Status: {}	"  - Status: {}",
+119	crates/jcode-tui/src/tui/app/auth_account_commands.rs	1107	needs attention	crate::auth::AuthState::Expired => "needs attention",
+120	crates/jcode-tui/src/tui/app/auth_account_commands.rs	1108	setup needed	crate::auth::AuthState::NotConfigured => "setup needed",

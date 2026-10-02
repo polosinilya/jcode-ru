@@ -1,0 +1,40 @@
+1	crates/jcode-tui/src/tui/app/input.rs	2919	Pasted {} ({} KB)	app.set_status_notice(format!("Pasted {} ({} KB)", media_type, size_kb));
+2	crates/jcode-tui/src/tui/app/input.rs	3029	you just pressed X → does Y	// show "you just pressed X → does Y". Placed after the modal/overlay
+3	crates/jcode-tui/src/tui/app/input.rs	3050	Provider auto-switch canceled	self.cancel_pending_provider_failover("Provider auto-switch canceled");
+4	crates/jcode-tui/src/tui/app/input.rs	3054	Provider auto-switch canceled	self.cancel_pending_provider_failover("Provider auto-switch canceled");
+5	crates/jcode-tui/src/tui/app/input.rs	3810	Shell command cannot be empty after !.	"Shell command cannot be empty after !.",
+6	crates/jcode-tui/src/tui/app/input.rs	3812	Shell command is empty	self.set_status_notice("Shell command is empty");
+7	crates/jcode-tui/src/tui/app/input.rs	3818	Input-line ! shell commands are only available in a local jcode TUI session.	"Input-line ! shell commands are only available in a local jcode TUI session.",
+8	crates/jcode-tui/src/tui/app/input.rs	3820	Local shell unavailable in remote mode	self.set_status_notice("Local shell unavailable in remote mode");
+9	crates/jcode-tui/src/tui/app/input.rs	3825	Running local shell: {}	"Running local shell: {}",
+10	crates/jcode-tui/src/tui/app/input.rs	3864	Activated skill: {} - {}	content: format!("Activated skill: {} - {}", skill.name, skill.description),
+11	crates/jcode-tui/src/tui/app/input.rs	3878	Unknown skill	// "Unknown skill" for them reads like a bug (issue #445).
+12	crates/jcode-tui/src/tui/app/input.rs	3884	Skill /{} is endorsed but not installed. Install it with `{}`, then run /skills or skill_manage reload_all.	"Skill /{} is endorsed but not installed. Install it with `{}`, then run /skills or skill_manage reload_all.",
+13	crates/jcode-tui/src/tui/app/input.rs	3888	Skill /{} is endorsed but not installed (source: {}). Install it into ~/.jcode/skills/{}/SKILL.md.	"Skill /{} is endorsed but not installed (source: {}). Install it into ~/.jcode/skills/{}/SKILL.md.",
+14	crates/jcode-tui/src/tui/app/input.rs	3895	Unknown skill: /{}	.unwrap_or_else(|| format!("Unknown skill: /{}", skill_name)),
+15	crates/jcode-tui/src/tui/app/input.rs	3911	token refresh needed	// turn fails (e.g. "token refresh needed"), instead of dropping it.
+16	crates/jcode-tui/src/tui/app/input.rs	4175	see docs[1] and notes[2]	"see docs[1] and notes[2]",
+17	crates/jcode-tui/src/tui/app/input.rs	4184	plain text with no brackets	"plain text with no brackets",
+18	crates/jcode-tui/src/tui/app/input_help.rs	7	commands	"help" | "commands" => {
+19	crates/jcode-tui/src/tui/app/input_help.rs	7	help	"help" | "commands" => {
+20	crates/jcode-tui/src/tui/app/input_help.rs	8	/help\nShow general command list and keyboard shortcuts.\n\n/help <command>\nShow detailed help for one command.	"/help\nShow general command list and keyboard shortcuts.\n\n/help <command>\nShow detailed help for one command."
+21	crates/jcode-tui/src/tui/app/input_help.rs	10	compact	"compact" => {
+22	crates/jcode-tui/src/tui/app/input_help.rs	13	cache	"cache" => {
+23	crates/jcode-tui/src/tui/app/input_help.rs	16	fix	"fix" => {
+24	crates/jcode-tui/src/tui/app/input_help.rs	17	/fix\nRun recovery actions when the model cannot continue.\nRepairs missing tool outputs, resets provider session state, and starts compaction when possible.	"/fix\nRun recovery actions when the model cannot continue.\nRepairs missing tool outputs, resets provider session state, and starts compaction when possible."
+25	crates/jcode-tui/src/tui/app/input_help.rs	19	rewind	"rewind" => {
+26	crates/jcode-tui/src/tui/app/input_help.rs	20	/rewind\nShow numbered conversation history.\n\n/rewind N\nRewind to message N (drops everything after it and resets provider session).\n\n/rewind undo\nUndo the most recent rewind and restore the removed messages.	"/rewind\nShow numbered conversation history.\n\n/rewind N\nRewind to message N (drops everything after it and resets provider session).\n\n/rewind undo\nUndo the most recent rewind and restore the removed messages."
+27	crates/jcode-tui/src/tui/app/input_help.rs	22	clear	"clear" => {
+28	crates/jcode-tui/src/tui/app/input_help.rs	23	/clear\nClear current conversation, queue, and display; starts a fresh session.	"/clear\nClear current conversation, queue, and display; starts a fresh session."
+29	crates/jcode-tui/src/tui/app/input_help.rs	25	clear-view	"cls" | "clear-view" => {
+30	crates/jcode-tui/src/tui/app/input_help.rs	25	cls	"cls" | "clear-view" => {
+31	crates/jcode-tui/src/tui/app/input_help.rs	26	/cls\nClear the rendered view only. The model keeps its full context; nothing is sent or forgotten. (Ctrl+L clears the screen but keeps history in scrollback.)	"/cls\nClear the rendered view only. The model keeps its full context; nothing is sent or forgotten. (Ctrl+L clears the screen but keeps history in scrollback.)"
+32	crates/jcode-tui/src/tui/app/input_help.rs	28	model	"model" => {
+33	crates/jcode-tui/src/tui/app/input_help.rs	29	/model\nOpen model picker.\n\n/model <name>\nSwitch model.\n\n/model <name>@<provider>\nPin OpenRouter routing (@auto clears pin).	"/model\nOpen model picker.\n\n/model <name>\nSwitch model.\n\n/model <name>@<provider>\nPin OpenRouter routing (@auto clears pin)."
+34	crates/jcode-tui/src/tui/app/input_help.rs	31	provider-test-coverage	"provider-test-coverage"
+35	crates/jcode-tui/src/tui/app/input_help.rs	32	provider test coverage	| "provider test coverage"
+36	crates/jcode-tui/src/tui/app/input_help.rs	33	model-status	| "model-status"
+37	crates/jcode-tui/src/tui/app/input_help.rs	34	model status	| "model status" => {
+38	crates/jcode-tui/src/tui/app/input_help.rs	37	refresh-model-list	"refresh-model-list" => {
+39	crates/jcode-tui/src/tui/app/input_help.rs	38	/refresh-model-list\nForce-refresh provider model catalogs, update /model, and persist the refreshed cache.	"/refresh-model-list\nForce-refresh provider model catalogs, update /model, and persist the refreshed cache."
+40	crates/jcode-tui/src/tui/app/input_help.rs	40	agents	"agents" => {

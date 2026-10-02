@@ -1,0 +1,120 @@
+1	SKIP
+2	Провайдер Azure OpenAI
+3	Базовый URL API, совместимого с OpenAI, должен быть https://... или http://localhost.
+4	Неизвестный провайдер '{}'. Используйте: {}
+5	Неизвестный провайдер '{}'. Используйте: {}
+6	Использование: /account switch <метка>
+7	Использование: /account remove <метка>
+8	SKIP
+9	Использование: /account default-provider <claude|openai|copilot|gemini|openrouter|auto>
+10	Использование: /account default-model <модель|clear>
+11	Использование: /account {} switch <метка>
+12	Использование: /account {} remove <метка>
+13	Использование: /account openai transport <auto|https|websocket>
+14	Использование: /account openai effort <none|minimal|low|medium|high|xhigh|max|clear>
+15	Использование: /account openai fast <on|off>
+16	Использование: /account copilot premium <normal|one|zero>
+17	SKIP
+18	Использование: /account openai-compatible api-base <url|clear>
+19	SKIP
+20	SKIP
+21	Использование: /account openai-compatible api-key-name <ENV_VAR|clear>
+22	SKIP
+23	Использование: /account openai-compatible env-file <file.env|clear>
+24	SKIP
+25	Использование: /account openai-compatible default-model <модель|clear>
+26	Неизвестная подкоманда /account {} '{}'. Попробуйте /account {} settings или /account {} login.
+27	Неизвестный провайдер {}.
+28	Провайдер {} не поддерживает переключение аккаунтов.
+29	Провайдер {} не поддерживает удаление аккаунтов.
+30	Не удалось переключить аккаунт: {}
+31	Переключено на аккаунт Anthropic {}.
+32	Аккаунт: переключено на {}
+33	Не удалось переключить аккаунт OpenAI: {}
+34	Переключено на аккаунт OpenAI {}.
+35	Аккаунт OpenAI: переключено на {}
+36	Не удалось переключить аккаунт: {}
+37	Переключено на аккаунт Anthropic {}.
+38	Аккаунт: переключено на {}
+39	Не удалось переключить аккаунт OpenAI: {}
+40	Переключено на аккаунт OpenAI {}.
+41	Аккаунт OpenAI: переключено на {}
+42	Не удалось подготовить аккаунт Claude: {}
+43	Не удалось подготовить аккаунт OpenAI: {}
+44	Неизвестный провайдер {}.
+45	Неподдерживаемый провайдер по умолчанию {}. Используйте claude, openai, anthropic-api, openai-api, copilot, gemini, openrouter или auto.
+46	Провайдер по умолчанию: {}
+47	Сохраненный провайдер по умолчанию: {}. Это повлияет на будущие сессии.
+48	Не удалось сохранить провайдер по умолчанию: {}
+49	SKIP
+50	Модель по умолчанию: {}
+51	Сохраненная модель по умолчанию: {}. Это повлияет на будущие сессии.
+52	Не удалось сохранить модель по умолчанию: {}
+53	Транспорт OpenAI должен быть auto, https или websocket.
+54	Транспорт: {}
+55	Сохраненные настройки транспорта OpenAI: {}.
+56	Не удалось сохранить транспорт OpenAI: {}
+57	Уровень усилий OpenAI должен быть одним из: none, minimal, low, medium, high, xhigh или max.
+58	Не удалось установить уровень усилий OpenAI: {}
+59	SKIP
+60	Уровень усилий: {}
+61	Сохраненный уровень усилий OpenAI: {}.
+62	Не удалось сохранить уровень усилий OpenAI: {}
+63	Быстрый режим: {}
+64	Сохраненный быстрый режим OpenAI: {}.
+65	Не удалось сохранить быстрый режим OpenAI: {}
+66	Режим премиум Copilot должен быть normal, one или zero (получено {}).
+67	один премиум на сессию
+68	нулевые премиум запросы
+69	Премиум: {}
+70	Сохраненный режим премиум Copilot: {}.
+71	Не удалось сохранить режим премиум Copilot: {}
+72	Базовый URL API, совместимого с OpenAI, должен быть https://... или http://localhost.
+73	Переменная API-ключа должна содержать только заглавные буквы, цифры и подчеркивания.
+74	Файл env должен быть простым именем файла, например groq.env.
+75	Не удалось сохранить настройку OpenAI-compatible: {}
+76	Не удалось перенести API-ключ OpenAI-compatible в новый источник
+77	Переменная API-ключа → {}
+78	Подсказка модели по умолчанию → {}
+79	Сохраненная настройка OpenAI-compatible: {}.
+80	Неизвестный провайдер {}.
+81	  - Статус: {:?}
+82	  - Проверка: {}
+83	не проверено
+84	  - Команда входа: /account {} login
+85	  - Команда диагностики: /account {} doctor
+86	Рекомендуемые следующие шаги
+87	  - /account claude add
+88	  - /account claude switch <метка>
+89	  - /account claude remove <метка>
+90	Настройки
+91	  - Транспорт: {}
+92	  - Уровень рассуждений: {}
+93	(по умолчанию провайдера)
+94	  - Быстрый режим: {}
+95	  - /account openai transport <auto|https|websocket>
+96	  - /account openai effort <none|minimal|low|medium|high|xhigh|max|clear>
+97	  - /account openai fast <on|off>
+98	Настройки
+99	  - Премиум режим: {}
+100	  - /account copilot premium <normal|one|zero>
+101	SKIP
+102	Настройки
+103	Настройте пользовательские конечные точки, совместимые с OpenAI, в следующем порядке: сначала базовый URL, затем переменная/ключ API.
+104	  - Шаг 2, переменная API-ключа: {}
+105	  - Подсказка модели по умолчанию: {}
+106	  - /account openai-compatible api-base <url|clear>
+107	  - /account openai-compatible api-key-name <ENV_VAR|clear>
+108	  - /account openai-compatible env-file <file.env|clear>
+109	  - /account openai-compatible default-model <модель|clear>
+110	Здесь пока не представлены специфические настройки провайдера. Используйте /login для настройки учетных данных.
+111	Глобальные настройки по умолчанию
+112	  - Провайдер по умолчанию: {}
+113	  - Модель по умолчанию: {}
+114	(по умолчанию провайдера)
+115	  - /account default-provider <claude|openai|copilot|gemini|openrouter|auto>
+116	  - /account default-model <модель|clear>
+117	Неизвестный провайдер {}. Используйте /account <provider> doctor с действительным ID провайдера.
+118	  - Статус: {}
+119	требует внимания
+120	требуется настройка

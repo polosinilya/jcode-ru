@@ -1,0 +1,120 @@
+1	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	838	/auth 	let base = if prefix.starts_with("/auth ") {
+2	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	839	/auth	"/auth"
+3	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	841	/login	"/login"
+4	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	844	/auth	if base == "/auth" {
+5	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	845	/auth doctor	suggestions.push(("/auth doctor".into(), "Diagnose provider auth issues"));
+6	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	845	Diagnose provider auth issues	suggestions.push(("/auth doctor".into(), "Diagnose provider auth issues"));
+7	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	855	/account 	if prefix.starts_with("/account ") || prefix.starts_with("/accounts ") {
+8	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	855	/accounts 	if prefix.starts_with("/account ") || prefix.starts_with("/accounts ") {
+9	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	857	/account list	("/account list".into(), "Open all provider/account actions"),
+10	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	857	Open all provider/account actions	("/account list".into(), "Open all provider/account actions"),
+11	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	858	/account switch	("/account switch".into(), "Switch active account by label"),
+12	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	858	Switch active account by label	("/account switch".into(), "Switch active account by label"),
+13	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	860	/account default-provider	"/account default-provider".into(),
+14	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	861	Set preferred default provider	"Set preferred default provider",
+15	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	864	/account default-model	"/account default-model".into(),
+16	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	865	Set preferred default model	"Set preferred default model",
+17	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	868	/account openai-compatible settings	"/account openai-compatible settings".into(),
+18	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	869	Inspect custom OpenAI-compatible settings	"Inspect custom OpenAI-compatible settings",
+19	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	872	/account openai-compatible api-base	"/account openai-compatible api-base".into(),
+20	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	873	Set custom OpenAI-compatible API base	"Set custom OpenAI-compatible API base",
+21	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	878	/account {}	format!("/account {}", provider.id),
+22	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	879	Open this provider's account/settings actions	"Open this provider's account/settings actions",
+23	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	882	/account {} settings	format!("/account {} settings", provider.id),
+24	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	883	Show provider-specific settings	"Show provider-specific settings",
+25	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	886	/account {} login	format!("/account {} login", provider.id),
+26	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	887	Start or refresh login for this provider	"Start or refresh login for this provider",
+27	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	890	/account claude add	suggestions.push(("/account claude add".into(), "Add a new Claude account"));
+28	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	890	Add a new Claude account	suggestions.push(("/account claude add".into(), "Add a new Claude account"));
+29	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	891	/account openai add	suggestions.push(("/account openai add".into(), "Add a new OpenAI account"));
+30	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	891	Add a new OpenAI account	suggestions.push(("/account openai add".into(), "Add a new OpenAI account"));
+31	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	893	/account openai transport	"/account openai transport".into(),
+32	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	894	Set OpenAI transport preference	"Set OpenAI transport preference",
+33	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	897	/account openai effort	"/account openai effort".into(),
+34	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	898	Set OpenAI reasoning effort preference	"Set OpenAI reasoning effort preference",
+35	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	903	/account claude switch {}	format!("/account claude switch {}", account.label),
+36	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	904	Switch to this Claude account	"Switch to this Claude account",
+37	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	911	/account openai switch {}	format!("/account openai switch {}", account.label),
+38	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	912	Switch to this OpenAI account	"Switch to this OpenAI account",
+39	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	919	/memory 	if prefix.starts_with("/memory ") {
+40	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	923	/memory on	("/memory on".into(), "Enable memory for this session"),
+41	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	923	Enable memory for this session	("/memory on".into(), "Enable memory for this session"),
+42	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	924	/memory off	("/memory off".into(), "Disable memory for this session"),
+43	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	924	Disable memory for this session	("/memory off".into(), "Disable memory for this session"),
+44	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	925	/memory status	("/memory status".into(), "Show memory feature status"),
+45	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	925	Show memory feature status	("/memory status".into(), "Show memory feature status"),
+46	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	930	/improve 	if prefix.starts_with("/improve ") {
+47	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	935	/improve plan	"/improve plan".into(),
+48	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	936	Generate a ranked improve todo list without editing	"Generate a ranked improve todo list without editing",
+49	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	939	/improve resume	"/improve resume".into(),
+50	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	940	Resume the last saved improve mode for this session	"Resume the last saved improve mode for this session",
+51	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	943	/improve status	"/improve status".into(),
+52	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	944	Show current improve batch and inferred status	"Show current improve batch and inferred status",
+53	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	947	/improve stop	"/improve stop".into(),
+54	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	948	Stop improvement mode after the next safe point	"Stop improvement mode after the next safe point",
+55	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	954	/refactor 	if prefix.starts_with("/refactor ") {
+56	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	959	/refactor plan	"/refactor plan".into(),
+57	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	960	Generate a ranked refactor todo list without editing	"Generate a ranked refactor todo list without editing",
+58	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	963	/refactor resume	"/refactor resume".into(),
+59	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	964	Resume the last saved refactor mode for this session	"Resume the last saved refactor mode for this session",
+60	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	967	/refactor status	"/refactor status".into(),
+61	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	968	Show current refactor batch and inferred status	"Show current refactor batch and inferred status",
+62	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	971	/refactor stop	"/refactor stop".into(),
+63	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	972	Stop refactor mode after the next safe point	"Stop refactor mode after the next safe point",
+64	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	978	/swarm 	if prefix.starts_with("/swarm ") {
+65	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	982	/swarm on	("/swarm on".into(), "Enable swarm for this session"),
+66	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	982	Enable swarm for this session	("/swarm on".into(), "Enable swarm for this session"),
+67	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	983	/swarm off	("/swarm off".into(), "Disable swarm for this session"),
+68	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	983	Disable swarm for this session	("/swarm off".into(), "Disable swarm for this session"),
+69	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	984	/swarm status	("/swarm status".into(), "Show swarm feature status"),
+70	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	984	Show swarm feature status	("/swarm status".into(), "Show swarm feature status"),
+71	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	989	/overnight 	if prefix.starts_with("/overnight ") {
+72	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	994	/overnight 7	"/overnight 7".into(),
+73	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	995	Start a 7-hour supervised overnight run	"Start a 7-hour supervised overnight run",
+74	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	998	/overnight status	"/overnight status".into(),
+75	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	999	Show latest overnight run status	"Show latest overnight run status",
+76	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1001	/overnight log	("/overnight log".into(), "Show recent overnight events"),
+77	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1001	Show recent overnight events	("/overnight log".into(), "Show recent overnight events"),
+78	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1002	/overnight review	("/overnight review".into(), "Open the generated review page"),
+79	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1002	Open the generated review page	("/overnight review".into(), "Open the generated review page"),
+80	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1003	/overnight cancel	("/overnight cancel".into(), "Request overnight cancellation"),
+81	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1003	Request overnight cancellation	("/overnight cancel".into(), "Request overnight cancellation"),
+82	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1008	/subscription 	if prefix.starts_with("/subscription ") {
+83	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1011	/subscription status	vec![("/subscription status".into(), "Show subscription status")],
+84	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1011	Show subscription status	vec![("/subscription status".into(), "Show subscription status")],
+85	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1015	/alignment 	if prefix.starts_with("/alignment ") {
+86	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1020	/alignment status	"/alignment status".into(),
+87	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1021	Show current and saved alignment	"Show current and saved alignment",
+88	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1024	/alignment centered	"/alignment centered".into(),
+89	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1025	Save centered alignment and apply it now	"Save centered alignment and apply it now",
+90	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1028	/alignment left	"/alignment left".into(),
+91	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1029	Save left-aligned layout and apply it now	"Save left-aligned layout and apply it now",
+92	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1035	/compact-notifications 	if prefix.starts_with("/compact-notifications ") {
+93	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1040	/compact-notifications status	"/compact-notifications status".into(),
+94	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1041	Show whether notifications are compact	"Show whether notifications are compact",
+95	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1044	/compact-notifications on	"/compact-notifications on".into(),
+96	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1045	Collapse swarm/file-activity notifications to one line	"Collapse swarm/file-activity notifications to one line",
+97	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1048	/compact-notifications off	"/compact-notifications off".into(),
+98	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1049	Show full multi-line notification cards	"Show full multi-line notification cards",
+99	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1055	/tool-call-details 	if prefix.starts_with("/tool-call-details ") {
+100	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1060	/tool-call-details status	"/tool-call-details status".into(),
+101	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1061	Show whether technical details render on intent rows	"Show whether technical details render on intent rows",
+102	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1064	/tool-call-details on	"/tool-call-details on".into(),
+103	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1065	Show the dimmed technical detail next to tool intents	"Show the dimmed technical detail next to tool intents",
+104	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1068	/tool-call-details off	"/tool-call-details off".into(),
+105	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1069	Show only the intent on tool rows that have one	"Show only the intent on tool rows that have one",
+106	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1075	/show-agentgrep-output 	if prefix.starts_with("/show-agentgrep-output ") {
+107	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1080	/show-agentgrep-output status	"/show-agentgrep-output status".into(),
+108	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1081	Show whether agentgrep output is shown inline	"Show whether agentgrep output is shown inline",
+109	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1084	/show-agentgrep-output on	"/show-agentgrep-output on".into(),
+110	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1085	Render full agentgrep search results inline in chat	"Render full agentgrep search results inline in chat",
+111	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1088	/show-agentgrep-output off	"/show-agentgrep-output off".into(),
+112	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1089	Show only the one-line agentgrep summary	"Show only the one-line agentgrep summary",
+113	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1095	/config 	if prefix.starts_with("/config ") {
+114	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1099	/config init	("/config init".into(), "Create a default config file"),
+115	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1099	Create a default config file	("/config init".into(), "Create a default config file"),
+116	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1100	/config create	("/config create".into(), "Alias for /config init"),
+117	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1100	Alias for /config init	("/config create".into(), "Alias for /config init"),
+118	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1101	/config edit	("/config edit".into(), "Open the config file in $EDITOR"),
+119	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1101	Open the config file in $EDITOR	("/config edit".into(), "Open the config file in $EDITOR"),
+120	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1106	/goals show 	if prefix.starts_with("/goals show ") {

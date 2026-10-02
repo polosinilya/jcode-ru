@@ -1,0 +1,120 @@
+1	crates/jcode-tui/src/tui/app/auth_remote.rs	629	SSH login cancelled	self.set_status_notice("SSH login cancelled");
+2	crates/jcode-tui/src/tui/app/auth_remote.rs	637	SSH credential import stopped locally. The remote host may already have saved the credentials. Cancellation does not remove imported credentials. Check remote login state before trying again.	"SSH credential import stopped locally. The remote host may already have saved the credentials. Cancellation does not remove imported credentials. Check remote login state before trying again.".to_string()
+3	crates/jcode-tui/src/tui/app/auth_remote.rs	642	SSH credential import stopped	"SSH credential import stopped"
+4	crates/jcode-tui/src/tui/app/auth_remote.rs	644	SSH credential import failed	"SSH credential import failed"
+5	crates/jcode-tui/src/tui/app/auth_remote.rs	657	SSH login cancelled locally, but remote cleanup could not be confirmed. The pending authorization expires automatically. No local credentials were changed.	self.push_display_message(DisplayMessage::error("SSH login cancelled locally, but remote cleanup could not be confirmed. The pending authorization expires automatically. No local credentials were changed."));
+6	crates/jcode-tui/src/tui/app/auth_remote.rs	663	SSH login failed	self.set_status_notice("SSH login failed");
+7	crates/jcode-tui/src/tui/app/auth_remote/command.rs	27	SSH host is not configured	let host = crate::tui::ssh_remote_host().ok_or("SSH host is not configured")?;
+8	crates/jcode-tui/src/tui/app/auth_remote/command.rs	42	Invalid SSH login configuration	return Err("Invalid SSH login configuration");
+9	crates/jcode-tui/src/tui/app/auth_remote/command.rs	63	BatchMode=yes	"BatchMode=yes",
+10	crates/jcode-tui/src/tui/app/auth_remote/command.rs	65	StrictHostKeyChecking=yes	"StrictHostKeyChecking=yes",
+11	crates/jcode-tui/src/tui/app/auth_remote/command.rs	67	ForwardAgent=no	"ForwardAgent=no",
+12	crates/jcode-tui/src/tui/app/auth_remote/command.rs	69	ClearAllForwardings=yes	"ClearAllForwardings=yes",
+13	crates/jcode-tui/src/tui/app/auth_remote/command.rs	71	PermitLocalCommand=no	"PermitLocalCommand=no",
+14	crates/jcode-tui/src/tui/app/auth_remote/command.rs	73	ForkAfterAuthentication=no	"ForkAfterAuthentication=no",
+15	crates/jcode-tui/src/tui/app/auth_remote/command.rs	75	StdinNull=no	"StdinNull=no",
+16	crates/jcode-tui/src/tui/app/auth_remote/command.rs	77	RemoteCommand=none	"RemoteCommand=none",
+17	crates/jcode-tui/src/tui/app/auth_remote/command.rs	81	ControlMaster=no	"ControlMaster=no",
+18	crates/jcode-tui/src/tui/app/auth_remote/command.rs	92	auth status --json	"auth status --json".to_string()
+19	crates/jcode-tui/src/tui/app/auth_remote/command.rs	94	auth import --provider {} --stdin --json	format!("auth import --provider {} --stdin --json", quote(provider))
+20	crates/jcode-tui/src/tui/app/auth_remote/command.rs	97	login --provider {} --no-browser --json --flow-id {} {}	"login --provider {} --no-browser --json --flow-id {} {}",
+21	crates/jcode-tui/src/tui/app/auth_remote/command.rs	134	credential import does not use OAuth flags	Self::Import => unreachable!("credential import does not use OAuth flags"),
+22	crates/jcode-tui/src/tui/app/auth_remote/command.rs	135	auth status does not use OAuth flags	Self::Status => unreachable!("auth status does not use OAuth flags"),
+23	crates/jcode-tui/src/tui/app/auth_remote/command.rs	168	Invalid remote auth status. Update Jcode on the remote host.	.ok_or("Invalid remote auth status. Update Jcode on the remote host.")?;
+24	crates/jcode-tui/src/tui/app/auth_remote/command.rs	181	Unrecognized remote auth provider status. Update Jcode on this computer.	"Unrecognized remote auth provider status. Update Jcode on this computer.",
+25	crates/jcode-tui/src/tui/app/auth_remote/command.rs	188	Duplicate remote auth provider status	return Err("Duplicate remote auth provider status");
+26	crates/jcode-tui/src/tui/app/auth_remote/command.rs	197	{} (expired)	format!("{} (expired)", descriptor.auth_status_method),
+27	crates/jcode-tui/src/tui/app/auth_remote/command.rs	201	not configured	"not configured".to_string(),
+28	crates/jcode-tui/src/tui/app/auth_remote/command.rs	203	Unsupported remote auth provider status	_ => return Err("Unsupported remote auth provider status"),
+29	crates/jcode-tui/src/tui/app/auth_remote/command.rs	218	Invalid remote login response. Update Jcode on the remote host.	.map_err(|_| "Invalid remote login response. Update Jcode on the remote host.")?;
+30	crates/jcode-tui/src/tui/app/auth_remote/command.rs	223	Remote login provider mismatch	return Err("Remote login provider mismatch");
+31	crates/jcode-tui/src/tui/app/auth_remote/command.rs	236	Missing remote authorization URL	.ok_or("Missing remote authorization URL")?;
+32	crates/jcode-tui/src/tui/app/auth_remote/command.rs	237	Invalid remote authorization URL	let url = url::Url::parse(auth_url).map_err(|_| "Invalid remote authorization URL")?;
+33	crates/jcode-tui/src/tui/app/auth_remote/command.rs	244	Remote authorization URL must be HTTPS	return Err("Remote authorization URL must be HTTPS");
+34	crates/jcode-tui/src/tui/app/auth_remote/command.rs	248	Missing remote login input kind	.ok_or("Missing remote login input kind")?;
+35	crates/jcode-tui/src/tui/app/auth_remote/command.rs	253	Unsupported remote login input kind	return Err("Unsupported remote login input kind");
+36	crates/jcode-tui/src/tui/app/auth_remote/command.rs	267	Unexpected remote login response. Update Jcode on the remote host.	_ => Err("Unexpected remote login response. Update Jcode on the remote host."),
+37	crates/jcode-tui/src/tui/app/auth_remote/command.rs	297	Could not start SSH login	.map_err(|_| "Could not start SSH login")?;
+38	crates/jcode-tui/src/tui/app/auth_remote/command.rs	298	SSH login stdin unavailable	let mut stdin = child.stdin.take().ok_or("SSH login stdin unavailable")?;
+39	crates/jcode-tui/src/tui/app/auth_remote/command.rs	299	SSH login stdout unavailable	let stdout = child.stdout.take().ok_or("SSH login stdout unavailable")?;
+40	crates/jcode-tui/src/tui/app/auth_remote/command.rs	313	Login input is too long	return Err("Login input is too long");
+41	crates/jcode-tui/src/tui/app/auth_remote/command.rs	318	Could not send remote login input	.map_err(|_| "Could not send remote login input")?;
+42	crates/jcode-tui/src/tui/app/auth_remote/command.rs	323	Could not finish remote login input	.map_err(|_| "Could not finish remote login input")?;
+43	crates/jcode-tui/src/tui/app/auth_remote/command.rs	330	Could not read remote login response	.map_err(|_| "Could not read remote login response")?;
+44	crates/jcode-tui/src/tui/app/auth_remote/command.rs	332	Remote login response exceeded size limit	return Err("Remote login response exceeded size limit");
+45	crates/jcode-tui/src/tui/app/auth_remote/command.rs	337	Could not wait for SSH login	.map_err(|_| "Could not wait for SSH login")?;
+46	crates/jcode-tui/src/tui/app/auth_remote/command.rs	348	Could not read remote auth status. Check remote Jcode version and SSH access.	"Could not read remote auth status. Check remote Jcode version and SSH access.",
+47	crates/jcode-tui/src/tui/app/auth_remote/command.rs	353	Remote credential import was rejected or SSH failed. Existing remote credentials are never overwritten. Check remote Jcode version and SSH access.	"Remote credential import was rejected or SSH failed. Existing remote credentials are never overwritten. Check remote Jcode version and SSH access.",
+48	crates/jcode-tui/src/tui/app/auth_remote/command.rs	357	Remote login was rejected or SSH failed. Check the callback, remote Jcode version, and SSH access, then retry.	"Remote login was rejected or SSH failed. Check the callback, remote Jcode version, and SSH access, then retry.",
+49	crates/jcode-tui/src/tui/app/auth_remote/command.rs	364	Remote login timed out	result = tokio::time::timeout(timeout, exchange) => result.unwrap_or(Err("Remote login timed out")),
+50	crates/jcode-tui/src/tui/app/auth_remote/command.rs	429	Could not export the selected local account. No credentials were sent. Check the local provider login and retry with explicit confirmation.	let _ = reply_tx.send(Err("Could not export the selected local account. No credentials were sent. Check the local provider login and retry with explicit confirmation."));
+51	crates/jcode-tui/src/tui/app/auth_remote/command.rs	492	unused-provider	let cmd = target.command("unused-provider", "unused-flow", Operation::Status);
+52	crates/jcode-tui/src/tui/app/auth_remote/command.rs	502	auth status --json	assert!(remote.ends_with("auth status --json"));
+53	crates/jcode-tui/src/tui/app/auth_remote/command.rs	504	unused-provider	"unused-provider",
+54	crates/jcode-tui/src/tui/app/auth_remote/command.rs	514	BatchMode=yes	"BatchMode=yes",
+55	crates/jcode-tui/src/tui/app/auth_remote/command.rs	515	StrictHostKeyChecking=yes	"StrictHostKeyChecking=yes",
+56	crates/jcode-tui/src/tui/app/auth_remote/command.rs	516	ForwardAgent=no	"ForwardAgent=no",
+57	crates/jcode-tui/src/tui/app/auth_remote/command.rs	517	ClearAllForwardings=yes	"ClearAllForwardings=yes",
+58	crates/jcode-tui/src/tui/app/auth_remote/command.rs	518	PermitLocalCommand=no	"PermitLocalCommand=no",
+59	crates/jcode-tui/src/tui/app/auth_remote/command.rs	519	StdinNull=no	"StdinNull=no",
+60	crates/jcode-tui/src/tui/app/auth_remote/command.rs	520	RemoteCommand=none	"RemoteCommand=none",
+61	crates/jcode-tui/src/tui/app/auth_remote/command.rs	521	ControlMaster=no	"ControlMaster=no",
+62	crates/jcode-tui/src/tui/app/auth_remote/command.rs	545	must-not-surface	"access_token": "must-not-surface",
+63	crates/jcode-tui/src/tui/app/auth_remote/command.rs	550	claude-api	rows.push(serde_json::json!({"id": "claude-api", "status": "not_configured"}));
+64	crates/jcode-tui/src/tui/app/auth_remote/command.rs	553	Expected provider status	panic!("Expected provider status");
+65	crates/jcode-tui/src/tui/app/auth_remote/command.rs	562	{} (expired)	format!("{} (expired)", catalog[index].auth_status_method)
+66	crates/jcode-tui/src/tui/app/auth_remote/command.rs	564	not configured	crate::auth::AuthState::NotConfigured => "not configured".to_string(),
+67	crates/jcode-tui/src/tui/app/auth_remote/command.rs	569	must-not-surface	for forbidden in ["must-not-surface", "private", "access_token", "\u{1b}"] {
+68	crates/jcode-tui/src/tui/app/auth_remote/command.rs	578	Expected provider status	panic!("Expected provider status");
+69	crates/jcode-tui/src/tui/app/auth_remote/command.rs	598	private account label	"method": "private account label",
+70	crates/jcode-tui/src/tui/app/auth_remote/command.rs	605	Unrecognized remote auth provider status. Update Jcode on this computer.	"Unrecognized remote auth provider status. Update Jcode on this computer."
+71	crates/jcode-tui/src/tui/app/auth_remote/command.rs	607	must-not-surface	assert!(!error.contains("must-not-surface"));
+72	crates/jcode-tui/src/tui/app/auth_remote/command.rs	622	must-not-surface	b"must-not-surface".as_slice(),
+73	crates/jcode-tui/src/tui/app/auth_remote/command.rs	625	must-not-surface	assert!(!error.contains("must-not-surface"));
+74	crates/jcode-tui/src/tui/app/auth_remote/command.rs	664	StrictHostKeyChecking=yes	assert!(args.iter().any(|a| a == "StrictHostKeyChecking=yes"));
+75	crates/jcode-tui/src/tui/app/auth_remote/command.rs	681	secret-code	.contains("secret-code")
+76	crates/jcode-tui/src/tui/app/auth_remote/command.rs	705	auth import --provider '{provider}' --stdin --json	"auth import --provider '{provider}' --stdin --json"
+77	crates/jcode-tui/src/tui/app/auth_remote/command.rs	712	BatchMode=yes	"BatchMode=yes",
+78	crates/jcode-tui/src/tui/app/auth_remote/command.rs	713	StrictHostKeyChecking=yes	"StrictHostKeyChecking=yes",
+79	crates/jcode-tui/src/tui/app/auth_remote/command.rs	714	ForwardAgent=no	"ForwardAgent=no",
+80	crates/jcode-tui/src/tui/app/auth_remote/command.rs	715	ClearAllForwardings=yes	"ClearAllForwardings=yes",
+81	crates/jcode-tui/src/tui/app/auth_remote/command.rs	716	PermitLocalCommand=no	"PermitLocalCommand=no",
+82	crates/jcode-tui/src/tui/app/auth_remote/command.rs	717	StdinNull=no	"StdinNull=no",
+83	crates/jcode-tui/src/tui/app/auth_remote/command.rs	718	RemoteCommand=none	"RemoteCommand=none",
+84	crates/jcode-tui/src/tui/app/auth_remote/command.rs	719	ControlMaster=no	"ControlMaster=no",
+85	crates/jcode-tui/src/tui/app/auth_remote/command.rs	739	not-json must-not-surface	b"not-json must-not-surface".as_slice(),
+86	crates/jcode-tui/src/tui/app/auth_remote/command.rs	744	must-not-surface	assert!(!error.contains("must-not-surface"));
+87	crates/jcode-tui/src/tui/app/auth_remote/onboarding.rs	26	not configured	method_detail: "not configured".into(),
+88	crates/jcode-tui/src/tui/app/auth_remote/onboarding.rs	71	No logins are configured on test-remote	.contains("No logins are configured on test-remote")
+89	crates/jcode-tui/src/tui/app/auth_remote/onboarding.rs	74	No	assert_eq!(picker.entries[picker.selected].name, "No");
+90	crates/jcode-tui/src/tui/app/auth_remote/onboarding.rs	110	No local credentials were read or copied	.contains("No local credentials were read or copied")
+91	crates/jcode-tui/src/tui/app/auth_remote/onboarding.rs	121	[hidden login input]	assert_eq!(app.input, "[hidden login input]");
+92	crates/jcode-tui/src/tui/app/auth_remote/onboarding.rs	159	status failed	Err("status failed"),
+93	crates/jcode-tui/src/tui/app/auth_remote/onboarding.rs	242	Remote status check stopped	Err(_) => Err("Remote status check stopped"),
+94	crates/jcode-tui/src/tui/app/auth_remote/onboarding.rs	283	No	name: if accept { "Yes" } else { "No" }.into(),
+95	crates/jcode-tui/src/tui/app/auth_remote/onboarding.rs	283	Yes	name: if accept { "Yes" } else { "No" }.into(),
+96	crates/jcode-tui/src/tui/app/auth_remote/onboarding.rs	286	copy this login?	api_method: if offer { "import local login?" } else { "copy this login?" }.into(),
+97	crates/jcode-tui/src/tui/app/auth_remote/onboarding.rs	286	import local login?	api_method: if offer { "import local login?" } else { "copy this login?" }.into(),
+98	crates/jcode-tui/src/tui/app/auth_remote/onboarding.rs	289	Choose a local OpenAI or Claude login. No credentials read or copied yet.	(true, true) => "Choose a local OpenAI or Claude login. No credentials read or copied yet.",
+99	crates/jcode-tui/src/tui/app/auth_remote/onboarding.rs	290	Use the normal login options on the remote host instead.	(true, false) => "Use the normal login options on the remote host instead.",
+100	crates/jcode-tui/src/tui/app/auth_remote/onboarding.rs	291	Copy this selected login automatically to the trusted host above. No tokens to paste.	(false, true) => "Copy this selected login automatically to the trusted host above. No tokens to paste.",
+101	crates/jcode-tui/src/tui/app/auth_remote/onboarding.rs	292	Cancel without reading or copying local credentials.	(false, false) => "Cancel without reading or copying local credentials.",
+102	crates/jcode-tui/src/tui/app/auth_remote/onboarding.rs	318	Choose Yes or No with arrows (or Y/N), then Enter. Esc cancels.	self.set_status_notice("Choose Yes or No with arrows (or Y/N), then Enter. Esc cancels.");
+103	crates/jcode-tui/src/tui/app/auth_remote/picker.rs	9	 Google OAuth client credentials must already be configured on the SSH host.	" Google OAuth client credentials must already be configured on the SSH host."
+104	crates/jcode-tui/src/tui/app/auth_remote/picker.rs	14	Browser approval opens on this computer, credentials stay on the SSH host.{prerequisite} /login {}	"Browser approval opens on this computer, credentials stay on the SSH host.{prerequisite} /login {}",
+105	crates/jcode-tui/src/tui/app/auth_remote/picker.rs	34	checking remote	api_method: "checking remote".into(),
+106	crates/jcode-tui/src/tui/app/auth_remote/picker.rs	37	Destination: {host}. Checking remote login status. {} · {}	"Destination: {host}. Checking remote login status. {} · {}",
+107	crates/jcode-tui/src/tui/app/auth_remote/picker.rs	53	Import local {label} login	format!("Import local {label} login"),
+108	crates/jcode-tui/src/tui/app/auth_remote/picker.rs	59	Destination: {host}. One-time copy of your selected Jcode-managed {provider} account. Confirmation required. No local credentials read yet. Existing remote logins are never overwritten.	"Destination: {host}. One-time copy of your selected Jcode-managed {provider} account. Confirmation required. No local credentials read yet. Existing remote logins are never overwritten."
+109	crates/jcode-tui/src/tui/app/auth_remote/picker.rs	109	OpenAI	import_entry("openai", "OpenAI", host),
+110	crates/jcode-tui/src/tui/app/auth_remote/picker.rs	110	Claude	import_entry("claude", "Claude", host),
+111	crates/jcode-tui/src/tui/app/auth_remote/picker.rs	124	Login on {host}: choose a provider or Import local login. Some methods require setup directly on the SSH host. Esc cancels.	"Login on {host}: choose a provider or Import local login. Some methods require setup directly on the SSH host. Esc cancels."
+112	crates/jcode-tui/src/tui/app/auth_remote/picker.rs	171	status unknown	None => "status unknown",
+113	crates/jcode-tui/src/tui/app/auth_remote/picker.rs	179	Destination: {host}. Remote status: {label} ({}). {} · {}	"Destination: {host}. Remote status: {label} ({}). {} · {}",
+114	crates/jcode-tui/src/tui/app/auth_remote/picker.rs	182	could not read remote status; reopen /login to retry	.unwrap_or("could not read remote status; reopen /login to retry"),
+115	crates/jcode-tui/src/tui/app/auth_tests.rs	49	http://127.0.0.1:51121/oauth-callback?code=abc&state=expected_state	"http://127.0.0.1:51121/oauth-callback?code=abc&state=expected_state",
+116	crates/jcode-tui/src/tui/app/auth_tests.rs	57	could not open a browser	assert!(message.contains("could not open a browser"));
+117	crates/jcode-tui/src/tui/app/auth_tests.rs	58	auth doctor openai	assert!(message.contains("auth doctor openai"));
+118	crates/jcode-tui/src/tui/app/auth_tests.rs	66	http://127.0.0.1:0/oauth2callback	Some("http://127.0.0.1:0/oauth2callback"),
+119	crates/jcode-tui/src/tui/app/auth_tests.rs	89	github.com/1jehuang/jcode	assert!(resolved.setup_url.contains("github.com/1jehuang/jcode"));
+120	crates/jcode-tui/src/tui/app/auth_tests.rs	101	 sk-test-tui-login 	" sk-test-tui-login ",

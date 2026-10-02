@@ -1,0 +1,120 @@
+1	crates/jcode-tui/src/tui/ui_onboarding.rs	305	No	Span::styled(center_cell("No"), header_style),
+2	crates/jcode-tui/src/tui/ui_onboarding.rs	360	jcode collects anonymous usage statistics (version, OS, session	"jcode collects anonymous usage statistics (version, OS, session",
+3	crates/jcode-tui/src/tui/ui_onboarding.rs	361	activity, and crash reasons). No code, prompts, or personal data.	"activity, and crash reasons). No code, prompts, or personal data.",
+4	crates/jcode-tui/src/tui/ui_onboarding.rs	362	Change anytime: /telemetry (or export JCODE_NO_TELEMETRY=1)	"Change anytime: /telemetry (or export JCODE_NO_TELEMETRY=1)",
+5	crates/jcode-tui/src/tui/ui_onboarding.rs	384	Welcome to jcode onboarding	"Welcome to jcode onboarding",
+6	crates/jcode-tui/src/tui/ui_onboarding.rs	397	Use your keyboard to navigate.	"Use your keyboard to navigate.",
+7	crates/jcode-tui/src/tui/ui_onboarding.rs	421	log in again	// the user to "log in again" right after they chose to import.
+8	crates/jcode-tui/src/tui/ui_onboarding.rs	424	Importing your logins…	"Importing your logins…",
+9	crates/jcode-tui/src/tui/ui_onboarding.rs	433	Hang tight, this only takes a moment.	"Hang tight, this only takes a moment.",
+10	crates/jcode-tui/src/tui/ui_onboarding.rs	445	We couldn't import those logins.	"We couldn't import those logins.",
+11	crates/jcode-tui/src/tui/ui_onboarding.rs	461	No problem - you can log in directly.	"No problem - you can log in directly.",
+12	crates/jcode-tui/src/tui/ui_onboarding.rs	470	Press Enter to choose a provider (OpenAI, Anthropic, and more).	"Press Enter to choose a provider (OpenAI, Anthropic, and more).",
+13	crates/jcode-tui/src/tui/ui_onboarding.rs	481	Press H to have {agent} help fix this for you.	format!("Press H to have {agent} help fix this for you."),
+14	crates/jcode-tui/src/tui/ui_onboarding.rs	491	First, log in to get started.	"First, log in to get started.",
+15	crates/jcode-tui/src/tui/ui_onboarding.rs	500	Press Enter to pick who to log in with (OpenAI, Anthropic, and more).	"Press Enter to pick who to log in with (OpenAI, Anthropic, and more).",
+16	crates/jcode-tui/src/tui/ui_onboarding.rs	519	Continue	// preselected "Continue" pill that imports everything.
+17	crates/jcode-tui/src/tui/ui_onboarding.rs	520	Import less	// "Import less" opens the per-login list; "Telemetry
+18	crates/jcode-tui/src/tui/ui_onboarding.rs	526	Choose how to get started. We found {found} existing login{}:	"Choose how to get started. We found {found} existing login{}:",
+19	crates/jcode-tui/src/tui/ui_onboarding.rs	541	$10 to $20 inference, $20 to $40; then provider API prices. Scales through Solo.	"$10 to $20 inference, $20 to $40; then provider API prices. Scales through Solo.",
+20	crates/jcode-tui/src/tui/ui_onboarding.rs	548	Import:	// Choose mode: a short "Import:" label, the Continue pill,
+21	crates/jcode-tui/src/tui/ui_onboarding.rs	554	Import:	"Import:",
+22	crates/jcode-tui/src/tui/ui_onboarding.rs	568	Yes	// Per-login rows: each provider has a Yes/No choice, "Yes"
+23	crates/jcode-tui/src/tui/ui_onboarding.rs	579	Log in to OpenAI?	"Log in to OpenAI?",
+24	crates/jcode-tui/src/tui/ui_onboarding.rs	592	choose No to skip	// so we don't repeat a "choose No to skip" line here.
+25	crates/jcode-tui/src/tui/ui_onboarding.rs	604	Continue where you left off in {cli_label}?	format!("Continue where you left off in {cli_label}?"),
+26	crates/jcode-tui/src/tui/ui_onboarding.rs	619	Opens the resume menu automatically in {seconds_left}s…	format!("Opens the resume menu automatically in {seconds_left}s…"),
+27	crates/jcode-tui/src/tui/ui_onboarding.rs	644	(type {})	format!("(type {})", prompt),
+28	crates/jcode-tui/src/tui/ui_onboarding.rs	663	Press 1-{} or type anything to start	format!("Press 1-{} or type anything to start", suggestions.len()),
+29	crates/jcode-tui/src/tui/ui_overlays.rs	28	No changelog entries available.	"No changelog entries available.",
+30	crates/jcode-tui/src/tui/ui_overlays.rs	70	 Changelog {} 	let title = format!(" Changelog {} ", scroll_info);
+31	crates/jcode-tui/src/tui/ui_overlays.rs	79	 Esc to close · drag to select, release to copy · wheel/j/k scroll 	" Esc to close · drag to select, release to copy · wheel/j/k scroll ",
+32	crates/jcode-tui/src/tui/ui_overlays.rs	178	  Commands	lines.push(Line::from(Span::styled("  Commands", section_style)));
+33	crates/jcode-tui/src/tui/ui_overlays.rs	180	/help	lines.push(help_entry("/help", "Show this help overlay"));
+34	crates/jcode-tui/src/tui/ui_overlays.rs	180	Show this help overlay	lines.push(help_entry("/help", "Show this help overlay"));
+35	crates/jcode-tui/src/tui/ui_overlays.rs	182	/help <command>	"/help <command>",
+36	crates/jcode-tui/src/tui/ui_overlays.rs	183	Show details for one command	"Show details for one command",
+37	crates/jcode-tui/src/tui/ui_overlays.rs	185	/model	lines.push(help_entry("/model", "List or switch models"));
+38	crates/jcode-tui/src/tui/ui_overlays.rs	185	List or switch models	lines.push(help_entry("/model", "List or switch models"));
+39	crates/jcode-tui/src/tui/ui_overlays.rs	186	/model <name>	lines.push(help_entry("/model <name>", "Switch to a different model"));
+40	crates/jcode-tui/src/tui/ui_overlays.rs	186	Switch to a different model	lines.push(help_entry("/model <name>", "Switch to a different model"));
+41	crates/jcode-tui/src/tui/ui_overlays.rs	188	/provider-test-coverage	"/provider-test-coverage",
+42	crates/jcode-tui/src/tui/ui_overlays.rs	189	Show live-test evidence for the current provider/model	"Show live-test evidence for the current provider/model",
+43	crates/jcode-tui/src/tui/ui_overlays.rs	191	/agents	lines.push(help_entry("/agents", "Configure models for agent roles"));
+44	crates/jcode-tui/src/tui/ui_overlays.rs	191	Configure models for agent roles	lines.push(help_entry("/agents", "Configure models for agent roles"));
+45	crates/jcode-tui/src/tui/ui_overlays.rs	193	/swarm-prompt	"/swarm-prompt",
+46	crates/jcode-tui/src/tui/ui_overlays.rs	194	Open the active swarm routing prompt in your editor	"Open the active swarm routing prompt in your editor",
+47	crates/jcode-tui/src/tui/ui_overlays.rs	197	/effort <level>	"/effort <level>",
+48	crates/jcode-tui/src/tui/ui_overlays.rs	198	Set effort (none|minimal|low|medium|high|xhigh|max|swarm|swarm-deep)	"Set effort (none|minimal|low|medium|high|xhigh|max|swarm|swarm-deep)",
+49	crates/jcode-tui/src/tui/ui_overlays.rs	201	/fast [on|off|status|default ...]	"/fast [on|off|status|default ...]",
+50	crates/jcode-tui/src/tui/ui_overlays.rs	202	Toggle fast mode	"Toggle fast mode",
+51	crates/jcode-tui/src/tui/ui_overlays.rs	205	/transport <mode>	"/transport <mode>",
+52	crates/jcode-tui/src/tui/ui_overlays.rs	206	Set connection transport (auto|https|websocket)	"Set connection transport (auto|https|websocket)",
+53	crates/jcode-tui/src/tui/ui_overlays.rs	209	/alignment [status|centered|left]	"/alignment [status|centered|left]",
+54	crates/jcode-tui/src/tui/ui_overlays.rs	210	Show or persist text alignment preference	"Show or persist text alignment preference",
+55	crates/jcode-tui/src/tui/ui_overlays.rs	213	/compact-notifications [status|on|off]	"/compact-notifications [status|on|off]",
+56	crates/jcode-tui/src/tui/ui_overlays.rs	214	Collapse swarm/file-activity notifications to one line	"Collapse swarm/file-activity notifications to one line",
+57	crates/jcode-tui/src/tui/ui_overlays.rs	217	/show-agentgrep-output [status|on|off]	"/show-agentgrep-output [status|on|off]",
+58	crates/jcode-tui/src/tui/ui_overlays.rs	218	Render full agentgrep search output inline in chat	"Render full agentgrep search output inline in chat",
+59	crates/jcode-tui/src/tui/ui_overlays.rs	220	/config	lines.push(help_entry("/config", "Show active configuration"));
+60	crates/jcode-tui/src/tui/ui_overlays.rs	220	Show active configuration	lines.push(help_entry("/config", "Show active configuration"));
+61	crates/jcode-tui/src/tui/ui_overlays.rs	221	/config init	lines.push(help_entry("/config init", "Create default config file"));
+62	crates/jcode-tui/src/tui/ui_overlays.rs	221	Create default config file	lines.push(help_entry("/config init", "Create default config file"));
+63	crates/jcode-tui/src/tui/ui_overlays.rs	222	/config edit	lines.push(help_entry("/config edit", "Open config in $EDITOR"));
+64	crates/jcode-tui/src/tui/ui_overlays.rs	222	Open config in $EDITOR	lines.push(help_entry("/config edit", "Open config in $EDITOR"));
+65	crates/jcode-tui/src/tui/ui_overlays.rs	223	/dictate	lines.push(help_entry("/dictate", "Run configured external dictation"));
+66	crates/jcode-tui/src/tui/ui_overlays.rs	223	Run configured external dictation	lines.push(help_entry("/dictate", "Run configured external dictation"));
+67	crates/jcode-tui/src/tui/ui_overlays.rs	225	/git [status]	"/git [status]",
+68	crates/jcode-tui/src/tui/ui_overlays.rs	226	Show branch and working tree status for the repo	"Show branch and working tree status for the repo",
+69	crates/jcode-tui/src/tui/ui_overlays.rs	229	/context	"/context",
+70	crates/jcode-tui/src/tui/ui_overlays.rs	230	Show the full session context snapshot	"Show the full session context snapshot",
+71	crates/jcode-tui/src/tui/ui_overlays.rs	233	/skills	"/skills",
+72	crates/jcode-tui/src/tui/ui_overlays.rs	234	Show loaded skills and jcode-endorsed recommendations	"Show loaded skills and jcode-endorsed recommendations",
+73	crates/jcode-tui/src/tui/ui_overlays.rs	236	/info	lines.push(help_entry("/info", "Show session info and token usage"));
+74	crates/jcode-tui/src/tui/ui_overlays.rs	236	Show session info and token usage	lines.push(help_entry("/info", "Show session info and token usage"));
+75	crates/jcode-tui/src/tui/ui_overlays.rs	238	/keys	"/keys",
+76	crates/jcode-tui/src/tui/ui_overlays.rs	239	Show keybinding conflicts with your terminal/OS	"Show keybinding conflicts with your terminal/OS",
+77	crates/jcode-tui/src/tui/ui_overlays.rs	241	/usage	lines.push(help_entry("/usage", "Show connected provider usage limits"));
+78	crates/jcode-tui/src/tui/ui_overlays.rs	241	Show connected provider usage limits	lines.push(help_entry("/usage", "Show connected provider usage limits"));
+79	crates/jcode-tui/src/tui/ui_overlays.rs	243	/support	"/support",
+80	crates/jcode-tui/src/tui/ui_overlays.rs	244	Email support with diagnostics prefilled	"Email support with diagnostics prefilled",
+81	crates/jcode-tui/src/tui/ui_overlays.rs	246	/version	lines.push(help_entry("/version", "Show version and build details"));
+82	crates/jcode-tui/src/tui/ui_overlays.rs	246	Show version and build details	lines.push(help_entry("/version", "Show version and build details"));
+83	crates/jcode-tui/src/tui/ui_overlays.rs	248	/changelog	"/changelog",
+84	crates/jcode-tui/src/tui/ui_overlays.rs	249	Show recent changes in this build	"Show recent changes in this build",
+85	crates/jcode-tui/src/tui/ui_overlays.rs	256	  Session	lines.push(Line::from(Span::styled("  Session", section_style)));
+86	crates/jcode-tui/src/tui/ui_overlays.rs	258	/clear	lines.push(help_entry("/clear", "Clear conversation and start fresh"));
+87	crates/jcode-tui/src/tui/ui_overlays.rs	258	Clear conversation and start fresh	lines.push(help_entry("/clear", "Clear conversation and start fresh"));
+88	crates/jcode-tui/src/tui/ui_overlays.rs	260	/compact	"/compact",
+89	crates/jcode-tui/src/tui/ui_overlays.rs	261	Summarize old messages to free context	"Summarize old messages to free context",
+90	crates/jcode-tui/src/tui/ui_overlays.rs	264	/rewind	"/rewind",
+91	crates/jcode-tui/src/tui/ui_overlays.rs	265	Show numbered history, /rewind N to rewind	"Show numbered history, /rewind N to rewind",
+92	crates/jcode-tui/src/tui/ui_overlays.rs	268	/fix	"/fix",
+93	crates/jcode-tui/src/tui/ui_overlays.rs	269	Attempt recovery when model cannot continue	"Attempt recovery when model cannot continue",
+94	crates/jcode-tui/src/tui/ui_overlays.rs	272	/poke	"/poke",
+95	crates/jcode-tui/src/tui/ui_overlays.rs	273	Poke model to resume with incomplete todos (on/off/status)	"Poke model to resume with incomplete todos (on/off/status)",
+96	crates/jcode-tui/src/tui/ui_overlays.rs	276	/plan [goal]	"/plan [goal]",
+97	crates/jcode-tui/src/tui/ui_overlays.rs	277	Draft a plan-only proposal as a plan card (no edits)	"Draft a plan-only proposal as a plan card (no edits)",
+98	crates/jcode-tui/src/tui/ui_overlays.rs	280	/improve	"/improve",
+99	crates/jcode-tui/src/tui/ui_overlays.rs	281	Autonomously improve the repo until returns diminish	"Autonomously improve the repo until returns diminish",
+100	crates/jcode-tui/src/tui/ui_overlays.rs	284	/improve resume	"/improve resume",
+101	crates/jcode-tui/src/tui/ui_overlays.rs	285	Resume the last saved improve loop/plan	"Resume the last saved improve loop/plan",
+102	crates/jcode-tui/src/tui/ui_overlays.rs	288	/refactor	"/refactor",
+103	crates/jcode-tui/src/tui/ui_overlays.rs	289	Run a safe refactor loop with independent review	"Run a safe refactor loop with independent review",
+104	crates/jcode-tui/src/tui/ui_overlays.rs	292	/refactor resume	"/refactor resume",
+105	crates/jcode-tui/src/tui/ui_overlays.rs	293	Resume the last saved refactor loop/plan	"Resume the last saved refactor loop/plan",
+106	crates/jcode-tui/src/tui/ui_overlays.rs	296	/splitview [on|off|status]	"/splitview [on|off|status]",
+107	crates/jcode-tui/src/tui/ui_overlays.rs	297	Mirror the current chat in the side panel	"Mirror the current chat in the side panel",
+108	crates/jcode-tui/src/tui/ui_overlays.rs	300	/fork [prompt]	"/fork [prompt]",
+109	crates/jcode-tui/src/tui/ui_overlays.rs	301	Fork session into a new window (alias: /split)	"Fork session into a new window (alias: /split)",
+110	crates/jcode-tui/src/tui/ui_overlays.rs	304	/transfer	"/transfer",
+111	crates/jcode-tui/src/tui/ui_overlays.rs	305	Open a fresh session with only compacted context + copied todos	"Open a fresh session with only compacted context + copied todos",
+112	crates/jcode-tui/src/tui/ui_overlays.rs	308	/workspace [status|on|off|add]	"/workspace [status|on|off|add]",
+113	crates/jcode-tui/src/tui/ui_overlays.rs	309	Enable and manage the Niri-style session workspace	"Enable and manage the Niri-style session workspace",
+114	crates/jcode-tui/src/tui/ui_overlays.rs	312	/catchup [next|list]	"/catchup [next|list]",
+115	crates/jcode-tui/src/tui/ui_overlays.rs	313	Jump to finished sessions and open a Catch Up brief	"Jump to finished sessions and open a Catch Up brief",
+116	crates/jcode-tui/src/tui/ui_overlays.rs	316	/back	"/back",
+117	crates/jcode-tui/src/tui/ui_overlays.rs	317	Return to the previous Catch Up source session	"Return to the previous Catch Up source session",
+118	crates/jcode-tui/src/tui/ui_overlays.rs	319	/resume	lines.push(help_entry("/resume", "Browse and resume previous sessions"));
+119	crates/jcode-tui/src/tui/ui_overlays.rs	319	Browse and resume previous sessions	lines.push(help_entry("/resume", "Browse and resume previous sessions"));
+120	crates/jcode-tui/src/tui/ui_overlays.rs	321	/active	"/active",

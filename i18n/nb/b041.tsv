@@ -1,0 +1,40 @@
+1	crates/jcode-tui/src/tui/app/input.rs	921	No text or image in clipboard	self.set_status_notice("No text or image in clipboard");
+2	crates/jcode-tui/src/tui/app/input.rs	924	No image in clipboard	self.set_status_notice("No image in clipboard")
+3	crates/jcode-tui/src/tui/app/input.rs	930	Failed to download image	self.set_status_notice("Failed to download image");
+4	crates/jcode-tui/src/tui/app/input.rs	1447	Input cleared - Ctrl+Z to restore	app.set_status_notice("Input cleared - Ctrl+Z to restore");
+5	crates/jcode-tui/src/tui/app/input.rs	1500	Retrieved {} pending message{} for editing	"Retrieved {} pending message{} for editing",
+6	crates/jcode-tui/src/tui/app/input.rs	1574	Stopping auto-poke after {} consecutive provider guardrail stops (cleared {} queued poke message(s), overnight={})	"Stopping auto-poke after {} consecutive provider guardrail stops (cleared {} queued poke message(s), overnight={})",
+7	crates/jcode-tui/src/tui/app/input.rs	1578	🛑 The provider refused {} turns in a row, so we stopped poking. The same request will keep getting refused. Rephrase or narrow the task, then /poke to resume.	"🛑 The provider refused {} turns in a row, so we stopped poking. The same request will keep getting refused. Rephrase or narrow the task, then /poke to resume.",
+8	crates/jcode-tui/src/tui/app/input.rs	1581	Poke stopped: provider guardrail	self.set_status_notice("Poke stopped: provider guardrail");
+9	crates/jcode-tui/src/tui/app/input.rs	1624	TODO_GATE_DIGEST action=skip reason=nothing_to_report observations={}	"TODO_GATE_DIGEST action=skip reason=nothing_to_report observations={}",
+10	crates/jcode-tui/src/tui/app/input.rs	1635	🔎 We asked the agent to double-check this turn's weak points.	"🔎 We asked the agent to double-check this turn's weak points.",
+11	crates/jcode-tui/src/tui/app/input.rs	1661	🔍 Rechecking the plan and assessments after extended work...	"🔍 Rechecking the plan and assessments after extended work...",
+12	crates/jcode-tui/src/tui/app/input.rs	1685	AUTO_POKE_DECISION action=idle reason=no_todos incomplete=0	crate::logging::info("AUTO_POKE_DECISION action=idle reason=no_todos incomplete=0");
+13	crates/jcode-tui/src/tui/app/input.rs	1724	🔍 Checking end-to-end ownership before finishing...	"🔍 Checking end-to-end ownership before finishing...",
+14	crates/jcode-tui/src/tui/app/input.rs	1776	⚠️ We nudged the agent several times but its validation still isn't holding up. We stopped poking; review the remaining todos yourself.	"⚠️ We nudged the agent several times but its validation still isn't holding up. We stopped poking; review the remaining todos yourself.",
+15	crates/jcode-tui/src/tui/app/input.rs	1796	✅ All todos done. Completion confidence: {}.	"✅ All todos done. Completion confidence: {}.",
+16	crates/jcode-tui/src/tui/app/input.rs	1826	👉 {} incomplete todo{}. We poked it for you. /poke off to stop.	"👉 {} incomplete todo{}. We poked it for you. /poke off to stop.",
+17	crates/jcode-tui/src/tui/app/input.rs	1862	Next prompt → new session	self.set_status_notice("Next prompt → new session");
+18	crates/jcode-tui/src/tui/app/input.rs	1864	Next-prompt new session canceled	self.set_status_notice("Next-prompt new session canceled");
+19	crates/jcode-tui/src/tui/app/input.rs	1901	Opening a sibling terminal	if super::commands_dispatch::ssh_local_action_blocked(self, "Opening a sibling terminal") {
+20	crates/jcode-tui/src/tui/app/input.rs	1909	↗ New terminal opened	Ok(true) => self.set_status_notice("↗ New terminal opened"),
+21	crates/jcode-tui/src/tui/app/input.rs	1911	No supported terminal found; run `jcode` manually	self.set_status_notice("No supported terminal found; run `jcode` manually")
+22	crates/jcode-tui/src/tui/app/input.rs	1913	New terminal failed: {}	Err(error) => self.set_status_notice(format!("New terminal failed: {}", error)),
+23	crates/jcode-tui/src/tui/app/input.rs	1957	Prompt launch failed	app.set_status_notice("Prompt launch failed");
+24	crates/jcode-tui/src/tui/app/input.rs	1959	Failed to launch prompt in a new session: {}	"Failed to launch prompt in a new session: {}",
+25	crates/jcode-tui/src/tui/app/input.rs	2045	Immediate mode: messages send next (no interrupt)	"Immediate mode: messages send next (no interrupt)"
+26	crates/jcode-tui/src/tui/app/input.rs	2247	Diffs: {}	let status = format!("Diffs: {}", app.diff_mode.label());
+27	crates/jcode-tui/src/tui/app/input.rs	2402	Dictation setup	if super::commands_dispatch::ssh_local_action_blocked(app, "Dictation setup") {
+28	crates/jcode-tui/src/tui/app/input.rs	2415	Swarm view closed	app.set_status_notice("Swarm view closed");
+29	crates/jcode-tui/src/tui/app/input.rs	2418	full page	app.set_status_notice(crate::tui::keybind::swarm_view_hint("full page"));
+30	crates/jcode-tui/src/tui/app/input.rs	2532	Failed to copy {}	app.set_status_notice(format!("Failed to copy {}", target.kind_label));
+31	crates/jcode-tui/src/tui/app/input.rs	2603	Expanded edit diffs · Diffs: {}	"Expanded edit diffs · Diffs: {}",
+32	crates/jcode-tui/src/tui/app/input.rs	2629	Local login picker	if super::commands_dispatch::ssh_local_action_blocked(app, "Local login picker") {
+33	crates/jcode-tui/src/tui/app/input.rs	2638	Local account picker	if super::commands_dispatch::ssh_local_action_blocked(app, "Local account picker") {
+34	crates/jcode-tui/src/tui/app/input.rs	2725	Interrupting... Overnight cancelled	app.set_status_notice("Interrupting... Overnight cancelled");
+35	crates/jcode-tui/src/tui/app/input.rs	2727	Interrupting...	app.set_status_notice("Interrupting...");
+36	crates/jcode-tui/src/tui/app/input.rs	2867	Interrupting... Auto-poke OFF, overnight cancelled	app.set_status_notice("Interrupting... Auto-poke OFF, overnight cancelled");
+37	crates/jcode-tui/src/tui/app/input.rs	2869	Interrupting... Auto-poke OFF	app.set_status_notice("Interrupting... Auto-poke OFF");
+38	crates/jcode-tui/src/tui/app/input.rs	2872	Interrupting... Overnight cancelled	app.set_status_notice("Interrupting... Overnight cancelled");
+39	crates/jcode-tui/src/tui/app/input.rs	2874	Interrupting...	app.set_status_notice("Interrupting...");
+40	crates/jcode-tui/src/tui/app/input.rs	2908	⏭ Sending now (interleave)	app.set_status_notice("⏭ Sending now (interleave)");

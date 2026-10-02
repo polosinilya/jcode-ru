@@ -1,0 +1,120 @@
+1	crates/jcode-tui/src/tui/app/inline_interactive.rs	3469	Claude Opus 5 (high)	// effort-qualified entry (e.g. "Claude Opus 5 (high)")
+2	crates/jcode-tui/src/tui/app/inline_interactive.rs	3474	claude-api	Some("claude-oauth") | Some("claude-api") => {
+3	crates/jcode-tui/src/tui/app/inline_interactive.rs	3474	claude-oauth	Some("claude-oauth") | Some("claude-api") => {
+4	crates/jcode-tui/src/tui/app/inline_interactive.rs	3479	openai-api	Some("openai-oauth") | Some("openai-api") => {
+5	crates/jcode-tui/src/tui/app/inline_interactive.rs	3479	openai-oauth	Some("openai-oauth") | Some("openai-api") => {
+6	crates/jcode-tui/src/tui/app/inline_interactive.rs	3488	Saved default model, but failed to save effort: {}	"Saved default model, but failed to save effort: {}",
+7	crates/jcode-tui/src/tui/app/inline_interactive.rs	3503	Saved default model: {} via {}. This affects future sessions.	"Saved default model: {} via {}. This affects future sessions.",
+8	crates/jcode-tui/src/tui/app/inline_interactive.rs	3509	Failed to save default: {}	Err(e) => self.set_status_notice(format!("Failed to save default: {}", e)),
+9	crates/jcode-tui/src/tui/app/inline_interactive.rs	3540	Local account or agent-model picker	"Local account or agent-model picker",
+10	crates/jcode-tui/src/tui/app/inline_interactive.rs	3560	not available	"not available".to_string()
+11	crates/jcode-tui/src/tui/app/inline_interactive.rs	3602	status: {}	content.push(format!("status: {}", status.label_for_display()));
+12	crates/jcode-tui/src/tui/app/inline_interactive.rs	3605	Usage → {}	self.set_status_notice(format!("Usage → {}", title));
+13	crates/jcode-tui/src/tui/app/inline_interactive.rs	3626	{} model override cleared. It now inherits `{}`.	"{} model override cleared. It now inherits `{}`.",
+14	crates/jcode-tui/src/tui/app/inline_interactive.rs	3630	{} model: inherit	self.set_status_notice(format!("{} model: inherit", label));
+15	crates/jcode-tui/src/tui/app/inline_interactive.rs	3634	Saved {} model override: `{}`.	"Saved {} model override: `{}`.",
+16	crates/jcode-tui/src/tui/app/inline_interactive.rs	3637	{} model → {}	self.set_status_notice(format!("{} model → {}", label, spec));
+17	crates/jcode-tui/src/tui/app/inline_interactive.rs	3642	Failed to save {} model override: {}	"Failed to save {} model override: {}",
+18	crates/jcode-tui/src/tui/app/inline_interactive.rs	3646	Agent model save failed	self.set_status_notice("Agent model save failed");
+19	crates/jcode-tui/src/tui/app/inline_interactive.rs	3654	Subagent model: inherit	self.set_status_notice("Subagent model: inherit");
+20	crates/jcode-tui/src/tui/app/inline_interactive.rs	3656	Subagent model reset to inherit the current model ({}).	"Subagent model reset to inherit the current model ({}).",
+21	crates/jcode-tui/src/tui/app/inline_interactive.rs	3662	Subagent model → {}	self.set_status_notice(format!("Subagent model → {}", spec));
+22	crates/jcode-tui/src/tui/app/inline_interactive.rs	3664	Subagent model pinned to {} for this session.	"Subagent model pinned to {} for this session.",
+23	crates/jcode-tui/src/tui/app/inline_interactive.rs	3680	Model unavailable	self.set_status_notice("Model unavailable");
+24	crates/jcode-tui/src/tui/app/inline_interactive.rs	3700	remote-catalog	// Placeholder routes ("remote-catalog"/"current") are
+25	crates/jcode-tui/src/tui/app/inline_interactive.rs	3811	Model switch failed	self.set_status_notice("Model switch failed");
+26	crates/jcode-tui/src/tui/app/inline_interactive.rs	3962	remote-provider	app.remote_provider_name = Some("remote-provider".to_string());
+27	crates/jcode-tui/src/tui/app/inline_interactive.rs	3963	remote-test-model	app.remote_provider_model = Some("remote-test-model".to_string());
+28	crates/jcode-tui/src/tui/app/inline_interactive.rs	3964	remote-test-model	app.remote_available_entries = vec!["remote-test-model".to_string()];
+29	crates/jcode-tui/src/tui/app/inline_interactive.rs	3968	remote-test-model	assert_eq!(routes[0].model, "remote-test-model");
+30	crates/jcode-tui/src/tui/app/inline_interactive.rs	3969	remote-catalog	assert_eq!(routes[0].api_method, "remote-catalog");
+31	crates/jcode-tui/src/tui/app/inline_interactive.rs	3984	Saving a default model	.contains("Saving a default model")
+32	crates/jcode-tui/src/tui/app/inline_interactive.rs	4060	OpenAI	entries: vec![picker_entry("gpt-5.5", "OpenAI", 0)],
+33	crates/jcode-tui/src/tui/app/inline_interactive.rs	4085	claude-opus-5	("claude-opus-5", "high", 2550),
+34	crates/jcode-tui/src/tui/app/inline_interactive.rs	4086	claude-opus-4-8	("claude-opus-4-8", "high", 950),
+35	crates/jcode-tui/src/tui/app/inline_interactive.rs	4087	claude-opus-4-8	("claude-opus-4-8", "medium", 0),
+36	crates/jcode-tui/src/tui/app/inline_interactive.rs	4088	claude-opus-4-8	("claude-opus-4-8", "low", 0),
+37	crates/jcode-tui/src/tui/app/inline_interactive.rs	4090	claude-opus-5 (high)	let mut current_name = "claude-opus-5 (high)".to_string();
+38	crates/jcode-tui/src/tui/app/inline_interactive.rs	4102	{model} ({effort_label})	&format!("{model} ({effort_label})"),
+39	crates/jcode-tui/src/tui/app/inline_interactive.rs	4103	Anthropic	"Anthropic",
+40	crates/jcode-tui/src/tui/app/inline_interactive.rs	4130	a favorited model should be selectable	.expect("a favorited model should be selectable");
+41	crates/jcode-tui/src/tui/app/inline_interactive.rs	4138	claude-opus-4-8 (high)	"claude-opus-4-8 (high)",
+42	crates/jcode-tui/src/tui/app/inline_interactive.rs	4139	claude-opus-4-8 (low)	"claude-opus-4-8 (low)",
+43	crates/jcode-tui/src/tui/app/inline_interactive.rs	4140	claude-opus-4-8 (med)	"claude-opus-4-8 (med)",
+44	crates/jcode-tui/src/tui/app/inline_interactive.rs	4141	claude-opus-5 (high)	"claude-opus-5 (high)",
+45	crates/jcode-tui/src/tui/app/inline_interactive.rs	4152	Cursor	picker_entry("claude-opus-4.6", "Cursor", 0),
+46	crates/jcode-tui/src/tui/app/inline_interactive.rs	4152	claude-opus-4.6	picker_entry("claude-opus-4.6", "Cursor", 0),
+47	crates/jcode-tui/src/tui/app/inline_interactive.rs	4153	Anthropic	picker_entry("claude-opus-4.5", "Anthropic", 150),
+48	crates/jcode-tui/src/tui/app/inline_interactive.rs	4153	claude-opus-4.5	picker_entry("claude-opus-4.5", "Anthropic", 150),
+49	crates/jcode-tui/src/tui/app/inline_interactive.rs	4172	OpenAI	picker_entry("gpt-5-codex", "OpenAI", 0),
+50	crates/jcode-tui/src/tui/app/inline_interactive.rs	4173	Anthropic	picker_entry("claude-opus-4.6", "Anthropic", 0),
+51	crates/jcode-tui/src/tui/app/inline_interactive.rs	4173	claude-opus-4.6	picker_entry("claude-opus-4.6", "Anthropic", 0),
+52	crates/jcode-tui/src/tui/app/inline_interactive.rs	4192	OpenAI	picker_entry("gpt-5.5", "OpenAI", 150),
+53	crates/jcode-tui/src/tui/app/inline_interactive.rs	4193	OpenAI	picker_entry("gpt-5", "OpenAI", 0),
+54	crates/jcode-tui/src/tui/app/inline_interactive.rs	4208	OpenAI	let openai_route = picker_option("OpenAI");
+55	crates/jcode-tui/src/tui/app/inline_interactive.rs	4209	Copilot	let copilot_route = picker_option("Copilot");
+56	crates/jcode-tui/src/tui/app/inline_interactive.rs	4215	OpenAI	"OpenAI",
+57	crates/jcode-tui/src/tui/app/inline_interactive.rs	4222	OpenAI	"OpenAI",
+58	crates/jcode-tui/src/tui/app/inline_interactive.rs	4229	Anthropic	let oauth_route = picker_option_with_method("Anthropic", "claude-oauth");
+59	crates/jcode-tui/src/tui/app/inline_interactive.rs	4229	claude-oauth	let oauth_route = picker_option_with_method("Anthropic", "claude-oauth");
+60	crates/jcode-tui/src/tui/app/inline_interactive.rs	4230	Anthropic	let api_key_route = picker_option_with_method("Anthropic", "claude-api");
+61	crates/jcode-tui/src/tui/app/inline_interactive.rs	4230	claude-api	let api_key_route = picker_option_with_method("Anthropic", "claude-api");
+62	crates/jcode-tui/src/tui/app/inline_interactive.rs	4233	claude-fable-5	"claude-fable-5",
+63	crates/jcode-tui/src/tui/app/inline_interactive.rs	4235	claude-fable-5	"claude-fable-5",
+64	crates/jcode-tui/src/tui/app/inline_interactive.rs	4236	Claude	"Claude",
+65	crates/jcode-tui/src/tui/app/inline_interactive.rs	4237	claude-api	Some("claude-api"),
+66	crates/jcode-tui/src/tui/app/inline_interactive.rs	4240	claude-fable-5	"claude-fable-5",
+67	crates/jcode-tui/src/tui/app/inline_interactive.rs	4242	claude-fable-5	"claude-fable-5",
+68	crates/jcode-tui/src/tui/app/inline_interactive.rs	4243	Claude	"Claude",
+69	crates/jcode-tui/src/tui/app/inline_interactive.rs	4244	claude-api	Some("claude-api"),
+70	crates/jcode-tui/src/tui/app/inline_interactive.rs	4251	Anthropic	"Anthropic",
+71	crates/jcode-tui/src/tui/app/inline_interactive.rs	4252	Claude	"Claude"
+72	crates/jcode-tui/src/tui/app/inline_interactive.rs	4256	OpenRouter	"OpenRouter"
+73	crates/jcode-tui/src/tui/app/inline_interactive.rs	4259	GitHub Copilot	"GitHub Copilot",
+74	crates/jcode-tui/src/tui/app/inline_interactive.rs	4260	Copilot	"Copilot"
+75	crates/jcode-tui/src/tui/app/inline_interactive.rs	4271	OpenRouter/OpenAI	"OpenRouter/OpenAI",
+76	crates/jcode-tui/src/tui/app/inline_interactive.rs	4272	OpenAI	"OpenAI"
+77	crates/jcode-tui/src/tui/app/inline_interactive.rs	4275	OpenAI	"OpenAI",
+78	crates/jcode-tui/src/tui/app/inline_interactive.rs	4276	OpenRouter	"OpenRouter"
+79	crates/jcode-tui/src/tui/app/inline_interactive.rs	4282	OpenAI	let openai_route = picker_option_with_method("OpenAI", "openai-oauth");
+80	crates/jcode-tui/src/tui/app/inline_interactive.rs	4282	openai-oauth	let openai_route = picker_option_with_method("OpenAI", "openai-oauth");
+81	crates/jcode-tui/src/tui/app/inline_interactive.rs	4283	Copilot	let copilot_route = picker_option_with_method("Copilot", "copilot");
+82	crates/jcode-tui/src/tui/app/inline_interactive.rs	4301	anthropic-api	// Regression: config `default_provider = "anthropic-api"` is the
+83	crates/jcode-tui/src/tui/app/inline_interactive.rs	4306	Anthropic	let api_route = picker_option_with_method("Anthropic", "anthropic-api-key");
+84	crates/jcode-tui/src/tui/app/inline_interactive.rs	4306	anthropic-api-key	let api_route = picker_option_with_method("Anthropic", "anthropic-api-key");
+85	crates/jcode-tui/src/tui/app/inline_interactive.rs	4307	Anthropic	let oauth_route = picker_option_with_method("Anthropic", "claude-oauth");
+86	crates/jcode-tui/src/tui/app/inline_interactive.rs	4307	claude-oauth	let oauth_route = picker_option_with_method("Anthropic", "claude-oauth");
+87	crates/jcode-tui/src/tui/app/inline_interactive.rs	4310	claude-opus-4-8	"claude-opus-4-8",
+88	crates/jcode-tui/src/tui/app/inline_interactive.rs	4312	claude-opus-4-8	Some("claude-opus-4-8"),
+89	crates/jcode-tui/src/tui/app/inline_interactive.rs	4313	anthropic-api	Some("anthropic-api"),
+90	crates/jcode-tui/src/tui/app/inline_interactive.rs	4316	claude-opus-4-8	"claude-opus-4-8",
+91	crates/jcode-tui/src/tui/app/inline_interactive.rs	4318	claude-opus-4-8	Some("claude-opus-4-8"),
+92	crates/jcode-tui/src/tui/app/inline_interactive.rs	4319	anthropic-api	Some("anthropic-api"),
+93	crates/jcode-tui/src/tui/app/inline_interactive.rs	4324	claude-opus-4-8	"claude-opus-4-8",
+94	crates/jcode-tui/src/tui/app/inline_interactive.rs	4326	claude-opus-4-8	Some("claude-opus-4-8"),
+95	crates/jcode-tui/src/tui/app/inline_interactive.rs	4327	claude-api	Some("claude-api"),
+96	crates/jcode-tui/src/tui/app/inline_interactive.rs	4335	claude-oauth	Some("claude-oauth"),
+97	crates/jcode-tui/src/tui/app/inline_interactive.rs	4341	claude-oauth	Some("claude-oauth"),
+98	crates/jcode-tui/src/tui/app/inline_interactive.rs	4348	openai-oauth	Some("openai-oauth"),
+99	crates/jcode-tui/src/tui/app/inline_interactive.rs	4354	openai-api	Some("openai-api"),
+100	crates/jcode-tui/src/tui/app/inline_interactive.rs	4361	claude-oauth	Some("claude-oauth"),
+101	crates/jcode-tui/src/tui/app/inline_interactive.rs	4368	claude-oauth	Some("claude-oauth"),
+102	crates/jcode-tui/src/tui/app/inline_interactive.rs	4384	OpenAI	let openai_route = picker_option_with_method("OpenAI", "openai-oauth");
+103	crates/jcode-tui/src/tui/app/inline_interactive.rs	4384	openai-oauth	let openai_route = picker_option_with_method("OpenAI", "openai-oauth");
+104	crates/jcode-tui/src/tui/app/inline_interactive.rs	4385	Copilot	let copilot_route = picker_option_with_method("Copilot", "copilot");
+105	crates/jcode-tui/src/tui/app/inline_interactive.rs	4390	copilot:gpt-5.5	Some("copilot:gpt-5.5"),
+106	crates/jcode-tui/src/tui/app/inline_interactive.rs	4396	copilot:gpt-5.5	Some("copilot:gpt-5.5"),
+107	crates/jcode-tui/src/tui/app/inline_interactive.rs	4403	OpenAI	let openrouter_openai_route = picker_option_with_method("OpenAI", "openrouter");
+108	crates/jcode-tui/src/tui/app/inline_interactive.rs	4408	openai/gpt-5.5@OpenAI	Some("openai/gpt-5.5@OpenAI"),
+109	crates/jcode-tui/src/tui/app/inline_interactive.rs	4414	anthropic/gpt-5.5@OpenAI	Some("anthropic/gpt-5.5@OpenAI"),
+110	crates/jcode-tui/src/tui/app/inline_interactive.rs	4421	OpenAI	let openai_oauth_route = picker_option_with_method("OpenAI", "openai-oauth");
+111	crates/jcode-tui/src/tui/app/inline_interactive.rs	4421	openai-oauth	let openai_oauth_route = picker_option_with_method("OpenAI", "openai-oauth");
+112	crates/jcode-tui/src/tui/app/inline_interactive.rs	4422	OpenAI	let openai_api_key_route = picker_option_with_method("OpenAI", "openai-api-key");
+113	crates/jcode-tui/src/tui/app/inline_interactive.rs	4422	openai-api-key	let openai_api_key_route = picker_option_with_method("OpenAI", "openai-api-key");
+114	crates/jcode-tui/src/tui/app/inline_interactive.rs	4423	Copilot	let copilot_route = picker_option_with_method("Copilot", "copilot");
+115	crates/jcode-tui/src/tui/app/inline_interactive.rs	4424	Anthropic	let claude_oauth_route = picker_option_with_method("Anthropic", "claude-oauth");
+116	crates/jcode-tui/src/tui/app/inline_interactive.rs	4424	claude-oauth	let claude_oauth_route = picker_option_with_method("Anthropic", "claude-oauth");
+117	crates/jcode-tui/src/tui/app/inline_interactive.rs	4425	Anthropic	let claude_openrouter_route = picker_option_with_method("Anthropic", "openrouter");
+118	crates/jcode-tui/src/tui/app/inline_interactive.rs	4429	openai-compatible:deepseek	picker_option_with_method("DeepSeek", "openai-compatible:deepseek");
+119	crates/jcode-tui/src/tui/app/inline_interactive.rs	4456	claude-opus-4-8	"claude-opus-4-8",
+120	crates/jcode-tui/src/tui/app/inline_interactive.rs	4460	claude-opus-4-7	"claude-opus-4-7",

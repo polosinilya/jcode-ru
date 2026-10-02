@@ -1,0 +1,120 @@
+1	crates/jcode-tui/src/tui/session_picker.rs	1327	The picker will update as soon as the session index is ready.	"The picker will update as soon as the session index is ready.",
+2	crates/jcode-tui/src/tui/session_picker.rs	1343	 Preview 	.title(" Preview ")
+3	crates/jcode-tui/src/tui/session_picker.rs	1345	No session selected	let paragraph = Paragraph::new("No session selected")
+4	crates/jcode-tui/src/tui/session_picker.rs	1367	 Preview 	.title(" Preview ")
+5	crates/jcode-tui/src/tui/session_picker.rs	1405	preview cache populated above	.expect("preview cache populated above");
+6	crates/jcode-tui/src/tui/session_picker.rs	1420	Loading…	// background thread, in which case this frame only shows a "Loading…"
+7	crates/jcode-tui/src/tui/session_picker.rs	1424	previous prompt	// sticky "previous prompt" header that should appear once we snap to the
+8	crates/jcode-tui/src/tui/session_picker.rs	1458	preview cache populated above	.expect("preview cache populated above");
+9	crates/jcode-tui/src/tui/session_picker.rs	1467	previous prompt	// Sticky "previous prompt" header: when the view is scrolled past a user
+10	crates/jcode-tui/src/tui/session_picker.rs	1518	… 5m ago	// The status line shows a relative "… 5m ago" label derived from real
+11	crates/jcode-tui/src/tui/session_picker.rs	1591	closed {}	SessionStatus::Closed => format!("closed {}", ago),
+12	crates/jcode-tui/src/tui/session_picker.rs	1592	crashed {}	SessionStatus::Crashed { .. } => format!("crashed {}", ago),
+13	crates/jcode-tui/src/tui/session_picker.rs	1593	reloaded {}	SessionStatus::Reloaded => format!("reloaded {}", ago),
+14	crates/jcode-tui/src/tui/session_picker.rs	1594	compacted {}	SessionStatus::Compacted => format!("compacted {}", ago),
+15	crates/jcode-tui/src/tui/session_picker.rs	1595	rate-limited {}	SessionStatus::RateLimited => format!("rate-limited {}", ago),
+16	crates/jcode-tui/src/tui/session_picker.rs	1596	errored {}	SessionStatus::Error { .. } => format!("errored {}", ago),
+17	crates/jcode-tui/src/tui/session_picker.rs	1618	📌 Saved	"📌 Saved".to_string()
+18	crates/jcode-tui/src/tui/session_picker.rs	1642	Active	SessionStatus::Active => ("▶", "Active".to_string(), rgb(100, 200, 100)),
+19	crates/jcode-tui/src/tui/session_picker.rs	1643	Closed normally	SessionStatus::Closed => ("✓", "Closed normally".to_string(), Color::DarkGray),
+20	crates/jcode-tui/src/tui/session_picker.rs	1646	Crashed: {}	Some(msg) => format!("Crashed: {}", safe_truncate(msg, 80)),
+21	crates/jcode-tui/src/tui/session_picker.rs	1647	Crashed	None => "Crashed".to_string(),
+22	crates/jcode-tui/src/tui/session_picker.rs	1651	Reloaded	SessionStatus::Reloaded => ("🔄", "Reloaded".to_string(), rgb(138, 180, 248)),
+23	crates/jcode-tui/src/tui/session_picker.rs	1654	Compacted (context too large)	"Compacted (context too large)".to_string(),
+24	crates/jcode-tui/src/tui/session_picker.rs	1657	Rate limited	SessionStatus::RateLimited => ("⏳", "Rate limited".to_string(), rgb(186, 139, 255)),
+25	crates/jcode-tui/src/tui/session_picker.rs	1659	Error: {}	let text = format!("Error: {}", safe_truncate(message, 40));
+26	crates/jcode-tui/src/tui/session_picker.rs	1677	Included in batch restore	"Included in batch restore",
+27	crates/jcode-tui/src/tui/session_picker.rs	1689	✓ Selected for multi-resume	"✓ Selected for multi-resume",
+28	crates/jcode-tui/src/tui/session_picker.rs	1712	previous prompt	// prompt so we can render a sticky "previous prompt" header (matching the
+29	crates/jcode-tui/src/tui/session_picker.rs	1768	[mermaid diagram]	"[mermaid diagram]",
+30	crates/jcode-tui/src/tui/session_picker.rs	1900	Loading preview…	"Loading preview…"
+31	crates/jcode-tui/src/tui/session_picker.rs	1902	(empty session)	"(empty session)"
+32	crates/jcode-tui/src/tui/session_picker.rs	1996	previous prompt	/// Render the pinned "previous prompt" header for the preview pane. Mirrors
+33	crates/jcode-tui/src/tui/session_picker.rs	2165	Find bugs in my most active repo	"Find bugs in my most active repo",
+34	crates/jcode-tui/src/tui/session_picker.rs	2180	Start in the current directory	"Start in the current directory",
+35	crates/jcode-tui/src/tui/session_picker.rs	2258	  Esc to clear	Span::styled("  Esc to clear", Style::default().fg(rgb(60, 60, 60)))
+36	crates/jcode-tui/src/tui/session_picker.rs	2260	  / to edit	Span::styled("  / to edit", Style::default().fg(rgb(60, 60, 60)))
+37	crates/jcode-tui/src/tui/session_picker.rs	2307	Take over live Claude session {}?	"Take over live Claude session {}?",
+38	crates/jcode-tui/src/tui/session_picker.rs	2316	Jcode will prepare the transcript first, then ask Claude to exit.	"Jcode will prepare the transcript first, then ask Claude to exit.",
+39	crates/jcode-tui/src/tui/session_picker.rs	2320	Enter/Y confirm · Esc/N cancel	"Enter/Y confirm · Esc/N cancel",
+40	crates/jcode-tui/src/tui/session_picker.rs	2329	 Explicit Claude takeover 	.title(" Explicit Claude takeover ")
+41	crates/jcode-tui/src/tui/session_picker.rs	2342	session picker requires an interactive terminal (stdin/stdout must be a TTY)	"session picker requires an interactive terminal (stdin/stdout must be a TTY)"
+42	crates/jcode-tui/src/tui/session_picker.rs	2354	unknown panic payload	"unknown panic payload".to_string()
+43	crates/jcode-tui/src/tui/session_picker.rs	2426	Session picker requires an interactive terminal. Use --resume <session_id> directly.	"Session picker requires an interactive terminal. Use --resume <session_id> directly."
+44	crates/jcode-tui/src/tui/session_picker/loading.rs	909	Untitled	return "Untitled".to_string();
+45	crates/jcode-tui/src/tui/session_picker/render.rs	19	Unexpected termination (no additional details)	.unwrap_or("Unexpected termination (no additional details)"),
+46	crates/jcode-tui/src/tui/session_picker/render.rs	32	reason: {}	format!("reason: {}", reason_display),
+47	crates/jcode-tui/src/tui/session_picker/render.rs	40	~{} tok	return format!("~{} tok", tokens);
+48	crates/jcode-tui/src/tui/session_picker/render.rs	78	~{}{} tok	return format!("~{}{} tok", value_display, UNITS[unit_idx].1);
+49	crates/jcode-tui/src/tui/session_picker/render.rs	92	this word matched	/// matching the AND-token filter's notion of "this word matched". Overlapping
+50	crates/jcode-tui/src/tui/session_picker/render.rs	223	live Claude	Some(("●", rgb(120, 210, 255), "live Claude".to_string()))
+51	crates/jcode-tui/src/tui/session_picker/render.rs	226	working {}	Some(elapsed) => format!("working {}", format_short_duration(elapsed)),
+52	crates/jcode-tui/src/tui/session_picker/render.rs	245	closed {}	SessionStatus::Closed => ("✓", dim, format!("closed {}", time_ago)),
+53	crates/jcode-tui/src/tui/session_picker/render.rs	247	crashed {}	("💥", rgb(220, 100, 100), format!("crashed {}", time_ago))
+54	crates/jcode-tui/src/tui/session_picker/render.rs	249	reloaded {}	SessionStatus::Reloaded => ("🔄", user_clr, format!("reloaded {}", time_ago)),
+55	crates/jcode-tui/src/tui/session_picker/render.rs	251	compacted {}	("📦", rgb(255, 193, 7), format!("compacted {}", time_ago))
+56	crates/jcode-tui/src/tui/session_picker/render.rs	253	rate-limited {}	SessionStatus::RateLimited => ("⏳", accent, format!("rate-limited {}", time_ago)),
+57	crates/jcode-tui/src/tui/session_picker/render.rs	255	errored {}	("❌", rgb(220, 100, 100), format!("errored {}", time_ago))
+58	crates/jcode-tui/src/tui/session_picker/render.rs	299	  [BATCH]	"  [BATCH]",
+59	crates/jcode-tui/src/tui/session_picker/render.rs	307	  ◀ current	"  ◀ current",
+60	crates/jcode-tui/src/tui/session_picker/render.rs	315	  ▸ here	"  ▸ here",
+61	crates/jcode-tui/src/tui/session_picker/render.rs	334	 messages	Span::styled(" messages", Style::default().fg(dimmer)),
+62	crates/jcode-tui/src/tui/session_picker/render.rs	345	 user	Span::styled(" user", Style::default().fg(dimmer)),
+63	crates/jcode-tui/src/tui/session_picker/render.rs	351	 assistant	Span::styled(" assistant", Style::default().fg(dimmer)),
+64	crates/jcode-tui/src/tui/session_picker/render.rs	380	created: {}	format!("created: {}", created_ago),
+65	crates/jcode-tui/src/tui/session_picker/render.rs	405	prompt: 	Span::styled("prompt: ", Style::default().fg(dimmer)),
+66	crates/jcode-tui/src/tui/session_picker/render.rs	458	     Scanning local, imported, and running sessions…	"     Scanning local, imported, and running sessions…",
+67	crates/jcode-tui/src/tui/session_picker/render.rs	467	  No other active sessions	"  No other active sessions",
+68	crates/jcode-tui/src/tui/session_picker/render.rs	473	     s cycles to all sessions · Esc closes	"     s cycles to all sessions · Esc closes",
+69	crates/jcode-tui/src/tui/session_picker/render.rs	503	  {} · {} sessions	format!("  {} · {} sessions", version, session_count),
+70	crates/jcode-tui/src/tui/session_picker/render.rs	513	Other sessions	"Other sessions",
+71	crates/jcode-tui/src/tui/session_picker/render.rs	517	  {} sessions	format!("  {} sessions", session_count),
+72	crates/jcode-tui/src/tui/session_picker/render.rs	528	Saved	"Saved",
+73	crates/jcode-tui/src/tui/session_picker/render.rs	560	 loading sessions 	" loading sessions ",
+74	crates/jcode-tui/src/tui/session_picker/render.rs	566	still working	// The Active view breaks the count down into "still working" vs
+75	crates/jcode-tui/src/tui/session_picker/render.rs	567	ready for input	// "ready for input" so the user can triage at a glance. Counts are
+76	crates/jcode-tui/src/tui/session_picker/render.rs	579	 {} active 	format!(" {} active ", working + ready),
+77	crates/jcode-tui/src/tui/session_picker/render.rs	585	{}{} working	format!("{}{} working", spinner, working),
+78	crates/jcode-tui/src/tui/session_picker/render.rs	590	●{} ready	format!("●{} ready", ready),
+79	crates/jcode-tui/src/tui/session_picker/render.rs	612	 (s/S filter)	" (s/S filter)",
+80	crates/jcode-tui/src/tui/session_picker/render.rs	618	 (+{} hidden)	format!(" (+{} hidden)", self.hidden_test_count),
+81	crates/jcode-tui/src/tui/session_picker/render.rs	632	  ✓ {} selected	format!("  ✓ {} selected", self.selection_count()),
+82	crates/jcode-tui/src/tui/session_picker/render.rs	640	 Esc cancel 	" Esc cancel ".to_string()
+83	crates/jcode-tui/src/tui/session_picker/render.rs	642	 type to filter · Ctrl+J/K or ↑↓ nav · Ctrl+W word-del · Esc cancel 	" type to filter · Ctrl+J/K or ↑↓ nav · Ctrl+W word-del · Esc cancel ".to_string()
+84	crates/jcode-tui/src/tui/session_picker/render.rs	646	 Space select · Enter in place · Ctrl+Enter new terminal · d debug · / search · h/l focus · ↑↓ · q 	" Space select · Enter in place · Ctrl+Enter new terminal · d debug · / search · h/l focus · ↑↓ · q ".to_string()
+85	crates/jcode-tui/src/tui/session_picker/render.rs	649	 Space select · Enter new terminal · Ctrl+Enter in place · d debug · / search · h/l focus · ↑↓ · q 	" Space select · Enter new terminal · Ctrl+Enter in place · d debug · / search · h/l focus · ↑↓ · q ".to_string()
+86	crates/jcode-tui/src/tui/session_picker/render.rs	654	 T take over live Claude ·{}	help = format!(" T take over live Claude ·{}", help);
+87	crates/jcode-tui/src/tui/session_picker/render.rs	689	Start a new session	// Focus is on the onboarding "Start a new session" row; dim the
+88	crates/jcode-tui/src/tui/session_picker/render.rs	729	 · {} older skipped	format!(" · {} older skipped", info.omitted_crashed_count)
+89	crates/jcode-tui/src/tui/session_picker/render.rs	734	 R restore shown group · {} relevant crashed session(s) detected{} 	" R restore shown group · {} relevant crashed session(s) detected{} ",
+90	crates/jcode-tui/src/tui/session_picker/render.rs	745	Press R (or B) to restore only this guessed recent group.	"Press R (or B) to restore only this guessed recent group.",
+91	crates/jcode-tui/src/tui/ui.rs	72	ui_onboarding.rs	#[path = "ui_onboarding.rs"]
+92	crates/jcode-tui/src/tui/ui.rs	549	ui_status.rs	#[path = "ui_status.rs"]
+93	crates/jcode-tui/src/tui/ui.rs	1724	ui/copy_selection.rs	#[path = "ui/copy_selection.rs"]
+94	crates/jcode-tui/src/tui/ui.rs	1732	ui/selection_highlight.rs	#[path = "ui/selection_highlight.rs"]
+95	crates/jcode-tui/src/tui/ui.rs	2201	select through the end of the last line	/// browser selection treat that as "select through the end of the last line".
+96	crates/jcode-tui/src/tui/ui_header.rs	73	OpenRouter	// provider's display name instead of hard-coding "OpenRouter" so the
+97	crates/jcode-tui/src/tui/ui_header.rs	78	OpenRouter	"OpenRouter".to_string()
+98	crates/jcode-tui/src/tui/ui_header.rs	87	Claude 4.5 Opus	return "Claude 4.5 Opus".to_string();
+99	crates/jcode-tui/src/tui/ui_header.rs	89	Claude Opus	return "Claude Opus".to_string();
+100	crates/jcode-tui/src/tui/ui_header.rs	93	Claude 3.5 Sonnet	return "Claude 3.5 Sonnet".to_string();
+101	crates/jcode-tui/src/tui/ui_header.rs	95	Claude Sonnet	return "Claude Sonnet".to_string();
+102	crates/jcode-tui/src/tui/ui_header.rs	98	Claude Haiku	return "Claude Haiku".to_string();
+103	crates/jcode-tui/src/tui/ui_header.rs	103	GPT-oss120b	// the generic prettifier instead of producing "GPT-oss120b".
+104	crates/jcode-tui/src/tui/ui_header.rs	121	GPT Codex	return "GPT Codex".to_string();
+105	crates/jcode-tui/src/tui/ui_header.rs	123	GPT-{} Codex	return format!("GPT-{} Codex", version);
+106	crates/jcode-tui/src/tui/ui_header.rs	126	GPT-{}	format!("GPT-{}", rest)
+107	crates/jcode-tui/src/tui/ui_header.rs	200	claude-3-5-sonnet-latest	// Claude family ids ("claude-opus-4-6", "claude-3-5-sonnet-latest",
+108	crates/jcode-tui/src/tui/ui_header.rs	200	claude-opus-4-6	// Claude family ids ("claude-opus-4-6", "claude-3-5-sonnet-latest",
+109	crates/jcode-tui/src/tui/ui_header.rs	201	Claude <version> <Family>	// "claude-haiku-4.5") render as "Claude <version> <Family>" for any
+110	crates/jcode-tui/src/tui/ui_header.rs	201	claude-haiku-4.5	// "claude-haiku-4.5") render as "Claude <version> <Family>" for any
+111	crates/jcode-tui/src/tui/ui_header.rs	209	Claude {} {}	Some(version) => format!("Claude {} {}", version, family_pretty),
+112	crates/jcode-tui/src/tui/ui_header.rs	210	Claude {}	None => format!("Claude {}", family_pretty),
+113	crates/jcode-tui/src/tui/ui_header.rs	216	gpt-5.1-codex-max	// GPT ids are formatted from the raw segments ("gpt-5.1-codex-max" ->
+114	crates/jcode-tui/src/tui/ui_header.rs	217	GPT-5.1 Codex Max	// "GPT-5.1 Codex Max") rather than the legacy mashed short form, which
+115	crates/jcode-tui/src/tui/ui_header.rs	218	GPT-5.1codexmax	// produced "GPT-5.1codexmax"-style names.
+116	crates/jcode-tui/src/tui/ui_header.rs	224	GPT-{}	let mut name = format!("GPT-{}", version);
+117	crates/jcode-tui/src/tui/ui_header.rs	247	claude-opus-4-6	/// Extract the version from a Claude model id, e.g. "claude-opus-4-6" -> "4.6",
+118	crates/jcode-tui/src/tui/ui_header.rs	248	claude-3-5-sonnet-latest	/// "claude-3-5-sonnet-latest" -> "3.5", "claude-haiku-4.5" -> "4.5". Snapshot
+119	crates/jcode-tui/src/tui/ui_header.rs	248	claude-haiku-4.5	/// "claude-3-5-sonnet-latest" -> "3.5", "claude-haiku-4.5" -> "4.5". Snapshot
+120	crates/jcode-tui/src/tui/ui_header.rs	333	oauth*+key	// one consistent story ("oauth*+key" = both configured, OAuth in use)

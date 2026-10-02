@@ -1,0 +1,1758 @@
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input_help.rs	7	help
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input_help.rs	7	commands
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input_help.rs	8	/help\\nShow general command list and keyboard shortcuts.\\n\\n/help <command>\\nShow detailed help for one command.
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input_help.rs	10	compact
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input_help.rs	11	/compact\\nForce context compaction now.\\nStarts background summarization and applies it automatically when ready.\\n\\n/compact mode\\nShow current compaction mode for this session.\\n\\n/compact mode <reactive|proactive|semantic>\\nChange compaction mode for this session.
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input_help.rs	13	cache
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input_help.rs	14	/cache stats\\nShow KV cache stats for this session: cache read/write totals, hit ratios, current baseline, and recent miss attributions.\\n\\n/cache\\nToggle Anthropic cache TTL between 5 minutes and 1 hour.\\n\\n/cache 1h  or  /cache 5m\\nSet Anthropic cache TTL explicitly.
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input_help.rs	16	fix
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input_help.rs	17	/fix\\nRun recovery actions when the model cannot continue.\\nRepairs missing tool outputs, resets provider session state, and starts compaction when possible.
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input_help.rs	19	rewind
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input_help.rs	20	/rewind\\nShow numbered conversation history.\\n\\n/rewind N\\nRewind to message N (drops everything after it and resets provider session).\\n\\n/rewind undo\\nUndo the most recent rewind and restore the removed messages.
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input_help.rs	22	clear
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input_help.rs	23	/clear\\nClear current conversation, queue, and display; starts a fresh session.
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input_help.rs	25	cls
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input_help.rs	25	clear-view
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input_help.rs	26	/cls\\nClear the rendered view only. The model keeps its full context; nothing is sent or forgotten. (Ctrl+L clears the screen but keeps history in scrollback.)
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input_help.rs	28	model
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input_help.rs	29	/model\\nOpen model picker.\\n\\n/model <name>\\nSwitch model.\\n\\n/model <name>@<provider>\\nPin OpenRouter routing (@auto clears pin).
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input_help.rs	31	provider-test-coverage
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input_help.rs	32	provider test coverage
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input_help.rs	33	model-status
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input_help.rs	34	model status
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input_help.rs	35	/provider-test-coverage\\nShow jcode live verification evidence for the current provider/model.\\n\\n/provider-test-coverage <provider> <model>\\nLook up a specific provider/model pair in the live-test coverage ledger.\\n\\nThe report shows last-tested time, jcode build, passed/missing checkpoints, readiness gaps, and a caveat that missing evidence is not a provider failure.
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input_help.rs	37	refresh-model-list
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input_help.rs	38	/refresh-model-list\\nForce-refresh provider model catalogs, update /model, and persist the refreshed cache.
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input_help.rs	40	agents
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input_help.rs	41	/agents\\nOpen the agent-model config picker.\\n\\n/agents <swarm|review|judge|memory|ambient>\\nJump straight to that agent role's saved model override.
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input_help.rs	43	swarm-prompt
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input_help.rs	44	/swarm-prompt\\nOpen the active swarm routing prompt in $VISUAL or $EDITOR.\\n\\nJcode uses a nonblank project override at ./.jcode/swarm-prompt.md when present, then ~/.jcode/swarm-prompt.md, then the built-in default. If no editable override exists, this command creates the global file from the built-in default. Restart or reload Jcode after editing because running agent tool registries cache the prompt.
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input_help.rs	46	subagent
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input_help.rs	47	/subagent <prompt>\\nLaunch a subagent immediately.\\n\\nOptional flags:\\n  --type <kind>         sets the subagent type (default general)\\n  --model <name>        overrides the subagent model for this run\\n  --continue <id>       resumes an existing subagent session
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input_help.rs	49	observe
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input_help.rs	50	/observe\\nToggle transient observe mode for the side panel.\\n\\n/observe on\\nEnable observe mode and focus the observe page.\\n\\n/observe off\\nDisable observe mode.\\n\\n/observe status\\nShow whether observe mode is enabled.\\n\\nObserve mode shows only the latest tool call or tool result added to context, and it is not persisted to disk.
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input_help.rs	52	todos
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input_help.rs	52	todo
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input_help.rs	53	/todos\\nShow the current session's todo list as an inline card in the chat (press again, or the todo-card hotkey, to dismiss the trailing card). The card live-updates as the todo list changes.\\n\\n/todos panel\\nToggle the legacy dedicated todo screen in the side panel.\\n\\n/todos pin\\nToggle pinning the full todo list to the top of the chat transcript while it scrolls (saved to config as display.pin_todos, off by default).\\n\\n/todos on\\nEnable the side-panel todo screen and focus it.\\n\\n/todos off\\nDisable the side-panel todo screen.\\n\\n/todos status\\nShow todo card/panel/pin status.
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input_help.rs	55	splitview
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input_help.rs	55	split-view
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input_help.rs	56	/splitview\\nToggle a transient split view that mirrors the current chat in the side panel.\\n\\n/splitview on\\nEnable split view and focus the mirrored chat page.\\n\\n/splitview off\\nDisable split view.\\n\\n/splitview status\\nShow whether split view is enabled.\\n\\nThis gives the side panel its own scroll position for the same conversation so you can read older context while keeping the main composer active.
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input_help.rs	58	btw
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input_help.rs	59	/btw <question>\\nAsk a side question without derailing the current session.\\n\\nForks (splits) the session into a new window with the full conversation cloned, and the forked session starts by answering the question. The original session keeps working uninterrupted.
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input_help.rs	61	git
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input_help.rs	62	/git\\nShow git status --short --branch for the current session working directory.\\n\\n/git status\\nAlias for /git.
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input_help.rs	64	commit
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input_help.rs	65	/commit\\nAsk the agent to inspect current uncommitted changes and create interactive, logical commits.\\n\\nThe agent should group related files or hunks, preserve unrelated work, validate as appropriate, and report the commits created plus anything left uncommitted.
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input_help.rs	67	commit-push
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input_help.rs	67	commit-and-push
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input_help.rs	68	/commit-push\\nSame as /commit, then push the new commits to the remote tracking branch.\\n\\nThe agent groups related changes into logical commits, preserves unrelated work, then runs git push (using git push -u if the branch has no upstream). It will not force-push or rewrite already-pushed history, and reports the commits created plus the push result.
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input_help.rs	70	fast-release
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input_help.rs	70	cut-release
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input_help.rs	70	commit-push-release
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input_help.rs	71	/fast-release\\nSame as /commit-push, then publish the release as quickly as possible from the local Linux machine.\\n\\nThe agent picks the semver bump and first runs scripts/quick-release.sh --prepare-fast before changing Cargo.toml. This refreshes and records the warm target/selfdev Linux binary without invalidating the cache for a version change. The agent then makes one release-metadata commit containing Cargo.toml, Cargo.lock, and the changelog, pushes it, and runs scripts/quick-release.sh --fast-local. That command wraps the prepared binary with the release identity, publishes Linux and the GitHub release immediately, and lets CI replace it with the portable Linux build while adding every other platform and final signoff assets. /cut-release is a compatibility alias.
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input_help.rs	73	fast-macos-release
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input_help.rs	74	/fast-macos-release\\nSame as /commit-push, but prepare and publish macOS arm64 as quickly as possible from the local Linux machine.\\n\\nThe agent first runs scripts/quick-release.sh --prepare-fast-macos before changing Cargo.toml. This cross-builds macOS arm64 with the future release identity and records its source commit and checksum. After the release-metadata commit, scripts/quick-release.sh --fast-macos-local validates and publishes that asset immediately. CI then replaces it with the signoff build and adds macOS Intel and every other platform. Requires osxcross.
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input_help.rs	76	remote-release
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input_help.rs	77	/remote-release\\nSame as /commit-push, then push the release tag without running any local build.\\n\\nThe agent picks the semver bump, updates Cargo.toml/Cargo.lock and the changelog, commits and pushes, then runs scripts/quick-release.sh --remote. GitHub Actions builds, signs, checksums, and publishes every platform; the release remains a draft until the remote gates pass.
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input_help.rs	79	triage
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input_help.rs	80	/triage [focus]\\nTriage open GitHub issues for the current repo, then autonomously fix the safe ones.\\n\\nThe agent lists untriaged issues with gh, classifies each (auto-fix, needs-info, needs-human, duplicate, question), applies existing labels, fixes and verifies the clear-cut bugs, and reports back with a summary table. Every public comment is clearly signed as the Jcode agent, and issues are never closed as wontfix/invalid without your confirmation.\\n\\nOptional focus text narrows the triage, for example /triage only crash reports.
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input_help.rs	82	catchup
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input_help.rs	83	/catchup\\nOpen the Catch Up picker for finished sessions that need attention.\\n\\n/catchup next\\nTeleport to the next session needing attention and open a Catch Up brief in the side panel.\\n\\n/catchup list\\nAlias for opening the picker.
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input_help.rs	85	back
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input_help.rs	86	/back\\nReturn to the previous session you came from via Catch Up.\\n\\nWorks after a /catchup next jump or after selecting a session from the Catch Up picker.
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input_help.rs	88	subagent-model
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input_help.rs	89	/subagent-model\\nShow the current subagent model policy for this session.\\n\\n/subagent-model <name>\\nPin a fixed model for future subagents in this session.\\n\\n/subagent-model inherit\\nReset to using the current active model.
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input_help.rs	91	autoreview
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input_help.rs	92	/autoreview\\nShow autoreview status for this session.\\n\\n/autoreview on\\nEnable end-of-turn autoreview for this session.\\n\\n/autoreview off\\nDisable autoreview for this session.\\n\\n/autoreview now\\nLaunch a headed reviewer immediately in a new window.
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input_help.rs	94	autojudge
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input_help.rs	95	/autojudge\\nShow autojudge status for this session.\\n\\n/autojudge on\\nEnable end-of-turn autojudge for this session. The autojudge acts like a completion manager: it tells the parent agent either to continue with specific next steps or that it is fine to stop.\\n\\n/autojudge off\\nDisable autojudge for this session.\\n\\n/autojudge now\\nLaunch a headed autojudge immediately in a new window.
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input_help.rs	97	review
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input_help.rs	98	/review\\nLaunch a one-shot headed review session immediately.\\n\\nThe reviewer will DM this session when done. If OpenAI ChatGPT OAuth is available, it prefers gpt-5.5.
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input_help.rs	100	judge
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input_help.rs	101	/judge\\nLaunch a one-shot headed judge session immediately.\\n\\nThe judge will DM this session when done. If OpenAI ChatGPT OAuth is available, it prefers gpt-5.5.
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input_help.rs	103	effort
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input_help.rs	104	/effort\\nShow current effort.\\n\\n/effort <level>\\nSet effort (none|minimal|low|medium|high|xhigh|max|swarm|swarm-deep). Which levels apply depends on the model. The swarm rungs run at max reasoning and turn on swarm orchestration (light fan-out or the deep task graph).\\n\\nAlso: {effort_keys} to cycle.
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input_help.rs	106	fast
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input_help.rs	107	/fast\\nShow whether fast mode is enabled, plus the saved default.\\n\\n/fast on\\nEnable fast mode (service_tier = priority) for the current session.\\n\\n/fast off\\nDisable fast mode for the current session.\\n\\n/fast status\\nShow current fast-mode status.\\n\\n/fast default on\\nSave fast mode as the default on startup.\\n\\n/fast default off\\nSave fast mode as the default off on startup.\\n\\n/fast default status\\nShow the saved fast-mode default.
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input_help.rs	109	memory
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input_help.rs	109	/memory [on|off|status]\\nToggle memory features for this session.
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input_help.rs	110	log
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input_help.rs	111	/log mark [note]\\nWrite a distinctive JCODE_LOG_MARK line to ~/.jcode/logs/jcode-YYYY-MM-DD.log with the current session, provider, model, working directory, and optional note. Use this to mark a spot for agents to inspect later.
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input_help.rs	113	goals
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input_help.rs	114	/goals\\nOpen the goals overview in the side panel.\\n\\n/goals resume\\nResume the most relevant active goal for this session/project.\\n\\n/goals show <id>\\nOpen a specific goal in the side panel.
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input_help.rs	116	swarm
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input_help.rs	116	/swarm [on|off|status]\\nToggle swarm features for this session.
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input_help.rs	117	overnight
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input_help.rs	118	/overnight <hours>[h|m] [mission]\\nStart one overnight coordinator with a target wake/report time. The coordinator prioritizes verifiable, low-risk work, maintains structured logs, updates review notes, and generates a review HTML page.\\n\\n/overnight status\\nShow the latest overnight run status.\\n\\n/overnight log\\nShow recent overnight events.\\n\\n/overnight review\\nOpen the generated review page.\\n\\n/overnight cancel\\nRequest cancellation after the current coordinator turn reaches a safe boundary.
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input_help.rs	120	dictate
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input_help.rs	120	dictation
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input_help.rs	121	/dictate\\nRun the configured external speech-to-text command and inject the transcript into jcode.\\n\\nConfigure [dictation] in ~/.jcode/config.toml:\\n  command       shell command that prints transcript to stdout,\\n                for example ~/.local/bin/my-whisper-script --grammar-target code\\n  mode          insert|append|replace|send\\n  key           optional hotkey (for example alt+;)\\n  timeout_secs  max wait time
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input_help.rs	123	poke
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input_help.rs	124	/poke [on|off|status]\\nPoke the model to resume when it has stopped with incomplete todos.\\n\\n\\\\\\n                Auto-poke now starts enabled by default, and Ctrl+P toggles it on/off.\\n\\\\\\n                Set auto_poke = false under [features] in ~/.jcode/config.toml to start with it disabled.\\n\\\\\\n                /poke or /poke on arms auto-poke and immediately pokes if work remains.\\n\\\\\\n                /poke off disarms auto-poke and clears any queued poke follow-ups.\\n\\\\\\n                /poke status shows whether auto-poke is currently armed.\\n\\\\\\n                If a turn is currently running, the poke is queued and sent right after that turn finishes.\\n\\\\\\n                Injects a reminder with the number of incomplete todos and prompts the model to either\\n\\\\\\n                finish the work, update the todo list to reflect what is done, or ask for user input if genuinely blocked.
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input_help.rs	134	transfer
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input_help.rs	135	/transfer\\nCompact the current session into a summary-only handoff, copy the current todo list to a fresh session, and open that transferred session in a new window.\\n\\nIf a turn is currently running, jcode first soft-pauses the current session at the next safe point, then performs the transfer.
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input_help.rs	137	plan
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input_help.rs	138	/plan [goal]\\nDraft a plan without implementing anything. The model inspects the repo, then presents a structured plan (Goal, Scope, Approach, Validation, Open questions) as a dedicated plan card in the conversation.\\n\\nNothing is edited: it stops after presenting the plan. Once you approve, it converts the plan into a todo list and starts the work.\\n\\n/plan with no goal plans the task currently in focus.
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input_help.rs	140	improve
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input_help.rs	141	/improve [focus]\\nStart an autonomous repo-improvement loop. The model inspects the project, writes a ranked todo list, implements the highest-leverage safe improvements, validates them, then keeps going until further work has diminishing returns.\\n\\n/improve plan [focus]\\nGenerate a ranked improve todo list only, without editing files.\\n\\n/improve resume\\nResume the last saved improve mode for this session using the current improve todos.\\n\\n/improve status\\nShow the inferred status of the current improve run and todo batch.\\n\\n/improve stop\\nAsk the model to stop after the next safe point, update todos, and summarize remaining work.
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input_help.rs	143	refactor
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input_help.rs	144	/refactor [focus]\\nStart a refactor loop aimed at moving the repo toward a practical 10/10. The main agent inspects the project, writes a ranked refactor todo list, implements the best safe refactors itself, validates each batch, and asks one independent read-only subagent to review each meaningful batch before continuing.\\n\\n/refactor plan [focus]\\nGenerate a ranked refactor todo list only, without editing files.\\n\\n/refactor resume\\nResume the last saved refactor mode for this session using the current refactor todos.\\n\\n/refactor status\\nShow the inferred status of the current refactor run and todo batch.\\n\\n/refactor stop\\nAsk the model to stop after the next safe point, update todos, and summarize remaining work.
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input_help.rs	146	reload
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input_help.rs	147	/reload\\nReload into the newest available binary if one is ready. This is fast and does not rebuild.
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input_help.rs	149	restart
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input_help.rs	150	/restart\\nRestart jcode with the current binary. Session is preserved.\\nUseful after config changes, MCP server updates, or env var changes.
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input_help.rs	152	rebuild
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input_help.rs	153	/rebuild\\nRun git pull --ff-only, cargo build --release, and release tests in the background. jcode stays usable and reloads automatically when the build is ready.
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input_help.rs	155	selfdev
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input_help.rs	156	/selfdev\\nSpawn a new self-dev jcode session in a separate terminal.\\n\\n/selfdev <prompt>\\nSpawn a new self-dev session and auto-deliver the prompt to it.\\n\\n/selfdev status\\nShow current self-dev/build status.
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input_help.rs	158	fork
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input_help.rs	158	split
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input_help.rs	159	/fork\\nFork the current session into a new terminal pane or window. Clones the full conversation history so both sessions continue from the same point. Inside tmux, jcode automatically opens a right-side pane.\\n\\n/fork <prompt>\\nFork the session and start the new pane/window by answering the prompt. The original session keeps working uninterrupted.\\n\\n/split\\nAlias for /fork.
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input_help.rs	161	resume
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input_help.rs	161	sessions
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input_help.rs	162	/resume\\nOpen the interactive session picker. Browse and search all sessions, preview conversation history, and resume the highlighted session. By default, Enter resumes in the current terminal and Ctrl+Enter opens a new terminal; keybindings.session_picker_enter can swap those actions.{resume_shortcut}\\n\\nPress Esc to return to your current session.
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input_help.rs	164	info
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input_help.rs	164	/info\\nShow session metadata and token usage.
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input_help.rs	165	context
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input_help.rs	166	/context\\nShow the full session context snapshot: prompt/context composition, compaction state, model/provider/runtime details, queued work, todos, and side-panel state.
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input_help.rs	168	usage
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input_help.rs	169	/usage\\nFetch and display usage limits for connected providers. This command only reports real connected-provider usage windows and reset times.
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input_help.rs	171	subscription
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input_help.rs	172	/subscription\\nCompatibility alias for /hosted status. Shows hosted-model usage, your monthly spending limit, billing status, and router configuration.
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input_help.rs	174	subscribe
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input_help.rs	174	hosted
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input_help.rs	175	/hosted\\nUse Jcode hosted models without a subscription: choose a monthly spending limit, receive milestone warnings without throttling, and pay in progressively larger tranches. Sign in once with /login jcode.\\n\\n/hosted status\\nShow usage and your current spending limit.\\n\\n/subscribe\\nCompatibility alias for /hosted.
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input_help.rs	177	version
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input_help.rs	177	/version\\nShow jcode version/build details.
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input_help.rs	178	changelog
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input_help.rs	178	/changelog\\nShow recent changes embedded in this build.
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input_help.rs	179	quit
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input_help.rs	179	/quit\\nExit jcode.
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input_help.rs	180	config
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input_help.rs	181	/config\\nShow active configuration.\\n\\n/config init\\nCreate default config file.\\n\\n/config edit\\nOpen config in $EDITOR.
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input_help.rs	183	alignment
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input_help.rs	184	/alignment\\nShow the current alignment and the saved default.\\n\\n/alignment centered\\nSave centered alignment as the default and apply it immediately.\\n\\n/alignment left\\nSave left-aligned mode as the default and apply it immediately.\\n\\nPress Alt+C anytime to toggle alignment just for the current session.
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input_help.rs	186	compact-notifications
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input_help.rs	187	/compact-notifications\\nShow whether swarm/file-activity notifications are compact.\\n\\n/compact-notifications on\\nCollapse file-activity notifications to a single line (path · summary), dropping the intent and diff preview.\\n\\n/compact-notifications off\\nRestore the full multi-line notification cards.
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input_help.rs	189	show-agentgrep-output
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input_help.rs	190	/show-agentgrep-output\\nShow whether full agentgrep search output renders inline in the transcript.\\n\\n/show-agentgrep-output on\\nRender the full agentgrep search results inline beneath each agentgrep call instead of just the one-line summary.\\n\\n/show-agentgrep-output off\\nShow only the compact one-line agentgrep summary.
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input_help.rs	192	tool-call-details
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input_help.rs	193	/tool-call-details\\nShow whether the dimmed technical detail (command, path, args) renders next to the model-provided intent on tool rows.\\n\\n/tool-call-details on\\nShow the technical detail after the intent, e.g. `bash · Run tests · $ cargo test`.\\n\\n/tool-call-details off\\nShow only the intent on tool rows that have one. Rows without an intent still show the technical detail, and error summaries always render.
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input_help.rs	195	auth
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input_help.rs	195	login
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input_help.rs	196	/auth\\nShow authentication status for all providers.\\n\\n/login\\nInteractive provider selection - pick a provider to log into.\\n\\n/login <provider>\\nStart login flow directly for any provider shown by /login or the /login completions.\\n\\nUse /login jcode for pay-as-you-go hosted models through the Jcode router. Set a monthly spending limit in the browser; no API key is pasted into the terminal.
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input_help.rs	198	account
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input_help.rs	198	accounts
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input_help.rs	199	/account\\nOpen the inline account picker showing both Claude and OpenAI accounts together. It lists saved accounts plus new/replace actions for each provider.\\n\\n/account claude  or  /account openai\\nOpen the inline picker filtered to that provider.\\n\\n/account <provider> settings\\nShow provider-specific account/settings details.\\n\\n/account <provider> login\\nStart or refresh credentials for a provider.\\n\\n/account claude add  or  /account openai add\\nCreate the next numbered OAuth account directly.\\n\\n/account <provider> switch <label>\\nSwitch the active account for multi-account providers.\\n\\n/account <provider> remove <label>\\nRemove a saved account.\\n\\n/account default-provider <provider|auto>\\nSet the preferred default provider for future sessions.\\n\\n/account default-model <model|clear>\\nSet the preferred default model for future sessions.\\n\\nOpenAI-specific settings:\\n  /account openai transport ...\\n  /account openai effort ...\\n  /account openai fast on|off\\n\\nCustom provider settings:\\n  /account openai-compatible api-base ...\\n  /account openai-compatible api-key-name ...\\n  /account openai-compatible env-file ...\\n  /account openai-compatible default-model ...
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input_help.rs	201	save
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input_help.rs	202	"/save\\nBookmark the current session so it appears at the top of /resume.\\n\\n/save <label>\\nBookmark with a custom label for easy identification.\\n\\nSaved sessions are shown in a dedicated ""Saved"" section in the session picker."
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input_help.rs	204	rename
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input_help.rs	205	/rename <session name>\\nSet a custom display title for the current session. This updates the window title and /resume display.\\n\\n/rename --clear\\nClear the custom name and return to the generated session title.
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input_help.rs	207	unsave
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input_help.rs	207	/unsave\\nRemove the bookmark from the current session.
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input_help.rs	208	client-reload
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input_help.rs	209	/client-reload\\nForce client binary reload in remote mode.
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input_help.rs	211	server-reload
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input_help.rs	212	/server-reload\\nForce server binary reload in remote mode.
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input_help.rs	214	continue
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input_help.rs	214	resumeall
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input_help.rs	214	resume-all
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input_help.rs	215	"/continue\\nContinue every interrupted live session that would auto-resume on a reload.\\n\\nThe server walks all currently-live sessions and, for each idle one that still owes the model a reply (a turn that errored or was interrupted mid-generation), injects the standard ""continue where you left off"" reminder so it picks back up. Sessions that are busy, fresh, or already complete are left untouched.\\n\\nAlias: /resumeall."
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input_help.rs	220	{effort_keys}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input_help.rs	224	 You can also press {label} to open it directly.
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input_help.rs	227	{resume_shortcut}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input_help.rs	230	Alt+
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	12	{:.1}k
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	13	{:.1}M
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	19	about {} input tokens (~{} chars)
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	26	"To turn this off, set [provider].cross_provider_failover = ""manual"" in ~/.jcode/config.toml or export JCODE_CROSS_PROVIDER_FAILOVER=manual."
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	74	⏸ Canceled provider auto-switch - kept {} active.\\n\\nYou can switch manually with /model, then resend. {}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	92	Provider auto-switch → {} in {}s (Esc to cancel)
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	102	⚡ Auto-switched provider after countdown: {} → {}.\\n\\nResending {} on model {}.\\n\\n{}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	110	Provider → {} (retrying)
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	118	Failed to switch provider to {}: {}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	121	Provider switch failed
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	130	⚠ {} became unavailable - jcode did not resend your prompt to {} automatically.\\n\\nReason: {}\\n\\nRetrying elsewhere would send {}.\\n\\nTo switch manually now, use /model and pick a model from {}, then resend. {}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	146	{} unavailable; switch manually if desired
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	156	⚠ {} became unavailable - jcode will switch to {} in 3 seconds unless you cancel.\\n\\nReason: {}\\n\\nRetrying would send {}. Press Esc to cancel.\\n\\n{}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	164	Provider auto-switch → {} in 3s (Esc to cancel)
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	170	{}\\n\\nAutomatic countdown switching is only available in local sessions right now.
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	174	{} unavailable; manual switch suggested
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	213	claude-oauth
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	216	claude-api
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	219	openai-oauth
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	222	openai-api
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	232	remote
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	251	{} via {} ({})
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	328	{} via {}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	338	↪ {} failed. Fallback available: press {} to switch to {} and resend.
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	341	Press {} to switch to {}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	434	{} ({} via {})
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	443	↪ Reroute available: press {} to switch to {} and resend this request.\\n\\nGuardrail refusals are model-side; a stronger model often handles the same request (was {}).
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	446	Press {} to reroute to {}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	478	↪ Switching to {} and resending (was {}).
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	481	Switching → {} (will retry)
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	505	↪ Switched to {} and resending (was {}).
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	508	Switched → {} (retrying)
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	514	Failed to switch to {}: {}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	517	Fallback switch failed
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	527	Model switching is not available for this provider.
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	529	Model switching not available
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	550	 (via {})
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	553	✓ Switched to model: {}{}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	556	Model → {}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	560	Failed to switch model: {}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	563	Model switch failed
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	580	Reasoning effort not available for this provider
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	611	Effort: {} (already at {})
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	613	max
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	613	min
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	622	Effort: {} {}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	625	Effort switch failed: {}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	777	Prompt restored to input after error
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	801	Error: {} Dropped {} oversized image(s); you can retry.
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	806	Error: {} Request body was too large but no inline images could be dropped. Run /fix to try manual recovery.
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	820	 Context limit exceeded but auto-recovery failed. Run /fix to try manual recovery.
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	822	Error: {}{}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	834	Error: {}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	837	Error: {} Run /fix to attempt recovery.
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	861	{} You can continue.
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	874	⚡ Auto-compaction started - summarizing old messages in background. Retry in a moment.
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	879	[auto_recover] force_compact failed: {}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	886	⚡ Emergency compaction: dropped {} old messages. You can continue.
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	895	⚡ Emergency truncation: shortened {} large tool result(s) to fit context. You can continue.
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	938	⚡ Request was too large; dropped {} oversized image(s) and retrying...
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	1007	⚠️ Context limit exceeded - auto-compacting and retrying...
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	1026	{} Retrying...
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	1042	✓ Context compacted (emergency). Retrying...
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	1062	compacting context...
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	1068	Auto-compaction timed out.
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	1103	✓ Context compacted. Retrying...
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	1123	Usage → no connected providers
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	1125	Usage → updated
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	1145	Usage → no connected providers
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	1147	Usage → updated
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	1150	Usage → showing cached data, refreshing
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	1153	Usage → refreshing {}/{}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	1158	Usage → refreshing
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	1188	usage
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	1188	Usage
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	1191	Usage
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	1209	# Refreshing usage ({}/{})
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	1214	# Showing cached usage while refreshing
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	1216	# Refreshing usage
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	1218	Checking connected provider limits...
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	1223	# No connected providers
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	1225	Use `/login claude` or `/login openai`, then run `/usage` again.
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	1229	# Usage updated · {} source(s)
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	1240	  error: {}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	1245	  hard limit reached
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	1249	  no usage data available
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	1258	 · resets in {}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	1278	! {} - error
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	1281	! {} - hard limit
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	1290	! {} - {:.0}% used
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	1292	~ {} - {:.0}% used
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	1294	{} - no data
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	1296	+ {} - {:.0}% used
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	1298	+ {} - available
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	1313	Recovered {} missing tool output(s).
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	1318	Created a recovery session with text-only history.
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	1324	Reset provider session resume state.
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	1345	Emergency compaction: dropped {} old messages (context was at {:.0}%).
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	1352	Hard compaction failed.
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	1358	Emergency truncation: shortened {} large tool result(s) to fit context.
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	1366	Started background context compaction.
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	1372	Emergency compaction: dropped {} old messages (normal compaction failed: {}).
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	1378	Compaction not started: {}. Emergency fallback: {}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	1386	Could not access compaction manager (busy).
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	1389	Compaction is unavailable for this provider.
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	1394	Fix applied
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	1396	Fix Results:\\n
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	1398	• No structural issues detected.\\n
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	1409	\\nLast error: {}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	1427	Starting provider model catalog refresh
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	1430	Refreshing model list...
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	1433	Refreshing model list...
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	1464	/model
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	1464	/models
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	1470	/model 
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	1479	 (via {})
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	1482	system
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	1483	✓ Switched to model: {}{}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	1489	Model → {}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	1496	Model switch failed
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	1502	/effort
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	1508	Reasoning effort not available for this provider.
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	1514	default
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	1519	{} <- current
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	1526	Effort: {}\\nAvailable: {}\\nUse /effort <level> or {} to change.
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	1535	/effort 
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	1544	default
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	1546	✓ Reasoning effort → {}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	1555	Effort: {} {}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	1559	Failed to set effort: {}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	1567	/fast default
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	1567	/fast default status
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	1569	priority
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	1573	Standard
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	1581	/fast default 
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	1584	on
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	1585	off
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	1586	status
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	1588	priority
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	1592	Standard
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	1600	Usage: /fast default [on|off|status]
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	1607	/fast
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	1607	/fast status
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	1609	priority
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	1610	on
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	1612	off
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	1617	Standard
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	1619	priority
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	1623	Standard
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	1625	on
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	1633	/fast 
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	1636	on
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	1636	priority
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	1637	off
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	1637	off
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	1638	status
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	1640	priority
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	1644	Standard
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	1646	priority
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	1650	Standard
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	1661	Usage: /fast [on|off|status|default ...]
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	1670	priority
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	1674	Standard
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	1685	Failed to set fast mode: {}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	1693	/transport
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	1698	Transport switching is not available for this provider.
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	1701	unknown
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	1706	{} <- current
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	1713	Transport: {}\\nAvailable: {}\\nUse /transport <mode> to change.
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	1721	/transport 
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	1727	✓ Transport → {}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	1730	Transport → {}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	1734	Failed to set transport: {}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	1768	Waiting on provider APIs ({elapsed_secs}s elapsed)
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	1771	Refreshing model list...
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	1795	refresh-model-list
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	1796	Model list refresh
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	1803	Model list refreshed: +{} models, +{} routes, ~{} changed
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	1809	refresh-model-list
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	1810	Model list refresh
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	1814	Failed to refresh model list: {}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	1817	Model list refresh failed
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	1824	/refresh-model-list
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	1831	Model List Refresh Complete\\n\\nModels: {} → {}  (+{} / -{})\\nRoutes: {} → {}  (+{} / -{} / ~{})
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	1851	\\nAdded models: 
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	1855	\\nRemoved models: 
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	1868	{} … and {} more
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	1876	No models are available right now.
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	1878	Next steps:
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	1879	  - Run /login to connect or refresh a provider
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	1880	  - Run /account to inspect or switch credentials
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	1881	  - If you just logged in, wait a moment and try /model again
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	1886	  - If this is a remote session, reconnect if the server model list looks stale
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	1896	Failed to switch model: {}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	1898	Next steps:
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	1899	  - Use /model to choose another available route
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	1900	  - Run /login to add or refresh credentials
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	1901	  - Run /account to inspect or switch accounts
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	1906	  - If this is a remote session and the list looks stale, reconnect and try again
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	1921	This route is not currently available.
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	1923	This route is not currently available: {}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	1927	Cannot use {} via {} right now.
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	1931	Next steps:
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	1932	  - Pick another available row in /model
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	1933	  - Run /login to add or refresh credentials
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	1934	  - Run /account to inspect or switch accounts
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	1939	  - If this is a remote session, wait a moment or reconnect if the catalog looks stale
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/onboarding_sim.rs	69	Onboarding flow already active; can't start the simulator now
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/onboarding_sim.rs	127	Onboarding simulator: off
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/onboarding_sim.rs	135	Log in to OpenAI (nothing detected)
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/onboarding_sim.rs	141	Import summary (detected logins, Continue preselected)
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/onboarding_sim.rs	145	OpenAI/Codex
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/onboarding_sim.rs	146	Codex auth.json
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/onboarding_sim.rs	149	Claude
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/onboarding_sim.rs	150	Claude Code
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/onboarding_sim.rs	153	GitHub Copilot
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/onboarding_sim.rs	154	github-copilot/hosts.json
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/onboarding_sim.rs	160	Import detected logins (multiple, checkbox list)
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/onboarding_sim.rs	164	OpenAI/Codex
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/onboarding_sim.rs	165	Codex auth.json
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/onboarding_sim.rs	168	Claude
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/onboarding_sim.rs	169	Claude Code
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/onboarding_sim.rs	172	GitHub Copilot
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/onboarding_sim.rs	173	github-copilot/hosts.json
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/onboarding_sim.rs	183	Telemetry settings (from the summary's third pill)
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/onboarding_sim.rs	187	OpenAI/Codex
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/onboarding_sim.rs	188	Codex auth.json
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/onboarding_sim.rs	191	Claude
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/onboarding_sim.rs	192	Claude Code
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/onboarding_sim.rs	203	Import detected logins (single)
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/onboarding_sim.rs	207	Cursor
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/onboarding_sim.rs	207	Cursor
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/onboarding_sim.rs	217	Login recovery (import declined / failed)
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/onboarding_sim.rs	221	Choose a suggested review or blank session
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/onboarding_sim.rs	227	Suggestions (resting / all set)
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/onboarding_sim.rs	267	Onboarding
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/onboarding_sim.rs	269	Onboarding sim {}/{}: {} — Tab/→ next, Shift+Tab/← prev, h/l highlight, Alt+5 restart, Esc exit
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/shortcut_hints.rs	64	resume
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/shortcut_hints.rs	65	model_switch
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/shortcut_hints.rs	66	effort_cycle
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/shortcut_hints.rs	67	alignment
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/shortcut_hints.rs	79	open the session picker
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/shortcut_hints.rs	80	switch models
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/shortcut_hints.rs	81	change reasoning effort
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/shortcut_hints.rs	82	toggle centered layout
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/shortcut_hints.rs	152	Failed to persist keybinding-proficiency state {}: {}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/shortcut_hints.rs	249	⌨ You usually {} the slow way \\\\u{2014} press {} next time
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/shortcut_hints.rs	304	model_switch
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/shortcut_hints.rs	304	resume
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/shortcut_hints.rs	311	resume
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/shortcut_hints.rs	318	resume
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/shortcut_hints.rs	325	resume
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/shortcut_hints.rs	332	resume
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/shortcut_hints.rs	340	resume
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/shortcut_hints.rs	344	resume
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/shortcut_hints.rs	351	tempdir
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/shortcut_hints.rs	352	JCODE_HOME
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/shortcut_hints.rs	353	JCODE_HOME
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/shortcut_hints.rs	360	resume
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/shortcut_hints.rs	360	stat present
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/shortcut_hints.rs	365	JCODE_HOME
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/shortcut_hints.rs	367	JCODE_HOME
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	40	/help
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	40	Show help and keyboard shortcuts
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	41	Show help and keyboard shortcuts
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	42	/commands
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	42	Alias for /help
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	43	/model
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	43	List or switch models
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	44	/models
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	44	Alias for /model
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	46	/provider-test-coverage
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	47	Show live-test evidence for the current provider/model
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	49	/model-status
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	49	Alias for /provider-test-coverage
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	50	/refresh-model-list
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	50	Refresh provider model catalogs
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	51	/agents
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	51	Configure models for agent roles
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	53	/swarm-prompt
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	54	Open the active swarm routing prompt in your editor
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	56	/subagent
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	56	Launch a subagent manually
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	57	/observe
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	57	Show the latest tool context in the side panel
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	58	/todos
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	58	Show the session todo list as a card in the chat
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	59	/todo
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	59	Alias for /todos
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	60	/splitview
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	60	Mirror the current chat in the side panel
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	61	/split-view
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	61	Alias for /splitview
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	62	/btw
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	62	Ask a side question in the side panel
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	63	/ssh
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	63	Connect to a remote machine using system SSH
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	64	/git
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	64	Show git status for the session working directory
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	65	/colors
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	65	List, configure, and score every TUI color
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	66	/color
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	66	Alias for /colors
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	67	/hotkeys
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	67	List hotkeys with your personal usage
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	68	/terminal-setup
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	68	Fix Shift+Enter newlines
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	69	/commit
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	69	Make logical commits from current changes
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	71	/commit-push
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	72	Make logical commits from current changes, then push
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	74	/commit-and-push
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	74	Alias for /commit-push
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	76	/fast-release
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	77	Publish Linux immediately from the warm selfdev cache; CI adds other platforms
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	80	/fast-macos-release
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	81	Publish a prepared macOS arm64 build immediately; CI adds other platforms
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	83	/remote
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	83	Reach this session from another machine
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	85	/remote-release
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	86	Push the release tag immediately; CI builds and publishes every platform
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	88	/cut-release
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	88	Alias for /fast-release
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	89	/commit-push-release
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	89	Alias for /cut-release
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	91	/triage
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	92	Triage new GitHub issues and autonomously fix the safe ones
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	94	/transcript
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	94	Open the current session transcript file
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	95	/subagent-model
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	95	Show/change subagent model policy
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	96	/autoreview
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	96	Show/toggle automatic end-of-turn review
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	97	/autojudge
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	97	Show/toggle automatic end-of-turn judging
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	98	/review
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	98	Launch a one-shot headed review session
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	99	/judge
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	99	Launch a one-shot headed judge session
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	100	/effort
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	101	/fast
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	101	Toggle fast mode
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	102	/transport
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	102	Show/change connection transport
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	103	/alignment
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	103	Show/change default text alignment
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	105	/compact-notifications
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	106	Show/toggle single-line swarm/file-activity notifications
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	109	/show-agentgrep-output
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	110	Show/toggle full agentgrep search output inline in chat
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	113	/tool-call-details
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	114	Show/toggle dimmed technical details on tool rows with an intent
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	117	/thinking-display
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	118	Show/hide the model's thinking text (off/full/current)
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	120	/thinking
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	120	Alias for /thinking-display
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	121	/reasoning
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	121	Alias for /thinking-display
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	122	/cancel
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	122	Cancel the current prompt or operation
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	123	/clear
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	123	Clear conversation history
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	124	/cls
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	124	Clear the view only, keeping context
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	125	/clear-view
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	125	Alias for /cls
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	126	/rewind
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	126	Rewind conversation to previous message
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	127	/poke
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	127	Poke model to resume with incomplete todos
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	128	/plan
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	128	Create a plan-only response as a plan card
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	129	/improve
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	129	Autonomously improve the repository
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	130	/refactor
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	130	Run a safe refactor loop
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	131	/compact
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	131	Compact context
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	132	/fix
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	132	Recover when the model cannot continue
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	133	/dictate
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	133	Run configured external dictation command
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	134	/dictation
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	134	Alias for /dictate
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	135	/memory
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	135	Toggle memory feature
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	136	/test
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	136	Verify a claim/current changes with layered tests
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	138	/initiatives
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	139	Open initiatives overview / resume tracked initiatives
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	141	/goals
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	141	Legacy alias for /initiatives
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	142	/swarm
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	142	Toggle swarm feature
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	143	/overnight
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	143	Run a supervised overnight coordinator
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	144	/context
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	144	Show the full session context snapshot
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	146	/skills
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	147	Show loaded skills and jcode-endorsed recommendations
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	149	/version
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	149	Show current version
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	150	/changelog
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	150	Show recent changes in this build
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	151	/info
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	151	Show session info and tokens
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	152	/usage
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	152	Show connected provider usage limits
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	154	/productivity
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	155	Generate a shareable usage report + dashboard image
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	157	/wrapped
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	157	Alias for /productivity
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	158	/feedback
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	158	Send feedback about jcode
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	159	/telemetry
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	159	Show or change what jcode sends
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	160	/support
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	160	Email support with diagnostics prefilled
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	161	/subscription
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	161	Show jcode subscription status
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	162	/subscribe
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	162	Why and how to subscribe to jcode
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	163	/config
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	163	Show or edit configuration
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	164	/log
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	164	Mark the current location in the jcode logs
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	166	/keys
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	167	Show keybinding conflicts with your terminal and OS (/keys refresh to rescan)
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	169	/keybindings
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	169	Alias for /keys
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	171	/diff
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	172	Cycle or set diff display mode (off/inline/full/pinned/file)
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	175	/onboarding-preview
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	176	Preview the first-run onboarding screen
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	179	/onboarding-sim
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	180	Walk through every first-run onboarding screen (Alt+5 reset, Cmd+5 toggle)
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	182	/reload
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	182	Reload into newest available binary
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	183	/restart
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	183	Restart with current binary
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	184	/rebuild
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	184	Background rebuild and auto reload
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	185	/selfdev
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	185	Open a new self-dev jcode session
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	186	/update
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	186	Background update and auto reload
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	187	/update-sim
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	187	Preview update UI safely (Alt+_)
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	188	/resume
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	188	Open session picker
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	189	/sessions
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	189	Alias for /resume
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	190	/session
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	190	Alias for /resume
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	191	/active
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	191	Manage live sessions (working vs ready)
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	192	/catchup
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	192	Open Catch Up picker
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	193	/back
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	193	Return to the previous Catch Up session
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	194	/save
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	194	Bookmark session for easy access
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	195	/unsave
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	195	Remove bookmark from session
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	196	/rename
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	196	Rename current session
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	197	/fork
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	197	Fork session into a new window (optional prompt)
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	198	/split
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	198	Alias for /fork
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	199	/transfer
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	199	Compact context into a fresh handoff session
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	200	/workspace
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	200	Niri-style session workspace
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	201	/quit
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	201	Exit jcode
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	202	/auth
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	202	Show authentication status
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	203	/login
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	203	Login to a provider
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	204	/logout
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	204	Log out of a provider
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	205	/account
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	205	Open the combined account picker
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	206	/accounts
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	206	Alias for /account
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	207	/cache
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	207	Show cache stats or set cache TTL
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	208	/debug-visual
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	208	Toggle visual debug overlay
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	209	/screenshot-mode
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	209	Toggle screenshot capture mode
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	210	/screenshot
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	210	Capture a screenshot debug state
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	211	/record
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	211	Record a demo capture
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	212	/client-reload
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	212	Force reload client binary
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	213	/server-reload
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	213	Force reload server binary
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	215	/continue
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	216	Continue every interrupted live session that would auto-resume
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	218	/resumeall
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	218	Alias for /continue
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	219	/resume-all
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	219	Alias for /continue
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	220	/z
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	220	Secret premium-mode command
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	221	/zz
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	221	Secret premium-mode command
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	222	/zzz
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	222	Secret premium-mode command
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	223	/zstatus
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	223	Secret premium-mode status command
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	358	Activate skill
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	378	/{skill}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	380	Activate skill
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	436	/model {}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	436	Switch to model
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	465	/model {}@auto
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	466	Use automatic OpenRouter provider routing
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	477	openrouter
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	478	auto
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	479	Use automatic OpenRouter provider routing
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	481	Pin OpenRouter provider
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	486	/model {}@{}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	496	/model {}@{}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	497	Pin OpenRouter provider
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	512	/model 
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	512	/models 
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	530	/model 
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	530	/models 
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	532	/model 
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	533	/models 
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	544	/model
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	544	Open model picker
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	549	/agents 
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	553	/agents swarm
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	553	Configure swarm/subagent model
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	554	/agents review
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	554	Configure code review model
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	555	/agents judge
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	555	Configure judge model
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	556	/agents memory
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	556	Configure memory sidecar model
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	557	/agents ambient
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	557	Configure ambient model
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	562	/subagent-model 
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	567	/subagent-model inherit
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	568	Use the current active model
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	571	/subagent-model show
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	572	Show the current subagent model policy
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	578	/autoreview 
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	583	/autoreview status
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	584	Show current autoreview status
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	586	/autoreview on
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	586	Enable end-of-turn autoreview
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	587	/autoreview off
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	587	Disable end-of-turn autoreview
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	588	/autoreview now
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	588	Launch a reviewer immediately
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	593	/autoreview
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	596	/autoreview status
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	597	Show current autoreview status
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	599	/autoreview on
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	599	Enable end-of-turn autoreview
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	600	/autoreview off
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	600	Disable end-of-turn autoreview
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	601	/autoreview now
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	601	Launch a reviewer immediately
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	605	/autojudge 
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	609	/autojudge status
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	609	Show current autojudge status
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	610	/autojudge on
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	610	Enable end-of-turn autojudge
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	611	/autojudge off
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	611	Disable end-of-turn autojudge
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	612	/autojudge now
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	612	Launch a judge immediately
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	617	/autojudge
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	619	/autojudge status
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	619	Show current autojudge status
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	620	/autojudge on
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	620	Enable end-of-turn autojudge
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	621	/autojudge off
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	621	Disable end-of-turn autojudge
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	622	/autojudge now
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	622	Launch a judge immediately
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	626	/review 
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	629	/review
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	629	Launch a one-shot review immediately
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	633	/review
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	634	/review
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	634	Launch a one-shot review immediately
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	637	/judge 
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	640	/judge
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	640	Launch a one-shot judge immediately
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	644	/judge
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	645	/judge
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	645	Launch a one-shot judge immediately
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	648	/subagent-model
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	651	/subagent-model show
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	652	Show the current subagent model policy
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	655	/subagent-model inherit
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	656	Use the current active model
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	661	/subagent 
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	666	/subagent --type general 
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	667	Launch a general-purpose subagent
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	670	/subagent --model 
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	671	Launch a subagent with an explicit model
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	674	/subagent --continue 
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	675	Resume an existing subagent session
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	681	/subagent
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	682	/subagent 
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	682	Launch a subagent with a prompt
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	686	/model
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	686	/models
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	687	/model
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	687	Open model picker or type `/model <name>`
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	690	/agents
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	691	/agents
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	691	Open agent model config picker
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	694	/help 
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	698	/help
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	708	/colors 
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	708	/color 
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	709	/color 
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	710	/color
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	712	/colors
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	716	{base} harmony
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	717	Score the palette and list fixes
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	720	{base} generate #8ab4f8
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	721	Build a harmonious palette from one seed color
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	723	{base} reset
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	723	Reset every color to its default
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	724	{base} export
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	724	Print the palette as config TOML
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	729	{base} {} #
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	729	Set this color role
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	734	/git 
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	737	/git status
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	737	Show branch and working tree status
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	741	/git
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	742	/git status
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	742	Show branch and working tree status
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	745	/transcript 
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	749	/transcript path
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	750	Print transcript path without opening
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	755	/transcript
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	757	/transcript path
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	758	Print transcript path without opening
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	762	/effort 
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	763	none
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	763	minimal
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	763	low
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	763	medium
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	763	high
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	763	xhigh
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	763	max
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	768	/effort {}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	773	/fast 
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	775	on
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	776	off
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	777	status
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	778	default on
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	779	default off
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	780	default status
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	784	/fast {}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	788	/transport 
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	789	auto
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	789	https
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	789	websocket
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	794	/transport {}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	799	/compact 
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	801	/compact mode
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	801	Show/change compaction mode
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	803	/compact mode status
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	804	Show the current compaction mode
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	806	/compact mode reactive
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	806	Use reactive compaction
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	807	/compact mode proactive
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	807	Use proactive compaction
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	808	/compact mode semantic
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	808	Use semantic compaction
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	813	/compact mode 
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	814	reactive
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	814	proactive
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	814	semantic
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	816	/compact mode status
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	817	Show the current compaction mode
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	822	/compact mode {}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	827	/cache 
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	829	/cache stats
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	829	Show KV cache stats
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	830	/cache status
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	830	Alias for /cache stats
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	831	/cache 1h
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	831	Use 1 hour cache TTL
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	832	/cache 5m
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	832	Use 5 minute cache TTL
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	837	/login 
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	837	/auth 
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	838	/auth 
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	839	/auth
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	841	/login
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	844	/auth
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	845	/auth doctor
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	845	Diagnose provider auth issues
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	855	/account 
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	855	/accounts 
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	857	/account list
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	857	Open all provider/account actions
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	858	/account switch
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	858	Switch active account by label
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	860	/account default-provider
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	861	Set preferred default provider
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	864	/account default-model
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	865	Set preferred default model
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	868	/account openai-compatible settings
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	869	Inspect custom OpenAI-compatible settings
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	872	/account openai-compatible api-base
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	873	Set custom OpenAI-compatible API base
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	878	/account {}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	879	Open this provider's account/settings actions
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	882	/account {} settings
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	883	Show provider-specific settings
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	886	/account {} login
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	887	Start or refresh login for this provider
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	890	/account claude add
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	890	Add a new Claude account
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	891	/account openai add
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	891	Add a new OpenAI account
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	893	/account openai transport
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	894	Set OpenAI transport preference
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	897	/account openai effort
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	898	Set OpenAI reasoning effort preference
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	903	/account claude switch {}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	904	Switch to this Claude account
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	911	/account openai switch {}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	912	Switch to this OpenAI account
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	919	/memory 
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	923	/memory on
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	923	Enable memory for this session
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	924	/memory off
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	924	Disable memory for this session
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	925	/memory status
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	925	Show memory feature status
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	930	/improve 
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	935	/improve plan
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	936	Generate a ranked improve todo list without editing
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	939	/improve resume
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	940	Resume the last saved improve mode for this session
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	943	/improve status
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	944	Show current improve batch and inferred status
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	947	/improve stop
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	948	Stop improvement mode after the next safe point
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	954	/refactor 
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	959	/refactor plan
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	960	Generate a ranked refactor todo list without editing
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	963	/refactor resume
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	964	Resume the last saved refactor mode for this session
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	967	/refactor status
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	968	Show current refactor batch and inferred status
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	971	/refactor stop
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	972	Stop refactor mode after the next safe point
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	978	/swarm 
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	982	/swarm on
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	982	Enable swarm for this session
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	983	/swarm off
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	983	Disable swarm for this session
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	984	/swarm status
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	984	Show swarm feature status
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	989	/overnight 
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	994	/overnight 7
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	995	Start a 7-hour supervised overnight run
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	998	/overnight status
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	999	Show latest overnight run status
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1001	/overnight log
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1001	Show recent overnight events
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1002	/overnight review
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1002	Open the generated review page
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1003	/overnight cancel
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1003	Request overnight cancellation
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1008	/subscription 
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1011	/subscription status
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1011	Show subscription status
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1015	/alignment 
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1020	/alignment status
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1021	Show current and saved alignment
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1024	/alignment centered
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1025	Save centered alignment and apply it now
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1028	/alignment left
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1029	Save left-aligned layout and apply it now
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1035	/compact-notifications 
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1040	/compact-notifications status
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1041	Show whether notifications are compact
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1044	/compact-notifications on
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1045	Collapse swarm/file-activity notifications to one line
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1048	/compact-notifications off
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1049	Show full multi-line notification cards
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1055	/tool-call-details 
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1060	/tool-call-details status
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1061	Show whether technical details render on intent rows
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1064	/tool-call-details on
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1065	Show the dimmed technical detail next to tool intents
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1068	/tool-call-details off
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1069	Show only the intent on tool rows that have one
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1075	/show-agentgrep-output 
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1080	/show-agentgrep-output status
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1081	Show whether agentgrep output is shown inline
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1084	/show-agentgrep-output on
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1085	Render full agentgrep search results inline in chat
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1088	/show-agentgrep-output off
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1089	Show only the one-line agentgrep summary
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1095	/config 
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1099	/config init
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1099	Create a default config file
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1100	/config create
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1100	Alias for /config init
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1101	/config edit
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1101	Open the config file in $EDITOR
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1106	/goals show 
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1116	/goals show {}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1116	Open this goal
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1121	/goals 
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1125	/goals resume
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1125	Resume the current goal
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1126	/goals show
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1126	Open a specific goal by id
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1131	/selfdev 
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1136	/selfdev status
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1137	Show current self-dev/build status
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1139	/selfdev enter
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1139	Open a blank self-dev session
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1141	/selfdev enter 
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1142	Open a self-dev session with a prompt
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1148	/rewind 
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1149	/rewind 
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1161	/rewind {}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1161	Rewind to this message
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1167	/rewind {}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1167	Rewind to this message
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1240	/cancel
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1241	/cancel
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1241	Cancel the pending prompt
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1254	/model
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1254	/models
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1256	/login
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1477	Log in to get started
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1477	/login
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1496	Customize my terminal theme
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1497	Find what terminal I'm using, then change its background color to pitch black and make it slightly transparent. Apply the changes for me.
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1500	Review something I've been working on
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1501	Find a recent file or project I've been working on, read through it, and give me concrete suggestions on how I could improve it.
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1509	macos
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1511	Install ScrollWM (scrolling window manager for macOS)
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1512	Install ScrollWM, the scrolling window manager for macOS, by running its official one-line installer: `curl -fsSL https://raw.githubusercontent.com/1jehuang/scrollwm/main/scripts/web-install.sh | bash`. It downloads the latest release, removes the Gatekeeper quarantine, installs to ~/Applications, and launches it (no sudo, no system files touched). Run the command for me and report whether it succeeded.
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1517	Continue my last Codex CLI / Claude Code session
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1519	Find my recent Codex or Claude Code sessions, identify the latest useful one, summarize what was happening, and continue from there.
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1524	Find my social media and roast me
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1525	Find a social media platform I use, look around at my profile and posts, then give me a brutally honest roast based on what you see.
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1619	↶ Input restored
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1621	Nothing to undo
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1628	/help
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1630	/btw
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1631	/fork
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1632	/git
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1633	/transcript
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1634	/observe
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1635	/todos
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1636	/splitview
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1637	/split-view
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1638	/model
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1639	/agents
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1640	/effort
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1641	/fast
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1642	/transport
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1643	/login
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1644	/auth
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1645	/account
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1646	/account claude
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1647	/account switch
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1648	/account openai
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1649	/account openai-compatible
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1650	/account default-provider
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1651	/account default-model
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1652	/account claude switch
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1653	/account claude remove
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1654	/account openai switch
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1655	/account openai remove
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1656	/usage
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1657	/subscription
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1658	/poke
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1659	/memory
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1660	/test
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1661	/initiatives
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1662	/initiatives show
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1663	/goals
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1664	/goals show
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1665	/swarm
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1666	/plan
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1667	/improve
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1668	/refactor
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1669	/rewind
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1670	/compact
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1671	/compact mode
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1672	/alignment
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1673	/compact-notifications
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1674	/show-agentgrep-output
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1675	/reasoning
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1676	/thinking
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1677	/thinking-display
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1678	/config
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1679	/save
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1680	/rename
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1681	/cache
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1735	HOME
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1738	.codex/sessions
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1739	Codex
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1743	.claude/projects
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1744	Claude Code
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1759	 in {label}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1764	 cwd `{dir}`
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1769	 session `{id}`
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1777	Continue the latest {source} session{location}. Transcript: `{path}`.{session_id}{cwd}{context}. Read that transcript if needed, summarize the current state, then continue from there.
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1812	jsonl
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1834	cwd
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1835	payload
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1835	cwd
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1841	sessionId
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1842	session_id
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1845	payload
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1846	session_id
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1848	payload
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1848	id
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1854	summary
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1855	lastPrompt
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1858	payload
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1859	summary
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1866	user
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1892	message
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1893	role
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1894	role
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1895	payload
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1895	role
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1896	type
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1902	message
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1903	content
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1904	lastPrompt
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1905	content
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1908	payload
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1909	content
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1923	text
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1924	input_text
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1925	output_text
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1926	content
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1981	external-cli continuation prompt: cold(uncached)={cold_ms:.1} ms, \\\\\\n             warm(cached, avg of {runs})={warm_ms:.4} ms; cold_some={}, warm_some={}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1990	tempdir
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1991	session.jsonl
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1999	write fixture
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	2002	Claude Code
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	2003	candidate
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	2010	Organize my windows by project
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	2016	tempdir
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	2017	codex.jsonl
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	2024	write fixture
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	2026	Codex
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	2027	candidate
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	2035	tempdir
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	2037	z/deep
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	2038	old dir
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	2039	new dir
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	2041	old.jsonl
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	2044	old fixture
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	2047	new.jsonl
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	2052	new fixture
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	2057	open new
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	2058	touch new
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	2060	Claude Code
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	2079	duplicate slash command registrations: {:?}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	2091	/keybindings
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	2092	/commit-and-push
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	2093	/resume-all
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	2094	/hotkeys
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	2095	/keys
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/info_widget_tips.rs	14	Ctrl+J / Ctrl+K to jump between user prompts (Cmd+J / Cmd+K on macOS terminals that forward Command)
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/info_widget_tips.rs	15	Ctrl+Shift+J / Ctrl+Shift+K to scroll the chat down and up one line
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/info_widget_tips.rs	16	Ctrl+G to bookmark your scroll position - press again to teleport back
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/info_widget_tips.rs	17	Swarms form automatically when multiple sessions share a repo - they coordinate plans, share context, and track file conflicts
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/info_widget_tips.rs	18	Memories are stored in a graph with semantic embeddings - recall finds related facts even if you use different words
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/info_widget_tips.rs	19	Ambient mode runs background cycles while you're away - maintaining memories, compacting context, and doing proactive work
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/info_widget_tips.rs	20	Ambient cycles can email you a summary and you can reply with directives for the next run
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/info_widget_tips.rs	21	Alt+B moves a long-running tool to the background - the agent continues and can check on it later with the `bg` tool
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/info_widget_tips.rs	22	Most terminals can be configured to copy text on highlight - no Ctrl+C needed. Check your terminal's settings for 'copy on select'
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/info_widget_tips.rs	23	Alt+G (or /diff) cycles diff mode: Off, Inline, Pinned, File. Shift+Tab cycles favorited models. Pinned shows all diffs in a side pane. File shows the full file with changes highlighted, synced to your scroll position
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/info_widget_tips.rs	26	```mermaid code blocks render as diagrams
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/info_widget_tips.rs	32	Alt+
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/info_widget_tips.rs	32	{alt}+
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/info_widget_tips.rs	122	Did you know?
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/keybind.rs	32	KEYBINDINGS: {} default(s) need review (platform asymmetry / unconfirmed auto-translation)
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/keybind.rs	52	Ctrl+Tab
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/keybind.rs	56	Ctrl+Shift+Tab
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/keybind.rs	76	Ctrl+Y
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/keybind.rs	89	Ctrl+Y
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/keybind.rs	113	Alt+H
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/keybind.rs	115	Alt+J
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/keybind.rs	117	Alt+K
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/keybind.rs	121	Alt+L
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/keybind.rs	166	Ctrl+Shift+K
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/keybind.rs	167	Ctrl+Shift+J
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/keybind.rs	179	Cmd+K
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/keybind.rs	184	Cmd+J
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/keybind.rs	186	Alt+U
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/keybind.rs	190	Alt+D
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/keybind.rs	195	Ctrl+K
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/keybind.rs	200	Ctrl+J
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/keybind.rs	203	Ctrl+G
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/keybind.rs	224	macos
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/keybind.rs	234	Cmd+Right
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/keybind.rs	235	Cmd+Left
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/keybind.rs	247	Alt+Right
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/keybind.rs	248	Alt+Left
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/keybind.rs	313	Alt+C
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/keybind.rs	436	Swarm: {} {next} · {} select · {} open · esc
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/keybind.rs	447	Swarm page: {} chat · {} select · {} open · esc
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/keybind.rs	487	macos
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/keybind.rs	497	macos
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/keybind.rs	641	alt+p
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/keybind.rs	652	alt+enter
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/keybind.rs	652	alt+enter should parse
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/keybind.rs	724	Option+{ascii} should map from {option_char}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/keybind.rs	757	Option+Shift+{ascii} should map from {option_shift_char}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	52	  shell mode · Enter runs locally
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	53	  shell mode · Enter runs on server
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	148	(history search) 
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	152	  ↑↓ select · ↵ insert · Esc cancel
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	159	  type to search history
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	161	  no matches
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	192	  +{} more
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	311	  +{} more
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	570	{:.1}M
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	572	{:.0}k
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	609	 and {compaction_count} compact{}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	617	Session history: {tokens} tokens processed{compactions}; /clear starts fresh context
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	623	refreshing auth
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	624	connecting
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	625	sending context
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	626	waiting for response
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	627	streaming
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	628	retrying {}/{}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	634	https/sse
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	634	https
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	635	websocket/persistent-fresh
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	635	websocket
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	636	websocket/persistent-reuse
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	636	existing websocket
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	649	fresh websocket
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	649	opening websocket
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	650	reusing websocket
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	650	using existing websocket
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	651	websocket healthcheck
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	651	verifying websocket
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	652	https fallback
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	652	using https fallback
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	691	via {}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	723	(stalled {:.0}s) · {}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	724	(no tokens {:.0}s) · {}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	754	 · {}/{} done
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	761	 · running: {}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	768	 · last done: {}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	794	 · +{} queued
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	814	{}h {}m
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	818	{}m {}s
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	820	{}s
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	826	 Rate limited. Auto-retry in {}...{}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	841	 sending… {}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	882	 thinking… {}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	898	{} · {:.1} tps
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	912	{}k
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	916	kv
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	918	⚠ {} cache miss · {}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	934	network disconnected, waiting to retry · {} · {}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	947	batch
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	952	tool_calls
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	1009	{}k
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	1013	kv
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	1016	 · ⚠ {} cache miss
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	1022	 · {} bg
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	1089	 running {}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	1143	bash
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	1143	cargo test
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	1159	abcdefghijklmnopqrst
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	1171	abcdefghij\\nxy
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	1185	oauth
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	1185	model
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	1185	dir
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	1185	context
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	1187	fact line
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	1214	oauth
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	1214	model
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	1214	dir
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	1214	context
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	1216	fact line
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	1240	oauth
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	1240	model
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	1240	dir
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	1240	context
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	1257	oauth
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	1257	model
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	1257	dir
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	1257	context
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	1259	fact line
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	1282	mask {occupied_mask:08b}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	1290	mask {occupied_mask:08b}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	1297	oauth
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	1297	model
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	1297	dir
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	1297	context
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	1298	mask {occupied_mask:08b}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	1313	context
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	1313	fact line
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	1333	context
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	1333	fact line
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	1370	large sessions should get a brief reminder
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	1440	tc
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	1443	read
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	1464	tc
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	1467	read
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	1487	tc
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	1492	batch-1-bash
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	1493	bash
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	1494	command
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	1494	cargo test -p jcode
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	1517	tc
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	1523	batch-2-grep
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	1524	grep
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	1525	pattern
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	1525	foo
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	1525	path
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	1525	src
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	1530	batch-1-bash
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	1531	bash
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	1532	command
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	1532	cargo build --release --workspace
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	1537	batch-3-read
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	1538	read
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	1539	file_path
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	1539	README.md
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	1558	waiting for response
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	1565	4.2s
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	1566	(no tokens 3s) · 4.2s
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	1569	12.0s
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	1570	(stalled 12s) · 12.0s
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	1577	4.2s
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	1578	4.2s
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	1581	12.0s
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	1582	12.0s
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	1588	4.2s
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	1588	 · +1 queued
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	1598	finalizing
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	1611	 · +2 queued
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	1621	websocket/persistent-fresh
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	1622	websocket
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	1625	websocket/persistent-reuse
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	1626	existing websocket
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	1633	fresh websocket
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	1634	opening websocket
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	1637	reusing websocket
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	1638	using existing websocket
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	1641	websocket healthcheck
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	1642	verifying websocket
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	1645	https fallback
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	1646	using https fallback
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	1654	reusing websocket
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	1655	websocket/persistent-reuse
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	1656	OpenRouter
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	1659	using existing websocket
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	1660	via OpenRouter
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	1666	https fallback
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	1667	https/sse
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	1670	using https fallback
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	1677	 ! cargo test 
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	1681	! cargo test
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	1692	  shell mode · Enter runs locally
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	1696	  shell mode · Enter runs on server
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	1709	⚠️ File activity: read lines 1-9
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	1710	⚠ File activity: read lines 1-9
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	1713	all clear
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	1714	all clear
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	1736	{} selection · {} chars · {} lines · Enter/Y copy · Esc exit
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	1741	{} selection · {} chars · Enter/Y copy · Esc exit
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	1747	{} selection · dragging… · Enter/Y copy · Esc exit
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	1751	{} selection · drag to copy
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	1794	✓ Copied! 
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	1796	✗ Copy failed 
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	1859	 ({:.1}M tok)
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	1861	 ({}K tok)
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	1863	 ({} tok)
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	1869	🧊 cache cold{}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	1885	 {}K
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	1895	{}m
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	1897	{}s
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	1901	⏳ cache {}{}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	1911	📋 stash
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	1950	(overscroll {:.1})
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	2031	  {branch}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	2163	connecting
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	2164	loading
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	2165	connected
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	2166	connecting to server
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	2174	remote
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	2174	replay
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	2174	test-harness
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	2185	claude
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	2185	Claude
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	2186	anthropic
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	2186	Anthropic
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	2187	openai
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	2187	OpenAI
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	2188	openrouter
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	2188	OpenRouter
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	2189	opencode
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	2189	OpenCode
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	2190	gemini
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	2190	Gemini
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	2191	copilot
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	2191	GitHub Copilot
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	2192	cursor
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	2192	Cursor
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	2193	bedrock
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	2193	AWS Bedrock
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	2194	antigravity
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	2194	Antigravity
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	2206	API key
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	2209	API key
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	2211	OAuth
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	2212	OAuth
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	2213	OAuth
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	2214	OAuth
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	2224	max
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	2224	max
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	2225	xhigh
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	2225	xhigh
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	2226	high
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	2226	high
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	2227	medium
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	2227	medium
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	2228	low
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	2228	low
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	2229	none
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	2229	none
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	2256	{:.1}M
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	2258	{}k
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	2260	{:.1}k
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	2441	 {effort}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	2457	  {branch}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	2654	  ↗ Next prompt opens a new session
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	2663	  Ctrl/Cmd+Enter to send now
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	2665	  Ctrl/Cmd+Enter to queue
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	3117	websocket
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	3119	subprocess
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_input.rs	3119	cli
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_onboarding.rs	34	Esc to skip onboarding (log in later with /login).
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_onboarding.rs	54	JCODE_ROUNDED_PILLS
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_onboarding.rs	56	true
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_onboarding.rs	56	yes
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_onboarding.rs	56	on
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_onboarding.rs	57	false
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_onboarding.rs	57	no
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_onboarding.rs	57	off
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_onboarding.rs	61	TERM_PROGRAM
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_onboarding.rs	63	ghostty
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_onboarding.rs	63	apple_terminal
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_onboarding.rs	63	vscode
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_onboarding.rs	67	GHOSTTY_RESOURCES_DIR
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_onboarding.rs	68	GHOSTTY_BIN_DIR
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_onboarding.rs	72	TERM
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_onboarding.rs	73	ghostty
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_onboarding.rs	108	\\\\u{25D6}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_onboarding.rs	108	\\\\u{25D7}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_onboarding.rs	110	\\\\u{2590}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_onboarding.rs	110	\\\\u{258C}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_onboarding.rs	114	 {label} 
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_onboarding.rs	124	Yes
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_onboarding.rs	126	No
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_onboarding.rs	135	Continue
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_onboarding.rs	147	Import
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_onboarding.rs	150	Jcode subscription
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_onboarding.rs	155	Import less
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_onboarding.rs	159	Telemetry
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_onboarding.rs	176	Telemetry settings
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_onboarding.rs	188	Share full transcripts (30-day retention)
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_onboarding.rs	189	Includes prompts, model responses, reasoning, code, and tool input/output
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_onboarding.rs	193	No prompts or transcripts
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_onboarding.rs	194	Usage stats and crash reports only
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_onboarding.rs	198	Send nothing
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_onboarding.rs	199	We stop seeing crashes and can't fix them
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_onboarding.rs	211	Your environment already disables telemetry (JCODE_NO_TELEMETRY).
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_onboarding.rs	219	Esc goes back. Change this later with /telemetry.
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_onboarding.rs	303	Yes
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_onboarding.rs	305	No
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_onboarding.rs	360	jcode collects anonymous usage statistics (version, OS, session
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_onboarding.rs	361	activity, and crash reasons). No code, prompts, or personal data.
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_onboarding.rs	362	Change anytime: /telemetry (or export JCODE_NO_TELEMETRY=1)
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_onboarding.rs	384	Welcome to jcode onboarding
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_onboarding.rs	397	Use your keyboard to navigate.
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_onboarding.rs	424	Importing your logins…
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_onboarding.rs	433	Hang tight, this only takes a moment.
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_onboarding.rs	445	We couldn't import those logins.
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_onboarding.rs	461	No problem - you can log in directly.
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_onboarding.rs	470	Press Enter to choose a provider (OpenAI, Anthropic, and more).
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_onboarding.rs	481	Press H to have {agent} help fix this for you.
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_onboarding.rs	491	First, log in to get started.
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_onboarding.rs	500	Press Enter to pick who to log in with (OpenAI, Anthropic, and more).
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_onboarding.rs	526	Choose how to get started. We found {found} existing login{}:
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_onboarding.rs	541	$10 to $20 inference, $20 to $40; then provider API prices. Scales through Solo.
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_onboarding.rs	554	Import:
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_onboarding.rs	579	Log in to OpenAI?
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_onboarding.rs	604	Continue where you left off in {cli_label}?
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_onboarding.rs	619	Opens the resume menu automatically in {seconds_left}s…
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_onboarding.rs	644	(type {})
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_onboarding.rs	663	Press 1-{} or type anything to start
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	28	No changelog entries available.
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	70	 Changelog {} 
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	79	 Esc to close · drag to select, release to copy · wheel/j/k scroll 
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	178	  Commands
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	180	/help
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	180	Show this help overlay
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	182	/help <command>
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	183	Show details for one command
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	185	/model
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	185	List or switch models
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	186	/model <name>
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	186	Switch to a different model
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	188	/provider-test-coverage
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	189	Show live-test evidence for the current provider/model
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	191	/agents
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	191	Configure models for agent roles
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	193	/swarm-prompt
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	194	Open the active swarm routing prompt in your editor
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	197	/effort <level>
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	198	Set effort (none|minimal|low|medium|high|xhigh|max|swarm|swarm-deep)
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	201	/fast [on|off|status|default ...]
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	202	Toggle fast mode
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	205	/transport <mode>
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	206	Set connection transport (auto|https|websocket)
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	209	/alignment [status|centered|left]
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	210	Show or persist text alignment preference
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	213	/compact-notifications [status|on|off]
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	214	Collapse swarm/file-activity notifications to one line
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	217	/show-agentgrep-output [status|on|off]
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	218	Render full agentgrep search output inline in chat
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	220	/config
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	220	Show active configuration
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	221	/config init
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	221	Create default config file
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	222	/config edit
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	222	Open config in $EDITOR
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	223	/dictate
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	223	Run configured external dictation
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	225	/git [status]
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	226	Show branch and working tree status for the repo
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	229	/context
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	230	Show the full session context snapshot
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	233	/skills
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	234	Show loaded skills and jcode-endorsed recommendations
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	236	/info
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	236	Show session info and token usage
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	238	/keys
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	239	Show keybinding conflicts with your terminal/OS
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	241	/usage
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	241	Show connected provider usage limits
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	243	/support
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	244	Email support with diagnostics prefilled
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	246	/version
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	246	Show version and build details
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	248	/changelog
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	249	Show recent changes in this build
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	256	  Session
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	258	/clear
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	258	Clear conversation and start fresh
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	260	/compact
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	261	Summarize old messages to free context
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	264	/rewind
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	265	Show numbered history, /rewind N to rewind
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	268	/fix
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	269	Attempt recovery when model cannot continue
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	272	/poke
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	273	Poke model to resume with incomplete todos (on/off/status)
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	276	/plan [goal]
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	277	Draft a plan-only proposal as a plan card (no edits)
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	280	/improve
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	281	Autonomously improve the repo until returns diminish
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	284	/improve resume
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	285	Resume the last saved improve loop/plan
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	288	/refactor
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	289	Run a safe refactor loop with independent review
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	292	/refactor resume
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	293	Resume the last saved refactor loop/plan
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	296	/splitview [on|off|status]
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	297	Mirror the current chat in the side panel
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	300	/fork [prompt]
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	301	Fork session into a new window (alias: /split)
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	304	/transfer
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	305	Open a fresh session with only compacted context + copied todos
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	308	/workspace [status|on|off|add]
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	309	Enable and manage the Niri-style session workspace
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	312	/catchup [next|list]
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	313	Jump to finished sessions and open a Catch Up brief
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	316	/back
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	317	Return to the previous Catch Up source session
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	319	/resume
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	319	Browse and resume previous sessions
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	321	/active
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	322	Manage live sessions: see which are working vs ready
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	325	/catchup [next]
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	326	Jump into finished sessions with a side-panel brief
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	329	/back
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	330	Return to the previous Catch Up session
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	332	/save [label]
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	332	Bookmark session for /resume
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	334	/rename <name>|--clear
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	335	Set or clear current session name
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	338	/unsave
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	339	Remove bookmark from current session
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	346	  Memory & Swarm
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	348	/memory [on|off]
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	348	Toggle memory features
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	350	/test [claim]
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	351	Run layered verification and produce proof
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	354	/initiatives
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	355	Open initiatives overview / resume an initiative
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	357	/swarm [on|off]
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	357	Toggle swarm features
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	363	  Auth & Accounts
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	365	/auth
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	365	Show authentication status
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	367	/login [provider]
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	368	Interactive or direct login
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	371	/account
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	372	Open combined Claude/OpenAI account picker
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	375	/subscription
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	376	Inspect jcode subscription scaffold
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	379	/subscribe
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	380	Why and how to subscribe to jcode
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	387	  System
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	389	/reload
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	389	Reload to newer binary if available
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	391	/restart
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	392	Restart with current binary (no build)
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	395	/rebuild
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	396	Full update (git pull + build + tests)
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	399	/client-reload
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	399	Force reload client binary
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	400	/server-reload
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	400	Force reload server binary
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	402	/continue
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	403	Continue every interrupted live session that would auto-resume
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	407	/debug-visual
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	408	Enable visual debugging for TUI issues
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	410	/quit
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	410	Exit jcode
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	432	  More commands
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	445	  Skills
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	448	Activate skill
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	456	  Navigation
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	458	PageUp / PageDown
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	458	Scroll history
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	459	Up / Down
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	459	Scroll history (when input empty)
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	461	Ctrl+J / Ctrl+K
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	462	Jump to next / previous user prompt (also Ctrl+] / Ctrl+[)
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	465	Ctrl+Shift+J / Ctrl+Shift+K
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	466	Scroll history down / up one line
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	469	Cmd/Super+K / J
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	470	Jump to previous / next user prompt (macOS, if forwarded)
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	472	Ctrl+1..4
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	472	Resize side panel to 25/50/75/100%
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	474	Ctrl+5..9
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	475	Jump by recency (5 = 5th most recent)
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	483	  Diagrams & Diffs
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	489	Toggle side panel (or diagram pane if empty)
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	491	Toggle diagram position (side/top)
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	493	Shift+I
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	494	Show/hide inline images (persists)
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	496	Ctrl+H / Ctrl+L
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	496	Focus chat / diagram / diffs
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	498	Ctrl+L / Cmd+L
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	499	Clear screen, history stays above (no pane focused)
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	502	Ctrl+Left / Right
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	503	Cycle diagrams (when diagram focused)
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	505	h/j/k/l / arrows
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	505	Pan diagram (when focused)
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	506	Zoom diagram (when focused)
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	507	Resize diagram pane
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	509	{} / /diff
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	510	Cycle diff mode (Off/Inline/Pinned/File)
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	512	Shift+Tab
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	512	Cycle favorited models
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	513	Ctrl+O
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	513	Set default model (in /model picker)
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	515	Ctrl+N
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	516	Toggle favorite model (in /model picker)
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	523	  Input & Editing
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	526	Ctrl+C / Ctrl+D
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	527	Quit (press twice to confirm)
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	529	Ctrl+X
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	529	Cut entire input line to clipboard
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	531	Ctrl+A
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	532	Copy visible chat viewport plus nearby context
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	534	Ctrl+U
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	534	Clear input line
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	535	Ctrl+K
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	535	Delete to end of input
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	537	Backspace
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	537	Delete
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	538	Delete previous word in input
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	541	Cmd/Super+Backspace / Delete
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	542	Delete previous word in input
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	544	macos
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	547	Home / End
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	547	Move to start / end of input
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	550	Cmd/Super+Left / Right
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	551	Move to start / end of input
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	554	Cmd/Super+Z
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	554	Undo input edit
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	555	Cmd/Super+X / V
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	555	Cut input / paste clipboard
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	556	Ctrl+S
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	556	Stash / pop input (save for later)
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	557	Ctrl+Backspace
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	557	Delete previous word in input
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	558	Ctrl+B / Ctrl+F
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	558	Move by word left / right
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	559	Ctrl+Left / Right
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	559	Move by word left / right
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	561	Shift+Enter / {}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	561	Enter
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	562	Insert newline in input
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	565	Trailing \\\\ then Enter
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	566	Insert newline (fallback; run /terminal-setup to fix Shift+Enter)
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	569	Ctrl+Enter / Cmd+Enter
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	570	Use opposite send mode while processing
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	572	Ctrl+Up
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	572	Retrieve pending message for editing
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	573	Ctrl+Tab / Ctrl+T
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	573	Toggle queue mode
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	575	Ctrl+R
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	576	Search prompt history (across sessions)
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	579	Ctrl+V / {}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	580	Paste clipboard (text or image)
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	584	Quick-copy visible chat viewport plus nearby context
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	586	Toggle chat selection/copy mode
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	587	Toggle typing scroll lock
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	588	Ctrl+P
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	588	Toggle auto-poke for incomplete todos
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	589	Show/dismiss todo list card in chat
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	592	Cycle effort (reasoning + swarm)
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	594	macos
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	596	Left / Right
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	597	Move by word in input (also {} / {})
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	601	Run configured dictation
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	604	Open the /resume session picker
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	609	Spawn new jcode session in a new terminal
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	631	 Help {} 
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	640	 Esc to close · mouse wheel/j/k scroll · Space/PageUp page · /help <cmd> for details 
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	668	  Model Status
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	670	  Live verification evidence for provider/model behavior in jcode
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	677	  {title}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	679	  {title}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	684	  {raw}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	692	  ↑/↓ scroll, PgUp/PgDn page, c copy report, q/Esc close
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	700	 /provider-test-coverage 
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	730	messages
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	731	queued
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	732	status
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	733	picker
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	734	input
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	736	donut
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	740	widget:{}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	758	user_color
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	759	ai_color
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	760	tool_color
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	761	dim_color
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	762	accent_color
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	763	queued_color
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	764	asap_color
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	765	pending_color
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	766	user_text
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	767	user_bg
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	768	ai_text
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	769	header_icon_color
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	770	header_name_color
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_overlays.rs	771	header_session_color

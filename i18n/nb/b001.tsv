@@ -1,0 +1,120 @@
+1	crates/jcode-tui-account-picker/src/lib.rs	134	OpenAI	"OpenAI",
+2	crates/jcode-tui-account-picker/src/lib.rs	135	Remove account `work`	"Remove account `work`",
+3	crates/jcode-tui-account-picker/src/lib.rs	142	openai danger	assert!(item_matches_filter(&item, "openai danger"));
+4	crates/jcode-tui-account-picker/src/overlay.rs	255	account-flow	if matches!(item.provider_id.as_str(), "defaults" | "account-flow") {
+5	crates/jcode-tui-account-picker/src/overlay.rs	274	Providers 	let mut spans = vec![Span::styled("Providers ", Style::default().fg(MUTED_DARK))];
+6	crates/jcode-tui-account-picker/src/overlay.rs	298	No providers available	"No providers available",
+7	crates/jcode-tui-account-picker/src/overlay.rs	408	 Enter 	hotkey(" Enter "),
+8	crates/jcode-tui-account-picker/src/overlay.rs	410	 Up/Down 	hotkey(" Up/Down "),
+9	crates/jcode-tui-account-picker/src/overlay.rs	412	 Click 	hotkey(" Click "),
+10	crates/jcode-tui-account-picker/src/overlay.rs	416	 Esc 	hotkey(" Esc "),
+11	crates/jcode-tui-account-picker/src/overlay.rs	417	 clear / close 	Span::styled(" clear / close ", Style::default().fg(MUTED_DARK)),
+12	crates/jcode-tui-account-picker/src/overlay.rs	449	Focus 	Span::styled("Focus ", Style::default().fg(MUTED_DARK)),
+13	crates/jcode-tui-account-picker/src/overlay.rs	451	saved accounts stay surfaced here; click actions to focus them, use Left/Right to jump provider groups, or use `/account <provider> settings` for the full text view.	"saved accounts stay surfaced here; click actions to focus them, use Left/Right to jump provider groups, or use `/account <provider> settings` for the full text view.",
+14	crates/jcode-tui-account-picker/src/overlay.rs	461	 Overview 	" Overview ",
+15	crates/jcode-tui-account-picker/src/overlay.rs	472	Filter 	Span::styled("Filter ", Style::default().fg(MUTED_DARK)),
+16	crates/jcode-tui-account-picker/src/overlay.rs	475	type provider or account name	"type provider or account name".to_string()
+17	crates/jcode-tui-account-picker/src/overlay.rs	486	  -  {} results	format!("  -  {} results", self.filtered.len()),
+18	crates/jcode-tui-account-picker/src/overlay.rs	500	 Providers & Quick Actions 	" Providers & Quick Actions ".to_string()
+19	crates/jcode-tui-account-picker/src/overlay.rs	503	 Providers & Quick Actions ({}/{}) 	" Providers & Quick Actions ({}/{}) ",
+20	crates/jcode-tui-account-picker/src/overlay.rs	527	No matching account or provider actions.	"No matching account or provider actions.",
+21	crates/jcode-tui-account-picker/src/overlay.rs	531	Try `openai`, `claude`, an account label, `login`, or `default`.	"Try `openai`, `claude`, an account label, `login`, or `default`.",
+22	crates/jcode-tui-account-picker/src/overlay.rs	597	No action selected	Paragraph::new("No action selected").style(Style::default().fg(Color::DarkGray)),
+23	crates/jcode-tui-account-picker/src/overlay.rs	608	Enter: run action.	Line::from("Enter: run action."),
+24	crates/jcode-tui-account-picker/src/overlay.rs	658	Provider 	Span::styled("Provider ", Style::default().fg(MUTED_DARK)),
+25	crates/jcode-tui-account-picker/src/overlay.rs	665	Saved accounts 	Span::styled("Saved accounts ", Style::default().fg(MUTED_DARK)),
+26	crates/jcode-tui-account-picker/src/overlay.rs	673	Quick switch	"Quick switch",
+27	crates/jcode-tui-account-picker/src/overlay.rs	680	No saved accounts for this provider yet.	"No saved accounts for this provider yet.",
+28	crates/jcode-tui-account-picker/src/overlay.rs	687	  [selected]	let note = if is_selected { "  [selected]" } else { "" };
+29	crates/jcode-tui-account-picker/src/overlay.rs	721	Selected action	"Selected action",
+30	crates/jcode-tui-account-picker/src/overlay.rs	735	Runs	"Runs",
+31	crates/jcode-tui-account-picker/src/overlay.rs	750	Other controls	"Other controls",
+32	crates/jcode-tui-account-picker/src/overlay.rs	766	Press Enter to run this action.	"Press Enter to run this action.",
+33	crates/jcode-tui-account-picker/src/overlay.rs	804	{} actions available	format!("{} actions available", self.filtered.len()),
+34	crates/jcode-tui-account-picker/src/overlay.rs	812	Type to narrow actions by provider, account label, or setting.	"Type to narrow actions by provider, account label, or setting.",
+35	crates/jcode-tui-account-picker/src/overlay.rs	821	provider default	.unwrap_or("provider default");
+36	crates/jcode-tui-account-picker/src/overlay.rs	824	Defaults 	Span::styled("Defaults ", Style::default().fg(MUTED_DARK)),
+37	crates/jcode-tui-account-picker/src/overlay.rs	827	  -  model 	Span::styled("  -  model ", Style::default().fg(MUTED_DARK)),
+38	crates/jcode-tui-account-picker/src/overlay.rs	889	Accounts	"Accounts",
+39	crates/jcode-tui-account-picker/src/overlay.rs	893	OpenAI	"OpenAI",
+40	crates/jcode-tui-account-picker/src/overlay.rs	894	Switch OpenAI Otter	"Switch OpenAI Otter",
+41	crates/jcode-tui-account-picker/src/overlay.rs	900	Full usage details	"Full usage details".into(),
+42	crates/jcode-tui-account-picker/src/overlay.rs	905	123456789 input / 450000 output tokens (60000 cached input), $1.2500 known + unknown cost (2 unpriced responses) API-equivalent estimate, not a bill; recorded only; partial token counts; since local midnight	"123456789 input / 450000 output tokens (60000 cached input), $1.2500 known + unknown cost (2 unpriced responses) API-equivalent estimate, not a bill; recorded only; partial token counts; since local midnight"
+43	crates/jcode-tui-account-picker/src/overlay.rs	910	1234567890 input / 4500000 output tokens (600000 cached input), $12.5000 API-equivalent estimate, not a bill; recorded only; since 2026-09-06 12:34 -07:00	"1234567890 input / 4500000 output tokens (600000 cached input), $12.5000 API-equivalent estimate, not a bill; recorded only; since 2026-09-06 12:34 -07:00"
+44	crates/jcode-tui-account-picker/src/overlay.rs	915	Not your subscription bill. Recorded Jcode usage only.	"Not your subscription bill. Recorded Jcode usage only.".into(),
+45	crates/jcode-tui-account-picker/src/overlay.rs	942	Not your subscription bill.	"Not your subscription bill.",
+46	crates/jcode-tui-account-picker/src/overlay.rs	972	 Accounts 	" Accounts ",
+47	crates/jcode-tui-account-picker/src/overlay.rs	975	OpenAI	"OpenAI",
+48	crates/jcode-tui-account-picker/src/overlay.rs	976	Add account	"Add account",
+49	crates/jcode-tui-account-picker/src/overlay.rs	977	Start login flow	"Start login flow",
+50	crates/jcode-tui-account-picker/src/overlay.rs	1006	 Accounts 	" Accounts ",
+51	crates/jcode-tui-account-picker/src/overlay.rs	1010	OpenAI	"OpenAI",
+52	crates/jcode-tui-account-picker/src/overlay.rs	1011	Provider settings	"Provider settings",
+53	crates/jcode-tui-account-picker/src/overlay.rs	1017	OpenAI	"OpenAI",
+54	crates/jcode-tui-account-picker/src/overlay.rs	1018	Login / refresh	"Login / refresh",
+55	crates/jcode-tui-account-picker/src/overlay.rs	1019	OAuth	"OAuth",
+56	crates/jcode-tui-account-picker/src/overlay.rs	1044	provider group header rows should not be selectable	"provider group header rows should not be selectable"
+57	crates/jcode-tui-account-picker/src/overlay.rs	1065	Enter default model	prompt: "Enter default model".to_string(),
+58	crates/jcode-tui-account-picker/src/overlay.rs	1078	 Accounts 	" Accounts ",
+59	crates/jcode-tui-account-picker/src/overlay.rs	1082	OpenAI	"OpenAI",
+60	crates/jcode-tui-account-picker/src/overlay.rs	1083	Provider settings	"Provider settings",
+61	crates/jcode-tui-account-picker/src/overlay.rs	1089	OpenAI	"OpenAI",
+62	crates/jcode-tui-account-picker/src/overlay.rs	1090	Switch account `work`	"Switch account `work`",
+63	crates/jcode-tui-account-picker/src/overlay.rs	1097	Default provider	"Default provider",
+64	crates/jcode-tui-account-picker/src/overlay.rs	1115	Switch account `work`	assert_eq!(ordered_titles[0], "Switch account `work`");
+65	crates/jcode-tui-account-picker/src/overlay.rs	1116	Provider settings	assert_eq!(ordered_titles[1], "Provider settings");
+66	crates/jcode-tui-account-picker/src/overlay.rs	1117	Default provider	assert_eq!(ordered_titles[2], "Default provider");
+67	crates/jcode-tui-account-picker/src/overlay.rs	1123	 Accounts 	" Accounts ",
+68	crates/jcode-tui-account-picker/src/overlay.rs	1127	Claude	"Claude",
+69	crates/jcode-tui-account-picker/src/overlay.rs	1128	Switch account `work`	"Switch account `work`",
+70	crates/jcode-tui-account-picker/src/overlay.rs	1134	Claude	"Claude",
+71	crates/jcode-tui-account-picker/src/overlay.rs	1135	Provider settings	"Provider settings",
+72	crates/jcode-tui-account-picker/src/overlay.rs	1141	OpenAI	"OpenAI",
+73	crates/jcode-tui-account-picker/src/overlay.rs	1142	Switch account `default`	"Switch account `default`",
+74	crates/jcode-tui-account-picker/src/overlay_render.rs	77	Re-login account `	let prefixes = ["Switch account `", "Re-login account `", "Remove account `"];
+75	crates/jcode-tui-account-picker/src/overlay_render.rs	77	Remove account `	let prefixes = ["Switch account `", "Re-login account `", "Remove account `"];
+76	crates/jcode-tui-account-picker/src/overlay_render.rs	77	Switch account `	let prefixes = ["Switch account `", "Re-login account `", "Remove account `"];
+77	crates/jcode-tui-account-picker/src/overlay_render.rs	95	Refresh {label}	.map(|label| format!("Refresh {label}"))
+78	crates/jcode-tui-account-picker/src/overlay_render.rs	96	Login / refresh	.unwrap_or_else(|| "Login / refresh".to_string()),
+79	crates/jcode-tui-account-picker/src/overlay_render.rs	100	Provider settings	ActionSection::Overview => "Provider settings".to_string(),
+80	crates/jcode-tui-account-picker/src/overlay_render.rs	102	Remove {label}	.map(|label| format!("Remove {label}"))
+81	crates/jcode-tui-account-picker/src/overlay_render.rs	129	{} saved account{}	"{} saved account{}",
+82	crates/jcode-tui-account-picker/src/overlay_render.rs	153	Returns to the main account center with all provider and saved-auth actions.	"Returns to the main account center with all provider and saved-auth actions."
+83	crates/jcode-tui-account-picker/src/overlay_render.rs	156	Opens a focused chooser where you pick whether to add a new Claude/OpenAI account or replace an existing saved one.	"Opens a focused chooser where you pick whether to add a new Claude/OpenAI account or replace an existing saved one."
+84	crates/jcode-tui-account-picker/src/overlay_render.rs	159	Opens a detailed text summary for this provider, including the exact commands you can run manually.	"Opens a detailed text summary for this provider, including the exact commands you can run manually."
+85	crates/jcode-tui-account-picker/src/overlay_render.rs	162	Removes saved credentials for the selected account. Use this when an account is stale or should no longer be available in jcode.	"Removes saved credentials for the selected account. Use this when an account is stale or should no longer be available in jcode."
+86	crates/jcode-tui-account-picker/src/overlay_render.rs	165	Starts or refreshes authentication for this provider so it becomes usable again.	"Starts or refreshes authentication for this provider so it becomes usable again."
+87	crates/jcode-tui-account-picker/src/overlay_render.rs	168	Starts the flow for adding the next numbered account, so you can keep multiple identities side by side.	"Starts the flow for adding the next numbered account, so you can keep multiple identities side by side."
+88	crates/jcode-tui-account-picker/src/overlay_render.rs	171	Makes this account active so future requests use it immediately.	"Makes this account active so future requests use it immediately."
+89	crates/jcode-tui-account-picker/src/overlay_render.rs	174	Prompts for a new value, then saves the matching provider or global setting.	"Prompts for a new value, then saves the matching provider or global setting."
+90	crates/jcode-tui-account-picker/src/overlay_render.rs	177	Switches the active saved account for this provider.	"Switches the active saved account for this provider."
+91	crates/jcode-tui-account-picker/src/overlay_render.rs	180	Refreshes the selected account by starting the provider login flow again.	"Refreshes the selected account by starting the provider login flow again."
+92	crates/jcode-tui-account-picker/src/overlay_render.rs	183	Deletes the saved account credentials from local storage.	"Deletes the saved account credentials from local storage."
+93	crates/jcode-tui-account-picker/src/overlay_render.rs	186	Starts login for the next numbered account immediately.	"Starts login for the next numbered account immediately."
+94	crates/jcode-tui-account-picker/src/overlay_render.rs	189	Runs the selected account-management command immediately.	"Runs the selected account-management command immediately."
+95	crates/jcode-tui-account-picker/src/overlay_render.rs	198	Open /account {}	Some(provider_id) => format!("Open /account {}", provider_id),
+96	crates/jcode-tui-account-picker/src/overlay_render.rs	199	Open /account	None => "Open /account".to_string(),
+97	crates/jcode-tui-account-picker/src/overlay_render.rs	202	Open add/replace flow for {}	Some(provider_id) => format!("Open add/replace flow for {}", provider_id),
+98	crates/jcode-tui-account-picker/src/overlay_render.rs	203	Open add/replace flow	None => "Open add/replace flow".to_string(),
+99	crates/jcode-tui-account-picker/src/overlay_render.rs	246	account-flow	"account-flow" => Color::Rgb(196, 170, 255),
+100	crates/jcode-tui-account-picker/src/overlay_render.rs	248	openai-compatible	| "openai-compatible"
+101	crates/jcode-tui/src/tui/account_picker.rs	47	login provider catalog should not be empty	"login provider catalog should not be empty"
+102	crates/jcode-tui/src/tui/account_picker.rs	52	Login / refresh {}	let title = format!("Login / refresh {}", provider.display_name);
+103	crates/jcode-tui/src/tui/account_picker.rs	53	state-space account action for {}	let subtitle = format!("state-space account action for {}", provider.id);
+104	crates/jcode-tui/src/tui/account_picker.rs	55	 Accounts 	" Accounts ",
+105	crates/jcode-tui/src/tui/account_picker.rs	67	provider default	default_model: Some("provider default".to_string()),
+106	crates/jcode-tui/src/tui/account_picker.rs	94	enter should be handled	.expect("enter should be handled")
+107	crates/jcode-tui/src/tui/account_picker.rs	100	Enter should execute account command for provider={}	"Enter should execute account command for provider={}",
+108	crates/jcode-tui/src/tui/app/auth.rs	1	auth_account_commands.rs	#[path = "auth_account_commands.rs"]
+109	crates/jcode-tui/src/tui/app/auth.rs	3	auth_account_picker.rs	#[path = "auth_account_picker.rs"]
+110	crates/jcode-tui/src/tui/app/auth.rs	40	This machine could not open a browser automatically.	notices.push("This machine could not open a browser automatically.".to_string());
+111	crates/jcode-tui/src/tui/app/auth.rs	50	Local callback target {} is unavailable, so jcode is using manual-safe paste completion instead.	"Local callback target {} is unavailable, so jcode is using manual-safe paste completion instead.",
+112	crates/jcode-tui/src/tui/app/auth.rs	55	The local callback listener is unavailable, so jcode is using manual-safe paste completion instead.	"The local callback listener is unavailable, so jcode is using manual-safe paste completion instead."
+113	crates/jcode-tui/src/tui/app/auth.rs	62	If login still fails, run jcode auth doctor {} for a guided diagnosis.	"If login still fails, run jcode auth doctor {} for a guided diagnosis.",
+114	crates/jcode-tui/src/tui/app/auth.rs	81	not configured (/login jcode)	"not configured (/login jcode)"
+115	crates/jcode-tui/src/tui/app/auth.rs	170	Hosted usage: account status loaded	Some("Hosted usage: account status loaded"),
+116	crates/jcode-tui/src/tui/app/auth.rs	192	Jcode account status unavailable	Some("Jcode account status unavailable"),
+117	crates/jcode-tui/src/tui/app/auth.rs	207	needs attention	crate::auth::AuthState::Expired => "needs attention",
+118	crates/jcode-tui/src/tui/app/auth.rs	208	not configured	crate::auth::AuthState::NotConfigured => "not configured",
+119	crates/jcode-tui/src/tui/app/auth.rs	212	Provider	"Provider".to_string(),
+120	crates/jcode-tui/src/tui/app/auth.rs	213	Status	"Status".to_string(),

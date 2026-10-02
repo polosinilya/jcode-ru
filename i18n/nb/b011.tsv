@@ -1,0 +1,120 @@
+1	crates/jcode-tui/src/tui/app/commands.rs	2342	Interrupting for /fast-macos-release...	"Interrupting for /fast-macos-release...",
+2	crates/jcode-tui/src/tui/app/commands.rs	2359	Interrupting for /remote-release...	"Interrupting for /remote-release...",
+3	crates/jcode-tui/src/tui/app/commands.rs	2369	/selfdev	if !trimmed.starts_with("/selfdev") {
+4	crates/jcode-tui/src/tui/app/commands.rs	2373	/selfdev	let rest = trimmed.strip_prefix("/selfdev").unwrap_or_default().trim();
+5	crates/jcode-tui/src/tui/app/commands.rs	2374	status	if rest == "status" {
+6	crates/jcode-tui/src/tui/app/commands.rs	2378	Self-dev status	app.set_status_notice("Self-dev status");
+7	crates/jcode-tui/src/tui/app/commands.rs	2381	Failed to read self-dev status: {}	"Failed to read self-dev status: {}",
+8	crates/jcode-tui/src/tui/app/commands.rs	2388	help	if rest == "help" {
+9	crates/jcode-tui/src/tui/app/commands.rs	2390	/selfdev\nSpawn a new self-dev jcode session in a separate terminal.\n\n/selfdev <prompt>\nSpawn a new self-dev session and auto-deliver the prompt to it.\n\n/selfdev status\nShow current self-dev/build status.	"/selfdev\nSpawn a new self-dev jcode session in a separate terminal.\n\n/selfdev <prompt>\nSpawn a new self-dev session and auto-deliver the prompt to it.\n\n/selfdev status\nShow current self-dev/build status."
+10	crates/jcode-tui/src/tui/app/commands.rs	2396	enter	let prompt = if rest.is_empty() || rest == "enter" {
+11	crates/jcode-tui/src/tui/app/commands.rs	2398	enter 	} else if let Some(prompt) = rest.strip_prefix("enter ") {
+12	crates/jcode-tui/src/tui/app/commands.rs	2412	Created self-dev session {} in {}.\n\nTest mode skipped launching a new terminal.	"Created self-dev session {} in {}.\n\nTest mode skipped launching a new terminal.",
+13	crates/jcode-tui/src/tui/app/commands.rs	2418	Spawned self-dev session {} in a new terminal.\n\nRepo: {}	"Spawned self-dev session {} in a new terminal.\n\nRepo: {}",
+14	crates/jcode-tui/src/tui/app/commands.rs	2424	Created self-dev session {} but could not auto-open a supported terminal.\n\nRun manually:\n{}	"Created self-dev session {} but could not auto-open a supported terminal.\n\nRun manually:\n{}",
+15	crates/jcode-tui/src/tui/app/commands.rs	2427	jcode --resume {} self-dev	"jcode --resume {} self-dev",
+16	crates/jcode-tui/src/tui/app/commands.rs	2434	\n\nContext was cloned from the current session.	message.push_str("\n\nContext was cloned from the current session.");
+17	crates/jcode-tui/src/tui/app/commands.rs	2443	\n\nPrompt delivery queued to the spawned self-dev session.	message.push_str("\n\nPrompt delivery queued to the spawned self-dev session.");
+18	crates/jcode-tui/src/tui/app/commands.rs	2445	\n\nPrompt captured but not delivered in test mode.	message.push_str("\n\nPrompt captured but not delivered in test mode.");
+19	crates/jcode-tui/src/tui/app/commands.rs	2447	\n\nPrompt was not auto-delivered because the self-dev terminal did not launch.	message.push_str("\n\nPrompt was not auto-delivered because the self-dev terminal did not launch.");
+20	crates/jcode-tui/src/tui/app/commands.rs	2452	Self-dev	app.set_status_notice("Self-dev");
+21	crates/jcode-tui/src/tui/app/commands.rs	2455	Failed to enter self-dev mode: {}	"Failed to enter self-dev mode: {}",
+22	crates/jcode-tui/src/tui/app/commands.rs	2465	/initiatives	.strip_prefix("/initiatives")
+23	crates/jcode-tui/src/tui/app/commands.rs	2466	/goals	.or_else(|| trimmed.strip_prefix("/goals"))
+24	crates/jcode-tui/src/tui/app/commands.rs	2470	/initiatives{}	let trimmed = format!("/initiatives{}", trimmed);
+25	crates/jcode-tui/src/tui/app/commands.rs	2472	/initiatives	if trimmed == "/initiatives" {
+26	crates/jcode-tui/src/tui/app/commands.rs	2484	Opened initiatives overview in the side panel ({} initiative{}).	"Opened initiatives overview in the side panel ({} initiative{}).",
+27	crates/jcode-tui/src/tui/app/commands.rs	2486	s	if count == 1 { "" } else { "s" }
+28	crates/jcode-tui/src/tui/app/commands.rs	2488	Initiatives	app.set_status_notice("Initiatives");
+29	crates/jcode-tui/src/tui/app/commands.rs	2491	Failed to open initiatives overview: {}	"Failed to open initiatives overview: {}",
+30	crates/jcode-tui/src/tui/app/commands.rs	2498	/initiatives resume	if trimmed == "/initiatives resume" {
+31	crates/jcode-tui/src/tui/app/commands.rs	2506	Resumed initiative {}.	let mut msg = format!("Resumed initiative {}.", result.goal.title);
+32	crates/jcode-tui/src/tui/app/commands.rs	2508	 Next step: {}	msg.push_str(&format!(" Next step: {}", next_step));
+33	crates/jcode-tui/src/tui/app/commands.rs	2511	Initiative: {}	app.set_status_notice(format!("Initiative: {}", result.goal.title));
+34	crates/jcode-tui/src/tui/app/commands.rs	2514	No resumable initiatives found for this session.	"No resumable initiatives found for this session.".to_string(),
+35	crates/jcode-tui/src/tui/app/commands.rs	2517	Failed to resume initiative: {}	"Failed to resume initiative: {}",
+36	crates/jcode-tui/src/tui/app/commands.rs	2524	/initiatives show 	if let Some(id) = trimmed.strip_prefix("/initiatives show ") {
+37	crates/jcode-tui/src/tui/app/commands.rs	2528	Usage: /initiatives show <id>	"Usage: /initiatives show <id>".to_string(),
+38	crates/jcode-tui/src/tui/app/commands.rs	2541	Opened initiative {} in the side panel.	"Opened initiative {} in the side panel.",
+39	crates/jcode-tui/src/tui/app/commands.rs	2544	Initiative: {}	app.set_status_notice(format!("Initiative: {}", result.goal.title));
+40	crates/jcode-tui/src/tui/app/commands.rs	2547	Initiative not found: {}	"Initiative not found: {}",
+41	crates/jcode-tui/src/tui/app/commands.rs	2551	Failed to open initiative: {}	"Failed to open initiative: {}",
+42	crates/jcode-tui/src/tui/app/commands.rs	2558	/initiatives 	if trimmed.starts_with("/initiatives ") {
+43	crates/jcode-tui/src/tui/app/commands.rs	2560	Usage: /initiatives, /initiatives resume, or /initiatives show <id>	"Usage: /initiatives, /initiatives resume, or /initiatives show <id>".to_string(),
+44	crates/jcode-tui/src/tui/app/commands.rs	2569	/mission	if slash_command_rest(trimmed, "/mission").is_none()
+45	crates/jcode-tui/src/tui/app/commands.rs	2570	/goal	&& slash_command_rest(trimmed, "/goal").is_none()
+46	crates/jcode-tui/src/tui/app/commands.rs	2576	The /mission and /goal commands are disabled in this build.	"The /mission and /goal commands are disabled in this build.".to_string(),
+47	crates/jcode-tui/src/tui/app/commands.rs	2582	/test	let Some(rest) = slash_command_rest(trimmed, "/test") else {
+48	crates/jcode-tui/src/tui/app/commands.rs	2586	-h	if matches!(claim, "help" | "--help" | "-h") {
+49	crates/jcode-tui/src/tui/app/commands.rs	2586	help	if matches!(claim, "help" | "--help" | "-h") {
+50	crates/jcode-tui/src/tui/app/commands.rs	2595	Queued /test; verification will run after the current turn.	"Queued /test; verification will run after the current turn.".to_string(),
+51	crates/jcode-tui/src/tui/app/commands.rs	2597	Queued /test	app.set_status_notice("Queued /test");
+52	crates/jcode-tui/src/tui/app/commands.rs	2601	Running /test verification orchestrator.	"Running /test verification orchestrator.".to_string(),
+53	crates/jcode-tui/src/tui/app/commands.rs	2603	Running /test	app.set_status_notice("Running /test");
+54	crates/jcode-tui/src/tui/app/commands.rs	2617	Usage: /test [claim|feature|current changes]\n\nRuns a layered verification pass and returns evidence, confidence, and gaps.	"Usage: /test [claim|feature|current changes]\n\nRuns a layered verification pass and returns evidence, confidence, and gaps."
+55	crates/jcode-tui/src/tui/app/commands.rs	2623	the current changes and the likely user-facing behavior they affect	"the current changes and the likely user-facing behavior they affect"
+56	crates/jcode-tui/src/tui/app/commands.rs	2665	cancelled	todo.status != "completed" && todo.status != "cancelled"
+57	crates/jcode-tui/src/tui/app/commands.rs	2665	completed	todo.status != "completed" && todo.status != "cancelled"
+58	crates/jcode-tui/src/tui/app/commands.rs	2681	high	"high" => 3,
+59	crates/jcode-tui/src/tui/app/commands.rs	2682	medium	"medium" => 2,
+60	crates/jcode-tui/src/tui/app/commands.rs	2713	completed	.filter(|todo| todo.status == "completed")
+61	crates/jcode-tui/src/tui/app/commands.rs	2755	unknown	.unwrap_or_else(|| "unknown".to_string())
+62	crates/jcode-tui/src/tui/app/commands.rs	2766	/dictate	if trimmed == "/dictate" || trimmed == "/dictation" {
+63	crates/jcode-tui/src/tui/app/commands.rs	2766	/dictation	if trimmed == "/dictate" || trimmed == "/dictation" {
+64	crates/jcode-tui/src/tui/app/commands.rs	2771	/dictate 	if trimmed.starts_with("/dictate ") || trimmed.starts_with("/dictation ") {
+65	crates/jcode-tui/src/tui/app/commands.rs	2771	/dictation 	if trimmed.starts_with("/dictate ") || trimmed.starts_with("/dictation ") {
+66	crates/jcode-tui/src/tui/app/commands.rs	2773	Usage: /dictate\nConfigure [dictation] in ~/.jcode/config.toml to customize command, mode, hotkey, and timeout.	"Usage: /dictate\nConfigure [dictation] in ~/.jcode/config.toml to customize command, mode, hotkey, and timeout."
+67	crates/jcode-tui/src/tui/app/commands.rs	2783	centered	if centered { "centered" } else { "left-aligned" }
+68	crates/jcode-tui/src/tui/app/commands.rs	2783	left-aligned	if centered { "centered" } else { "left-aligned" }
+69	crates/jcode-tui/src/tui/app/commands.rs	2788	Layout: Centered	"Layout: Centered"
+70	crates/jcode-tui/src/tui/app/commands.rs	2790	Layout: Left-aligned	"Layout: Left-aligned"
+71	crates/jcode-tui/src/tui/app/commands.rs	2796	center	"centered" | "center" | "centre" | "on" => Some(true),
+72	crates/jcode-tui/src/tui/app/commands.rs	2796	centered	"centered" | "center" | "centre" | "on" => Some(true),
+73	crates/jcode-tui/src/tui/app/commands.rs	2796	centre	"centered" | "center" | "centre" | "on" => Some(true),
+74	crates/jcode-tui/src/tui/app/commands.rs	2796	on	"centered" | "center" | "centre" | "on" => Some(true),
+75	crates/jcode-tui/src/tui/app/commands.rs	2797	left	"left" | "left-aligned" | "left_aligned" | "off" => Some(false),
+76	crates/jcode-tui/src/tui/app/commands.rs	2797	left-aligned	"left" | "left-aligned" | "left_aligned" | "off" => Some(false),
+77	crates/jcode-tui/src/tui/app/commands.rs	2797	off	"left" | "left-aligned" | "left_aligned" | "off" => Some(false),
+78	crates/jcode-tui/src/tui/app/commands.rs	2804	compact	"on" | "compact" | "true" | "1" | "yes" | "enable" | "enabled" => Some(true),
+79	crates/jcode-tui/src/tui/app/commands.rs	2804	enable	"on" | "compact" | "true" | "1" | "yes" | "enable" | "enabled" => Some(true),
+80	crates/jcode-tui/src/tui/app/commands.rs	2804	enabled	"on" | "compact" | "true" | "1" | "yes" | "enable" | "enabled" => Some(true),
+81	crates/jcode-tui/src/tui/app/commands.rs	2804	on	"on" | "compact" | "true" | "1" | "yes" | "enable" | "enabled" => Some(true),
+82	crates/jcode-tui/src/tui/app/commands.rs	2804	true	"on" | "compact" | "true" | "1" | "yes" | "enable" | "enabled" => Some(true),
+83	crates/jcode-tui/src/tui/app/commands.rs	2804	yes	"on" | "compact" | "true" | "1" | "yes" | "enable" | "enabled" => Some(true),
+84	crates/jcode-tui/src/tui/app/commands.rs	2805	disable	"off" | "full" | "false" | "0" | "no" | "disable" | "disabled" => Some(false),
+85	crates/jcode-tui/src/tui/app/commands.rs	2805	disabled	"off" | "full" | "false" | "0" | "no" | "disable" | "disabled" => Some(false),
+86	crates/jcode-tui/src/tui/app/commands.rs	2805	false	"off" | "full" | "false" | "0" | "no" | "disable" | "disabled" => Some(false),
+87	crates/jcode-tui/src/tui/app/commands.rs	2805	full	"off" | "full" | "false" | "0" | "no" | "disable" | "disabled" => Some(false),
+88	crates/jcode-tui/src/tui/app/commands.rs	2805	no	"off" | "full" | "false" | "0" | "no" | "disable" | "disabled" => Some(false),
+89	crates/jcode-tui/src/tui/app/commands.rs	2805	off	"off" | "full" | "false" | "0" | "no" | "disable" | "disabled" => Some(false),
+90	crates/jcode-tui/src/tui/app/commands.rs	2811	/compact-notifications	if trimmed != "/compact-notifications" && !trimmed.starts_with("/compact-notifications ") {
+91	crates/jcode-tui/src/tui/app/commands.rs	2811	/compact-notifications 	if trimmed != "/compact-notifications" && !trimmed.starts_with("/compact-notifications ") {
+92	crates/jcode-tui/src/tui/app/commands.rs	2816	/compact-notifications	.strip_prefix("/compact-notifications")
+93	crates/jcode-tui/src/tui/app/commands.rs	2820	show	if rest.is_empty() || matches!(rest, "show" | "status") {
+94	crates/jcode-tui/src/tui/app/commands.rs	2820	status	if rest.is_empty() || matches!(rest, "show" | "status") {
+95	crates/jcode-tui/src/tui/app/commands.rs	2824	off	if current { "on" } else { "off" }
+96	crates/jcode-tui/src/tui/app/commands.rs	2824	on	if current { "on" } else { "off" }
+97	crates/jcode-tui/src/tui/app/commands.rs	2831	Usage: /compact-notifications (show), /compact-notifications on, or /compact-notifications off	"Usage: /compact-notifications (show), /compact-notifications on, or /compact-notifications off".to_string(),
+98	crates/jcode-tui/src/tui/app/commands.rs	2837	Compact notifications: {}	"Compact notifications: {}",
+99	crates/jcode-tui/src/tui/app/commands.rs	2838	off	if enabled { "on" } else { "off" }
+100	crates/jcode-tui/src/tui/app/commands.rs	2838	on	if enabled { "on" } else { "off" }
+101	crates/jcode-tui/src/tui/app/commands.rs	2842	Saved compact notifications: {}. Applied to this session immediately.	"Saved compact notifications: {}. Applied to this session immediately.",
+102	crates/jcode-tui/src/tui/app/commands.rs	2843	off	if enabled { "on" } else { "off" }
+103	crates/jcode-tui/src/tui/app/commands.rs	2843	on	if enabled { "on" } else { "off" }
+104	crates/jcode-tui/src/tui/app/commands.rs	2846	Applied compact notifications {} for this session, but failed to save it as the default: {}	"Applied compact notifications {} for this session, but failed to save it as the default: {}",
+105	crates/jcode-tui/src/tui/app/commands.rs	2847	off	if enabled { "on" } else { "off" },
+106	crates/jcode-tui/src/tui/app/commands.rs	2847	on	if enabled { "on" } else { "off" },
+107	crates/jcode-tui/src/tui/app/commands.rs	2856	/tool-call-details	if trimmed != "/tool-call-details" && !trimmed.starts_with("/tool-call-details ") {
+108	crates/jcode-tui/src/tui/app/commands.rs	2856	/tool-call-details 	if trimmed != "/tool-call-details" && !trimmed.starts_with("/tool-call-details ") {
+109	crates/jcode-tui/src/tui/app/commands.rs	2861	/tool-call-details	.strip_prefix("/tool-call-details")
+110	crates/jcode-tui/src/tui/app/commands.rs	2865	show	if rest.is_empty() || matches!(rest, "show" | "status") {
+111	crates/jcode-tui/src/tui/app/commands.rs	2865	status	if rest.is_empty() || matches!(rest, "show" | "status") {
+112	crates/jcode-tui/src/tui/app/commands.rs	2869	off	if current { "on" } else { "off" }
+113	crates/jcode-tui/src/tui/app/commands.rs	2869	on	if current { "on" } else { "off" }
+114	crates/jcode-tui/src/tui/app/commands.rs	2876	Usage: /tool-call-details (show), /tool-call-details on, or /tool-call-details off	"Usage: /tool-call-details (show), /tool-call-details on, or /tool-call-details off"
+115	crates/jcode-tui/src/tui/app/commands.rs	2883	Tool call details: {}	"Tool call details: {}",
+116	crates/jcode-tui/src/tui/app/commands.rs	2884	off	if enabled { "on" } else { "off" }
+117	crates/jcode-tui/src/tui/app/commands.rs	2884	on	if enabled { "on" } else { "off" }
+118	crates/jcode-tui/src/tui/app/commands.rs	2888	Saved tool call details: {}. Applied to this session immediately.	"Saved tool call details: {}. Applied to this session immediately.",
+119	crates/jcode-tui/src/tui/app/commands.rs	2889	off	if enabled { "on" } else { "off" }
+120	crates/jcode-tui/src/tui/app/commands.rs	2889	on	if enabled { "on" } else { "off" }

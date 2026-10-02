@@ -1,0 +1,120 @@
+1	crates/jcode-tui/src/tui/app/auth.rs	215	Health	"Health".to_string(),
+2	crates/jcode-tui/src/tui/app/auth.rs	216	Validation	"Validation".to_string(),
+3	crates/jcode-tui/src/tui/app/auth.rs	228	not validated	.unwrap_or_else(|| "not validated".to_string()),
+4	crates/jcode-tui/src/tui/app/auth.rs	257	Login: choose a provider	self.set_status_notice("Login: choose a provider");
+5	crates/jcode-tui/src/tui/app/auth.rs	262	Logout: choose a provider	self.set_status_notice("Logout: choose a provider");
+6	crates/jcode-tui/src/tui/app/auth.rs	280	Logged out of {} Anthropic account(s).	Ok(format!("Logged out of {} Anthropic account(s).", removed))
+7	crates/jcode-tui/src/tui/app/auth.rs	283	anthropic.env	Self::clear_api_key_login("ANTHROPIC_API_KEY", "anthropic.env")?;
+8	crates/jcode-tui/src/tui/app/auth.rs	284	Logged out of Anthropic API key.	Ok("Logged out of Anthropic API key.".to_string())
+9	crates/jcode-tui/src/tui/app/auth.rs	288	Logged out of {} OpenAI account(s).	Ok(format!("Logged out of {} OpenAI account(s).", removed))
+10	crates/jcode-tui/src/tui/app/auth.rs	291	openai.env	Self::clear_api_key_login("OPENAI_API_KEY", "openai.env")?;
+11	crates/jcode-tui/src/tui/app/auth.rs	292	Logged out of OpenAI API key.	Ok("Logged out of OpenAI API key.".to_string())
+12	crates/jcode-tui/src/tui/app/auth.rs	295	openrouter.env	Self::clear_api_key_login("OPENROUTER_API_KEY", "openrouter.env")?;
+13	crates/jcode-tui/src/tui/app/auth.rs	296	Logged out of OpenRouter API key.	Ok("Logged out of OpenRouter API key.".to_string())
+14	crates/jcode-tui/src/tui/app/auth.rs	303	Logged out of Bedrock API key.	Ok("Logged out of Bedrock API key.".to_string())
+15	crates/jcode-tui/src/tui/app/auth.rs	315	Logged out of Azure OpenAI API key / Entra configuration.	Ok("Logged out of Azure OpenAI API key / Entra configuration.".to_string())
+16	crates/jcode-tui/src/tui/app/auth.rs	325	Logged out of {} API key.	Ok(format!("Logged out of {} API key.", resolved.display_name))
+17	crates/jcode-tui/src/tui/app/auth.rs	329	Logged out of Cursor API key.	Ok("Logged out of Cursor API key.".to_string())
+18	crates/jcode-tui/src/tui/app/auth.rs	333	Logged out of Gemini.	Ok("Logged out of Gemini.".to_string())
+19	crates/jcode-tui/src/tui/app/auth.rs	336	Logout for {} is not automated yet. Remove its saved API key or external CLI session from /account {} settings.	"Logout for {} is not automated yet. Remove its saved API key or external CLI session from /account {} settings.",
+20	crates/jcode-tui/src/tui/app/auth.rs	345	Logout: {}	self.set_status_notice(format!("Logout: {}", provider.display_name));
+21	crates/jcode-tui/src/tui/app/auth.rs	349	Failed to log out of {}: {}	"Failed to log out of {}: {}",
+22	crates/jcode-tui/src/tui/app/auth.rs	352	Logout failed	self.set_status_notice("Logout failed");
+23	crates/jcode-tui/src/tui/app/auth.rs	362	{} Anthropic account(s)	Ok(removed) if removed > 0 => summary.push(format!("{} Anthropic account(s)", removed)),
+24	crates/jcode-tui/src/tui/app/auth.rs	364	Anthropic: {}	Err(err) => errors.push(format!("Anthropic: {}", err)),
+25	crates/jcode-tui/src/tui/app/auth.rs	367	{} OpenAI account(s)	Ok(removed) if removed > 0 => summary.push(format!("{} OpenAI account(s)", removed)),
+26	crates/jcode-tui/src/tui/app/auth.rs	369	OpenAI: {}	Err(err) => errors.push(format!("OpenAI: {}", err)),
+27	crates/jcode-tui/src/tui/app/auth.rs	375	jcode subscription API key	"jcode subscription API key",
+28	crates/jcode-tui/src/tui/app/auth.rs	390	jcode subscription {}: {}	errors.push(format!("jcode subscription {}: {}", env_key, err));
+29	crates/jcode-tui/src/tui/app/auth.rs	397	Anthropic API key	"Anthropic API key",
+30	crates/jcode-tui/src/tui/app/auth.rs	399	anthropic.env	"anthropic.env",
+31	crates/jcode-tui/src/tui/app/auth.rs	404	OpenAI API key	"OpenAI API key",
+32	crates/jcode-tui/src/tui/app/auth.rs	406	openai.env	"openai.env",
+33	crates/jcode-tui/src/tui/app/auth.rs	411	OpenRouter API key	"OpenRouter API key",
+34	crates/jcode-tui/src/tui/app/auth.rs	413	openrouter.env	"openrouter.env",
+35	crates/jcode-tui/src/tui/app/auth.rs	418	Bedrock API key	"Bedrock API key",
+36	crates/jcode-tui/src/tui/app/auth.rs	425	Azure OpenAI API key	"Azure OpenAI API key",
+37	crates/jcode-tui/src/tui/app/auth.rs	434	Azure OpenAI Entra config: {}	errors.push(format!("Azure OpenAI Entra config: {}", err));
+38	crates/jcode-tui/src/tui/app/auth.rs	441	{} API key	&format!("{} API key", resolved.display_name),
+39	crates/jcode-tui/src/tui/app/auth.rs	458	Cursor API key	Ok(()) if cursor_configured => summary.push("Cursor API key".to_string()),
+40	crates/jcode-tui/src/tui/app/auth.rs	460	Cursor API key: {}	Err(err) => errors.push(format!("Cursor API key: {}", err)),
+41	crates/jcode-tui/src/tui/app/auth.rs	463	Gemini	Ok(()) => summary.push("Gemini".to_string()),
+42	crates/jcode-tui/src/tui/app/auth.rs	464	Gemini: {}	Err(err) => errors.push(format!("Gemini: {}", err)),
+43	crates/jcode-tui/src/tui/app/auth.rs	470	No automated logins to clear.	"No automated logins to clear.".to_string()
+44	crates/jcode-tui/src/tui/app/auth.rs	477	Logout: all providers	self.set_status_notice("Logout: all providers");
+45	crates/jcode-tui/src/tui/app/auth.rs	480	Some logouts failed: {}	"Some logouts failed: {}",
+46	crates/jcode-tui/src/tui/app/auth.rs	483	Logout: completed with errors	self.set_status_notice("Logout: completed with errors");
+47	crates/jcode-tui/src/tui/app/auth.rs	524	No importable external logins were found.	"No importable external logins were found.".to_string(),
+48	crates/jcode-tui/src/tui/app/auth.rs	526	Login: no external imports found	self.set_status_notice("Login: no external imports found");
+49	crates/jcode-tui/src/tui/app/auth.rs	534	Login: choose sources to import	self.set_status_notice("Login: choose sources to import");
+50	crates/jcode-tui/src/tui/app/auth.rs	539	Failed to inspect external login sources: {}	"Failed to inspect external login sources: {}",
+51	crates/jcode-tui/src/tui/app/auth.rs	542	Login: auto import failed	self.set_status_notice("Login: auto import failed");
+52	crates/jcode-tui/src/tui/app/auth.rs	578	Google/Gmail login is only available from the CLI right now. Run jcode login --provider google.	"Google/Gmail login is only available from the CLI right now. Run jcode login --provider google."
+53	crates/jcode-tui/src/tui/app/auth.rs	603	Jcode account: requesting browser approval	self.set_status_notice("Jcode account: requesting browser approval");
+54	crates/jcode-tui/src/tui/app/auth.rs	607	Jcode account login requires the async runtime.	"Jcode account login requires the async runtime.".to_string(),
+55	crates/jcode-tui/src/tui/app/auth.rs	642	Jcode account login failed	"Jcode account login failed",
+56	crates/jcode-tui/src/tui/app/auth.rs	659	Jcode account: waiting for browser approval	"Jcode account: waiting for browser approval",
+57	crates/jcode-tui/src/tui/app/auth.rs	669	Browser approval timed out. No credential was saved.	break Err("Browser approval timed out. No credential was saved.".to_string());
+58	crates/jcode-tui/src/tui/app/auth.rs	685	The browser approval expired or was already exchanged. Start a new login.	"The browser approval expired or was already exchanged. Start a new login."
+59	crates/jcode-tui/src/tui/app/auth.rs	689	Jcode account login was canceled or denied in the browser.	"Jcode account login was canceled or denied in the browser."
+60	crates/jcode-tui/src/tui/app/auth.rs	702	Jcode account login stopped	"Jcode account login stopped",
+61	crates/jcode-tui/src/tui/app/auth.rs	716	Jcode account credential save failed	"Jcode account credential save failed",
+62	crates/jcode-tui/src/tui/app/auth.rs	726	Jcode account: waiting for spending limit	"Jcode account: waiting for spending limit",
+63	crates/jcode-tui/src/tui/app/auth.rs	744	Jcode hosted models ready	publish(message.clone(), "Jcode hosted models ready");
+64	crates/jcode-tui/src/tui/app/auth.rs	763	Jcode hosted billing not active	"Jcode hosted billing not active",
+65	crates/jcode-tui/src/tui/app/auth.rs	770	Jcode hosted billing setup pending	"Jcode hosted billing setup pending",
+66	crates/jcode-tui/src/tui/app/auth.rs	776	Jcode account key rejected	"Jcode account key rejected",
+67	crates/jcode-tui/src/tui/app/auth.rs	795	Jcode account management	self.set_status_notice("Jcode account management");
+68	crates/jcode-tui/src/tui/app/auth.rs	799	Jcode account: logging out	self.set_status_notice("Jcode account: logging out");
+69	crates/jcode-tui/src/tui/app/auth.rs	805	Jcode account credentials and cache were cleared locally. Remote revocation could not be attempted without the async runtime.	"Jcode account credentials and cache were cleared locally. Remote revocation could not be attempted without the async runtime."
+70	crates/jcode-tui/src/tui/app/auth.rs	809	Failed to clear local Jcode account credentials: {error}	"Failed to clear local Jcode account credentials: {error}"
+71	crates/jcode-tui/src/tui/app/auth.rs	844	Jcode account logout complete	Some("Jcode account logout complete"),
+72	crates/jcode-tui/src/tui/app/auth.rs	857	ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789	b"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+73	crates/jcode-tui/src/tui/app/auth.rs	886	http://localhost:{}/callback	let redirect_uri = format!("http://localhost:{}/callback", port);
+74	crates/jcode-tui/src/tui/app/auth.rs	900	Scan this on another device if this machine has no browser:	"Scan this on another device if this machine has no browser:",
+75	crates/jcode-tui/src/tui/app/auth.rs	930	Claude login: {}	crate::logging::info(&format!("Claude login: {}", msg));
+76	crates/jcode-tui/src/tui/app/auth.rs	939	Claude automatic callback did not complete: {}	"Claude automatic callback did not complete: {}",
+77	crates/jcode-tui/src/tui/app/auth.rs	976	Login [{}]: waiting...	self.set_status_notice(format!("Login [{}]: waiting...", label));
+78	crates/jcode-tui/src/tui/app/auth.rs	978	Login [{}]: paste code...	self.set_status_notice(format!("Login [{}]: paste code...", label));
+79	crates/jcode-tui/src/tui/app/auth.rs	1003	Login timed out after 5 minutes. Please try again.	.map_err(|_| "Login timed out after 5 minutes. Please try again.".to_string())?
+80	crates/jcode-tui/src/tui/app/auth.rs	1004	Callback failed: {}	.map_err(|e| format!("Callback failed: {}", e))?;
+81	crates/jcode-tui/src/tui/app/auth.rs	1018	Switched to Anthropic account '{}'	"Switched to Anthropic account '{}'",
+82	crates/jcode-tui/src/tui/app/auth.rs	1024	Switched to Anthropic account {}.	"Switched to Anthropic account {}.",
+83	crates/jcode-tui/src/tui/app/auth.rs	1034	Failed to switch account: {}	"Failed to switch account: {}",
+84	crates/jcode-tui/src/tui/app/auth.rs	1055	Account label {} exists for both Anthropic and OpenAI. Use /account switch {} or /account openai switch {} explicitly.	"Account label {} exists for both Anthropic and OpenAI. Use /account switch {} or /account openai switch {} explicitly.",
+85	crates/jcode-tui/src/tui/app/auth.rs	1059	No Anthropic or OpenAI account with label {} found.	"No Anthropic or OpenAI account with label {} found.",
+86	crates/jcode-tui/src/tui/app/auth.rs	1069	Removed Anthropic account {}.	"Removed Anthropic account {}.",
+87	crates/jcode-tui/src/tui/app/auth.rs	1075	Failed to remove account: {}	"Failed to remove account: {}",
+88	crates/jcode-tui/src/tui/app/auth.rs	1091	Switched to OpenAI account '{}'	"Switched to OpenAI account '{}'",
+89	crates/jcode-tui/src/tui/app/auth.rs	1097	Switched to OpenAI account {}.	"Switched to OpenAI account {}.",
+90	crates/jcode-tui/src/tui/app/auth.rs	1106	Failed to switch OpenAI account: {}	"Failed to switch OpenAI account: {}",
+91	crates/jcode-tui/src/tui/app/auth.rs	1117	Removed OpenAI account {}.	"Removed OpenAI account {}.",
+92	crates/jcode-tui/src/tui/app/auth.rs	1123	Failed to remove OpenAI account: {}	"Failed to remove OpenAI account: {}",
+93	crates/jcode-tui/src/tui/app/auth.rs	1143	ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789	b"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+94	crates/jcode-tui/src/tui/app/auth.rs	1173	Scan this on another device if this machine has no browser, then paste the full callback URL here:	"Scan this on another device if this machine has no browser, then paste the full callback URL here:",
+95	crates/jcode-tui/src/tui/app/auth.rs	1197	OpenAI login: {}	crate::logging::info(&format!("OpenAI login: {}", msg));
+96	crates/jcode-tui/src/tui/app/auth.rs	1206	OpenAI automatic callback did not complete: {}	"OpenAI automatic callback did not complete: {}",
+97	crates/jcode-tui/src/tui/app/auth.rs	1255	Login [{}]: waiting...	self.set_status_notice(format!("Login [{}]: waiting...", label));
+98	crates/jcode-tui/src/tui/app/auth.rs	1277	Login timed out after 5 minutes. Please try again.	.map_err(|_| "Login timed out after 5 minutes. Please try again.".to_string())?
+99	crates/jcode-tui/src/tui/app/auth.rs	1278	Callback failed: {}	.map_err(|e| format!("Callback failed: {}", e))?;
+100	crates/jcode-tui/src/tui/app/auth.rs	1307	Failed to save tokens: {}	.map_err(|e| format!("Failed to save tokens: {}", e))?;
+101	crates/jcode-tui/src/tui/app/auth.rs	1310	Successfully logged in to OpenAI! (account: {})	"Successfully logged in to OpenAI! (account: {})",
+102	crates/jcode-tui/src/tui/app/auth.rs	1323	http://127.0.0.1:{}/oauth2callback	.map(|addr| format!("http://127.0.0.1:{}/oauth2callback", addr.port()));
+103	crates/jcode-tui/src/tui/app/auth.rs	1331	https://codeassist.google.com/authcode	"https://codeassist.google.com/authcode",
+104	crates/jcode-tui/src/tui/app/auth.rs	1339	https://codeassist.google.com/authcode	"https://codeassist.google.com/authcode".to_string(),
+105	crates/jcode-tui/src/tui/app/auth.rs	1348	Gemini login is unavailable: {}	"Gemini login is unavailable: {}",
+106	crates/jcode-tui/src/tui/app/auth.rs	1351	Login: failed	self.set_status_notice("Login: failed");
+107	crates/jcode-tui/src/tui/app/auth.rs	1358	Scan this on another device if this machine has no browser, then paste the callback URL or authorization code here:	"Scan this on another device if this machine has no browser, then paste the callback URL or authorization code here:",
+108	crates/jcode-tui/src/tui/app/auth.rs	1378	Login timed out after 5 minutes. Please try again.	.map_err(|_| "Login timed out after 5 minutes. Please try again.".to_string())
+109	crates/jcode-tui/src/tui/app/auth.rs	1379	Callback failed: {}	.and_then(|result| result.map_err(|e| format!("Callback failed: {}", e)));
+110	crates/jcode-tui/src/tui/app/auth.rs	1393	Successfully logged in to Gemini! (account: {})	"Successfully logged in to Gemini! (account: {})",
+111	crates/jcode-tui/src/tui/app/auth.rs	1397	Successfully logged in to Gemini!	"Successfully logged in to Gemini!".to_string()
+112	crates/jcode-tui/src/tui/app/auth.rs	1406	Gemini login failed: {}	let message = format!("Gemini login failed: {}", e);
+113	crates/jcode-tui/src/tui/app/auth.rs	1408	Gemini automatic callback did not complete: {}	"Gemini automatic callback did not complete: {}",
+114	crates/jcode-tui/src/tui/app/auth.rs	1421	Gemini automatic callback did not complete: {}	"Gemini automatic callback did not complete: {}",
+115	crates/jcode-tui/src/tui/app/auth.rs	1427	Gemini login failed: {}	message: format!("Gemini login failed: {}", e),
+116	crates/jcode-tui/src/tui/app/auth.rs	1470	Login: waiting...	self.set_status_notice("Login: waiting...");
+117	crates/jcode-tui/src/tui/app/auth.rs	1480	OpenRouter	"OpenRouter",
+118	crates/jcode-tui/src/tui/app/auth.rs	1481	https://openrouter.ai/keys	"https://openrouter.ai/keys",
+119	crates/jcode-tui/src/tui/app/auth.rs	1482	openrouter.env	"openrouter.env",
+120	crates/jcode-tui/src/tui/app/auth.rs	1494	https://console.aws.amazon.com/bedrock/home#/api-keys	"https://console.aws.amazon.com/bedrock/home#/api-keys",

@@ -1,0 +1,120 @@
+1	crates/jcode-tui/src/tui/ui_overlays.rs	322	Manage live sessions: see which are working vs ready	"Manage live sessions: see which are working vs ready",
+2	crates/jcode-tui/src/tui/ui_overlays.rs	325	/catchup [next]	"/catchup [next]",
+3	crates/jcode-tui/src/tui/ui_overlays.rs	326	Jump into finished sessions with a side-panel brief	"Jump into finished sessions with a side-panel brief",
+4	crates/jcode-tui/src/tui/ui_overlays.rs	329	/back	"/back",
+5	crates/jcode-tui/src/tui/ui_overlays.rs	330	Return to the previous Catch Up session	"Return to the previous Catch Up session",
+6	crates/jcode-tui/src/tui/ui_overlays.rs	332	/save [label]	lines.push(help_entry("/save [label]", "Bookmark session for /resume"));
+7	crates/jcode-tui/src/tui/ui_overlays.rs	332	Bookmark session for /resume	lines.push(help_entry("/save [label]", "Bookmark session for /resume"));
+8	crates/jcode-tui/src/tui/ui_overlays.rs	334	/rename <name>|--clear	"/rename <name>|--clear",
+9	crates/jcode-tui/src/tui/ui_overlays.rs	335	Set or clear current session name	"Set or clear current session name",
+10	crates/jcode-tui/src/tui/ui_overlays.rs	338	/unsave	"/unsave",
+11	crates/jcode-tui/src/tui/ui_overlays.rs	339	Remove bookmark from current session	"Remove bookmark from current session",
+12	crates/jcode-tui/src/tui/ui_overlays.rs	346	  Memory & Swarm	lines.push(Line::from(Span::styled("  Memory & Swarm", section_style)));
+13	crates/jcode-tui/src/tui/ui_overlays.rs	348	/memory [on|off]	lines.push(help_entry("/memory [on|off]", "Toggle memory features"));
+14	crates/jcode-tui/src/tui/ui_overlays.rs	348	Toggle memory features	lines.push(help_entry("/memory [on|off]", "Toggle memory features"));
+15	crates/jcode-tui/src/tui/ui_overlays.rs	350	/test [claim]	"/test [claim]",
+16	crates/jcode-tui/src/tui/ui_overlays.rs	351	Run layered verification and produce proof	"Run layered verification and produce proof",
+17	crates/jcode-tui/src/tui/ui_overlays.rs	354	/initiatives	"/initiatives",
+18	crates/jcode-tui/src/tui/ui_overlays.rs	355	Open initiatives overview / resume an initiative	"Open initiatives overview / resume an initiative",
+19	crates/jcode-tui/src/tui/ui_overlays.rs	357	/swarm [on|off]	lines.push(help_entry("/swarm [on|off]", "Toggle swarm features"));
+20	crates/jcode-tui/src/tui/ui_overlays.rs	357	Toggle swarm features	lines.push(help_entry("/swarm [on|off]", "Toggle swarm features"));
+21	crates/jcode-tui/src/tui/ui_overlays.rs	363	  Auth & Accounts	lines.push(Line::from(Span::styled("  Auth & Accounts", section_style)));
+22	crates/jcode-tui/src/tui/ui_overlays.rs	365	/auth	lines.push(help_entry("/auth", "Show authentication status"));
+23	crates/jcode-tui/src/tui/ui_overlays.rs	365	Show authentication status	lines.push(help_entry("/auth", "Show authentication status"));
+24	crates/jcode-tui/src/tui/ui_overlays.rs	367	/login [provider]	"/login [provider]",
+25	crates/jcode-tui/src/tui/ui_overlays.rs	368	Interactive or direct login	"Interactive or direct login",
+26	crates/jcode-tui/src/tui/ui_overlays.rs	371	/account	"/account",
+27	crates/jcode-tui/src/tui/ui_overlays.rs	372	Open combined Claude/OpenAI account picker	"Open combined Claude/OpenAI account picker",
+28	crates/jcode-tui/src/tui/ui_overlays.rs	375	/subscription	"/subscription",
+29	crates/jcode-tui/src/tui/ui_overlays.rs	376	Inspect jcode subscription scaffold	"Inspect jcode subscription scaffold",
+30	crates/jcode-tui/src/tui/ui_overlays.rs	379	/subscribe	"/subscribe",
+31	crates/jcode-tui/src/tui/ui_overlays.rs	380	Why and how to subscribe to jcode	"Why and how to subscribe to jcode",
+32	crates/jcode-tui/src/tui/ui_overlays.rs	387	  System	lines.push(Line::from(Span::styled("  System", section_style)));
+33	crates/jcode-tui/src/tui/ui_overlays.rs	389	/reload	lines.push(help_entry("/reload", "Reload to newer binary if available"));
+34	crates/jcode-tui/src/tui/ui_overlays.rs	389	Reload to newer binary if available	lines.push(help_entry("/reload", "Reload to newer binary if available"));
+35	crates/jcode-tui/src/tui/ui_overlays.rs	391	/restart	"/restart",
+36	crates/jcode-tui/src/tui/ui_overlays.rs	392	Restart with current binary (no build)	"Restart with current binary (no build)",
+37	crates/jcode-tui/src/tui/ui_overlays.rs	395	/rebuild	"/rebuild",
+38	crates/jcode-tui/src/tui/ui_overlays.rs	396	Full update (git pull + build + tests)	"Full update (git pull + build + tests)",
+39	crates/jcode-tui/src/tui/ui_overlays.rs	399	/client-reload	lines.push(help_entry("/client-reload", "Force reload client binary"));
+40	crates/jcode-tui/src/tui/ui_overlays.rs	399	Force reload client binary	lines.push(help_entry("/client-reload", "Force reload client binary"));
+41	crates/jcode-tui/src/tui/ui_overlays.rs	400	/server-reload	lines.push(help_entry("/server-reload", "Force reload server binary"));
+42	crates/jcode-tui/src/tui/ui_overlays.rs	400	Force reload server binary	lines.push(help_entry("/server-reload", "Force reload server binary"));
+43	crates/jcode-tui/src/tui/ui_overlays.rs	402	/continue	"/continue",
+44	crates/jcode-tui/src/tui/ui_overlays.rs	403	Continue every interrupted live session that would auto-resume	"Continue every interrupted live session that would auto-resume",
+45	crates/jcode-tui/src/tui/ui_overlays.rs	407	/debug-visual	"/debug-visual",
+46	crates/jcode-tui/src/tui/ui_overlays.rs	408	Enable visual debugging for TUI issues	"Enable visual debugging for TUI issues",
+47	crates/jcode-tui/src/tui/ui_overlays.rs	410	/quit	lines.push(help_entry("/quit", "Exit jcode"));
+48	crates/jcode-tui/src/tui/ui_overlays.rs	410	Exit jcode	lines.push(help_entry("/quit", "Exit jcode"));
+49	crates/jcode-tui/src/tui/ui_overlays.rs	432	  More commands	lines.push(Line::from(Span::styled("  More commands", section_style)));
+50	crates/jcode-tui/src/tui/ui_overlays.rs	445	  Skills	lines.push(Line::from(Span::styled("  Skills", section_style)));
+51	crates/jcode-tui/src/tui/ui_overlays.rs	448	Activate skill	lines.push(help_entry(&format!("/{}", skill), "Activate skill"));
+52	crates/jcode-tui/src/tui/ui_overlays.rs	456	  Navigation	lines.push(Line::from(Span::styled("  Navigation", section_style)));
+53	crates/jcode-tui/src/tui/ui_overlays.rs	458	PageUp / PageDown	lines.push(key_entry("PageUp / PageDown", "Scroll history"));
+54	crates/jcode-tui/src/tui/ui_overlays.rs	458	Scroll history	lines.push(key_entry("PageUp / PageDown", "Scroll history"));
+55	crates/jcode-tui/src/tui/ui_overlays.rs	459	Scroll history (when input empty)	lines.push(key_entry("Up / Down", "Scroll history (when input empty)"));
+56	crates/jcode-tui/src/tui/ui_overlays.rs	459	Up / Down	lines.push(key_entry("Up / Down", "Scroll history (when input empty)"));
+57	crates/jcode-tui/src/tui/ui_overlays.rs	461	Ctrl+J / Ctrl+K	"Ctrl+J / Ctrl+K",
+58	crates/jcode-tui/src/tui/ui_overlays.rs	462	Jump to next / previous user prompt (also Ctrl+] / Ctrl+[)	"Jump to next / previous user prompt (also Ctrl+] / Ctrl+[)",
+59	crates/jcode-tui/src/tui/ui_overlays.rs	465	Ctrl+Shift+J / Ctrl+Shift+K	"Ctrl+Shift+J / Ctrl+Shift+K",
+60	crates/jcode-tui/src/tui/ui_overlays.rs	466	Scroll history down / up one line	"Scroll history down / up one line",
+61	crates/jcode-tui/src/tui/ui_overlays.rs	469	Cmd/Super+K / J	"Cmd/Super+K / J",
+62	crates/jcode-tui/src/tui/ui_overlays.rs	470	Jump to previous / next user prompt (macOS, if forwarded)	"Jump to previous / next user prompt (macOS, if forwarded)",
+63	crates/jcode-tui/src/tui/ui_overlays.rs	472	Ctrl+1..4	lines.push(key_entry("Ctrl+1..4", "Resize side panel to 25/50/75/100%"));
+64	crates/jcode-tui/src/tui/ui_overlays.rs	472	Resize side panel to 25/50/75/100%	lines.push(key_entry("Ctrl+1..4", "Resize side panel to 25/50/75/100%"));
+65	crates/jcode-tui/src/tui/ui_overlays.rs	474	Ctrl+5..9	"Ctrl+5..9",
+66	crates/jcode-tui/src/tui/ui_overlays.rs	475	Jump by recency (5 = 5th most recent)	"Jump by recency (5 = 5th most recent)",
+67	crates/jcode-tui/src/tui/ui_overlays.rs	483	  Diagrams & Diffs	"  Diagrams & Diffs",
+68	crates/jcode-tui/src/tui/ui_overlays.rs	489	Toggle side panel (or diagram pane if empty)	"Toggle side panel (or diagram pane if empty)",
+69	crates/jcode-tui/src/tui/ui_overlays.rs	491	Toggle diagram position (side/top)	lines.push(key_entry(&alt("T"), "Toggle diagram position (side/top)"));
+70	crates/jcode-tui/src/tui/ui_overlays.rs	493	Shift+I	&alt("Shift+I"),
+71	crates/jcode-tui/src/tui/ui_overlays.rs	494	Show/hide inline images (persists)	"Show/hide inline images (persists)",
+72	crates/jcode-tui/src/tui/ui_overlays.rs	496	Ctrl+H / Ctrl+L	lines.push(key_entry("Ctrl+H / Ctrl+L", "Focus chat / diagram / diffs"));
+73	crates/jcode-tui/src/tui/ui_overlays.rs	496	Focus chat / diagram / diffs	lines.push(key_entry("Ctrl+H / Ctrl+L", "Focus chat / diagram / diffs"));
+74	crates/jcode-tui/src/tui/ui_overlays.rs	498	Ctrl+L / Cmd+L	"Ctrl+L / Cmd+L",
+75	crates/jcode-tui/src/tui/ui_overlays.rs	499	Clear screen, history stays above (no pane focused)	"Clear screen, history stays above (no pane focused)",
+76	crates/jcode-tui/src/tui/ui_overlays.rs	502	Ctrl+Left / Right	"Ctrl+Left / Right",
+77	crates/jcode-tui/src/tui/ui_overlays.rs	503	Cycle diagrams (when diagram focused)	"Cycle diagrams (when diagram focused)",
+78	crates/jcode-tui/src/tui/ui_overlays.rs	505	Pan diagram (when focused)	lines.push(key_entry("h/j/k/l / arrows", "Pan diagram (when focused)"));
+79	crates/jcode-tui/src/tui/ui_overlays.rs	505	h/j/k/l / arrows	lines.push(key_entry("h/j/k/l / arrows", "Pan diagram (when focused)"));
+80	crates/jcode-tui/src/tui/ui_overlays.rs	506	Zoom diagram (when focused)	lines.push(key_entry("[ / ]", "Zoom diagram (when focused)"));
+81	crates/jcode-tui/src/tui/ui_overlays.rs	507	Resize diagram pane	lines.push(key_entry("+ / -", "Resize diagram pane"));
+82	crates/jcode-tui/src/tui/ui_overlays.rs	509	{} / /diff	&format!("{} / /diff", alt("G")),
+83	crates/jcode-tui/src/tui/ui_overlays.rs	510	Cycle diff mode (Off/Inline/Pinned/File)	"Cycle diff mode (Off/Inline/Pinned/File)",
+84	crates/jcode-tui/src/tui/ui_overlays.rs	512	Cycle favorited models	lines.push(key_entry("Shift+Tab", "Cycle favorited models"));
+85	crates/jcode-tui/src/tui/ui_overlays.rs	512	Shift+Tab	lines.push(key_entry("Shift+Tab", "Cycle favorited models"));
+86	crates/jcode-tui/src/tui/ui_overlays.rs	513	Ctrl+O	lines.push(key_entry("Ctrl+O", "Set default model (in /model picker)"));
+87	crates/jcode-tui/src/tui/ui_overlays.rs	513	Set default model (in /model picker)	lines.push(key_entry("Ctrl+O", "Set default model (in /model picker)"));
+88	crates/jcode-tui/src/tui/ui_overlays.rs	515	Ctrl+N	"Ctrl+N",
+89	crates/jcode-tui/src/tui/ui_overlays.rs	516	Toggle favorite model (in /model picker)	"Toggle favorite model (in /model picker)",
+90	crates/jcode-tui/src/tui/ui_overlays.rs	523	  Input & Editing	lines.push(Line::from(Span::styled("  Input & Editing", section_style)));
+91	crates/jcode-tui/src/tui/ui_overlays.rs	526	Ctrl+C / Ctrl+D	"Ctrl+C / Ctrl+D",
+92	crates/jcode-tui/src/tui/ui_overlays.rs	527	Quit (press twice to confirm)	"Quit (press twice to confirm)",
+93	crates/jcode-tui/src/tui/ui_overlays.rs	529	Ctrl+X	lines.push(key_entry("Ctrl+X", "Cut entire input line to clipboard"));
+94	crates/jcode-tui/src/tui/ui_overlays.rs	529	Cut entire input line to clipboard	lines.push(key_entry("Ctrl+X", "Cut entire input line to clipboard"));
+95	crates/jcode-tui/src/tui/ui_overlays.rs	531	Ctrl+A	"Ctrl+A",
+96	crates/jcode-tui/src/tui/ui_overlays.rs	532	Copy visible chat viewport plus nearby context	"Copy visible chat viewport plus nearby context",
+97	crates/jcode-tui/src/tui/ui_overlays.rs	534	Clear input line	lines.push(key_entry("Ctrl+U", "Clear input line"));
+98	crates/jcode-tui/src/tui/ui_overlays.rs	534	Ctrl+U	lines.push(key_entry("Ctrl+U", "Clear input line"));
+99	crates/jcode-tui/src/tui/ui_overlays.rs	535	Ctrl+K	lines.push(key_entry("Ctrl+K", "Delete to end of input"));
+100	crates/jcode-tui/src/tui/ui_overlays.rs	535	Delete to end of input	lines.push(key_entry("Ctrl+K", "Delete to end of input"));
+101	crates/jcode-tui/src/tui/ui_overlays.rs	537	Backspace	&format!("{} / {}", alt("Backspace"), alt("Delete")),
+102	crates/jcode-tui/src/tui/ui_overlays.rs	537	Delete	&format!("{} / {}", alt("Backspace"), alt("Delete")),
+103	crates/jcode-tui/src/tui/ui_overlays.rs	538	Delete previous word in input	"Delete previous word in input",
+104	crates/jcode-tui/src/tui/ui_overlays.rs	541	Cmd/Super+Backspace / Delete	"Cmd/Super+Backspace / Delete",
+105	crates/jcode-tui/src/tui/ui_overlays.rs	542	Delete previous word in input	"Delete previous word in input",
+106	crates/jcode-tui/src/tui/ui_overlays.rs	544	macos	if cfg!(target_os = "macos") {
+107	crates/jcode-tui/src/tui/ui_overlays.rs	547	Home / End	lines.push(key_entry("Home / End", "Move to start / end of input"));
+108	crates/jcode-tui/src/tui/ui_overlays.rs	547	Move to start / end of input	lines.push(key_entry("Home / End", "Move to start / end of input"));
+109	crates/jcode-tui/src/tui/ui_overlays.rs	550	Cmd/Super+Left / Right	"Cmd/Super+Left / Right",
+110	crates/jcode-tui/src/tui/ui_overlays.rs	551	Move to start / end of input	"Move to start / end of input",
+111	crates/jcode-tui/src/tui/ui_overlays.rs	554	Cmd/Super+Z	lines.push(key_entry("Cmd/Super+Z", "Undo input edit"));
+112	crates/jcode-tui/src/tui/ui_overlays.rs	554	Undo input edit	lines.push(key_entry("Cmd/Super+Z", "Undo input edit"));
+113	crates/jcode-tui/src/tui/ui_overlays.rs	555	Cmd/Super+X / V	lines.push(key_entry("Cmd/Super+X / V", "Cut input / paste clipboard"));
+114	crates/jcode-tui/src/tui/ui_overlays.rs	555	Cut input / paste clipboard	lines.push(key_entry("Cmd/Super+X / V", "Cut input / paste clipboard"));
+115	crates/jcode-tui/src/tui/ui_overlays.rs	556	Ctrl+S	lines.push(key_entry("Ctrl+S", "Stash / pop input (save for later)"));
+116	crates/jcode-tui/src/tui/ui_overlays.rs	556	Stash / pop input (save for later)	lines.push(key_entry("Ctrl+S", "Stash / pop input (save for later)"));
+117	crates/jcode-tui/src/tui/ui_overlays.rs	557	Ctrl+Backspace	lines.push(key_entry("Ctrl+Backspace", "Delete previous word in input"));
+118	crates/jcode-tui/src/tui/ui_overlays.rs	557	Delete previous word in input	lines.push(key_entry("Ctrl+Backspace", "Delete previous word in input"));
+119	crates/jcode-tui/src/tui/ui_overlays.rs	558	Ctrl+B / Ctrl+F	lines.push(key_entry("Ctrl+B / Ctrl+F", "Move by word left / right"));
+120	crates/jcode-tui/src/tui/ui_overlays.rs	558	Move by word left / right	lines.push(key_entry("Ctrl+B / Ctrl+F", "Move by word left / right"));

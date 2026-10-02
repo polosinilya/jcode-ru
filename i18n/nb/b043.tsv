@@ -1,0 +1,40 @@
+1	crates/jcode-tui/src/tui/app/input_help.rs	41	/agents\nOpen the agent-model config picker.\n\n/agents <swarm|review|judge|memory|ambient>\nJump straight to that agent role's saved model override.	"/agents\nOpen the agent-model config picker.\n\n/agents <swarm|review|judge|memory|ambient>\nJump straight to that agent role's saved model override."
+2	crates/jcode-tui/src/tui/app/input_help.rs	43	swarm-prompt	"swarm-prompt" => {
+3	crates/jcode-tui/src/tui/app/input_help.rs	46	subagent	"subagent" => {
+4	crates/jcode-tui/src/tui/app/input_help.rs	49	observe	"observe" => {
+5	crates/jcode-tui/src/tui/app/input_help.rs	52	todo	"todos" | "todo" => {
+6	crates/jcode-tui/src/tui/app/input_help.rs	52	todos	"todos" | "todo" => {
+7	crates/jcode-tui/src/tui/app/input_help.rs	55	split-view	"splitview" | "split-view" => {
+8	crates/jcode-tui/src/tui/app/input_help.rs	55	splitview	"splitview" | "split-view" => {
+9	crates/jcode-tui/src/tui/app/input_help.rs	58	btw	"btw" => {
+10	crates/jcode-tui/src/tui/app/input_help.rs	61	git	"git" => {
+11	crates/jcode-tui/src/tui/app/input_help.rs	62	/git\nShow git status --short --branch for the current session working directory.\n\n/git status\nAlias for /git.	"/git\nShow git status --short --branch for the current session working directory.\n\n/git status\nAlias for /git."
+12	crates/jcode-tui/src/tui/app/input_help.rs	64	commit	"commit" => {
+13	crates/jcode-tui/src/tui/app/input_help.rs	67	commit-and-push	"commit-push" | "commit-and-push" => {
+14	crates/jcode-tui/src/tui/app/input_help.rs	67	commit-push	"commit-push" | "commit-and-push" => {
+15	crates/jcode-tui/src/tui/app/input_help.rs	70	commit-push-release	"fast-release" | "cut-release" | "commit-push-release" => {
+16	crates/jcode-tui/src/tui/app/input_help.rs	70	cut-release	"fast-release" | "cut-release" | "commit-push-release" => {
+17	crates/jcode-tui/src/tui/app/input_help.rs	70	fast-release	"fast-release" | "cut-release" | "commit-push-release" => {
+18	crates/jcode-tui/src/tui/app/input_help.rs	73	fast-macos-release	"fast-macos-release" => {
+19	crates/jcode-tui/src/tui/app/input_help.rs	76	remote-release	"remote-release" => {
+20	crates/jcode-tui/src/tui/app/input_help.rs	79	triage	"triage" => {
+21	crates/jcode-tui/src/tui/app/input_help.rs	82	catchup	"catchup" => {
+22	crates/jcode-tui/src/tui/app/input_help.rs	85	back	"back" => {
+23	crates/jcode-tui/src/tui/app/input_help.rs	86	/back\nReturn to the previous session you came from via Catch Up.\n\nWorks after a /catchup next jump or after selecting a session from the Catch Up picker.	"/back\nReturn to the previous session you came from via Catch Up.\n\nWorks after a /catchup next jump or after selecting a session from the Catch Up picker."
+24	crates/jcode-tui/src/tui/app/input_help.rs	88	subagent-model	"subagent-model" => {
+25	crates/jcode-tui/src/tui/app/input_help.rs	89	/subagent-model\nShow the current subagent model policy for this session.\n\n/subagent-model <name>\nPin a fixed model for future subagents in this session.\n\n/subagent-model inherit\nReset to using the current active model.	"/subagent-model\nShow the current subagent model policy for this session.\n\n/subagent-model <name>\nPin a fixed model for future subagents in this session.\n\n/subagent-model inherit\nReset to using the current active model."
+26	crates/jcode-tui/src/tui/app/input_help.rs	91	autoreview	"autoreview" => {
+27	crates/jcode-tui/src/tui/app/input_help.rs	94	autojudge	"autojudge" => {
+28	crates/jcode-tui/src/tui/app/input_help.rs	97	review	"review" => {
+29	crates/jcode-tui/src/tui/app/input_help.rs	98	/review\nLaunch a one-shot headed review session immediately.\n\nThe reviewer will DM this session when done. If OpenAI ChatGPT OAuth is available, it prefers gpt-5.5.	"/review\nLaunch a one-shot headed review session immediately.\n\nThe reviewer will DM this session when done. If OpenAI ChatGPT OAuth is available, it prefers gpt-5.5."
+30	crates/jcode-tui/src/tui/app/input_help.rs	100	judge	"judge" => {
+31	crates/jcode-tui/src/tui/app/input_help.rs	101	/judge\nLaunch a one-shot headed judge session immediately.\n\nThe judge will DM this session when done. If OpenAI ChatGPT OAuth is available, it prefers gpt-5.5.	"/judge\nLaunch a one-shot headed judge session immediately.\n\nThe judge will DM this session when done. If OpenAI ChatGPT OAuth is available, it prefers gpt-5.5."
+32	crates/jcode-tui/src/tui/app/input_help.rs	103	effort	"effort" => {
+33	crates/jcode-tui/src/tui/app/input_help.rs	106	fast	"fast" => {
+34	crates/jcode-tui/src/tui/app/input_help.rs	109	/memory [on|off|status]\nToggle memory features for this session.	"memory" => "/memory [on|off|status]\nToggle memory features for this session.",
+35	crates/jcode-tui/src/tui/app/input_help.rs	109	memory	"memory" => "/memory [on|off|status]\nToggle memory features for this session.",
+36	crates/jcode-tui/src/tui/app/input_help.rs	110	log	"log" => {
+37	crates/jcode-tui/src/tui/app/input_help.rs	113	goals	"goals" => {
+38	crates/jcode-tui/src/tui/app/input_help.rs	114	/goals\nOpen the goals overview in the side panel.\n\n/goals resume\nResume the most relevant active goal for this session/project.\n\n/goals show <id>\nOpen a specific goal in the side panel.	"/goals\nOpen the goals overview in the side panel.\n\n/goals resume\nResume the most relevant active goal for this session/project.\n\n/goals show <id>\nOpen a specific goal in the side panel."
+39	crates/jcode-tui/src/tui/app/input_help.rs	116	/swarm [on|off|status]\nToggle swarm features for this session.	"swarm" => "/swarm [on|off|status]\nToggle swarm features for this session.",
+40	crates/jcode-tui/src/tui/app/input_help.rs	116	swarm	"swarm" => "/swarm [on|off|status]\nToggle swarm features for this session.",

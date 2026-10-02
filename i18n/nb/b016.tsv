@@ -1,0 +1,120 @@
+1	crates/jcode-tui/src/tui/app/inline_interactive.rs	4464	claude-opus-4-8	"claude-opus-4-8",
+2	crates/jcode-tui/src/tui/app/inline_interactive.rs	4468	claude-opus-4-8	"claude-opus-4-8",
+3	crates/jcode-tui/src/tui/app/inline_interactive.rs	4491	OpenAI	"provider_name": "OpenAI",
+4	crates/jcode-tui/src/tui/app/inline_interactive.rs	4496	OpenAI	"provider": "OpenAI",
+5	crates/jcode-tui/src/tui/app/inline_interactive.rs	4497	openai-oauth	"api_method": "openai-oauth",
+6	crates/jcode-tui/src/tui/app/inline_interactive.rs	4499	OAuth	"detail": "OAuth"
+7	crates/jcode-tui/src/tui/app/inline_interactive.rs	4503	legacy flattened remote cache should deserialize	.expect("legacy flattened remote cache should deserialize");
+8	crates/jcode-tui/src/tui/app/inline_interactive.rs	4505	OpenAI	assert_eq!(cache.snapshot.provider_name.as_deref(), Some("OpenAI"));
+9	crates/jcode-tui/src/tui/app/inline_interactive.rs	4516	OpenAI	assert_eq!(serialized["provider_name"], "OpenAI");
+10	crates/jcode-tui/src/tui/app/inline_interactive.rs	4523	OpenAI	Some("OpenAI".to_string()),
+11	crates/jcode-tui/src/tui/app/inline_interactive.rs	4526	OpenAI	vec![model_route("gpt-5.5", "OpenAI", "openai-oauth")],
+12	crates/jcode-tui/src/tui/app/inline_interactive.rs	4526	openai-oauth	vec![model_route("gpt-5.5", "OpenAI", "openai-oauth")],
+13	crates/jcode-tui/src/tui/app/inline_interactive.rs	4547	us.anthropic.claude-sonnet-4-6	Some("us.anthropic.claude-sonnet-4-6".to_string()),
+14	crates/jcode-tui/src/tui/app/inline_interactive.rs	4548	us.anthropic.claude-sonnet-4-6	vec!["us.anthropic.claude-sonnet-4-6".to_string()],
+15	crates/jcode-tui/src/tui/app/inline_interactive.rs	4550	us.anthropic.claude-sonnet-4-6	"us.anthropic.claude-sonnet-4-6",
+16	crates/jcode-tui/src/tui/app/inline_interactive.rs	4558	shell:steal-credentials	forged.model_routes[0].api_method = "shell:steal-credentials".to_string();
+17	crates/jcode-tui/src/tui/app/inline_interactive.rs	4584	claude-oauth	assert!(route_supports_reasoning_effort("claude-oauth"));
+18	crates/jcode-tui/src/tui/app/inline_interactive.rs	4585	claude-api	assert!(route_supports_reasoning_effort("claude-api"));
+19	crates/jcode-tui/src/tui/app/inline_interactive.rs	4586	openai-oauth	assert!(route_supports_reasoning_effort("openai-oauth"));
+20	crates/jcode-tui/src/tui/app/inline_interactive.rs	4587	openai-api-key	assert!(route_supports_reasoning_effort("openai-api-key"));
+21	crates/jcode-tui/src/tui/app/inline_interactive.rs	4590	openai-compatible:llamacpp	"openai-compatible:llamacpp"
+22	crates/jcode-tui/src/tui/app/inline_interactive.rs	4592	openai-compatible:zai	assert!(!route_supports_reasoning_effort("openai-compatible:zai"));
+23	crates/jcode-tui/src/tui/app/inline_interactive.rs	4596	openai-compatible	assert!(!route_supports_reasoning_effort("openai-compatible"));
+24	crates/jcode-tui/src/tui/app/inline_interactive.rs	4597	remote-catalog	assert!(!route_supports_reasoning_effort("remote-catalog"));
+25	crates/jcode-tui/src/tui/app/inline_interactive.rs	4604	OpenAI	model_route("gpt-5.5", "OpenAI", "openai-oauth"),
+26	crates/jcode-tui/src/tui/app/inline_interactive.rs	4604	openai-oauth	model_route("gpt-5.5", "OpenAI", "openai-oauth"),
+27	crates/jcode-tui/src/tui/app/inline_interactive.rs	4605	Anthropic	model_route("claude-fable-5", "Anthropic", "claude-oauth"),
+28	crates/jcode-tui/src/tui/app/inline_interactive.rs	4605	claude-fable-5	model_route("claude-fable-5", "Anthropic", "claude-oauth"),
+29	crates/jcode-tui/src/tui/app/inline_interactive.rs	4605	claude-oauth	model_route("claude-fable-5", "Anthropic", "claude-oauth"),
+30	crates/jcode-tui/src/tui/app/inline_interactive.rs	4606	openai-compatible:llamacpp	model_route("qwen3-coder", "llama.cpp", "openai-compatible:llamacpp"),
+31	crates/jcode-tui/src/tui/app/inline_interactive.rs	4615	OpenAI	"OpenAI",
+32	crates/jcode-tui/src/tui/app/inline_interactive.rs	4626	OpenAI	"OpenAI",
+33	crates/jcode-tui/src/tui/app/inline_interactive.rs	4635	claude-oauth	Some(&["claude-oauth".to_string(), "openrouter".to_string()]),
+34	crates/jcode-tui/src/tui/app/inline_interactive.rs	4637	OpenAI	"OpenAI",
+35	crates/jcode-tui/src/tui/app/inline_interactive.rs	4641	claude-fable-5	assert_eq!(models, ["claude-fable-5", "deepseek/deepseek-v4-pro"]);
+36	crates/jcode-tui/src/tui/app/inline_interactive.rs	4647	OpenAI	model_route("gpt-5.5", "OpenAI", "openai-oauth"),
+37	crates/jcode-tui/src/tui/app/inline_interactive.rs	4647	openai-oauth	model_route("gpt-5.5", "OpenAI", "openai-oauth"),
+38	crates/jcode-tui/src/tui/app/inline_interactive.rs	4648	openai-compatible:llamacpp	model_route("qwen3-coder", "llama.cpp", "openai-compatible:llamacpp"),
+39	crates/jcode-tui/src/tui/app/inline_interactive.rs	4656	OpenAI	"OpenAI",
+40	crates/jcode-tui/src/tui/app/inline_interactive.rs	4657	openai-oauth	Some("openai-oauth"),
+41	crates/jcode-tui/src/tui/app/inline_interactive.rs	4667	OpenAI	"OpenAI",
+42	crates/jcode-tui/src/tui/app/inline_interactive.rs	4674	OpenAI	filter_routes_by_provider_allowlist(routes.clone(), None, "x", "OpenAI", None).len(),
+43	crates/jcode-tui/src/tui/app/inline_interactive.rs	4678	OpenAI	filter_routes_by_provider_allowlist(routes.clone(), Some(&[]), "x", "OpenAI", None,)
+44	crates/jcode-tui/src/tui/app/inline_interactive.rs	4687	OpenAI	"OpenAI",
+45	crates/jcode-tui/src/tui/app/inline_interactive.rs	4700	my-provider	"my-provider",
+46	crates/jcode-tui/src/tui/app/inline_interactive.rs	4701	openai-compatible:my-provider	"openai-compatible:my-provider",
+47	crates/jcode-tui/src/tui/app/inline_interactive.rs	4703	Copilot	model_route("moonshotai/Kimi-K3", "Copilot", "copilot"),
+48	crates/jcode-tui/src/tui/app/inline_interactive.rs	4708	my-provider	Some(&["my-provider".to_string()]),
+49	crates/jcode-tui/src/tui/app/inline_interactive.rs	4710	my-provider	"my-provider",
+50	crates/jcode-tui/src/tui/app/inline_interactive.rs	4711	openai-compatible:my-provider	Some("openai-compatible:my-provider"),
+51	crates/jcode-tui/src/tui/app/inline_interactive.rs	4715	my-provider	assert_eq!(filtered[0].provider, "my-provider");
+52	crates/jcode-tui/src/tui/app/inline_interactive.rs	4721	OpenAI	model_route("gpt-5.5", "OpenAI", "openai-oauth"),
+53	crates/jcode-tui/src/tui/app/inline_interactive.rs	4721	openai-oauth	model_route("gpt-5.5", "OpenAI", "openai-oauth"),
+54	crates/jcode-tui/src/tui/app/inline_interactive.rs	4722	OpenAI	model_route("gpt-5.5", "OpenAI", "openai-api-key"),
+55	crates/jcode-tui/src/tui/app/inline_interactive.rs	4722	openai-api-key	model_route("gpt-5.5", "OpenAI", "openai-api-key"),
+56	crates/jcode-tui/src/tui/app/inline_interactive.rs	4723	Copilot	model_route("gpt-5.5", "Copilot", "copilot"),
+57	crates/jcode-tui/src/tui/app/inline_interactive.rs	4724	openai-compatible:llamacpp	model_route("qwen3-coder", "llama.cpp", "openai-compatible:llamacpp"),
+58	crates/jcode-tui/src/tui/app/inline_interactive.rs	4731	OpenAI	"OpenAI",
+59	crates/jcode-tui/src/tui/app/inline_interactive.rs	4732	openai-oauth	Some("openai-oauth"),
+60	crates/jcode-tui/src/tui/app/inline_interactive.rs	4748	OpenAI	("gpt-5.5", "OpenAI", "openai-oauth"),
+61	crates/jcode-tui/src/tui/app/inline_interactive.rs	4748	openai-oauth	("gpt-5.5", "OpenAI", "openai-oauth"),
+62	crates/jcode-tui/src/tui/app/inline_interactive.rs	4749	openai-compatible:llamacpp	("qwen3-coder", "llama.cpp", "openai-compatible:llamacpp"),
+63	crates/jcode-tui/src/tui/app/inline_interactive/helpers.rs	126	copilot:{}	crate::provider::ModelRouteApiMethod::Copilot => format!("copilot:{}", bare_name),
+64	crates/jcode-tui/src/tui/app/inline_interactive/helpers.rs	128	claude-oauth:{}	format!("claude-oauth:{}", bare_name)
+65	crates/jcode-tui/src/tui/app/inline_interactive/helpers.rs	130	Anthropic	crate::provider::ModelRouteApiMethod::AnthropicApiKey if route.provider == "Anthropic" => {
+66	crates/jcode-tui/src/tui/app/inline_interactive/helpers.rs	131	claude-api:{}	format!("claude-api:{}", bare_name)
+67	crates/jcode-tui/src/tui/app/inline_interactive/helpers.rs	133	cursor:{}	crate::provider::ModelRouteApiMethod::Cursor => format!("cursor:{}", bare_name),
+68	crates/jcode-tui/src/tui/app/inline_interactive/helpers.rs	134	bedrock:{}	crate::provider::ModelRouteApiMethod::Bedrock => format!("bedrock:{}", bare_name),
+69	crates/jcode-tui/src/tui/app/inline_interactive/helpers.rs	135	openai-api:{}	crate::provider::ModelRouteApiMethod::OpenAIApiKey => format!("openai-api:{}", bare_name),
+70	crates/jcode-tui/src/tui/app/inline_interactive/helpers.rs	137	openai-oauth:{}	format!("openai-oauth:{}", bare_name)
+71	crates/jcode-tui/src/tui/app/inline_interactive/helpers.rs	139	Antigravity	_ if route.provider == "Antigravity" => format!("antigravity:{}", bare_name),
+72	crates/jcode-tui/src/tui/app/inline_interactive/helpers.rs	139	antigravity:{}	_ if route.provider == "Antigravity" => format!("antigravity:{}", bare_name),
+73	crates/jcode-tui/src/tui/app/inline_interactive/helpers.rs	196	sidecar auto-select	AgentModelTarget::Memory => "sidecar auto-select",
+74	crates/jcode-tui/src/tui/app/inline_interactive/helpers.rs	200	provider default	| AgentModelTarget::Ambient => "provider default",
+75	crates/jcode-tui/src/tui/app/inline_interactive/helpers.rs	217	(unknown)	"unknown" | "(unknown)" | "unknown model" => fallback.to_string(),
+76	crates/jcode-tui/src/tui/app/inline_interactive/helpers.rs	217	unknown model	"unknown" | "(unknown)" | "unknown model" => fallback.to_string(),
+77	crates/jcode-tui/src/tui/app/inline_interactive/helpers.rs	218	(provider default)	"(provider default)" => "provider default".to_string(),
+78	crates/jcode-tui/src/tui/app/inline_interactive/helpers.rs	218	provider default	"(provider default)" => "provider default".to_string(),
+79	crates/jcode-tui/src/tui/app/inline_interactive/helpers.rs	219	(sidecar auto-select)	"(sidecar auto-select)" => "sidecar auto-select".to_string(),
+80	crates/jcode-tui/src/tui/app/inline_interactive/helpers.rs	219	sidecar auto-select	"(sidecar auto-select)" => "sidecar auto-select".to_string(),
+81	crates/jcode-tui/src/tui/app/inline_interactive/helpers.rs	282	OpenAI	route("OpenAI", "openai-oauth"),
+82	crates/jcode-tui/src/tui/app/inline_interactive/helpers.rs	282	openai-oauth	route("OpenAI", "openai-oauth"),
+83	crates/jcode-tui/src/tui/app/inline_interactive/helpers.rs	283	openai-oauth:gpt-5.5	"openai-oauth:gpt-5.5",
+84	crates/jcode-tui/src/tui/app/inline_interactive/helpers.rs	287	OpenAI	route("OpenAI", "openai-api-key"),
+85	crates/jcode-tui/src/tui/app/inline_interactive/helpers.rs	287	openai-api-key	route("OpenAI", "openai-api-key"),
+86	crates/jcode-tui/src/tui/app/inline_interactive/helpers.rs	288	openai-api:gpt-5.5	"openai-api:gpt-5.5",
+87	crates/jcode-tui/src/tui/app/inline_interactive/helpers.rs	291	claude-opus-4-6	"claude-opus-4-6",
+88	crates/jcode-tui/src/tui/app/inline_interactive/helpers.rs	292	Anthropic	route("Anthropic", "claude-oauth"),
+89	crates/jcode-tui/src/tui/app/inline_interactive/helpers.rs	292	claude-oauth	route("Anthropic", "claude-oauth"),
+90	crates/jcode-tui/src/tui/app/inline_interactive/helpers.rs	293	claude-oauth:claude-opus-4-6	"claude-oauth:claude-opus-4-6",
+91	crates/jcode-tui/src/tui/app/inline_interactive/helpers.rs	296	claude-opus-4-6	"claude-opus-4-6",
+92	crates/jcode-tui/src/tui/app/inline_interactive/helpers.rs	297	Anthropic	route("Anthropic", "claude-api"),
+93	crates/jcode-tui/src/tui/app/inline_interactive/helpers.rs	297	claude-api	route("Anthropic", "claude-api"),
+94	crates/jcode-tui/src/tui/app/inline_interactive/helpers.rs	298	claude-api:claude-opus-4-6	"claude-api:claude-opus-4-6",
+95	crates/jcode-tui/src/tui/app/inline_interactive/helpers.rs	302	openai-compatible:comtegra	route("Comtegra GPU Cloud", "openai-compatible:comtegra"),
+96	crates/jcode-tui/src/tui/app/inline_interactive/helpers.rs	306	claude-sonnet-4-6	"claude-sonnet-4-6",
+97	crates/jcode-tui/src/tui/app/inline_interactive/helpers.rs	307	Copilot	route("Copilot", "copilot"),
+98	crates/jcode-tui/src/tui/app/inline_interactive/helpers.rs	308	copilot:claude-sonnet-4-6	"copilot:claude-sonnet-4-6",
+99	crates/jcode-tui/src/tui/app/inline_interactive/helpers.rs	318	openai-compatible:nvidia-nim	let route = route("NVIDIA NIM", "openai-compatible:nvidia-nim");
+100	crates/jcode-tui/src/tui/app/inline_interactive/helpers.rs	323	openai-compatible:nvidia-nim	assert_eq!(selection.api_method, "openai-compatible:nvidia-nim");
+101	crates/jcode-tui/src/tui/app/inline_interactive/openers.rs	85	Local authentication	"Local authentication",
+102	crates/jcode-tui/src/tui/app/inline_interactive/openers.rs	148	All providers	// Prepend a synthetic "All providers" entry that logs out everywhere.
+103	crates/jcode-tui/src/tui/app/inline_interactive/openers.rs	152	All providers	name: "All providers".to_string(),
+104	crates/jcode-tui/src/tui/app/inline_interactive/openers.rs	157	Log out of every provider with a saved session	detail: "Log out of every provider with a saved session".to_string(),
+105	crates/jcode-tui/src/tui/app/inline_interactive/openers.rs	242	saved override	provider: "saved override".to_string(),
+106	crates/jcode-tui/src/tui/app/inline_interactive/openers.rs	245	not in current picker catalog	detail: "not in current picker catalog".to_string(),
+107	crates/jcode-tui/src/tui/app/inline_interactive/openers.rs	275	clear saved override	detail: "clear saved override".to_string(),
+108	crates/jcode-tui/src/tui/app/inline_interactive/preview.rs	57	default-provider	| "default-provider" | "default-model" => return None,
+109	crates/jcode-tui/src/tui/app/inline_interactive/preview.rs	90	api-key-name	| "transport" | "effort" | "fast" | "premium" | "api-base" | "api-key-name"
+110	crates/jcode-tui/src/tui/app/input.rs	169	Failed to run command: {}	output: format!("Failed to run command: {}", error),
+111	crates/jcode-tui/src/tui/app/input.rs	205	Reading clipboard...	app.set_status_notice("Reading clipboard...");
+112	crates/jcode-tui/src/tui/app/input.rs	398	clipboard image bytes must not fetch a URL	|_| panic!("clipboard image bytes must not fetch a URL"),
+113	crates/jcode-tui/src/tui/app/input.rs	404	http://127.0.0.1/secret.png	assert!(super::download_image_url_content("http://127.0.0.1/secret.png").is_none());
+114	crates/jcode-tui/src/tui/app/input.rs	407	http://127.0.0.1/secret.png	|| Some("http://127.0.0.1/secret.png".to_string()),
+115	crates/jcode-tui/src/tui/app/input.rs	637	Failed to copy input line	app.set_status_notice("Failed to copy input line");
+116	crates/jcode-tui/src/tui/app/input.rs	646	✂ Cut input line	app.set_status_notice("✂ Cut input line");
+117	crates/jcode-tui/src/tui/app/input.rs	665	SSH paste: text only. File paths refer to the remote host; paste image bytes from the clipboard to attach an image.	app.set_status_notice("SSH paste: text only. File paths refer to the remote host; paste image bytes from the clipboard to attach an image.");
+118	crates/jcode-tui/src/tui/app/input.rs	712	Downloading image from pasted URL: {}	crate::logging::info(&format!("Downloading image from pasted URL: {}", url));
+119	crates/jcode-tui/src/tui/app/input.rs	713	Downloading image...	app.set_status_notice("Downloading image...");
+120	crates/jcode-tui/src/tui/app/input.rs	772	Dropped {count} image{}	"Dropped {count} image{}",

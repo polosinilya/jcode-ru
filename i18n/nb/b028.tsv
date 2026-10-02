@@ -1,0 +1,120 @@
+1	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1116	/goals show {}	.map(|goal| (format!("/goals show {}", goal.id), "Open this goal"))
+2	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1116	Open this goal	.map(|goal| (format!("/goals show {}", goal.id), "Open this goal"))
+3	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1121	/goals 	if prefix.starts_with("/goals ") {
+4	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1125	/goals resume	("/goals resume".into(), "Resume the current goal"),
+5	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1125	Resume the current goal	("/goals resume".into(), "Resume the current goal"),
+6	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1126	/goals show	("/goals show".into(), "Open a specific goal by id"),
+7	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1126	Open a specific goal by id	("/goals show".into(), "Open a specific goal by id"),
+8	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1131	/selfdev 	if prefix.starts_with("/selfdev ") {
+9	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1136	/selfdev status	"/selfdev status".into(),
+10	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1137	Show current self-dev/build status	"Show current self-dev/build status",
+11	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1139	/selfdev enter	("/selfdev enter".into(), "Open a blank self-dev session"),
+12	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1139	Open a blank self-dev session	("/selfdev enter".into(), "Open a blank self-dev session"),
+13	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1141	/selfdev enter 	"/selfdev enter ".into(),
+14	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1142	Open a self-dev session with a prompt	"Open a self-dev session with a prompt",
+15	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1148	/rewind 	if prefix.starts_with("/rewind ") {
+16	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1149	/rewind 	let arg = prefix.strip_prefix("/rewind ").unwrap_or_default().trim();
+17	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1161	/rewind {}	return vec![(format!("/rewind {}", n), "Rewind to this message")];
+18	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1161	Rewind to this message	return vec![(format!("/rewind {}", n), "Rewind to this message")];
+19	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1167	/rewind {}	.map(|n| (format!("/rewind {}", n), "Rewind to this message"))
+20	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1167	Rewind to this message	.map(|n| (format!("/rewind {}", n), "Rewind to this message"))
+21	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1240	/cancel	if !typed.is_empty() && typed.starts_with('/') && "/cancel".starts_with(typed) {
+22	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1241	/cancel	return vec![("/cancel".into(), "Cancel the pending prompt")];
+23	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1241	Cancel the pending prompt	return vec![("/cancel".into(), "Cancel the pending prompt")];
+24	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1254	/model	input.starts_with("/model") || input.starts_with("/models")
+25	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1254	/models	input.starts_with("/model") || input.starts_with("/models")
+26	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1256	/login	crate::tui::PickerKind::Login => input.starts_with("/login"),
+27	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1477	/login	return vec![("Log in to get started".to_string(), "/login".to_string())];
+28	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1477	Log in to get started	return vec![("Log in to get started".to_string(), "/login".to_string())];
+29	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1496	Customize my terminal theme	"Customize my terminal theme".to_string(),
+30	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1497	Find what terminal I'm using, then change its background color to pitch black and make it slightly transparent. Apply the changes for me.	"Find what terminal I'm using, then change its background color to pitch black and make it slightly transparent. Apply the changes for me.".to_string(),
+31	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1500	Review something I've been working on	"Review something I've been working on".to_string(),
+32	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1501	Find a recent file or project I've been working on, read through it, and give me concrete suggestions on how I could improve it.	"Find a recent file or project I've been working on, read through it, and give me concrete suggestions on how I could improve it.".to_string(),
+33	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1509	macos	if cfg!(target_os = "macos") {
+34	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1511	Install ScrollWM (scrolling window manager for macOS)	"Install ScrollWM (scrolling window manager for macOS)".to_string(),
+35	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1517	Continue my last Codex CLI / Claude Code session	"Continue my last Codex CLI / Claude Code session".to_string(),
+36	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1519	Find my recent Codex or Claude Code sessions, identify the latest useful one, summarize what was happening, and continue from there.	"Find my recent Codex or Claude Code sessions, identify the latest useful one, summarize what was happening, and continue from there.".to_string()
+37	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1524	Find my social media and roast me	"Find my social media and roast me".to_string(),
+38	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1525	Find a social media platform I use, look around at my profile and posts, then give me a brutally honest roast based on what you see.	"Find a social media platform I use, look around at my profile and posts, then give me a brutally honest roast based on what you see.".to_string(),
+39	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1619	↶ Input restored	self.set_status_notice("↶ Input restored");
+40	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1621	Nothing to undo	self.set_status_notice("Nothing to undo");
+41	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1628	/help	"/help"
+42	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1630	/btw	| "/btw"
+43	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1631	/fork	| "/fork"
+44	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1632	/git	| "/git"
+45	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1633	/transcript	| "/transcript"
+46	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1634	/observe	| "/observe"
+47	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1635	/todos	| "/todos"
+48	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1636	/splitview	| "/splitview"
+49	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1637	/split-view	| "/split-view"
+50	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1638	/model	| "/model"
+51	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1639	/agents	| "/agents"
+52	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1640	/effort	| "/effort"
+53	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1641	/fast	| "/fast"
+54	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1642	/transport	| "/transport"
+55	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1643	/login	| "/login"
+56	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1644	/auth	| "/auth"
+57	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1645	/account	| "/account"
+58	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1646	/account claude	| "/account claude"
+59	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1647	/account switch	| "/account switch"
+60	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1648	/account openai	| "/account openai"
+61	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1649	/account openai-compatible	| "/account openai-compatible"
+62	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1650	/account default-provider	| "/account default-provider"
+63	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1651	/account default-model	| "/account default-model"
+64	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1652	/account claude switch	| "/account claude switch"
+65	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1653	/account claude remove	| "/account claude remove"
+66	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1654	/account openai switch	| "/account openai switch"
+67	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1655	/account openai remove	| "/account openai remove"
+68	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1656	/usage	| "/usage"
+69	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1657	/subscription	| "/subscription"
+70	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1658	/poke	| "/poke"
+71	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1659	/memory	| "/memory"
+72	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1660	/test	| "/test"
+73	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1661	/initiatives	| "/initiatives"
+74	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1662	/initiatives show	| "/initiatives show"
+75	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1663	/goals	| "/goals"
+76	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1664	/goals show	| "/goals show"
+77	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1665	/swarm	| "/swarm"
+78	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1666	/plan	| "/plan"
+79	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1667	/improve	| "/improve"
+80	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1668	/refactor	| "/refactor"
+81	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1669	/rewind	| "/rewind"
+82	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1670	/compact	| "/compact"
+83	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1671	/compact mode	| "/compact mode"
+84	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1672	/alignment	| "/alignment"
+85	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1673	/compact-notifications	| "/compact-notifications"
+86	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1674	/show-agentgrep-output	| "/show-agentgrep-output"
+87	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1675	/reasoning	| "/reasoning"
+88	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1676	/thinking	| "/thinking"
+89	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1677	/thinking-display	| "/thinking-display"
+90	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1678	/config	| "/config"
+91	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1679	/save	| "/save"
+92	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1680	/rename	| "/rename"
+93	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1681	/cache	| "/cache"
+94	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1707	scanned, but nothing found	/// was computed. `None` value means "scanned, but nothing found".
+95	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1738	.codex/sessions	&home.join(".codex/sessions"),
+96	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1739	Codex	"Codex",
+97	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1743	.claude/projects	&home.join(".claude/projects"),
+98	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1744	Claude Code	"Claude Code",
+99	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1759	 in {label}	format!(" in {label}")
+100	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1764	 cwd `{dir}`	.map(|dir| format!(" cwd `{dir}`"))
+101	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1769	 session `{id}`	.map(|id| format!(" session `{id}`"))
+102	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1777	Continue the latest {source} session{location}. Transcript: `{path}`.{session_id}{cwd}{context}. Read that transcript if needed, summarize the current state, then continue from there.	"Continue the latest {source} session{location}. Transcript: `{path}`.{session_id}{cwd}{context}. Read that transcript if needed, summarize the current state, then continue from there.",
+103	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1812	jsonl	} else if path.extension().and_then(|ext| ext.to_str()) == Some("jsonl") {
+104	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1834	cwd	.get("cwd")
+105	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1835	cwd	.or_else(|| value.get("payload").and_then(|payload| payload.get("cwd")))
+106	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1835	payload	.or_else(|| value.get("payload").and_then(|payload| payload.get("cwd")))
+107	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1841	sessionId	.get("sessionId")
+108	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1845	payload	.get("payload")
+109	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1848	id	.or_else(|| value.get("payload").and_then(|payload| payload.get("id")))
+110	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1848	payload	.or_else(|| value.get("payload").and_then(|payload| payload.get("id")))
+111	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1854	summary	.get("summary")
+112	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1855	lastPrompt	.or_else(|| value.get("lastPrompt"))
+113	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1858	payload	.get("payload")
+114	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1859	summary	.and_then(|payload| payload.get("summary"))
+115	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1866	user	if jsonl_suggestion_role(&value) == Some("user")
+116	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1892	message	.get("message")
+117	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1893	role	.and_then(|message| message.get("role"))
+118	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1894	role	.or_else(|| value.get("role"))
+119	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1895	payload	.or_else(|| value.get("payload").and_then(|payload| payload.get("role")))
+120	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1895	role	.or_else(|| value.get("payload").and_then(|payload| payload.get("role")))

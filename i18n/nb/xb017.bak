@@ -1,0 +1,120 @@
+1	crates/jcode-tui/src/tui/app/input.rs	921	No text or image in clipboard	self.set_status_notice("No text or image in clipboard");
+2	crates/jcode-tui/src/tui/app/input.rs	924	No image in clipboard	self.set_status_notice("No image in clipboard")
+3	crates/jcode-tui/src/tui/app/input.rs	930	Failed to download image	self.set_status_notice("Failed to download image");
+4	crates/jcode-tui/src/tui/app/input.rs	1447	Input cleared - Ctrl+Z to restore	app.set_status_notice("Input cleared - Ctrl+Z to restore");
+5	crates/jcode-tui/src/tui/app/input.rs	1500	Retrieved {} pending message{} for editing	"Retrieved {} pending message{} for editing",
+6	crates/jcode-tui/src/tui/app/input.rs	1574	Stopping auto-poke after {} consecutive provider guardrail stops (cleared {} queued poke message(s), overnight={})	"Stopping auto-poke after {} consecutive provider guardrail stops (cleared {} queued poke message(s), overnight={})",
+7	crates/jcode-tui/src/tui/app/input.rs	1578	🛑 The provider refused {} turns in a row, so we stopped poking. The same request will keep getting refused. Rephrase or narrow the task, then /poke to resume.	"🛑 The provider refused {} turns in a row, so we stopped poking. The same request will keep getting refused. Rephrase or narrow the task, then /poke to resume.",
+8	crates/jcode-tui/src/tui/app/input.rs	1581	Poke stopped: provider guardrail	self.set_status_notice("Poke stopped: provider guardrail");
+9	crates/jcode-tui/src/tui/app/input.rs	1624	TODO_GATE_DIGEST action=skip reason=nothing_to_report observations={}	"TODO_GATE_DIGEST action=skip reason=nothing_to_report observations={}",
+10	crates/jcode-tui/src/tui/app/input.rs	1635	🔎 We asked the agent to double-check this turn's weak points.	"🔎 We asked the agent to double-check this turn's weak points.",
+11	crates/jcode-tui/src/tui/app/input.rs	1661	🔍 Rechecking the plan and assessments after extended work...	"🔍 Rechecking the plan and assessments after extended work...",
+12	crates/jcode-tui/src/tui/app/input.rs	1685	AUTO_POKE_DECISION action=idle reason=no_todos incomplete=0	crate::logging::info("AUTO_POKE_DECISION action=idle reason=no_todos incomplete=0");
+13	crates/jcode-tui/src/tui/app/input.rs	1724	🔍 Checking end-to-end ownership before finishing...	"🔍 Checking end-to-end ownership before finishing...",
+14	crates/jcode-tui/src/tui/app/input.rs	1776	⚠️ We nudged the agent several times but its validation still isn't holding up. We stopped poking; review the remaining todos yourself.	"⚠️ We nudged the agent several times but its validation still isn't holding up. We stopped poking; review the remaining todos yourself.",
+15	crates/jcode-tui/src/tui/app/input.rs	1796	✅ All todos done. Completion confidence: {}.	"✅ All todos done. Completion confidence: {}.",
+16	crates/jcode-tui/src/tui/app/input.rs	1826	👉 {} incomplete todo{}. We poked it for you. /poke off to stop.	"👉 {} incomplete todo{}. We poked it for you. /poke off to stop.",
+17	crates/jcode-tui/src/tui/app/input.rs	1862	Next prompt → new session	self.set_status_notice("Next prompt → new session");
+18	crates/jcode-tui/src/tui/app/input.rs	1864	Next-prompt new session canceled	self.set_status_notice("Next-prompt new session canceled");
+19	crates/jcode-tui/src/tui/app/input.rs	1901	Opening a sibling terminal	if super::commands_dispatch::ssh_local_action_blocked(self, "Opening a sibling terminal") {
+20	crates/jcode-tui/src/tui/app/input.rs	1909	↗ New terminal opened	Ok(true) => self.set_status_notice("↗ New terminal opened"),
+21	crates/jcode-tui/src/tui/app/input.rs	1911	No supported terminal found; run `jcode` manually	self.set_status_notice("No supported terminal found; run `jcode` manually")
+22	crates/jcode-tui/src/tui/app/input.rs	1913	New terminal failed: {}	Err(error) => self.set_status_notice(format!("New terminal failed: {}", error)),
+23	crates/jcode-tui/src/tui/app/input.rs	1957	Prompt launch failed	app.set_status_notice("Prompt launch failed");
+24	crates/jcode-tui/src/tui/app/input.rs	1959	Failed to launch prompt in a new session: {}	"Failed to launch prompt in a new session: {}",
+25	crates/jcode-tui/src/tui/app/input.rs	2045	Immediate mode: messages send next (no interrupt)	"Immediate mode: messages send next (no interrupt)"
+26	crates/jcode-tui/src/tui/app/input.rs	2247	Diffs: {}	let status = format!("Diffs: {}", app.diff_mode.label());
+27	crates/jcode-tui/src/tui/app/input.rs	2402	Dictation setup	if super::commands_dispatch::ssh_local_action_blocked(app, "Dictation setup") {
+28	crates/jcode-tui/src/tui/app/input.rs	2415	Swarm view closed	app.set_status_notice("Swarm view closed");
+29	crates/jcode-tui/src/tui/app/input.rs	2418	full page	app.set_status_notice(crate::tui::keybind::swarm_view_hint("full page"));
+30	crates/jcode-tui/src/tui/app/input.rs	2532	Failed to copy {}	app.set_status_notice(format!("Failed to copy {}", target.kind_label));
+31	crates/jcode-tui/src/tui/app/input.rs	2603	Expanded edit diffs · Diffs: {}	"Expanded edit diffs · Diffs: {}",
+32	crates/jcode-tui/src/tui/app/input.rs	2629	Local login picker	if super::commands_dispatch::ssh_local_action_blocked(app, "Local login picker") {
+33	crates/jcode-tui/src/tui/app/input.rs	2638	Local account picker	if super::commands_dispatch::ssh_local_action_blocked(app, "Local account picker") {
+34	crates/jcode-tui/src/tui/app/input.rs	2725	Interrupting... Overnight cancelled	app.set_status_notice("Interrupting... Overnight cancelled");
+35	crates/jcode-tui/src/tui/app/input.rs	2727	Interrupting...	app.set_status_notice("Interrupting...");
+36	crates/jcode-tui/src/tui/app/input.rs	2867	Interrupting... Auto-poke OFF, overnight cancelled	app.set_status_notice("Interrupting... Auto-poke OFF, overnight cancelled");
+37	crates/jcode-tui/src/tui/app/input.rs	2869	Interrupting... Auto-poke OFF	app.set_status_notice("Interrupting... Auto-poke OFF");
+38	crates/jcode-tui/src/tui/app/input.rs	2872	Interrupting... Overnight cancelled	app.set_status_notice("Interrupting... Overnight cancelled");
+39	crates/jcode-tui/src/tui/app/input.rs	2874	Interrupting...	app.set_status_notice("Interrupting...");
+40	crates/jcode-tui/src/tui/app/input.rs	2908	⏭ Sending now (interleave)	app.set_status_notice("⏭ Sending now (interleave)");
+41	crates/jcode-tui/src/tui/app/input.rs	2919	Pasted {} ({} KB)	app.set_status_notice(format!("Pasted {} ({} KB)", media_type, size_kb));
+42	crates/jcode-tui/src/tui/app/input.rs	3029	you just pressed X → does Y	// show "you just pressed X → does Y". Placed after the modal/overlay
+43	crates/jcode-tui/src/tui/app/input.rs	3050	Provider auto-switch canceled	self.cancel_pending_provider_failover("Provider auto-switch canceled");
+44	crates/jcode-tui/src/tui/app/input.rs	3054	Provider auto-switch canceled	self.cancel_pending_provider_failover("Provider auto-switch canceled");
+45	crates/jcode-tui/src/tui/app/input.rs	3810	Shell command cannot be empty after !.	"Shell command cannot be empty after !.",
+46	crates/jcode-tui/src/tui/app/input.rs	3812	Shell command is empty	self.set_status_notice("Shell command is empty");
+47	crates/jcode-tui/src/tui/app/input.rs	3818	Input-line ! shell commands are only available in a local jcode TUI session.	"Input-line ! shell commands are only available in a local jcode TUI session.",
+48	crates/jcode-tui/src/tui/app/input.rs	3820	Local shell unavailable in remote mode	self.set_status_notice("Local shell unavailable in remote mode");
+49	crates/jcode-tui/src/tui/app/input.rs	3825	Running local shell: {}	"Running local shell: {}",
+50	crates/jcode-tui/src/tui/app/input.rs	3864	Activated skill: {} - {}	content: format!("Activated skill: {} - {}", skill.name, skill.description),
+51	crates/jcode-tui/src/tui/app/input.rs	3878	Unknown skill	// "Unknown skill" for them reads like a bug (issue #445).
+52	crates/jcode-tui/src/tui/app/input.rs	3884	Skill /{} is endorsed but not installed. Install it with `{}`, then run /skills or skill_manage reload_all.	"Skill /{} is endorsed but not installed. Install it with `{}`, then run /skills or skill_manage reload_all.",
+53	crates/jcode-tui/src/tui/app/input.rs	3888	Skill /{} is endorsed but not installed (source: {}). Install it into ~/.jcode/skills/{}/SKILL.md.	"Skill /{} is endorsed but not installed (source: {}). Install it into ~/.jcode/skills/{}/SKILL.md.",
+54	crates/jcode-tui/src/tui/app/input.rs	3895	Unknown skill: /{}	.unwrap_or_else(|| format!("Unknown skill: /{}", skill_name)),
+55	crates/jcode-tui/src/tui/app/input.rs	3911	token refresh needed	// turn fails (e.g. "token refresh needed"), instead of dropping it.
+56	crates/jcode-tui/src/tui/app/input.rs	4175	see docs[1] and notes[2]	"see docs[1] and notes[2]",
+57	crates/jcode-tui/src/tui/app/input.rs	4184	plain text with no brackets	"plain text with no brackets",
+58	crates/jcode-tui/src/tui/app/input_help.rs	7	commands	"help" | "commands" => {
+59	crates/jcode-tui/src/tui/app/input_help.rs	7	help	"help" | "commands" => {
+60	crates/jcode-tui/src/tui/app/input_help.rs	8	/help\nShow general command list and keyboard shortcuts.\n\n/help <command>\nShow detailed help for one command.	"/help\nShow general command list and keyboard shortcuts.\n\n/help <command>\nShow detailed help for one command."
+61	crates/jcode-tui/src/tui/app/input_help.rs	10	compact	"compact" => {
+62	crates/jcode-tui/src/tui/app/input_help.rs	13	cache	"cache" => {
+63	crates/jcode-tui/src/tui/app/input_help.rs	16	fix	"fix" => {
+64	crates/jcode-tui/src/tui/app/input_help.rs	17	/fix\nRun recovery actions when the model cannot continue.\nRepairs missing tool outputs, resets provider session state, and starts compaction when possible.	"/fix\nRun recovery actions when the model cannot continue.\nRepairs missing tool outputs, resets provider session state, and starts compaction when possible."
+65	crates/jcode-tui/src/tui/app/input_help.rs	19	rewind	"rewind" => {
+66	crates/jcode-tui/src/tui/app/input_help.rs	20	/rewind\nShow numbered conversation history.\n\n/rewind N\nRewind to message N (drops everything after it and resets provider session).\n\n/rewind undo\nUndo the most recent rewind and restore the removed messages.	"/rewind\nShow numbered conversation history.\n\n/rewind N\nRewind to message N (drops everything after it and resets provider session).\n\n/rewind undo\nUndo the most recent rewind and restore the removed messages."
+67	crates/jcode-tui/src/tui/app/input_help.rs	22	clear	"clear" => {
+68	crates/jcode-tui/src/tui/app/input_help.rs	23	/clear\nClear current conversation, queue, and display; starts a fresh session.	"/clear\nClear current conversation, queue, and display; starts a fresh session."
+69	crates/jcode-tui/src/tui/app/input_help.rs	25	clear-view	"cls" | "clear-view" => {
+70	crates/jcode-tui/src/tui/app/input_help.rs	25	cls	"cls" | "clear-view" => {
+71	crates/jcode-tui/src/tui/app/input_help.rs	26	/cls\nClear the rendered view only. The model keeps its full context; nothing is sent or forgotten. (Ctrl+L clears the screen but keeps history in scrollback.)	"/cls\nClear the rendered view only. The model keeps its full context; nothing is sent or forgotten. (Ctrl+L clears the screen but keeps history in scrollback.)"
+72	crates/jcode-tui/src/tui/app/input_help.rs	28	model	"model" => {
+73	crates/jcode-tui/src/tui/app/input_help.rs	29	/model\nOpen model picker.\n\n/model <name>\nSwitch model.\n\n/model <name>@<provider>\nPin OpenRouter routing (@auto clears pin).	"/model\nOpen model picker.\n\n/model <name>\nSwitch model.\n\n/model <name>@<provider>\nPin OpenRouter routing (@auto clears pin)."
+74	crates/jcode-tui/src/tui/app/input_help.rs	31	provider-test-coverage	"provider-test-coverage"
+75	crates/jcode-tui/src/tui/app/input_help.rs	32	provider test coverage	| "provider test coverage"
+76	crates/jcode-tui/src/tui/app/input_help.rs	33	model-status	| "model-status"
+77	crates/jcode-tui/src/tui/app/input_help.rs	34	model status	| "model status" => {
+78	crates/jcode-tui/src/tui/app/input_help.rs	37	refresh-model-list	"refresh-model-list" => {
+79	crates/jcode-tui/src/tui/app/input_help.rs	38	/refresh-model-list\nForce-refresh provider model catalogs, update /model, and persist the refreshed cache.	"/refresh-model-list\nForce-refresh provider model catalogs, update /model, and persist the refreshed cache."
+80	crates/jcode-tui/src/tui/app/input_help.rs	40	agents	"agents" => {
+81	crates/jcode-tui/src/tui/app/input_help.rs	41	/agents\nOpen the agent-model config picker.\n\n/agents <swarm|review|judge|memory|ambient>\nJump straight to that agent role's saved model override.	"/agents\nOpen the agent-model config picker.\n\n/agents <swarm|review|judge|memory|ambient>\nJump straight to that agent role's saved model override."
+82	crates/jcode-tui/src/tui/app/input_help.rs	43	swarm-prompt	"swarm-prompt" => {
+83	crates/jcode-tui/src/tui/app/input_help.rs	46	subagent	"subagent" => {
+84	crates/jcode-tui/src/tui/app/input_help.rs	49	observe	"observe" => {
+85	crates/jcode-tui/src/tui/app/input_help.rs	52	todo	"todos" | "todo" => {
+86	crates/jcode-tui/src/tui/app/input_help.rs	52	todos	"todos" | "todo" => {
+87	crates/jcode-tui/src/tui/app/input_help.rs	55	split-view	"splitview" | "split-view" => {
+88	crates/jcode-tui/src/tui/app/input_help.rs	55	splitview	"splitview" | "split-view" => {
+89	crates/jcode-tui/src/tui/app/input_help.rs	58	btw	"btw" => {
+90	crates/jcode-tui/src/tui/app/input_help.rs	61	git	"git" => {
+91	crates/jcode-tui/src/tui/app/input_help.rs	62	/git\nShow git status --short --branch for the current session working directory.\n\n/git status\nAlias for /git.	"/git\nShow git status --short --branch for the current session working directory.\n\n/git status\nAlias for /git."
+92	crates/jcode-tui/src/tui/app/input_help.rs	64	commit	"commit" => {
+93	crates/jcode-tui/src/tui/app/input_help.rs	67	commit-and-push	"commit-push" | "commit-and-push" => {
+94	crates/jcode-tui/src/tui/app/input_help.rs	67	commit-push	"commit-push" | "commit-and-push" => {
+95	crates/jcode-tui/src/tui/app/input_help.rs	70	commit-push-release	"fast-release" | "cut-release" | "commit-push-release" => {
+96	crates/jcode-tui/src/tui/app/input_help.rs	70	cut-release	"fast-release" | "cut-release" | "commit-push-release" => {
+97	crates/jcode-tui/src/tui/app/input_help.rs	70	fast-release	"fast-release" | "cut-release" | "commit-push-release" => {
+98	crates/jcode-tui/src/tui/app/input_help.rs	73	fast-macos-release	"fast-macos-release" => {
+99	crates/jcode-tui/src/tui/app/input_help.rs	76	remote-release	"remote-release" => {
+100	crates/jcode-tui/src/tui/app/input_help.rs	79	triage	"triage" => {
+101	crates/jcode-tui/src/tui/app/input_help.rs	82	catchup	"catchup" => {
+102	crates/jcode-tui/src/tui/app/input_help.rs	85	back	"back" => {
+103	crates/jcode-tui/src/tui/app/input_help.rs	86	/back\nReturn to the previous session you came from via Catch Up.\n\nWorks after a /catchup next jump or after selecting a session from the Catch Up picker.	"/back\nReturn to the previous session you came from via Catch Up.\n\nWorks after a /catchup next jump or after selecting a session from the Catch Up picker."
+104	crates/jcode-tui/src/tui/app/input_help.rs	88	subagent-model	"subagent-model" => {
+105	crates/jcode-tui/src/tui/app/input_help.rs	89	/subagent-model\nShow the current subagent model policy for this session.\n\n/subagent-model <name>\nPin a fixed model for future subagents in this session.\n\n/subagent-model inherit\nReset to using the current active model.	"/subagent-model\nShow the current subagent model policy for this session.\n\n/subagent-model <name>\nPin a fixed model for future subagents in this session.\n\n/subagent-model inherit\nReset to using the current active model."
+106	crates/jcode-tui/src/tui/app/input_help.rs	91	autoreview	"autoreview" => {
+107	crates/jcode-tui/src/tui/app/input_help.rs	94	autojudge	"autojudge" => {
+108	crates/jcode-tui/src/tui/app/input_help.rs	97	review	"review" => {
+109	crates/jcode-tui/src/tui/app/input_help.rs	98	/review\nLaunch a one-shot headed review session immediately.\n\nThe reviewer will DM this session when done. If OpenAI ChatGPT OAuth is available, it prefers gpt-5.5.	"/review\nLaunch a one-shot headed review session immediately.\n\nThe reviewer will DM this session when done. If OpenAI ChatGPT OAuth is available, it prefers gpt-5.5."
+110	crates/jcode-tui/src/tui/app/input_help.rs	100	judge	"judge" => {
+111	crates/jcode-tui/src/tui/app/input_help.rs	101	/judge\nLaunch a one-shot headed judge session immediately.\n\nThe judge will DM this session when done. If OpenAI ChatGPT OAuth is available, it prefers gpt-5.5.	"/judge\nLaunch a one-shot headed judge session immediately.\n\nThe judge will DM this session when done. If OpenAI ChatGPT OAuth is available, it prefers gpt-5.5."
+112	crates/jcode-tui/src/tui/app/input_help.rs	103	effort	"effort" => {
+113	crates/jcode-tui/src/tui/app/input_help.rs	106	fast	"fast" => {
+114	crates/jcode-tui/src/tui/app/input_help.rs	109	/memory [on|off|status]\nToggle memory features for this session.	"memory" => "/memory [on|off|status]\nToggle memory features for this session.",
+115	crates/jcode-tui/src/tui/app/input_help.rs	109	memory	"memory" => "/memory [on|off|status]\nToggle memory features for this session.",
+116	crates/jcode-tui/src/tui/app/input_help.rs	110	log	"log" => {
+117	crates/jcode-tui/src/tui/app/input_help.rs	113	goals	"goals" => {
+118	crates/jcode-tui/src/tui/app/input_help.rs	114	/goals\nOpen the goals overview in the side panel.\n\n/goals resume\nResume the most relevant active goal for this session/project.\n\n/goals show <id>\nOpen a specific goal in the side panel.	"/goals\nOpen the goals overview in the side panel.\n\n/goals resume\nResume the most relevant active goal for this session/project.\n\n/goals show <id>\nOpen a specific goal in the side panel."
+119	crates/jcode-tui/src/tui/app/input_help.rs	116	/swarm [on|off|status]\nToggle swarm features for this session.	"swarm" => "/swarm [on|off|status]\nToggle swarm features for this session.",
+120	crates/jcode-tui/src/tui/app/input_help.rs	116	swarm	"swarm" => "/swarm [on|off|status]\nToggle swarm features for this session.",

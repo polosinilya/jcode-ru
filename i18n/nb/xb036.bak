@@ -1,0 +1,59 @@
+1	crates/jcode-tui/src/tui/ui_overlays.rs	559	Ctrl+Left / Right	lines.push(key_entry("Ctrl+Left / Right", "Move by word left / right"));
+2	crates/jcode-tui/src/tui/ui_overlays.rs	559	Move by word left / right	lines.push(key_entry("Ctrl+Left / Right", "Move by word left / right"));
+3	crates/jcode-tui/src/tui/ui_overlays.rs	561	Enter	&format!("Shift+Enter / {}", alt("Enter")),
+4	crates/jcode-tui/src/tui/ui_overlays.rs	561	Shift+Enter / {}	&format!("Shift+Enter / {}", alt("Enter")),
+5	crates/jcode-tui/src/tui/ui_overlays.rs	562	Insert newline in input	"Insert newline in input",
+6	crates/jcode-tui/src/tui/ui_overlays.rs	565	Trailing \\ then Enter	"Trailing \\ then Enter",
+7	crates/jcode-tui/src/tui/ui_overlays.rs	566	Insert newline (fallback; run /terminal-setup to fix Shift+Enter)	"Insert newline (fallback; run /terminal-setup to fix Shift+Enter)",
+8	crates/jcode-tui/src/tui/ui_overlays.rs	569	Ctrl+Enter / Cmd+Enter	"Ctrl+Enter / Cmd+Enter",
+9	crates/jcode-tui/src/tui/ui_overlays.rs	570	Use opposite send mode while processing	"Use opposite send mode while processing",
+10	crates/jcode-tui/src/tui/ui_overlays.rs	572	Ctrl+Up	lines.push(key_entry("Ctrl+Up", "Retrieve pending message for editing"));
+11	crates/jcode-tui/src/tui/ui_overlays.rs	572	Retrieve pending message for editing	lines.push(key_entry("Ctrl+Up", "Retrieve pending message for editing"));
+12	crates/jcode-tui/src/tui/ui_overlays.rs	573	Ctrl+Tab / Ctrl+T	lines.push(key_entry("Ctrl+Tab / Ctrl+T", "Toggle queue mode"));
+13	crates/jcode-tui/src/tui/ui_overlays.rs	573	Toggle queue mode	lines.push(key_entry("Ctrl+Tab / Ctrl+T", "Toggle queue mode"));
+14	crates/jcode-tui/src/tui/ui_overlays.rs	575	Ctrl+R	"Ctrl+R",
+15	crates/jcode-tui/src/tui/ui_overlays.rs	576	Search prompt history (across sessions)	"Search prompt history (across sessions)",
+16	crates/jcode-tui/src/tui/ui_overlays.rs	579	Ctrl+V / {}	&format!("Ctrl+V / {}", alt("V")),
+17	crates/jcode-tui/src/tui/ui_overlays.rs	580	Paste clipboard (text or image)	"Paste clipboard (text or image)",
+18	crates/jcode-tui/src/tui/ui_overlays.rs	584	Quick-copy visible chat viewport plus nearby context	"Quick-copy visible chat viewport plus nearby context",
+19	crates/jcode-tui/src/tui/ui_overlays.rs	586	Toggle chat selection/copy mode	lines.push(key_entry(&alt("Y"), "Toggle chat selection/copy mode"));
+20	crates/jcode-tui/src/tui/ui_overlays.rs	587	Toggle typing scroll lock	lines.push(key_entry(&alt("S"), "Toggle typing scroll lock"));
+21	crates/jcode-tui/src/tui/ui_overlays.rs	588	Ctrl+P	lines.push(key_entry("Ctrl+P", "Toggle auto-poke for incomplete todos"));
+22	crates/jcode-tui/src/tui/ui_overlays.rs	588	Toggle auto-poke for incomplete todos	lines.push(key_entry("Ctrl+P", "Toggle auto-poke for incomplete todos"));
+23	crates/jcode-tui/src/tui/ui_overlays.rs	589	Show/dismiss todo list card in chat	lines.push(key_entry(&alt("X"), "Show/dismiss todo list card in chat"));
+24	crates/jcode-tui/src/tui/ui_overlays.rs	592	Cycle effort (reasoning + swarm)	"Cycle effort (reasoning + swarm)",
+25	crates/jcode-tui/src/tui/ui_overlays.rs	594	macos	if cfg!(target_os = "macos") {
+26	crates/jcode-tui/src/tui/ui_overlays.rs	596	Left / Right	&alt("Left / Right"),
+27	crates/jcode-tui/src/tui/ui_overlays.rs	597	Move by word in input (also {} / {})	&format!("Move by word in input (also {} / {})", alt("B"), alt("F")),
+28	crates/jcode-tui/src/tui/ui_overlays.rs	601	Run configured dictation	lines.push(key_entry(&label, "Run configured dictation"));
+29	crates/jcode-tui/src/tui/ui_overlays.rs	604	Open the /resume session picker	lines.push(key_entry(&label, "Open the /resume session picker"));
+30	crates/jcode-tui/src/tui/ui_overlays.rs	609	Spawn new jcode session in a new terminal	"Spawn new jcode session in a new terminal",
+31	crates/jcode-tui/src/tui/ui_overlays.rs	631	 Help {} 	let title = format!(" Help {} ", scroll_info);
+32	crates/jcode-tui/src/tui/ui_overlays.rs	640	 Esc to close · mouse wheel/j/k scroll · Space/PageUp page · /help <cmd> for details 	" Esc to close · mouse wheel/j/k scroll · Space/PageUp page · /help <cmd> for details ",
+33	crates/jcode-tui/src/tui/ui_overlays.rs	668	  Model Status	lines.push(Line::from(Span::styled("  Model Status", title_style)));
+34	crates/jcode-tui/src/tui/ui_overlays.rs	670	  Live verification evidence for provider/model behavior in jcode	"  Live verification evidence for provider/model behavior in jcode",
+35	crates/jcode-tui/src/tui/ui_overlays.rs	692	  ↑/↓ scroll, PgUp/PgDn page, c copy report, q/Esc close	"  ↑/↓ scroll, PgUp/PgDn page, c copy report, q/Esc close",
+36	crates/jcode-tui/src/tui/ui_overlays.rs	700	 /provider-test-coverage 	.title(" /provider-test-coverage "),
+37	crates/jcode-tui/src/tui/ui_overlays.rs	730	messages	render_overlay_box(frame, chunks[0], "messages", Color::Red);
+38	crates/jcode-tui/src/tui/ui_overlays.rs	731	queued	render_overlay_box(frame, chunks[1], "queued", Color::Yellow);
+39	crates/jcode-tui/src/tui/ui_overlays.rs	732	status	render_overlay_box(frame, chunks[2], "status", Color::Cyan);
+40	crates/jcode-tui/src/tui/ui_overlays.rs	733	picker	render_overlay_box(frame, chunks[3], "picker", Color::Magenta);
+41	crates/jcode-tui/src/tui/ui_overlays.rs	734	input	render_overlay_box(frame, chunks[4], "input", Color::Green);
+42	crates/jcode-tui/src/tui/ui_overlays.rs	736	donut	render_overlay_box(frame, chunks[5], "donut", Color::Blue);
+43	crates/jcode-tui/src/tui/ui_overlays.rs	740	widget:{}	let title = format!("widget:{}", placement.kind.as_str());
+44	crates/jcode-tui/src/tui/ui_status.rs	6	v{}	SEMVER.get_or_init(|| format!("v{}", jcode_build_meta::semver()))
+45	crates/jcode-tui/src/tui/ui_status.rs	77	claude4.5opus	return "claude4.5opus".to_string();
+46	crates/jcode-tui/src/tui/ui_status.rs	83	claude3.5sonnet	return "claude3.5sonnet".to_string();
+47	crates/jcode-tui/src/tui/ui_status.rs	97	gpt3.5	return "gpt3.5".to_string();
+48	crates/jcode-tui/src/tui/ui_status.rs	106	Idle (notice: {})	format!("Idle (notice: {})", notice)
+49	crates/jcode-tui/src/tui/ui_status.rs	109	Idle (session: {}k in, {}k out)	"Idle (session: {}k in, {}k out)",
+50	crates/jcode-tui/src/tui/ui_status.rs	116	Idle ({})	format!("Idle ({})", tip)
+51	crates/jcode-tui/src/tui/ui_status.rs	118	Idle	"Idle".to_string()
+52	crates/jcode-tui/src/tui/ui_status.rs	121	Sending...	ProcessingStatus::Sending => "Sending...".to_string(),
+53	crates/jcode-tui/src/tui/ui_status.rs	125	Thinking... ({:.1}s)	format!("Thinking... ({:.1}s)", elapsed)
+54	crates/jcode-tui/src/tui/ui_status.rs	129	Streaming (↑{} ↓{})	format!("Streaming (↑{} ↓{})", input, output)
+55	crates/jcode-tui/src/tui/ui_status.rs	132	Waiting for network to retry ({})	format!("Waiting for network to retry ({})", listener)
+56	crates/jcode-tui/src/tui/ui_status.rs	140	Running batch: {}/{} done	let mut status = format!("Running batch: {}/{} done", completed, total);
+57	crates/jcode-tui/src/tui/ui_status.rs	144	, running: {}	status.push_str(&format!(", running: {}", running));
+58	crates/jcode-tui/src/tui/ui_status.rs	147	, last done: {}	status.push_str(&format!(", last done: {}", last));
+59	crates/jcode-tui/src/tui/ui_status.rs	151	Running tool: {}	format!("Running tool: {}", name)

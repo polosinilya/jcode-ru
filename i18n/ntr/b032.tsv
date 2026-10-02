@@ -1,0 +1,120 @@
+1	SKIP
+2	SKIP
+3	SKIP
+4	SKIP
+5	SKIP
+6	SKIP
+7	SKIP
+8	SKIP
+9	SKIP
+10	SKIP
+11	SKIP
+12	SKIP
+13	SKIP
+14	SKIP
+15	SKIP
+16	SKIP
+17	SKIP
+18	SKIP
+19	SKIP
+20	SKIP
+21	SKIP
+22	/model для переключения · 
+23	SKIP
+24	SKIP
+25	SKIP
+26	/login для аутентификации на {host}
+27	/login для добавления провайдера
+28	SKIP
+29	SKIP
+30	 +{} ещё
+31	SKIP
+32	SKIP
+33	 +{} ещё
+34	SKIP
+35	Обновления
+36	SKIP
+37	  …{} ещё · /changelog чтобы увидеть все
+38	Обновления
+39	SKIP
+40	SKIP
+41	SKIP
+42	SKIP
+43	SKIP
+44	SKIP
+45	SKIP
+46	SKIP
+47	SKIP
+48	SKIP
+49	SKIP
+50	Гемини 3 Про Превью
+51	SKIP
+52	Клод Фейбл 5
+53	Клод 4.5 Опус
+54	SKIP
+55	Клод 4.6 Опус
+56	SKIP
+57	Клод 4.8 Опус
+58	SKIP
+59	Клод 4.5 Соннет
+60	SKIP
+61	Клод 4 Соннет
+62	SKIP
+63	Клод 3.5 Соннет
+64	SKIP
+65	Клод 4.5 Хайку
+66	SKIP
+67	Клод Фейбл 5
+68	SKIP
+69	Гемини 3 Про Превью
+70	SKIP
+71	Гемини 2.5 Флэш
+72	SKIP
+73	SKIP
+74	SKIP
+75	SKIP
+76	нет учетных данных
+77	SKIP
+78	SKIP
+79	SKIP
+80	SKIP
+81	SKIP
+82	SKIP
+83	SKIP
+84	SKIP
+85	SKIP
+86	SKIP
+87	SKIP
+88	SKIP
+89	SKIP
+90	SKIP
+91	SKIP
+92	SKIP
+93	SKIP
+94	SKIP
+95	SKIP
+96	SKIP
+97	SKIP
+98	SKIP
+99	SKIP
+100	SKIP
+101	SKIP
+102	SKIP
+103	SKIP
+104	Клод Опус
+105	  режим shell · Enter выполняется локально
+106	  режим shell · Enter выполняется на сервере
+107	(поиск в истории) 
+108	  ↑↓ выбрать · ↵ вставить · Esc отмена
+109	  введите для поиска в истории
+110	  нет совпадений
+111	  +{} ещё
+112	  +{} ещё
+113	SKIP
+114	SKIP
+115	SKIP
+116	История сессии: {tokens} токенов обработано{compactions}; /clear начинает свежий контекст
+117	обновление аутентификации
+118	отправка контекста
+119	ожидание ответа
+120	повторная попытка {}/{}

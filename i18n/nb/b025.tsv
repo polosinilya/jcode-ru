@@ -1,0 +1,120 @@
+1	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	195	/unsave	RegisteredCommand::public("/unsave", "Remove bookmark from session"),
+2	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	195	Remove bookmark from session	RegisteredCommand::public("/unsave", "Remove bookmark from session"),
+3	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	196	/rename	RegisteredCommand::public("/rename", "Rename current session"),
+4	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	196	Rename current session	RegisteredCommand::public("/rename", "Rename current session"),
+5	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	197	/fork	RegisteredCommand::public("/fork", "Fork session into a new window (optional prompt)"),
+6	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	197	Fork session into a new window (optional prompt)	RegisteredCommand::public("/fork", "Fork session into a new window (optional prompt)"),
+7	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	198	/split	RegisteredCommand::hidden("/split", "Alias for /fork"),
+8	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	198	Alias for /fork	RegisteredCommand::hidden("/split", "Alias for /fork"),
+9	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	199	/transfer	RegisteredCommand::public("/transfer", "Compact context into a fresh handoff session"),
+10	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	199	Compact context into a fresh handoff session	RegisteredCommand::public("/transfer", "Compact context into a fresh handoff session"),
+11	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	200	/workspace	RegisteredCommand::public("/workspace", "Niri-style session workspace"),
+12	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	200	Niri-style session workspace	RegisteredCommand::public("/workspace", "Niri-style session workspace"),
+13	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	201	/quit	RegisteredCommand::public("/quit", "Exit jcode"),
+14	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	201	Exit jcode	RegisteredCommand::public("/quit", "Exit jcode"),
+15	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	202	/auth	RegisteredCommand::public("/auth", "Show authentication status"),
+16	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	202	Show authentication status	RegisteredCommand::public("/auth", "Show authentication status"),
+17	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	203	/login	RegisteredCommand::public("/login", "Login to a provider"),
+18	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	203	Login to a provider	RegisteredCommand::public("/login", "Login to a provider"),
+19	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	204	/logout	RegisteredCommand::public("/logout", "Log out of a provider"),
+20	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	204	Log out of a provider	RegisteredCommand::public("/logout", "Log out of a provider"),
+21	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	205	/account	RegisteredCommand::public("/account", "Open the combined account picker"),
+22	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	205	Open the combined account picker	RegisteredCommand::public("/account", "Open the combined account picker"),
+23	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	206	/accounts	RegisteredCommand::public("/accounts", "Alias for /account"),
+24	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	206	Alias for /account	RegisteredCommand::public("/accounts", "Alias for /account"),
+25	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	207	/cache	RegisteredCommand::public("/cache", "Show cache stats or set cache TTL"),
+26	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	207	Show cache stats or set cache TTL	RegisteredCommand::public("/cache", "Show cache stats or set cache TTL"),
+27	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	208	/debug-visual	RegisteredCommand::public("/debug-visual", "Toggle visual debug overlay"),
+28	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	208	Toggle visual debug overlay	RegisteredCommand::public("/debug-visual", "Toggle visual debug overlay"),
+29	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	209	/screenshot-mode	RegisteredCommand::public("/screenshot-mode", "Toggle screenshot capture mode"),
+30	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	209	Toggle screenshot capture mode	RegisteredCommand::public("/screenshot-mode", "Toggle screenshot capture mode"),
+31	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	210	/screenshot	RegisteredCommand::public("/screenshot", "Capture a screenshot debug state"),
+32	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	210	Capture a screenshot debug state	RegisteredCommand::public("/screenshot", "Capture a screenshot debug state"),
+33	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	211	/record	RegisteredCommand::public("/record", "Record a demo capture"),
+34	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	211	Record a demo capture	RegisteredCommand::public("/record", "Record a demo capture"),
+35	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	212	/client-reload	RegisteredCommand::remote("/client-reload", "Force reload client binary"),
+36	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	212	Force reload client binary	RegisteredCommand::remote("/client-reload", "Force reload client binary"),
+37	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	213	/server-reload	RegisteredCommand::remote("/server-reload", "Force reload server binary"),
+38	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	213	Force reload server binary	RegisteredCommand::remote("/server-reload", "Force reload server binary"),
+39	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	215	/continue	"/continue",
+40	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	216	Continue every interrupted live session that would auto-resume	"Continue every interrupted live session that would auto-resume",
+41	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	218	/resumeall	RegisteredCommand::remote("/resumeall", "Alias for /continue"),
+42	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	218	Alias for /continue	RegisteredCommand::remote("/resumeall", "Alias for /continue"),
+43	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	219	/resume-all	RegisteredCommand::hidden("/resume-all", "Alias for /continue"),
+44	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	219	Alias for /continue	RegisteredCommand::hidden("/resume-all", "Alias for /continue"),
+45	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	220	/z	RegisteredCommand::hidden("/z", "Secret premium-mode command"),
+46	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	220	Secret premium-mode command	RegisteredCommand::hidden("/z", "Secret premium-mode command"),
+47	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	221	/zz	RegisteredCommand::hidden("/zz", "Secret premium-mode command"),
+48	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	221	Secret premium-mode command	RegisteredCommand::hidden("/zz", "Secret premium-mode command"),
+49	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	222	/zzz	RegisteredCommand::hidden("/zzz", "Secret premium-mode command"),
+50	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	222	Secret premium-mode command	RegisteredCommand::hidden("/zzz", "Secret premium-mode command"),
+51	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	223	/zstatus	RegisteredCommand::hidden("/zstatus", "Secret premium-mode status command"),
+52	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	223	Secret premium-mode status command	RegisteredCommand::hidden("/zstatus", "Secret premium-mode status command"),
+53	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	358	Activate skill	commands.push((command, "Activate skill"));
+54	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	378	/{skill}	let command = format!("/{skill}");
+55	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	380	Activate skill	commands.push((command, "Activate skill"));
+56	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	436	/model {}	.map(|model| (format!("/model {}", model), "Switch to model"))
+57	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	436	Switch to model	.map(|model| (format!("/model {}", model), "Switch to model"))
+58	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	465	/model {}@auto	format!("/model {}@auto", openrouter_model),
+59	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	466	Use automatic OpenRouter provider routing	"Use automatic OpenRouter provider routing",
+60	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	477	openrouter	if route.model == model && route.api_method == "openrouter" {
+61	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	478	auto	let help = if route.provider == "auto" {
+62	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	479	Use automatic OpenRouter provider routing	"Use automatic OpenRouter provider routing"
+63	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	481	Pin OpenRouter provider	"Pin OpenRouter provider"
+64	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	486	/model {}@{}	format!("/model {}@{}", openrouter_model, route.provider),
+65	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	496	/model {}@{}	format!("/model {}@{}", openrouter_model, provider),
+66	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	497	Pin OpenRouter provider	"Pin OpenRouter provider",
+67	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	512	/model 	if input.starts_with("/model ") || input.starts_with("/models ") {
+68	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	512	/models 	if input.starts_with("/model ") || input.starts_with("/models ") {
+69	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	530	/model 	if prefix.starts_with("/model ") || prefix.starts_with("/models ") {
+70	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	530	/models 	if prefix.starts_with("/model ") || prefix.starts_with("/models ") {
+71	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	532	/model 	.strip_prefix("/model ")
+72	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	533	/models 	.or_else(|| input.strip_prefix("/models "))
+73	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	544	/model	return vec![("/model".into(), "Open model picker")];
+74	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	544	Open model picker	return vec![("/model".into(), "Open model picker")];
+75	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	549	/agents 	if prefix.starts_with("/agents ") {
+76	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	553	/agents swarm	("/agents swarm".into(), "Configure swarm/subagent model"),
+77	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	553	Configure swarm/subagent model	("/agents swarm".into(), "Configure swarm/subagent model"),
+78	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	554	/agents review	("/agents review".into(), "Configure code review model"),
+79	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	554	Configure code review model	("/agents review".into(), "Configure code review model"),
+80	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	555	/agents judge	("/agents judge".into(), "Configure judge model"),
+81	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	555	Configure judge model	("/agents judge".into(), "Configure judge model"),
+82	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	556	/agents memory	("/agents memory".into(), "Configure memory sidecar model"),
+83	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	556	Configure memory sidecar model	("/agents memory".into(), "Configure memory sidecar model"),
+84	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	557	/agents ambient	("/agents ambient".into(), "Configure ambient model"),
+85	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	557	Configure ambient model	("/agents ambient".into(), "Configure ambient model"),
+86	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	562	/subagent-model 	if prefix.starts_with("/subagent-model ") {
+87	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	567	/subagent-model inherit	"/subagent-model inherit".into(),
+88	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	568	Use the current active model	"Use the current active model",
+89	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	571	/subagent-model show	"/subagent-model show".into(),
+90	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	572	Show the current subagent model policy	"Show the current subagent model policy",
+91	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	578	/autoreview 	if prefix.starts_with("/autoreview ") {
+92	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	583	/autoreview status	"/autoreview status".into(),
+93	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	584	Show current autoreview status	"Show current autoreview status",
+94	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	586	/autoreview on	("/autoreview on".into(), "Enable end-of-turn autoreview"),
+95	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	586	Enable end-of-turn autoreview	("/autoreview on".into(), "Enable end-of-turn autoreview"),
+96	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	587	/autoreview off	("/autoreview off".into(), "Disable end-of-turn autoreview"),
+97	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	587	Disable end-of-turn autoreview	("/autoreview off".into(), "Disable end-of-turn autoreview"),
+98	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	588	/autoreview now	("/autoreview now".into(), "Launch a reviewer immediately"),
+99	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	588	Launch a reviewer immediately	("/autoreview now".into(), "Launch a reviewer immediately"),
+100	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	593	/autoreview	if prefix_trimmed == "/autoreview" {
+101	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	596	/autoreview status	"/autoreview status".into(),
+102	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	597	Show current autoreview status	"Show current autoreview status",
+103	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	599	/autoreview on	("/autoreview on".into(), "Enable end-of-turn autoreview"),
+104	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	599	Enable end-of-turn autoreview	("/autoreview on".into(), "Enable end-of-turn autoreview"),
+105	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	600	/autoreview off	("/autoreview off".into(), "Disable end-of-turn autoreview"),
+106	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	600	Disable end-of-turn autoreview	("/autoreview off".into(), "Disable end-of-turn autoreview"),
+107	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	601	/autoreview now	("/autoreview now".into(), "Launch a reviewer immediately"),
+108	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	601	Launch a reviewer immediately	("/autoreview now".into(), "Launch a reviewer immediately"),
+109	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	605	/autojudge 	if prefix.starts_with("/autojudge ") {
+110	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	609	/autojudge status	("/autojudge status".into(), "Show current autojudge status"),
+111	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	609	Show current autojudge status	("/autojudge status".into(), "Show current autojudge status"),
+112	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	610	/autojudge on	("/autojudge on".into(), "Enable end-of-turn autojudge"),
+113	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	610	Enable end-of-turn autojudge	("/autojudge on".into(), "Enable end-of-turn autojudge"),
+114	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	611	/autojudge off	("/autojudge off".into(), "Disable end-of-turn autojudge"),
+115	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	611	Disable end-of-turn autojudge	("/autojudge off".into(), "Disable end-of-turn autojudge"),
+116	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	612	/autojudge now	("/autojudge now".into(), "Launch a judge immediately"),
+117	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	612	Launch a judge immediately	("/autojudge now".into(), "Launch a judge immediately"),
+118	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	617	/autojudge	if prefix_trimmed == "/autojudge" {
+119	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	619	/autojudge status	("/autojudge status".into(), "Show current autojudge status"),
+120	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	619	Show current autojudge status	("/autojudge status".into(), "Show current autojudge status"),

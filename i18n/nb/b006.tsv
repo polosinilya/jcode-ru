@@ -1,0 +1,120 @@
+1	crates/jcode-tui/src/tui/app/auth_account_picker.rs	802	Claude	name: account_display_name("Claude", &account.label, accounts.len()),
+2	crates/jcode-tui/src/tui/app/auth_account_picker.rs	804	Claude	provider: "Claude".to_string(),
+3	crates/jcode-tui/src/tui/app/auth_account_picker.rs	840	new account	name: "new account".to_string(),
+4	crates/jcode-tui/src/tui/app/auth_account_picker.rs	842	Claude	provider: "Claude".to_string(),
+5	crates/jcode-tui/src/tui/app/auth_account_picker.rs	870	replace account	name: "replace account".to_string(),
+6	crates/jcode-tui/src/tui/app/auth_account_picker.rs	872	Claude	provider: "Claude".to_string(),
+7	crates/jcode-tui/src/tui/app/auth_account_picker.rs	876	no saved accounts yet	"no saved accounts yet".to_string()
+8	crates/jcode-tui/src/tui/app/auth_account_picker.rs	878	refresh {}	format!("refresh {}", replace_target)
+9	crates/jcode-tui/src/tui/app/auth_account_picker.rs	899	account center	name: "account center".to_string(),
+10	crates/jcode-tui/src/tui/app/auth_account_picker.rs	901	Claude	provider: "Claude".to_string(),
+11	crates/jcode-tui/src/tui/app/auth_account_picker.rs	904	full Claude account center and settings	detail: "full Claude account center and settings".to_string(),
+12	crates/jcode-tui/src/tui/app/auth_account_picker.rs	958	OpenAI	name: account_display_name("OpenAI", &account.label, accounts.len()),
+13	crates/jcode-tui/src/tui/app/auth_account_picker.rs	960	OpenAI	provider: "OpenAI".to_string(),
+14	crates/jcode-tui/src/tui/app/auth_account_picker.rs	967	{} - {} - acct {}	detail: format!("{} - {} - acct {}", email, status, account_id),
+15	crates/jcode-tui/src/tui/app/auth_account_picker.rs	990	new account	name: "new account".to_string(),
+16	crates/jcode-tui/src/tui/app/auth_account_picker.rs	992	OpenAI	provider: "OpenAI".to_string(),
+17	crates/jcode-tui/src/tui/app/auth_account_picker.rs	1020	replace account	name: "replace account".to_string(),
+18	crates/jcode-tui/src/tui/app/auth_account_picker.rs	1022	OpenAI	provider: "OpenAI".to_string(),
+19	crates/jcode-tui/src/tui/app/auth_account_picker.rs	1026	no saved accounts yet	"no saved accounts yet".to_string()
+20	crates/jcode-tui/src/tui/app/auth_account_picker.rs	1028	refresh {}	format!("refresh {}", replace_target)
+21	crates/jcode-tui/src/tui/app/auth_account_picker.rs	1049	account center	name: "account center".to_string(),
+22	crates/jcode-tui/src/tui/app/auth_account_picker.rs	1051	OpenAI	provider: "OpenAI".to_string(),
+23	crates/jcode-tui/src/tui/app/auth_account_picker.rs	1054	full OpenAI account center and settings	detail: "full OpenAI account center and settings".to_string(),
+24	crates/jcode-tui/src/tui/app/auth_account_picker.rs	1078	account center entry	let mut usage_entry = models.last().expect("account center entry").clone();
+25	crates/jcode-tui/src/tui/app/auth_account_picker.rs	1079	OpenAI usage details	usage_entry.name = "OpenAI usage details".to_string();
+26	crates/jcode-tui/src/tui/app/auth_account_picker.rs	1081	Today / lifetime API-equivalent cost and tokens by account	"Today / lifetime API-equivalent cost and tokens by account".to_string();
+27	crates/jcode-tui/src/tui/app/auth_account_picker.rs	1082	OpenAI	usage_entry.options[0].provider = "OpenAI".to_string();
+28	crates/jcode-tui/src/tui/app/auth_account_picker.rs	1084	openai-oauth-accounts	id: "openai-oauth-accounts".to_string(),
+29	crates/jcode-tui/src/tui/app/auth_account_picker.rs	1085	ChatGPT OAuth account usage	title: "ChatGPT OAuth account usage".to_string(),
+30	crates/jcode-tui/src/tui/app/auth_account_picker.rs	1086	Today / lifetime API-equivalent estimates, not a bill	subtitle: "Today / lifetime API-equivalent estimates, not a bill".to_string(),
+31	crates/jcode-tui/src/tui/app/auth_account_picker.rs	1149	Anthropic/Claude	("claude", "Anthropic/Claude")
+32	crates/jcode-tui/src/tui/app/auth_account_picker.rs	1151	OpenAI	crate::tui::account_picker::AccountProviderKind::OpenAi => ("openai", "OpenAI"),
+33	crates/jcode-tui/src/tui/app/auth_account_picker.rs	1154	Enter a label for the new {} account, then press Enter. Use /cancel to abort.	"Enter a label for the new {} account, then press Enter. Use /cancel to abort.",
+34	crates/jcode-tui/src/tui/app/auth_account_picker.rs	1157	Account: new {} label...	self.set_status_notice(format!("Account: new {} label...", display_name));
+35	crates/jcode-tui/src/tui/app/auth_account_picker.rs	1172	{} Use /cancel to abort.	"{} Use /cancel to abort.",
+36	crates/jcode-tui/src/tui/app/auth_account_picker.rs	1192	Account action cancelled.	"Account action cancelled.".to_string(),
+37	crates/jcode-tui/src/tui/app/auth_account_picker.rs	1194	Account: cancelled	self.set_status_notice("Account: cancelled");
+38	crates/jcode-tui/src/tui/app/auth_account_picker.rs	1205	Account label cannot be empty.	"Account label cannot be empty.".to_string(),
+39	crates/jcode-tui/src/tui/app/auth_account_picker.rs	1228	A value is required for this setting.	"A value is required for this setting.".to_string(),
+40	crates/jcode-tui/src/tui/app/auth_account_picker_saved_accounts.rs	43	Account	let headers = ["Account", "Email", "Status", "ChatGPT Account ID", "Active"];
+41	crates/jcode-tui/src/tui/app/auth_account_picker_saved_accounts.rs	43	ChatGPT Account ID	let headers = ["Account", "Email", "Status", "ChatGPT Account ID", "Active"];
+42	crates/jcode-tui/src/tui/app/auth_account_picker_saved_accounts.rs	43	Email	let headers = ["Account", "Email", "Status", "ChatGPT Account ID", "Active"];
+43	crates/jcode-tui/src/tui/app/auth_account_picker_saved_accounts.rs	43	Status	let headers = ["Account", "Email", "Status", "ChatGPT Account ID", "Active"];
+44	crates/jcode-tui/src/tui/app/auth_account_picker_saved_accounts.rs	60	OpenAI	account_display_name("OpenAI", &account.label, accounts.len()),
+45	crates/jcode-tui/src/tui/app/auth_account_picker_saved_accounts.rs	68	OpenAI Accounts:	let mut lines = vec!["OpenAI Accounts:".to_string(), String::new()];
+46	crates/jcode-tui/src/tui/app/auth_account_picker_saved_accounts.rs	71	## ChatGPT OAuth API-equivalent usage	lines.push("## ChatGPT OAuth API-equivalent usage".to_string());
+47	crates/jcode-tui/src/tui/app/auth_account_picker_saved_accounts.rs	72	Today is since local midnight. Lifetime is recorded Jcode usage, not your subscription bill or all ChatGPT activity.	lines.push("Today is since local midnight. Lifetime is recorded Jcode usage, not your subscription bill or all ChatGPT activity.".to_string());
+48	crates/jcode-tui/src/tui/app/auth_account_picker_saved_accounts.rs	77	OpenAI	account_display_name("OpenAI", &account.label, accounts.len()),
+49	crates/jcode-tui/src/tui/app/auth_account_picker_saved_accounts.rs	89	Commands: /account openai switch <label>, /account openai add, /account openai remove <label>	"Commands: /account openai switch <label>, /account openai add, /account openai remove <label>"
+50	crates/jcode-tui/src/tui/app/auth_account_picker_saved_accounts.rs	107	Account	let headers = ["Account", "Email", "Status", "Use", "Subscription"];
+51	crates/jcode-tui/src/tui/app/auth_account_picker_saved_accounts.rs	107	Email	let headers = ["Account", "Email", "Status", "Use", "Subscription"];
+52	crates/jcode-tui/src/tui/app/auth_account_picker_saved_accounts.rs	107	Status	let headers = ["Account", "Email", "Status", "Use", "Subscription"];
+53	crates/jcode-tui/src/tui/app/auth_account_picker_saved_accounts.rs	107	Subscription	let headers = ["Account", "Email", "Status", "Use", "Subscription"];
+54	crates/jcode-tui/src/tui/app/auth_account_picker_saved_accounts.rs	129	Claude	account_display_name("Claude", &account.label, accounts.len()),
+55	crates/jcode-tui/src/tui/app/auth_account_picker_saved_accounts.rs	137	Anthropic Accounts:	let mut lines = vec!["Anthropic Accounts:".to_string(), String::new()];
+56	crates/jcode-tui/src/tui/app/auth_account_picker_saved_accounts.rs	141	Commands: /account claude switch <label>, /account claude add, /account claude remove <label>	"Commands: /account claude switch <label>, /account claude add, /account claude remove <label>"
+57	crates/jcode-tui/src/tui/app/auth_account_picker_saved_accounts.rs	170	Claude	let display_name = account_display_name("Claude", &label, accounts.len());
+58	crates/jcode-tui/src/tui/app/auth_account_picker_saved_accounts.rs	179	Switch {display_name}	format!("Switch {display_name}"),
+59	crates/jcode-tui/src/tui/app/auth_account_picker_saved_accounts.rs	180	{email} - {account_use} - {status} - plan {plan}{active_suffix}	format!("{email} - {account_use} - {status} - plan {plan}{active_suffix}"),
+60	crates/jcode-tui/src/tui/app/auth_account_picker_saved_accounts.rs	189	Re-login account `{label}`	format!("Re-login account `{label}`"),
+61	crates/jcode-tui/src/tui/app/auth_account_picker_saved_accounts.rs	190	Refresh OAuth tokens for `{label}`	format!("Refresh OAuth tokens for `{label}`"),
+62	crates/jcode-tui/src/tui/app/auth_account_picker_saved_accounts.rs	199	Remove account `{label}`	format!("Remove account `{label}`"),
+63	crates/jcode-tui/src/tui/app/auth_account_picker_saved_accounts.rs	200	Delete saved credentials for `{label}`	format!("Delete saved credentials for `{label}`"),
+64	crates/jcode-tui/src/tui/app/auth_account_picker_saved_accounts.rs	230	OpenAI	let display_name = account_display_name("OpenAI", &label, accounts.len());
+65	crates/jcode-tui/src/tui/app/auth_account_picker_saved_accounts.rs	240	Switch {display_name}	format!("Switch {display_name}"),
+66	crates/jcode-tui/src/tui/app/auth_account_picker_saved_accounts.rs	241	{email} - {status} - acct {account_id}{active_suffix}	format!("{email} - {status} - acct {account_id}{active_suffix}"),
+67	crates/jcode-tui/src/tui/app/auth_account_picker_saved_accounts.rs	252	Re-login account `{label}`	format!("Re-login account `{label}`"),
+68	crates/jcode-tui/src/tui/app/auth_account_picker_saved_accounts.rs	253	Refresh OpenAI OAuth tokens for `{label}`	format!("Refresh OpenAI OAuth tokens for `{label}`"),
+69	crates/jcode-tui/src/tui/app/auth_account_picker_saved_accounts.rs	262	Remove account `{label}`	format!("Remove account `{label}`"),
+70	crates/jcode-tui/src/tui/app/auth_account_picker_saved_accounts.rs	263	Delete saved credentials for `{label}`	format!("Delete saved credentials for `{label}`"),
+71	crates/jcode-tui/src/tui/app/auth_account_picker_saved_accounts.rs	276	Full usage details	"Full usage details".to_string(),
+72	crates/jcode-tui/src/tui/app/auth_account_picker_saved_accounts.rs	297	Account	.unwrap_or_else(|| "Account".to_string());
+73	crates/jcode-tui/src/tui/app/auth_account_picker_saved_accounts.rs	318	Claude	assert_eq!(account_display_name("Claude", "claude-otter", 1), "Claude");
+74	crates/jcode-tui/src/tui/app/auth_account_picker_saved_accounts.rs	318	claude-otter	assert_eq!(account_display_name("Claude", "claude-otter", 1), "Claude");
+75	crates/jcode-tui/src/tui/app/auth_account_picker_saved_accounts.rs	320	Claude	account_display_name("Claude", "claude-otter", 2),
+76	crates/jcode-tui/src/tui/app/auth_account_picker_saved_accounts.rs	320	claude-otter	account_display_name("Claude", "claude-otter", 2),
+77	crates/jcode-tui/src/tui/app/auth_account_picker_saved_accounts.rs	321	Claude Otter	"Claude Otter"
+78	crates/jcode-tui/src/tui/app/auth_account_picker_saved_accounts.rs	324	Claude	account_display_name("Claude", "claude-fox", 2),
+79	crates/jcode-tui/src/tui/app/auth_account_picker_saved_accounts.rs	324	claude-fox	account_display_name("Claude", "claude-fox", 2),
+80	crates/jcode-tui/src/tui/app/auth_account_picker_saved_accounts.rs	325	Claude Fox	"Claude Fox"
+81	crates/jcode-tui/src/tui/app/auth_remote.rs	83	SSH login already in progress. Press Esc or type /cancel first.	"SSH login already in progress. Press Esc or type /cancel first.",
+82	crates/jcode-tui/src/tui/app/auth_remote.rs	95	Use /login --import-local openai or /login --import-local claude for a one-time import of the selected local account. Confirmation is required before local credentials are read. No local credentials were accessed.	self.push_display_message(DisplayMessage::system("Use /login --import-local openai or /login --import-local claude for a one-time import of the selected local account. Confirmation is required before local credentials are read. No local credentials were accessed."));
+83	crates/jcode-tui/src/tui/app/auth_remote.rs	113	SSH login failed: {message}	"SSH login failed: {message}"
+84	crates/jcode-tui/src/tui/app/auth_remote.rs	197	SSH login failed: async runtime unavailable	"SSH login failed: async runtime unavailable",
+85	crates/jcode-tui/src/tui/app/auth_remote.rs	210	SSH login: {provider} starting. Esc cancels.	self.set_status_notice(format!("SSH login: {provider} starting. Esc cancels."));
+86	crates/jcode-tui/src/tui/app/auth_remote.rs	239	SSH credential import cancelled. No local credentials were read or copied.	"SSH credential import cancelled. No local credentials were read or copied."
+87	crates/jcode-tui/src/tui/app/auth_remote.rs	241	SSH login cancelled. No authorization was started.	"SSH login cancelled. No authorization was started."
+88	crates/jcode-tui/src/tui/app/auth_remote.rs	243	SSH login cancelled	self.set_status_notice("SSH login cancelled");
+89	crates/jcode-tui/src/tui/app/auth_remote.rs	258	SSH credential import stopped locally. No transfer is running. Check remote login state before trying again.	self.push_display_message(DisplayMessage::system("SSH credential import stopped locally. No transfer is running. Check remote login state before trying again."));
+90	crates/jcode-tui/src/tui/app/auth_remote.rs	259	SSH credential import stopped	self.set_status_notice("SSH credential import stopped");
+91	crates/jcode-tui/src/tui/app/auth_remote.rs	267	SSH credential import: stopping transfer. Credentials already saved cannot be undone.	"SSH credential import: stopping transfer. Credentials already saved cannot be undone."
+92	crates/jcode-tui/src/tui/app/auth_remote.rs	269	SSH login cancelling on remote host...	"SSH login cancelling on remote host..."
+93	crates/jcode-tui/src/tui/app/auth_remote.rs	295	Remote login filter too long. Esc clears the filter.	self.set_status_notice("Remote login filter too long. Esc clears the filter.");
+94	crates/jcode-tui/src/tui/app/auth_remote.rs	301	SSH login input too long. Press Ctrl+U to clear or Esc to cancel.	"SSH login input too long. Press Ctrl+U to clear or Esc to cancel.",
+95	crates/jcode-tui/src/tui/app/auth_remote.rs	324	[hidden login input]	"[hidden login input]".into()
+96	crates/jcode-tui/src/tui/app/auth_remote.rs	390	Remote login picker could not handle that key.	self.set_status_notice("Remote login picker could not handle that key.");
+97	crates/jcode-tui/src/tui/app/auth_remote.rs	457	No	if matches!(input, "no" | "n" | "No" | "N") {
+98	crates/jcode-tui/src/tui/app/auth_remote.rs	461	Yes	if !matches!(input, "yes" | "y" | "Yes" | "Y" | "confirm") {
+99	crates/jcode-tui/src/tui/app/auth_remote.rs	462	Choose Yes or No with arrows and Enter, or type yes/no. No local credentials were accessed.	self.set_status_notice("Choose Yes or No with arrows and Enter, or type yes/no. No local credentials were accessed.");
+100	crates/jcode-tui/src/tui/app/auth_remote.rs	472	SSH credential import failed: async runtime unavailable. No local credentials were accessed.	"SSH credential import failed: async runtime unavailable. No local credentials were accessed.",
+101	crates/jcode-tui/src/tui/app/auth_remote.rs	479	SSH credential import: copying to remote host. Esc stops the transfer but cannot undo an import already saved.	self.set_status_notice("SSH credential import: copying to remote host. Esc stops the transfer but cannot undo an import already saved.");
+102	crates/jcode-tui/src/tui/app/auth_remote.rs	484	Choose a login or import row with arrows/filter and Enter. Esc cancels.	"Choose a login or import row with arrows/filter and Enter. Esc cancels.",
+103	crates/jcode-tui/src/tui/app/auth_remote.rs	489	SSH login is working. Esc cancels.	self.set_status_notice("SSH login is working. Esc cancels.");
+104	crates/jcode-tui/src/tui/app/auth_remote.rs	493	Paste the browser callback URL or authorization code, then press Enter. Esc cancels.	self.set_status_notice("Paste the browser callback URL or authorization code, then press Enter. Esc cancels.");
+105	crates/jcode-tui/src/tui/app/auth_remote.rs	511	SSH login: completing on remote host. Esc cancels.	self.set_status_notice("SSH login: completing on remote host. Esc cancels.");
+106	crates/jcode-tui/src/tui/app/auth_remote.rs	527	Remote login task stopped	Err(_) => Err("Remote login task stopped"),
+107	crates/jcode-tui/src/tui/app/auth_remote.rs	546	Unexpected remote login response. Cancel and retry /login.	"Unexpected remote login response. Cancel and retry /login.",
+108	crates/jcode-tui/src/tui/app/auth_remote.rs	561	remote host	let host = crate::tui::ssh_remote_host().unwrap_or_else(|| "remote host".into());
+109	crates/jcode-tui/src/tui/app/auth_remote.rs	564	Enter code {} in your browser, then press Enter here to continue.	"Enter code {} in your browser, then press Enter here to continue.",
+110	crates/jcode-tui/src/tui/app/auth_remote.rs	565	shown by your provider	user_code.as_deref().unwrap_or("shown by your provider")
+111	crates/jcode-tui/src/tui/app/auth_remote.rs	568	After approval, paste the full callback URL or authorization code here and press Enter. If localhost refuses the browser connection, copy that URL from the address bar. Input is hidden and never sent to chat.	"After approval, paste the full callback URL or authorization code here and press Enter. If localhost refuses the browser connection, copy that URL from the address bar. Input is hidden and never sent to chat.".into()
+112	crates/jcode-tui/src/tui/app/auth_remote.rs	572	Open the URL above in your browser.	if opened { "Opened authorization in your browser." } else { "Open the URL above in your browser." },
+113	crates/jcode-tui/src/tui/app/auth_remote.rs	572	Opened authorization in your browser.	if opened { "Opened authorization in your browser." } else { "Open the URL above in your browser." },
+114	crates/jcode-tui/src/tui/app/auth_remote.rs	575	SSH login: waiting for browser approval. Paste completion here. Esc cancels.	"SSH login: waiting for browser approval. Paste completion here. Esc cancels.",
+115	crates/jcode-tui/src/tui/app/auth_remote.rs	599	SSH login: {provider} {} on the remote host.{}	"SSH login: {provider} {} on the remote host.{}",
+116	crates/jcode-tui/src/tui/app/auth_remote.rs	606	 Refreshing remote provider and model state.	" Refreshing remote provider and model state."
+117	crates/jcode-tui/src/tui/app/auth_remote.rs	608	 Reconnect to refresh remote provider and model state.	" Reconnect to refresh remote provider and model state."
+118	crates/jcode-tui/src/tui/app/auth_remote.rs	612	SSH login: {provider} {}	"SSH login: {provider} {}",
+119	crates/jcode-tui/src/tui/app/auth_remote.rs	620	Remote credentials were saved, but post-login validation did not complete successfully. Use /model to choose a remote model and retry. Do not paste the authorization code again.	self.push_display_message(DisplayMessage::system("Remote credentials were saved, but post-login validation did not complete successfully. Use /model to choose a remote model and retry. Do not paste the authorization code again."));
+120	crates/jcode-tui/src/tui/app/auth_remote.rs	627	SSH login cancelled. Pending authorization was removed on the remote host. Previously issued credentials are not revoked, and an already-running token exchange may still finish.	"SSH login cancelled. Pending authorization was removed on the remote host. Previously issued credentials are not revoked, and an already-running token exchange may still finish.",

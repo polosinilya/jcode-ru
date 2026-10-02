@@ -1,0 +1,120 @@
+1	crates/jcode-tui/src/tui/app/tui_state.rs	1411	tool: {}	("running".to_string(), Some(format!("tool: {}", name)))
+2	crates/jcode-tui/src/tui/app/tui_state.rs	1769	Spawned new agent: 	line.split_once("Spawned new agent: ")
+3	crates/jcode-tui/src/tui/app/tui_state.rs	1970	select all	// frame and drag move (O(selection) per frame; a "select all" rebuilt
+4	crates/jcode-tui/src/tui/app/tui_state.rs	2119	/swarm-prompt	super::commands::handle_swarm_prompt_command(self, "/swarm-prompt");
+5	crates/jcode-tui/src/tui/app/tui_state.rs	2136	No swarm agents to open	self.set_status_notice("No swarm agents to open");
+6	crates/jcode-tui/src/tui/app/tui_state.rs	2142	No swarm agent selected	self.set_status_notice("No swarm agent selected");
+7	crates/jcode-tui/src/tui/app/tui_state.rs	2155	Opened {label} in a new window	Ok(true) => self.set_status_notice(format!("Opened {label} in a new window")),
+8	crates/jcode-tui/src/tui/app/tui_state.rs	2157	Could not open a terminal for {label} (no emulator found)	"Could not open a terminal for {label} (no emulator found)"
+9	crates/jcode-tui/src/tui/app/tui_state.rs	2159	Failed to open {label}: {e}	Err(e) => self.set_status_notice(format!("Failed to open {label}: {e}")),
+10	crates/jcode-tui/src/tui/app/turn.rs	61	Recovered missing tool outputs	self.set_status_notice("Recovered missing tool outputs");
+11	crates/jcode-tui/src/tui/app/turn.rs	69	Recovery needed	self.set_status_notice("Recovery needed");
+12	crates/jcode-tui/src/tui/app/update_sim.rs	23	Update simulator · waiting for update signal...	self.set_status_notice("Update simulator · waiting for update signal...");
+13	crates/jcode-tui/src/tui/app/update_sim.rs	95	Update simulator complete · restart successful	self.set_status_notice("Update simulator complete · restart successful");
+14	crates/jcode-tui/src/tui/info_widget_tips.rs	14	Ctrl+J / Ctrl+K to jump between user prompts (Cmd+J / Cmd+K on macOS terminals that forward Command)	"Ctrl+J / Ctrl+K to jump between user prompts (Cmd+J / Cmd+K on macOS terminals that forward Command)",
+15	crates/jcode-tui/src/tui/info_widget_tips.rs	15	Ctrl+Shift+J / Ctrl+Shift+K to scroll the chat down and up one line	"Ctrl+Shift+J / Ctrl+Shift+K to scroll the chat down and up one line",
+16	crates/jcode-tui/src/tui/info_widget_tips.rs	16	Ctrl+G to bookmark your scroll position - press again to teleport back	"Ctrl+G to bookmark your scroll position - press again to teleport back",
+17	crates/jcode-tui/src/tui/info_widget_tips.rs	17	Swarms form automatically when multiple sessions share a repo - they coordinate plans, share context, and track file conflicts	"Swarms form automatically when multiple sessions share a repo - they coordinate plans, share context, and track file conflicts",
+18	crates/jcode-tui/src/tui/info_widget_tips.rs	18	Memories are stored in a graph with semantic embeddings - recall finds related facts even if you use different words	"Memories are stored in a graph with semantic embeddings - recall finds related facts even if you use different words",
+19	crates/jcode-tui/src/tui/info_widget_tips.rs	19	Ambient mode runs background cycles while you're away - maintaining memories, compacting context, and doing proactive work	"Ambient mode runs background cycles while you're away - maintaining memories, compacting context, and doing proactive work",
+20	crates/jcode-tui/src/tui/info_widget_tips.rs	20	Ambient cycles can email you a summary and you can reply with directives for the next run	"Ambient cycles can email you a summary and you can reply with directives for the next run",
+21	crates/jcode-tui/src/tui/info_widget_tips.rs	21	Alt+B moves a long-running tool to the background - the agent continues and can check on it later with the `bg` tool	"Alt+B moves a long-running tool to the background - the agent continues and can check on it later with the `bg` tool",
+22	crates/jcode-tui/src/tui/info_widget_tips.rs	22	Most terminals can be configured to copy text on highlight - no Ctrl+C needed. Check your terminal's settings for 'copy on select'	"Most terminals can be configured to copy text on highlight - no Ctrl+C needed. Check your terminal's settings for 'copy on select'",
+23	crates/jcode-tui/src/tui/info_widget_tips.rs	23	Alt+G (or /diff) cycles diff mode: Off, Inline, Pinned, File. Shift+Tab cycles favorited models. Pinned shows all diffs in a side pane. File shows the full file with changes highlighted, synced to your scroll position	"Alt+G (or /diff) cycles diff mode: Off, Inline, Pinned, File. Shift+Tab cycles favorited models. Pinned shows all diffs in a side pane. File shows the full file with changes highlighted, synced to your scroll position",
+24	crates/jcode-tui/src/tui/info_widget_tips.rs	26	```mermaid code blocks render as diagrams	tips.insert(3, "```mermaid code blocks render as diagrams");
+25	crates/jcode-tui/src/tui/info_widget_tips.rs	32	{alt}+	text: text.replace("Alt+", &format!("{alt}+")),
+26	crates/jcode-tui/src/tui/info_widget_tips.rs	122	Did you know?	"Did you know?",
+27	crates/jcode-tui/src/tui/login_picker.rs	78	needs attention	AuthState::Expired => "needs attention",
+28	crates/jcode-tui/src/tui/login_picker.rs	79	not set up	AuthState::NotConfigured => "not set up",
+29	crates/jcode-tui/src/tui/login_picker.rs	120	execute action carries the selected provider descriptor directly for simple overlay handling	reason = "execute action carries the selected provider descriptor directly for simple overlay handling"
+30	crates/jcode-tui/src/tui/login_picker.rs	296	 Enter 	hotkey(" Enter "),
+31	crates/jcode-tui/src/tui/login_picker.rs	297	 login  	Span::styled(" login  ", Style::default().fg(MUTED_DARK)),
+32	crates/jcode-tui/src/tui/login_picker.rs	298	 Up/Down 	hotkey(" Up/Down "),
+33	crates/jcode-tui/src/tui/login_picker.rs	299	 navigate  	Span::styled(" navigate  ", Style::default().fg(MUTED_DARK)),
+34	crates/jcode-tui/src/tui/login_picker.rs	300	 Click 	hotkey(" Click "),
+35	crates/jcode-tui/src/tui/login_picker.rs	301	 select  	Span::styled(" select  ", Style::default().fg(MUTED_DARK)),
+36	crates/jcode-tui/src/tui/login_picker.rs	302	 type 	hotkey(" type "),
+37	crates/jcode-tui/src/tui/login_picker.rs	303	 filter  	Span::styled(" filter  ", Style::default().fg(MUTED_DARK)),
+38	crates/jcode-tui/src/tui/login_picker.rs	304	 Esc 	hotkey(" Esc "),
+39	crates/jcode-tui/src/tui/login_picker.rs	305	 clear / close 	Span::styled(" clear / close ", Style::default().fg(MUTED_DARK)),
+40	crates/jcode-tui/src/tui/login_picker.rs	337	Tip 	Span::styled("Tip ", Style::default().fg(MUTED_DARK)),
+41	crates/jcode-tui/src/tui/login_picker.rs	339	Move or click through providers on the left; the focused provider expands on the right with setup and account details.	"Move or click through providers on the left; the focused provider expands on the right with setup and account details.",
+42	crates/jcode-tui/src/tui/login_picker.rs	349	 Login overview 	" Login overview ",
+43	crates/jcode-tui/src/tui/login_picker.rs	360	Filter 	Span::styled("Filter ", Style::default().fg(MUTED_DARK)),
+44	crates/jcode-tui/src/tui/login_picker.rs	363	type provider, status, or auth method	"type provider, status, or auth method".to_string()
+45	crates/jcode-tui/src/tui/login_picker.rs	374	  ·  {} results	format!("  ·  {} results", self.filtered.len()),
+46	crates/jcode-tui/src/tui/login_picker.rs	406	 Providers 	" Providers ".to_string()
+47	crates/jcode-tui/src/tui/login_picker.rs	409	 Providers ({}/{}) 	" Providers ({}/{}) ",
+48	crates/jcode-tui/src/tui/login_picker.rs	433	No matching providers.	"No matching providers.",
+49	crates/jcode-tui/src/tui/login_picker.rs	437	Try `openai`, `oauth`, `configured`, or `setup`.	"Try `openai`, `oauth`, `configured`, or `setup`.",
+50	crates/jcode-tui/src/tui/login_picker.rs	476	 Details 	.unwrap_or_else(|| " Details ".to_string());
+51	crates/jcode-tui/src/tui/login_picker.rs	490	No provider selected	Paragraph::new("No provider selected").style(Style::default().fg(Color::DarkGray)),
+52	crates/jcode-tui/src/tui/login_picker.rs	513	Provider 	Span::styled("Provider ", Style::default().fg(MUTED_DARK)),
+53	crates/jcode-tui/src/tui/login_picker.rs	520	  recommended	"  recommended",
+54	crates/jcode-tui/src/tui/login_picker.rs	528	Login command 	Span::styled("Login command ", Style::default().fg(MUTED_DARK)),
+55	crates/jcode-tui/src/tui/login_picker.rs	530	/login {}	format!("/login {}", item.provider.id),
+56	crates/jcode-tui/src/tui/login_picker.rs	535	Authentication	"Authentication",
+57	crates/jcode-tui/src/tui/login_picker.rs	546	Detected setup	"Detected setup",
+58	crates/jcode-tui/src/tui/login_picker.rs	555	What you need	"What you need",
+59	crates/jcode-tui/src/tui/login_picker.rs	564	Aliases 	Span::styled("Aliases ", Style::default().fg(MUTED_DARK)),
+60	crates/jcode-tui/src/tui/login_picker.rs	568	Numbered accounts 	Span::styled("Numbered accounts ", Style::default().fg(MUTED_DARK)),
+61	crates/jcode-tui/src/tui/login_picker.rs	573	not used for this provider	"not used for this provider"
+62	crates/jcode-tui/src/tui/login_picker.rs	588	Press Enter to begin login.	"Press Enter to begin login.",
+63	crates/jcode-tui/src/tui/login_picker.rs	628	openai-compatible	| "openai-compatible"
+64	crates/jcode-tui/src/tui/login_picker.rs	644	OAuth	"OAuth" => Color::Rgb(129, 184, 255),
+65	crates/jcode-tui/src/tui/login_picker.rs	645	API key	"API key" => Color::Rgb(182, 154, 255),
+66	crates/jcode-tui/src/tui/login_picker.rs	646	device code	"device code" => Color::Rgb(111, 214, 181),
+67	crates/jcode-tui/src/tui/login_picker.rs	648	API key / CLI	"API key / CLI" => Color::Rgb(229, 187, 111),
+68	crates/jcode-tui/src/tui/login_picker.rs	649	local endpoint	"local endpoint" => Color::Rgb(111, 214, 181),
+69	crates/jcode-tui/src/tui/login_picker.rs	668	Accounts	"Accounts",
+70	crates/jcode-tui/src/tui/login_picker.rs	672	This provider is usually configured as a single credential or env-based login.	"This provider is usually configured as a single credential or env-based login.",
+71	crates/jcode-tui/src/tui/login_picker.rs	685	Accounts	"Accounts",
+72	crates/jcode-tui/src/tui/login_picker.rs	691	No saved Claude accounts yet.	"No saved Claude accounts yet.",
+73	crates/jcode-tui/src/tui/login_picker.rs	695	Add more later with 	Span::styled("Add more later with ", Style::default().fg(MUTED_DARK)),
+74	crates/jcode-tui/src/tui/login_picker.rs	696	/account claude add	Span::styled("/account claude add", Style::default().fg(Color::White)),
+75	crates/jcode-tui/src/tui/login_picker.rs	703	{} saved · active: {}	format!("{} saved · active: {}", accounts.len(), active),
+76	crates/jcode-tui/src/tui/login_picker.rs	717	subscription unknown	.unwrap_or("subscription unknown");
+77	crates/jcode-tui/src/tui/login_picker.rs	722	email unknown	.unwrap_or_else(|| "email unknown".to_string());
+78	crates/jcode-tui/src/tui/login_picker.rs	742	+{} more accounts	format!("+{} more accounts", accounts.len() - 6),
+79	crates/jcode-tui/src/tui/login_picker.rs	748	Manage with 	Span::styled("Manage with ", Style::default().fg(MUTED_DARK)),
+80	crates/jcode-tui/src/tui/login_picker.rs	749	/account claude	Span::styled("/account claude", Style::default().fg(Color::White)),
+81	crates/jcode-tui/src/tui/login_picker.rs	760	Accounts	"Accounts",
+82	crates/jcode-tui/src/tui/login_picker.rs	766	No saved OpenAI accounts yet.	"No saved OpenAI accounts yet.",
+83	crates/jcode-tui/src/tui/login_picker.rs	770	Add more later with 	Span::styled("Add more later with ", Style::default().fg(MUTED_DARK)),
+84	crates/jcode-tui/src/tui/login_picker.rs	771	/account openai add	Span::styled("/account openai add", Style::default().fg(Color::White)),
+85	crates/jcode-tui/src/tui/login_picker.rs	778	{} saved · active: {}	format!("{} saved · active: {}", accounts.len(), active),
+86	crates/jcode-tui/src/tui/login_picker.rs	793	email unknown	.unwrap_or_else(|| "email unknown".to_string());
+87	crates/jcode-tui/src/tui/login_picker.rs	797	account id unknown	.unwrap_or("account id unknown");
+88	crates/jcode-tui/src/tui/login_picker.rs	817	+{} more accounts	format!("+{} more accounts", accounts.len() - 6),
+89	crates/jcode-tui/src/tui/login_picker.rs	823	Manage with 	Span::styled("Manage with ", Style::default().fg(MUTED_DARK)),
+90	crates/jcode-tui/src/tui/login_picker.rs	824	/account openai	Span::styled("/account openai", Style::default().fg(Color::White)),
+91	crates/jcode-tui/src/tui/login_picker.rs	902	 Login 	" Login ",
+92	crates/jcode-tui/src/tui/login_picker.rs	907	OAuth credentials configured	"OAuth credentials configured",
+93	crates/jcode-tui/src/tui/login_picker.rs	939	 Login 	" Login ",
+94	crates/jcode-tui/src/tui/login_picker.rs	945	not configured	"not configured",
+95	crates/jcode-tui/src/tui/login_picker.rs	951	OAuth configured	"OAuth configured",
+96	crates/jcode-tui/src/tui/login_picker.rs	965	render should record provider list area	.expect("render should record provider list area");
+97	crates/jcode-tui/src/tui/login_picker.rs	984	login provider catalog should not be empty	"login provider catalog should not be empty"
+98	crates/jcode-tui/src/tui/login_picker.rs	994	state-space detail for {} {auth_state:?}	format!("state-space detail for {} {auth_state:?}", provider.id);
+99	crates/jcode-tui/src/tui/login_picker.rs	996	 Login 	" Login ",
+100	crates/jcode-tui/src/tui/login_picker.rs	1024	Press Enter to begin login.	"Press Enter to begin login.",
+101	crates/jcode-tui/src/tui/login_picker.rs	1035	enter should be handled	.expect("enter should be handled")
+102	crates/jcode-tui/src/tui/login_picker.rs	1039	Enter should execute provider={} state={auth_state:?}	"Enter should execute provider={} state={auth_state:?}",
+103	crates/jcode-tui/src/tui/session_picker.rs	56	Start a new session	/// The onboarding "Start a new session" row was chosen.
+104	crates/jcode-tui/src/tui/session_picker.rs	107	{}s ago	return format!("{}s ago", seconds);
+105	crates/jcode-tui/src/tui/session_picker.rs	112	{}m ago	return format!("{}m ago", minutes);
+106	crates/jcode-tui/src/tui/session_picker.rs	117	{}h ago	return format!("{}h ago", hours);
+107	crates/jcode-tui/src/tui/session_picker.rs	122	{}d ago	return format!("{}d ago", days);
+108	crates/jcode-tui/src/tui/session_picker.rs	126	{}w ago	return format!("{}w ago", days / 7);
+109	crates/jcode-tui/src/tui/session_picker.rs	129	{}mo ago	format!("{}mo ago", days / 30)
+110	crates/jcode-tui/src/tui/session_picker.rs	132	working Ns	/// Compact duration for the "working Ns" badge in the Active view.
+111	crates/jcode-tui/src/tui/session_picker.rs	136	{}s	return format!("{}s", secs);
+112	crates/jcode-tui/src/tui/session_picker.rs	140	{}m	return format!("{}m", minutes);
+113	crates/jcode-tui/src/tui/session_picker.rs	142	{}h{}m	format!("{}h{}m", minutes / 60, minutes % 60)
+114	crates/jcode-tui/src/tui/session_picker.rs	207	previous prompt	/// to locate user prompts for the sticky "previous prompt" header.
+115	crates/jcode-tui/src/tui/session_picker.rs	379	Loading sessions…	loading_message: Some("Loading sessions…".to_string()),
+116	crates/jcode-tui/src/tui/session_picker.rs	520	claude:{}	let session_id = format!("claude:{}", session.session_id);
+117	crates/jcode-tui/src/tui/session_picker.rs	704	preserve selection	// `rebuild_items`' own "preserve selection" lookup would resolve them
+118	crates/jcode-tui/src/tui/session_picker.rs	742	continue where you left off	/// "continue where you left off" in Codex or Claude Code).
+119	crates/jcode-tui/src/tui/session_picker.rs	760	Start a new session	/// Whether the onboarding "Start a new session" row is currently highlighted.
+120	crates/jcode-tui/src/tui/session_picker.rs	1313	 Preview 	.title(" Preview ")

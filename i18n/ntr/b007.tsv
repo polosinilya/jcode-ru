@@ -1,0 +1,120 @@
+1	SKIP
+2	SSH импорт учетных данных остановлен локально. Удаленный хост мог уже сохранить учетные данные. Отмена не удаляет импортированные учетные данные. Проверьте состояние удаленного входа перед повторной попыткой.
+3	SSH импорт учетных данных остановлен
+4	SSH импорт учетных данных не удался
+5	SKIP
+6	SSH вход не удался
+7	SKIP
+8	SKIP
+9	BatchMode=yes
+10	StrictHostKeyChecking=yes
+11	ForwardAgent=no
+12	ClearAllForwardings=yes
+13	PermitLocalCommand=no
+14	ForkAfterAuthentication=no
+15	StdinNull=no
+16	RemoteCommand=none
+17	ControlMaster=no
+18	auth status --json
+19	auth import --provider {} --stdin --json
+20	login --provider {} --no-browser --json --flow-id {} {}
+21	SKIP
+22	SKIP
+23	SKIP
+24	SKIP
+25	SKIP
+26	{} (истек)
+27	не настроен
+28	SKIP
+29	SKIP
+30	SKIP
+31	SKIP
+32	SKIP
+33	SKIP
+34	SKIP
+35	SKIP
+36	SKIP
+37	SKIP
+38	SKIP
+39	SKIP
+40	SKIP
+41	SKIP
+42	SKIP
+43	SKIP
+44	SKIP
+45	SKIP
+46	SKIP
+47	SKIP
+48	SKIP
+49	SKIP
+50	SKIP
+51	SKIP
+52	SKIP
+53	SKIP
+54	BatchMode=yes
+55	StrictHostKeyChecking=yes
+56	ForwardAgent=no
+57	ClearAllForwardings=yes
+58	PermitLocalCommand=no
+59	StdinNull=no
+60	RemoteCommand=none
+61	ControlMaster=no
+62	SKIP
+63	SKIP
+64	SKIP
+65	{} (истек)
+66	не настроен
+67	SKIP
+68	SKIP
+69	SKIP
+70	SKIP
+71	SKIP
+72	SKIP
+73	SKIP
+74	SKIP
+75	SKIP
+76	auth import --provider '{provider}' --stdin --json
+77	BatchMode=yes
+78	StrictHostKeyChecking=yes
+79	ForwardAgent=no
+80	ClearAllForwardings=yes
+81	PermitLocalCommand=no
+82	StdinNull=no
+83	RemoteCommand=none
+84	ControlMaster=no
+85	SKIP
+86	SKIP
+87	не настроен
+88	SKIP
+89	Нет
+90	SKIP
+91	SKIP
+92	SKIP
+93	SKIP
+94	Нет
+95	Да
+96	импортировать локальный логин?
+97	копировать этот логин?
+98	Выберите локальный логин OpenAI или Claude. Учетные данные еще не прочитаны или скопированы.
+99	Вместо этого используйте обычные параметры входа на удаленном хосте.
+100	Автоматически скопируйте выбранный логин на доверенный хост выше. Нет токенов для вставки.
+101	Отмена без чтения или копирования локальных учетных данных.
+102	Выберите Да или Нет стрелками (или Y/N), затем Enter. Esc для отмены.
+103	 Учетные данные клиента Google OAuth должны быть уже настроены на хосте SSH.
+104	Подтверждение браузера открывается на этом компьютере, учетные данные остаются на хосте SSH.{prerequisite} /login {}
+105	проверка удаленного
+106	Назначение: {host}. Проверка статуса удаленного входа. {} · {}
+107	Импортировать локальный логин {label}
+108	Назначение: {host}. Одноразовое копирование выбранного аккаунта {provider}, управляемого Jcode. Требуется подтверждение. Локальные учетные данные еще не прочитаны. Существующие удаленные логины никогда не перезаписываются.
+109	OpenAI
+110	Claude
+111	Вход на {host}: выберите провайдера или Импортируйте локальный логин. Некоторые методы требуют настройки непосредственно на хосте SSH. Esc для отмены.
+112	статус неизвестен
+113	Назначение: {host}. Удаленный статус: {label} ({}). {} · {}
+114	не удалось прочитать удаленный статус; повторно откройте /login для повтора
+115	SKIP
+116	SKIP
+117	SKIP
+118	SKIP
+119	SKIP
+120	 sk-test-tui-login 

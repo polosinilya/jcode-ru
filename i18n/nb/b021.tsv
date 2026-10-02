@@ -1,0 +1,120 @@
+1	crates/jcode-tui/src/tui/app/onboarding_graph.rs	647	{} is unreachable from any node	detail: format!("{} is unreachable from any node", node.label()),
+2	crates/jcode-tui/src/tui/app/onboarding_graph.rs	657	{} is marked legacy but something now routes into it; drop the flag	"{} is marked legacy but something now routes into it; drop the flag",
+3	crates/jcode-tui/src/tui/app/onboarding_graph.rs	669	{} has a self-loop (retry with no state change)	"{} has a self-loop (retry with no state change)",
+4	crates/jcode-tui/src/tui/app/onboarding_graph.rs	689	{} cannot reach a ready or terminal state	detail: format!("{} cannot reach a ready or terminal state", node.label()),
+5	crates/jcode-tui/src/tui/app/onboarding_graph.rs	694	{} needs {cost} keystrokes to settle (budget {MAX_KEYSTROKES_TO_SETTLED})	"{} needs {cost} keystrokes to settle (budget {MAX_KEYSTROKES_TO_SETTLED})",
+6	crates/jcode-tui/src/tui/app/onboarding_graph.rs	808	test setup should have removed the failure node's exits	"test setup should have removed the failure node's exits"
+7	crates/jcode-tui/src/tui/app/onboarding_graph.rs	814	a node with no exits must be unable to reach a settled state	"a node with no exits must be unable to reach a settled state"
+8	crates/jcode-tui/src/tui/app/onboarding_graph.rs	832	{} needs {cost} keystrokes to escape a failure; users abandon here	"{} needs {cost} keystrokes to escape a failure; users abandon here",
+9	crates/jcode-tui/src/tui/app/onboarding_graph.rs	871	{} auto-advances to nowhere	"{} auto-advances to nowhere",
+10	crates/jcode-tui/src/tui/app/onboarding_graph.rs	887	node label {label:?} is not a stable identifier	"node label {label:?} is not a stable identifier"
+11	crates/jcode-tui/src/tui/app/onboarding_graph.rs	889	duplicate node label {label:?}	assert!(seen.insert(label), "duplicate node label {label:?}");
+12	crates/jcode-tui/src/tui/app/onboarding_graph.rs	896	edge label {label:?} is not a stable identifier	"edge label {label:?} is not a stable identifier"
+13	crates/jcode-tui/src/tui/app/onboarding_graph.rs	910	the sign-in path must reach a ready state	.expect("the sign-in path must reach a ready state");
+14	crates/jcode-tui/src/tui/app/onboarding_graph.rs	911	sign-in to ready regressed to {cost} keystrokes	assert!(cost <= 1, "sign-in to ready regressed to {cost} keystrokes");
+15	crates/jcode-tui/src/tui/app/onboarding_graph.rs	914	start must reach a ready state	.expect("start must reach a ready state");
+16	crates/jcode-tui/src/tui/app/onboarding_graph.rs	917	start to ready regressed to {from_start} keystrokes	"start to ready regressed to {from_start} keystrokes"
+17	crates/jcode-tui/src/tui/app/onboarding_repair.rs	39	Claude Code	RepairAgent::ClaudeCode => "Claude Code",
+18	crates/jcode-tui/src/tui/app/onboarding_repair.rs	40	Copilot	RepairAgent::Copilot => "Copilot",
+19	crates/jcode-tui/src/tui/app/onboarding_repair.rs	41	Cursor	RepairAgent::Cursor => "Cursor",
+20	crates/jcode-tui/src/tui/app/onboarding_repair.rs	42	Gemini	RepairAgent::Gemini => "Gemini",
+21	crates/jcode-tui/src/tui/app/onboarding_repair.rs	54	gh copilot	RepairAgent::Copilot => "gh copilot",
+22	crates/jcode-tui/src/tui/app/onboarding_repair.rs	55	cursor-agent	RepairAgent::Cursor => "cursor-agent",
+23	crates/jcode-tui/src/tui/app/onboarding_repair.rs	66	.codex/auth.json	RepairAgent::Codex => &[".codex/auth.json"],
+24	crates/jcode-tui/src/tui/app/onboarding_repair.rs	67	.claude/.credentials.json	RepairAgent::ClaudeCode => &[".claude/.credentials.json"],
+25	crates/jcode-tui/src/tui/app/onboarding_repair.rs	69	.config/github-copilot/hosts.json	".config/github-copilot/hosts.json",
+26	crates/jcode-tui/src/tui/app/onboarding_repair.rs	70	.config/github-copilot/apps.json	".config/github-copilot/apps.json",
+27	crates/jcode-tui/src/tui/app/onboarding_repair.rs	72	.cursor/auth.json	RepairAgent::Cursor => &[".cursor/auth.json"],
+28	crates/jcode-tui/src/tui/app/onboarding_repair.rs	73	.gemini/oauth_creds.json	RepairAgent::Gemini => &[".gemini/oauth_creds.json"],
+29	crates/jcode-tui/src/tui/app/onboarding_repair.rs	74	.pi/agent/auth.json	RepairAgent::Pi => &[".pi/agent/auth.json"],
+30	crates/jcode-tui/src/tui/app/onboarding_repair.rs	75	.local/share/opencode/auth.json	RepairAgent::OpenCode => &[".local/share/opencode/auth.json"],
+31	crates/jcode-tui/src/tui/app/onboarding_repair.rs	144	<provider>	let provider = provider_hint.unwrap_or("<provider>");
+32	crates/jcode-tui/src/tui/app/onboarding_repair.rs	147	Logs:    ~/.jcode/logs/jcode-<date>.log	.unwrap_or_else(|| "Logs:    ~/.jcode/logs/jcode-<date>.log".to_string());
+33	crates/jcode-tui/src/tui/app/onboarding_repair.rs	189	You appear to be {}; you can run these commands directly. 	"You appear to be {}; you can run these commands directly. ",
+34	crates/jcode-tui/src/tui/app/onboarding_repair.rs	206	onboarding-repair-brief.txt	.map(|dir| dir.join("onboarding-repair-brief.txt"))
+35	crates/jcode-tui/src/tui/app/onboarding_repair.rs	226	Repair brief ready (clipboard unavailable)	"Repair brief ready (clipboard unavailable)"
+36	crates/jcode-tui/src/tui/app/onboarding_repair.rs	246	the saved credential was rejected	"the saved credential was rejected",
+37	crates/jcode-tui/src/tui/app/onboarding_repair.rs	251	the saved credential was rejected	brief.contains("the saved credential was rejected"),
+38	crates/jcode-tui/src/tui/app/onboarding_repair.rs	256	jcode auth-test --provider openai --json	brief.contains("jcode auth-test --provider openai --json"),
+39	crates/jcode-tui/src/tui/app/onboarding_repair.rs	259	jcode login --provider openai	assert!(brief.contains("jcode login --provider openai"), "{brief}");
+40	crates/jcode-tui/src/tui/app/onboarding_repair.rs	261	jcode provider add	assert!(brief.contains("jcode provider add"), "{brief}");
+41	crates/jcode-tui/src/tui/app/onboarding_repair.rs	270	unknown failure	let brief = build_repair_brief(None, "unknown failure", None);
+42	crates/jcode-tui/src/tui/app/onboarding_repair.rs	273	jcode auth-test --all-configured --json	brief.contains("jcode auth-test --all-configured --json"),
+43	crates/jcode-tui/src/tui/app/onboarding_repair.rs	276	jcode auth doctor	assert!(brief.contains("jcode auth doctor"), "{brief}");
+44	crates/jcode-tui/src/tui/app/onboarding_repair.rs	278	restart jcode	assert!(brief.contains("restart jcode"), "{brief}");
+45	crates/jcode-tui/src/tui/app/onboarding_repair.rs	284	Claude Code	assert!(s.contains("Claude Code"), "{s}");
+46	crates/jcode-tui/src/tui/app/onboarding_sim.rs	69	Onboarding flow already active; can't start the simulator now	self.set_status_notice("Onboarding flow already active; can't start the simulator now");
+47	crates/jcode-tui/src/tui/app/onboarding_sim.rs	127	Onboarding simulator: off	self.set_status_notice("Onboarding simulator: off");
+48	crates/jcode-tui/src/tui/app/onboarding_sim.rs	135	Log in to OpenAI (nothing detected)	title: "Log in to OpenAI (nothing detected)",
+49	crates/jcode-tui/src/tui/app/onboarding_sim.rs	141	Import summary (detected logins, Continue preselected)	title: "Import summary (detected logins, Continue preselected)",
+50	crates/jcode-tui/src/tui/app/onboarding_sim.rs	145	OpenAI/Codex	"OpenAI/Codex",
+51	crates/jcode-tui/src/tui/app/onboarding_sim.rs	149	Claude	"Claude",
+52	crates/jcode-tui/src/tui/app/onboarding_sim.rs	150	Claude Code	"Claude Code",
+53	crates/jcode-tui/src/tui/app/onboarding_sim.rs	153	GitHub Copilot	"GitHub Copilot",
+54	crates/jcode-tui/src/tui/app/onboarding_sim.rs	154	github-copilot/hosts.json	"github-copilot/hosts.json",
+55	crates/jcode-tui/src/tui/app/onboarding_sim.rs	160	Import detected logins (multiple, checkbox list)	title: "Import detected logins (multiple, checkbox list)",
+56	crates/jcode-tui/src/tui/app/onboarding_sim.rs	164	OpenAI/Codex	"OpenAI/Codex",
+57	crates/jcode-tui/src/tui/app/onboarding_sim.rs	168	Claude	"Claude",
+58	crates/jcode-tui/src/tui/app/onboarding_sim.rs	169	Claude Code	"Claude Code",
+59	crates/jcode-tui/src/tui/app/onboarding_sim.rs	172	GitHub Copilot	"GitHub Copilot",
+60	crates/jcode-tui/src/tui/app/onboarding_sim.rs	173	github-copilot/hosts.json	"github-copilot/hosts.json",
+61	crates/jcode-tui/src/tui/app/onboarding_sim.rs	183	Telemetry settings (from the summary's third pill)	title: "Telemetry settings (from the summary's third pill)",
+62	crates/jcode-tui/src/tui/app/onboarding_sim.rs	187	OpenAI/Codex	"OpenAI/Codex",
+63	crates/jcode-tui/src/tui/app/onboarding_sim.rs	191	Claude	"Claude",
+64	crates/jcode-tui/src/tui/app/onboarding_sim.rs	192	Claude Code	"Claude Code",
+65	crates/jcode-tui/src/tui/app/onboarding_sim.rs	203	Import detected logins (single)	title: "Import detected logins (single)",
+66	crates/jcode-tui/src/tui/app/onboarding_sim.rs	207	Cursor	"Cursor", "Cursor",
+67	crates/jcode-tui/src/tui/app/onboarding_sim.rs	217	Login recovery (import declined / failed)	title: "Login recovery (import declined / failed)",
+68	crates/jcode-tui/src/tui/app/onboarding_sim.rs	221	Choose a suggested review or blank session	title: "Choose a suggested review or blank session",
+69	crates/jcode-tui/src/tui/app/onboarding_sim.rs	267	Onboarding	let title = screens.get(index).map(|s| s.title).unwrap_or("Onboarding");
+70	crates/jcode-tui/src/tui/app/onboarding_sim.rs	269	Onboarding sim {}/{}: {} — Tab/→ next, Shift+Tab/← prev, h/l highlight, Alt+5 restart, Esc exit	"Onboarding sim {}/{}: {} — Tab/→ next, Shift+Tab/← prev, h/l highlight, Alt+5 restart, Esc exit",
+71	crates/jcode-tui/src/tui/app/productivity.rs	24	Productivity report already generating…	app.set_status_notice("Productivity report already generating…");
+72	crates/jcode-tui/src/tui/app/productivity.rs	32	Productivity → scanning	app.set_status_notice("Productivity → scanning");
+73	crates/jcode-tui/src/tui/app/productivity.rs	91	Productivity report failed	self.set_status_notice("Productivity report failed");
+74	crates/jcode-tui/src/tui/app/remote.rs	156	Catch Up → {}	format!("Catch Up → {}", label)
+75	crates/jcode-tui/src/tui/app/remote.rs	165	Failed to switch Catch Up session: {}	"Failed to switch Catch Up session: {}",
+76	crates/jcode-tui/src/tui/app/remote.rs	179	Workspace → {}	app.set_status_notice(format!("Workspace → {}", label));
+77	crates/jcode-tui/src/tui/app/remote.rs	184	Failed to switch workspace session: {}	"Failed to switch workspace session: {}",
+78	crates/jcode-tui/src/tui/app/remote.rs	348	Failed to request reasoning effort '{}': {}	"Failed to request reasoning effort '{}': {}",
+79	crates/jcode-tui/src/tui/app/remote.rs	351	Effort switch failed	app.set_status_notice("Effort switch failed");
+80	crates/jcode-tui/src/tui/app/remote.rs	413	key:{:?}:{:?}	format!("key:{:?}:{:?}", key.code, key.kind)
+81	crates/jcode-tui/src/tui/app/remote.rs	433	Failed to request model switch: {}	"Failed to request model switch: {}",
+82	crates/jcode-tui/src/tui/app/remote.rs	436	Model switch failed	app.set_status_notice("Model switch failed");
+83	crates/jcode-tui/src/tui/app/remote.rs	448	Failed to request model switch: {}	"Failed to request model switch: {}",
+84	crates/jcode-tui/src/tui/app/remote.rs	451	Model switch failed	app.set_status_notice("Model switch failed");
+85	crates/jcode-tui/src/tui/app/remote.rs	463	Failed to switch account: {}	"Failed to switch account: {}",
+86	crates/jcode-tui/src/tui/app/remote.rs	472	Switched to Anthropic account `{}`.	"Switched to Anthropic account `{}`.",
+87	crates/jcode-tui/src/tui/app/remote.rs	476	Account: switched to {}	"Account: switched to {}",
+88	crates/jcode-tui/src/tui/app/remote.rs	484	Failed to switch OpenAI account: {}	"Failed to switch OpenAI account: {}",
+89	crates/jcode-tui/src/tui/app/remote.rs	493	Switched to OpenAI account `{}`.	"Switched to OpenAI account `{}`.",
+90	crates/jcode-tui/src/tui/app/remote.rs	497	OpenAI account: switched to {}	"OpenAI account: switched to {}",
+91	crates/jcode-tui/src/tui/app/remote.rs	503	Provider `{}` does not support account switching.	"Provider `{}` does not support account switching.",
+92	crates/jcode-tui/src/tui/app/remote.rs	576	Failed to request older history: {}	app.set_status_notice(format!("Failed to request older history: {}", error));
+93	crates/jcode-tui/src/tui/app/remote.rs	583	remote_tests.rs	#[path = "remote_tests.rs"]
+94	crates/jcode-tui/src/tui/app/remote.rs	619	Local login does not change SSH server credentials	app.set_status_notice("Local login does not change SSH server credentials");
+95	crates/jcode-tui/src/tui/app/remote.rs	633	Failed to notify server about refreshed auth: {error}	"Failed to notify server about refreshed auth: {error}"
+96	crates/jcode-tui/src/tui/app/remote.rs	636	Model setup will retry after reconnect	app.set_status_notice("Model setup will retry after reconnect");
+97	crates/jcode-tui/src/tui/app/remote.rs	685	Anthropic API	/// "Anthropic API"), id, or alias - not the canonical server provider id. This
+98	crates/jcode-tui/src/tui/app/remote.rs	689	OpenAI credentials are active	/// mislabeling the catalog-refresh message ("OpenAI credentials are active"
+99	crates/jcode-tui/src/tui/app/remote.rs	693	azure-openai	// Azure's runtime id ("azure-openai") differs from its login descriptor id
+100	crates/jcode-tui/src/tui/app/remote.rs	696	azure-openai	|| provider.eq_ignore_ascii_case("azure-openai")
+101	crates/jcode-tui/src/tui/app/remote.rs	697	azure openai	|| provider.eq_ignore_ascii_case("azure openai")
+102	crates/jcode-tui/src/tui/app/remote.rs	699	azure-openai	return Some("azure-openai");
+103	crates/jcode-tui/src/tui/app/remote.rs	705	azure-openai	LoginProviderTarget::Azure => Some("azure-openai"),
+104	crates/jcode-tui/src/tui/app/remote.rs	740	azure-openai	if provider_id == "azure-openai" {
+105	crates/jcode-tui/src/tui/app/remote.rs	741	azure-openai	auth.expected_runtime = Some(crate::protocol::RuntimeProviderKey::new("azure-openai"));
+106	crates/jcode-tui/src/tui/app/remote.rs	743	azure-openai	Some(crate::protocol::CatalogNamespace::new("azure-openai"));
+107	crates/jcode-tui/src/tui/app/remote.rs	748	openai-compatible	"openai-compatible",
+108	crates/jcode-tui/src/tui/app/remote.rs	845	Remote protocol error is not retryable; stopping reconnect loop: {}	"Remote protocol error is not retryable; stopping reconnect loop: {}",
+109	crates/jcode-tui/src/tui/app/remote.rs	852	Remote protocol error	app.set_status_notice("Remote protocol error");
+110	crates/jcode-tui/src/tui/app/remote.rs	875	no frames captured	// the current TUI state rather than "no frames captured".
+111	crates/jcode-tui/src/tui/app/remote.rs	893	Failed to apply transcript: {}	"Failed to apply transcript: {}",
+112	crates/jcode-tui/src/tui/app/remote.rs	896	Transcript failed	app.set_status_notice("Transcript failed");
+113	crates/jcode-tui/src/tui/app/remote.rs	914	frame-normalized	| "frame-normalized"
+114	crates/jcode-tui/src/tui/app/remote.rs	917	screen-json-normalized	| "screen-json-normalized"
+115	crates/jcode-tui/src/tui/app/remote.rs	942	handle_disconnect: session={:?}, remote_session_id={:?}, reason={:?}, detail={}	"handle_disconnect: session={:?}, remote_session_id={:?}, reason={:?}, detail={}",
+116	crates/jcode-tui/src/tui/app/remote.rs	1102	Session history not loading - try /restart	app.set_status_notice("Session history not loading - try /restart");
+117	crates/jcode-tui/src/tui/app/remote.rs	1121	Remote history still not loaded after {}s; re-requesting session history (attempt {}/{}, session={:?})	"Remote history still not loaded after {}s; re-requesting session history (attempt {}/{}, session={:?})",
+118	crates/jcode-tui/src/tui/app/remote.rs	1129	Loading session… re-requesting history	app.set_status_notice("Loading session… re-requesting history");
+119	crates/jcode-tui/src/tui/app/remote.rs	1178	Suppressing server auto-reload after {} attempts; server keeps reporting an update (possible reload loop, issue #277)	"Suppressing server auto-reload after {} attempts; server keeps reporting an update (possible reload loop, issue #277)",
+120	crates/jcode-tui/src/tui/app/remote.rs	1182	ℹ Server keeps reporting a newer binary after repeated reloads; auto-reload paused to avoid a loop. Use `/reload` manually if needed.	"ℹ Server keeps reporting a newer binary after repeated reloads; auto-reload paused to avoid a loop. Use `/reload` manually if needed.".to_string(),

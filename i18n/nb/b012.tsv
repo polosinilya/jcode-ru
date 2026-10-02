@@ -1,0 +1,120 @@
+1	crates/jcode-tui/src/tui/app/commands.rs	2892	Applied tool call details {} for this session, but failed to save it as the default: {}	"Applied tool call details {} for this session, but failed to save it as the default: {}",
+2	crates/jcode-tui/src/tui/app/commands.rs	2893	off	if enabled { "on" } else { "off" },
+3	crates/jcode-tui/src/tui/app/commands.rs	2893	on	if enabled { "on" } else { "off" },
+4	crates/jcode-tui/src/tui/app/commands.rs	2902	/show-agentgrep-output	if trimmed != "/show-agentgrep-output" && !trimmed.starts_with("/show-agentgrep-output ") {
+5	crates/jcode-tui/src/tui/app/commands.rs	2902	/show-agentgrep-output 	if trimmed != "/show-agentgrep-output" && !trimmed.starts_with("/show-agentgrep-output ") {
+6	crates/jcode-tui/src/tui/app/commands.rs	2907	/show-agentgrep-output	.strip_prefix("/show-agentgrep-output")
+7	crates/jcode-tui/src/tui/app/commands.rs	2911	show	if rest.is_empty() || matches!(rest, "show" | "status") {
+8	crates/jcode-tui/src/tui/app/commands.rs	2911	status	if rest.is_empty() || matches!(rest, "show" | "status") {
+9	crates/jcode-tui/src/tui/app/commands.rs	2915	off	if current { "on" } else { "off" }
+10	crates/jcode-tui/src/tui/app/commands.rs	2915	on	if current { "on" } else { "off" }
+11	crates/jcode-tui/src/tui/app/commands.rs	2922	Usage: /show-agentgrep-output (show), /show-agentgrep-output on, or /show-agentgrep-output off	"Usage: /show-agentgrep-output (show), /show-agentgrep-output on, or /show-agentgrep-output off".to_string(),
+12	crates/jcode-tui/src/tui/app/commands.rs	2928	Show agentgrep output: {}	"Show agentgrep output: {}",
+13	crates/jcode-tui/src/tui/app/commands.rs	2929	off	if enabled { "on" } else { "off" }
+14	crates/jcode-tui/src/tui/app/commands.rs	2929	on	if enabled { "on" } else { "off" }
+15	crates/jcode-tui/src/tui/app/commands.rs	2933	Saved show agentgrep output: {}. Applied to this session immediately.	"Saved show agentgrep output: {}. Applied to this session immediately.",
+16	crates/jcode-tui/src/tui/app/commands.rs	2934	off	if enabled { "on" } else { "off" }
+17	crates/jcode-tui/src/tui/app/commands.rs	2934	on	if enabled { "on" } else { "off" }
+18	crates/jcode-tui/src/tui/app/commands.rs	2937	Applied show agentgrep output {} for this session, but failed to save it as the default: {}	"Applied show agentgrep output {} for this session, but failed to save it as the default: {}",
+19	crates/jcode-tui/src/tui/app/commands.rs	2938	off	if enabled { "on" } else { "off" },
+20	crates/jcode-tui/src/tui/app/commands.rs	2938	on	if enabled { "on" } else { "off" },
+21	crates/jcode-tui/src/tui/app/commands.rs	2948	agent	"swarm" | "agent" | "agents" | "subagent" | "subagents" => {
+22	crates/jcode-tui/src/tui/app/commands.rs	2948	agents	"swarm" | "agent" | "agents" | "subagent" | "subagents" => {
+23	crates/jcode-tui/src/tui/app/commands.rs	2948	subagent	"swarm" | "agent" | "agents" | "subagent" | "subagents" => {
+24	crates/jcode-tui/src/tui/app/commands.rs	2948	subagents	"swarm" | "agent" | "agents" | "subagent" | "subagents" => {
+25	crates/jcode-tui/src/tui/app/commands.rs	2948	swarm	"swarm" | "agent" | "agents" | "subagent" | "subagents" => {
+26	crates/jcode-tui/src/tui/app/commands.rs	2951	code-review	"review" | "reviewer" | "code-review" | "codereview" => {
+27	crates/jcode-tui/src/tui/app/commands.rs	2951	codereview	"review" | "reviewer" | "code-review" | "codereview" => {
+28	crates/jcode-tui/src/tui/app/commands.rs	2951	review	"review" | "reviewer" | "code-review" | "codereview" => {
+29	crates/jcode-tui/src/tui/app/commands.rs	2951	reviewer	"review" | "reviewer" | "code-review" | "codereview" => {
+30	crates/jcode-tui/src/tui/app/commands.rs	2954	autojudge	"judge" | "judging" | "execution-judge" | "autojudge" => {
+31	crates/jcode-tui/src/tui/app/commands.rs	2954	execution-judge	"judge" | "judging" | "execution-judge" | "autojudge" => {
+32	crates/jcode-tui/src/tui/app/commands.rs	2954	judge	"judge" | "judging" | "execution-judge" | "autojudge" => {
+33	crates/jcode-tui/src/tui/app/commands.rs	2954	judging	"judge" | "judging" | "execution-judge" | "autojudge" => {
+34	crates/jcode-tui/src/tui/app/commands.rs	2957	memories	"memory" | "memories" | "sidecar" => Some(crate::tui::AgentModelTarget::Memory),
+35	crates/jcode-tui/src/tui/app/commands.rs	2957	memory	"memory" | "memories" | "sidecar" => Some(crate::tui::AgentModelTarget::Memory),
+36	crates/jcode-tui/src/tui/app/commands.rs	2957	sidecar	"memory" | "memories" | "sidecar" => Some(crate::tui::AgentModelTarget::Memory),
+37	crates/jcode-tui/src/tui/app/commands.rs	2958	ambient	"ambient" => Some(crate::tui::AgentModelTarget::Ambient),
+38	crates/jcode-tui/src/tui/app/commands.rs	2977	.jcode	let project_path = project_dir.join(".jcode").join("swarm-prompt.md");
+39	crates/jcode-tui/src/tui/app/commands.rs	2977	swarm-prompt.md	let project_path = project_dir.join(".jcode").join("swarm-prompt.md");
+40	crates/jcode-tui/src/tui/app/commands.rs	2982	swarm-prompt.md	let global_path = jcode_dir.join("swarm-prompt.md");
+41	crates/jcode-tui/src/tui/app/commands.rs	2994	/swarm-prompt	if trimmed != "/swarm-prompt"
+42	crates/jcode-tui/src/tui/app/commands.rs	2995	/swarm-prompt edit	&& trimmed != "/swarm-prompt edit"
+43	crates/jcode-tui/src/tui/app/commands.rs	2996	/swarm-prompt open	&& trimmed != "/swarm-prompt open"
+44	crates/jcode-tui/src/tui/app/commands.rs	2998	/swarm-prompt 	if trimmed.starts_with("/swarm-prompt ") {
+45	crates/jcode-tui/src/tui/app/commands.rs	2999	Usage: /swarm-prompt	app.push_display_message(DisplayMessage::error("Usage: /swarm-prompt".to_string()));
+46	crates/jcode-tui/src/tui/app/commands.rs	3009	Failed to locate the Jcode config directory: {}	"Failed to locate the Jcode config directory: {}",
+47	crates/jcode-tui/src/tui/app/commands.rs	3019	Failed to prepare the swarm prompt file: {}	"Failed to prepare the swarm prompt file: {}",
+48	crates/jcode-tui/src/tui/app/commands.rs	3028	nano	.unwrap_or_else(|_| "nano".to_string());
+49	crates/jcode-tui/src/tui/app/commands.rs	3032	$VISUAL/$EDITOR is empty; cannot open the swarm prompt.	"$VISUAL/$EDITOR is empty; cannot open the swarm prompt.".to_string(),
+50	crates/jcode-tui/src/tui/app/commands.rs	3042	Edited the active swarm routing prompt in {}:\n{}\n\nNew agents will use this prompt immediately. Existing agents retain their current prompt to preserve their context cache.	"Edited the active swarm routing prompt in {}:\n{}\n\nNew agents will use this prompt immediately. Existing agents retain their current prompt to preserve their context cache.",
+51	crates/jcode-tui/src/tui/app/commands.rs	3046	Edited swarm prompt	app.set_status_notice("Edited swarm prompt");
+52	crates/jcode-tui/src/tui/app/commands.rs	3049	Editor '{}' exited with status {} while editing {}	"Editor '{}' exited with status {} while editing {}",
+53	crates/jcode-tui/src/tui/app/commands.rs	3055	Failed to launch editor '{}' for {}: {}	"Failed to launch editor '{}' for {}: {}",
+54	crates/jcode-tui/src/tui/app/commands.rs	3134	sh	let mut command = std::process::Command::new("sh");
+55	crates/jcode-tui/src/tui/app/commands.rs	3135	-c	command.args(["-c", "sleep 0.05"]);
+56	crates/jcode-tui/src/tui/app/commands.rs	3135	sleep 0.05	command.args(["-c", "sleep 0.05"]);
+57	crates/jcode-tui/src/tui/app/commands.rs	3142	suspend	move || events.borrow_mut().push("suspend")
+58	crates/jcode-tui/src/tui/app/commands.rs	3147	terminal resumed before the editor process exited	"terminal resumed before the editor process exited"
+59	crates/jcode-tui/src/tui/app/commands.rs	3149	resume	child_events.borrow_mut().push("resume");
+60	crates/jcode-tui/src/tui/app/commands.rs	3152	editor command should run	.expect("editor command should run");
+61	crates/jcode-tui/src/tui/app/commands.rs	3155	resume	assert_eq!(&*events.borrow(), &["suspend", "resume"]);
+62	crates/jcode-tui/src/tui/app/commands.rs	3155	suspend	assert_eq!(&*events.borrow(), &["suspend", "resume"]);
+63	crates/jcode-tui/src/tui/app/commands.rs	3162	sh	let mut command = std::process::Command::new("sh");
+64	crates/jcode-tui/src/tui/app/commands.rs	3163	-c	command.args(["-c", "exit 7"]);
+65	crates/jcode-tui/src/tui/app/commands.rs	3163	exit 7	command.args(["-c", "exit 7"]);
+66	crates/jcode-tui/src/tui/app/commands.rs	3172	shell should launch	.expect("shell should launch");
+67	crates/jcode-tui/src/tui/app/commands.rs	3180	/agents	if !trimmed.starts_with("/agents") {
+68	crates/jcode-tui/src/tui/app/commands.rs	3184	/agents	let rest = trimmed.strip_prefix("/agents").unwrap_or_default().trim();
+69	crates/jcode-tui/src/tui/app/commands.rs	3192	Usage: /agents or /agents <swarm|review|judge|memory|ambient>	"Usage: /agents or /agents <swarm|review|judge|memory|ambient>".to_string(),
+70	crates/jcode-tui/src/tui/app/commands.rs	3202	/alignment	if !trimmed.starts_with("/alignment") {
+71	crates/jcode-tui/src/tui/app/commands.rs	3207	/alignment	.strip_prefix("/alignment")
+72	crates/jcode-tui/src/tui/app/commands.rs	3211	show	if rest.is_empty() || matches!(rest, "show" | "status") {
+73	crates/jcode-tui/src/tui/app/commands.rs	3211	status	if rest.is_empty() || matches!(rest, "show" | "status") {
+74	crates/jcode-tui/src/tui/app/commands.rs	3214	Alignment is currently {}.\nSaved default: {}.\n\nUse /alignment centered or /alignment left to change it permanently, or press {} to toggle it for the current session.	"Alignment is currently {}.\nSaved default: {}.\n\nUse /alignment centered or /alignment left to change it permanently, or press {} to toggle it for the current session.",
+75	crates/jcode-tui/src/tui/app/commands.rs	3223	Usage: /alignment (show), /alignment centered, or /alignment left	"Usage: /alignment (show), /alignment centered, or /alignment left".to_string(),
+76	crates/jcode-tui/src/tui/app/commands.rs	3234	Saved default alignment: {}. Applied to this session immediately.	"Saved default alignment: {}. Applied to this session immediately.",
+77	crates/jcode-tui/src/tui/app/commands.rs	3238	Applied {} alignment for this session, but failed to save it as the default: {}	"Applied {} alignment for this session, but failed to save it as the default: {}",
+78	crates/jcode-tui/src/tui/app/commands.rs	3248	/reasoning	if trimmed != "/reasoning"
+79	crates/jcode-tui/src/tui/app/commands.rs	3249	/reasoning 	&& !trimmed.starts_with("/reasoning ")
+80	crates/jcode-tui/src/tui/app/commands.rs	3250	/thinking	&& trimmed != "/thinking"
+81	crates/jcode-tui/src/tui/app/commands.rs	3251	/thinking 	&& !trimmed.starts_with("/thinking ")
+82	crates/jcode-tui/src/tui/app/commands.rs	3252	/thinking-display	&& trimmed != "/thinking-display"
+83	crates/jcode-tui/src/tui/app/commands.rs	3253	/thinking-display 	&& !trimmed.starts_with("/thinking-display ")
+84	crates/jcode-tui/src/tui/app/commands.rs	3259	/thinking-display	.strip_prefix("/thinking-display")
+85	crates/jcode-tui/src/tui/app/commands.rs	3260	/reasoning	.or_else(|| trimmed.strip_prefix("/reasoning"))
+86	crates/jcode-tui/src/tui/app/commands.rs	3261	/thinking	.or_else(|| trimmed.strip_prefix("/thinking"))
+87	crates/jcode-tui/src/tui/app/commands.rs	3265	show	if rest.is_empty() || matches!(rest, "show" | "status") {
+88	crates/jcode-tui/src/tui/app/commands.rs	3265	status	if rest.is_empty() || matches!(rest, "show" | "status") {
+89	crates/jcode-tui/src/tui/app/commands.rs	3281	Usage: /thinking-display (show), then off, full, or current	"Usage: /thinking-display (show), then off, full, or current".to_string(),
+90	crates/jcode-tui/src/tui/app/commands.rs	3286	Thinking display: {}	app.set_status_notice(format!("Thinking display: {}", mode.label()));
+91	crates/jcode-tui/src/tui/app/commands.rs	3289	Saved thinking display: {}. Applied to this session immediately.	"Saved thinking display: {}. Applied to this session immediately.",
+92	crates/jcode-tui/src/tui/app/commands.rs	3293	Applied thinking display {} for this session, but failed to save it as the default: {}	"Applied thinking display {} for this session, but failed to save it as the default: {}",
+93	crates/jcode-tui/src/tui/app/commands.rs	3331	/compact mode	if trimmed == "/compact mode" || trimmed == "/compact mode status" {
+94	crates/jcode-tui/src/tui/app/commands.rs	3331	/compact mode status	if trimmed == "/compact mode" || trimmed == "/compact mode status" {
+95	crates/jcode-tui/src/tui/app/commands.rs	3339	Compaction mode: {}\nAvailable: reactive, proactive, semantic\nUse /compact mode <mode> to change it for this session.	"Compaction mode: {}\nAvailable: reactive, proactive, semantic\nUse /compact mode <mode> to change it for this session.",
+96	crates/jcode-tui/src/tui/app/commands.rs	3345	/compact mode 	if let Some(mode_str) = trimmed.strip_prefix("/compact mode ") {
+97	crates/jcode-tui/src/tui/app/commands.rs	3349	Usage: /compact mode <reactive|proactive|semantic>	"Usage: /compact mode <reactive|proactive|semantic>".to_string(),
+98	crates/jcode-tui/src/tui/app/commands.rs	3359	✓ Compaction mode → {}	"✓ Compaction mode → {}",
+99	crates/jcode-tui/src/tui/app/commands.rs	3362	Compaction: {}	app.set_status_notice(format!("Compaction: {}", label));
+100	crates/jcode-tui/src/tui/app/commands.rs	3366	Cannot access compaction manager (lock held)	"Cannot access compaction manager (lock held)".to_string(),
+101	crates/jcode-tui/src/tui/app/commands.rs	3373	/compact	if trimmed == "/compact" {
+102	crates/jcode-tui/src/tui/app/commands.rs	3376	Manual compaction is not available for this provider.	"Manual compaction is not available for this provider.".to_string(),
+103	crates/jcode-tui/src/tui/app/commands.rs	3397	no	if stats.has_summary { "yes" } else { "no" },
+104	crates/jcode-tui/src/tui/app/commands.rs	3397	yes	if stats.has_summary { "yes" } else { "no" },
+105	crates/jcode-tui/src/tui/app/commands.rs	3399	in progress...	"in progress..."
+106	crates/jcode-tui/src/tui/app/commands.rs	3401	no	"no"
+107	crates/jcode-tui/src/tui/app/commands.rs	3411	system	role: "system".to_string(),
+108	crates/jcode-tui/src/tui/app/commands.rs	3417	manual	App::format_compaction_started_message("manual")
+109	crates/jcode-tui/src/tui/app/commands.rs	3427	system	role: "system".to_string(),
+110	crates/jcode-tui/src/tui/app/commands.rs	3443	system	role: "system".to_string(),
+111	crates/jcode-tui/src/tui/app/commands.rs	3444	⚠ Cannot access compaction manager (lock held)	content: "⚠ Cannot access compaction manager (lock held)".to_string(),
+112	crates/jcode-tui/src/tui/app/commands.rs	3455	/fix	if trimmed == "/fix" {
+113	crates/jcode-tui/src/tui/app/commands.rs	3464	/subscription	if trimmed == "/subscription" || trimmed == "/subscription status" {
+114	crates/jcode-tui/src/tui/app/commands.rs	3464	/subscription status	if trimmed == "/subscription" || trimmed == "/subscription status" {
+115	crates/jcode-tui/src/tui/app/commands.rs	3469	/config	if trimmed == "/config" {
+116	crates/jcode-tui/src/tui/app/commands.rs	3472	system	role: "system".to_string(),
+117	crates/jcode-tui/src/tui/app/commands.rs	3482	/config create	if trimmed == "/config init" || trimmed == "/config create" {
+118	crates/jcode-tui/src/tui/app/commands.rs	3482	/config init	if trimmed == "/config init" || trimmed == "/config create" {
+119	crates/jcode-tui/src/tui/app/commands.rs	3487	system	role: "system".to_string(),
+120	crates/jcode-tui/src/tui/app/commands.rs	3489	Created default config file at:\n{}\n\nEdit this file to customize your keybindings and settings.	"Created default config file at:\n{}\n\nEdit this file to customize your keybindings and settings.",

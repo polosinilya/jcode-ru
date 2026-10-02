@@ -1,0 +1,120 @@
+1	crates/jcode-tui/src/tui/app/onboarding_flow.rs	394	Yes	/// selector (default "Yes") matching the import walkthrough: Yes starts the
+2	crates/jcode-tui/src/tui/app/onboarding_flow.rs	401	Yes, log in to OpenAI	/// Which option is highlighted (true = "Yes, log in to OpenAI").
+3	crates/jcode-tui/src/tui/app/onboarding_flow.rs	408	Continue where you left off in <cli>?	/// "Continue where you left off in <cli>?" Yes/No with a
+4	crates/jcode-tui/src/tui/app/onboarding_flow.rs	410	Yes	/// the import prompt; the default (and timeout choice) is "Yes" so the
+5	crates/jcode-tui/src/tui/app/onboarding_flow.rs	414	Yes, continue	/// Which option is highlighted (true = "Yes, continue").
+6	crates/jcode-tui/src/tui/app/onboarding_flow.rs	421	No	/// Existing prompt-suggestion cards (resting / "No" state).
+7	crates/jcode-tui/src/tui/app/onboarding_flow.rs	504	Log in to OpenAI?	/// simple "Log in to OpenAI?" Yes/No instead of dropping straight to the
+8	crates/jcode-tui/src/tui/app/onboarding_flow.rs	562	continue where you left off	// Detection drives the first-run "continue where you left off" picker, whose
+9	crates/jcode-tui/src/tui/app/onboarding_flow.rs	569	.codex/auth.json	if external_oauth_present(&external_home_path(".codex/auth.json"))
+10	crates/jcode-tui/src/tui/app/onboarding_flow.rs	574	.claude/.credentials.json	if external_oauth_present(&external_home_path(".claude/.credentials.json"))
+11	crates/jcode-tui/src/tui/app/onboarding_flow.rs	575	.claude/projects	|| external_transcripts_present(&external_home_path(".claude/projects"), "jsonl")
+12	crates/jcode-tui/src/tui/app/onboarding_flow.rs	579	.pi/agent/auth.json	if external_oauth_present(&external_home_path(".pi/agent/auth.json"))
+13	crates/jcode-tui/src/tui/app/onboarding_flow.rs	584	.local/share/opencode/auth.json	if external_oauth_present(&external_home_path(".local/share/opencode/auth.json"))
+14	crates/jcode-tui/src/tui/app/onboarding_flow.rs	596	.cursor/projects	if external_transcripts_present(&external_home_path(".cursor/projects"), "jsonl")
+15	crates/jcode-tui/src/tui/app/onboarding_flow.rs	597	.cursor/auth.json	|| external_oauth_present(&external_home_path(".cursor/auth.json"))
+16	crates/jcode-tui/src/tui/app/onboarding_flow.rs	598	.config/cursor/auth.json	|| external_oauth_present(&external_home_path(".config/cursor/auth.json"))
+17	crates/jcode-tui/src/tui/app/onboarding_flow.rs	712	jcode-onb-test-{}	let dir = std::env::temp_dir().join(format!("jcode-onb-test-{}", std::process::id()));
+18	crates/jcode-tui/src/tui/app/onboarding_flow.rs	727	jcode-onb-transcripts-{}-{:?}	"jcode-onb-transcripts-{}-{:?}",
+19	crates/jcode-tui/src/tui/app/onboarding_flow_control.rs	97	not yet authenticated	/// momentary "not yet authenticated" reading doesn't permanently skip the
+20	crates/jcode-tui/src/tui/app/onboarding_flow_control.rs	241	Log in to OpenAI?	/// "Log in to OpenAI?" Yes/No.
+21	crates/jcode-tui/src/tui/app/onboarding_flow_control.rs	254	onboarding: failed to inspect external login sources: {err}	"onboarding: failed to inspect external login sources: {err}"
+22	crates/jcode-tui/src/tui/app/onboarding_flow_control.rs	265	Welcome to jcode: review detected logins (arrows/hl to move, Enter to choose)	"Welcome to jcode: review detected logins (arrows/hl to move, Enter to choose)",
+23	crates/jcode-tui/src/tui/app/onboarding_flow_control.rs	269	Log in to OpenAI? Yes/No - hl to move, Enter to choose (No skips for now)	"Log in to OpenAI? Yes/No - hl to move, Enter to choose (No skips for now)",
+24	crates/jcode-tui/src/tui/app/onboarding_flow_control.rs	281	Login: opening OpenAI sign-in (or type /login for others)	self.set_status_notice("Login: opening OpenAI sign-in (or type /login for others)");
+25	crates/jcode-tui/src/tui/app/onboarding_flow_control.rs	286	Telemetry settings	/// on the "Telemetry settings" page, so we only write the default when no
+26	crates/jcode-tui/src/tui/app/onboarding_flow_control.rs	317	Continue where you left off?	/// Enter the "Continue where you left off?" phase. Highlightable Yes/No
+27	crates/jcode-tui/src/tui/app/onboarding_flow_control.rs	319	Yes	/// is "Yes" so the resume menu opens unless the user declines.
+28	crates/jcode-tui/src/tui/app/onboarding_flow_control.rs	344	Continue a session where you left off in {}? Opens the resume menu in {remaining}s (Yes/No)	"Continue a session where you left off in {}? Opens the resume menu in {remaining}s (Yes/No)",
+29	crates/jcode-tui/src/tui/app/onboarding_flow_control.rs	379	pick provider -> enter key -> asks again	// picker (the reported "pick provider -> enter key -> asks again" loop)
+30	crates/jcode-tui/src/tui/app/onboarding_flow_control.rs	414	Onboarding skipped - run {login} when you're ready	"Onboarding skipped - run {login} when you're ready"
+31	crates/jcode-tui/src/tui/app/onboarding_flow_control.rs	477	continue where you left off?	/// Handle a key while the "continue where you left off?" prompt is up.
+32	crates/jcode-tui/src/tui/app/onboarding_flow_control.rs	478	Yes	/// Yes/No sit side by side (default highlight is "Yes"), matching the
+33	crates/jcode-tui/src/tui/app/onboarding_flow_control.rs	480	Yes	///   - Left / h  -> highlight "Yes"
+34	crates/jcode-tui/src/tui/app/onboarding_flow_control.rs	481	No	///   - Right / l -> highlight "No"
+35	crates/jcode-tui/src/tui/app/onboarding_flow_control.rs	544	Yes	///     - Left / h / y -> choose "Yes" (import) for the highlighted login
+36	crates/jcode-tui/src/tui/app/onboarding_flow_control.rs	545	No	///     - Right / l / n -> choose "No" (skip) for the highlighted login
+37	crates/jcode-tui/src/tui/app/onboarding_flow_control.rs	547	Yes	///     - Enter -> import every "Yes" login and finish
+38	crates/jcode-tui/src/tui/app/onboarding_flow_control.rs	598	yes, import everything	// y = "yes, import everything" regardless of pill focus, so
+39	crates/jcode-tui/src/tui/app/onboarding_flow_control.rs	640	Opened Jcode pricing: {url}	self.set_status_notice(format!("Opened Jcode pricing: {url}"));
+40	crates/jcode-tui/src/tui/app/onboarding_flow_control.rs	642	Open Jcode pricing: {url}	self.set_status_notice(format!("Open Jcode pricing: {url}"));
+41	crates/jcode-tui/src/tui/app/onboarding_flow_control.rs	654	Log in to OpenAI?	/// Handle a key while the "Log in to OpenAI?" prompt is up. Yes/No sit side
+42	crates/jcode-tui/src/tui/app/onboarding_flow_control.rs	655	Yes	/// by side (default highlight is "Yes"):
+43	crates/jcode-tui/src/tui/app/onboarding_flow_control.rs	656	Yes	///   - Left / h  -> highlight "Yes"
+44	crates/jcode-tui/src/tui/app/onboarding_flow_control.rs	657	No	///   - Right / l -> highlight "No"
+45	crates/jcode-tui/src/tui/app/onboarding_flow_control.rs	705	Log in to OpenAI?	/// Answer the "Log in to OpenAI?" prompt. Yes starts the OpenAI sign-in;
+46	crates/jcode-tui/src/tui/app/onboarding_flow_control.rs	709	No	/// We intentionally do NOT open the inline provider picker on "No": that
+47	crates/jcode-tui/src/tui/app/onboarding_flow_control.rs	736	Run {login} when you're ready	self.set_status_notice(format!("Run {login} when you're ready"));
+48	crates/jcode-tui/src/tui/app/onboarding_flow_control.rs	740	Log in to OpenAI?	/// Refresh the status notice for the "Log in to OpenAI?" prompt.
+49	crates/jcode-tui/src/tui/app/onboarding_flow_control.rs	748	No	let choice = if yes { "Yes" } else { "No" };
+50	crates/jcode-tui/src/tui/app/onboarding_flow_control.rs	748	Yes	let choice = if yes { "Yes" } else { "No" };
+51	crates/jcode-tui/src/tui/app/onboarding_flow_control.rs	750	Log in to OpenAI? [{choice}] - hl to move, Enter to choose (No skips for now)	"Log in to OpenAI? [{choice}] - hl to move, Enter to choose (No skips for now)"
+52	crates/jcode-tui/src/tui/app/onboarding_flow_control.rs	784	Telemetry settings - arrows move, Enter chooses, Esc goes back	"Telemetry settings - arrows move, Enter chooses, Esc goes back".to_string()
+53	crates/jcode-tui/src/tui/app/onboarding_flow_control.rs	793	Import {checked} of {total} login{} - Space toggles, arrows move, Enter imports (auto in {secs}s)	"Import {checked} of {total} login{} - Space toggles, arrows move, Enter imports (auto in {secs}s)",
+54	crates/jcode-tui/src/tui/app/onboarding_flow_control.rs	820	No logins imported. Press Enter to choose a provider.	self.set_status_notice("No logins imported. Press Enter to choose a provider.");
+55	crates/jcode-tui/src/tui/app/onboarding_flow_control.rs	840	Login: importing selected logins...	self.set_status_notice("Login: importing selected logins...");
+56	crates/jcode-tui/src/tui/app/onboarding_flow_control.rs	848	The import could not start (no async runtime).	"The import could not start (no async runtime).".to_string(),
+57	crates/jcode-tui/src/tui/app/onboarding_flow_control.rs	863	auto-import	provider: "auto-import".to_string(),
+58	crates/jcode-tui/src/tui/app/onboarding_flow_control.rs	865	Auto import failed: {}	message: format!("Auto import failed: {}", err),
+59	crates/jcode-tui/src/tui/app/onboarding_flow_control.rs	887	auto-import	.unwrap_or("auto-import")
+60	crates/jcode-tui/src/tui/app/onboarding_flow_control.rs	910	Press any key to switch, Enter to choose	self.set_status_notice("Press any key to switch, Enter to choose");
+61	crates/jcode-tui/src/tui/app/onboarding_flow_control.rs	920	Welcome to jcode 🎉	"Welcome to jcode 🎉",
+62	crates/jcode-tui/src/tui/app/onboarding_flow_control.rs	924	How would you like to begin?	"How would you like to begin?",
+63	crates/jcode-tui/src/tui/app/onboarding_flow_control.rs	1038	Find the most critical architecture problems in the repository at {repository}. Do not fix them yet, and ask me whether I want them fixed once you find them.	"Find the most critical architecture problems in the repository at {repository}. Do not fix them yet, and ask me whether I want them fixed once you find them."
+64	crates/jcode-tui/src/tui/app/onboarding_flow_control.rs	1046	No active Git repository found. Start jcode inside a project to review it.	"No active Git repository found. Start jcode inside a project to review it.",
+65	crates/jcode-tui/src/tui/app/onboarding_flow_control.rs	1069	Architecture review queued	self.set_status_notice("Architecture review queued");
+66	crates/jcode-tui/src/tui/app/onboarding_flow_control.rs	1075	No	/// Drop into the suggestion-card state (the "No" / no-OAuth path). Prints
+67	crates/jcode-tui/src/tui/app/onboarding_flow_control.rs	1089	You're all set, type anything to start	self.set_status_notice("You're all set, type anything to start");
+68	crates/jcode-tui/src/tui/app/onboarding_flow_control.rs	1098	Press 1-{} to use one, or just type anything to start.	"Press 1-{} to use one, or just type anything to start.",
+69	crates/jcode-tui/src/tui/app/onboarding_flow_control.rs	1102	Try a suggestion, or type anything to start	self.set_status_notice("Try a suggestion, or type anything to start");
+70	crates/jcode-tui/src/tui/app/onboarding_flow_control.rs	1196	Ready to use	// would otherwise show a banned account as "Ready to use". We skip it
+71	crates/jcode-tui/src/tui/app/onboarding_flow_control.rs	1201	Checking {model_label}...	self.set_status_notice(format!("Checking {model_label}..."));
+72	crates/jcode-tui/src/tui/app/onboarding_flow_control.rs	1323	invalid authentication	|| lower.contains("invalid authentication")
+73	crates/jcode-tui/src/tui/app/onboarding_flow_control.rs	1324	invalid api key	|| lower.contains("invalid api key")
+74	crates/jcode-tui/src/tui/app/onboarding_flow_control.rs	1325	invalid x-api-key	|| lower.contains("invalid x-api-key")
+75	crates/jcode-tui/src/tui/app/onboarding_flow_control.rs	1327	login expired or invalid	return "login expired or invalid".to_string();
+76	crates/jcode-tui/src/tui/app/onboarding_flow_control.rs	1336	no response	return "no response".to_string();
+77	crates/jcode-tui/src/tui/app/onboarding_flow_control.rs	1341	unknown error	"unknown error".to_string()
+78	crates/jcode-tui/src/tui/app/onboarding_flow_control.rs	1355	invalid api key	|| lower.contains("invalid api key")
+79	crates/jcode-tui/src/tui/app/onboarding_flow_control.rs	1356	invalid x-api-key	|| lower.contains("invalid x-api-key")
+80	crates/jcode-tui/src/tui/app/onboarding_flow_control.rs	1358	login expired	|| lower.contains("login expired")
+81	crates/jcode-tui/src/tui/app/onboarding_flow_control.rs	1359	expired or invalid	|| lower.contains("expired or invalid")
+82	crates/jcode-tui/src/tui/app/onboarding_flow_control.rs	1410	other providers	/// Build the "other providers" rows for the onboarding readiness summary.
+83	crates/jcode-tui/src/tui/app/onboarding_flow_control.rs	1421	Anthropic (Claude)	("Anthropic (Claude)", "anthropic", status.anthropic.state),
+84	crates/jcode-tui/src/tui/app/onboarding_flow_control.rs	1422	OpenAI	("OpenAI", "openai", status.openai),
+85	crates/jcode-tui/src/tui/app/onboarding_flow_control.rs	1423	Jcode subscription	("Jcode subscription", "jcode", status.jcode),
+86	crates/jcode-tui/src/tui/app/onboarding_flow_control.rs	1424	Gemini	("Gemini", "gemini", status.gemini),
+87	crates/jcode-tui/src/tui/app/onboarding_flow_control.rs	1425	GitHub Copilot	("GitHub Copilot", "copilot", status.copilot),
+88	crates/jcode-tui/src/tui/app/onboarding_flow_control.rs	1426	Cursor	("Cursor", "cursor", status.cursor),
+89	crates/jcode-tui/src/tui/app/onboarding_flow_control.rs	1427	OpenRouter	("OpenRouter", "openrouter", status.openrouter),
+90	crates/jcode-tui/src/tui/app/onboarding_flow_control.rs	1428	Antigravity	("Antigravity", "antigravity", status.antigravity),
+91	crates/jcode-tui/src/tui/app/onboarding_flow_control.rs	1435	claude cli	"claude" | "claude cli" => "anthropic".to_string(),
+92	crates/jcode-tui/src/tui/app/onboarding_flow_control.rs	1460	partially configured	/// `AuthState::Expired` is overloaded: it means both "partially configured"
+93	crates/jcode-tui/src/tui/app/onboarding_flow_control.rs	1461	the token is dead	/// and "the token is dead". Reporting the wrong one is how the readiness
+94	crates/jcode-tui/src/tui/app/onboarding_flow_control.rs	1462	GitHub Copilot - login expired	/// summary told a user "GitHub Copilot - login expired" for a provider that
+95	crates/jcode-tui/src/tui/app/onboarding_flow_control.rs	1471	needs sign-in	CredState::Absent => "needs sign-in",
+96	crates/jcode-tui/src/tui/app/onboarding_flow_control.rs	1472	configured, not verified	CredState::Present => "configured, not verified",
+97	crates/jcode-tui/src/tui/app/onboarding_flow_control.rs	1474	login needs a refresh	CredState::Stale => "login needs a refresh",
+98	crates/jcode-tui/src/tui/app/onboarding_flow_control.rs	1475	login expired, sign in again	CredState::Rejected => "login expired, sign in again",
+99	crates/jcode-tui/src/tui/app/onboarding_flow_control.rs	1505	could not be validated	"could not be validated".to_string()
+100	crates/jcode-tui/src/tui/app/onboarding_flow_control.rs	1530	Run {login} to fix a login, or /model to pick another.	format!("Run {login} to fix a login, or /model to pick another.")
+101	crates/jcode-tui/src/tui/app/onboarding_flow_control.rs	1532	Run {login} to add a login, or /model to pick another.	format!("Run {login} to add a login, or /model to pick another.")
+102	crates/jcode-tui/src/tui/app/onboarding_flow_control.rs	1539	Type anything to start.	body.push_str("Type anything to start.");
+103	crates/jcode-tui/src/tui/app/onboarding_flow_control.rs	1546	{} ready - type anything to start	"{} ready - type anything to start",
+104	crates/jcode-tui/src/tui/app/onboarding_flow_control.rs	1551	{} ready - type anything to start ({} login{} need attention)	"{} ready - type anything to start ({} login{} need attention)",
+105	crates/jcode-tui/src/tui/app/onboarding_flow_control.rs	1559	{} to fix credentials, or /model	"{} to fix credentials, or /model",
+106	crates/jcode-tui/src/tui/app/onboarding_flow_control.rs	1563	type anything to try, or /model	"type anything to try, or /model".to_string()
+107	crates/jcode-tui/src/tui/app/onboarding_flow_control.rs	1565	{} not validated - {hint}	self.set_status_notice(format!("{} not validated - {hint}", result.model_label));
+108	crates/jcode-tui/src/tui/app/onboarding_flow_control.rs	1606	We couldn't import those logins.	.unwrap_or_else(|| "We couldn't import those logins.".to_string()),
+109	crates/jcode-tui/src/tui/app/onboarding_flow_control.rs	1609	Import failed. Press Enter to choose a provider and log in manually.	"Import failed. Press Enter to choose a provider and log in manually.",
+110	crates/jcode-tui/src/tui/app/onboarding_flow_control.rs	1621	Logins imported	!l.is_empty() && !l.starts_with("**") && !l.eq_ignore_ascii_case("Logins imported")
+111	crates/jcode-tui/src/tui/app/onboarding_flow_control.rs	1623	We couldn't import those logins.	.unwrap_or("We couldn't import those logins.")
+112	crates/jcode-tui/src/tui/app/onboarding_flow_control.rs	1627	We couldn't import those logins.	"We couldn't import those logins."
+113	crates/jcode-tui/src/tui/app/onboarding_flow_control.rs	1706	Importing your logins...	// "Importing your logins..." screen. After a hard timeout we recover the
+114	crates/jcode-tui/src/tui/app/onboarding_flow_control.rs	1717	The import is taking longer than expected.	"The import is taking longer than expected.".to_string(),
+115	crates/jcode-tui/src/tui/app/onboarding_graph.rs	58	Continue where you left off?	/// "Continue where you left off?" (legacy/replay path).
+116	crates/jcode-tui/src/tui/app/onboarding_graph.rs	192	restart jcode	/// "restart jcode".
+117	crates/jcode-tui/src/tui/app/onboarding_graph.rs	608	{} is non-terminal with no outgoing edge	detail: format!("{} is non-terminal with no outgoing edge", node.label()),
+118	crates/jcode-tui/src/tui/app/onboarding_graph.rs	612	Restart jcode	// 2. Every failure node recovers. "Restart jcode" is not a recovery, so
+119	crates/jcode-tui/src/tui/app/onboarding_graph.rs	624	{} offers no retry or hand-off edge	detail: format!("{} offers no retry or hand-off edge", node.label()),
+120	crates/jcode-tui/src/tui/app/onboarding_graph.rs	638	{} has no escape edge	detail: format!("{} has no escape edge", node.label()),

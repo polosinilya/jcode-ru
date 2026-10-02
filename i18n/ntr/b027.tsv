@@ -1,0 +1,120 @@
+1	SKIP
+2	SKIP
+3	SKIP
+4	SKIP
+5	SKIP
+6	Diagnose provider auth issues
+7	SKIP
+8	SKIP
+9	SKIP
+10	Open all provider/account actions
+11	SKIP
+12	Switch active account by label
+13	SKIP
+14	Set preferred default provider
+15	SKIP
+16	Set preferred default model
+17	SKIP
+18	Inspect custom OpenAI-compatible settings
+19	SKIP
+20	Set custom OpenAI-compatible API base
+21	SKIP
+22	Open this provider's account/settings actions
+23	SKIP
+24	Show provider-specific settings
+25	SKIP
+26	Start or refresh login for this provider
+27	SKIP
+28	Add a new Claude account
+29	SKIP
+30	Add a new OpenAI account
+31	SKIP
+32	Set OpenAI transport preference
+33	SKIP
+34	Set OpenAI reasoning effort preference
+35	SKIP
+36	Switch to this Claude account
+37	SKIP
+38	Switch to this OpenAI account
+39	SKIP
+40	SKIP
+41	Enable memory for this session
+42	SKIP
+43	Disable memory for this session
+44	SKIP
+45	Show memory feature status
+46	SKIP
+47	SKIP
+48	Generate a ranked improve todo list without editing
+49	SKIP
+50	Resume the last saved improve mode for this session
+51	SKIP
+52	Show current improve batch and inferred status
+53	SKIP
+54	Stop improvement mode after the next safe point
+55	SKIP
+56	SKIP
+57	Generate a ranked refactor todo list without editing
+58	SKIP
+59	Resume the last saved refactor mode for this session
+60	SKIP
+61	Show current refactor batch and inferred status
+62	SKIP
+63	Stop refactor mode after the next safe point
+64	SKIP
+65	SKIP
+66	Enable swarm for this session
+67	SKIP
+68	Disable swarm for this session
+69	SKIP
+70	Show swarm feature status
+71	SKIP
+72	SKIP
+73	Start a 7-hour supervised overnight run
+74	SKIP
+75	Show latest overnight run status
+76	SKIP
+77	Show recent overnight events
+78	SKIP
+79	Open the generated review page
+80	SKIP
+81	Request overnight cancellation
+82	SKIP
+83	SKIP
+84	Show subscription status
+85	SKIP
+86	SKIP
+87	Show current and saved alignment
+88	SKIP
+89	Save centered alignment and apply it now
+90	SKIP
+91	Save left-aligned layout and apply it now
+92	SKIP
+93	SKIP
+94	Show whether notifications are compact
+95	SKIP
+96	Collapse swarm/file-activity notifications to one line
+97	SKIP
+98	Show full multi-line notification cards
+99	SKIP
+100	SKIP
+101	Show whether technical details render on intent rows
+102	SKIP
+103	Show the dimmed technical detail next to tool intents
+104	SKIP
+105	Show only the intent on tool rows that have one
+106	SKIP
+107	SKIP
+108	Show whether agentgrep output is shown inline
+109	SKIP
+110	Render full agentgrep search results inline in chat
+111	SKIP
+112	Show only the one-line agentgrep summary
+113	SKIP
+114	SKIP
+115	Create a default config file
+116	SKIP
+117	Alias for /config init
+118	SKIP
+119	Open the config file in $EDITOR
+120	SKIP

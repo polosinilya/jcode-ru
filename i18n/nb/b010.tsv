@@ -1,0 +1,120 @@
+1	crates/jcode-tui/src/tui/app/commands.rs	1630	Transcript path	app.set_status_notice("Transcript path");
+2	crates/jcode-tui/src/tui/app/commands.rs	1637	Transcript opened	app.set_status_notice("Transcript opened");
+3	crates/jcode-tui/src/tui/app/commands.rs	1640	Failed to open transcript file {}: {}	"Failed to open transcript file {}: {}",
+4	crates/jcode-tui/src/tui/app/commands.rs	1657	Git status	app.set_status_notice("Git status");
+5	crates/jcode-tui/src/tui/app/commands.rs	1687	/commit	if trimmed == "/commit" {
+6	crates/jcode-tui/src/tui/app/commands.rs	1692	/commit-and-push	if trimmed == "/commit-push" || trimmed == "/commit-and-push" {
+7	crates/jcode-tui/src/tui/app/commands.rs	1692	/commit-push	if trimmed == "/commit-push" || trimmed == "/commit-and-push" {
+8	crates/jcode-tui/src/tui/app/commands.rs	1699	/commit-push-release	"/fast-release" | "/cut-release" | "/commit-push-release"
+9	crates/jcode-tui/src/tui/app/commands.rs	1699	/cut-release	"/fast-release" | "/cut-release" | "/commit-push-release"
+10	crates/jcode-tui/src/tui/app/commands.rs	1699	/fast-release	"/fast-release" | "/cut-release" | "/commit-push-release"
+11	crates/jcode-tui/src/tui/app/commands.rs	1705	/fast-macos-release	if trimmed == "/fast-macos-release" {
+12	crates/jcode-tui/src/tui/app/commands.rs	1710	/remote-release	if trimmed == "/remote-release" {
+13	crates/jcode-tui/src/tui/app/commands.rs	1720	/triage	if trimmed == "/triage" || trimmed.starts_with("/triage ") {
+14	crates/jcode-tui/src/tui/app/commands.rs	1720	/triage 	if trimmed == "/triage" || trimmed.starts_with("/triage ") {
+15	crates/jcode-tui/src/tui/app/commands.rs	1721	/triage	let rest = trimmed.strip_prefix("/triage").unwrap_or_default();
+16	crates/jcode-tui/src/tui/app/commands.rs	1726	/resume	if trimmed == "/resume" || trimmed == "/sessions" || trimmed == "/session" {
+17	crates/jcode-tui/src/tui/app/commands.rs	1726	/session	if trimmed == "/resume" || trimmed == "/sessions" || trimmed == "/session" {
+18	crates/jcode-tui/src/tui/app/commands.rs	1726	/sessions	if trimmed == "/resume" || trimmed == "/sessions" || trimmed == "/session" {
+19	crates/jcode-tui/src/tui/app/commands.rs	1732	/active	if trimmed == "/active" {
+20	crates/jcode-tui/src/tui/app/commands.rs	1758	/clear	if trimmed == "/clear" {
+21	crates/jcode-tui/src/tui/app/commands.rs	1763	/clear-view	if trimmed == "/cls" || trimmed == "/clear-view" {
+22	crates/jcode-tui/src/tui/app/commands.rs	1763	/cls	if trimmed == "/cls" || trimmed == "/clear-view" {
+23	crates/jcode-tui/src/tui/app/commands.rs	1768	/save	if trimmed == "/save" || trimmed.starts_with("/save ") {
+24	crates/jcode-tui/src/tui/app/commands.rs	1768	/save 	if trimmed == "/save" || trimmed.starts_with("/save ") {
+25	crates/jcode-tui/src/tui/app/commands.rs	1769	/save	let label = trimmed.strip_prefix("/save").unwrap_or_default().trim();
+26	crates/jcode-tui/src/tui/app/commands.rs	1778	Failed to save session: {}	"Failed to save session: {}",
+27	crates/jcode-tui/src/tui/app/commands.rs	1788	📌 Session {} saved as \"{}\". It will appear at the top of /resume.	"📌 Session {} saved as \"{}\". It will appear at the top of /resume.",
+28	crates/jcode-tui/src/tui/app/commands.rs	1793	📌 Session {} saved. It will appear at the top of /resume.	"📌 Session {} saved. It will appear at the top of /resume.",
+29	crates/jcode-tui/src/tui/app/commands.rs	1798	Session saved	app.set_status_notice("Session saved");
+30	crates/jcode-tui/src/tui/app/commands.rs	1802	/unsave	if trimmed == "/unsave" {
+31	crates/jcode-tui/src/tui/app/commands.rs	1806	Failed to save session: {}	"Failed to save session: {}",
+32	crates/jcode-tui/src/tui/app/commands.rs	1814	Removed bookmark from session {}.	"Removed bookmark from session {}.",
+33	crates/jcode-tui/src/tui/app/commands.rs	1817	Bookmark removed	app.set_status_notice("Bookmark removed");
+34	crates/jcode-tui/src/tui/app/commands.rs	1821	/rename	if trimmed == "/rename" || trimmed.starts_with("/rename ") {
+35	crates/jcode-tui/src/tui/app/commands.rs	1821	/rename 	if trimmed == "/rename" || trimmed.starts_with("/rename ") {
+36	crates/jcode-tui/src/tui/app/commands.rs	1822	/rename	let title = trimmed.strip_prefix("/rename").unwrap_or_default().trim();
+37	crates/jcode-tui/src/tui/app/commands.rs	1825	Usage: /rename <session name> or /rename --clear	"Usage: /rename <session name> or /rename --clear".to_string(),
+38	crates/jcode-tui/src/tui/app/commands.rs	1834	Failed to clear session name: {}	"Failed to clear session name: {}",
+39	crates/jcode-tui/src/tui/app/commands.rs	1843	Cleared custom name. Session title is now {}.	"Cleared custom name. Session title is now {}.",
+40	crates/jcode-tui/src/tui/app/commands.rs	1846	Session name cleared	app.set_status_notice("Session name cleared");
+41	crates/jcode-tui/src/tui/app/commands.rs	1853	Failed to rename session: {}	"Failed to rename session: {}",
+42	crates/jcode-tui/src/tui/app/commands.rs	1861	Renamed session to {}.	"Renamed session to {}.",
+43	crates/jcode-tui/src/tui/app/commands.rs	1864	Session renamed	app.set_status_notice("Session renamed");
+44	crates/jcode-tui/src/tui/app/commands.rs	1868	/memory status	if trimmed == "/memory status" {
+45	crates/jcode-tui/src/tui/app/commands.rs	1871	Memory feature: {} (config default: {})	"Memory feature: {} (config default: {})",
+46	crates/jcode-tui/src/tui/app/commands.rs	1873	enabled	"enabled"
+47	crates/jcode-tui/src/tui/app/commands.rs	1875	disabled	"disabled"
+48	crates/jcode-tui/src/tui/app/commands.rs	1878	enabled	"enabled"
+49	crates/jcode-tui/src/tui/app/commands.rs	1880	disabled	"disabled"
+50	crates/jcode-tui/src/tui/app/commands.rs	1886	/memory	if trimmed == "/memory" {
+51	crates/jcode-tui/src/tui/app/commands.rs	1890	Memory: {}	app.set_status_notice(format!("Memory: {}", label));
+52	crates/jcode-tui/src/tui/app/commands.rs	1892	Memory feature {} for this session.	"Memory feature {} for this session.",
+53	crates/jcode-tui/src/tui/app/commands.rs	1893	disabled	if new_state { "enabled" } else { "disabled" }
+54	crates/jcode-tui/src/tui/app/commands.rs	1893	enabled	if new_state { "enabled" } else { "disabled" }
+55	crates/jcode-tui/src/tui/app/commands.rs	1898	/memory on	if trimmed == "/memory on" {
+56	crates/jcode-tui/src/tui/app/commands.rs	1900	Memory: ON	app.set_status_notice("Memory: ON");
+57	crates/jcode-tui/src/tui/app/commands.rs	1902	Memory feature enabled for this session.	"Memory feature enabled for this session.".to_string(),
+58	crates/jcode-tui/src/tui/app/commands.rs	1907	/memory off	if trimmed == "/memory off" {
+59	crates/jcode-tui/src/tui/app/commands.rs	1909	Memory: OFF	app.set_status_notice("Memory: OFF");
+60	crates/jcode-tui/src/tui/app/commands.rs	1911	Memory feature disabled for this session.	"Memory feature disabled for this session.".to_string(),
+61	crates/jcode-tui/src/tui/app/commands.rs	1916	/memory 	if trimmed.starts_with("/memory ") {
+62	crates/jcode-tui/src/tui/app/commands.rs	1918	Usage: /memory [on|off|status]	"Usage: /memory [on|off|status]".to_string(),
+63	crates/jcode-tui/src/tui/app/commands.rs	1935	/swarm	if trimmed == "/swarm" || trimmed == "/swarm status" {
+64	crates/jcode-tui/src/tui/app/commands.rs	1935	/swarm status	if trimmed == "/swarm" || trimmed == "/swarm status" {
+65	crates/jcode-tui/src/tui/app/commands.rs	1938	Swarm feature: {} (config default: {})	"Swarm feature: {} (config default: {})",
+66	crates/jcode-tui/src/tui/app/commands.rs	1940	enabled	"enabled"
+67	crates/jcode-tui/src/tui/app/commands.rs	1942	disabled	"disabled"
+68	crates/jcode-tui/src/tui/app/commands.rs	1945	enabled	"enabled"
+69	crates/jcode-tui/src/tui/app/commands.rs	1947	disabled	"disabled"
+70	crates/jcode-tui/src/tui/app/commands.rs	1953	/swarm on	if trimmed == "/swarm on" {
+71	crates/jcode-tui/src/tui/app/commands.rs	1955	Swarm: ON	app.set_status_notice("Swarm: ON");
+72	crates/jcode-tui/src/tui/app/commands.rs	1957	Swarm feature enabled for this session.	"Swarm feature enabled for this session.".to_string(),
+73	crates/jcode-tui/src/tui/app/commands.rs	1962	/swarm off	if trimmed == "/swarm off" {
+74	crates/jcode-tui/src/tui/app/commands.rs	1964	Swarm: OFF	app.set_status_notice("Swarm: OFF");
+75	crates/jcode-tui/src/tui/app/commands.rs	1966	Swarm feature disabled for this session.	"Swarm feature disabled for this session.".to_string(),
+76	crates/jcode-tui/src/tui/app/commands.rs	1971	/swarm 	if trimmed.starts_with("/swarm ") {
+77	crates/jcode-tui/src/tui/app/commands.rs	1973	Usage: /swarm [on|off|status]	"Usage: /swarm [on|off|status]".to_string(),
+78	crates/jcode-tui/src/tui/app/commands.rs	1978	/rewind undo	if trimmed == "/rewind undo" {
+79	crates/jcode-tui/src/tui/app/commands.rs	1980	No rewind to undo.	app.push_display_message(DisplayMessage::system("No rewind to undo.".to_string()));
+80	crates/jcode-tui/src/tui/app/commands.rs	2015	✓ Undid rewind. Restored {} message{}.	"✓ Undid rewind. Restored {} message{}.",
+81	crates/jcode-tui/src/tui/app/commands.rs	2017	s	if restored == 1 { "" } else { "s" }
+82	crates/jcode-tui/src/tui/app/commands.rs	2022	/rewind	if trimmed == "/rewind" {
+83	crates/jcode-tui/src/tui/app/commands.rs	2028	assistant	.filter(|message| matches!(message.role.as_str(), "user" | "assistant"))
+84	crates/jcode-tui/src/tui/app/commands.rs	2028	user	.filter(|message| matches!(message.role.as_str(), "user" | "assistant"))
+85	crates/jcode-tui/src/tui/app/commands.rs	2032	No messages in conversation.	"No messages in conversation.".to_string(),
+86	crates/jcode-tui/src/tui/app/commands.rs	2037	Conversation history:\n\n	let mut history = String::from("Conversation history:\n\n");
+87	crates/jcode-tui/src/tui/app/commands.rs	2040	user	"user" => "👤 User",
+88	crates/jcode-tui/src/tui/app/commands.rs	2040	👤 User	"user" => "👤 User",
+89	crates/jcode-tui/src/tui/app/commands.rs	2041	assistant	"assistant" => "🤖 Assistant",
+90	crates/jcode-tui/src/tui/app/commands.rs	2041	🤖 Assistant	"assistant" => "🤖 Assistant",
+91	crates/jcode-tui/src/tui/app/commands.rs	2042	💬 Message	_ => "💬 Message",
+92	crates/jcode-tui/src/tui/app/commands.rs	2048	\nUse /rewind N to rewind to message N (removes all messages after). After rewinding, use /rewind undo to restore the removed messages.	history.push_str("\nUse /rewind N to rewind to message N (removes all messages after). After rewinding, use /rewind undo to restore the removed messages.");
+93	crates/jcode-tui/src/tui/app/commands.rs	2054	/rewind 	if let Some(num_str) = trimmed.strip_prefix("/rewind ") {
+94	crates/jcode-tui/src/tui/app/commands.rs	2099	✓ Rewound to message {}. Removed {} message{}. Undo anytime with /rewind undo.	"✓ Rewound to message {}. Removed {} message{}. Undo anytime with /rewind undo.",
+95	crates/jcode-tui/src/tui/app/commands.rs	2102	s	if removed == 1 { "" } else { "s" }
+96	crates/jcode-tui/src/tui/app/commands.rs	2107	Invalid message number: {}. Valid range: 1-{}	"Invalid message number: {}. Valid range: 1-{}",
+97	crates/jcode-tui/src/tui/app/commands.rs	2113	Usage: /rewind N where N is a message number (1-{})	"Usage: /rewind N where N is a message number (1-{})",
+98	crates/jcode-tui/src/tui/app/commands.rs	2129	Poke: OFF	app.set_status_notice("Poke: OFF");
+99	crates/jcode-tui/src/tui/app/commands.rs	2140	/transfer	if trimmed == "/transfer" {
+100	crates/jcode-tui/src/tui/app/commands.rs	2143	/transfer requires an active connected session in remote mode.	"/transfer requires an active connected session in remote mode.".to_string(),
+101	crates/jcode-tui/src/tui/app/commands.rs	2151	/transfer 	if trimmed.starts_with("/transfer ") {
+102	crates/jcode-tui/src/tui/app/commands.rs	2152	Usage: /transfer	app.push_display_message(DisplayMessage::error("Usage: /transfer".to_string()));
+103	crates/jcode-tui/src/tui/app/commands.rs	2182	 Do not force-push or move existing tags. Finally, report the new version, the commits created, the tag push, and the release status.	prompt.push_str(" Do not force-push or move existing tags. Finally, report the new version, the commits created, the tag push, and the release status.");
+104	crates/jcode-tui/src/tui/app/commands.rs	2222	 Additional focus from the user: 	prompt.push_str(" Additional focus from the user: ");
+105	crates/jcode-tui/src/tui/app/commands.rs	2230	👉 Interrupting and starting GitHub issue triage...	"👉 Interrupting and starting GitHub issue triage...".to_string()
+106	crates/jcode-tui/src/tui/app/commands.rs	2232	🚀 Starting GitHub issue triage...	"🚀 Starting GitHub issue triage...".to_string()
+107	crates/jcode-tui/src/tui/app/commands.rs	2242	Interrupting for /triage...	"Interrupting for /triage...",
+108	crates/jcode-tui/src/tui/app/commands.rs	2253	👉 Interrupting and starting logical commits...	"👉 Interrupting and starting logical commits...".to_string()
+109	crates/jcode-tui/src/tui/app/commands.rs	2255	🚀 Starting logical commits...	"🚀 Starting logical commits...".to_string()
+110	crates/jcode-tui/src/tui/app/commands.rs	2261	👉 Interrupting and starting logical commits + push...	"👉 Interrupting and starting logical commits + push...".to_string()
+111	crates/jcode-tui/src/tui/app/commands.rs	2263	🚀 Starting logical commits + push...	"🚀 Starting logical commits + push...".to_string()
+112	crates/jcode-tui/src/tui/app/commands.rs	2269	👉 Interrupting and starting logical commits + push + fast local release...	"👉 Interrupting and starting logical commits + push + fast local release...".to_string()
+113	crates/jcode-tui/src/tui/app/commands.rs	2271	🚀 Starting logical commits + push + fast local release...	"🚀 Starting logical commits + push + fast local release...".to_string()
+114	crates/jcode-tui/src/tui/app/commands.rs	2277	👉 Interrupting and starting logical commits + push + fast macOS release...	"👉 Interrupting and starting logical commits + push + fast macOS release...".to_string()
+115	crates/jcode-tui/src/tui/app/commands.rs	2279	🚀 Starting logical commits + push + fast macOS release...	"🚀 Starting logical commits + push + fast macOS release...".to_string()
+116	crates/jcode-tui/src/tui/app/commands.rs	2285	👉 Interrupting and starting logical commits + push + remote release...	"👉 Interrupting and starting logical commits + push + remote release...".to_string()
+117	crates/jcode-tui/src/tui/app/commands.rs	2287	🚀 Starting logical commits + push + remote release...	"🚀 Starting logical commits + push + remote release...".to_string()
+118	crates/jcode-tui/src/tui/app/commands.rs	2297	Interrupting for /commit...	"Interrupting for /commit...",
+119	crates/jcode-tui/src/tui/app/commands.rs	2312	Interrupting for /commit-push...	"Interrupting for /commit-push...",
+120	crates/jcode-tui/src/tui/app/commands.rs	2327	Interrupting for /fast-release...	"Interrupting for /fast-release...",

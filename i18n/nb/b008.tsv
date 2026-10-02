@@ -1,0 +1,120 @@
+1	crates/jcode-tui/src/tui/app/auth_tests.rs	116	sk-test-tui-login	Some("sk-test-tui-login")
+2	crates/jcode-tui/src/tui/app/auth_tests.rs	128	 sk-test-tui-login 	" sk-test-tui-login ",
+3	crates/jcode-tui/src/tui/app/auth_tests.rs	134	sk-test-tui-login	Ok("sk-test-tui-login")
+4	crates/jcode-tui/src/tui/app/auth_tests.rs	157	test-jcode-key	Some("test-jcode-key"),
+5	crates/jcode-tui/src/tui/app/auth_tests.rs	162	https://subscription.example/v1	Some("https://subscription.example/v1"),
+6	crates/jcode-tui/src/tui/app/auth_tests.rs	180	https://subscription.example/v1	Ok("https://subscription.example/v1")
+7	crates/jcode-tui/src/tui/app/auth_tests.rs	199	https://subscription.example/v1	Some("https://subscription.example/v1")
+8	crates/jcode-tui/src/tui/app/commands.rs	33	gpt-5.5	pub(super) const REVIEW_PREFERRED_MODEL: &str = "gpt-5.5";
+9	crates/jcode-tui/src/tui/app/commands.rs	34	/poke off to stop.	const POKE_OFF_UI_HINT: &str = "/poke off to stop.";
+10	crates/jcode-tui/src/tui/app/commands.rs	68	/poke	"/poke" => Some(Ok(PokeCommand::Trigger)),
+11	crates/jcode-tui/src/tui/app/commands.rs	69	/poke on	"/poke on" => Some(Ok(PokeCommand::On)),
+12	crates/jcode-tui/src/tui/app/commands.rs	70	/poke off	"/poke off" => Some(Ok(PokeCommand::Off)),
+13	crates/jcode-tui/src/tui/app/commands.rs	71	/poke status	"/poke status" => Some(Ok(PokeCommand::Status)),
+14	crates/jcode-tui/src/tui/app/commands.rs	72	/poke 	_ if trimmed.starts_with("/poke ") => Some(Err("Usage: /poke [on|off|status]".to_string())),
+15	crates/jcode-tui/src/tui/app/commands.rs	72	Usage: /poke [on|off|status]	_ if trimmed.starts_with("/poke ") => Some(Err("Usage: /poke [on|off|status]".to_string())),
+16	crates/jcode-tui/src/tui/app/commands.rs	84	All todos are done. Todo confidence summary:	|| message.starts_with("All todos are done. Todo confidence summary:")
+17	crates/jcode-tui/src/tui/app/commands.rs	121	commands_auto_poke_errors.rs	#[path = "commands_auto_poke_errors.rs"]
+18	crates/jcode-tui/src/tui/app/commands.rs	143	failed to send openai-compatible chat request	"failed to send openai-compatible chat request",
+19	crates/jcode-tui/src/tui/app/commands.rs	144	could not resolve host	"could not resolve host",
+20	crates/jcode-tui/src/tui/app/commands.rs	145	couldn't resolve host	"couldn't resolve host",
+21	crates/jcode-tui/src/tui/app/commands.rs	166	unsupportedmodel	"unsupportedmodel",
+22	crates/jcode-tui/src/tui/app/commands.rs	167	unsupported model	"unsupported model",
+23	crates/jcode-tui/src/tui/app/commands.rs	168	does not support the coding plan	"does not support the coding plan",
+24	crates/jcode-tui/src/tui/app/commands.rs	169	coding plan feature	"coding plan feature",
+25	crates/jcode-tui/src/tui/app/commands.rs	172	invalid model	"invalid model",
+26	crates/jcode-tui/src/tui/app/commands.rs	173	the model does not exist	"the model does not exist",
+27	crates/jcode-tui/src/tui/app/commands.rs	174	model does not exist	"model does not exist",
+28	crates/jcode-tui/src/tui/app/commands.rs	191	🛑 The last request failed in a way that retrying won't fix, so we stopped poking.{} Fix the request or session, then /poke to resume.	"🛑 The last request failed in a way that retrying won't fix, so we stopped poking.{} Fix the request or session, then /poke to resume.",
+29	crates/jcode-tui/src/tui/app/commands.rs	196	 Cleared {} queued poke follow-up{}.	" Cleared {} queued poke follow-up{}.",
+30	crates/jcode-tui/src/tui/app/commands.rs	198	s	if cleared == 1 { "" } else { "s" }
+31	crates/jcode-tui/src/tui/app/commands.rs	202	Poke stopped: this error won't fix itself	app.set_status_notice("Poke stopped: this error won't fix itself");
+32	crates/jcode-tui/src/tui/app/commands.rs	208	Auto-poke disabled.{}	"Auto-poke disabled.{}",
+33	crates/jcode-tui/src/tui/app/commands.rs	213	 Cleared {} queued poke follow-up{}.	" Cleared {} queued poke follow-up{}.",
+34	crates/jcode-tui/src/tui/app/commands.rs	215	s	if cleared == 1 { "" } else { "s" }
+35	crates/jcode-tui/src/tui/app/commands.rs	222	Auto-poke enabled. Nothing unfinished right now; we'll poke the agent if it stops with todos left.	"Auto-poke enabled. Nothing unfinished right now; we'll poke the agent if it stops with todos left.".to_string()
+36	crates/jcode-tui/src/tui/app/commands.rs	227	👉 Poke queued. We'll re-check for unfinished todos after this turn. {}	"👉 Poke queued. We'll re-check for unfinished todos after this turn. {}",
+37	crates/jcode-tui/src/tui/app/commands.rs	234	👉 {} incomplete todo{}. We poked the agent. {}	"👉 {} incomplete todo{}. We poked the agent. {}",
+38	crates/jcode-tui/src/tui/app/commands.rs	236	s	if incomplete_count == 1 { "" } else { "s" },
+39	crates/jcode-tui/src/tui/app/commands.rs	257	Poke: ON	app.set_status_notice("Poke: ON");
+40	crates/jcode-tui/src/tui/app/commands.rs	264	Poke queued after current turn	app.set_status_notice("Poke queued after current turn");
+41	crates/jcode-tui/src/tui/app/commands.rs	336	Poke: OFF	app.set_status_notice("Poke: OFF");
+42	crates/jcode-tui/src/tui/app/commands.rs	344	Transfer requested. Please pause after the current step, update the todo list if needed, and stop so work can continue in the transferred session.	"Transfer requested. Please pause after the current step, update the todo list if needed, and stop so work can continue in the transferred session."
+43	crates/jcode-tui/src/tui/app/commands.rs	452	↗ Transfer launched in {}.	"↗ Transfer launched in {}.",
+44	crates/jcode-tui/src/tui/app/commands.rs	455	Transfer launched	app.set_status_notice("Transfer launched");
+45	crates/jcode-tui/src/tui/app/commands.rs	459	↗ Transfer session {} created.\n\nNo terminal was opened automatically. Resume manually:\n\n  jcode --resume {}	"↗ Transfer session {} created.\n\nNo terminal was opened automatically. Resume manually:\n\n  jcode --resume {}",
+46	crates/jcode-tui/src/tui/app/commands.rs	462	Transfer session created	app.set_status_notice("Transfer session created");
+47	crates/jcode-tui/src/tui/app/commands.rs	466	Transfer session {} was created but failed to open a window: {}\n\nResume manually: jcode --resume {}	"Transfer session {} was created but failed to open a window: {}\n\nResume manually: jcode --resume {}",
+48	crates/jcode-tui/src/tui/app/commands.rs	469	Transfer open failed	app.set_status_notice("Transfer open failed");
+49	crates/jcode-tui/src/tui/app/commands.rs	475	Failed to prepare transfer session: {}	"Failed to prepare transfer session: {}",
+50	crates/jcode-tui/src/tui/app/commands.rs	478	Transfer failed	app.set_status_notice("Transfer failed");
+51	crates/jcode-tui/src/tui/app/commands.rs	488	Transfer preparation failed before returning a result.	"Transfer preparation failed before returning a result.".to_string(),
+52	crates/jcode-tui/src/tui/app/commands.rs	490	Transfer failed	app.set_status_notice("Transfer failed");
+53	crates/jcode-tui/src/tui/app/commands.rs	507	Preparing transferred session with compacted context...	"Preparing transferred session with compacted context...".to_string(),
+54	crates/jcode-tui/src/tui/app/commands.rs	509	Preparing transfer	app.set_status_notice("Preparing transfer");
+55	crates/jcode-tui/src/tui/app/commands.rs	514	Failed to start transfer preparation: {}	"Failed to start transfer preparation: {}",
+56	crates/jcode-tui/src/tui/app/commands.rs	517	Transfer failed	app.set_status_notice("Transfer failed");
+57	crates/jcode-tui/src/tui/app/commands.rs	526	A transfer is already pending.	"A transfer is already pending.".to_string(),
+58	crates/jcode-tui/src/tui/app/commands.rs	528	Transfer already pending	app.set_status_notice("Transfer already pending");
+59	crates/jcode-tui/src/tui/app/commands.rs	537	Queued /transfer. The current session will be asked to pause, then the compacted handoff will open in a new window.	"Queued /transfer. The current session will be asked to pause, then the compacted handoff will open in a new window."
+60	crates/jcode-tui/src/tui/app/commands.rs	540	Transfer queued after current turn	app.set_status_notice("Transfer queued after current turn");
+61	crates/jcode-tui/src/tui/app/commands.rs	557	Auto-poke: {}. {} incomplete todo{}.	"Auto-poke: {}. {} incomplete todo{}.",
+62	crates/jcode-tui/src/tui/app/commands.rs	564	s	if incomplete.len() == 1 { "" } else { "s" }
+63	crates/jcode-tui/src/tui/app/commands.rs	567	 A follow-up poke is queued.	message.push_str(" A follow-up poke is queued.");
+64	crates/jcode-tui/src/tui/app/commands.rs	570	 A turn is currently running.	message.push_str(" A turn is currently running.");
+65	crates/jcode-tui/src/tui/app/commands.rs	577	fixed {}	Some(model) => format!("fixed {}", model),
+66	crates/jcode-tui/src/tui/app/commands.rs	578	inherit current ({})	None => format!("inherit current ({})", app.provider.model()),
+67	crates/jcode-tui/src/tui/app/commands.rs	585	Manual subagent	"Manual subagent".to_string()
+68	crates/jcode-tui/src/tui/app/commands.rs	593	general	let mut subagent_type = "general".to_string();
+69	crates/jcode-tui/src/tui/app/commands.rs	603	Missing value for --type.	.ok_or_else(|| "Missing value for --type.".to_string())?;
+70	crates/jcode-tui/src/tui/app/commands.rs	609	Missing value for --model.	.ok_or_else(|| "Missing value for --model.".to_string())?;
+71	crates/jcode-tui/src/tui/app/commands.rs	615	Missing value for --continue.	.ok_or_else(|| "Missing value for --continue.".to_string())?;
+72	crates/jcode-tui/src/tui/app/commands.rs	619	Unknown flag {}.	return Err(format!("Unknown flag {}.", flag));
+73	crates/jcode-tui/src/tui/app/commands.rs	631	Missing prompt. Add text after /subagent.	return Err("Missing prompt. Add text after /subagent.".to_string());
+74	crates/jcode-tui/src/tui/app/commands.rs	645	call	id: id::new_id("call"),
+75	crates/jcode-tui/src/tui/app/commands.rs	646	subagent	name: "subagent".to_string(),
+76	crates/jcode-tui/src/tui/app/commands.rs	648	description	"description": description,
+77	crates/jcode-tui/src/tui/app/commands.rs	649	prompt	"prompt": spec.prompt,
+78	crates/jcode-tui/src/tui/app/commands.rs	651	model	"model": spec.model,
+79	crates/jcode-tui/src/tui/app/commands.rs	653	/subagent	"command": "/subagent",
+80	crates/jcode-tui/src/tui/app/commands.rs	653	command	"command": "/subagent",
+81	crates/jcode-tui/src/tui/app/commands.rs	660	tool	role: "tool".to_string(),
+82	crates/jcode-tui/src/tui/app/commands.rs	682	starting subagent	app.subagent_status = Some("starting subagent".to_string());
+83	crates/jcode-tui/src/tui/app/commands.rs	683	Running subagent	app.set_status_notice("Running subagent");
+84	crates/jcode-tui/src/tui/app/commands.rs	727	Error: {}	(format!("Error: {}", error), true, None, ToolStatus::Error)
+85	crates/jcode-tui/src/tui/app/commands.rs	753	/subagent-model	if !trimmed.starts_with("/subagent-model") {
+86	crates/jcode-tui/src/tui/app/commands.rs	759	/subagent-model requires a live jcode server connection in remote mode.	"/subagent-model requires a live jcode server connection in remote mode.".to_string(),
+87	crates/jcode-tui/src/tui/app/commands.rs	765	/subagent-model	.strip_prefix("/subagent-model")
+88	crates/jcode-tui/src/tui/app/commands.rs	769	show	if rest.is_empty() || matches!(rest, "show" | "status") {
+89	crates/jcode-tui/src/tui/app/commands.rs	769	status	if rest.is_empty() || matches!(rest, "show" | "status") {
+90	crates/jcode-tui/src/tui/app/commands.rs	771	Subagent model for this session: {}\n\nUse /subagent-model <name> to pin a model, or /subagent-model inherit to use the current model.	"Subagent model for this session: {}\n\nUse /subagent-model <name> to pin a model, or /subagent-model inherit to use the current model.",
+91	crates/jcode-tui/src/tui/app/commands.rs	777	clear	if matches!(rest, "inherit" | "reset" | "clear") {
+92	crates/jcode-tui/src/tui/app/commands.rs	777	inherit	if matches!(rest, "inherit" | "reset" | "clear") {
+93	crates/jcode-tui/src/tui/app/commands.rs	777	reset	if matches!(rest, "inherit" | "reset" | "clear") {
+94	crates/jcode-tui/src/tui/app/commands.rs	781	Subagent model reset to inherit the current model ({}).	"Subagent model reset to inherit the current model ({}).",
+95	crates/jcode-tui/src/tui/app/commands.rs	784	Subagent model: inherit	app.set_status_notice("Subagent model: inherit");
+96	crates/jcode-tui/src/tui/app/commands.rs	791	Subagent model pinned to {} for this session.	"Subagent model pinned to {} for this session.",
+97	crates/jcode-tui/src/tui/app/commands.rs	794	Subagent model → {}	app.set_status_notice(format!("Subagent model → {}", rest));
+98	crates/jcode-tui/src/tui/app/commands.rs	799	/subagent	if !trimmed.starts_with("/subagent") || trimmed.starts_with("/subagent-model") {
+99	crates/jcode-tui/src/tui/app/commands.rs	799	/subagent-model	if !trimmed.starts_with("/subagent") || trimmed.starts_with("/subagent-model") {
+100	crates/jcode-tui/src/tui/app/commands.rs	805	/subagent requires a live jcode server connection in remote mode.	"/subagent requires a live jcode server connection in remote mode.".to_string(),
+101	crates/jcode-tui/src/tui/app/commands.rs	810	/subagent	let rest = trimmed.strip_prefix("/subagent").unwrap_or_default().trim();
+102	crates/jcode-tui/src/tui/app/commands.rs	813	Usage: /subagent [--type <kind>] [--model <name>] [--continue <session_id>] <prompt>	"Usage: /subagent [--type <kind>] [--model <name>] [--continue <session_id>] <prompt>"
+103	crates/jcode-tui/src/tui/app/commands.rs	823	{}\nUsage: /subagent [--type <kind>] [--model <name>] [--continue <session_id>] <prompt>	"{}\nUsage: /subagent [--type <kind>] [--model <name>] [--continue <session_id>] <prompt>",
+104	crates/jcode-tui/src/tui/app/commands.rs	835	Unknown skill: /cancel	/// "Unknown skill: /cancel" (issue #496).
+105	crates/jcode-tui/src/tui/app/commands.rs	837	/cancel	if trimmed != "/cancel" && trimmed != "/stop" {
+106	crates/jcode-tui/src/tui/app/commands.rs	837	/stop	if trimmed != "/cancel" && trimmed != "/stop" {
+107	crates/jcode-tui/src/tui/app/commands.rs	849	Interrupting... Overnight cancelled	app.set_status_notice("Interrupting... Overnight cancelled");
+108	crates/jcode-tui/src/tui/app/commands.rs	851	Interrupting...	app.set_status_notice("Interrupting...");
+109	crates/jcode-tui/src/tui/app/commands.rs	859	Pending retry cancelled	app.set_status_notice("Pending retry cancelled");
+110	crates/jcode-tui/src/tui/app/commands.rs	862	Nothing to cancel: no prompt or operation is in progress.	"Nothing to cancel: no prompt or operation is in progress.".to_string(),
+111	crates/jcode-tui/src/tui/app/commands.rs	870	/help 	.strip_prefix("/help ")
+112	crates/jcode-tui/src/tui/app/commands.rs	877	Unknown command '{}'. Use /help to list commands.	"Unknown command '{}'. Use /help to list commands.",
+113	crates/jcode-tui/src/tui/app/commands.rs	884	/commands	if trimmed == "/help" || trimmed == "/?" || trimmed == "/commands" {
+114	crates/jcode-tui/src/tui/app/commands.rs	884	/help	if trimmed == "/help" || trimmed == "/?" || trimmed == "/commands" {
+115	crates/jcode-tui/src/tui/app/commands.rs	897	/keys	let Some(rest) = slash_command_rest(trimmed, "/keys")
+116	crates/jcode-tui/src/tui/app/commands.rs	898	/keybindings	.or_else(|| slash_command_rest(trimmed, "/keybindings"))
+117	crates/jcode-tui/src/tui/app/commands.rs	903	refresh	let force_refresh = matches!(rest.trim(), "refresh" | "rescan" | "reload");
+118	crates/jcode-tui/src/tui/app/commands.rs	903	reload	let force_refresh = matches!(rest.trim(), "refresh" | "rescan" | "reload");
+119	crates/jcode-tui/src/tui/app/commands.rs	903	rescan	let force_refresh = matches!(rest.trim(), "refresh" | "rescan" | "reload");
+120	crates/jcode-tui/src/tui/app/commands.rs	919	No keybinding conflicts detected	app.set_status_notice("No keybinding conflicts detected");

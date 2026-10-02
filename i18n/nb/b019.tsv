@@ -1,0 +1,120 @@
+1	crates/jcode-tui/src/tui/app/model_context.rs	1042	✓ Context compacted (emergency). Retrying...	"✓ Context compacted (emergency). Retrying...".to_string(),
+2	crates/jcode-tui/src/tui/app/model_context.rs	1068	Auto-compaction timed out.	"Auto-compaction timed out.".to_string(),
+3	crates/jcode-tui/src/tui/app/model_context.rs	1103	✓ Context compacted. Retrying...	"✓ Context compacted. Retrying...".to_string(),
+4	crates/jcode-tui/src/tui/app/model_context.rs	1123	Usage → no connected providers	self.set_status_notice("Usage → no connected providers");
+5	crates/jcode-tui/src/tui/app/model_context.rs	1125	Usage → updated	self.set_status_notice("Usage → updated");
+6	crates/jcode-tui/src/tui/app/model_context.rs	1145	Usage → no connected providers	self.set_status_notice("Usage → no connected providers");
+7	crates/jcode-tui/src/tui/app/model_context.rs	1147	Usage → updated	self.set_status_notice("Usage → updated");
+8	crates/jcode-tui/src/tui/app/model_context.rs	1150	Usage → showing cached data, refreshing	self.set_status_notice("Usage → showing cached data, refreshing");
+9	crates/jcode-tui/src/tui/app/model_context.rs	1153	Usage → refreshing {}/{}	"Usage → refreshing {}/{}",
+10	crates/jcode-tui/src/tui/app/model_context.rs	1158	Usage → refreshing	self.set_status_notice("Usage → refreshing");
+11	crates/jcode-tui/src/tui/app/model_context.rs	1209	# Refreshing usage ({}/{})	"# Refreshing usage ({}/{})",
+12	crates/jcode-tui/src/tui/app/model_context.rs	1214	# Showing cached usage while refreshing	lines.push("# Showing cached usage while refreshing".to_string());
+13	crates/jcode-tui/src/tui/app/model_context.rs	1216	# Refreshing usage	lines.push("# Refreshing usage".to_string());
+14	crates/jcode-tui/src/tui/app/model_context.rs	1218	Checking connected provider limits...	lines.push("Checking connected provider limits...".to_string());
+15	crates/jcode-tui/src/tui/app/model_context.rs	1223	# No connected providers	lines.push("# No connected providers".to_string());
+16	crates/jcode-tui/src/tui/app/model_context.rs	1225	Use `/login claude` or `/login openai`, then run `/usage` again.	"Use `/login claude` or `/login openai`, then run `/usage` again.".to_string(),
+17	crates/jcode-tui/src/tui/app/model_context.rs	1249	  no usage data available	lines.push("  no usage data available".to_string());
+18	crates/jcode-tui/src/tui/app/model_context.rs	1278	! {} - error	return format!("! {} - error", provider.provider_name);
+19	crates/jcode-tui/src/tui/app/model_context.rs	1281	! {} - hard limit	return format!("! {} - hard limit", provider.provider_name);
+20	crates/jcode-tui/src/tui/app/model_context.rs	1290	! {} - {:.0}% used	format!("! {} - {:.0}% used", provider.provider_name, max_percent)
+21	crates/jcode-tui/src/tui/app/model_context.rs	1292	~ {} - {:.0}% used	format!("~ {} - {:.0}% used", provider.provider_name, max_percent)
+22	crates/jcode-tui/src/tui/app/model_context.rs	1294	{} - no data	format!("{} - no data", provider.provider_name)
+23	crates/jcode-tui/src/tui/app/model_context.rs	1296	+ {} - {:.0}% used	format!("+ {} - {:.0}% used", provider.provider_name, max_percent)
+24	crates/jcode-tui/src/tui/app/model_context.rs	1298	+ {} - available	format!("+ {} - available", provider.provider_name)
+25	crates/jcode-tui/src/tui/app/model_context.rs	1324	Reset provider session resume state.	actions.push("Reset provider session resume state.".to_string());
+26	crates/jcode-tui/src/tui/app/model_context.rs	1358	Emergency truncation: shortened {} large tool result(s) to fit context.	"Emergency truncation: shortened {} large tool result(s) to fit context.",
+27	crates/jcode-tui/src/tui/app/model_context.rs	1372	Emergency compaction: dropped {} old messages (normal compaction failed: {}).	"Emergency compaction: dropped {} old messages (normal compaction failed: {}).",
+28	crates/jcode-tui/src/tui/app/model_context.rs	1378	Compaction not started: {}. Emergency fallback: {}	"Compaction not started: {}. Emergency fallback: {}",
+29	crates/jcode-tui/src/tui/app/model_context.rs	1386	Could not access compaction manager (busy).	Err(_) => notes.push("Could not access compaction manager (busy).".to_string()),
+30	crates/jcode-tui/src/tui/app/model_context.rs	1389	Compaction is unavailable for this provider.	notes.push("Compaction is unavailable for this provider.".to_string());
+31	crates/jcode-tui/src/tui/app/model_context.rs	1394	Fix applied	self.set_status_notice("Fix applied");
+32	crates/jcode-tui/src/tui/app/model_context.rs	1427	Starting provider model catalog refresh	"Starting provider model catalog refresh",
+33	crates/jcode-tui/src/tui/app/model_context.rs	1430	Refreshing model list...	Some("Refreshing model list..."),
+34	crates/jcode-tui/src/tui/app/model_context.rs	1433	Refreshing model list...	app.set_status_notice("Refreshing model list...");
+35	crates/jcode-tui/src/tui/app/model_context.rs	1483	✓ Switched to model: {}{}	content: format!("✓ Switched to model: {}{}", active_model, auth_suffix),
+36	crates/jcode-tui/src/tui/app/model_context.rs	1489	Model → {}	app.set_status_notice(format!("Model → {}", model_name));
+37	crates/jcode-tui/src/tui/app/model_context.rs	1496	Model switch failed	app.set_status_notice("Model switch failed");
+38	crates/jcode-tui/src/tui/app/model_context.rs	1508	Reasoning effort not available for this provider.	"Reasoning effort not available for this provider.".to_string(),
+39	crates/jcode-tui/src/tui/app/model_context.rs	1546	✓ Reasoning effort → {}	"✓ Reasoning effort → {}",
+40	crates/jcode-tui/src/tui/app/model_context.rs	1555	Effort: {} {}	app.set_status_notice(format!("Effort: {} {}", label, bar));
+41	crates/jcode-tui/src/tui/app/model_context.rs	1559	Failed to set effort: {}	"Failed to set effort: {}",
+42	crates/jcode-tui/src/tui/app/model_context.rs	1573	Standard	.unwrap_or("Standard");
+43	crates/jcode-tui/src/tui/app/model_context.rs	1592	Standard	.unwrap_or("Standard");
+44	crates/jcode-tui/src/tui/app/model_context.rs	1600	Usage: /fast default [on|off|status]	"Usage: /fast default [on|off|status]".to_string(),
+45	crates/jcode-tui/src/tui/app/model_context.rs	1623	Standard	.unwrap_or("Standard");
+46	crates/jcode-tui/src/tui/app/model_context.rs	1650	Standard	.unwrap_or("Standard");
+47	crates/jcode-tui/src/tui/app/model_context.rs	1661	Usage: /fast [on|off|status|default ...]	"Usage: /fast [on|off|status|default ...]".to_string(),
+48	crates/jcode-tui/src/tui/app/model_context.rs	1685	Failed to set fast mode: {}	"Failed to set fast mode: {}",
+49	crates/jcode-tui/src/tui/app/model_context.rs	1698	Transport switching is not available for this provider.	"Transport switching is not available for this provider.".to_string(),
+50	crates/jcode-tui/src/tui/app/model_context.rs	1727	✓ Transport → {}	"✓ Transport → {}",
+51	crates/jcode-tui/src/tui/app/model_context.rs	1730	Transport → {}	app.set_status_notice(format!("Transport → {}", new_transport));
+52	crates/jcode-tui/src/tui/app/model_context.rs	1734	Failed to set transport: {}	"Failed to set transport: {}",
+53	crates/jcode-tui/src/tui/app/model_context.rs	1768	Waiting on provider APIs ({elapsed_secs}s elapsed)	&format!("Waiting on provider APIs ({elapsed_secs}s elapsed)"),
+54	crates/jcode-tui/src/tui/app/model_context.rs	1771	Refreshing model list...	Some("Refreshing model list..."),
+55	crates/jcode-tui/src/tui/app/model_context.rs	1795	refresh-model-list	"refresh-model-list".to_string(),
+56	crates/jcode-tui/src/tui/app/model_context.rs	1796	Model list refresh	"Model list refresh".to_string(),
+57	crates/jcode-tui/src/tui/app/model_context.rs	1803	Model list refreshed: +{} models, +{} routes, ~{} changed	"Model list refreshed: +{} models, +{} routes, ~{} changed",
+58	crates/jcode-tui/src/tui/app/model_context.rs	1809	refresh-model-list	"refresh-model-list".to_string(),
+59	crates/jcode-tui/src/tui/app/model_context.rs	1810	Model list refresh	"Model list refresh".to_string(),
+60	crates/jcode-tui/src/tui/app/model_context.rs	1814	Failed to refresh model list: {}	"Failed to refresh model list: {}",
+61	crates/jcode-tui/src/tui/app/model_context.rs	1817	Model list refresh failed	self.set_status_notice("Model list refresh failed");
+62	crates/jcode-tui/src/tui/app/model_context.rs	1876	No models are available right now.	"No models are available right now.".to_string(),
+63	crates/jcode-tui/src/tui/app/model_context.rs	1879	  - Run /login to connect or refresh a provider	"  - Run /login to connect or refresh a provider".to_string(),
+64	crates/jcode-tui/src/tui/app/model_context.rs	1880	  - Run /account to inspect or switch credentials	"  - Run /account to inspect or switch credentials".to_string(),
+65	crates/jcode-tui/src/tui/app/model_context.rs	1886	  - If this is a remote session, reconnect if the server model list looks stale	"  - If this is a remote session, reconnect if the server model list looks stale"
+66	crates/jcode-tui/src/tui/app/model_context.rs	1896	Failed to switch model: {}	format!("Failed to switch model: {}", error),
+67	crates/jcode-tui/src/tui/app/model_context.rs	1899	  - Use /model to choose another available route	"  - Use /model to choose another available route".to_string(),
+68	crates/jcode-tui/src/tui/app/model_context.rs	1900	  - Run /login to add or refresh credentials	"  - Run /login to add or refresh credentials".to_string(),
+69	crates/jcode-tui/src/tui/app/model_context.rs	1901	  - Run /account to inspect or switch accounts	"  - Run /account to inspect or switch accounts".to_string(),
+70	crates/jcode-tui/src/tui/app/model_context.rs	1906	  - If this is a remote session and the list looks stale, reconnect and try again	"  - If this is a remote session and the list looks stale, reconnect and try again"
+71	crates/jcode-tui/src/tui/app/model_context.rs	1921	This route is not currently available.	"This route is not currently available.".to_string()
+72	crates/jcode-tui/src/tui/app/model_context.rs	1923	This route is not currently available: {}	format!("This route is not currently available: {}", detail.trim())
+73	crates/jcode-tui/src/tui/app/model_context.rs	1927	Cannot use {} via {} right now.	format!("Cannot use {} via {} right now.", model, provider),
+74	crates/jcode-tui/src/tui/app/model_context.rs	1932	  - Pick another available row in /model	"  - Pick another available row in /model".to_string(),
+75	crates/jcode-tui/src/tui/app/model_context.rs	1933	  - Run /login to add or refresh credentials	"  - Run /login to add or refresh credentials".to_string(),
+76	crates/jcode-tui/src/tui/app/model_context.rs	1934	  - Run /account to inspect or switch accounts	"  - Run /account to inspect or switch accounts".to_string(),
+77	crates/jcode-tui/src/tui/app/model_context.rs	1939	  - If this is a remote session, wait a moment or reconnect if the catalog looks stale	"  - If this is a remote session, wait a moment or reconnect if the catalog looks stale"
+78	crates/jcode-tui/src/tui/app/navigation.rs	276	Opened link: {}	Ok(()) => self.set_status_notice(format!("Opened link: {}", target)),
+79	crates/jcode-tui/src/tui/app/navigation.rs	277	Failed to open link: {}	Err(e) => self.set_status_notice(format!("Failed to open link: {}", e)),
+80	crates/jcode-tui/src/tui/app/navigation.rs	307	Markdown file not found: {}	self.set_status_notice(format!("Markdown file not found: {}", path_target));
+81	crates/jcode-tui/src/tui/app/navigation.rs	311	Refused to open a Markdown file outside the repository	self.set_status_notice("Refused to open a Markdown file outside the repository");
+82	crates/jcode-tui/src/tui/app/navigation.rs	318	Failed to read Markdown file: {}	self.set_status_notice(format!("Failed to read Markdown file: {}", error));
+83	crates/jcode-tui/src/tui/app/navigation.rs	348	Opened Markdown: {}	self.set_status_notice(format!("Opened Markdown: {}", title));
+84	crates/jcode-tui/src/tui/app/navigation.rs	368	Opened link: {}	Ok(()) => self.set_status_notice(format!("Opened link: {}", url)),
+85	crates/jcode-tui/src/tui/app/navigation.rs	369	Failed to open link: {}	Err(e) => self.set_status_notice(format!("Failed to open link: {}", e)),
+86	crates/jcode-tui/src/tui/app/navigation.rs	493	Focus: diagram (hjkl pan, [/] zoom, +/- resize)	self.set_status_notice("Focus: diagram (hjkl pan, [/] zoom, +/- resize)");
+87	crates/jcode-tui/src/tui/app/navigation.rs	495	Focus: chat	self.set_status_notice("Focus: chat");
+88	crates/jcode-tui/src/tui/app/navigation.rs	521	Focus: side pane (j/k scroll, Esc to return)	self.set_status_notice("Focus: side pane (j/k scroll, Esc to return)");
+89	crates/jcode-tui/src/tui/app/navigation.rs	524	Focus: chat	self.set_status_notice("Focus: chat");
+90	crates/jcode-tui/src/tui/app/navigation.rs	550	Side image zoom: {}%	self.set_status_notice(format!("Side image zoom: {}%", next));
+91	crates/jcode-tui/src/tui/app/navigation.rs	561	Side image zoom: fit	self.set_status_notice("Side image zoom: fit".to_string());
+92	crates/jcode-tui/src/tui/app/navigation.rs	979	Diagram {}/{}	self.set_status_notice(format!("Diagram {}/{}", next + 1, count));
+93	crates/jcode-tui/src/tui/app/navigation.rs	1023	Diagram pane: {}%	self.set_status_notice(format!("Diagram pane: {}%", next));
+94	crates/jcode-tui/src/tui/app/navigation.rs	1052	Side panel: {}%	self.set_status_notice(format!("Side panel: {}%", self.diagram_pane_ratio_target));
+95	crates/jcode-tui/src/tui/app/navigation.rs	1108	Image side panel: ON	self.set_status_notice("Image side panel: ON");
+96	crates/jcode-tui/src/tui/app/navigation.rs	1122	Image side panel: OFF	self.set_status_notice("Image side panel: OFF");
+97	crates/jcode-tui/src/tui/app/navigation.rs	1140	Side panel: OFF	self.set_status_notice("Side panel: OFF");
+98	crates/jcode-tui/src/tui/app/navigation.rs	1173	Diagram zoom: {}%	self.set_status_notice(format!("Diagram zoom: {}%", next));
+99	crates/jcode-tui/src/tui/app/navigation.rs	1210	Diagram pane: {}	self.set_status_notice(format!("Diagram pane: {}", label));
+100	crates/jcode-tui/src/tui/app/navigation.rs	1217	No diagrams to open	self.set_status_notice("No diagrams to open");
+101	crates/jcode-tui/src/tui/app/navigation.rs	1230	Failed to open: {}	Err(e) => self.set_status_notice(format!("Failed to open: {}", e)),
+102	crates/jcode-tui/src/tui/app/navigation.rs	1233	Diagram image not found on disk	self.set_status_notice("Diagram image not found on disk");
+103	crates/jcode-tui/src/tui/app/navigation.rs	1236	Diagram not cached	self.set_status_notice("Diagram not cached");
+104	crates/jcode-tui/src/tui/app/navigation.rs	1727	Failed to copy {}	self.set_status_notice(format!("Failed to copy {}", target.kind_label));
+105	crates/jcode-tui/src/tui/app/onboarding_flow.rs	44	Claude Code	ExternalCli::ClaudeCode => "Claude Code",
+106	crates/jcode-tui/src/tui/app/onboarding_flow.rs	47	Cursor	ExternalCli::Cursor => "Cursor",
+107	crates/jcode-tui/src/tui/app/onboarding_flow.rs	52	Telemetry settings	/// Which telemetry level the "Telemetry settings" page has highlighted.
+108	crates/jcode-tui/src/tui/app/onboarding_flow.rs	119	Continue	/// preselected "Continue" pill that imports all of it with one Enter. A second
+109	crates/jcode-tui/src/tui/app/onboarding_flow.rs	120	Choose what to import	/// "Choose what to import" pill switches to the per-login checkbox list
+110	crates/jcode-tui/src/tui/app/onboarding_flow.rs	131	Continue	/// Focus flag for the "Continue" pill.
+111	crates/jcode-tui/src/tui/app/onboarding_flow.rs	134	Continue	/// "Continue" pill is focused (the default landing spot) and `false` when
+112	crates/jcode-tui/src/tui/app/onboarding_flow.rs	135	Choose what to import	/// the "Choose what to import" pill is focused.
+113	crates/jcode-tui/src/tui/app/onboarding_flow.rs	138	Continue	/// "Continue" pill above/below the rows is focused rather than a login row.
+114	crates/jcode-tui/src/tui/app/onboarding_flow.rs	145	Telemetry settings	/// `Some` while the "Telemetry settings" sub-page is open, holding the
+115	crates/jcode-tui/src/tui/app/onboarding_flow.rs	228	Telemetry settings	/// "Telemetry settings" pill still focused.
+116	crates/jcode-tui/src/tui/app/onboarding_flow.rs	261	Continue	/// the "Continue" pill is focused.
+117	crates/jcode-tui/src/tui/app/onboarding_flow.rs	281	Continue	/// Move focus to the previous item, treating the "Continue" pill as a single
+118	crates/jcode-tui/src/tui/app/onboarding_flow.rs	319	Continue	/// "Continue" pill is focused.
+119	crates/jcode-tui/src/tui/app/onboarding_flow.rs	330	Continue	/// "Continue" pill is focused.
+120	crates/jcode-tui/src/tui/app/onboarding_flow.rs	341	Continue	/// "Continue" pill is focused.

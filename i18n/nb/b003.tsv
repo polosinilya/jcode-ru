@@ -1,0 +1,120 @@
+1	crates/jcode-tui/src/tui/app/auth.rs	1497	us.amazon.nova-micro-v1:0	Some("us.amazon.nova-micro-v1:0"),
+2	crates/jcode-tui/src/tui/app/auth.rs	1499	Region: us-east-2 (default for TUI onboarding; use CLI login for another region)	"Region: us-east-2 (default for TUI onboarding; use CLI login for another region)",
+3	crates/jcode-tui/src/tui/app/auth.rs	1508	OpenAI API	"OpenAI API",
+4	crates/jcode-tui/src/tui/app/auth.rs	1509	https://platform.openai.com/api-keys	"https://platform.openai.com/api-keys",
+5	crates/jcode-tui/src/tui/app/auth.rs	1510	openai.env	"openai.env",
+6	crates/jcode-tui/src/tui/app/auth.rs	1513	https://api.openai.com/v1	Some("https://api.openai.com/v1"),
+7	crates/jcode-tui/src/tui/app/auth.rs	1521	Anthropic API	"Anthropic API",
+8	crates/jcode-tui/src/tui/app/auth.rs	1522	https://console.anthropic.com/settings/keys	"https://console.anthropic.com/settings/keys",
+9	crates/jcode-tui/src/tui/app/auth.rs	1523	anthropic.env	"anthropic.env",
+10	crates/jcode-tui/src/tui/app/auth.rs	1526	https://api.anthropic.com	Some("https://api.anthropic.com"),
+11	crates/jcode-tui/src/tui/app/auth.rs	1545	Login: API base...	self.set_status_notice("Login: API base...");
+12	crates/jcode-tui/src/tui/app/auth.rs	1572	API-key login setup passes provider-specific metadata assembled at call sites	reason = "API-key login setup passes provider-specific metadata assembled at call sites"
+13	crates/jcode-tui/src/tui/app/auth.rs	1592	Paste your API key below if your endpoint requires one. Press Enter to skip, or type /cancel to abort.	"Paste your API key below if your endpoint requires one. Press Enter to skip, or type /cancel to abort."
+14	crates/jcode-tui/src/tui/app/auth.rs	1594	Paste your API key below (it will be saved securely), or type /cancel to abort.	"Paste your API key below (it will be saved securely), or type /cancel to abort."
+15	crates/jcode-tui/src/tui/app/auth.rs	1607	API Key	"API Key"
+16	crates/jcode-tui/src/tui/app/auth.rs	1616	Login: optional key...	"Login: optional key..."
+17	crates/jcode-tui/src/tui/app/auth.rs	1618	Login: paste key...	"Login: paste key..."
+18	crates/jcode-tui/src/tui/app/auth.rs	1653	Login: Azure endpoint...	self.set_status_notice("Login: Azure endpoint...");
+19	crates/jcode-tui/src/tui/app/auth.rs	1668	Login: paste cursor key...	self.set_status_notice("Login: paste cursor key...");
+20	crates/jcode-tui/src/tui/app/auth.rs	1673	Login: copilot device flow...	self.set_status_notice("Login: copilot device flow...");
+21	crates/jcode-tui/src/tui/app/auth.rs	1685	Copilot device flow failed: {}	message: format!("Copilot device flow failed: {}", e),
+22	crates/jcode-tui/src/tui/app/auth.rs	1707	Scan this on another device to open the GitHub verification page:	"Scan this on another device to open the GitHub verification page:",
+23	crates/jcode-tui/src/tui/app/auth.rs	1737	Copilot login failed: {}	message: format!("Copilot login failed: {}", e),
+24	crates/jcode-tui/src/tui/app/auth.rs	1763	Failed to save Copilot token: {}	message: format!("Failed to save Copilot token: {}", e),
+25	crates/jcode-tui/src/tui/app/auth.rs	1777	Grok Build: preparing sign-in...	self.set_status_notice("Grok Build: preparing sign-in...");
+26	crates/jcode-tui/src/tui/app/auth.rs	1789	Grok Build login requires the async runtime.	message: "Grok Build login requires the async runtime.".to_string(),
+27	crates/jcode-tui/src/tui/app/auth.rs	1809	Failed to start Grok Build login: {error:#}	message: format!("Failed to start Grok Build login: {error:#}"),
+28	crates/jcode-tui/src/tui/app/auth.rs	1820	Grok Build: waiting for browser approval	), "Grok Build: waiting for browser approval");
+29	crates/jcode-tui/src/tui/app/auth.rs	1831	Grok Build login succeeded, but its managed runtime could not be prepared: {error:#}	message: format!("Grok Build login succeeded, but its managed runtime could not be prepared: {error:#}"),
+30	crates/jcode-tui/src/tui/app/auth.rs	1838	Grok Build login complete. Jcode is refreshing the provider and model list.	message: "Grok Build login complete. Jcode is refreshing the provider and model list."
+31	crates/jcode-tui/src/tui/app/auth.rs	1846	Grok Build login failed: {error}	message: format!("Grok Build login failed: {error}"),
+32	crates/jcode-tui/src/tui/app/auth.rs	1867	Antigravity login is unavailable: {}	"Antigravity login is unavailable: {}",
+33	crates/jcode-tui/src/tui/app/auth.rs	1870	Login: failed	self.set_status_notice("Login: failed");
+34	crates/jcode-tui/src/tui/app/auth.rs	1877	Scan this on another device if this machine has no browser, then paste the full callback URL or query string here:	"Scan this on another device if this machine has no browser, then paste the full callback URL or query string here:",
+35	crates/jcode-tui/src/tui/app/auth.rs	1899	Login timed out after 5 minutes. Please try again.	.map_err(|_| "Login timed out after 5 minutes. Please try again.".to_string())
+36	crates/jcode-tui/src/tui/app/auth.rs	1900	Callback failed: {}	.and_then(|result| result.map_err(|e| format!("Callback failed: {}", e)));
+37	crates/jcode-tui/src/tui/app/auth.rs	1923	Antigravity login failed: {}	message: format!("Antigravity login failed: {}", e),
+38	crates/jcode-tui/src/tui/app/auth.rs	1930	Antigravity automatic callback did not complete: {}	"Antigravity automatic callback did not complete: {}",
+39	crates/jcode-tui/src/tui/app/auth.rs	1978	Login: antigravity waiting...	self.set_status_notice("Login: antigravity waiting...");
+40	crates/jcode-tui/src/tui/app/auth.rs	2010	Successfully logged in to Antigravity! (account: {})	"Successfully logged in to Antigravity! (account: {})",
+41	crates/jcode-tui/src/tui/app/auth.rs	2014	Successfully logged in to Antigravity!	"Successfully logged in to Antigravity!".to_string()
+42	crates/jcode-tui/src/tui/app/auth.rs	2028	Login cancelled.	self.push_display_message(DisplayMessage::system("Login cancelled.".to_string()));
+43	crates/jcode-tui/src/tui/app/auth.rs	2035	Auto import is waiting for your selection. Reply with a to approve all, 1,3 to approve specific sources, or /cancel to abort.	"Auto import is waiting for your selection. Reply with a to approve all, 1,3 to approve specific sources, or /cancel to abort.".to_string()
+44	crates/jcode-tui/src/tui/app/auth.rs	2037	Login still in progress. Complete it in your browser, or paste the callback URL / authorization code here. Type /cancel to abort.	_ => "Login still in progress. Complete it in your browser, or paste the callback URL / authorization code here. Type /cancel to abort.".to_string(),
+45	crates/jcode-tui/src/tui/app/auth.rs	2047	Still waiting for the browser callback. Paste the full callback URL or query string if you want to finish manually, or keep waiting for the automatic redirect.	"Still waiting for the browser callback. Paste the full callback URL or query string if you want to finish manually, or keep waiting for the automatic redirect.".to_string(),
+46	crates/jcode-tui/src/tui/app/auth.rs	2054	Still waiting for the browser callback. Paste the full callback URL or query string if you want to finish manually, or keep waiting for the automatic redirect.	"Still waiting for the browser callback. Paste the full callback URL or query string if you want to finish manually, or keep waiting for the automatic redirect.".to_string(),
+47	crates/jcode-tui/src/tui/app/auth.rs	2072	Login [{}]: exchanging...	self.set_status_notice(format!("Login [{}]: exchanging...", label));
+48	crates/jcode-tui/src/tui/app/auth.rs	2095	Claude login [{}] failed: {}	message: format!("Claude login [{}] failed: {}", label_clone, e),
+49	crates/jcode-tui/src/tui/app/auth.rs	2101	Exchanging authorization code for account {}...	"Exchanging authorization code for account {}...",
+50	crates/jcode-tui/src/tui/app/auth.rs	2111	Login [{}]: exchanging...	self.set_status_notice(format!("Login [{}]: exchanging...", label));
+51	crates/jcode-tui/src/tui/app/auth.rs	2135	OpenAI login [{}] failed: {}	message: format!("OpenAI login [{}] failed: {}", label_clone, e),
+52	crates/jcode-tui/src/tui/app/auth.rs	2141	Exchanging OpenAI callback for account {}...	"Exchanging OpenAI callback for account {}...",
+53	crates/jcode-tui/src/tui/app/auth.rs	2150	Login: exchanging...	self.set_status_notice("Login: exchanging...");
+54	crates/jcode-tui/src/tui/app/auth.rs	2163	Successfully logged in to Gemini! (account: {})	format!("Successfully logged in to Gemini! (account: {})", email)
+55	crates/jcode-tui/src/tui/app/auth.rs	2165	Successfully logged in to Gemini!	"Successfully logged in to Gemini!".to_string()
+56	crates/jcode-tui/src/tui/app/auth.rs	2177	Gemini login failed: {}	message: format!("Gemini login failed: {}", e),
+57	crates/jcode-tui/src/tui/app/auth.rs	2183	Exchanging Gemini callback for tokens...	"Exchanging Gemini callback for tokens...".to_string(),
+58	crates/jcode-tui/src/tui/app/auth.rs	2191	Login: exchanging...	self.set_status_notice("Login: exchanging...");
+59	crates/jcode-tui/src/tui/app/auth.rs	2213	Antigravity login failed: {}	message: format!("Antigravity login failed: {}", e),
+60	crates/jcode-tui/src/tui/app/auth.rs	2219	Exchanging Antigravity callback for tokens...	"Exchanging Antigravity callback for tokens...".to_string(),
+61	crates/jcode-tui/src/tui/app/auth.rs	2237	API key cannot be empty.	"API key cannot be empty.".to_string(),
+62	crates/jcode-tui/src/tui/app/auth.rs	2259	'{}' looks like a menu selection, not an API key. This prompt is waiting for the {} API key itself. Paste the key (see {}), or type /cancel to abort.	"'{}' looks like a menu selection, not an API key. This prompt is waiting for the {} API key itself. Paste the key (see {}), or type /cancel to abort.",
+63	crates/jcode-tui/src/tui/app/auth.rs	2276	sk-or-	if key_name == "OPENROUTER_API_KEY" && !key.starts_with("sk-or-") {
+64	crates/jcode-tui/src/tui/app/auth.rs	2278	OpenRouter keys typically start with sk-or-. Saving anyway...	"OpenRouter keys typically start with sk-or-. Saving anyway...".to_string(),
+65	crates/jcode-tui/src/tui/app/auth.rs	2422	Fetching models now. Jcode will switch to an accessible model returned by the live catalog and show the catalog diff when discovery finishes. If the model list looks stale, run /refresh-model-list.	"Fetching models now. Jcode will switch to an accessible model returned by the live catalog and show the catalog diff when discovery finishes. If the model list looks stale, run /refresh-model-list.".to_string()
+66	crates/jcode-tui/src/tui/app/auth.rs	2430	You can now use /model to switch to Bedrock models. TUI onboarding saved region us-east-2; for a different region, run jcode login --provider bedrock from a terminal.	"You can now use /model to switch to Bedrock models. TUI onboarding saved region us-east-2; for a different region, run jcode login --provider bedrock from a terminal.".to_string()
+67	crates/jcode-tui/src/tui/app/auth.rs	2432	You can now use /model to switch to OpenRouter models. If the model list looks stale, run /refresh-model-list.	"You can now use /model to switch to OpenRouter models. If the model list looks stale, run /refresh-model-list.".to_string()
+68	crates/jcode-tui/src/tui/app/auth.rs	2434	API key saved. Run /refresh-model-list to refresh model discovery, then use /model to pick an accessible model.	"API key saved. Run /refresh-model-list to refresh model discovery, then use /model to pick an accessible model.".to_string()
+69	crates/jcode-tui/src/tui/app/auth.rs	2440	{} API key saved	format!("{} API key saved", provider)
+70	crates/jcode-tui/src/tui/app/auth.rs	2442	{} local endpoint saved	format!("{} local endpoint saved", provider)
+71	crates/jcode-tui/src/tui/app/auth.rs	2444	{} local endpoint and optional API key saved	format!("{} local endpoint and optional API key saved", provider)
+72	crates/jcode-tui/src/tui/app/auth.rs	2447	{} API key saved	format!("{} API key saved", provider)
+73	crates/jcode-tui/src/tui/app/auth.rs	2458	config directory resolved while saving API key	.expect("config directory resolved while saving API key")
+74	crates/jcode-tui/src/tui/app/auth.rs	2487	Failed to save {} key: {}	"Failed to save {} key: {}",
+75	crates/jcode-tui/src/tui/app/auth.rs	2512	OpenAI-compatible API base must be https://... or http://localhost.	"OpenAI-compatible API base must be https://... or http://localhost."
+76	crates/jcode-tui/src/tui/app/auth.rs	2526	Failed to save OpenAI-compatible API base: {}	"Failed to save OpenAI-compatible API base: {}",
+77	crates/jcode-tui/src/tui/app/auth.rs	2540	Invalid Azure OpenAI endpoint. Use https://<resource>.openai.azure.com or the full /openai/v1 URL.	"Invalid Azure OpenAI endpoint. Use https://<resource>.openai.azure.com or the full /openai/v1 URL."
+78	crates/jcode-tui/src/tui/app/auth.rs	2547	Azure endpoint accepted. Now enter the Azure deployment/model name, for example gpt-4.1-nano.	"Azure endpoint accepted. Now enter the Azure deployment/model name, for example gpt-4.1-nano."
+79	crates/jcode-tui/src/tui/app/auth.rs	2550	Login: Azure model...	self.set_status_notice("Login: Azure model...");
+80	crates/jcode-tui/src/tui/app/auth.rs	2557	Azure deployment/model name cannot be empty.	"Azure deployment/model name cannot be empty.".to_string(),
+81	crates/jcode-tui/src/tui/app/auth.rs	2569	Login: Azure auth method...	self.set_status_notice("Login: Azure auth method...");
+82	crates/jcode-tui/src/tui/app/auth.rs	2585	api-key	|| other.eq_ignore_ascii_case("api-key") =>
+83	crates/jcode-tui/src/tui/app/auth.rs	2591	Invalid auth choice. Enter 1 for Entra ID or 2 for API key.	"Invalid auth choice. Enter 1 for Entra ID or 2 for API key."
+84	crates/jcode-tui/src/tui/app/auth.rs	2604	Failed to save Azure OpenAI configuration: {}	"Failed to save Azure OpenAI configuration: {}",
+85	crates/jcode-tui/src/tui/app/auth.rs	2613	Paste your Azure OpenAI API key, or type /cancel to abort.	"Paste your Azure OpenAI API key, or type /cancel to abort.".to_string(),
+86	crates/jcode-tui/src/tui/app/auth.rs	2615	Login: Azure API key...	self.set_status_notice("Login: Azure API key...");
+87	crates/jcode-tui/src/tui/app/auth.rs	2623	Azure OpenAI API key cannot be empty.	"Azure OpenAI API key cannot be empty.".to_string(),
+88	crates/jcode-tui/src/tui/app/auth.rs	2632	Failed to save Azure OpenAI configuration: {}	"Failed to save Azure OpenAI configuration: {}",
+89	crates/jcode-tui/src/tui/app/auth.rs	2643	API key cannot be empty.	"API key cannot be empty.".to_string(),
+90	crates/jcode-tui/src/tui/app/auth.rs	2660	config directory resolved while saving Cursor API key	.expect("config directory resolved while saving Cursor API key")
+91	crates/jcode-tui/src/tui/app/auth.rs	2661	cursor.env	.join("cursor.env")
+92	crates/jcode-tui/src/tui/app/auth.rs	2676	Failed to save Cursor API key: {}	"Failed to save Cursor API key: {}",
+93	crates/jcode-tui/src/tui/app/auth.rs	2693	Grok Build login is waiting for browser authorization. Complete the xAI login in your browser, or type /cancel to dismiss.	"Grok Build login is waiting for browser authorization. Complete the xAI login in your browser, or type /cancel to dismiss."
+94	crates/jcode-tui/src/tui/app/auth.rs	2711	Login: importing approved sources...	self.set_status_notice("Login: importing approved sources...");
+95	crates/jcode-tui/src/tui/app/auth.rs	2728	auto-import	provider: "auto-import".to_string(),
+96	crates/jcode-tui/src/tui/app/auth.rs	2735	auto-import	provider: "auto-import".to_string(),
+97	crates/jcode-tui/src/tui/app/auth.rs	2737	Auto import failed: {}	message: format!("Auto import failed: {}", err),
+98	crates/jcode-tui/src/tui/app/auth.rs	2785	Auth: refreshing model routes...	Some("Auth: refreshing model routes..."),
+99	crates/jcode-tui/src/tui/app/auth.rs	2881	Login ready. Switched to the strongest available default model: {model}.	"Login ready. Switched to the strongest available default model: {model}."
+100	crates/jcode-tui/src/tui/app/auth.rs	2969	azure-openai	|| provider.eq_ignore_ascii_case("azure-openai")
+101	crates/jcode-tui/src/tui/app/auth.rs	2970	azure openai	|| provider.eq_ignore_ascii_case("azure openai")
+102	crates/jcode-tui/src/tui/app/auth.rs	2980	azure-openai	"azure-openai",
+103	crates/jcode-tui/src/tui/app/auth.rs	2983	azure-openai	self.trigger_provider_auth_changed(Some("azure-openai"), false, true);
+104	crates/jcode-tui/src/tui/app/auth.rs	3005	openrouter:{}	format!("openrouter:{}", model)
+105	crates/jcode-tui/src/tui/app/auth.rs	3014	azure-openai	"azure-openai",
+106	crates/jcode-tui/src/tui/app/auth.rs	3017	Login: Azure OpenAI ready ({})	self.set_status_notice(format!("Login: Azure OpenAI ready ({})", active_model));
+107	crates/jcode-tui/src/tui/app/auth.rs	3023	azure-openai	"azure-openai",
+108	crates/jcode-tui/src/tui/app/auth.rs	3051	{}: fetching models...	Some(format!("{}: fetching models...", provider_label)),
+109	crates/jcode-tui/src/tui/app/auth.rs	3054	{}: fetching models...	self.set_status_notice(format!("{}: fetching models...", provider_label));
+110	crates/jcode-tui/src/tui/app/auth.rs	3072	openai-compatible:{}	let expected_api_method = format!("openai-compatible:{}", provider_id);
+111	crates/jcode-tui/src/tui/app/auth.rs	3252	Login: enter {} at GitHub	self.set_status_notice(format!("Login: enter {} at GitHub", code));
+112	crates/jcode-tui/src/tui/app/auth.rs	3289	Login: {} ready	self.set_status_notice(format!("Login: {} ready", login.provider));
+113	crates/jcode-tui/src/tui/app/auth.rs	3334	Login: {} failed	self.set_status_notice(format!("Login: {} failed", login.provider));
+114	crates/jcode-tui/src/tui/app/auth.rs	3359	Failed to save tokens: {}	.map_err(|e| format!("Failed to save tokens: {}", e))?;
+115	crates/jcode-tui/src/tui/app/auth.rs	3367	 (email: {})	Ok(Some(email)) => format!(" (email: {})", mask_email(&email)),
+116	crates/jcode-tui/src/tui/app/auth.rs	3371	Claude login [{}] profile fetch failed: {}	"Claude login [{}] profile fetch failed: {}",
+117	crates/jcode-tui/src/tui/app/auth.rs	3379	Successfully logged in to Claude! (account: {}){}	"Successfully logged in to Claude! (account: {}){}",
+118	crates/jcode-tui/src/tui/app/auth.rs	3386	Invalid API key variable name: {}	anyhow::bail!("Invalid API key variable name: {}", key_name);
+119	crates/jcode-tui/src/tui/app/auth.rs	3437	Failed to activate Azure OpenAI runtime: {}	"Failed to activate Azure OpenAI runtime: {}",
+120	crates/jcode-tui/src/tui/app/auth.rs	3447	Using Microsoft Entra ID through Azure DefaultAzureCredential. If you use Azure CLI auth, run az login and make sure the identity has the Cognitive Services OpenAI User role.	"Using Microsoft Entra ID through Azure DefaultAzureCredential. If you use Azure CLI auth, run az login and make sure the identity has the Cognitive Services OpenAI User role."

@@ -1,0 +1,120 @@
+1	crates/jcode-tui/src/tui/ui_header.rs	334	oauth+key	// instead of an ambiguous "oauth+key" that looks like both are being used
+2	crates/jcode-tui/src/tui/ui_header.rs	348	oauth*+key	ActiveCredential::OAuth => "oauth*+key",
+3	crates/jcode-tui/src/tui/ui_header.rs	349	oauth+key*	ActiveCredential::ApiKey => "oauth+key*",
+4	crates/jcode-tui/src/tui/ui_header.rs	444	both configured	// "both configured" inventory now lives in the auth status line
+5	crates/jcode-tui/src/tui/ui_header.rs	446	API key	// once -- that ambiguity is how "Claude OAuth" and "API key"
+6	crates/jcode-tui/src/tui/ui_header.rs	446	Claude OAuth	// once -- that ambiguity is how "Claude OAuth" and "API key"
+7	crates/jcode-tui/src/tui/ui_header.rs	450	api-key	ActiveCredential::ApiKey => "api-key",
+8	crates/jcode-tui/src/tui/ui_header.rs	474	api-key	"openrouter" | "openai-compatible" => "api-key",
+9	crates/jcode-tui/src/tui/ui_header.rs	474	openai-compatible	"openrouter" | "openai-compatible" => "api-key",
+10	crates/jcode-tui/src/tui/ui_header.rs	483	api-key	"api-key"
+11	crates/jcode-tui/src/tui/ui_header.rs	579	jcode {}	let full = format!("jcode {}", semver());
+12	crates/jcode-tui/src/tui/ui_header.rs	580	jcode {}	let core = format!("jcode {}", semver_core());
+13	crates/jcode-tui/src/tui/ui_header.rs	581	jcode {}	let minor = format!("jcode {}", semver_minor());
+14	crates/jcode-tui/src/tui/ui_header.rs	643	srv↑	status_items.push("srv↑");
+15	crates/jcode-tui/src/tui/ui_header.rs	646	cli↑	status_items.push("cli↑");
+16	crates/jcode-tui/src/tui/ui_header.rs	691	 self-dev	" self-dev".to_string(),
+17	crates/jcode-tui/src/tui/ui_header.rs	707	server: {}	format!("server: {}", capitalize(server_name))
+18	crates/jcode-tui/src/tui/ui_header.rs	709	server: {} {}	format!("server: {} {}", capitalize(server_name), server_icon)
+19	crates/jcode-tui/src/tui/ui_header.rs	726	client: {} {} {}	Some(conn) => format!("client: {} {} {}", capitalize(&session_name), icon, conn),
+20	crates/jcode-tui/src/tui/ui_header.rs	727	client: {} {}	None => format!("client: {} {}", capitalize(&session_name), icon),
+21	crates/jcode-tui/src/tui/ui_header.rs	743	JCode	"JCode".to_string(),
+22	crates/jcode-tui/src/tui/ui_header.rs	776	/model to switch · 	let hint = "/model to switch · ";
+23	crates/jcode-tui/src/tui/ui_header.rs	799	 via {}	let suffix = format!(" via {}", upstream);
+24	crates/jcode-tui/src/tui/ui_header.rs	814	{} · release	format!("{} · release", semver())
+25	crates/jcode-tui/src/tui/ui_header.rs	816	{} · release {}	format!("{} · release {}", semver(), tag)
+26	crates/jcode-tui/src/tui/ui_header.rs	853	/login to authenticate on {host}	(format!("/login to authenticate on {host}"), Vec::new())
+27	crates/jcode-tui/src/tui/ui_header.rs	856	/login to add provider	"/login to add provider".to_string(),
+28	crates/jcode-tui/src/tui/ui_header.rs	879	{} ({} tools)	format!("{} ({} tools)", name, count)
+29	crates/jcode-tui/src/tui/ui_header.rs	885	mcp: {}	let mut mcp_text = format!("mcp: {}", shown.join(", "));
+30	crates/jcode-tui/src/tui/ui_header.rs	887	 +{} more	mcp_text.push_str(&format!(" +{} more", mcps.len() - MAX_MCPS));
+31	crates/jcode-tui/src/tui/ui_header.rs	890	mcp: {} servers	mcp_text = format!("mcp: {} servers", mcps.len());
+32	crates/jcode-tui/src/tui/ui_header.rs	905	skills: {}	let mut skills_text = format!("skills: {}", shown.join(" "));
+33	crates/jcode-tui/src/tui/ui_header.rs	907	 +{} more	skills_text.push_str(&format!(" +{} more", skills.len() - MAX_SKILLS));
+34	crates/jcode-tui/src/tui/ui_header.rs	910	skills: {} loaded	skills_text = format!("skills: {} loaded", skills.len());
+35	crates/jcode-tui/src/tui/ui_header.rs	936	Updates	/// Build the "Updates" rounded box (unseen release notes) so it can be
+36	crates/jcode-tui/src/tui/ui_header.rs	939	…N more	/// collapsed into a "…N more" line. Returns an empty vec when there are no
+37	crates/jcode-tui/src/tui/ui_header.rs	970	  …{} more · /changelog to see all	"  …{} more · /changelog to see all",
+38	crates/jcode-tui/src/tui/ui_header.rs	981	Updates	"Updates",
+39	crates/jcode-tui/src/tui/ui_header.rs	1030	Mock provider should not be used for streaming completions in ui header tests	"Mock provider should not be used for streaming completions in ui header tests"
+40	crates/jcode-tui/src/tui/ui_header.rs	1051	jcode-test-home-{}	let path = std::env::temp_dir().join(format!("jcode-test-home-{}", std::process::id()));
+41	crates/jcode-tui/src/tui/ui_header.rs	1083	persistent header should be left aligned: {non_empty:?}	"persistent header should be left aligned: {non_empty:?}"
+42	crates/jcode-tui/src/tui/ui_header.rs	1103	header detail lines should be left aligned: {non_empty:?}	"header detail lines should be left aligned: {non_empty:?}"
+43	crates/jcode-tui/src/tui/ui_header.rs	1229	local mode should not render a server line: {lines:?}	"local mode should not render a server line: {lines:?}"
+44	crates/jcode-tui/src/tui/ui_header.rs	1235	local mode client line should not carry a version label: {lines:?}	"local mode client line should not carry a version label: {lines:?}"
+45	crates/jcode-tui/src/tui/ui_header.rs	1265	client line should keep the connection hint icon: {client_line}	"client line should keep the connection hint icon: {client_line}"
+46	crates/jcode-tui/src/tui/ui_header.rs	1292	client line should not carry a connection hint when unknown: {client_line}	"client line should not carry a connection hint when unknown: {client_line}"
+47	crates/jcode-tui/src/tui/ui_header.rs	1298	Claude Fable 5	assert_eq!(prettify_model_id("claude-fable-5"), "Claude Fable 5");
+48	crates/jcode-tui/src/tui/ui_header.rs	1298	claude-fable-5	assert_eq!(prettify_model_id("claude-fable-5"), "Claude Fable 5");
+49	crates/jcode-tui/src/tui/ui_header.rs	1302	gemini-3-pro-preview	prettify_model_id("gemini-3-pro-preview"),
+50	crates/jcode-tui/src/tui/ui_header.rs	1303	Gemini 3 Pro Preview	"Gemini 3 Pro Preview"
+51	crates/jcode-tui/src/tui/ui_header.rs	1319	claude-fable-5-20260101	prettify_model_id("claude-fable-5-20260101"),
+52	crates/jcode-tui/src/tui/ui_header.rs	1320	Claude Fable 5	"Claude Fable 5"
+53	crates/jcode-tui/src/tui/ui_header.rs	1339	Claude 4.5 Opus	("claude-opus-4-5-20251101", "Claude 4.5 Opus"),
+54	crates/jcode-tui/src/tui/ui_header.rs	1339	claude-opus-4-5-20251101	("claude-opus-4-5-20251101", "Claude 4.5 Opus"),
+55	crates/jcode-tui/src/tui/ui_header.rs	1340	Claude 4.6 Opus	("claude-opus-4.6", "Claude 4.6 Opus"),
+56	crates/jcode-tui/src/tui/ui_header.rs	1340	claude-opus-4.6	("claude-opus-4.6", "Claude 4.6 Opus"),
+57	crates/jcode-tui/src/tui/ui_header.rs	1341	Claude 4.8 Opus	("claude-opus-4-8", "Claude 4.8 Opus"),
+58	crates/jcode-tui/src/tui/ui_header.rs	1341	claude-opus-4-8	("claude-opus-4-8", "Claude 4.8 Opus"),
+59	crates/jcode-tui/src/tui/ui_header.rs	1342	Claude 4.5 Sonnet	("claude-sonnet-4-5", "Claude 4.5 Sonnet"),
+60	crates/jcode-tui/src/tui/ui_header.rs	1342	claude-sonnet-4-5	("claude-sonnet-4-5", "Claude 4.5 Sonnet"),
+61	crates/jcode-tui/src/tui/ui_header.rs	1343	Claude 4 Sonnet	("claude-sonnet-4", "Claude 4 Sonnet"),
+62	crates/jcode-tui/src/tui/ui_header.rs	1343	claude-sonnet-4	("claude-sonnet-4", "Claude 4 Sonnet"),
+63	crates/jcode-tui/src/tui/ui_header.rs	1344	Claude 3.5 Sonnet	("claude-3-5-sonnet-latest", "Claude 3.5 Sonnet"),
+64	crates/jcode-tui/src/tui/ui_header.rs	1344	claude-3-5-sonnet-latest	("claude-3-5-sonnet-latest", "Claude 3.5 Sonnet"),
+65	crates/jcode-tui/src/tui/ui_header.rs	1345	Claude 4.5 Haiku	("claude-haiku-4-5", "Claude 4.5 Haiku"),
+66	crates/jcode-tui/src/tui/ui_header.rs	1345	claude-haiku-4-5	("claude-haiku-4-5", "Claude 4.5 Haiku"),
+67	crates/jcode-tui/src/tui/ui_header.rs	1346	Claude Fable 5	("claude-fable-5", "Claude Fable 5"),
+68	crates/jcode-tui/src/tui/ui_header.rs	1346	claude-fable-5	("claude-fable-5", "Claude Fable 5"),
+69	crates/jcode-tui/src/tui/ui_header.rs	1359	Gemini 3 Pro Preview	("gemini-3-pro-preview", "Gemini 3 Pro Preview"),
+70	crates/jcode-tui/src/tui/ui_header.rs	1359	gemini-3-pro-preview	("gemini-3-pro-preview", "Gemini 3 Pro Preview"),
+71	crates/jcode-tui/src/tui/ui_header.rs	1360	Gemini 2.5 Flash	("gemini-2.5-flash", "Gemini 2.5 Flash"),
+72	crates/jcode-tui/src/tui/ui_header.rs	1360	gemini-2.5-flash	("gemini-2.5-flash", "Gemini 2.5 Flash"),
+73	crates/jcode-tui/src/tui/ui_header.rs	1386	OpenRouter	header_model_display_name("deepseek/deepseek-chat", "OpenRouter"),
+74	crates/jcode-tui/src/tui/ui_header.rs	1387	OpenRouter: deepseek/deepseek-chat	"OpenRouter: deepseek/deepseek-chat"
+75	crates/jcode-tui/src/tui/ui_header.rs	1438	both configured	// use (the auth inventory line carries the "both configured" detail).
+76	crates/jcode-tui/src/tui/ui_header.rs	1459	no credentials	// and falls back to the full "no credentials" list (issue #654).
+77	crates/jcode-tui/src/tui/ui_header.rs	1473	api-key	"api-key"
+78	crates/jcode-tui/src/tui/ui_header.rs	1481	anthropic(oauth+key*)	rendered.contains("anthropic(oauth+key*)"),
+79	crates/jcode-tui/src/tui/ui_header.rs	1505	claude-api	crate::env::set_var("JCODE_RUNTIME_PROVIDER", "claude-api");
+80	crates/jcode-tui/src/tui/ui_header.rs	1508	api-key	"api-key"
+81	crates/jcode-tui/src/tui/ui_header.rs	1530	claude-api	crate::env::set_var("JCODE_RUNTIME_PROVIDER", "claude-api");
+82	crates/jcode-tui/src/tui/ui_header.rs	1533	api-key	"api-key"
+83	crates/jcode-tui/src/tui/ui_header.rs	1548	api-key	"api-key"
+84	crates/jcode-tui/src/tui/ui_header.rs	1608	(unknown)	// label renders there without a bogus "(unknown)" provider tag.
+85	crates/jcode-tui/src/tui/ui_header.rs	1628	(unknown)	assert!(!rendered.contains("(unknown)"));
+86	crates/jcode-tui/src/tui/ui_header.rs	1629	(remote)	assert!(!rendered.contains("(remote)"));
+87	crates/jcode-tui/src/tui/ui_header.rs	1648	brief connecting placeholder should not render the secondary detail line	"brief connecting placeholder should not render the secondary detail line"
+88	crates/jcode-tui/src/tui/ui_header.rs	1650	(remote)	assert!(!rendered.contains("(remote)"));
+89	crates/jcode-tui/src/tui/ui_header.rs	1676	anthropic(oauth)	rendered.contains("anthropic(oauth)"),
+90	crates/jcode-tui/src/tui/ui_header.rs	1679	openai(key)	assert!(rendered.contains("openai(key)"), "rendered: {rendered}");
+91	crates/jcode-tui/src/tui/ui_header.rs	1692	all providers should be listed: {lines:?}	"all providers should be listed: {lines:?}"
+92	crates/jcode-tui/src/tui/ui_header.rs	1726	anthropic(oauth*+key)	rendered.contains("anthropic(oauth*+key)"),
+93	crates/jcode-tui/src/tui/ui_header.rs	1731	claude-api	let rendered = rendered_with(Some("claude-api"));
+94	crates/jcode-tui/src/tui/ui_header.rs	1733	anthropic(oauth+key*)	rendered.contains("anthropic(oauth+key*)"),
+95	crates/jcode-tui/src/tui/ui_header.rs	1746	OpenRouter	// active provider's display name, not the fixed "OpenRouter" aggregator.
+96	crates/jcode-tui/src/tui/ui_header.rs	1751	OpenRouter	// The public aggregator still reads "OpenRouter".
+97	crates/jcode-tui/src/tui/ui_header.rs	1753	OpenRouter	format_model_name("anthropic/claude-sonnet-4", "OpenRouter"),
+98	crates/jcode-tui/src/tui/ui_header.rs	1753	anthropic/claude-sonnet-4	format_model_name("anthropic/claude-sonnet-4", "OpenRouter"),
+99	crates/jcode-tui/src/tui/ui_header.rs	1754	OpenRouter: anthropic/claude-sonnet-4	"OpenRouter: anthropic/claude-sonnet-4"
+100	crates/jcode-tui/src/tui/ui_header.rs	1756	OpenRouter	// Missing provider name falls back to "OpenRouter" rather than an empty label.
+101	crates/jcode-tui/src/tui/ui_header.rs	1759	OpenRouter: deepseek/deepseek-chat	"OpenRouter: deepseek/deepseek-chat"
+102	crates/jcode-tui/src/tui/ui_header.rs	1763	OpenRouter	format_model_name("claude-opus-4-6", "OpenRouter"),
+103	crates/jcode-tui/src/tui/ui_header.rs	1763	claude-opus-4-6	format_model_name("claude-opus-4-6", "OpenRouter"),
+104	crates/jcode-tui/src/tui/ui_header.rs	1764	Claude Opus	"Claude Opus"
+105	crates/jcode-tui/src/tui/ui_input.rs	52	  shell mode · Enter runs locally	ComposerMode::ShellLocal => Some("  shell mode · Enter runs locally"),
+106	crates/jcode-tui/src/tui/ui_input.rs	53	  shell mode · Enter runs on server	ComposerMode::ShellRemote => Some("  shell mode · Enter runs on server"),
+107	crates/jcode-tui/src/tui/ui_input.rs	148	(history search) 	Span::styled("(history search) ", dim),
+108	crates/jcode-tui/src/tui/ui_input.rs	152	  ↑↓ select · ↵ insert · Esc cancel	"  ↑↓ select · ↵ insert · Esc cancel",
+109	crates/jcode-tui/src/tui/ui_input.rs	159	  type to search history	lines.push(Line::from(Span::styled("  type to search history", dim)));
+110	crates/jcode-tui/src/tui/ui_input.rs	161	  no matches	lines.push(Line::from(Span::styled("  no matches", dim)));
+111	crates/jcode-tui/src/tui/ui_input.rs	192	  +{} more	"  +{} more",
+112	crates/jcode-tui/src/tui/ui_input.rs	311	  +{} more	format!("  +{} more", more_count),
+113	crates/jcode-tui/src/tui/ui_input.rs	570	{:.1}M	format!("{:.1}M", tokens as f64 / 1_000_000.0)
+114	crates/jcode-tui/src/tui/ui_input.rs	572	{:.0}k	format!("{:.0}k", tokens as f64 / 1_000.0)
+115	crates/jcode-tui/src/tui/ui_input.rs	609	 and {compaction_count} compact{}	" and {compaction_count} compact{}",
+116	crates/jcode-tui/src/tui/ui_input.rs	617	Session history: {tokens} tokens processed{compactions}; /clear starts fresh context	"Session history: {tokens} tokens processed{compactions}; /clear starts fresh context"
+117	crates/jcode-tui/src/tui/ui_input.rs	623	refreshing auth	ConnectionPhase::Authenticating => "refreshing auth".to_string(),
+118	crates/jcode-tui/src/tui/ui_input.rs	625	sending context	ConnectionPhase::SendingRequest => "sending context".to_string(),
+119	crates/jcode-tui/src/tui/ui_input.rs	626	waiting for response	ConnectionPhase::WaitingForResponse => "waiting for response".to_string(),
+120	crates/jcode-tui/src/tui/ui_input.rs	628	retrying {}/{}	ConnectionPhase::Retrying { attempt, max } => format!("retrying {}/{}", attempt, max),

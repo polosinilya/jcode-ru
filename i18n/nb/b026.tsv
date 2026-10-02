@@ -1,0 +1,120 @@
+1	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	620	/autojudge on	("/autojudge on".into(), "Enable end-of-turn autojudge"),
+2	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	620	Enable end-of-turn autojudge	("/autojudge on".into(), "Enable end-of-turn autojudge"),
+3	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	621	/autojudge off	("/autojudge off".into(), "Disable end-of-turn autojudge"),
+4	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	621	Disable end-of-turn autojudge	("/autojudge off".into(), "Disable end-of-turn autojudge"),
+5	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	622	/autojudge now	("/autojudge now".into(), "Launch a judge immediately"),
+6	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	622	Launch a judge immediately	("/autojudge now".into(), "Launch a judge immediately"),
+7	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	626	/review 	if prefix.starts_with("/review ") {
+8	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	629	/review	vec![("/review".into(), "Launch a one-shot review immediately")],
+9	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	629	Launch a one-shot review immediately	vec![("/review".into(), "Launch a one-shot review immediately")],
+10	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	633	/review	if prefix_trimmed == "/review" {
+11	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	634	/review	return vec![("/review".into(), "Launch a one-shot review immediately")];
+12	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	634	Launch a one-shot review immediately	return vec![("/review".into(), "Launch a one-shot review immediately")];
+13	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	637	/judge 	if prefix.starts_with("/judge ") {
+14	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	640	/judge	vec![("/judge".into(), "Launch a one-shot judge immediately")],
+15	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	640	Launch a one-shot judge immediately	vec![("/judge".into(), "Launch a one-shot judge immediately")],
+16	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	644	/judge	if prefix_trimmed == "/judge" {
+17	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	645	/judge	return vec![("/judge".into(), "Launch a one-shot judge immediately")];
+18	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	645	Launch a one-shot judge immediately	return vec![("/judge".into(), "Launch a one-shot judge immediately")];
+19	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	648	/subagent-model	if prefix_trimmed == "/subagent-model" {
+20	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	651	/subagent-model show	"/subagent-model show".into(),
+21	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	652	Show the current subagent model policy	"Show the current subagent model policy",
+22	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	655	/subagent-model inherit	"/subagent-model inherit".into(),
+23	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	656	Use the current active model	"Use the current active model",
+24	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	661	/subagent 	if prefix.starts_with("/subagent ") {
+25	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	666	/subagent --type general 	"/subagent --type general ".into(),
+26	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	667	Launch a general-purpose subagent	"Launch a general-purpose subagent",
+27	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	670	/subagent --model 	"/subagent --model ".into(),
+28	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	671	Launch a subagent with an explicit model	"Launch a subagent with an explicit model",
+29	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	674	/subagent --continue 	"/subagent --continue ".into(),
+30	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	675	Resume an existing subagent session	"Resume an existing subagent session",
+31	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	681	/subagent	if prefix_trimmed == "/subagent" {
+32	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	682	/subagent 	return vec![("/subagent ".into(), "Launch a subagent with a prompt")];
+33	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	682	Launch a subagent with a prompt	return vec![("/subagent ".into(), "Launch a subagent with a prompt")];
+34	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	686	/model	if prefix_trimmed == "/model" || prefix_trimmed == "/models" {
+35	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	686	/models	if prefix_trimmed == "/model" || prefix_trimmed == "/models" {
+36	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	687	/model	return vec![("/model".into(), "Open model picker or type `/model <name>`")];
+37	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	687	Open model picker or type `/model <name>`	return vec![("/model".into(), "Open model picker or type `/model <name>`")];
+38	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	690	/agents	if prefix_trimmed == "/agents" {
+39	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	691	/agents	return vec![("/agents".into(), "Open agent model config picker")];
+40	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	691	Open agent model config picker	return vec![("/agents".into(), "Open agent model config picker")];
+41	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	694	/help 	if prefix.starts_with("/help ") || prefix.starts_with("/? ") {
+42	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	698	/help	"/help"
+43	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	708	/color 	if prefix.starts_with("/colors ") || prefix.starts_with("/color ") {
+44	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	708	/colors 	if prefix.starts_with("/colors ") || prefix.starts_with("/color ") {
+45	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	709	/color 	let base = if prefix.starts_with("/color ") {
+46	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	710	/color	"/color"
+47	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	712	/colors	"/colors"
+48	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	716	{base} harmony	format!("{base} harmony"),
+49	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	717	Score the palette and list fixes	"Score the palette and list fixes",
+50	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	720	{base} generate #8ab4f8	format!("{base} generate #8ab4f8"),
+51	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	721	Build a harmonious palette from one seed color	"Build a harmonious palette from one seed color",
+52	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	723	Reset every color to its default	(format!("{base} reset"), "Reset every color to its default"),
+53	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	723	{base} reset	(format!("{base} reset"), "Reset every color to its default"),
+54	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	724	Print the palette as config TOML	(format!("{base} export"), "Print the palette as config TOML"),
+55	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	724	{base} export	(format!("{base} export"), "Print the palette as config TOML"),
+56	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	729	Set this color role	.map(|role| (format!("{base} {} #", role.key()), "Set this color role")),
+57	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	729	{base} {} #	.map(|role| (format!("{base} {} #", role.key()), "Set this color role")),
+58	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	734	/git 	if prefix.starts_with("/git ") {
+59	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	737	/git status	vec![("/git status".into(), "Show branch and working tree status")],
+60	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	737	Show branch and working tree status	vec![("/git status".into(), "Show branch and working tree status")],
+61	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	741	/git	if prefix_trimmed == "/git" {
+62	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	742	/git status	return vec![("/git status".into(), "Show branch and working tree status")];
+63	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	742	Show branch and working tree status	return vec![("/git status".into(), "Show branch and working tree status")];
+64	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	745	/transcript 	if prefix.starts_with("/transcript ") {
+65	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	749	/transcript path	"/transcript path".into(),
+66	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	750	Print transcript path without opening	"Print transcript path without opening",
+67	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	755	/transcript	if prefix_trimmed == "/transcript" {
+68	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	757	/transcript path	"/transcript path".into(),
+69	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	758	Print transcript path without opening	"Print transcript path without opening",
+70	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	762	/effort 	if prefix.starts_with("/effort ") {
+71	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	763	high	let efforts = ["none", "minimal", "low", "medium", "high", "xhigh", "max"];
+72	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	763	low	let efforts = ["none", "minimal", "low", "medium", "high", "xhigh", "max"];
+73	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	763	max	let efforts = ["none", "minimal", "low", "medium", "high", "xhigh", "max"];
+74	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	763	medium	let efforts = ["none", "minimal", "low", "medium", "high", "xhigh", "max"];
+75	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	763	minimal	let efforts = ["none", "minimal", "low", "medium", "high", "xhigh", "max"];
+76	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	763	none	let efforts = ["none", "minimal", "low", "medium", "high", "xhigh", "max"];
+77	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	763	xhigh	let efforts = ["none", "minimal", "low", "medium", "high", "xhigh", "max"];
+78	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	768	/effort {}	.map(|e| (format!("/effort {}", e), effort_display_label(e)))
+79	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	773	/fast 	if prefix.starts_with("/fast ") {
+80	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	775	on	"on",
+81	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	776	off	"off",
+82	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	777	status	"status",
+83	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	778	default on	"default on",
+84	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	779	default off	"default off",
+85	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	780	default status	"default status",
+86	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	784	/fast {}	modes.iter().map(|m| (format!("/fast {}", m), *m)).collect(),
+87	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	788	/transport 	if prefix.starts_with("/transport ") {
+88	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	789	auto	let transports = ["auto", "https", "websocket"];
+89	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	789	https	let transports = ["auto", "https", "websocket"];
+90	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	789	websocket	let transports = ["auto", "https", "websocket"];
+91	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	794	/transport {}	.map(|t| (format!("/transport {}", t), *t))
+92	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	799	/compact 	if prefix.starts_with("/compact ") {
+93	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	801	/compact mode	("/compact mode".into(), "Show/change compaction mode"),
+94	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	801	Show/change compaction mode	("/compact mode".into(), "Show/change compaction mode"),
+95	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	803	/compact mode status	"/compact mode status".into(),
+96	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	804	Show the current compaction mode	"Show the current compaction mode",
+97	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	806	/compact mode reactive	("/compact mode reactive".into(), "Use reactive compaction"),
+98	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	806	Use reactive compaction	("/compact mode reactive".into(), "Use reactive compaction"),
+99	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	807	/compact mode proactive	("/compact mode proactive".into(), "Use proactive compaction"),
+100	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	807	Use proactive compaction	("/compact mode proactive".into(), "Use proactive compaction"),
+101	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	808	/compact mode semantic	("/compact mode semantic".into(), "Use semantic compaction"),
+102	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	808	Use semantic compaction	("/compact mode semantic".into(), "Use semantic compaction"),
+103	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	813	/compact mode 	if prefix.starts_with("/compact mode ") {
+104	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	814	proactive	let modes = ["reactive", "proactive", "semantic"];
+105	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	814	reactive	let modes = ["reactive", "proactive", "semantic"];
+106	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	814	semantic	let modes = ["reactive", "proactive", "semantic"];
+107	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	816	/compact mode status	"/compact mode status".into(),
+108	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	817	Show the current compaction mode	"Show the current compaction mode",
+109	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	822	/compact mode {}	.map(|mode| (format!("/compact mode {}", mode), *mode)),
+110	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	827	/cache 	if prefix.starts_with("/cache ") {
+111	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	829	/cache stats	("/cache stats".into(), "Show KV cache stats"),
+112	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	829	Show KV cache stats	("/cache stats".into(), "Show KV cache stats"),
+113	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	830	/cache status	("/cache status".into(), "Alias for /cache stats"),
+114	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	830	Alias for /cache stats	("/cache status".into(), "Alias for /cache stats"),
+115	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	831	/cache 1h	("/cache 1h".into(), "Use 1 hour cache TTL"),
+116	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	831	Use 1 hour cache TTL	("/cache 1h".into(), "Use 1 hour cache TTL"),
+117	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	832	/cache 5m	("/cache 5m".into(), "Use 5 minute cache TTL"),
+118	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	832	Use 5 minute cache TTL	("/cache 5m".into(), "Use 5 minute cache TTL"),
+119	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	837	/auth 	if prefix.starts_with("/login ") || prefix.starts_with("/auth ") {
+120	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	837	/login 	if prefix.starts_with("/login ") || prefix.starts_with("/auth ") {

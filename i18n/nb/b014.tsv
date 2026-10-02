@@ -1,0 +1,120 @@
+1	crates/jcode-tui/src/tui/app/dictation.rs	82	Dictation already running	self.set_status_notice("Dictation already running");
+2	crates/jcode-tui/src/tui/app/dictation.rs	99	Dictation failed	self.set_status_notice("Dictation failed");
+3	crates/jcode-tui/src/tui/app/dictation.rs	110	Dictation failed	self.set_status_notice("Dictation failed");
+4	crates/jcode-tui/src/tui/app/dictation.rs	121	Dictation failed	self.set_status_notice("Dictation failed");
+5	crates/jcode-tui/src/tui/app/dictation.rs	131	Dictation failed	self.set_status_notice("Dictation failed");
+6	crates/jcode-tui/src/tui/app/dictation.rs	142	🎙 Dictation running - press again to stop	self.set_status_notice("🎙 Dictation running - press again to stop");
+7	crates/jcode-tui/src/tui/app/dictation.rs	186	Dictation failed	self.set_status_notice("Dictation failed");
+8	crates/jcode-tui/src/tui/app/helpers.rs	132	remote file opening is unavailable over SSH; open it on the remote host or ask the agent to read it	"remote file opening is unavailable over SSH; open it on the remote host or ask the agent to read it",
+9	crates/jcode-tui/src/tui/app/helpers.rs	138	opening files/URLs is suppressed (NO_BROWSER/JCODE_NO_BROWSER or test harness)	"opening files/URLs is suppressed (NO_BROWSER/JCODE_NO_BROWSER or test harness)",
+10	crates/jcode-tui/src/tui/app/helpers.rs	262	token limit	|| lower.contains("token limit")
+11	crates/jcode-tui/src/tui/app/helpers.rs	263	too many tokens	|| lower.contains("too many tokens")
+12	crates/jcode-tui/src/tui/app/helpers.rs	268	maximum tokens	|| lower.contains("maximum tokens")
+13	crates/jcode-tui/src/tui/app/helpers.rs	339	{:.1}M	format!("{:.1}M", tokens as f64 / 1_000_000.0)
+14	crates/jcode-tui/src/tui/app/helpers.rs	341	{:.0}k	format!("{:.0}k", tokens as f64 / 1_000.0)
+15	crates/jcode-tui/src/tui/app/helpers.rs	481	-selection	&["-selection", "clipboard"],
+16	crates/jcode-tui/src/tui/app/helpers.rs	531	None	"none" => "None",
+17	crates/jcode-tui/src/tui/app/helpers.rs	578	✓ Fast mode {} ({})	format!("✓ Fast mode {} ({})", status, label)
+18	crates/jcode-tui/src/tui/app/helpers.rs	675	🧵 Claude Code {}	"🧵 Claude Code {}",
+19	crates/jcode-tui/src/tui/app/helpers.rs	714	▮ Cursor {}	let title = format!("▮ Cursor {}", jcode_core::util::truncate_str(session_id, 8));
+20	crates/jcode-tui/src/tui/app/helpers.rs	762	jcode · new session	.title("jcode · new session".to_string())
+21	crates/jcode-tui/src/tui/app/helpers.rs	763	new-terminal	.kind("new-terminal")
+22	crates/jcode-tui/src/tui/app/helpers.rs	788	jcode/{} {}	format!("jcode/{} {}", server_info.name, session_label)
+23	crates/jcode-tui/src/tui/app/helpers.rs	790	jcode {}	format!("jcode {}", session_label)
+24	crates/jcode-tui/src/tui/app/helpers.rs	804	No terminal found	/// `/transfer` and crash-restore silently print "No terminal found" on Windows
+25	crates/jcode-tui/src/tui/app/helpers.rs	891	jcode_clipboard.png	let temp_path = std::env::temp_dir().join("jcode_clipboard.png");
+26	crates/jcode-tui/src/tui/app/inline_interactive.rs	30	remote_model_catalog_cache.json	const REMOTE_MODEL_CATALOG_CACHE_FILE: &str = "remote_model_catalog_cache.json";
+27	crates/jcode-tui/src/tui/app/inline_interactive.rs	106	claude-oauth	/// "anthropic"), a route api method ("claude-oauth", "openrouter",
+28	crates/jcode-tui/src/tui/app/inline_interactive.rs	107	openai-compatible:myprofile	/// "openai-compatible:myprofile"), or a bare openai-compatible profile id
+29	crates/jcode-tui/src/tui/app/inline_interactive.rs	138	openai-compatible:myprofile	// "openai-compatible:myprofile" normalizes to "openaicompatible:myprofile";
+30	crates/jcode-tui/src/tui/app/inline_interactive.rs	138	openaicompatible:myprofile	// "openai-compatible:myprofile" normalizes to "openaicompatible:myprofile";
+31	crates/jcode-tui/src/tui/app/inline_interactive.rs	441	claude-opus-4-8	const RECOMMENDED_MODELS: &[&str] = &["gpt-5.5", "claude-opus-4-8"];
+32	crates/jcode-tui/src/tui/app/inline_interactive.rs	515	claude-api	Some("claude-oauth") | Some("claude-api") => anthropic_effort,
+33	crates/jcode-tui/src/tui/app/inline_interactive.rs	515	claude-oauth	Some("claude-oauth") | Some("claude-api") => anthropic_effort,
+34	crates/jcode-tui/src/tui/app/inline_interactive.rs	516	openai-api	Some("openai-oauth") | Some("openai-api") => openai_effort,
+35	crates/jcode-tui/src/tui/app/inline_interactive.rs	516	openai-oauth	Some("openai-oauth") | Some("openai-api") => openai_effort,
+36	crates/jcode-tui/src/tui/app/inline_interactive.rs	843	claude-api	&& ((auth.anthropic.has_api_key && !methods.contains("claude-api"))
+37	crates/jcode-tui/src/tui/app/inline_interactive.rs	844	claude-oauth	|| (auth.anthropic.has_oauth && !methods.contains("claude-oauth")));
+38	crates/jcode-tui/src/tui/app/inline_interactive.rs	927	Refusing to persist an invalid remote model catalog	crate::logging::warn("Refusing to persist an invalid remote model catalog");
+39	crates/jcode-tui/src/tui/app/inline_interactive.rs	942	Failed to persist remote model catalog cache {}: {}	"Failed to persist remote model catalog cache {}: {}",
+40	crates/jcode-tui/src/tui/app/inline_interactive.rs	962	Ignoring oversized remote model catalog cache {}	"Ignoring oversized remote model catalog cache {}",
+41	crates/jcode-tui/src/tui/app/inline_interactive.rs	1075	[TIMING] model_picker_open: cache_hit=true, remote={}, simplified={}, routes={}, models={}, entries={}, total={}ms	"[TIMING] model_picker_open: cache_hit=true, remote={}, simplified={}, routes={}, models={}, entries={}, total={}ms",
+42	crates/jcode-tui/src/tui/app/inline_interactive.rs	1116	remote-catalog	/// placeholder ("remote-catalog") rows would keep showing them until the
+43	crates/jcode-tui/src/tui/app/inline_interactive.rs	1245	Updating model routes…	self.set_status_notice("Updating model routes…");
+44	crates/jcode-tui/src/tui/app/inline_interactive.rs	1271	remote-catalog	// rather than a generic "remote-catalog" placeholder. The full
+45	crates/jcode-tui/src/tui/app/inline_interactive.rs	1294	Updating model routes…	self.set_status_notice("Updating model routes…");
+46	crates/jcode-tui/src/tui/app/inline_interactive.rs	1369	Updating model list…	self.set_status_notice("Updating model list…");
+47	crates/jcode-tui/src/tui/app/inline_interactive.rs	1425	Model list update failed	self.set_status_notice("Model list update failed");
+48	crates/jcode-tui/src/tui/app/inline_interactive.rs	1488	Model list updated	self.set_status_notice("Model list updated");
+49	crates/jcode-tui/src/tui/app/inline_interactive.rs	1493	Model list update failed: {}	self.set_status_notice(format!("Model list update failed: {}", error));
+50	crates/jcode-tui/src/tui/app/inline_interactive.rs	1612	No models available	self.set_status_notice("No models available");
+51	crates/jcode-tui/src/tui/app/inline_interactive.rs	1709	recently added	&& !route.detail.contains("recently added")
+52	crates/jcode-tui/src/tui/app/inline_interactive.rs	1712	recently added	"recently added".to_string()
+53	crates/jcode-tui/src/tui/app/inline_interactive.rs	1714	recently added · {}	format!("recently added · {}", route.detail)
+54	crates/jcode-tui/src/tui/app/inline_interactive.rs	1856	recently added	.any(|option| option.detail.contains("recently added"))
+55	crates/jcode-tui/src/tui/app/inline_interactive.rs	1865	recently added	.any(|option| option.detail.contains("recently added"))
+56	crates/jcode-tui/src/tui/app/inline_interactive.rs	1929	[TIMING] model_picker_open: remote={}, simplified={}, routes={}, models={}, entries={}, routes={}ms, grouping={}ms, timestamps={}ms, entries_sort={}ms, total={}ms	"[TIMING] model_picker_open: remote={}, simplified={}, routes={}, models={}, entries={}, routes={}ms, grouping={}ms, timestamps={}ms, entries_sort={}ms, total={}ms",
+57	crates/jcode-tui/src/tui/app/inline_interactive.rs	1947	configured provider missing from /model	// evidence for "configured provider missing from /model" reports.
+58	crates/jcode-tui/src/tui/app/inline_interactive.rs	1968	{provider}:{count}	.map(|(provider, count)| format!("{provider}:{count}"))
+59	crates/jcode-tui/src/tui/app/inline_interactive.rs	2143	fallback: static provider model list	.contains("fallback: static provider model list")
+60	crates/jcode-tui/src/tui/app/inline_interactive.rs	2178	fallback: static provider model list	.contains("fallback: static provider model list")
+61	crates/jcode-tui/src/tui/app/inline_interactive.rs	2195	remote-catalog	// Lightweight fallback routes carry placeholder "remote-catalog"
+62	crates/jcode-tui/src/tui/app/inline_interactive.rs	2379	Local account selection	if super::commands_dispatch::ssh_local_action_blocked(self, "Local account selection") {
+63	crates/jcode-tui/src/tui/app/inline_interactive.rs	2389	Account → {} ({})	self.set_status_notice(format!("Account → {} ({})", label, provider_id));
+64	crates/jcode-tui/src/tui/app/inline_interactive.rs	2397	Provider `{}` does not support account switching.	"Provider `{}` does not support account switching.",
+65	crates/jcode-tui/src/tui/app/inline_interactive.rs	2406	Failed to prepare Claude account: {}	"Failed to prepare Claude account: {}",
+66	crates/jcode-tui/src/tui/app/inline_interactive.rs	2413	Failed to prepare OpenAI account: {}	"Failed to prepare OpenAI account: {}",
+67	crates/jcode-tui/src/tui/app/inline_interactive.rs	2418	Provider `{}` does not support multiple accounts.	"Provider `{}` does not support multiple accounts.",
+68	crates/jcode-tui/src/tui/app/inline_interactive.rs	2426	Provider `{}` does not support account replacement.	"Provider `{}` does not support account replacement.",
+69	crates/jcode-tui/src/tui/app/inline_interactive.rs	2446	Refreshing sessions...	"Refreshing sessions...",
+70	crates/jcode-tui/src/tui/app/inline_interactive.rs	2473	Refreshing active sessions...	"Refreshing active sessions...",
+71	crates/jcode-tui/src/tui/app/inline_interactive.rs	2578	Sessions loaded	self.set_status_notice("Sessions loaded");
+72	crates/jcode-tui/src/tui/app/inline_interactive.rs	2586	Catch Up sessions loaded	self.set_status_notice("Catch Up sessions loaded");
+73	crates/jcode-tui/src/tui/app/inline_interactive.rs	2595	Active sessions loaded	self.set_status_notice("Active sessions loaded");
+74	crates/jcode-tui/src/tui/app/inline_interactive.rs	2633	Failed to load sessions: {}	"Failed to load sessions: {}",
+75	crates/jcode-tui/src/tui/app/inline_interactive.rs	2636	Session load failed	self.set_status_notice("Session load failed");
+76	crates/jcode-tui/src/tui/app/inline_interactive.rs	2647	Session loading stopped before returning a result.	"Session loading stopped before returning a result.".to_string(),
+77	crates/jcode-tui/src/tui/app/inline_interactive.rs	2649	Session load failed	self.set_status_notice("Session load failed");
+78	crates/jcode-tui/src/tui/app/inline_interactive.rs	2664	No sessions currently need catch up.	"No sessions currently need catch up.".to_string(),
+79	crates/jcode-tui/src/tui/app/inline_interactive.rs	2666	Catch Up: none waiting	self.set_status_notice("Catch Up: none waiting");
+80	crates/jcode-tui/src/tui/app/inline_interactive.rs	2688	Loading Catch Up sessions...	self.set_status_notice("Loading Catch Up sessions...");
+81	crates/jcode-tui/src/tui/app/inline_interactive.rs	2726	Queued Catch Up for {}.	"Queued Catch Up for {}.",
+82	crates/jcode-tui/src/tui/app/inline_interactive.rs	2729	Catch Up → {}	self.set_status_notice(format!("Catch Up → {}", names[0]));
+83	crates/jcode-tui/src/tui/app/inline_interactive.rs	2732	Queued Catch Up for {} sessions: {}.	"Queued Catch Up for {} sessions: {}.",
+84	crates/jcode-tui/src/tui/app/inline_interactive.rs	2736	Catch Up → {} sessions	self.set_status_notice(format!("Catch Up → {} sessions", names.len()));
+85	crates/jcode-tui/src/tui/app/inline_interactive.rs	2767	Claude Code {}	"Claude Code {}",
+86	crates/jcode-tui/src/tui/app/inline_interactive.rs	2783	Cursor {}	format!("Cursor {}", jcode_core::util::truncate_str(session_id, 8))
+87	crates/jcode-tui/src/tui/app/inline_interactive.rs	2789	failed to import {}: {}	failed.push(format!("failed to import {}: {}", name, err));
+88	crates/jcode-tui/src/tui/app/inline_interactive.rs	2823	Resumed {} in new window.	"Resumed {} in new window.",
+89	crates/jcode-tui/src/tui/app/inline_interactive.rs	2826	Resumed {}	self.set_status_notice(format!("Resumed {}", names[0]));
+90	crates/jcode-tui/src/tui/app/inline_interactive.rs	2829	Resumed {} sessions in new windows: {}.	"Resumed {} sessions in new windows: {}.",
+91	crates/jcode-tui/src/tui/app/inline_interactive.rs	2833	Resumed {} sessions	self.set_status_notice(format!("Resumed {} sessions", names.len()));
+92	crates/jcode-tui/src/tui/app/inline_interactive.rs	2847	Resumed {} session(s)	self.set_status_notice(format!("Resumed {} session(s)", spawned));
+93	crates/jcode-tui/src/tui/app/inline_interactive.rs	2860	Importing local sessions	if super::commands_dispatch::ssh_local_action_blocked(self, "Importing local sessions") {
+94	crates/jcode-tui/src/tui/app/inline_interactive.rs	2875	Claude Code {}	"Claude Code {}",
+95	crates/jcode-tui/src/tui/app/inline_interactive.rs	2891	Cursor {}	format!("Cursor {}", jcode_core::util::truncate_str(session_id, 8))
+96	crates/jcode-tui/src/tui/app/inline_interactive.rs	2899	Failed to import {}: {}	"Failed to import {}: {}",
+97	crates/jcode-tui/src/tui/app/inline_interactive.rs	2908	Cannot resume {} in the current terminal.	"Cannot resume {} in the current terminal.",
+98	crates/jcode-tui/src/tui/app/inline_interactive.rs	2919	Already in this session	self.set_status_notice("Already in this session");
+99	crates/jcode-tui/src/tui/app/inline_interactive.rs	2925	Selected {} sessions; resuming {} in this terminal.	"Selected {} sessions; resuming {} in this terminal.",
+100	crates/jcode-tui/src/tui/app/inline_interactive.rs	2933	Switching → {}	self.set_status_notice(format!("Switching → {}", name));
+101	crates/jcode-tui/src/tui/app/inline_interactive.rs	2937	Local Claude takeover	if super::commands_dispatch::ssh_local_action_blocked(self, "Local Claude takeover") {
+102	crates/jcode-tui/src/tui/app/inline_interactive.rs	2942	Live takeover is only available for Claude Code sessions.	"Live takeover is only available for Claude Code sessions.",
+103	crates/jcode-tui/src/tui/app/inline_interactive.rs	2947	Preparing Claude takeover → {display_id}	self.set_status_notice(format!("Preparing Claude takeover → {display_id}"));
+104	crates/jcode-tui/src/tui/app/inline_interactive.rs	2953	Claude takeover failed: {err}	"Claude takeover failed: {err}"
+105	crates/jcode-tui/src/tui/app/inline_interactive.rs	2955	Claude takeover did not complete	self.set_status_notice("Claude takeover did not complete");
+106	crates/jcode-tui/src/tui/app/inline_interactive.rs	2961	Claude takeover did not produce a Jcode session.	"Claude takeover did not produce a Jcode session.",
+107	crates/jcode-tui/src/tui/app/inline_interactive.rs	2967	Claude Code exited and its transcript was prepared as {session_id}.	"Claude Code exited and its transcript was prepared as {session_id}."
+108	crates/jcode-tui/src/tui/app/inline_interactive.rs	2972	Taking over Claude → {display_id}	self.set_status_notice(format!("Taking over Claude → {display_id}"));
+109	crates/jcode-tui/src/tui/app/inline_interactive.rs	2984	Failed to recover crashed sessions: {}	"Failed to recover crashed sessions: {}",
+110	crates/jcode-tui/src/tui/app/inline_interactive.rs	2993	No crashed sessions found in the selected restore group.	"No crashed sessions found in the selected restore group.".to_string(),
+111	crates/jcode-tui/src/tui/app/inline_interactive.rs	3036	Restored {} crashed session(s) in new windows.	"Restored {} crashed session(s) in new windows.",
+112	crates/jcode-tui/src/tui/app/inline_interactive.rs	3039	Restored {} session(s)	self.set_status_notice(format!("Restored {} session(s)", spawned));
+113	crates/jcode-tui/src/tui/app/inline_interactive.rs	3043	  jcode --resume {}	.map(|id| format!("  jcode --resume {}", id))
+114	crates/jcode-tui/src/tui/app/inline_interactive.rs	3054	  jcode --resume {}	.map(|id| format!("  jcode --resume {}", id))
+115	crates/jcode-tui/src/tui/app/inline_interactive.rs	3238	Favorite → {}	self.set_status_notice(format!("Favorite → {}", entry_name));
+116	crates/jcode-tui/src/tui/app/inline_interactive.rs	3240	No favorited models yet. Use Ctrl+N to favorite one.	self.set_status_notice("No favorited models yet. Use Ctrl+N to favorite one.");
+117	crates/jcode-tui/src/tui/app/inline_interactive.rs	3260	Favorite → {}	self.set_status_notice(format!("Favorite → {}", entry_name));
+118	crates/jcode-tui/src/tui/app/inline_interactive.rs	3263	No favorited models yet. Use Ctrl+N to favorite one.	self.set_status_notice("No favorited models yet. Use Ctrl+N to favorite one.");
+119	crates/jcode-tui/src/tui/app/inline_interactive.rs	3286	Model favorites unavailable until model routes finish loading	self.set_status_notice("Model favorites unavailable until model routes finish loading");
+120	crates/jcode-tui/src/tui/app/inline_interactive.rs	3424	Saving a default model	"Saving a default model",

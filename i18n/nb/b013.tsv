@@ -1,0 +1,120 @@
+1	crates/jcode-tui/src/tui/app/commands.rs	3500	system	role: "system".to_string(),
+2	crates/jcode-tui/src/tui/app/commands.rs	3501	Failed to create config file: {}	content: format!("Failed to create config file: {}", e),
+3	crates/jcode-tui/src/tui/app/commands.rs	3512	/config edit	if trimmed == "/config edit" {
+4	crates/jcode-tui/src/tui/app/commands.rs	3519	system	role: "system".to_string(),
+5	crates/jcode-tui/src/tui/app/commands.rs	3520	Failed to create config file: {}	content: format!("Failed to create config file: {}", e),
+6	crates/jcode-tui/src/tui/app/commands.rs	3529	nano	let editor = std::env::var("EDITOR").unwrap_or_else(|_| "nano".to_string());
+7	crates/jcode-tui/src/tui/app/commands.rs	3543	Edited config in {}:\n{}\n\n*Restart jcode after editing for changes to take effect.*	"Edited config in {}:\n{}\n\n*Restart jcode after editing for changes to take effect.*",
+8	crates/jcode-tui/src/tui/app/commands.rs	3547	Edited config	app.set_status_notice("Edited config");
+9	crates/jcode-tui/src/tui/app/commands.rs	3550	Editor '{}' exited with status {}	"Editor '{}' exited with status {}",
+10	crates/jcode-tui/src/tui/app/commands.rs	3554	Failed to launch editor '{}': {}	"Failed to launch editor '{}': {}",
+11	crates/jcode-tui/src/tui/app/commands.rs	3561	$EDITOR is set to an empty value; cannot open config.	"$EDITOR is set to an empty value; cannot open config.".to_string(),
+12	crates/jcode-tui/src/tui/app/commands.rs	3569	/config 	if trimmed.starts_with("/config ") {
+13	crates/jcode-tui/src/tui/app/commands.rs	3571	Usage: /config (show), /config init (create), /config edit (open in editor)	"Usage: /config (show), /config init (create), /config edit (open in editor)"
+14	crates/jcode-tui/src/tui/app/commands.rs	3581	/usage	let Some(rest) = trimmed.strip_prefix("/usage") else {
+15	crates/jcode-tui/src/tui/app/commands.rs	3601	/feedback	let Some(rest) = trimmed.strip_prefix("/feedback") else {
+16	crates/jcode-tui/src/tui/app/commands.rs	3608	Usage: /feedback <your feedback>	"Usage: /feedback <your feedback>".to_string(),
+17	crates/jcode-tui/src/tui/app/commands.rs	3615	Thanks, recorded your feedback.	"Thanks, recorded your feedback.".to_string(),
+18	crates/jcode-tui/src/tui/app/commands.rs	3617	Feedback recorded	app.set_status_notice("Feedback recorded");
+19	crates/jcode-tui/src/tui/app/commands.rs	3622	Telemetry settings	/// three-way telemetry level offered by the onboarding "Telemetry settings"
+20	crates/jcode-tui/src/tui/app/commands.rs	3625	/telemetry	let Some(rest) = trimmed.strip_prefix("/telemetry") else {
+21	crates/jcode-tui/src/tui/app/commands.rs	3645	Sending everything, including prompts and transcripts. Thank you.	"Sending everything, including prompts and transcripts. Thank you."
+22	crates/jcode-tui/src/tui/app/commands.rs	3648	Sending usage stats and crash reports only. No prompts or transcripts.	"Sending usage stats and crash reports only. No prompts or transcripts."
+23	crates/jcode-tui/src/tui/app/commands.rs	3650	Sending nothing.	TelemetryLevel::Nothing => "Sending nothing.",
+24	crates/jcode-tui/src/tui/app/commands.rs	3653	{detail}\nChange it with /telemetry everything | no-prompts | nothing.	"{detail}\nChange it with /telemetry everything | no-prompts | nothing."
+25	crates/jcode-tui/src/tui/app/commands.rs	3658	all	"everything" | "all" => TelemetryLevel::Everything,
+26	crates/jcode-tui/src/tui/app/commands.rs	3658	everything	"everything" | "all" => TelemetryLevel::Everything,
+27	crates/jcode-tui/src/tui/app/commands.rs	3659	no-content	"no-prompts" | "no-content" | "usage" => TelemetryLevel::NoContent,
+28	crates/jcode-tui/src/tui/app/commands.rs	3659	no-prompts	"no-prompts" | "no-content" | "usage" => TelemetryLevel::NoContent,
+29	crates/jcode-tui/src/tui/app/commands.rs	3659	usage	"no-prompts" | "no-content" | "usage" => TelemetryLevel::NoContent,
+30	crates/jcode-tui/src/tui/app/commands.rs	3660	none	"nothing" | "off" | "none" => TelemetryLevel::Nothing,
+31	crates/jcode-tui/src/tui/app/commands.rs	3660	nothing	"nothing" | "off" | "none" => TelemetryLevel::Nothing,
+32	crates/jcode-tui/src/tui/app/commands.rs	3660	off	"nothing" | "off" | "none" => TelemetryLevel::Nothing,
+33	crates/jcode-tui/src/tui/app/commands.rs	3663	Unknown telemetry level \"{other}\". Use everything, no-prompts, or nothing.	"Unknown telemetry level \"{other}\". Use everything, no-prompts, or nothing."
+34	crates/jcode-tui/src/tui/app/commands.rs	3675	commands_tests.rs	#[path = "commands_tests.rs"]
+35	crates/jcode-tui/src/tui/app/commands_dispatch.rs	120	the remote host	let host = crate::tui::ssh_remote_host().unwrap_or_else(|| "the remote host".to_string());
+36	crates/jcode-tui/src/tui/app/commands_dispatch.rs	205	test-remote	.env("JCODE_SSH_REMOTE", "test-remote")
+37	crates/jcode-tui/src/tui/app/commands_dispatch.rs	208	run isolated SSH test	.expect("run isolated SSH test");
+38	crates/jcode-tui/src/tui/app/commands_dispatch.rs	270	ordinary remote prompt	input::insert_input_text(&mut app, "ordinary remote prompt");
+39	crates/jcode-tui/src/tui/app/commands_dispatch.rs	271	ordinary remote prompt	assert_eq!(app.input, "ordinary remote prompt");
+40	crates/jcode-tui/src/tui/app/commands_dispatch.rs	341	remote.rs	("remote.rs", include_str!("remote.rs")),
+41	crates/jcode-tui/src/tui/app/commands_overnight.rs	55	Overnight started in current session	app.set_status_notice("Overnight started in current session");
+42	crates/jcode-tui/src/tui/app/commands_overnight.rs	57	Overnight started	app.set_status_notice("Overnight started");
+43	crates/jcode-tui/src/tui/app/commands_overnight.rs	76	Overnight queued in current remote session	app.set_status_notice("Overnight queued in current remote session");
+44	crates/jcode-tui/src/tui/app/commands_overnight.rs	161	Overnight status	app.set_status_notice("Overnight status");
+45	crates/jcode-tui/src/tui/app/commands_overnight.rs	179	Overnight log	app.set_status_notice("Overnight log");
+46	crates/jcode-tui/src/tui/app/commands_overnight.rs	207	Overnight review opened	app.set_status_notice("Overnight review opened");
+47	crates/jcode-tui/src/tui/app/commands_overnight.rs	236	Overnight cancel requested	app.set_status_notice("Overnight cancel requested");
+48	crates/jcode-tui/src/tui/app/commands_overnight.rs	309	Overnight run stopped: this error won't fix itself	self.set_status_notice("Overnight run stopped: this error won't fix itself");
+49	crates/jcode-tui/src/tui/app/commands_overnight.rs	339	Overnight auto-poke finished	self.set_status_notice("Overnight auto-poke finished");
+50	crates/jcode-tui/src/tui/app/commands_overnight.rs	346	Overnight auto-poke stopped	self.set_status_notice("Overnight auto-poke stopped");
+51	crates/jcode-tui/src/tui/app/commands_overnight.rs	365	Overnight stopped: no progress	self.set_status_notice("Overnight stopped: no progress");
+52	crates/jcode-tui/src/tui/app/commands_overnight.rs	372	Overnight stopped: errors	self.set_status_notice("Overnight stopped: errors");
+53	crates/jcode-tui/src/tui/app/commands_overnight.rs	380	Overnight stopped: poke budget	self.set_status_notice("Overnight stopped: poke budget");
+54	crates/jcode-tui/src/tui/app/commands_overnight.rs	390	Overnight auto-poke complete	self.set_status_notice("Overnight auto-poke complete");
+55	crates/jcode-tui/src/tui/app/commands_remote.rs	23	https://jcode.sh/account	const CLOUD_ACCOUNT_URL: &str = "https://jcode.sh/account";
+56	crates/jcode-tui/src/tui/app/commands_remote.rs	34	Remote help	app.set_status_notice("Remote help");
+57	crates/jcode-tui/src/tui/app/commands_remote.rs	53	Signed in to your Jcode account.	None => "Signed in to your Jcode account.".to_string(),
+58	crates/jcode-tui/src/tui/app/commands_remote.rs	56	Not signed in yet. The account page will guide you through passwordless sign-in and subscription setup.	"Not signed in yet. The account page will guide you through passwordless sign-in and subscription setup."
+59	crates/jcode-tui/src/tui/app/commands_remote.rs	62	Opened your secure Jcode account page in the browser.	"Opened your secure Jcode account page in the browser."
+60	crates/jcode-tui/src/tui/app/commands_remote.rs	64	Open your secure Jcode account page:	"Open your secure Jcode account page:"
+61	crates/jcode-tui/src/tui/app/commands_remote.rs	73	Jcode Cloud account opened	"Jcode Cloud account opened"
+62	crates/jcode-tui/src/tui/app/commands_remote.rs	75	Jcode Cloud account link ready	"Jcode Cloud account link ready"
+63	crates/jcode-tui/src/tui/app/commands_remote.rs	83	Remote access on	"Remote access on"
+64	crates/jcode-tui/src/tui/app/commands_remote.rs	85	Remote access off	"Remote access off"
+65	crates/jcode-tui/src/tui/app/commands_remote.rs	93	Remote access is already **{}**.	"Remote access is already **{}**.",
+66	crates/jcode-tui/src/tui/app/commands_remote.rs	120	Remote enabled (restart required)	"Remote enabled (restart required)"
+67	crates/jcode-tui/src/tui/app/commands_remote.rs	122	Remote disabled (restart required)	"Remote disabled (restart required)"
+68	crates/jcode-tui/src/tui/app/commands_remote.rs	126	Failed to update remote access: {}	"Failed to update remote access: {}",
+69	crates/jcode-tui/src/tui/app/commands_remote.rs	157	Pairing code ready	app.set_status_notice("Pairing code ready");
+70	crates/jcode-tui/src/tui/app/commands_remote.rs	160	Failed to create pairing code: {}	"Failed to create pairing code: {}",
+71	crates/jcode-tui/src/tui/app/commands_remote.rs	170	No paired device matching `{target}`. Run `/remote status` to list devices.	"No paired device matching `{target}`. Run `/remote status` to list devices."
+72	crates/jcode-tui/src/tui/app/commands_remote.rs	175	Revoked {}. That device must pair again to reconnect.	"Revoked {}. That device must pair again to reconnect.",
+73	crates/jcode-tui/src/tui/app/commands_remote.rs	182	Device revoked	app.set_status_notice("Device revoked");
+74	crates/jcode-tui/src/tui/app/commands_remote.rs	185	Failed to revoke device: {}	"Failed to revoke device: {}",
+75	crates/jcode-tui/src/tui/app/commands_remote.rs	214	help should document /remote {sub}	"help should document /remote {sub}"
+76	crates/jcode-tui/src/tui/app/commands_remote.rs	218	parser should recognize /remote {sub}	"parser should recognize /remote {sub}"
+77	crates/jcode-tui/src/tui/app/commands_review.rs	346	Observe: ON	app.set_status_notice("Observe: ON");
+78	crates/jcode-tui/src/tui/app/commands_review.rs	352	Observe: OFF	app.set_status_notice("Observe: OFF");
+79	crates/jcode-tui/src/tui/app/commands_review.rs	360	Observe: ON	app.set_status_notice("Observe: ON");
+80	crates/jcode-tui/src/tui/app/commands_review.rs	368	Observe: OFF	app.set_status_notice("Observe: OFF");
+81	crates/jcode-tui/src/tui/app/commands_review.rs	738	Prompt launched in new session	app.set_status_notice("Prompt launched in new session");
+82	crates/jcode-tui/src/tui/app/commands_review.rs	745	Fork → {}	app.set_status_notice(format!("Fork → {}", session_name));
+83	crates/jcode-tui/src/tui/app/commands_review.rs	752	Prompt session created	app.set_status_notice("Prompt session created");
+84	crates/jcode-tui/src/tui/app/commands_review.rs	759	Forked session created	app.set_status_notice("Forked session created");
+85	crates/jcode-tui/src/tui/app/commands_review.rs	802	{} launched	app.set_status_notice(format!("{} launched", label));
+86	crates/jcode-tui/src/tui/app/commands_review.rs	808	{} session created	app.set_status_notice(format!("{} session created", label));
+87	crates/jcode-tui/src/tui/app/commands_review.rs	878	{} queued	app.set_status_notice(format!("{} queued", label));
+88	crates/jcode-tui/src/tui/app/commands_review.rs	909	Autoreview launch failed	app.set_status_notice("Autoreview launch failed");
+89	crates/jcode-tui/src/tui/app/commands_review.rs	922	Autojudge launch failed	app.set_status_notice("Autojudge launch failed");
+90	crates/jcode-tui/src/tui/app/commands_review.rs	939	Review launch failed	app.set_status_notice("Review launch failed");
+91	crates/jcode-tui/src/tui/app/commands_review.rs	970	Autoreview: ON	app.set_status_notice("Autoreview: ON");
+92	crates/jcode-tui/src/tui/app/commands_review.rs	979	Autoreview: OFF	app.set_status_notice("Autoreview: OFF");
+93	crates/jcode-tui/src/tui/app/commands_review.rs	988	Autoreview launch failed	app.set_status_notice("Autoreview launch failed");
+94	crates/jcode-tui/src/tui/app/commands_review.rs	1014	Judge launch failed	app.set_status_notice("Judge launch failed");
+95	crates/jcode-tui/src/tui/app/commands_review.rs	1045	Autojudge: ON	app.set_status_notice("Autojudge: ON");
+96	crates/jcode-tui/src/tui/app/commands_review.rs	1054	Autojudge: OFF	app.set_status_notice("Autojudge: OFF");
+97	crates/jcode-tui/src/tui/app/commands_review.rs	1063	Autojudge launch failed	app.set_status_notice("Autojudge launch failed");
+98	crates/jcode-tui/src/tui/app/conversation_state.rs	343	Compacting context	self.set_status_notice("Compacting context");
+99	crates/jcode-tui/src/tui/app/conversation_state.rs	387	Emergency compaction	self.set_status_notice("Emergency compaction");
+100	crates/jcode-tui/src/tui/app/conversation_state.rs	390	Context compacted	self.set_status_notice("Context compacted");
+101	crates/jcode-tui/src/tui/app/conversation_state.rs	638	Press Ctrl+C again to quit	self.set_status_notice("Press Ctrl+C again to quit");
+102	crates/jcode-tui/src/tui/app/conversation_state.rs	890	Recovered session	self.set_status_notice("Recovered session");
+103	crates/jcode-tui/src/tui/app/copy_selection.rs	347	Nothing visible to copy	self.set_status_notice("Nothing visible to copy");
+104	crates/jcode-tui/src/tui/app/copy_selection.rs	354	Nothing visible to copy	self.set_status_notice("Nothing visible to copy");
+105	crates/jcode-tui/src/tui/app/copy_selection.rs	361	Copied viewport context	self.set_status_notice("Copied viewport context");
+106	crates/jcode-tui/src/tui/app/copy_selection.rs	363	Failed to copy viewport context	self.set_status_notice("Failed to copy viewport context");
+107	crates/jcode-tui/src/tui/app/copy_selection.rs	379	Selection is empty	self.set_status_notice("Selection is empty");
+108	crates/jcode-tui/src/tui/app/copy_selection.rs	384	Copied selection	self.set_status_notice("Copied selection");
+109	crates/jcode-tui/src/tui/app/copy_selection.rs	387	Failed to copy selection	self.set_status_notice("Failed to copy selection");
+110	crates/jcode-tui/src/tui/app/copy_selection.rs	404	Selection is empty	self.set_status_notice("Selection is empty");
+111	crates/jcode-tui/src/tui/app/copy_selection.rs	414	Copied selection · highlight remains visible	"Copied selection · highlight remains visible"
+112	crates/jcode-tui/src/tui/app/copy_selection.rs	416	Failed to copy selection	"Failed to copy selection"
+113	crates/jcode-tui/src/tui/app/debug.rs	592	Visual debug: ON	app.set_status_notice("Visual debug: ON");
+114	crates/jcode-tui/src/tui/app/debug.rs	607	Visual debug: OFF	app.set_status_notice("Visual debug: OFF");
+115	crates/jcode-tui/src/tui/app/debug_cmds.rs	319	Debug expand badge fixture ready	self.set_status_notice("Debug expand badge fixture ready");
+116	crates/jcode-tui/src/tui/app/debug_cmds.rs	364	Debug Gmail draft fixture ready	self.set_status_notice("Debug Gmail draft fixture ready");
+117	crates/jcode-tui/src/tui/app/debug_cmds.rs	1104	Migration aborted	self.set_status_notice("Migration aborted");
+118	crates/jcode-tui/src/tui/app/debug_cmds.rs	1117	Migrating to stable {}...	self.set_status_notice(format!("Migrating to stable {}...", version));
+119	crates/jcode-tui/src/tui/app/dictation.rs	63	Dictation not configured	self.set_status_notice("Dictation not configured");
+120	crates/jcode-tui/src/tui/app/dictation.rs	71	🎙 Stopping dictation...	self.set_status_notice("🎙 Stopping dictation...");

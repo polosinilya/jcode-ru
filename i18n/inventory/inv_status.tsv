@@ -1,0 +1,653 @@
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/auth.rs	257	Login: choose a provider
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/auth.rs	262	Logout: choose a provider
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/auth.rs	345	Logout: {}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/auth.rs	352	Logout failed
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/auth.rs	477	Logout: all providers
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/auth.rs	483	Logout: completed with errors
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/auth.rs	526	Login: no external imports found
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/auth.rs	534	Login: choose sources to import
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/auth.rs	542	Login: auto import failed
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/auth.rs	603	Jcode account: requesting browser approval
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/auth.rs	795	Jcode account management
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/auth.rs	799	Jcode account: logging out
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/auth.rs	976	Login [{}]: waiting...
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/auth.rs	978	Login [{}]: paste code...
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/auth.rs	1255	Login [{}]: waiting...
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/auth.rs	1351	Login: failed
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/auth.rs	1470	Login: waiting...
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/auth.rs	1545	Login: API base...
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/auth.rs	1653	Login: Azure endpoint...
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/auth.rs	1668	Login: paste cursor key...
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/auth.rs	1673	Login: copilot device flow...
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/auth.rs	1777	Grok Build: preparing sign-in...
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/auth.rs	1870	Login: failed
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/auth.rs	1978	Login: antigravity waiting...
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/auth.rs	2072	Login [{}]: exchanging...
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/auth.rs	2111	Login [{}]: exchanging...
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/auth.rs	2150	Login: exchanging...
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/auth.rs	2191	Login: exchanging...
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/auth.rs	2550	Login: Azure model...
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/auth.rs	2569	Login: Azure auth method...
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/auth.rs	2615	Login: Azure API key...
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/auth.rs	2711	Login: importing approved sources...
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/auth.rs	3017	Login: Azure OpenAI ready ({})
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/auth.rs	3054	{}: fetching models...
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/auth.rs	3252	Login: enter {} at GitHub
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/auth.rs	3289	Login: {} ready
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/auth.rs	3334	Login: {} failed
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/auth_account_commands.rs	480	Account: switched to {}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/auth_account_commands.rs	498	OpenAI account: switched to {}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/auth_account_commands.rs	528	Account: switched to {}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/auth_account_commands.rs	546	OpenAI account: switched to {}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/auth_account_commands.rs	666	Default provider: {}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/auth_account_commands.rs	683	Default model: {}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/auth_account_commands.rs	707	Transport: {}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/auth_account_commands.rs	745	Effort: {}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/auth_account_commands.rs	768	Fast mode: {}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/auth_account_commands.rs	808	Premium: {}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/auth_account_picker.rs	21	Account center unavailable
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/auth_account_picker.rs	322	Account center: choose an action
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/auth_account_picker.rs	389	Account center: choose add/replace target
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/auth_account_picker.rs	404	Account picker unavailable
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/auth_account_picker.rs	437	Account → {} (↑↓ or j/k, Enter to select)
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/auth_account_picker.rs	1157	Account: new {} label...
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/auth_account_picker.rs	1194	Account: cancelled
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/auth_remote.rs	84	SSH login already in progress. Press Esc or type /cancel first.
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/auth_remote.rs	210	SSH login: {provider} starting. Esc cancels.
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/auth_remote.rs	243	SSH login cancelled
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/auth_remote.rs	259	SSH credential import stopped
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/auth_remote.rs	295	Remote login filter too long. Esc clears the filter.
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/auth_remote.rs	302	SSH login input too long. Press Ctrl+U to clear or Esc to cancel.
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/auth_remote.rs	390	Remote login picker could not handle that key.
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/auth_remote.rs	462	Choose Yes or No with arrows and Enter, or type yes/no. No local credentials were accessed.
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/auth_remote.rs	479	SSH credential import: copying to remote host. Esc stops the transfer but cannot undo an import already saved.
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/auth_remote.rs	485	Choose a login or import row with arrows/filter and Enter. Esc cancels.
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/auth_remote.rs	489	SSH login is working. Esc cancels.
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/auth_remote.rs	493	Paste the browser callback URL or authorization code, then press Enter. Esc cancels.
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/auth_remote.rs	511	SSH login: completing on remote host. Esc cancels.
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/auth_remote.rs	547	Unexpected remote login response. Cancel and retry /login.
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/auth_remote.rs	576	SSH login: waiting for browser approval. Paste completion here. Esc cancels.
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/auth_remote.rs	618	SSH login: {provider} {}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/auth_remote.rs	629	SSH login cancelled
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/auth_remote.rs	663	SSH login failed
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/auth_remote/onboarding.rs	318	Choose Yes or No with arrows (or Y/N), then Enter. Esc cancels.
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/auth_remote/picker.rs	125	Login on {host}: choose a provider or Import local login. Some methods require setup directly on the SSH host. Esc cancels.
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/commands.rs	202	Poke stopped: this error won't fix itself
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/commands.rs	257	Poke: ON
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/commands.rs	264	Poke queued after current turn
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/commands.rs	336	Poke: OFF
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/commands.rs	455	Transfer launched
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/commands.rs	462	Transfer session created
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/commands.rs	469	Transfer open failed
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/commands.rs	478	Transfer failed
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/commands.rs	490	Transfer failed
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/commands.rs	509	Preparing transfer
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/commands.rs	517	Transfer failed
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/commands.rs	528	Transfer already pending
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/commands.rs	540	Transfer queued after current turn
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/commands.rs	683	Running subagent
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/commands.rs	784	Subagent model: inherit
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/commands.rs	794	Subagent model → {}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/commands.rs	849	Interrupting... Overnight cancelled
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/commands.rs	851	Interrupting...
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/commands.rs	859	Pending retry cancelled
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/commands.rs	919	No keybinding conflicts detected
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/commands.rs	975	Diffs: {}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/commands.rs	1048	Log mark {}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/commands.rs	1139	SSH setup cancelled
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/commands.rs	1172	SSH setup 1/4: enter target
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/commands.rs	1243	SSH {} connected 4/4
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/commands.rs	1268	SSH setup 2/4: login terminal opened
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/commands.rs	1301	SSH disconnected
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/commands.rs	1374	Fork failed
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/commands.rs	1406	Finish current work before Catch Up
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/commands.rs	1415	Catch Up: none waiting
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/commands.rs	1433	Catch Up → {}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/commands.rs	1456	Finish current work before going back
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/commands.rs	1463	Back: empty
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/commands.rs	1475	Back → {}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/commands.rs	1579	Git status loading...
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/commands.rs	1630	Transcript path
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/commands.rs	1637	Transcript opened
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/commands.rs	1657	Git status
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/commands.rs	1798	Session saved
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/commands.rs	1817	Bookmark removed
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/commands.rs	1846	Session name cleared
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/commands.rs	1864	Session renamed
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/commands.rs	1890	Memory: {}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/commands.rs	1900	Memory: ON
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/commands.rs	1909	Memory: OFF
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/commands.rs	1955	Swarm: ON
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/commands.rs	1964	Swarm: OFF
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/commands.rs	2129	Poke: OFF
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/commands.rs	2378	Self-dev status
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/commands.rs	2452	Self-dev
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/commands.rs	2488	Initiatives
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/commands.rs	2511	Initiative: {}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/commands.rs	2544	Initiative: {}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/commands.rs	2597	Queued /test
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/commands.rs	2603	Running /test
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/commands.rs	2839	Compact notifications: {}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/commands.rs	2885	Tool call details: {}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/commands.rs	2930	Show agentgrep output: {}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/commands.rs	3046	Edited swarm prompt
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/commands.rs	3286	Thinking display: {}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/commands.rs	3362	Compaction: {}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/commands.rs	3547	Edited config
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/commands.rs	3617	Feedback recorded
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/commands_overnight.rs	55	Overnight started in current session
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/commands_overnight.rs	57	Overnight started
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/commands_overnight.rs	76	Overnight queued in current remote session
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/commands_overnight.rs	161	Overnight status
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/commands_overnight.rs	179	Overnight log
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/commands_overnight.rs	207	Overnight review opened
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/commands_overnight.rs	236	Overnight cancel requested
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/commands_overnight.rs	309	Overnight run stopped: this error won't fix itself
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/commands_overnight.rs	339	Overnight auto-poke finished
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/commands_overnight.rs	346	Overnight auto-poke stopped
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/commands_overnight.rs	365	Overnight stopped: no progress
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/commands_overnight.rs	372	Overnight stopped: errors
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/commands_overnight.rs	380	Overnight stopped: poke budget
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/commands_overnight.rs	390	Overnight auto-poke complete
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/commands_remote.rs	34	Remote help
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/commands_remote.rs	157	Pairing code ready
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/commands_remote.rs	182	Device revoked
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/commands_review.rs	346	Observe: ON
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/commands_review.rs	352	Observe: OFF
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/commands_review.rs	360	Observe: ON
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/commands_review.rs	368	Observe: OFF
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/commands_review.rs	738	Prompt launched in new session
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/commands_review.rs	745	Fork → {}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/commands_review.rs	752	Prompt session created
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/commands_review.rs	759	Forked session created
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/commands_review.rs	802	{} launched
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/commands_review.rs	808	{} session created
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/commands_review.rs	878	{} queued
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/commands_review.rs	909	Autoreview launch failed
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/commands_review.rs	922	Autojudge launch failed
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/commands_review.rs	939	Review launch failed
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/commands_review.rs	970	Autoreview: ON
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/commands_review.rs	979	Autoreview: OFF
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/commands_review.rs	988	Autoreview launch failed
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/commands_review.rs	1014	Judge launch failed
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/commands_review.rs	1045	Autojudge: ON
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/commands_review.rs	1054	Autojudge: OFF
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/commands_review.rs	1063	Autojudge launch failed
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/conversation_state.rs	343	Compacting context
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/conversation_state.rs	387	Emergency compaction
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/conversation_state.rs	390	Context compacted
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/conversation_state.rs	638	Press Ctrl+C again to quit
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/conversation_state.rs	890	Recovered session
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/copy_selection.rs	347	Nothing visible to copy
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/copy_selection.rs	354	Nothing visible to copy
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/copy_selection.rs	361	Copied viewport context
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/copy_selection.rs	363	Failed to copy viewport context
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/copy_selection.rs	379	Selection is empty
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/copy_selection.rs	384	Copied selection
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/copy_selection.rs	387	Failed to copy selection
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/copy_selection.rs	404	Selection is empty
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/debug.rs	592	Visual debug: ON
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/debug.rs	607	Visual debug: OFF
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/debug_cmds.rs	319	Debug expand badge fixture ready
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/debug_cmds.rs	364	Debug Gmail draft fixture ready
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/debug_cmds.rs	1104	Migration aborted
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/debug_cmds.rs	1117	Migrating to stable {}...
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/dictation.rs	63	Dictation not configured
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/dictation.rs	71	🎙 Stopping dictation...
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/dictation.rs	82	Dictation already running
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/dictation.rs	99	Dictation failed
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/dictation.rs	110	Dictation failed
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/dictation.rs	121	Dictation failed
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/dictation.rs	131	Dictation failed
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/dictation.rs	142	🎙 Dictation running - press again to stop
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/dictation.rs	186	Dictation failed
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/inline_interactive.rs	1245	Updating model routes…
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/inline_interactive.rs	1294	Updating model routes…
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/inline_interactive.rs	1369	Updating model list…
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/inline_interactive.rs	1425	Model list update failed
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/inline_interactive.rs	1488	Model list updated
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/inline_interactive.rs	1493	Model list update failed: {}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/inline_interactive.rs	1612	No models available
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/inline_interactive.rs	2389	Account → {} ({})
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/inline_interactive.rs	2578	Sessions loaded
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/inline_interactive.rs	2586	Catch Up sessions loaded
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/inline_interactive.rs	2595	Active sessions loaded
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/inline_interactive.rs	2636	Session load failed
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/inline_interactive.rs	2649	Session load failed
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/inline_interactive.rs	2666	Catch Up: none waiting
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/inline_interactive.rs	2688	Loading Catch Up sessions...
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/inline_interactive.rs	2729	Catch Up → {}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/inline_interactive.rs	2736	Catch Up → {} sessions
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/inline_interactive.rs	2826	Resumed {}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/inline_interactive.rs	2833	Resumed {} sessions
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/inline_interactive.rs	2847	Resumed {} session(s)
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/inline_interactive.rs	2919	Already in this session
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/inline_interactive.rs	2933	Switching → {}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/inline_interactive.rs	2947	Preparing Claude takeover → {display_id}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/inline_interactive.rs	2955	Claude takeover did not complete
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/inline_interactive.rs	2972	Taking over Claude → {display_id}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/inline_interactive.rs	3039	Restored {} session(s)
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/inline_interactive.rs	3208	{} {}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/inline_interactive.rs	3238	Favorite → {}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/inline_interactive.rs	3240	No favorited models yet. Use Ctrl+N to favorite one.
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/inline_interactive.rs	3260	Favorite → {}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/inline_interactive.rs	3263	No favorited models yet. Use Ctrl+N to favorite one.
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/inline_interactive.rs	3286	Model favorites unavailable until model routes finish loading
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/inline_interactive.rs	3509	Failed to save default: {}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/inline_interactive.rs	3565	{} - {}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/inline_interactive.rs	3605	Usage → {}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/inline_interactive.rs	3630	{} model: inherit
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/inline_interactive.rs	3637	{} model → {}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/inline_interactive.rs	3646	Agent model save failed
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/inline_interactive.rs	3654	Subagent model: inherit
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/inline_interactive.rs	3662	Subagent model → {}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/inline_interactive.rs	3680	Model unavailable
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/inline_interactive.rs	3811	Model switch failed
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input.rs	205	Reading clipboard...
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input.rs	637	Failed to copy input line
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input.rs	646	✂ Cut input line
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input.rs	665	SSH paste: text only. File paths refer to the remote host; paste image bytes from the clipboard to attach an image.
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input.rs	713	Downloading image...
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input.rs	774	Dropped {count} image{}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input.rs	921	No text or image in clipboard
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input.rs	924	No image in clipboard
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input.rs	930	Failed to download image
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input.rs	1447	Input cleared - Ctrl+Z to restore
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input.rs	1503	Retrieved {} pending message{} for editing
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input.rs	1581	Poke stopped: provider guardrail
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input.rs	1862	Next prompt → new session
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input.rs	1864	Next-prompt new session canceled
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input.rs	1909	↗ New terminal opened
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input.rs	1911	No supported terminal found; run `jcode` manually
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input.rs	1913	New terminal failed: {}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input.rs	1957	Prompt launch failed
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input.rs	2415	Swarm view closed
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input.rs	2532	Failed to copy {}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input.rs	2605	Expanded edit diffs · Diffs: {}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input.rs	2725	Interrupting... Overnight cancelled
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input.rs	2727	Interrupting...
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input.rs	2867	Interrupting... Auto-poke OFF, overnight cancelled
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input.rs	2869	Interrupting... Auto-poke OFF
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input.rs	2872	Interrupting... Overnight cancelled
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input.rs	2874	Interrupting...
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input.rs	2908	⏭ Sending now (interleave)
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input.rs	2919	Pasted {} ({} KB)
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input.rs	3812	Shell command is empty
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input.rs	3820	Local shell unavailable in remote mode
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input.rs	3827	Running local shell: {}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/input/newline.rs	72	Tip: run /terminal-setup to make Shift+Enter insert newlines
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/local.rs	250	Model → {}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/local.rs	516	Background task stalled · {} · no output for {}s
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/misc_ui.rs	139	Usage → refreshing
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/misc_ui.rs	553	Copied provider test coverage report
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/misc_ui.rs	557	Failed to copy provider test coverage report
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	94	Provider auto-switch → {} in {}s (Esc to cancel)
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	112	Provider → {} (retrying)
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	121	Provider switch failed
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	148	{} unavailable; switch manually if desired
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	166	Provider auto-switch → {} in 3s (Esc to cancel)
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	176	{} unavailable; manual switch suggested
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	341	Press {} to switch to {}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	446	Press {} to reroute to {}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	481	Switching → {} (will retry)
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	508	Switched → {} (retrying)
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	517	Fallback switch failed
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	529	Model switching not available
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	556	Model → {}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	563	Model switch failed
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	580	Reasoning effort not available for this provider
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	614	Effort: {} (already at {})
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	622	Effort: {} {}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	625	Effort switch failed: {}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	777	Prompt restored to input after error
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	1123	Usage → no connected providers
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	1125	Usage → updated
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	1145	Usage → no connected providers
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	1147	Usage → updated
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	1150	Usage → showing cached data, refreshing
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	1156	Usage → refreshing {}/{}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	1158	Usage → refreshing
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	1394	Fix applied
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	1433	Refreshing model list...
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	1489	Model → {}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	1496	Model switch failed
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	1555	Effort: {} {}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	1730	Transport → {}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	1805	Model list refreshed: +{} models, +{} routes, ~{} changed
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/model_context.rs	1817	Model list refresh failed
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/navigation.rs	276	Opened link: {}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/navigation.rs	277	Failed to open link: {}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/navigation.rs	307	Markdown file not found: {}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/navigation.rs	311	Refused to open a Markdown file outside the repository
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/navigation.rs	318	Failed to read Markdown file: {}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/navigation.rs	348	Opened Markdown: {}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/navigation.rs	368	Opened link: {}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/navigation.rs	369	Failed to open link: {}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/navigation.rs	493	Focus: diagram (hjkl pan, [/] zoom, +/- resize)
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/navigation.rs	495	Focus: chat
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/navigation.rs	515	Focus: split view (j/k scroll, Esc to return, Ctrl+H back to chat)
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/navigation.rs	519	Focus: side pane (j/k scroll, h/l pan diagrams, Esc to return)
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/navigation.rs	521	Focus: side pane (j/k scroll, Esc to return)
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/navigation.rs	524	Focus: chat
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/navigation.rs	550	Side image zoom: {}%
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/navigation.rs	561	Side image zoom: fit
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/navigation.rs	979	Diagram {}/{}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/navigation.rs	1023	Diagram pane: {}%
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/navigation.rs	1052	Side panel: {}%
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/navigation.rs	1108	Image side panel: ON
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/navigation.rs	1122	Image side panel: OFF
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/navigation.rs	1140	Side panel: OFF
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/navigation.rs	1173	Diagram zoom: {}%
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/navigation.rs	1210	Diagram pane: {}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/navigation.rs	1217	No diagrams to open
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/navigation.rs	1229	Opened diagram {}/{} in viewer
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/navigation.rs	1230	Failed to open: {}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/navigation.rs	1233	Diagram image not found on disk
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/navigation.rs	1236	Diagram not cached
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/navigation.rs	1727	Failed to copy {}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/onboarding_flow_control.rs	266	Welcome to jcode: review detected logins (arrows/hl to move, Enter to choose)
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/onboarding_flow_control.rs	270	Log in to OpenAI? Yes/No - hl to move, Enter to choose (No skips for now)
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/onboarding_flow_control.rs	281	Login: opening OpenAI sign-in (or type /login for others)
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/onboarding_flow_control.rs	346	Continue a session where you left off in {}? Opens the resume menu in {remaining}s (Yes/No)
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/onboarding_flow_control.rs	415	Onboarding skipped - run {login} when you're ready
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/onboarding_flow_control.rs	640	Opened Jcode pricing: {url}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/onboarding_flow_control.rs	642	Open Jcode pricing: {url}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/onboarding_flow_control.rs	736	Run {login} when you're ready
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/onboarding_flow_control.rs	751	Log in to OpenAI? [{choice}] - hl to move, Enter to choose (No skips for now)
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/onboarding_flow_control.rs	820	No logins imported. Press Enter to choose a provider.
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/onboarding_flow_control.rs	840	Login: importing selected logins...
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/onboarding_flow_control.rs	910	Press any key to switch, Enter to choose
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/onboarding_flow_control.rs	1047	No active Git repository found. Start jcode inside a project to review it.
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/onboarding_flow_control.rs	1069	Architecture review queued
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/onboarding_flow_control.rs	1089	You're all set, type anything to start
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/onboarding_flow_control.rs	1102	Try a suggestion, or type anything to start
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/onboarding_flow_control.rs	1201	Checking {model_label}...
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/onboarding_flow_control.rs	1548	{} ready - type anything to start
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/onboarding_flow_control.rs	1555	{} ready - type anything to start ({} login{} need attention)
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/onboarding_flow_control.rs	1565	{} not validated - {hint}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/onboarding_flow_control.rs	1610	Import failed. Press Enter to choose a provider and log in manually.
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/onboarding_sim.rs	69	Onboarding flow already active; can't start the simulator now
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/onboarding_sim.rs	127	Onboarding simulator: off
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/onboarding_sim.rs	273	Onboarding sim {}/{}: {} — Tab/→ next, Shift+Tab/← prev, h/l highlight, Alt+5 restart, Esc exit
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/productivity.rs	24	Productivity report already generating…
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/productivity.rs	32	Productivity → scanning
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/productivity.rs	91	Productivity report failed
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/remote.rs	179	Workspace → {}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/remote.rs	351	Effort switch failed
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/remote.rs	436	Model switch failed
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/remote.rs	451	Model switch failed
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/remote.rs	478	Account: switched to {}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/remote.rs	499	OpenAI account: switched to {}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/remote.rs	576	Failed to request older history: {}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/remote.rs	619	Local login does not change SSH server credentials
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/remote.rs	636	Model setup will retry after reconnect
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/remote.rs	852	Remote protocol error
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/remote.rs	896	Transcript failed
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/remote.rs	1102	Session history not loading - try /restart
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/remote.rs	1129	Loading session… re-requesting history
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/remote.rs	1184	Server auto-reload paused (possible loop)
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/remote.rs	1193	Server update available - auto reload failed
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/remote.rs	1200	Server update available - manual /reload recommended
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/remote.rs	1264	Startup prompt failed
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/remote.rs	1314	Fallback resend failed
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/remote.rs	1329	Queued prompt failed
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/remote.rs	1350	Prompt failed
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/remote.rs	1395	Startup prompt failed
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/remote.rs	1434	{} launch failed
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/remote.rs	1455	{} launch failed
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/remote.rs	1873	This command requires a live connection
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/remote.rs	1885	Queued for send after reconnect ({} message{})
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/remote/input_dispatch.rs	132	Loading session...
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/remote/input_dispatch.rs	284	Prompt launching in new session
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/remote/input_dispatch.rs	341	{} launching
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/remote/input_dispatch.rs	390	Transcript queued ({} message{})
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/remote/input_dispatch.rs	411	Transcript was empty
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/remote/input_dispatch.rs	467	Shell command is empty
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/remote/input_dispatch.rs	489	Running remote shell: {}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/remote/input_dispatch.rs	499	Transcript was empty
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/remote/input_dispatch.rs	506	Transcript inserted
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/remote/input_dispatch.rs	512	Transcript appended
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/remote/input_dispatch.rs	516	Transcript replaced input
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/remote/input_dispatch.rs	535	Transcript was empty
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/remote/key_handling.rs	29	⏭ Interleave sent
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/remote/key_handling.rs	39	Update the client and SSH server separately, then reconnect
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/remote/key_handling.rs	78	Reasoning effort not available for this provider
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/remote/key_handling.rs	105	Effort: {} (already at {})
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/remote/key_handling.rs	112	Effort: {} (will apply to next request)
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/remote/key_handling.rs	166	Undoing rewind...
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/remote/key_handling.rs	190	Rewinding to message {}...
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/remote/key_handling.rs	402	New local terminal disabled for SSH sessions; launch jcode --ssh separately
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/remote/key_handling.rs	425	Update the SSH server on its host
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/remote/key_handling.rs	436	Local session picker disabled for SSH; use --ssh HOST --resume REMOTE_ID
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/remote/key_handling.rs	450	Poke: OFF
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/remote/key_handling.rs	510	Swarm view closed
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/remote/key_handling.rs	583	Moving tool to background...
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/remote/key_handling.rs	729	Moving tool to background...
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/remote/key_handling.rs	743	Interrupting...
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/remote/key_handling.rs	1047	Continuing interrupted sessions...
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/remote/key_handling.rs	1053	Continue all failed
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/remote/key_handling.rs	1101	Refreshing model list...
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/remote/key_handling.rs	1108	Model list refresh failed
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/remote/key_handling.rs	1162	Subagent model: inherit
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/remote/key_handling.rs	1171	Subagent model → {}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/remote/key_handling.rs	1194	Running subagent
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/remote/key_handling.rs	1271	Effort: {} (will apply to next request)
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/remote/key_handling.rs	1440	Autoreview: ON
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/remote/key_handling.rs	1452	Autoreview: OFF
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/remote/key_handling.rs	1471	Autoreview queued
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/remote/key_handling.rs	1487	Autoreview launch failed
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/remote/key_handling.rs	1498	Autojudge: ON
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/remote/key_handling.rs	1510	Autojudge: OFF
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/remote/key_handling.rs	1529	Autojudge queued
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/remote/key_handling.rs	1545	Autojudge launch failed
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/remote/key_handling.rs	1569	Review queued
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/remote/key_handling.rs	1585	Review launch failed
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/remote/key_handling.rs	1609	Judge queued
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/remote/key_handling.rs	1625	Judge launch failed
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/remote/key_handling.rs	1680	Memory: {}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/remote/key_handling.rs	1693	Memory: ON
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/remote/key_handling.rs	1705	Memory: OFF
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/remote/key_handling.rs	1739	Session cleared
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/remote/key_handling.rs	1837	Swarm: ON
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/remote/key_handling.rs	1849	Swarm: OFF
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/remote/key_handling.rs	1914	Session saved
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/remote/key_handling.rs	1934	Bookmark removed
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/remote/key_handling.rs	1949	Clearing session name...
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/remote/key_handling.rs	1954	Renaming session...
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/remote/key_handling.rs	1963	Transfer already pending
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/remote/key_handling.rs	1982	Transfer queued after current turn
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/remote/key_handling.rs	1990	Transfer queue failed
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/remote/key_handling.rs	2005	Transfer launch failed
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/remote/key_handling.rs	2085	Interrupting for {}...
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/remote/key_handling.rs	2092	{} failed
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/remote/key_handling.rs	2159	Premium: normal
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/remote/key_handling.rs	2175	Premium: normal
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/remote/key_handling.rs	2193	Premium: {}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/remote/key_handling.rs	2212	Poke: OFF
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/remote/key_handling.rs	2264	Interrupting for /plan...
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/remote/key_handling.rs	2321	Interrupting for /improve resume...
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/remote/key_handling.rs	2387	Interrupting for /improve stop...
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/remote/key_handling.rs	2503	Interrupting for /refactor resume...
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/remote/key_handling.rs	2569	Interrupting for /refactor stop...
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/remote/key_handling.rs	2693	Interrupting... Auto-poke OFF
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/remote/key_handling.rs	2695	Interrupting...
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/remote/queue_recovery.rs	207	Queued interleave recovery failed
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/remote/queue_recovery.rs	220	Recovered queued interleave after turn finished
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/remote/reconnect.rs	235	Waiting for reload handoff...
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/remote/server_events.rs	1089	Provider guardrail: {}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/remote/server_events.rs	1241	Server still busy; follow-up stays queued
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/remote/server_events.rs	1261	Rate limited; queued system retry
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/remote/server_events.rs	1263	Rate limited; queued retry
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/remote/server_events.rs	1358	Stopped: model/endpoint mismatch
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/remote/server_events.rs	1421	Session close requested by coordinator
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/remote/server_events.rs	1450	Session renamed
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/remote/server_events.rs	1456	Session name cleared
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/remote/server_events.rs	1598	Connected server is an older release; reloading it before attach
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/remote/server_events.rs	1607	Server/runtime mismatch detected; reloading server before attach
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/remote/server_events.rs	1798	Server update available
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/remote/server_events.rs	1965	Reload complete - prompt preserved
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/remote/server_events.rs	2240	Plan proposal received
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/remote/server_events.rs	2282	Model switch failed
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/remote/server_events.rs	2297	Model → {}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/remote/server_events.rs	2339	Model list refreshed: +{} models, +{} routes, ~{} changed
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/remote/server_events.rs	2383	Effort: {}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/remote/server_events.rs	2430	Transport: {}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/remote/server_events.rs	2447	Compaction: {}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/remote/server_events.rs	2513	⚡ {} tool(s) skipped
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/remote/server_events.rs	2540	🧠 {} relevant {} injected
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/remote/server_events.rs	2671	{} · {}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/remote/server_events.rs	2711	{} {} finished
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/remote/server_events.rs	2780	Workspace + {}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/remote/server_events.rs	2787	Remote session created: {new_session_id}. Resume using --ssh and --resume.
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/remote/server_events.rs	2830	{} launched
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/remote/server_events.rs	2836	Split → {}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/remote/server_events.rs	2845	{} session created
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/remote/server_events.rs	2859	{} open failed
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/remote/server_events.rs	2875	Compacting context
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/remote/server_events.rs	2878	Compaction failed
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/remote/server_events.rs	2887	No sessions to resume
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/remote/server_events.rs	2889	Resuming 1 session
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/remote/server_events.rs	2891	Resuming {} sessions
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/remote/server_events.rs	2896	⌨ Interactive terminal detected (command will timeout)
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/remote/workspace.rs	29	Finish current work before moving workspace focus
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/remote/workspace.rs	34	No workspace session in that direction
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/remote/workspace.rs	41	Workspace → {}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/remote/workspace.rs	70	Workspace mode enabled
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/remote/workspace.rs	78	Workspace mode disabled
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/remote/workspace.rs	104	Workspace add queued
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/split_view.rs	161	Split view: ON
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/split_view.rs	167	Split view: OFF
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/split_view.rs	175	Split view: ON
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/split_view.rs	183	Split view: OFF
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui.rs	618	📌 Returned to bookmark
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui.rs	623	📌 Bookmark set - press again to return
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui.rs	695	Split view
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui.rs	697	Todos
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui.rs	698	Observe
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui.rs	699	Goals
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui.rs	770	Layout: {}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui.rs	1781	Skills
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui.rs	1832	Changelog
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui.rs	1848	Cache stats
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1619	↶ Input restored
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	1621	Nothing to undo
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_maintenance.rs	123	Update the client and SSH server separately, then reconnect
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_maintenance.rs	144	Starting background rebuild...
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_maintenance.rs	168	Update available: {} → {}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_maintenance.rs	192	↑ {} · {}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_maintenance.rs	197	↑ {} · preparing
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_maintenance.rs	202	Updated to {}; restarting...
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_maintenance.rs	231	Update failed: {reason}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_maintenance.rs	356	{} ready - will reload after the current turn
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_maintenance.rs	374	↑ {} ready · reloads when idle
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_maintenance.rs	398	{} failed: {reason}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_maintenance.rs	435	Local and upstream diverged - press {} to let an agent merge
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_maintenance.rs	488	Merge agent launched
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_maintenance.rs	494	No terminal available for merge agent
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_maintenance.rs	501	Merge agent failed to start
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_messages.rs	570	View cleared (context kept)
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_messages.rs	611	Loaded {} compacted messages · {} older hidden
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_messages.rs	613	Loaded all {} compacted messages
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_messages.rs	724	Loading older compacted history… {} of {}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_runtime.rs	446	Ctrl+{}: idx={}/{} line={} max={}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_runtime.rs	456	📋 Input restored from stash
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_runtime.rs	459	📋 Swapped input with stash
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/state_ui_runtime.rs	465	📋 Input stashed
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/subscribe_nudge.rs	254	Hosted models: /login jcode to start
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/tests/terminal_setup_command.rs	265	something else
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/todos_view.rs	34	Todos card dismissed
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/todos_view.rs	46	Local todo view unavailable for SSH; ask the remote agent for todos
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/todos_view.rs	65	Todos card
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/todos_view.rs	311	Todos panel: ON
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/todos_view.rs	317	Todos panel: OFF
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/todos_view.rs	325	Todos panel: ON
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/todos_view.rs	333	Todos panel: OFF
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/tui_lifecycle.rs	25	Startup prompt queued
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/tui_lifecycle.rs	63	Recovered pending prompts after reload
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/tui_lifecycle.rs	74	Restored queued follow-up after reload
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/tui_lifecycle.rs	119	Config reloaded from disk
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/tui_lifecycle.rs	345	Stopped: repeated auth failures
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/tui_lifecycle.rs	1351	SSH: {host} (remote server)
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/tui_lifecycle_runtime.rs	283	mcp: {} connected
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/tui_lifecycle_runtime.rs	292	MCP: all connections failed
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/tui_lifecycle_runtime.rs	636	Onboarding preview unavailable while busy
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/tui_lifecycle_runtime.rs	652	Onboarding preview: on
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/tui_lifecycle_runtime.rs	655	Onboarding preview: off
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/tui_lifecycle_runtime.rs	752	Premium: normal
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/tui_lifecycle_runtime.rs	767	Premium: normal
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/tui_lifecycle_runtime.rs	784	Premium: {}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/tui_state.rs	2136	No swarm agents to open
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/tui_state.rs	2142	No swarm agent selected
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/tui_state.rs	2155	Opened {label} in a new window
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/tui_state.rs	2158	Could not open a terminal for {label} (no emulator found)
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/tui_state.rs	2159	Failed to open {label}: {e}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/turn.rs	61	Recovered missing tool outputs
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/turn.rs	69	Recovery needed
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/update_sim.rs	23	Update simulator · waiting for update signal...
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/app/update_sim.rs	95	Update simulator complete · restart successful
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/info_widget_tips.rs	14	Ctrl+J / Ctrl+K to jump between user prompts (Cmd+J / Cmd+K on macOS terminals that forward Command)
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/info_widget_tips.rs	15	Ctrl+Shift+J / Ctrl+Shift+K to scroll the chat down and up one line
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/info_widget_tips.rs	16	Ctrl+G to bookmark your scroll position - press again to teleport back
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/info_widget_tips.rs	17	Swarms form automatically when multiple sessions share a repo - they coordinate plans, share context, and track file conflicts
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/info_widget_tips.rs	18	Memories are stored in a graph with semantic embeddings - recall finds related facts even if you use different words
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/info_widget_tips.rs	19	Ambient mode runs background cycles while you're away - maintaining memories, compacting context, and doing proactive work
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/info_widget_tips.rs	20	Ambient cycles can email you a summary and you can reply with directives for the next run
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/info_widget_tips.rs	21	Alt+B moves a long-running tool to the background - the agent continues and can check on it later with the `bg` tool
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/info_widget_tips.rs	22	Most terminals can be configured to copy text on highlight - no Ctrl+C needed. Check your terminal's settings for 'copy on select'
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/info_widget_tips.rs	23	Alt+G (or /diff) cycles diff mode: Off, Inline, Pinned, File. Shift+Tab cycles favorited models. Pinned shows all diffs in a side pane. File shows the full file with changes highlighted, synced to your scroll position
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/info_widget_tips.rs	26	```mermaid code blocks render as diagrams
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/info_widget_tips.rs	32	{alt}+
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/info_widget_tips.rs	122	Did you know?
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/session_picker/loading.rs	909	Untitled
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_onboarding.rs	34	Esc to skip onboarding (log in later with /login).
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_onboarding.rs	54	JCODE_ROUNDED_PILLS
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_onboarding.rs	61	TERM_PROGRAM
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_onboarding.rs	67	GHOSTTY_RESOURCES_DIR
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_onboarding.rs	68	GHOSTTY_BIN_DIR
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_onboarding.rs	72	TERM
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_onboarding.rs	114	{label}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_onboarding.rs	124	Yes
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_onboarding.rs	125	
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_onboarding.rs	135	Continue
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_onboarding.rs	147	Import
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_onboarding.rs	148	
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_onboarding.rs	150	Jcode subscription
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_onboarding.rs	153	
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_onboarding.rs	155	Import less
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_onboarding.rs	158	
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_onboarding.rs	159	Telemetry
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_onboarding.rs	176	Telemetry settings
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_onboarding.rs	188	Share full transcripts (30-day retention)
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_onboarding.rs	189	Includes prompts, model responses, reasoning, code, and tool input/output
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_onboarding.rs	193	No prompts or transcripts
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_onboarding.rs	194	Usage stats and crash reports only
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_onboarding.rs	198	Send nothing
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_onboarding.rs	199	We stop seeing crashes and can't fix them
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_onboarding.rs	211	Your environment already disables telemetry (JCODE_NO_TELEMETRY).
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_onboarding.rs	219	Esc goes back. Change this later with /telemetry.
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_onboarding.rs	245	({})
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_onboarding.rs	303	Yes
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_onboarding.rs	325	{}{} ({})
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_onboarding.rs	341	({})
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_onboarding.rs	360	jcode collects anonymous usage statistics (version, OS, session
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_onboarding.rs	361	activity, and crash reasons). No code, prompts, or personal data.
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_onboarding.rs	362	Change anytime: /telemetry (or export JCODE_NO_TELEMETRY=1)
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_onboarding.rs	384	Welcome to jcode onboarding
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_onboarding.rs	397	Use your keyboard to navigate.
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_onboarding.rs	424	Importing your logins…
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_onboarding.rs	433	Hang tight, this only takes a moment.
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_onboarding.rs	445	We couldn't import those logins.
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_onboarding.rs	461	No problem - you can log in directly.
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_onboarding.rs	470	Press Enter to choose a provider (OpenAI, Anthropic, and more).
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_onboarding.rs	481	Press H to have {agent} help fix this for you.
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_onboarding.rs	491	First, log in to get started.
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_onboarding.rs	500	Press Enter to pick who to log in with (OpenAI, Anthropic, and more).
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_onboarding.rs	526	Choose how to get started. We found {found} existing login{}:
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_onboarding.rs	554	Import:
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_onboarding.rs	579	Log in to OpenAI?
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_onboarding.rs	604	Continue where you left off in {cli_label}?
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_onboarding.rs	619	Opens the resume menu automatically in {seconds_left}s…
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_onboarding.rs	638	{}
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_onboarding.rs	644	(type {})
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_onboarding.rs	651	[{}]
+/home/ilya/Program/jcode/crates/jcode-tui/src/tui/ui_onboarding.rs	663	Press 1-{} or type anything to start

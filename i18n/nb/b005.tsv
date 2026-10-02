@@ -1,0 +1,120 @@
+1	crates/jcode-tui/src/tui/app/auth_account_commands.rs	1112	  - Health: {}	lines.push(format!("  - Health: {}", assessment.health_summary()));
+2	crates/jcode-tui/src/tui/app/auth_account_commands.rs	1114	  - Credential source: {} ({})	"  - Credential source: {} ({})",
+3	crates/jcode-tui/src/tui/app/auth_account_commands.rs	1119	  - Refresh: {}	"  - Refresh: {}",
+4	crates/jcode-tui/src/tui/app/auth_account_commands.rs	1123	  - Validation method: {}	"  - Validation method: {}",
+5	crates/jcode-tui/src/tui/app/auth_account_commands.rs	1127	  - Last refresh: {}	"  - Last refresh: {}",
+6	crates/jcode-tui/src/tui/app/auth_account_commands.rs	1133	not recorded	.unwrap_or("not recorded")
+7	crates/jcode-tui/src/tui/app/auth_account_commands.rs	1136	  - Validation: {}	"  - Validation: {}",
+8	crates/jcode-tui/src/tui/app/auth_account_commands.rs	1137	not validated	validation_label.as_deref().unwrap_or("not validated")
+9	crates/jcode-tui/src/tui/app/auth_account_commands.rs	1140	  - Needs attention: {}	"  - Needs attention: {}",
+10	crates/jcode-tui/src/tui/app/auth_account_commands.rs	1145	Diagnostics	lines.push("Diagnostics".to_string());
+11	crates/jcode-tui/src/tui/app/auth_account_commands.rs	1203	OpenAI (openai)	assert!(markdown.contains("OpenAI (openai)"));
+12	crates/jcode-tui/src/tui/app/auth_account_commands.rs	1204	Next steps	assert!(markdown.contains("Next steps"));
+13	crates/jcode-tui/src/tui/app/auth_account_commands.rs	1205	jcode login --provider openai	assert!(markdown.contains("jcode login --provider openai"));
+14	crates/jcode-tui/src/tui/app/auth_account_commands.rs	1206	Review current state: jcode auth status --json	assert!(markdown.contains("Review current state: jcode auth status --json"));
+15	crates/jcode-tui/src/tui/app/auth_account_picker.rs	18	Unknown provider {}.	"Unknown provider {}.",
+16	crates/jcode-tui/src/tui/app/auth_account_picker.rs	21	Account center unavailable	self.set_status_notice("Account center unavailable");
+17	crates/jcode-tui/src/tui/app/auth_account_picker.rs	52	choose provider, add a new account, or replace an existing saved one	"choose provider, add a new account, or replace an existing saved one".to_string()
+18	crates/jcode-tui/src/tui/app/auth_account_picker.rs	55	choose provider; {} Claude and {} OpenAI account(s) available	"choose provider; {} Claude and {} OpenAI account(s) available",
+19	crates/jcode-tui/src/tui/app/auth_account_picker.rs	61	account-flow	"account-flow",
+20	crates/jcode-tui/src/tui/app/auth_account_picker.rs	62	Add / Replace	"Add / Replace",
+21	crates/jcode-tui/src/tui/app/auth_account_picker.rs	63	Add or replace account	"Add or replace account",
+22	crates/jcode-tui/src/tui/app/auth_account_picker.rs	72	auth-doctor	provider_scope.as_deref().unwrap_or("auth-doctor"),
+23	crates/jcode-tui/src/tui/app/auth_account_picker.rs	75	Authentication	.unwrap_or("Authentication")
+24	crates/jcode-tui/src/tui/app/auth_account_picker.rs	77	Diagnose login	"Diagnose login",
+25	crates/jcode-tui/src/tui/app/auth_account_picker.rs	79	review status, validation, and recommended next steps	"review status, validation, and recommended next steps".to_string()
+26	crates/jcode-tui/src/tui/app/auth_account_picker.rs	81	review all configured providers and recovery steps	"review all configured providers and recovery steps".to_string()
+27	crates/jcode-tui/src/tui/app/auth_account_picker.rs	96	not validated	.unwrap_or_else(|| "not validated".to_string());
+28	crates/jcode-tui/src/tui/app/auth_account_picker.rs	114	needs attention	crate::auth::AuthState::Expired => "needs attention",
+29	crates/jcode-tui/src/tui/app/auth_account_picker.rs	115	setup needed	crate::auth::AuthState::NotConfigured => "setup needed",
+30	crates/jcode-tui/src/tui/app/auth_account_picker.rs	122	Saved auth entry	"Saved auth entry",
+31	crates/jcode-tui/src/tui/app/auth_account_picker.rs	135	Usage & provider settings	"Usage & provider settings"
+32	crates/jcode-tui/src/tui/app/auth_account_picker.rs	137	Provider settings	"Provider settings"
+33	crates/jcode-tui/src/tui/app/auth_account_picker.rs	148	Login / refresh	"Login / refresh",
+34	crates/jcode-tui/src/tui/app/auth_account_picker.rs	155	Diagnose login	"Diagnose login",
+35	crates/jcode-tui/src/tui/app/auth_account_picker.rs	167	Transport	"Transport",
+36	crates/jcode-tui/src/tui/app/auth_account_picker.rs	170	Enter OpenAI transport: auto, https, or websocket.	prompt: "Enter OpenAI transport: auto, https, or websocket."
+37	crates/jcode-tui/src/tui/app/auth_account_picker.rs	174	Account: editing OpenAI transport...	status_notice: "Account: editing OpenAI transport...".to_string(),
+38	crates/jcode-tui/src/tui/app/auth_account_picker.rs	180	Reasoning effort	"Reasoning effort",
+39	crates/jcode-tui/src/tui/app/auth_account_picker.rs	184	(provider default)	.unwrap_or("(provider default)"),
+40	crates/jcode-tui/src/tui/app/auth_account_picker.rs	186	Enter OpenAI reasoning effort: none, minimal, low, medium, high, xhigh, max, or clear.	prompt: "Enter OpenAI reasoning effort: none, minimal, low, medium, high, xhigh, max, or clear.".to_string(),
+41	crates/jcode-tui/src/tui/app/auth_account_picker.rs	189	Account: editing OpenAI effort...	status_notice: "Account: editing OpenAI effort...".to_string(),
+42	crates/jcode-tui/src/tui/app/auth_account_picker.rs	195	Fast mode	"Fast mode",
+43	crates/jcode-tui/src/tui/app/auth_account_picker.rs	211	openai-compatible	"openai-compatible" => {
+44	crates/jcode-tui/src/tui/app/auth_account_picker.rs	221	Step 1/2: enter the OpenAI-compatible API base URL, for example https://llm.example.com/v1.	prompt: "Step 1/2: enter the OpenAI-compatible API base URL, for example https://llm.example.com/v1.".to_string(),
+45	crates/jcode-tui/src/tui/app/auth_account_picker.rs	224	Account: editing OpenAI-compatible API base URL (step 1/2)...	status_notice: "Account: editing OpenAI-compatible API base URL (step 1/2)...".to_string(),
+46	crates/jcode-tui/src/tui/app/auth_account_picker.rs	230	Step 2: API key variable	"Step 2: API key variable",
+47	crates/jcode-tui/src/tui/app/auth_account_picker.rs	233	Step 2/2: enter the env var name that stores the API key, for example OPENAI_API_KEY.	prompt: "Step 2/2: enter the env var name that stores the API key, for example OPENAI_API_KEY.".to_string(),
+48	crates/jcode-tui/src/tui/app/auth_account_picker.rs	236	Account: editing OpenAI-compatible API key variable (step 2/2)...	status_notice: "Account: editing OpenAI-compatible API key variable (step 2/2)...".to_string(),
+49	crates/jcode-tui/src/tui/app/auth_account_picker.rs	245	Enter the env file name for this profile.	prompt: "Enter the env file name for this profile.".to_string(),
+50	crates/jcode-tui/src/tui/app/auth_account_picker.rs	248	Account: editing env file...	status_notice: "Account: editing env file...".to_string(),
+51	crates/jcode-tui/src/tui/app/auth_account_picker.rs	254	Default model hint	"Default model hint",
+52	crates/jcode-tui/src/tui/app/auth_account_picker.rs	259	Enter the default model hint for this profile.	prompt: "Enter the default model hint for this profile.".to_string(),
+53	crates/jcode-tui/src/tui/app/auth_account_picker.rs	262	Account: editing default model hint...	status_notice: "Account: editing default model hint...".to_string(),
+54	crates/jcode-tui/src/tui/app/auth_account_picker.rs	270	Premium requests	"Premium requests",
+55	crates/jcode-tui/src/tui/app/auth_account_picker.rs	273	Enter Copilot premium mode: normal, one, or zero.	prompt: "Enter Copilot premium mode: normal, one, or zero.".to_string(),
+56	crates/jcode-tui/src/tui/app/auth_account_picker.rs	276	Account: editing Copilot premium mode...	status_notice: "Account: editing Copilot premium mode...".to_string(),
+57	crates/jcode-tui/src/tui/app/auth_account_picker.rs	286	Global defaults	"Global defaults",
+58	crates/jcode-tui/src/tui/app/auth_account_picker.rs	287	Default provider	"Default provider",
+59	crates/jcode-tui/src/tui/app/auth_account_picker.rs	290	Enter the default provider: claude, openai, copilot, gemini, openrouter, or auto.	prompt: "Enter the default provider: claude, openai, copilot, gemini, openrouter, or auto.".to_string(),
+60	crates/jcode-tui/src/tui/app/auth_account_picker.rs	293	Account: editing default provider...	status_notice: "Account: editing default provider...".to_string(),
+61	crates/jcode-tui/src/tui/app/auth_account_picker.rs	298	Global defaults	"Global defaults",
+62	crates/jcode-tui/src/tui/app/auth_account_picker.rs	299	Default model	"Default model",
+63	crates/jcode-tui/src/tui/app/auth_account_picker.rs	303	(provider default)	.unwrap_or("(provider default)"),
+64	crates/jcode-tui/src/tui/app/auth_account_picker.rs	305	Enter the default model, or clear to unset it.	prompt: "Enter the default model, or clear to unset it.".to_string(),
+65	crates/jcode-tui/src/tui/app/auth_account_picker.rs	308	Account: editing default model...	status_notice: "Account: editing default model...".to_string(),
+66	crates/jcode-tui/src/tui/app/auth_account_picker.rs	313	 {} account center 	Some(provider_id) => format!(" {} account center ", provider_id),
+67	crates/jcode-tui/src/tui/app/auth_account_picker.rs	314	 Accounts 	None => " Accounts ".to_string(),
+68	crates/jcode-tui/src/tui/app/auth_account_picker.rs	322	Account center: choose an action	self.set_status_notice("Account center: choose an action");
+69	crates/jcode-tui/src/tui/app/auth_account_picker.rs	329	account-flow	"account-flow",
+70	crates/jcode-tui/src/tui/app/auth_account_picker.rs	330	Add / Replace	"Add / Replace",
+71	crates/jcode-tui/src/tui/app/auth_account_picker.rs	331	Back to account center	"Back to account center",
+72	crates/jcode-tui/src/tui/app/auth_account_picker.rs	332	Return to the full provider/auth account center	"Return to the full provider/auth account center",
+73	crates/jcode-tui/src/tui/app/auth_account_picker.rs	345	Claude	"Claude",
+74	crates/jcode-tui/src/tui/app/auth_account_picker.rs	346	Add new account	"Add new account",
+75	crates/jcode-tui/src/tui/app/auth_account_picker.rs	347	Create the next numbered Claude account	"Create the next numbered Claude account",
+76	crates/jcode-tui/src/tui/app/auth_account_picker.rs	354	Claude	"Claude",
+77	crates/jcode-tui/src/tui/app/auth_account_picker.rs	355	Replace account {label}	format!("Replace account {label}"),
+78	crates/jcode-tui/src/tui/app/auth_account_picker.rs	356	Refresh this saved Claude account in place	"Refresh this saved Claude account in place",
+79	crates/jcode-tui/src/tui/app/auth_account_picker.rs	365	OpenAI	"OpenAI",
+80	crates/jcode-tui/src/tui/app/auth_account_picker.rs	366	Add new account	"Add new account",
+81	crates/jcode-tui/src/tui/app/auth_account_picker.rs	367	Create the next numbered OpenAI account	"Create the next numbered OpenAI account",
+82	crates/jcode-tui/src/tui/app/auth_account_picker.rs	374	OpenAI	"OpenAI",
+83	crates/jcode-tui/src/tui/app/auth_account_picker.rs	375	Replace account {label}	format!("Replace account {label}"),
+84	crates/jcode-tui/src/tui/app/auth_account_picker.rs	376	Refresh this saved OpenAI account in place	"Refresh this saved OpenAI account in place",
+85	crates/jcode-tui/src/tui/app/auth_account_picker.rs	383	 Add / Replace Account 	" Add / Replace Account ",
+86	crates/jcode-tui/src/tui/app/auth_account_picker.rs	389	Account center: choose add/replace target	self.set_status_notice("Account center: choose add/replace target");
+87	crates/jcode-tui/src/tui/app/auth_account_picker.rs	396	Inline /account picker is only available for Claude and OpenAI accounts. Use /account {} settings for provider details.	"Inline /account picker is only available for Claude and OpenAI accounts. Use /account {} settings for provider details.",
+88	crates/jcode-tui/src/tui/app/auth_account_picker.rs	401	Inline /account picker is available for Claude and OpenAI accounts. Use /account claude or /account openai to choose explicitly.	"Inline /account picker is available for Claude and OpenAI accounts. Use /account claude or /account openai to choose explicitly.".to_string(),
+89	crates/jcode-tui/src/tui/app/auth_account_picker.rs	404	Account picker unavailable	self.set_status_notice("Account picker unavailable");
+90	crates/jcode-tui/src/tui/app/auth_account_picker.rs	409	Claude + OpenAI	"all" => "Claude + OpenAI",
+91	crates/jcode-tui/src/tui/app/auth_account_picker.rs	410	Claude	"claude" => "Claude",
+92	crates/jcode-tui/src/tui/app/auth_account_picker.rs	411	OpenAI	"openai" => "OpenAI",
+93	crates/jcode-tui/src/tui/app/auth_account_picker.rs	435	Account → {} (↑↓ or j/k, Enter to select)	"Account → {} (↑↓ or j/k, Enter to select)",
+94	crates/jcode-tui/src/tui/app/auth_account_picker.rs	519	Claude	name: account_display_name("Claude", &account.label, claude_accounts.len()),
+95	crates/jcode-tui/src/tui/app/auth_account_picker.rs	521	Claude	provider: "Claude".to_string(),
+96	crates/jcode-tui/src/tui/app/auth_account_picker.rs	574	OpenAI	name: account_display_name("OpenAI", &account.label, openai_accounts.len()),
+97	crates/jcode-tui/src/tui/app/auth_account_picker.rs	576	OpenAI	provider: "OpenAI".to_string(),
+98	crates/jcode-tui/src/tui/app/auth_account_picker.rs	583	{} - {} - acct {}	detail: format!("{} - {} - acct {}", email, status, account_id),
+99	crates/jcode-tui/src/tui/app/auth_account_picker.rs	606	new Claude account	name: "new Claude account".to_string(),
+100	crates/jcode-tui/src/tui/app/auth_account_picker.rs	608	Claude	provider: "Claude".to_string(),
+101	crates/jcode-tui/src/tui/app/auth_account_picker.rs	630	new OpenAI account	name: "new OpenAI account".to_string(),
+102	crates/jcode-tui/src/tui/app/auth_account_picker.rs	632	OpenAI	provider: "OpenAI".to_string(),
+103	crates/jcode-tui/src/tui/app/auth_account_picker.rs	660	replace Claude account	name: "replace Claude account".to_string(),
+104	crates/jcode-tui/src/tui/app/auth_account_picker.rs	662	Claude	provider: "Claude".to_string(),
+105	crates/jcode-tui/src/tui/app/auth_account_picker.rs	666	no saved accounts yet	"no saved accounts yet".to_string()
+106	crates/jcode-tui/src/tui/app/auth_account_picker.rs	668	refresh {}	format!("refresh {}", replace_claude)
+107	crates/jcode-tui/src/tui/app/auth_account_picker.rs	695	replace OpenAI account	name: "replace OpenAI account".to_string(),
+108	crates/jcode-tui/src/tui/app/auth_account_picker.rs	697	OpenAI	provider: "OpenAI".to_string(),
+109	crates/jcode-tui/src/tui/app/auth_account_picker.rs	701	no saved accounts yet	"no saved accounts yet".to_string()
+110	crates/jcode-tui/src/tui/app/auth_account_picker.rs	703	refresh {}	format!("refresh {}", replace_openai)
+111	crates/jcode-tui/src/tui/app/auth_account_picker.rs	724	account center	name: "account center".to_string(),
+112	crates/jcode-tui/src/tui/app/auth_account_picker.rs	726	Accounts	provider: "Accounts".to_string(),
+113	crates/jcode-tui/src/tui/app/auth_account_picker.rs	729	settings, defaults, and other providers	detail: "settings, defaults, and other providers".to_string(),
+114	crates/jcode-tui/src/tui/app/auth_account_picker.rs	753	account center entry	let mut usage_entry = models.last().expect("account center entry").clone();
+115	crates/jcode-tui/src/tui/app/auth_account_picker.rs	754	OpenAI usage details	usage_entry.name = "OpenAI usage details".to_string();
+116	crates/jcode-tui/src/tui/app/auth_account_picker.rs	756	Today / lifetime API-equivalent cost and tokens by account	"Today / lifetime API-equivalent cost and tokens by account".to_string();
+117	crates/jcode-tui/src/tui/app/auth_account_picker.rs	757	OpenAI	usage_entry.options[0].provider = "OpenAI".to_string();
+118	crates/jcode-tui/src/tui/app/auth_account_picker.rs	759	openai-oauth-accounts	id: "openai-oauth-accounts".to_string(),
+119	crates/jcode-tui/src/tui/app/auth_account_picker.rs	760	ChatGPT OAuth account usage	title: "ChatGPT OAuth account usage".to_string(),
+120	crates/jcode-tui/src/tui/app/auth_account_picker.rs	761	Today / lifetime API-equivalent estimates, not a bill	subtitle: "Today / lifetime API-equivalent estimates, not a bill".to_string(),

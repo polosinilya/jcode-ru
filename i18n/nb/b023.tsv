@@ -1,0 +1,120 @@
+1	crates/jcode-tui/src/tui/app/remote/server_events.rs	1965	Reload complete - prompt preserved	app.set_status_notice("Reload complete - prompt preserved");
+2	crates/jcode-tui/src/tui/app/remote/server_events.rs	2240	Plan proposal received	app.set_status_notice("Plan proposal received");
+3	crates/jcode-tui/src/tui/app/remote/server_events.rs	2282	Model switch failed	app.set_status_notice("Model switch failed");
+4	crates/jcode-tui/src/tui/app/remote/server_events.rs	2297	Model → {}	app.set_status_notice(format!("Model → {}", model));
+5	crates/jcode-tui/src/tui/app/remote/server_events.rs	2383	Effort: {}	app.set_status_notice(format!("Effort: {}", label));
+6	crates/jcode-tui/src/tui/app/remote/server_events.rs	2430	Transport: {}	app.set_status_notice(format!("Transport: {}", label));
+7	crates/jcode-tui/src/tui/app/remote/server_events.rs	2447	Compaction: {}	app.set_status_notice(format!("Compaction: {}", label));
+8	crates/jcode-tui/src/tui/app/remote/server_events.rs	2513	⚡ {} tool(s) skipped	app.set_status_notice(format!("⚡ {} tool(s) skipped", n));
+9	crates/jcode-tui/src/tui/app/remote/server_events.rs	2540	🧠 {} relevant {} injected	app.set_status_notice(format!("🧠 {} relevant {} injected", count, plural));
+10	crates/jcode-tui/src/tui/app/remote/server_events.rs	2780	Workspace + {}	app.set_status_notice(format!("Workspace + {}", new_session_name));
+11	crates/jcode-tui/src/tui/app/remote/server_events.rs	2830	{} launched	app.set_status_notice(format!("{} launched", label));
+12	crates/jcode-tui/src/tui/app/remote/server_events.rs	2836	Split → {}	app.set_status_notice(format!("Split → {}", new_session_name));
+13	crates/jcode-tui/src/tui/app/remote/server_events.rs	2845	{} session created	app.set_status_notice(format!("{} session created", label));
+14	crates/jcode-tui/src/tui/app/remote/server_events.rs	2859	{} open failed	app.set_status_notice(format!("{} open failed", label));
+15	crates/jcode-tui/src/tui/app/remote/server_events.rs	2875	Compacting context	app.set_status_notice("Compacting context");
+16	crates/jcode-tui/src/tui/app/remote/server_events.rs	2878	Compaction failed	app.set_status_notice("Compaction failed");
+17	crates/jcode-tui/src/tui/app/remote/server_events.rs	2887	No sessions to resume	app.set_status_notice("No sessions to resume");
+18	crates/jcode-tui/src/tui/app/remote/server_events.rs	2889	Resuming 1 session	app.set_status_notice("Resuming 1 session");
+19	crates/jcode-tui/src/tui/app/remote/server_events.rs	2891	Resuming {} sessions	app.set_status_notice(format!("Resuming {} sessions", resumed));
+20	crates/jcode-tui/src/tui/app/remote/server_events.rs	2896	⌨ Interactive terminal detected (command will timeout)	app.set_status_notice("⌨ Interactive terminal detected (command will timeout)");
+21	crates/jcode-tui/src/tui/app/remote/workspace.rs	29	Finish current work before moving workspace focus	app.set_status_notice("Finish current work before moving workspace focus");
+22	crates/jcode-tui/src/tui/app/remote/workspace.rs	34	No workspace session in that direction	app.set_status_notice("No workspace session in that direction");
+23	crates/jcode-tui/src/tui/app/remote/workspace.rs	41	Workspace → {}	app.set_status_notice(format!("Workspace → {}", label));
+24	crates/jcode-tui/src/tui/app/remote/workspace.rs	70	Workspace mode enabled	app.set_status_notice("Workspace mode enabled");
+25	crates/jcode-tui/src/tui/app/remote/workspace.rs	78	Workspace mode disabled	app.set_status_notice("Workspace mode disabled");
+26	crates/jcode-tui/src/tui/app/remote/workspace.rs	104	Workspace add queued	app.set_status_notice("Workspace add queued");
+27	crates/jcode-tui/src/tui/app/split_view.rs	161	Split view: ON	app.set_status_notice("Split view: ON");
+28	crates/jcode-tui/src/tui/app/split_view.rs	167	Split view: OFF	app.set_status_notice("Split view: OFF");
+29	crates/jcode-tui/src/tui/app/split_view.rs	175	Split view: ON	app.set_status_notice("Split view: ON");
+30	crates/jcode-tui/src/tui/app/split_view.rs	183	Split view: OFF	app.set_status_notice("Split view: OFF");
+31	crates/jcode-tui/src/tui/app/state_ui.rs	618	📌 Returned to bookmark	self.set_status_notice("📌 Returned to bookmark");
+32	crates/jcode-tui/src/tui/app/state_ui.rs	623	📌 Bookmark set - press again to return	self.set_status_notice("📌 Bookmark set - press again to return");
+33	crates/jcode-tui/src/tui/app/state_ui.rs	695	Split view	self.set_status_notice("Split view")
+34	crates/jcode-tui/src/tui/app/state_ui.rs	697	Todos	(Some(super::todos_view::TODOS_VIEW_PAGE_ID), _) => self.set_status_notice("Todos"),
+35	crates/jcode-tui/src/tui/app/state_ui.rs	698	Observe	(Some(super::observe::OBSERVE_PAGE_ID), _) => self.set_status_notice("Observe"),
+36	crates/jcode-tui/src/tui/app/state_ui.rs	699	Goals	(Some("goals"), _) => self.set_status_notice("Goals"),
+37	crates/jcode-tui/src/tui/app/state_ui.rs	770	Layout: {}	self.set_status_notice(format!("Layout: {}", mode));
+38	crates/jcode-tui/src/tui/app/state_ui.rs	1781	Skills	app.set_status_notice("Skills");
+39	crates/jcode-tui/src/tui/app/state_ui.rs	1832	Changelog	app.set_status_notice("Changelog");
+40	crates/jcode-tui/src/tui/app/state_ui.rs	1848	Cache stats	app.set_status_notice("Cache stats");
+41	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	40	/help	RegisteredCommand::public("/help", "Show help and keyboard shortcuts"),
+42	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	40	Show help and keyboard shortcuts	RegisteredCommand::public("/help", "Show help and keyboard shortcuts"),
+43	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	41	Show help and keyboard shortcuts	RegisteredCommand::public("/?", "Show help and keyboard shortcuts"),
+44	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	42	/commands	RegisteredCommand::public("/commands", "Alias for /help"),
+45	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	42	Alias for /help	RegisteredCommand::public("/commands", "Alias for /help"),
+46	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	43	/model	RegisteredCommand::public("/model", "List or switch models"),
+47	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	43	List or switch models	RegisteredCommand::public("/model", "List or switch models"),
+48	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	44	/models	RegisteredCommand::public("/models", "Alias for /model"),
+49	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	44	Alias for /model	RegisteredCommand::public("/models", "Alias for /model"),
+50	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	46	/provider-test-coverage	"/provider-test-coverage",
+51	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	47	Show live-test evidence for the current provider/model	"Show live-test evidence for the current provider/model",
+52	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	49	/model-status	RegisteredCommand::hidden("/model-status", "Alias for /provider-test-coverage"),
+53	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	49	Alias for /provider-test-coverage	RegisteredCommand::hidden("/model-status", "Alias for /provider-test-coverage"),
+54	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	50	/refresh-model-list	RegisteredCommand::public("/refresh-model-list", "Refresh provider model catalogs"),
+55	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	50	Refresh provider model catalogs	RegisteredCommand::public("/refresh-model-list", "Refresh provider model catalogs"),
+56	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	51	/agents	RegisteredCommand::public("/agents", "Configure models for agent roles"),
+57	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	51	Configure models for agent roles	RegisteredCommand::public("/agents", "Configure models for agent roles"),
+58	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	53	/swarm-prompt	"/swarm-prompt",
+59	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	54	Open the active swarm routing prompt in your editor	"Open the active swarm routing prompt in your editor",
+60	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	56	/subagent	RegisteredCommand::public("/subagent", "Launch a subagent manually"),
+61	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	56	Launch a subagent manually	RegisteredCommand::public("/subagent", "Launch a subagent manually"),
+62	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	57	/observe	RegisteredCommand::public("/observe", "Show the latest tool context in the side panel"),
+63	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	57	Show the latest tool context in the side panel	RegisteredCommand::public("/observe", "Show the latest tool context in the side panel"),
+64	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	58	/todos	RegisteredCommand::public("/todos", "Show the session todo list as a card in the chat"),
+65	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	58	Show the session todo list as a card in the chat	RegisteredCommand::public("/todos", "Show the session todo list as a card in the chat"),
+66	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	59	/todo	RegisteredCommand::hidden("/todo", "Alias for /todos"),
+67	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	59	Alias for /todos	RegisteredCommand::hidden("/todo", "Alias for /todos"),
+68	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	60	/splitview	RegisteredCommand::public("/splitview", "Mirror the current chat in the side panel"),
+69	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	60	Mirror the current chat in the side panel	RegisteredCommand::public("/splitview", "Mirror the current chat in the side panel"),
+70	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	61	/split-view	RegisteredCommand::public("/split-view", "Alias for /splitview"),
+71	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	61	Alias for /splitview	RegisteredCommand::public("/split-view", "Alias for /splitview"),
+72	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	62	/btw	RegisteredCommand::public("/btw", "Ask a side question in the side panel"),
+73	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	62	Ask a side question in the side panel	RegisteredCommand::public("/btw", "Ask a side question in the side panel"),
+74	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	63	/ssh	RegisteredCommand::public("/ssh", "Connect to a remote machine using system SSH"),
+75	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	63	Connect to a remote machine using system SSH	RegisteredCommand::public("/ssh", "Connect to a remote machine using system SSH"),
+76	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	64	/git	RegisteredCommand::public("/git", "Show git status for the session working directory"),
+77	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	64	Show git status for the session working directory	RegisteredCommand::public("/git", "Show git status for the session working directory"),
+78	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	65	/colors	RegisteredCommand::public("/colors", "List, configure, and score every TUI color"),
+79	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	65	List, configure, and score every TUI color	RegisteredCommand::public("/colors", "List, configure, and score every TUI color"),
+80	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	66	/color	RegisteredCommand::hidden("/color", "Alias for /colors"),
+81	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	66	Alias for /colors	RegisteredCommand::hidden("/color", "Alias for /colors"),
+82	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	67	/hotkeys	RegisteredCommand::public("/hotkeys", "List hotkeys with your personal usage"),
+83	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	67	List hotkeys with your personal usage	RegisteredCommand::public("/hotkeys", "List hotkeys with your personal usage"),
+84	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	68	/terminal-setup	RegisteredCommand::public("/terminal-setup", "Fix Shift+Enter newlines"),
+85	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	68	Fix Shift+Enter newlines	RegisteredCommand::public("/terminal-setup", "Fix Shift+Enter newlines"),
+86	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	69	/commit	RegisteredCommand::public("/commit", "Make logical commits from current changes"),
+87	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	69	Make logical commits from current changes	RegisteredCommand::public("/commit", "Make logical commits from current changes"),
+88	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	71	/commit-push	"/commit-push",
+89	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	72	Make logical commits from current changes, then push	"Make logical commits from current changes, then push",
+90	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	74	/commit-and-push	RegisteredCommand::hidden("/commit-and-push", "Alias for /commit-push"),
+91	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	74	Alias for /commit-push	RegisteredCommand::hidden("/commit-and-push", "Alias for /commit-push"),
+92	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	76	/fast-release	"/fast-release",
+93	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	77	Publish Linux immediately from the warm selfdev cache; CI adds other platforms	"Publish Linux immediately from the warm selfdev cache; CI adds other platforms",
+94	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	80	/fast-macos-release	"/fast-macos-release",
+95	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	81	Publish a prepared macOS arm64 build immediately; CI adds other platforms	"Publish a prepared macOS arm64 build immediately; CI adds other platforms",
+96	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	83	/remote	RegisteredCommand::public("/remote", "Reach this session from another machine"),
+97	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	83	Reach this session from another machine	RegisteredCommand::public("/remote", "Reach this session from another machine"),
+98	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	85	/remote-release	"/remote-release",
+99	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	86	Push the release tag immediately; CI builds and publishes every platform	"Push the release tag immediately; CI builds and publishes every platform",
+100	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	88	/cut-release	RegisteredCommand::hidden("/cut-release", "Alias for /fast-release"),
+101	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	88	Alias for /fast-release	RegisteredCommand::hidden("/cut-release", "Alias for /fast-release"),
+102	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	89	/commit-push-release	RegisteredCommand::hidden("/commit-push-release", "Alias for /cut-release"),
+103	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	89	Alias for /cut-release	RegisteredCommand::hidden("/commit-push-release", "Alias for /cut-release"),
+104	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	91	/triage	"/triage",
+105	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	92	Triage new GitHub issues and autonomously fix the safe ones	"Triage new GitHub issues and autonomously fix the safe ones",
+106	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	94	/transcript	RegisteredCommand::public("/transcript", "Open the current session transcript file"),
+107	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	94	Open the current session transcript file	RegisteredCommand::public("/transcript", "Open the current session transcript file"),
+108	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	95	/subagent-model	RegisteredCommand::public("/subagent-model", "Show/change subagent model policy"),
+109	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	95	Show/change subagent model policy	RegisteredCommand::public("/subagent-model", "Show/change subagent model policy"),
+110	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	96	/autoreview	RegisteredCommand::public("/autoreview", "Show/toggle automatic end-of-turn review"),
+111	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	96	Show/toggle automatic end-of-turn review	RegisteredCommand::public("/autoreview", "Show/toggle automatic end-of-turn review"),
+112	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	97	/autojudge	RegisteredCommand::public("/autojudge", "Show/toggle automatic end-of-turn judging"),
+113	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	97	Show/toggle automatic end-of-turn judging	RegisteredCommand::public("/autojudge", "Show/toggle automatic end-of-turn judging"),
+114	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	98	/review	RegisteredCommand::public("/review", "Launch a one-shot headed review session"),
+115	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	98	Launch a one-shot headed review session	RegisteredCommand::public("/review", "Launch a one-shot headed review session"),
+116	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	99	/judge	RegisteredCommand::public("/judge", "Launch a one-shot headed judge session"),
+117	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	99	Launch a one-shot headed judge session	RegisteredCommand::public("/judge", "Launch a one-shot headed judge session"),
+118	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	100	/effort	RegisteredCommand::public("/effort", crate::tui::keybind::EFFORT_HELP),
+119	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	101	/fast	RegisteredCommand::public("/fast", "Toggle fast mode"),
+120	crates/jcode-tui/src/tui/app/state_ui_input_helpers.rs	101	Toggle fast mode	RegisteredCommand::public("/fast", "Toggle fast mode"),

@@ -1,0 +1,120 @@
+1	crates/jcode-tui/src/tui/app/input_help.rs	117	overnight	"overnight" => {
+2	crates/jcode-tui/src/tui/app/input_help.rs	120	dictate	"dictate" | "dictation" => {
+3	crates/jcode-tui/src/tui/app/input_help.rs	120	dictation	"dictate" | "dictation" => {
+4	crates/jcode-tui/src/tui/app/input_help.rs	123	poke	"poke" => {
+5	crates/jcode-tui/src/tui/app/input_help.rs	134	transfer	"transfer" => {
+6	crates/jcode-tui/src/tui/app/input_help.rs	137	plan	"plan" => {
+7	crates/jcode-tui/src/tui/app/input_help.rs	140	improve	"improve" => {
+8	crates/jcode-tui/src/tui/app/input_help.rs	143	refactor	"refactor" => {
+9	crates/jcode-tui/src/tui/app/input_help.rs	146	reload	"reload" => {
+10	crates/jcode-tui/src/tui/app/input_help.rs	147	/reload\nReload into the newest available binary if one is ready. This is fast and does not rebuild.	"/reload\nReload into the newest available binary if one is ready. This is fast and does not rebuild."
+11	crates/jcode-tui/src/tui/app/input_help.rs	149	restart	"restart" => {
+12	crates/jcode-tui/src/tui/app/input_help.rs	150	/restart\nRestart jcode with the current binary. Session is preserved.\nUseful after config changes, MCP server updates, or env var changes.	"/restart\nRestart jcode with the current binary. Session is preserved.\nUseful after config changes, MCP server updates, or env var changes."
+13	crates/jcode-tui/src/tui/app/input_help.rs	152	rebuild	"rebuild" => {
+14	crates/jcode-tui/src/tui/app/input_help.rs	153	/rebuild\nRun git pull --ff-only, cargo build --release, and release tests in the background. jcode stays usable and reloads automatically when the build is ready.	"/rebuild\nRun git pull --ff-only, cargo build --release, and release tests in the background. jcode stays usable and reloads automatically when the build is ready."
+15	crates/jcode-tui/src/tui/app/input_help.rs	155	selfdev	"selfdev" => {
+16	crates/jcode-tui/src/tui/app/input_help.rs	156	/selfdev\nSpawn a new self-dev jcode session in a separate terminal.\n\n/selfdev <prompt>\nSpawn a new self-dev session and auto-deliver the prompt to it.\n\n/selfdev status\nShow current self-dev/build status.	"/selfdev\nSpawn a new self-dev jcode session in a separate terminal.\n\n/selfdev <prompt>\nSpawn a new self-dev session and auto-deliver the prompt to it.\n\n/selfdev status\nShow current self-dev/build status."
+17	crates/jcode-tui/src/tui/app/input_help.rs	158	fork	"fork" | "split" => {
+18	crates/jcode-tui/src/tui/app/input_help.rs	158	split	"fork" | "split" => {
+19	crates/jcode-tui/src/tui/app/input_help.rs	161	resume	"resume" | "sessions" => {
+20	crates/jcode-tui/src/tui/app/input_help.rs	161	sessions	"resume" | "sessions" => {
+21	crates/jcode-tui/src/tui/app/input_help.rs	164	/info\nShow session metadata and token usage.	"info" => "/info\nShow session metadata and token usage.",
+22	crates/jcode-tui/src/tui/app/input_help.rs	164	info	"info" => "/info\nShow session metadata and token usage.",
+23	crates/jcode-tui/src/tui/app/input_help.rs	165	context	"context" => {
+24	crates/jcode-tui/src/tui/app/input_help.rs	166	/context\nShow the full session context snapshot: prompt/context composition, compaction state, model/provider/runtime details, queued work, todos, and side-panel state.	"/context\nShow the full session context snapshot: prompt/context composition, compaction state, model/provider/runtime details, queued work, todos, and side-panel state."
+25	crates/jcode-tui/src/tui/app/input_help.rs	168	usage	"usage" => {
+26	crates/jcode-tui/src/tui/app/input_help.rs	169	/usage\nFetch and display usage limits for connected providers. This command only reports real connected-provider usage windows and reset times.	"/usage\nFetch and display usage limits for connected providers. This command only reports real connected-provider usage windows and reset times."
+27	crates/jcode-tui/src/tui/app/input_help.rs	171	subscription	"subscription" => {
+28	crates/jcode-tui/src/tui/app/input_help.rs	172	/subscription\nCompatibility alias for /hosted status. Shows hosted-model usage, your monthly spending limit, billing status, and router configuration.	"/subscription\nCompatibility alias for /hosted status. Shows hosted-model usage, your monthly spending limit, billing status, and router configuration."
+29	crates/jcode-tui/src/tui/app/input_help.rs	174	hosted	"subscribe" | "hosted" => {
+30	crates/jcode-tui/src/tui/app/input_help.rs	174	subscribe	"subscribe" | "hosted" => {
+31	crates/jcode-tui/src/tui/app/input_help.rs	177	/version\nShow jcode version/build details.	"version" => "/version\nShow jcode version/build details.",
+32	crates/jcode-tui/src/tui/app/input_help.rs	177	version	"version" => "/version\nShow jcode version/build details.",
+33	crates/jcode-tui/src/tui/app/input_help.rs	178	/changelog\nShow recent changes embedded in this build.	"changelog" => "/changelog\nShow recent changes embedded in this build.",
+34	crates/jcode-tui/src/tui/app/input_help.rs	178	changelog	"changelog" => "/changelog\nShow recent changes embedded in this build.",
+35	crates/jcode-tui/src/tui/app/input_help.rs	179	/quit\nExit jcode.	"quit" => "/quit\nExit jcode.",
+36	crates/jcode-tui/src/tui/app/input_help.rs	179	quit	"quit" => "/quit\nExit jcode.",
+37	crates/jcode-tui/src/tui/app/input_help.rs	180	config	"config" => {
+38	crates/jcode-tui/src/tui/app/input_help.rs	181	/config\nShow active configuration.\n\n/config init\nCreate default config file.\n\n/config edit\nOpen config in $EDITOR.	"/config\nShow active configuration.\n\n/config init\nCreate default config file.\n\n/config edit\nOpen config in $EDITOR."
+39	crates/jcode-tui/src/tui/app/input_help.rs	183	alignment	"alignment" => {
+40	crates/jcode-tui/src/tui/app/input_help.rs	186	compact-notifications	"compact-notifications" => {
+41	crates/jcode-tui/src/tui/app/input_help.rs	189	show-agentgrep-output	"show-agentgrep-output" => {
+42	crates/jcode-tui/src/tui/app/input_help.rs	192	tool-call-details	"tool-call-details" => {
+43	crates/jcode-tui/src/tui/app/input_help.rs	195	auth	"auth" | "login" => {
+44	crates/jcode-tui/src/tui/app/input_help.rs	195	login	"auth" | "login" => {
+45	crates/jcode-tui/src/tui/app/input_help.rs	198	account	"account" | "accounts" => {
+46	crates/jcode-tui/src/tui/app/input_help.rs	198	accounts	"account" | "accounts" => {
+47	crates/jcode-tui/src/tui/app/input_help.rs	201	save	"save" => {
+48	crates/jcode-tui/src/tui/app/input_help.rs	202	/save\nBookmark the current session so it appears at the top of /resume.\n\n/save <label>\nBookmark with a custom label for easy identification.\n\nSaved sessions are shown in a dedicated \"Saved\" section in the session picker.	"/save\nBookmark the current session so it appears at the top of /resume.\n\n/save <label>\nBookmark with a custom label for easy identification.\n\nSaved sessions are shown in a dedicated \"Saved\" section in the session picker."
+49	crates/jcode-tui/src/tui/app/input_help.rs	204	rename	"rename" => {
+50	crates/jcode-tui/src/tui/app/input_help.rs	205	/rename <session name>\nSet a custom display title for the current session. This updates the window title and /resume display.\n\n/rename --clear\nClear the custom name and return to the generated session title.	"/rename <session name>\nSet a custom display title for the current session. This updates the window title and /resume display.\n\n/rename --clear\nClear the custom name and return to the generated session title."
+51	crates/jcode-tui/src/tui/app/input_help.rs	207	/unsave\nRemove the bookmark from the current session.	"unsave" => "/unsave\nRemove the bookmark from the current session.",
+52	crates/jcode-tui/src/tui/app/input_help.rs	207	unsave	"unsave" => "/unsave\nRemove the bookmark from the current session.",
+53	crates/jcode-tui/src/tui/app/input_help.rs	208	client-reload	"client-reload" if self.is_remote => {
+54	crates/jcode-tui/src/tui/app/input_help.rs	209	/client-reload\nForce client binary reload in remote mode.	"/client-reload\nForce client binary reload in remote mode."
+55	crates/jcode-tui/src/tui/app/input_help.rs	211	server-reload	"server-reload" if self.is_remote => {
+56	crates/jcode-tui/src/tui/app/input_help.rs	212	/server-reload\nForce server binary reload in remote mode.	"/server-reload\nForce server binary reload in remote mode."
+57	crates/jcode-tui/src/tui/app/input_help.rs	214	continue	"continue" | "resumeall" | "resume-all" if self.is_remote => {
+58	crates/jcode-tui/src/tui/app/input_help.rs	214	resume-all	"continue" | "resumeall" | "resume-all" if self.is_remote => {
+59	crates/jcode-tui/src/tui/app/input_help.rs	214	resumeall	"continue" | "resumeall" | "resume-all" if self.is_remote => {
+60	crates/jcode-tui/src/tui/app/input_help.rs	224	 You can also press {label} to open it directly.	Some(label) => format!(" You can also press {label} to open it directly."),
+61	crates/jcode-tui/src/tui/app/input_help.rs	230	Alt+	"Alt+",
+62	crates/jcode-tui/src/tui/app/local.rs	250	Model → {}	app.set_status_notice(format!("Model → {}", model));
+63	crates/jcode-tui/src/tui/app/local.rs	388	Subagent failed	"Subagent failed"
+64	crates/jcode-tui/src/tui/app/local.rs	510	Background task stalled · {} · no output for {}s	"Background task stalled · {} · no output for {}s",
+65	crates/jcode-tui/src/tui/app/misc_ui.rs	139	Usage → refreshing	self.set_status_notice("Usage → refreshing");
+66	crates/jcode-tui/src/tui/app/misc_ui.rs	217	azure-openai	|| provider_name.contains("azure-openai")
+67	crates/jcode-tui/src/tui/app/misc_ui.rs	407	claude:api-key	"claude:api-key".to_string()
+68	crates/jcode-tui/src/tui/app/misc_ui.rs	409	openai:api-key	"openai:api-key".to_string()
+69	crates/jcode-tui/src/tui/app/misc_ui.rs	553	Copied provider test coverage report	self.set_status_notice("Copied provider test coverage report".to_string());
+70	crates/jcode-tui/src/tui/app/misc_ui.rs	556	Failed to copy provider test coverage report	"Failed to copy provider test coverage report".to_string(),
+71	crates/jcode-tui/src/tui/app/misc_ui.rs	580	{provider_name} should not be billed per token	"{provider_name} should not be billed per token"
+72	crates/jcode-tui/src/tui/app/model_context.rs	6	claude-opus-4-8	const GUARDRAIL_REROUTE_MODEL: &str = "claude-opus-4-8";
+73	crates/jcode-tui/src/tui/app/model_context.rs	19	about {} input tokens (~{} chars)	"about {} input tokens (~{} chars)",
+74	crates/jcode-tui/src/tui/app/model_context.rs	92	Provider auto-switch → {} in {}s (Esc to cancel)	"Provider auto-switch → {} in {}s (Esc to cancel)",
+75	crates/jcode-tui/src/tui/app/model_context.rs	110	Provider → {} (retrying)	"Provider → {} (retrying)",
+76	crates/jcode-tui/src/tui/app/model_context.rs	118	Failed to switch provider to {}: {}	"Failed to switch provider to {}: {}",
+77	crates/jcode-tui/src/tui/app/model_context.rs	121	Provider switch failed	self.set_status_notice("Provider switch failed");
+78	crates/jcode-tui/src/tui/app/model_context.rs	146	{} unavailable; switch manually if desired	"{} unavailable; switch manually if desired",
+79	crates/jcode-tui/src/tui/app/model_context.rs	164	Provider auto-switch → {} in 3s (Esc to cancel)	"Provider auto-switch → {} in 3s (Esc to cancel)",
+80	crates/jcode-tui/src/tui/app/model_context.rs	174	{} unavailable; manual switch suggested	"{} unavailable; manual switch suggested",
+81	crates/jcode-tui/src/tui/app/model_context.rs	213	claude-oauth	Some("claude-oauth".to_string())
+82	crates/jcode-tui/src/tui/app/model_context.rs	216	claude-api	Some("claude-api".to_string())
+83	crates/jcode-tui/src/tui/app/model_context.rs	219	openai-oauth	Some("openai-oauth".to_string())
+84	crates/jcode-tui/src/tui/app/model_context.rs	222	openai-api	Some("openai-api".to_string())
+85	crates/jcode-tui/src/tui/app/model_context.rs	248	claude-sonnet-4 via OAuth (Anthropic)	/// Short label for a route, e.g. "claude-sonnet-4 via OAuth (Anthropic)".
+86	crates/jcode-tui/src/tui/app/model_context.rs	251	{} via {} ({})	format!("{} via {} ({})", route.model, method, route.provider)
+87	crates/jcode-tui/src/tui/app/model_context.rs	328	{} via {}	format!("{} via {}", current_provider, from_method.display_label())
+88	crates/jcode-tui/src/tui/app/model_context.rs	338	↪ {} failed. Fallback available: press {} to switch to {} and resend.	"↪ {} failed. Fallback available: press {} to switch to {} and resend.",
+89	crates/jcode-tui/src/tui/app/model_context.rs	341	Press {} to switch to {}	self.set_status_notice(format!("Press {} to switch to {}", key_label, route.model));
+90	crates/jcode-tui/src/tui/app/model_context.rs	446	Press {} to reroute to {}	self.set_status_notice(format!("Press {} to reroute to {}", key_label, route.model));
+91	crates/jcode-tui/src/tui/app/model_context.rs	478	↪ Switching to {} and resending (was {}).	"↪ Switching to {} and resending (was {}).",
+92	crates/jcode-tui/src/tui/app/model_context.rs	481	Switching → {} (will retry)	self.set_status_notice(format!("Switching → {} (will retry)", offer.target_label));
+93	crates/jcode-tui/src/tui/app/model_context.rs	505	↪ Switched to {} and resending (was {}).	"↪ Switched to {} and resending (was {}).",
+94	crates/jcode-tui/src/tui/app/model_context.rs	508	Switched → {} (retrying)	self.set_status_notice(format!("Switched → {} (retrying)", active_model));
+95	crates/jcode-tui/src/tui/app/model_context.rs	514	Failed to switch to {}: {}	"Failed to switch to {}: {}",
+96	crates/jcode-tui/src/tui/app/model_context.rs	517	Fallback switch failed	self.set_status_notice("Fallback switch failed");
+97	crates/jcode-tui/src/tui/app/model_context.rs	527	Model switching is not available for this provider.	"Model switching is not available for this provider.",
+98	crates/jcode-tui/src/tui/app/model_context.rs	529	Model switching not available	self.set_status_notice("Model switching not available");
+99	crates/jcode-tui/src/tui/app/model_context.rs	553	✓ Switched to model: {}{}	"✓ Switched to model: {}{}",
+100	crates/jcode-tui/src/tui/app/model_context.rs	556	Model → {}	self.set_status_notice(format!("Model → {}", next_model));
+101	crates/jcode-tui/src/tui/app/model_context.rs	560	Failed to switch model: {}	"Failed to switch model: {}",
+102	crates/jcode-tui/src/tui/app/model_context.rs	563	Model switch failed	self.set_status_notice("Model switch failed");
+103	crates/jcode-tui/src/tui/app/model_context.rs	580	Reasoning effort not available for this provider	self.set_status_notice("Reasoning effort not available for this provider");
+104	crates/jcode-tui/src/tui/app/model_context.rs	611	Effort: {} (already at {})	"Effort: {} (already at {})",
+105	crates/jcode-tui/src/tui/app/model_context.rs	622	Effort: {} {}	self.set_status_notice(format!("Effort: {} {}", label, bar));
+106	crates/jcode-tui/src/tui/app/model_context.rs	625	Effort switch failed: {}	self.set_status_notice(format!("Effort switch failed: {}", e));
+107	crates/jcode-tui/src/tui/app/model_context.rs	760	token refresh needed	/// "token refresh needed" / auth error). Only restores when the input box is
+108	crates/jcode-tui/src/tui/app/model_context.rs	777	Prompt restored to input after error	self.set_status_notice("Prompt restored to input after error");
+109	crates/jcode-tui/src/tui/app/model_context.rs	801	Error: {} Dropped {} oversized image(s); you can retry.	"Error: {} Dropped {} oversized image(s); you can retry.",
+110	crates/jcode-tui/src/tui/app/model_context.rs	806	Error: {} Request body was too large but no inline images could be dropped. Run /fix to try manual recovery.	"Error: {} Request body was too large but no inline images could be dropped. Run /fix to try manual recovery.",
+111	crates/jcode-tui/src/tui/app/model_context.rs	820	 Context limit exceeded but auto-recovery failed. Run /fix to try manual recovery.	None => " Context limit exceeded but auto-recovery failed. Run /fix to try manual recovery.".to_string(),
+112	crates/jcode-tui/src/tui/app/model_context.rs	822	Error: {}{}	self.push_display_message(DisplayMessage::error(format!("Error: {}{}", error, hint)));
+113	crates/jcode-tui/src/tui/app/model_context.rs	834	Error: {}	self.push_display_message(DisplayMessage::error(format!("Error: {}", error)));
+114	crates/jcode-tui/src/tui/app/model_context.rs	837	Error: {} Run /fix to attempt recovery.	"Error: {} Run /fix to attempt recovery.",
+115	crates/jcode-tui/src/tui/app/model_context.rs	861	{} You can continue.	"{} You can continue.",
+116	crates/jcode-tui/src/tui/app/model_context.rs	886	⚡ Emergency compaction: dropped {} old messages. You can continue.	"⚡ Emergency compaction: dropped {} old messages. You can continue.",
+117	crates/jcode-tui/src/tui/app/model_context.rs	895	⚡ Emergency truncation: shortened {} large tool result(s) to fit context. You can continue.	"⚡ Emergency truncation: shortened {} large tool result(s) to fit context. You can continue.",
+118	crates/jcode-tui/src/tui/app/model_context.rs	938	⚡ Request was too large; dropped {} oversized image(s) and retrying...	"⚡ Request was too large; dropped {} oversized image(s) and retrying...",
+119	crates/jcode-tui/src/tui/app/model_context.rs	1007	⚠️ Context limit exceeded - auto-compacting and retrying...	"⚠️ Context limit exceeded - auto-compacting and retrying...".to_string(),
+120	crates/jcode-tui/src/tui/app/model_context.rs	1026	{} Retrying...	"{} Retrying...",

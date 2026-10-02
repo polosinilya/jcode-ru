@@ -1,0 +1,107 @@
+{
+ "applied": 2762,
+ "skipped": 1485,
+ "invalid": 15,
+ "problems": [
+  {
+   "batch": "b006",
+   "idx": 33,
+   "reason": "placeholder",
+   "en": "Enter a label for the new {} account, then press Enter. Use /cancel to abort.",
+   "ru": "OpenAI"
+  },
+  {
+   "batch": "b006",
+   "idx": 36,
+   "reason": "placeholder",
+   "en": "Account action cancelled.",
+   "ru": "{} Используйте /cancel для отмены."
+  },
+  {
+   "batch": "b010",
+   "idx": 27,
+   "reason": "bad chars",
+   "ru": "📌 Сессия {} сохранена как \\\"{}\\\". Она появится вверху /resume."
+  },
+  {
+   "batch": "b013",
+   "idx": 33,
+   "reason": "bad chars",
+   "ru": "Неизвестный уровень телеметрии \\\"{other}\\\". Используйте everything, no-prompts или nothing."
+  },
+  {
+   "batch": "b018",
+   "idx": 48,
+   "reason": "bad chars",
+   "ru": "/save\\nДобавить текущую сессию в закладки, чтобы она отображалась вверху /resume.\\n\\n/save <label>\\nДобавить в закладки с пользовательской меткой для легкой идентификации.\\n\\nСохраненные сессии отображаются в отдельной секции \"Сохраненные\" в выборе сессий."
+  },
+  {
+   "batch": "b019",
+   "idx": 22,
+   "reason": "placeholder",
+   "en": "{} - no data",
+   "ru": "~ {} - {:.0}% использовано"
+  },
+  {
+   "batch": "b019",
+   "idx": 23,
+   "reason": "placeholder",
+   "en": "+ {} - {:.0}% used",
+   "ru": "{} - нет данных"
+  },
+  {
+   "batch": "b019",
+   "idx": 24,
+   "reason": "placeholder",
+   "en": "+ {} - available",
+   "ru": "+ {} - {:.0}% использовано"
+  },
+  {
+   "batch": "b019",
+   "idx": 25,
+   "reason": "placeholder",
+   "en": "Reset provider session resume state.",
+   "ru": "+ {} - доступно"
+  },
+  {
+   "batch": "b019",
+   "idx": 26,
+   "reason": "placeholder",
+   "en": "Emergency truncation: shortened {} large tool result(s) to fit context.",
+   "ru": "Сброс состояния возобновления сессии провайдера."
+  },
+  {
+   "batch": "b034",
+   "idx": 2,
+   "reason": "bad chars",
+   "ru": "Сбор анонимной статистики использования jcode (версия, ОС, активность\tсобранные данные об активности и причинах сбоев). Никакого кода, запросов или личных данных."
+  },
+  {
+   "batch": "b037",
+   "idx": 9,
+   "reason": "bad chars",
+   "ru": "Завершающий \\\\ затем Enter"
+  },
+  {
+   "batch": "b043",
+   "idx": 35,
+   "reason": "escape",
+   "en": "memory",
+   "ru": "/memory [on|off|status]\\nПереключить функции памяти для этой сессии."
+  },
+  {
+   "batch": "b043",
+   "idx": 40,
+   "reason": "escape",
+   "en": "swarm",
+   "ru": "/swarm [on|off|status]\\nПереключить функции роя для этой сессии."
+  },
+  {
+   "batch": "b043",
+   "file": "crates/jcode-tui/src/tui/app/input_help.rs",
+   "line": 114,
+   "reason": "literal not found",
+   "en": "/goals\\nOpen the goals overview in the side panel.\\n\\n/goals resume\\nResume the most relevant active goal for this session/project.\\n\\n/goals show <id>\\nOpen a specific goal in the side panel."
+  }
+ ]
+}
